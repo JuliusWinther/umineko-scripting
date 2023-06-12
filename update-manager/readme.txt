@@ -29,7 +29,7 @@ export UMINEKO_UPDATE="$UMINEKO_BASE/full_update"
 
 export ARCHIVE_PREFIX="$UMINEKO_UPDATE/extra"
 export TEMP_UPDATE_FOLDER=/tmp/umineko
-export OUT_DIR=~/Desktop
+export OUT_DIR=B:\UminekoProject
 
 export LAST_EPISODE=$(cat "$UMINEKO_SCRIPTING/current/last")
 export LAST_EPISODE_PT=$(cat "$UMINEKO_SCRIPTING/current/last_pt")

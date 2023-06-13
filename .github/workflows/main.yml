@@ -30,46 +30,19 @@ jobs:
           LAST=$(<current/last)
           if [ "$LAST" == "" ]; then LAST=1; fi
           if [ -f current/last_en ]; then LAST_EN=$(<current/last_en); else LAST_EN="$LAST" ; fi
-          if [ -f current/last_cn ]; then LAST_CN=$(<current/last_cn); else LAST_CN="$LAST" ; fi
           if [ -f current/last_ru ]; then LAST_RU=$(<current/last_ru); else LAST_RU="$LAST" ; fi
-          if [ -f current/last_pt ]; then LAST_PT=$(<current/last_pt); else LAST_PT="$LAST" ; fi
-          if [ -f current/last_it ]; then LAST_IT=$(<current/last_it); else LAST_IT="$LAST" ; fi
           php update-manager/update-manager.php dscript "ciout/en.txt" . en ${BUILD} || exit 1
           php update-manager/update-manager.php dscript "ciout/ru.txt" . ru ${BUILD} || exit 1
-          php update-manager/update-manager.php dscript "ciout/pt.txt" . pt ${BUILD} || exit 1
-          php update-manager/update-manager.php dscript "ciout/cn.txt" . cn ${BUILD} || exit 1
-          php update-manager/update-manager.php dscript "ciout/wh.txt" . wh ${BUILD} || exit 1
-          php update-manager/update-manager.php dscript "ciout/cht.txt" . cht ${BUILD} || exit 1
-          php update-manager/update-manager.php dscript "ciout/it.txt" . it ${BUILD} || exit 1
           cp misc/chiru.file ciout
           cp misc/game.hash ciout
           cp misc/default.cfg ciout
-          cp misc/pt.cfg ciout
-          cp misc/cn.cfg ciout
-          cp misc/cht.cfg ciout
-          cp misc/it.cfg ciout
           cd ciout
           zip -qry umineko-main-scripts_r${BUILD}_dev.zip ru.txt en.txt chiru.file game.hash default.cfg || exit 1
-          zip -qry umineko-pt-scripts_r${BUILD}_dev.zip pt.txt pt.cfg || exit 1
-          zip -qry umineko-cn-scripts_r${BUILD}_dev.zip cn.txt cn.cfg || exit 1
-          zip -qry umineko-wh-scripts_r${BUILD}_dev.zip wh.txt || exit 1
-          zip -qry umineko-cht-scripts_r${BUILD}_dev.zip cht.txt cht.cfg || exit 1
-          zip -qry umineko-it-scripts_r${BUILD}_dev.zip it.txt it.cfg || exit 1
           cd ..
           php update-manager/update-manager.php script ciout/en.txt "ciout/en.file" "$LAST_EN" || exit 1
           php update-manager/update-manager.php script ciout/ru.txt "ciout/ru.file" "$LAST_RU" || exit 1
-          php update-manager/update-manager.php script ciout/pt.txt "ciout/pt.file" "$LAST_PT" || exit 1
-          php update-manager/update-manager.php script ciout/cn.txt "ciout/cn.file" "$LAST_CN" || exit 1
-          php update-manager/update-manager.php script ciout/wh.txt "ciout/wh.file" "$LAST_EN" || exit 1
-          php update-manager/update-manager.php script ciout/cht.txt "ciout/cht.file" "$LAST_CN" || exit 1
-          php update-manager/update-manager.php script ciout/it.txt "ciout/it.file" "$LAST_IT" || exit 1
           cd ciout
           zip -qry umineko-main-scripts_r${BUILD}.zip ru.file en.file chiru.file game.hash default.cfg || exit 1
-          zip -qry umineko-pt-scripts_r${BUILD}.zip pt.file pt.cfg || exit 1
-          zip -qry umineko-cn-scripts_r${BUILD}.zip cn.file cn.cfg || exit 1
-          zip -qry umineko-wh-scripts_r${BUILD}.zip wh.file || exit 1
-          zip -qry umineko-cht-scripts_r${BUILD}.zip cht.file cht.cfg || exit 1
-          zip -qry umineko-it-scripts_r${BUILD}.zip it.file it.cfg || exit 1
           cd ..
           cd extra
           zip -qry ../ciout/extra_${TODAY}.zip * || exit 1

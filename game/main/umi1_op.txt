@@ -5,29 +5,6 @@ mov $name_chapter_r_click,r_click_chapters_1_op
 mov $name_chapter_save, "1_op"
 new_episode 1
 flush 10,167
-textoff
-waits 167
-lbg s0_3,"black"
-flush 2
-vol_mix_fade 1000
-wait 1000
-textoff
-waits 167
-lbg s0_3,"black"
-flush 2
-wait 1000
-seplay 1,28,100
-textoff
-waits 167
-lbg s0_3,"text001"
-flush 1
-wait 6000
-textoff
-waits 167
-lbg s0_3,"black"
-flush 2
-textoff
-waits 167
 lbg s0_1,"mlib_1a_bg"
 lbg s0_3,"mlib_1a"
 flush 8
@@ -48,10 +25,10 @@ d `聴診器を外しながら、年輩の医師は溜め息を漏らす。`[\]
 d `埃と甘ったるい異臭の入り混じった薄暗い書斎に、年輩の男たちの姿はあった。`[\]
 textoff
 waits 167
-csp_slot s0_8
+csp_slot s0_8 ;togliere la sprite
 lbg s0_1,"mlib_1b_bg"
 lbg s0_3,"mlib_1b"
-flush 24
+flush 24,20000
 *d4
 d `書斎と呼ぶにはとても広い部屋の一角には高級そうなベッドがあり、`[@]`診察を受ける男と、それを診察する医師。`[@]`{n}そしてそれを見守る使用人のように見えた。`[\]
 lss s0_10,"kin","a11_defo1" ;1

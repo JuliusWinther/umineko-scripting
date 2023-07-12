@@ -22723,9 +22723,9 @@ lips_sprite %lss_slot-1
 ;End Custom
 
 ;Containing main sprite hotspot, lips unrelated
-loadfromreg $lss_lips_x,$lss_sec,$lss_key + "_left"
+loadfromreg $lss_lips_x,$lss_sec,$lss_key + "_left" ;Variable,Category,Key - Reads the given key from the given category and stores it in the given variable
 loadfromreg $lss_lips_y,$lss_sec,$lss_key + "_top"
-set_hotspot %lss_slot,$lss_lips_x,$lss_lips_y
+set_hotspot %lss_slot,$lss_lips_x,$lss_lips_y		;
 
 ;Variable Sprites Folder - W_CUSTOM
 fileexist %lss_lips,"" + $sprite_folder_name + "\" + $lss_sec + "\2\" + $lss_sec + "_" + $lss_key + ".png"
@@ -22735,7 +22735,7 @@ if %lss_lips == 0 jumpf
 	atoi %lss_lips_x,$lss_temp
 	loadfromreg $lss_temp,$lss_sec,$lss_key + "_y"
 	atoi %lss_lips_y,$lss_temp
-	;;Variable Sprites Folder - W_CUSTOM
+	;Variable Sprites Folder - W_CUSTOM
 	lsp2 %lss_slot-1,":a/4,0,3;" + $sprite_folder_name + "\" + $lss_sec + "\2\" + $lss_sec + "_" + $lss_key + ".png",%lss_lips_x,%lss_lips_y,100,100,0
 	if $lss_sec == "en2" mov $lss_sec,"enj"
 	if $lss_sec == "ka2" mov $lss_sec,"kan"
@@ -25639,6 +25639,12 @@ return
 	tree_set 3,"60","be3"
 	tree_set 3,"99","non"
 	tree_set 3,"00","non"
+
+	;New Sprites - W_CUSTOM
+	tree_set 3,"61","pie"
+	tree_set 3,"62","saku"
+	;End Custom
+
 return
 
 *se_generate
@@ -26503,6 +26509,11 @@ if $cur_character = "eri" mov $tmp5,name_eri  : jumpf
 if $cur_character = "dla" mov $tmp5,name_dla  : jumpf
 if $cur_character = "ger" mov $tmp5,name_ger  : jumpf
 if $cur_character = "cor" mov $tmp5,name_cor  : jumpf
+
+;New Sprites - W_CUSTOM
+if $cur_character = "pie" mov $tmp5,name_pie  : jumpf
+if $cur_character = "saku" mov $tmp5,name_saku  : jumpf
+;End Custom
 
 mov $tmp5,"" : jumpf
 
@@ -32488,6 +32499,12 @@ if $cur_character = "be4" gosub *msgwnd_be4 : jumpf
 if $cur_character = "en2" gosub *msgwnd_en2 : jumpf
 if $cur_character = "en3" gosub *msgwnd_en3 : jumpf
 if $cur_character = "non" gosub *msgwnd_non : jumpf
+
+;New Sprites - W_CUSTOM
+if $cur_character = "pie" gosub *msgwnd_pie : jumpf
+if $cur_character = "pie" gosub *msgwnd_saku : jumpf
+;End Custom
+
 ~
 ;This is needed for window updates
 borderstyle 5,#000000 : shadedistance 0,0
@@ -33000,6 +33017,24 @@ jnskip_s return ~
 if %vv_0 = 0 || %vv_99 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_inc,0
 if %cur_wndmode == off d_name ""
 return
+
+;New Sprites - W_CUSTOM
+*msgwnd_pie
+mov $cur_character,"pie"
+jnskip_s return ~
+if %vv_pie = 0 mov %vv_pie,1
+gosub *get_name
+if %cur_wndmode == off d_name $tmp5
+return
+
+*msgwnd_saku
+mov $cur_character,"saku"
+jnskip_s return ~
+if %vv_saku = 0 mov %vv_saku,1
+gosub *get_name
+if %cur_wndmode == off d_name $tmp5
+return
+;End Custom
 
 *quick_reload
 mov %title_skip,1

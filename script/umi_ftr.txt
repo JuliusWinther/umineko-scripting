@@ -19714,6 +19714,14 @@ return
 ;Actual remove slot fn
 *csp_slot
 	getparam %cspParam
+	;Clear sprites cache - W_CUSTOM
+	;Using for_index3 instead of 1 or 2 beacause of conflicts when the functon is called by *reload_slots (infinite loop caused by editing the for_index)
+	if %reloading_status == 1 jumpf
+		for %for_index3 = 0 to 26
+			if $?slot_cache[%cspParam-750][%for_index3] != "" mov $?slot_cache[%cspParam-750][%for_index3],""
+		next
+	~
+	;End Custom
 *sprite_cleanup	;Low level calls that actually reset a sprite
 	if %vid_play < 0 && -%vid_play == %cspParam : mov %vid_play,%cspParam
 	_csp %cspParam
@@ -22722,6 +22730,10 @@ lsp2 %lss_slot,":a;" +  $sprite_folder_name + "\" + $lss_sec + "\1\" + $lss_sec 
 lips_sprite %lss_slot-1
 ;End Custom
 
+;Saving to slot cache - W_CUSTOM
+mov $?slot_cache[%lss_slot-750][0],$lss_sec + "|" + $lss_key
+;End Custom
+
 ;Containing main sprite hotspot, lips unrelated
 loadfromreg $lss_lips_x,$lss_sec,$lss_key + "_left" ;Variable,Category,Key - Reads the given key from the given category and stores it in the given variable
 loadfromreg $lss_lips_y,$lss_sec,$lss_key + "_top"
@@ -22754,33 +22766,193 @@ if $lss_temp != "" async_cache_img 2,"" + $sprite_folder_name + "\" + $lss_temp 
 return
 ;End Custom
 
+
+;****************************************************************************************************
+; aspt2_mem executes aspt2 while storing its values - used for sprite reloads - W_CUSTOM
+;****************************************************************************************************
+
+*aspt2_mem
+getparam $aspt_prop,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3
+
+;The subset of each slot_cache contains all position and aspect modifications
+;REMEMBER- the first element contains the sprite/background path, it mustn't be overwritten
+;numalias slot_cache,101 : dim ?slot_cache[248][27]
+;mov ?slot_cache[%aspt_slot-750][1],%aspt_val
+
+
+;Using 4-5-6 instead of 1-2-3 beacause of conflicts when the functon is called by *reload_slots
+itoa $string_temp4,%aspt_val1
+itoa $string_temp5,%aspt_val2
+itoa $string_temp6,%aspt_val3
+
+
+;TODO Sistemare il problema del sovranumero di variabili
+if $aspt_prop == "xpos" aspt2 xpos,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][1],"aspt2|xpos|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf
+if $aspt_prop == "ypos" aspt2 ypos,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][2],"aspt2|ypos|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "alpha" aspt2 alpha,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][3],"aspt2|alpha|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "darken_r" aspt2 darken_r,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][4],"aspt2|darken_r|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "darken_g" aspt2 darken_g,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][5],"aspt2|darken_g|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "darken_b" aspt2 darken_b,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][6],"aspt2|darken_b|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "scalex" aspt2 scalex,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][7],"aspt2|scalex|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "scaley" aspt2 scaley,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][8],"aspt2|scaley|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "rot" aspt2 rot,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][9],"aspt2|rot|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "blur" aspt2 blur,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][10],"aspt2|blur|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "breakup" aspt2 breakup,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][11],"aspt2|breakup|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "breakupdir" aspt2 breakupdir,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][12],"aspt2|breakupdir|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "quakexmul" aspt2 quakexmul,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][13],"aspt2|quakexmul|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "quakexamp" aspt2 quakexamp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][14],"aspt2|quakexamp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "quakexcycle" aspt2 quakexcycle,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][15],"aspt2|quakexcycle|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "quakeymul" aspt2 quakeymul,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][16],"aspt2|quakeymul|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "quakeyamp" aspt2 quakeyamp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][17],"aspt2|quakeyamp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "quakeycycle" aspt2 quakeycycle,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][18],"aspt2|quakeycycle|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "warp_amp" aspt2 warp_amp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][19],"aspt2|warp_amp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "warp_wave" aspt2 warp_wave,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][20],"aspt2|warp_wave|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "warp_spd" aspt2 warp_spd,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][21],"aspt2|warp_spd|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "scroll_h" aspt2 scroll_h,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][22],"aspt2|scroll_h|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "scroll_w" aspt2 scroll_w,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][23],"aspt2|scroll_w|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "scroll_y" aspt2 scroll_y,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][24],"aspt2|scroll_y|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "scroll_x" aspt2 scroll_x,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][25],"aspt2|scroll_x|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+if $aspt_prop == "flip" aspt2 flip,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][26],"aspt2|flip|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
+~
+
+return
+
+;End Custom
+
 ;**************************************************
 ; lbg loads a new background
 ;**************************************************
 
+;Substituted constant file paths with a dynamic path generator + saving to slot cache - W_CUSTOM
 *lbg
 *load_background
-	getparam %lbg_slot,$lbg_name
+	getparam $lbg_type,%lbg_slot,$lbg_name
 
 	csp_slot %lbg_slot
 	jskip_s gosub *open_cg ~
-	getstralias $lbg_path,$lbg_name
+
+	split $lbg_type,":",$paste_method,$lbg_type
+
+	if $lbg_type == "background" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
+
+	;TODO Add variations when bg is not in backgrounds folder for all the following methods ;Localization
+	;DONE - Needs testing
+	if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
+
+	;CGs
+	if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
+
+	;Saku
+	if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
+	~
 	lsp2 %lbg_slot,$lbg_path,0,0
+
+	mov $?slot_cache[%lbg_slot-750][0],$paste_method+":"+$lbg_type + "|" + $lbg_name
 
 	goto *lbg_do
 
 *lbg2
 *load_background2
-	getparam %lbg_slot,$lbg_name
+	getparam $lbg_type,%lbg_slot,$lbg_name
 
 	csp_slot %lbg_slot
 	jskip_s gosub *open_cg ~
-	getstralias $lbg_path,$lbg_name
+
+	split $lbg_type,":",$paste_method,$lbg_type
+
+	if $lbg_type == "background" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
+
+	;Localization
+	if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
+
+	;CGs
+	if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
+
+	;Saku
+	if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
+	~
 	lbsp2 %lbg_slot,$lbg_path,0,0
+
+	mov $?slot_cache[%lbg_slot-750][0],$paste_method+":"+$lbg_type + "|" + $lbg_name
 
 	goto *lbg_do
 
 *lbg_do
+
 	;Containing main sprite hotspot, lips unrelated
 	loadfromreg $lbg_left,"picture",$lbg_name + "_left"
 	loadfromreg $lbg_top,"picture",$lbg_name + "_top"
@@ -22791,14 +22963,111 @@ return
 	lookahead exbg,1,$lbg_name,$lbg_left
 
 	if $lbg_name == "" jumpf
-		getstralias $lbg_path,$lbg_name
+
+		if $lbg_type == "background" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
+
+		;Localization
+		if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
+
+		;CGs
+		if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
+
+		;Saku
+		if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
+		~
 		len %lbg_path,$lbg_path
 		mid $lbg_path,$lbg_path,3,%lbg_path-3
 		async_cache_img 1,$lbg_path
 	~
 
 	if $lbg_left == "" jumpf
-		getstralias $lbg_path,$lbg_left
+
+		if $lbg_type == "background" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
+
+		;Localization
+		if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
+
+		;CGs
+		if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
+		if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
+
+		;Saku
+		if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
+		~
+
 		len %lbg_path,$lbg_path
 		mid $lbg_path,$lbg_path,3,%lbg_path-3
 		async_cache_img 1,$lbg_path
@@ -22806,11 +23075,65 @@ return
 return
 
 *drop_cache
-	getparam $lbg_name
-	getstralias $lbg_path,$lbg_name
+	getparam $lbg_type,$lbg_name
+
+	split $lbg_type,":",$paste_method,$lbg_type
+
+	if $lbg_type == "background" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
+
+	;Localization
+	if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
+
+	;CGs
+	if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
+
+	;Saku
+	if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
+	~
+
 	len %lbg_path,$lbg_path
 	mid $lbg_path,$lbg_path,3,%lbg_path-3
 	drop_cache_img all,$lbg_path
+
+;End Custom - Much Higher
+
 return
 
 *open_cg
@@ -27952,22 +28275,12 @@ return
 	;End
 
 	;Sprite Selector Button Effect - W_CUSTOM
-	if %BtnRes = 171 mov $sprite_folder_name,"sprites2" : gosub *settings_sprite_type
-	if %BtnRes = 172 mov $sprite_folder_name,"sprites3" : gosub *settings_sprite_type
-	if %BtnRes = 173 mov $sprite_folder_name,"sprites" : gosub *settings_sprite_type
+	if %BtnRes = 171 mov $sprite_folder_name,"sprites2" : gosub *settings_sprite_type : gosub *reload_slots
+	if %BtnRes = 172 mov $sprite_folder_name,"sprites3" : gosub *settings_sprite_type : gosub *reload_slots
+	if %BtnRes = 173 mov $sprite_folder_name,"sprites" : gosub *settings_sprite_type : gosub *reload_slots
 
-	if %BtnRes != 174 jumpf
-		mov $bg_folder_name,"backgrounds2"
-		goto *temp_st_bg_method
-	~
-	if %BtnRes != 175 jumpf
-		mov $bg_folder_name,"backgrounds"
-		goto *temp_st_bg_method
-
-		*temp_st_bg_method
-			lsp 373,set_restarted_apply,0,910
-		gosub *settings_bg_type
-	~
+	if %BtnRes == 174 mov $bg_folder_name,"backgrounds2" : gosub *settings_bg_type : gosub *reload_slots
+	if %BtnRes == 175 mov $bg_folder_name,"backgrounds" : gosub *settings_bg_type : gosub *reload_slots
 	;End Custom
 
 	;Speed button
@@ -33033,6 +33346,93 @@ jnskip_s return ~
 if %vv_saku = 0 mov %vv_saku,1
 gosub *get_name
 if %cur_wndmode == off d_name $tmp5
+return
+;End Custom
+
+;Custom Subs - W_CUSTOM
+*reload_slots
+	for %for_index1=0 to 247
+
+		mov %reloading_status,0
+
+		;Subset position 0 contains sprite/bg path
+		len %string_length,$?slot_cache[%for_index1][0]
+
+		if %string_length > 0 split $?slot_cache[%for_index1][0],"|",$string_temp3,$string_temp2 : split $string_temp3,":",$paste_method,$string_temp1
+		if %string_length <= 0 mov $string_temp1,"" : mov $string_temp2, "" : mov $string_temp3, "" : mov $paste_method,"" : mov %aspt_val1,0 : mov %aspt_val2,0 : mov %aspt_val3,0
+
+		;1 - Bg Type
+		;2 - Bg Path
+		;3 - Original String Value
+
+		;Strats BGs reload
+		;Checks if it is a type of background, is so after reloading it it jumps forward skipping the sprite reload
+		if $?slot_cache[%for_index1][0] == "" jumpf
+		if $string_temp1 == "background" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "colour" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "clock" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "efe" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+
+		;Localization
+		if $string_temp1 == "locale" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "locale_lan" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "alibi" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cas" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "comment" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "dai" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "mondai" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "murderer" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "story" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "text" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		
+		;CGs
+		if $string_temp1 == "cg" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/bea" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/ber" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/but" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/cg_box" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/dla" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/enj" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/eri" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/ev2" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/eva" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/fea" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/gap" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/geo" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/jes" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/kan" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/kir" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/lam" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/nat" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/ron" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/ros" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/rud" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/s" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/sak" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/sha" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/wal" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg/wil" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+
+		;Saku
+		if $string_temp1 == "saku" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+
+		;Ends BGs reload
+
+		;Sprites reload
+		mov %reloading_status,1
+		lss %for_index1+750,$string_temp3,$string_temp2
+		for %for_index2=1 to 26
+			if $?slot_cache[%for_index1][%for_index2] != "" split $?slot_cache[%for_index1][%for_index2],"|",$string_temp1,$string_temp2,$string_temp3 : split $string_temp3,"\",%aspt_val1,%aspt_val2,%aspt_val3
+				;1-Pos Command / 2-Pos Property / 3-Property Value
+			if $string_temp1 == "aspt2" aspt2_mem $string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
+		next
+		mov %reloading_status,0
+
+		~
+
+
+	next
+
 return
 ;End Custom
 
@@ -39850,4 +40250,3 @@ return
 return
 
 #locale_import "code.txt"
-

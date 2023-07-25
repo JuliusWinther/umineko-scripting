@@ -1,0 +1,30 @@
+*umi1_op
+;オープニング
+log_reset
+mov $name_chapter_r_click,r_click_chapters_1_op
+mov $name_chapter_save, "1_op"
+new_episode 1
+flush 10,167
+
+
+;inserisci immagine iniziale
+
+
+lbg s0_3,"cit_1a"
+flush 8
+bgmplay 35,71,0
+
+
+
+
+
+skip_on
+;CUT
+mov $name_chapter_r_click,r_click_chapters_1_17
+mov $name_chapter_save, "1_17"
+new_chapter date_scenario_1_17,scenario_1_17
+skip_off
+skip_on
+ch_done flag_scenario_1_17
+*umi1_end
+goto *end_game

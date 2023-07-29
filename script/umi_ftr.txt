@@ -23090,7 +23090,7 @@ return
 	getparam $lbg_type,$lbg_name,%bg_effect
 	split $lbg_type,":",$paste_method,$lbg_type
 
-	if $lbg_type == "background" : bg ":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png", %bg_effect : jumpf  
+	if $lbg_type == "backgrounds" : bg ":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png", %bg_effect : jumpf  
 	if $lbg_type == "clock" : bg ":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png", %bg_effect : jumpf  
 	if $lbg_type == "colour" : bg ":"+$paste_method+";graphics\colour\" + $lbg_name + ".png", %bg_effect : jumpf  
 	if $lbg_type == "efe" : bg ":"+$paste_method+";graphics\efe\" + $lbg_name + ".png", %bg_effect : jumpf  
@@ -23121,7 +23121,7 @@ return
 
 	split $lbg_type,":",$paste_method,$lbg_type
 
-	if $lbg_type == "background" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
 	if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
 	if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
 	if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
@@ -23186,7 +23186,7 @@ return
 
 	split $lbg_type,":",$paste_method,$lbg_type
 
-	if $lbg_type == "background" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
 	if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
 	if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
 	if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
@@ -23254,7 +23254,7 @@ return
 
 	if $lbg_name == "" jumpf
 
-		if $lbg_type == "background" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
 		if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
 		if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
 		if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
@@ -23310,7 +23310,7 @@ return
 
 	if $lbg_left == "" jumpf
 
-		if $lbg_type == "background" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+		if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
 		if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
 		if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
 		if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
@@ -23371,7 +23371,7 @@ return
 
 	split $lbg_type,":",$paste_method,$lbg_type
 
-	if $lbg_type == "background" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
 	if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
 	if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
 	if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
@@ -33661,7 +33661,7 @@ return
 		;Strats BGs reload
 		;Checks if it is a type of background, is so after reloading it it jumps forward skipping the sprite reload
 		if $?slot_cache[%for_index1][0] == "" jumpf
-		if $string_temp1 == "background" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "backgrounds" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 		if $string_temp1 == "colour" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 		if $string_temp1 == "clock" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 		if $string_temp1 == "efe" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf

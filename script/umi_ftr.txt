@@ -12247,8 +12247,6 @@ return
 	for %tmp = 1 to 10 : mov ?tips[%tmp][tips_flg],0 : next
 	for %tmp = 1 to 14 : mov ?grim[%tmp][grim_flg],0 : next
 
-
-	
 	mov ?tips[1][tips_flg],1
 	mov ?tips[2][tips_flg],1
 	mov ?tips[3][tips_flg],1
@@ -15105,84 +15103,10 @@ if %CHIRU_MODE != 2 jumpf
 	lsph t_btn_start_lsp,t_btn_start,1325,424 ;extra -30(450) to correspond to ps3 ;10
 	lsph t_btn_web_lsp,t_btn_web,1325,488 ;9
 	
-	;Visualizing 'Boxes' from the start in chiru - W_CUSTOM
-	if %UMINEKOEND < 50 lsph t_cg_lsp,t_cg1,1325,616
-	if %UMINEKOEND < 50 lsph t_btn_music_lsp,t_btn_music1,1325,680
-	;End Custom
-
-	;Changed different values and conditions - W_CUSTOM
-	if %UMINEKOEND = 50 lsph t_config_lsp,t_config_newgame,1325,552 ;4
-	if %UMINEKOEND = 50 lsph t_cg_lsp,t_cg1,1325,616
-	if %UMINEKOEND = 50 lsph t_btn_music_lsp,t_btn_music1,1325,680
-	if %UMINEKOEND = 50 lsph t_btn_exit_lsp,t_btn_exit1,1325,744
-
-	if %UMINEKOEND = 51 lsph t_btn_exit_lsp,t_btn_exit2,1325,808 ;744
-	if %UMINEKOEND > 51 lsph t_btn_tea_lsp,t_btn_tea,1325,552 ;8 Before was '>=' (disable button before tea 1 end) - W_CUSTOM
-	;if %UMINEKOEND = 51 lsph t_btn_music_lsp,t_btn_music2,1325,744
-	if %UMINEKOEND > 51 lsph t_cg_lsp,t_cg,1325,872 ;3 Before was '>=' (disable button before tea 1 end) - W_CUSTOM
-	if %UMINEKOEND = 51 lsph t_config_lsp,t_config2,1325,616 ;4
-	;if %UMINEKOEND = 51 lsph t_cg_lsp,t_cg2,1325,680
-	
-	if %UMINEKOEND = 52 lsph t_btn_exit_lsp,t_btn_exit3,1325,808 ;872
-	if %UMINEKOEND > 52 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,616 ;7
-	if %UMINEKOEND > 52 lsph t_btn_music_lsp,t_btn_music,1325,936 ;2
-	if %UMINEKOEND = 52 lsph t_btn_music_lsp,t_btn_music3,1325,744 ;808
-	if %UMINEKOEND = 52 lsph t_config_lsp,t_config3,1325,616 ;4 ;680
-	if %UMINEKOEND = 52 lsph t_cg_lsp,t_cg3,1325,680 ;744
-	
-	if %UMINEKOEND >= 60 && %UMINEKOEND < 90 lsph t_btn_exit_lsp,t_btn_exit5,1325,1000
-	if %UMINEKOEND >= 90 lsph t_btn_exit_lsp,t_btn_exit5,1325,1000 ;from the bottom, 1
-	if %UMINEKOEND >= 60 lsph t_btn_tips_lsp,t_btn_tips,1325,744 ;5
-	if %UMINEKOEND >= 60 lsph t_chars_lsp,t_chars,1325,680 ;6
-	if %UMINEKOEND >= 60 lsph t_config_lsp,t_config,1325,808 ;4
-	
-	;if %UMINEKOEND = 1 lsph t_btn_exit_lsp,t_btn_exit1_cg,1325,680
-	;if %UMINEKOEND = 1 lsph t_cg_lsp,t_cg1,1325,616 ;3
-		
-	if %UMINEKOEND_FLG = 50 lsph t_btn_start_lsp,t_btn_start_new,1325,424
-	if %UMINEKOEND_FLG = 51 lsph t_btn_tea_lsp,t_btn_tea,1325,552
-	;if %UMINEKOEND_FLG = 52 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,616
-	if %UMINEKOEND_TIPS_FLG = 5 lsph t_btn_tips_lsp,t_btn_tips_new,1325,736
-	if %UMINEKOEND_TIPS_CHA_FLG = 5 lsph t_chars_lsp,t_chars_new,1325,680
-	
-	if %UMINEKOEND_FLG = 60 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 61 lsph t_btn_tea_lsp,t_btn_tea,1325,544
-	if %UMINEKOEND_FLG = 62 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,552
-	if %UMINEKOEND_TIPS_FLG = 6 lsph t_btn_tips_lsp,t_btn_tips_new,1325,672
-	if %UMINEKOEND_TIPS_CHA_FLG = 6 lsph t_chars_lsp,t_chars_new,1325,680
-
-	if %UMINEKOEND_FLG = 70 lsph t_btn_start_lsp,t_btn_start_new,1325,424
-	if %UMINEKOEND_FLG = 71 lsph t_btn_tea_lsp,t_btn_tea,1325,544
-	if %UMINEKOEND_FLG = 72 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,552
-	if %UMINEKOEND_TIPS_FLG = 7 lsph t_btn_tips_lsp,t_btn_tips_new,1325,672
-	if %UMINEKOEND_TIPS_CHA_FLG = 7 lsph t_chars_lsp,t_chars_new,1325,680
-
-	if %UMINEKOEND_FLG = 80 lsph t_btn_start_lsp,t_btn_start_new,1325,424
-	if %UMINEKOEND_FLG = 81 lsph t_btn_tea_lsp,t_btn_tea,1325,544
-	if %UMINEKOEND_FLG = 82 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,552
-	if %UMINEKOEND_TIPS_FLG = 8 lsph t_btn_tips_lsp,t_btn_tips_new,1325,672
-	if %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,t_btn_music_new,1325,744
-	if %UMINEKOEND_TIPS_CHA_FLG = 8 lsph t_chars_lsp,t_chars_new,1325,680
-	if %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,t_cg_new1,1325,680
-	
-	if %UMINEKOEND = 52 && %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,t_btn_music_new2,1325,744
-	if %UMINEKOEND = 52 && %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,t_cg_new2,1325,680
-	if %UMINEKOEND >= 60 && %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,t_btn_music_new3,1325,936
-	if %UMINEKOEND >= 60 && %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,t_cg_new3,1325,872
-	
-	;MENU AFTER EP 1 AND BEFORE EP 2
-	if %UMINEKOEND = 51 lsph t_cg_lsp,t_cg_new2,1325,680
-	if %UMINEKOEND = 51 lsph t_btn_music_lsp,t_btn_music_new2,1325,744
-	;NEW LABEL ON START MENU 
-	if %UMINEKOEND_FLG = 51 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 61 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 71 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 81 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 52 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 62 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 72 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 82 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	;End Custom
+	lsph t_config_lsp,t_config_newgame,1325,552 ;4
+	lsph t_cg_lsp,t_cg1,1325,616
+	lsph t_btn_music_lsp,t_btn_music1,1325,680
+	lsph t_btn_exit_lsp,t_btn_exit1,1325,744
 
 	lsph t_trophy_lsp,t_trophy,-45,-45	
 ~
@@ -15421,6 +15345,14 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 		if %CHIRU_MODE = 1 lsph t_txt_ep6_lsp,t_txt_ep6,100,470
 		if %CHIRU_MODE = 1 lsph t_txt_ep7_lsp,t_txt_ep7,100,470
 		if %CHIRU_MODE = 1 lsph t_txt_ep8_lsp,t_txt_ep8,100,470
+
+		;TODO saku button description texts
+		;saku menu descriptions - W_CUSTOM
+		if %CHIRU_MODE = 2 lsph t_txt_ep1_lsp,t_txt_ep1,100,470
+		if %CHIRU_MODE = 2 lsph t_txt_ep2_lsp,t_txt_ep2,100,470
+		if %CHIRU_MODE = 2 lsph t_txt_ep3_lsp,t_txt_ep3,100,470
+		if %CHIRU_MODE = 2 lsph t_txt_ep4_lsp,t_txt_ep4,100,470
+		;End Custom
 		
 		lsph t_txt_ep1_4_lsp,t_txt_ep1_4,100,470
 		lsph t_txt_ep5_8_lsp,t_txt_ep5_8,100,470
@@ -15525,6 +15457,7 @@ return
 
 	;start chiru subs_menu
 	if %CHIRU_MODE = 1 goto *start_sub_menu_500
+	if %CHIRU_MODE = 2 goto *start_sub_menu_extra1_1
 	
    ;An episode, not a clear state
    ;------------------------------
@@ -16537,7 +16470,7 @@ return
 		goto *ep8_unlock_loop
 	*start_sub_menu_btn_500
 ;------------------------------
-	*start_sub_menu_600
+*start_sub_menu_600
 	;notif %UMINEKOEND >= 60 goto *start_sub_menu_btn_600
 	;notif %UMINEKOEND < 70 goto *start_sub_menu_btn_600
 	if %UMINEKOEND < 60 goto *start_sub_menu_btn_600
@@ -16875,6 +16808,205 @@ return
 		goto *start_sub_menu_btn_800_loop
 	*start_sub_menu_btn_800
 ;------------------------------
+;Saku sub menu (Tsubasa) - W_CUSTOM
+
+*start_sub_menu_extra1_1
+	notif %UMINEKOEND_EXTRA < 20 goto *start_sub_menu_btn_extra1_1
+	
+		lsp t_btn_ep1_lsp,t_btn_ep_extra1_1,1562,488
+		lsp t_btn_ep2_lsp,t_btn_ep_extra1_2,1562,548
+		lsp t_btn_ep3_lsp,t_btn_ep_extra1_3,1562,608
+		lsp t_btn_ep4_lsp,t_btn_ep_extra1_4,1562,668
+		lsp t_btn_ep2_unlock_lsp,t_btn_ep_unlock,1430,548
+		lsp t_btn_ep3_unlock_lsp,t_btn_ep_unlock,1430,608
+		lsp t_btn_ep4_unlock_lsp,t_btn_ep_unlock,1430,668
+		lsp t_btn_ep5_8_lsp,t_btn_ep1_4,1562,728
+		lsp t_btn_load_lsp,t_btn_load,1562,788	
+
+		print 85
+
+		*start_sub_menu_btn_extra1_1_loop
+		btndef ""
+
+		exbtn_d "P97,1C73-77C79-88C101C103C105"
+
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P77"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P80"
+		exbtn t_btn_ep2_unlock_lsp,t_btn_ep2_unlock_lsp,"P79"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P80"
+		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P79"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P80"
+		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P79"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P73"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
+
+		btnwait2 %BtnRes
+
+		if %BtnRes = t_btn_ep1_lsp mov %extra_scenario_Number,1 : goto *umiextra_start
+		if %BtnRes = t_btn_ep2_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_extra1_1_loop ;Button to make a sound processing was run over by
+		if %BtnRes = t_btn_ep3_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_extra1_1_loop ;Button to make a sound processing was run over by
+		if %BtnRes = t_btn_ep4_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_extra1_1_loop ;Button to make a sound processing was run over by
+
+		;TODO unlocking extra stories
+		;if %BtnRes = t_btn_ep2_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep6_unlock ;Out to unlock a confirmation message.
+		;if %BtnRes = t_btn_ep3_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep7_unlock ;Out to unlock a confirmation message.
+		;if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep8_unlock ;Out to unlock a confirmation message.
+		
+		if %BtnRes = t_btn_ep5_8_lsp : goto *switch_game_q 
+
+		if %BtnRes = t_btn_load_lsp btndef "" : _csp t_warning_lsp : seplay 9,1001,100 : mov %load_for_title,1 : gosub *loadmode : mov %title_skip,1 : goto *b_title
+		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		goto *start_sub_menu_btn_500_loop
+
+	*start_sub_menu_btn_extra1_1
+;------------------------------
+*start_sub_menu_extra1_2
+	if %UMINEKOEND_EXTRA < 20 goto *start_sub_menu_btn_extra1_2
+	if %UMINEKOEND >= 30 goto *start_sub_menu_btn_extra1_2
+		
+		lsp t_btn_ep1_lsp,t_btn_ep_extra1_1,1562,488
+		lsp t_btn_ep2_lsp,t_btn_ep_extra1_2,1562,548
+		lsp t_btn_ep3_lsp,t_btn_ep_extra1_3,1562,608
+		lsp t_btn_ep4_lsp,t_btn_ep_extra1_4,1562,668
+		lsp t_btn_ep3_unlock_lsp,t_btn_ep_unlock,1430,608
+		lsp t_btn_ep4_unlock_lsp,t_btn_ep_unlock,1430,668
+		lsp t_btn_ep5_8_lsp,t_btn_ep1_4,1562,728
+		lsp t_btn_load_lsp,t_btn_load,1562,788
+
+		print 85
+		
+		*start_sub_menu_btn_extra1_2_loop
+		btndef ""
+
+		exbtn_d "P97,1C73-77C79-88C101C103C105"
+
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P77"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P76"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P80"
+		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P79"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P80"
+		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P79"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P73"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
+
+		btnwait2 %BtnRes
+
+		if %BtnRes = t_btn_ep1_lsp mov %extra_scenario_Number,1 : goto *umiextra_start
+		if %BtnRes = t_btn_ep2_lsp mov %extra_scenario_Number,2 : goto *umiextra_start
+		
+		if %BtnRes = t_btn_ep3_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_extra1_2_loop ;Button to make a sound processing was run over by
+		if %BtnRes = t_btn_ep4_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_extra1_2_loop ;Button to make a sound processing was run over by
+		
+		;TODO unlocking extra stories
+		;if %BtnRes = t_btn_ep3_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep7_unlock_2 ;Out to unlock a confirmation message.
+		;if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep8_unlock_2 ;Out to unlock a confirmation message.
+		
+		if %BtnRes = t_btn_ep5_8_lsp : goto *switch_game_q
+		
+		if %BtnRes = t_btn_load_lsp btndef "" : _csp t_warning_lsp : seplay 9,1001,100 : mov %load_for_title,1 : gosub *loadmode : mov %title_skip,1 : goto *b_title
+		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		goto *start_sub_menu_btn_600_loop
+
+	*start_sub_menu_btn_extra1_2
+
+   ;------------------------------
+   ;Clear two-state episode
+*start_sub_menu_extra1_3
+	if %UMINEKOEND < 30 goto *start_sub_menu_btn_extra1_3
+	if %UMINEKOEND >= 40 goto *start_sub_menu_btn_extra1_3
+	
+		lsp t_btn_ep1_lsp,t_btn_ep_extra1_1,1562,488
+		lsp t_btn_ep2_lsp,t_btn_ep_extra1_2,1562,548
+		lsp t_btn_ep3_lsp,t_btn_ep_extra1_3,1562,608
+		lsp t_btn_ep4_lsp,t_btn_ep_extra1_4,1562,668
+		lsp t_btn_ep4_unlock_lsp,t_btn_ep_unlock,1430,669
+		lsp t_btn_ep5_8_lsp,t_btn_ep1_4,1562,728
+		lsp t_btn_load_lsp,t_btn_load,1562,788	
+	
+		print 85
+
+		*start_sub_menu_btn_extra1_3_loop
+		btndef ""
+
+		exbtn_d "P97,1C73-77C79-88C101C103C105"
+
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P77"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P76"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P75"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P80"
+		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P79"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P73"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
+
+		btnwait2 %BtnRes
+
+		if %BtnRes = t_btn_ep1_lsp mov %extra_scenario_Number,1 : goto *umiextra_start
+		if %BtnRes = t_btn_ep2_lsp mov %extra_scenario_Number,2 : goto *umiextra_start
+		if %BtnRes = t_btn_ep3_lsp mov %extra_scenario_Number,3 : goto *umiextra_start
+
+		if %BtnRes = t_btn_ep4_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_extra1_3_loop ;Button to make a sound processing was run over by
+		
+		;TODO unlocking extra stories
+		;if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep8_unlock_3 ;Out to unlock a confirmation message.
+		
+		if %BtnRes = t_btn_ep5_8_lsp : goto *switch_game_q ;Previously without _q
+		
+		if %BtnRes = t_btn_load_lsp btndef "" : _csp t_warning_lsp : seplay 9,1001,100 : mov %load_for_title,1 : gosub *loadmode : mov %title_skip,1 : goto *b_title
+		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		goto *start_sub_menu_btn_extra1_3_loop
+
+	*start_sub_menu_btn_extra1_3
+   ;------------------------------
+   ;Clear state episode 3
+	*start_sub_menu_extra1_4
+	if %UMINEKOEND < 40 goto *start_sub_menu_btn_extra1_4
+	if %UMINEKOEND >= 50 goto *start_sub_menu_btn_extra1_4
+	
+		lsp t_btn_ep1_lsp,t_btn_ep_extra1_1,1562,488
+		lsp t_btn_ep2_lsp,t_btn_ep_extra1_2,1562,548
+		lsp t_btn_ep3_lsp,t_btn_ep_extra1_3,1562,608
+		lsp t_btn_ep4_lsp,t_btn_ep_extra1_4,1562,668
+		lsp t_btn_ep5_8_lsp,t_btn_ep1_4,1562,728
+		lsp t_btn_load_lsp,t_btn_load,1562,788	
+	
+		print 85
+
+		*start_sub_menu_btn_extra1_4_loop
+		btndef ""
+
+		exbtn_d "P97,1C73-77C79-88C101C103C105"
+
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P77"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P76"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P75"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P74"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P73"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
+
+		btnwait2 %BtnRes
+
+		if %BtnRes = t_btn_ep1_lsp mov %scenario_Number,1 : goto *umiextra_start
+		if %BtnRes = t_btn_ep2_lsp mov %scenario_Number,2 : goto *umiextra_start
+		if %BtnRes = t_btn_ep3_lsp mov %scenario_Number,3 : goto *umiextra_start
+		if %BtnRes = t_btn_ep4_lsp mov %scenario_Number,4 : goto *umiextra_start
+		
+		if %BtnRes = t_btn_ep5_8_lsp : goto *switch_game_q ;Previously without _q
+		
+		if %BtnRes = t_btn_load_lsp btndef "" : _csp t_warning_lsp : seplay 9,1001,100 : mov %load_for_title,1 : gosub *loadmode : mov %title_skip,1 : goto *b_title
+		
+		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		goto *start_sub_menu_btn_extra1_4_loop
+	*start_sub_menu_btn_extra1_4
+
+;End Custom - Long
 
 ;------------------------------
 ;Sub-menu after pressing the Tea Party
@@ -17529,6 +17661,24 @@ return
 
 ;><><><><><><><><><><><><><><><><><><><>
 
+;Custom start for saku stories - W_CUSTOM
+
+*umiextra_start
+csp_rst
+
+seplay 9,17,100
+bg white,10
+E_MA
+delay 2000
+
+if %extra_scenario_Number = 1 gosub *jump_sysdata_set1 : goto *umiextra1_1
+if %extra_scenario_Number = 2 gosub *jump_sysdata_set1 : goto *umiextra1_2
+if %extra_scenario_Number = 3 gosub *jump_sysdata_set1 : goto *umiextra1_3
+if %extra_scenario_Number = 4 gosub *jump_sysdata_set1 : goto *umiextra1_4
+
+;End Custom
+
+
 *umi_start
 csp_rst
 if %omake = 1 && %omake_level > 1 jumpf
@@ -17658,7 +17808,6 @@ goto *scenario_jump_q3
 	if %scenario_Number = 6 gosub *jump_sysdata_set1 : goto *umi6_op ;Scenario 6 Obtain basic data
 	if %scenario_Number = 7 gosub *jump_sysdata_set1 : goto *umi7_op ;Scenario 7 Obtain basic data
 	if %scenario_Number = 8 gosub *jump_sysdata_set1 : goto *umi8_op ;Scenario 8 Obtain basic data
-
 
 ;--------------------------------------------
 

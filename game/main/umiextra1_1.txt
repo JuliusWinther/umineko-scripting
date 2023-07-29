@@ -1,10 +1,3 @@
-*umi1_op
-;オープニング
-log_reset
-mov $name_chapter_r_click,r_click_chapters_1_op
-mov $name_chapter_save, "1_op"
-new_episode 1
-
 lbg "c:background",s0_3,"letter1"
 flush 8
 bgmplay 90,71,0
@@ -87,7 +80,7 @@ flush 2
 *d69142
 d [lv 0*"28"*"ber_00260"]`Well, it doesn't matter.`[@][lv 0*"28"*"ber_00270"]` But, if by getting on with that girl's farce, your disease will get better,`[@][lv 0*"28"*"ber_00280"]` I'd like you to please lend me your strength.`[\]
 textoff
-lsp s0_8,":a;graphics\saku\misc\lof_lambda_bustup.png",-1200,-450
+lsp s0_8,":a;graphics\misc\lof_lambda_bustup.png",-1200,-450
 flush 3
 *d69143
 d [lv 0*"28"*"ber_00290"]`LAMBDADELTA`[|][lv 0*"28"*"ber_00300"]` boasted that I will 'certainly' not be able to win on this game board.`[\]
@@ -262,19 +255,3 @@ textoff
 set_window_simple 80,430
 *d69186
 d `{a:c:`[lv 0*"28"*"ber_01020"]`From the friend you hopefully still hold dear{n}{n}BERNKASTEL`}[\]
-textoff
-wait 3000
-lbg "c:saku",s0_3,"kusa_waku"
-show_whirl
-wait 3000
-
-skip_on
-;CUT
-mov $name_chapter_r_click,r_click_chapters_1_17
-mov $name_chapter_save, "1_17"
-new_chapter date_scenario_1_17,scenario_1_17
-skip_off
-skip_on
-ch_done flag_scenario_1_17
-*umi1_end
-goto *end_game

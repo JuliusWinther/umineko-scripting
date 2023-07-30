@@ -14880,7 +14880,8 @@ if %UMINEKOEND >= 90 meplay 1,2,100 : mov $tmp10,":c;graphics\menu\title\chiru\t
 
 ;Saku menu background - W_CUSTOM
 if %CHIRU_MODE != 2 jumpf
-meplay 1,2,100 : mov $tmp10,":c;backgrounds\fea_l4.png"
+meplay 1,2,100 : mov $tmp10,":c;backgrounds\glib_1a.png"
+;meplay 1,2,100 : mov $tmp10,":c;backgrounds\fea_l4.png"
 ~
 ;End Custom
 
@@ -16858,13 +16859,13 @@ return
 		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
 		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
 		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
-		goto *start_sub_menu_btn_500_loop
+		goto *start_sub_menu_btn_extra1_1_loop
 
 	*start_sub_menu_btn_extra1_1
 ;------------------------------
 *start_sub_menu_extra1_2
 	if %UMINEKOEND_EXTRA < 20 goto *start_sub_menu_btn_extra1_2
-	if %UMINEKOEND >= 30 goto *start_sub_menu_btn_extra1_2
+	if %UMINEKOEND_EXTRA >= 30 goto *start_sub_menu_btn_extra1_2
 		
 		lsp t_btn_ep1_lsp,t_btn_ep_extra1_1,1562,488
 		lsp t_btn_ep2_lsp,t_btn_ep_extra1_2,1562,548
@@ -16909,15 +16910,15 @@ return
 		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
 		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
 		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
-		goto *start_sub_menu_btn_600_loop
+		goto *start_sub_menu_btn_extra1_2_loop
 
 	*start_sub_menu_btn_extra1_2
 
    ;------------------------------
    ;Clear two-state episode
 *start_sub_menu_extra1_3
-	if %UMINEKOEND < 30 goto *start_sub_menu_btn_extra1_3
-	if %UMINEKOEND >= 40 goto *start_sub_menu_btn_extra1_3
+	if %UMINEKOEND_EXTRA < 30 goto *start_sub_menu_btn_extra1_3
+	if %UMINEKOEND_EXTRA >= 40 goto *start_sub_menu_btn_extra1_3
 	
 		lsp t_btn_ep1_lsp,t_btn_ep_extra1_1,1562,488
 		lsp t_btn_ep2_lsp,t_btn_ep_extra1_2,1562,548
@@ -16965,8 +16966,9 @@ return
    ;------------------------------
    ;Clear state episode 3
 	*start_sub_menu_extra1_4
-	if %UMINEKOEND < 40 goto *start_sub_menu_btn_extra1_4
-	if %UMINEKOEND >= 50 goto *start_sub_menu_btn_extra1_4
+	;if %UMINEKOEND_EXTRA < 40 goto *start_sub_menu_btn_extra1_4
+	;if %UMINEKOEND_EXTRA >= 50 goto *start_sub_menu_btn_extra1_4
+	if %UMINEKOEND_EXTRA != 99 goto *start_sub_menu_btn_extra1_4 ;TODO DEBUG fix extra stories unlocking
 	
 		lsp t_btn_ep1_lsp,t_btn_ep_extra1_1,1562,488
 		lsp t_btn_ep2_lsp,t_btn_ep_extra1_2,1562,548
@@ -17679,7 +17681,6 @@ if %extra_scenario_Number = 4 gosub *jump_sysdata_set1 : goto *umiextra1_4
 return
 
 ;End Custom
-
 
 *umi_start
 csp_rst
@@ -18957,6 +18958,15 @@ return
 	gosub *jump_sysdata_set1
 	mov %scenario_Number,8
 return
+
+;Saku scenario flags - W_CUSTOM
+*umiextra1_1_flags
+*umiextra1_2_flags
+*umiextra1_3_flags
+*umiextra1_4_flags
+	gosub *jump_sysdata_set1
+return
+;End Custom
 
 *scenario_jump_data1
 
@@ -27287,6 +27297,21 @@ return
 
 	~
 
+	;Saku logs - W_CUSTOM
+	if %CHIRU_MODE != 2 jumpf
+
+	past_label %TextCC12Flag,"*umiextra1_1"
+	if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra1_1","*umiextra1_1_end" : goto *log_none
+		past_label %TextCC12Flag,"*umiextra1_2"
+	if %TextCC12Flag == 2 sskip $TextCC12Flag,"*umiextra1_2","*umiextra1_2_end" : goto *log_none
+		past_label %TextCC12Flag,"*umiextra1_3"
+	if %TextCC12Flag == 3 sskip $TextCC12Flag,"*umiextra1_3","*umiextra1_3_end" : goto *log_none
+		past_label %TextCC12Flag,"*umiextra1_4"
+	if %TextCC12Flag == 4 sskip $TextCC12Flag,"*umiextra1_4","*umiextra1_4_end" : goto *log_none
+
+	~
+	;End Custom
+
 *log_none
 	ignore_cmd_clear
 	ignore_inl_cmd_clear
@@ -27808,6 +27833,13 @@ return
 	if %scenario_Number == 3 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_3","*teatime_3","*umi3_18","*umi3_17","*umi3_16","*umi3_15","*umi3_14","*umi3_13","*umi3_12","*umi3_11","*umi3_10","*umi3_9","*umi3_8","*umi3_7","*umi3_6","*umi3_5","*umi3_4","*umi3_3","*umi3_2","*umi3_1","*umi3_op"
 	if %scenario_Number == 2 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_2","*teatime_2","*umi2_18","*umi2_17","*umi2_16","*umi2_15","*umi2_14","*umi2_13","*umi2_12","*umi2_11","*umi2_10","*umi2_9","*umi2_8","*umi2_7","*umi2_6","*umi2_5","*umi2_4","*umi2_3","*umi2_2","*umi2_1","*umi2_op"
 	if %scenario_Number == 1 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_1","*teatime_1","*umi1_17","*umi1_16","*umi1_15","*umi1_14","*umi1_13","*umi1_12","*umi1_11","*umi1_10","*umi1_9","*umi1_8","*umi1_7","*umi1_6","*umi1_5","*umi1_4","*umi1_3","*umi1_2","*umi1_1","*umi1_op"
+
+	;Saku log_ch_current - W_CUSTOM
+	if %extra_scenario_Number == 1 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_1"
+	if %extra_scenario_Number == 2 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_2"
+	if %extra_scenario_Number == 3 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_3"
+	if %extra_scenario_Number == 4 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_4"
+	;End Custom
 
 	;Knowing the nearest label is no longer enough. We need to look up the log entry index of the above label (any occurrence will do, there will only be one)	
 	; get_unique_log_entry_index OUTPUT_log_entry_index,INPUT_label

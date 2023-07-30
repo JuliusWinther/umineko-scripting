@@ -4,15 +4,15 @@ seplay 1,22,71
 anim s0_5,"no83",1
 flush 1
 waitvideo
-lbg s0_5,"no83_0051"
+lbg "a:efe",s0_5,"no83_0051"
 flush 1
 ;Show meta
 wait 1000
-lbg s0_21,"black"
-aspt2 alpha,s0_21,150
+lbg "c:colour",s0_21,"black"
+aspt2_mem "alpha",s0_21,150
 flush 10,367
-lbg s0_22,"hana1"
-aspt2 alpha,s0_22,150
+lbg "a:clock",s0_22,"hana1"
+aspt2_mem "alpha",s0_22,150
 flush 28
 ;Question part
 ;Fullwidth window
@@ -97,27 +97,23 @@ rain_params s0_6,400,500,0
 ;rain_params s0_19,50,500,1000
 ;rain_params s0_7,50,500,1000
 rnd %Free1,4 ;Load random bg
-if %Free1 = 0 lbg s0_2,"forest_p1br"
-if %Free1 = 1 lbg s0_2,"rose_1ar"
-if %Free1 = 2 lbg s0_2,"different_garden1a"
-if %Free1 = 3 lbg s0_2,"cit_3a"
-*o3_load_again
+lbg "c:backgrounds",%Free1lbg "c:backgrounds",%Free1lbg "c:backgrounds",%Free1lbg "c:backgrounds",%Free1*o3_load_again
 chvol 0,%dlg_vol
 lss s0_8,"wal","a12_akuwarai2" ;1
 lss s0_9,"bea","a33_akuwarai2" ;1
 lss s0_10,"ev2","a12_akuwarai8" ;1
-aspt2 xpos,s0_8,-450
-aspt2 xpos,s0_10,450
+aspt2_mem "xpos",s0_8,-450
+aspt2_mem "xpos",s0_10,450
 ;Darken the sprites
-aspt2 darken_r,s0_8,156
-aspt2 darken_g,s0_8,156
-aspt2 darken_b,s0_8,160
-aspt2 darken_r,s0_9,156
-aspt2 darken_g,s0_9,156
-aspt2 darken_b,s0_9,160
-aspt2 darken_r,s0_10,156
-aspt2 darken_g,s0_10,156
-aspt2 darken_b,s0_10,160
+aspt2_mem "darken_r",s0_8,156
+aspt2_mem "darken_g",s0_8,156
+aspt2_mem "darken_b",s0_8,160
+aspt2_mem "darken_r",s0_9,156
+aspt2_mem "darken_g",s0_9,156
+aspt2_mem "darken_b",s0_9,160
+aspt2_mem "darken_r",s0_10,156
+aspt2_mem "darken_g",s0_10,156
+aspt2_mem "darken_b",s0_10,160
 if %Free9 > 1 aspt2 darken_r,s0_8,80 : aspt2 darken_g,s0_8,80 : aspt2 darken_b,s0_8,82 : aspt2 alpha,s0_8,150
 if %Free9 > 2 aspt2 darken_r,s0_9,80 : aspt2 darken_g,s0_9,80 : aspt2 darken_b,s0_9,82 : aspt2 alpha,s0_9,150
 ;Cache the sounds for better performance
@@ -152,30 +148,30 @@ goto *o3_play
 ;Wal turn
 *o3_wal
 seplay 1,52,71
-aspt2 breakupdir,s0_9,2
-aspt2 breakup,s0_9,0
-aspt2 breakup,s0_9,1000,1500
-aspt2 alpha,s0_9,0,1500
-aspt2 breakupdir,s0_10,2
-aspt2 breakup,s0_10,0
-aspt2 breakup,s0_10,1000,1500
-aspt2 alpha,s0_10,0,1500
+aspt2_mem "breakupdir",s0_9,2
+aspt2_mem "breakup",s0_9,0
+aspt2_mem "breakup",s0_9,1000,1500
+aspt2_mem "alpha",s0_9,0,1500
+aspt2_mem "breakupdir",s0_10,2
+aspt2_mem "breakup",s0_10,0
+aspt2_mem "breakup",s0_10,1000,1500
+aspt2_mem "alpha",s0_10,0,1500
 sptwait2 breakup,s0_9
 sptwait2 breakup,s0_10
 csp_slot s0_9
 csp_slot s0_10
 flush 1
 ;Undarken Wal
-aspt2 darken_r,s0_8,255,1000
-aspt2 darken_g,s0_8,255,1000
-aspt2 darken_b,s0_8,255,1000
-;aspt2 xpos,s0_8,0,1000
+aspt2_mem "darken_r",s0_8,255,1000
+aspt2_mem "darken_g",s0_8,255,1000
+aspt2_mem "darken_b",s0_8,255,1000
+aspt2_mem "xpos",s0_8,0,1000
 sptwait2 darken_b,s0_8
 ;sptwait2 xpos,s0_8
-lbg s0_3,"no65_00159"
+lbg "c:efe",s0_3,"no65_00159"
 pam s0_4,"no65",0
 seplay 1,27,100
-aspt2 ypos,s0_3,1080,500,1
+aspt2_mem "ypos",s0_3,1080,500,1
 csp_slot s0_3
 flush 1
 msgwnd_wal
@@ -184,26 +180,26 @@ d [ak][lv 0*"30"*"43200067"]`"......Come, arise, goat attendants."`[|][\]
 textoff
 ;Remove Wal
 seplay 1,52,71
-aspt2 warp_spd,s0_3,25
-aspt2 warp_wave,s0_3,600
-aspt2 warp_amp,s0_3,250,150
-aspt2 warp_spd,s0_8,25
-aspt2 warp_wave,s0_8,250
-aspt2 warp_amp,s0_8,100,150
-aspt2 alpha,s0_3,0,600
-aspt2 alpha,s0_8,0,600
+aspt2_mem "warp_spd",s0_3,25
+aspt2_mem "warp_wave",s0_3,600
+aspt2_mem "warp_amp",s0_3,250,150
+aspt2_mem "warp_spd",s0_8,25
+aspt2_mem "warp_wave",s0_8,250
+aspt2_mem "warp_amp",s0_8,100,150
+aspt2_mem "alpha",s0_3,0,600
+aspt2_mem "alpha",s0_8,0,600
 sptwait2 alpha,s0_8
-aspt2 warp_amp,s0_3,0
-aspt2 warp_wave,s0_3,0
-aspt2 warp_amp,s0_8,0
-aspt2 warp_wave,s0_8,0
+aspt2_mem "warp_amp",s0_3,0
+aspt2_mem "warp_wave",s0_3,0
+aspt2_mem "warp_amp",s0_8,0
+aspt2_mem "warp_wave",s0_8,0
 csp_slot s0_3
 csp_slot s0_8
 flush 1
 wait 2000
 ;Show goats
 lss s0_12,"goa","a11_defo1" ;1
-aspt2 xpos,s0_12,-550
+aspt2_mem "xpos",s0_12,-550
 flush 2
 waits 167
 seplay 2,22,80
@@ -213,7 +209,7 @@ waits 167
 seplay 3,22,90
 vol_me 1,80
 lss s0_14,"goa","a11_defo1" ;1
-aspt2 xpos,s0_14,550
+aspt2_mem "xpos",s0_14,550
 flush 2
 waits 167
 msgwnd_go2
@@ -223,7 +219,7 @@ textoff
 waits 167
 seplay 1,57,100
 lss s0_12,"goa","a11b_defo1" ;1
-aspt2 xpos,s0_12,-550
+aspt2_mem "xpos",s0_12,-550
 flush 10,167
 waits 167
 seplay 2,57,100
@@ -232,7 +228,7 @@ flush 10,167
 waits 167
 seplay 3,57,100
 lss s0_14,"goa","a11b_defo1" ;1
-aspt2 xpos,s0_14,550
+aspt2_mem "xpos",s0_14,550
 flush 10,167
 wait 1000
 return
@@ -240,38 +236,38 @@ return
 ;Bea turn
 *o3_bea
 seplay 1,52,71
-aspt2 breakupdir,s0_8,1
-aspt2 breakup,s0_8,0
-aspt2 breakup,s0_8,1000,1500
-aspt2 alpha,s0_8,0,1500
-aspt2 breakupdir,s0_10,2
-aspt2 breakup,s0_10,0
-aspt2 breakup,s0_10,1000,1500
-aspt2 alpha,s0_10,0,1500
+aspt2_mem "breakupdir",s0_8,1
+aspt2_mem "breakup",s0_8,0
+aspt2_mem "breakup",s0_8,1000,1500
+aspt2_mem "alpha",s0_8,0,1500
+aspt2_mem "breakupdir",s0_10,2
+aspt2_mem "breakup",s0_10,0
+aspt2_mem "breakup",s0_10,1000,1500
+aspt2_mem "alpha",s0_10,0,1500
 sptwait2 breakup,s0_8
 sptwait2 breakup,s0_10
 csp_slot s0_8
 csp_slot s0_10
 flush 1
 ;Undarken Beato
-aspt2 darken_r,s0_9,255,1000
-aspt2 darken_g,s0_9,255,1000
-aspt2 darken_b,s0_9,255,1000
+aspt2_mem "darken_r",s0_9,255,1000
+aspt2_mem "darken_g",s0_9,255,1000
+aspt2_mem "darken_b",s0_9,255,1000
 sptwait2 darken_b,s0_9
-lbg s0_3,"no54_00059"
+lbg "c:efe",s0_3,"no54_00059"
 seplay 1,60,100
 pam s0_4,"no54",0
 seplay 1,62,100
 seplay 2,62,100
 seplay 3,2,100
 wait 500
-lbg s0_3,"no55_00000"
-aspt2 blur,s0_3,800
+lbg "c:efe",s0_3,"no55_00000"
+aspt2_mem "blur",s0_3,800
 flush 10,1000
-aspt2 blur,s0_3,0,1000
+aspt2_mem "blur",s0_3,0,1000
 sptwait2 blur,s0_3
 seplay 1,56,70
-lbg s0_3,"no55_00059"
+lbg "c:efe",s0_3,"no55_00059"
 pam s0_4,"no55",0
 seplay 2,2,100
 seplay 3,56,100
@@ -282,68 +278,67 @@ d [ak][lv 0*"27"*"30700921"]`"Come, arise, Seven Stakes of Purgatory."`[|][\]
 textoff
 ;Remove Beato
 seplay 1,52,71
-aspt2 warp_spd,s0_3,25
-aspt2 warp_wave,s0_3,600
-aspt2 warp_amp,s0_3,250,150
-aspt2 warp_spd,s0_9,25
-aspt2 warp_wave,s0_9,250
-aspt2 warp_amp,s0_9,100,150
-aspt2 alpha,s0_3,0,600
-aspt2 alpha,s0_9,0,600
+aspt2_mem "warp_spd",s0_3,25
+aspt2_mem "warp_wave",s0_3,600
+aspt2_mem "warp_amp",s0_3,250,150
+aspt2_mem "warp_spd",s0_9,25
+aspt2_mem "warp_wave",s0_9,250
+aspt2_mem "warp_amp",s0_9,100,150
+aspt2_mem "alpha",s0_3,0,600
+aspt2_mem "alpha",s0_9,0,600
 sptwait2 alpha,s0_9
-aspt2 warp_amp,s0_3,0
-aspt2 warp_wave,s0_3,0
-aspt2 warp_amp,s0_9,0
-aspt2 warp_wave,s0_9,0
+aspt2_mem "warp_amp",s0_3,0
+aspt2_mem "warp_wave",s0_3,0
+aspt2_mem "warp_amp",s0_9,0
+aspt2_mem "warp_wave",s0_9,0
 csp_slot s0_3
 csp_slot s0_9
 flush 1
 wait 2000
 ;Load the rgs
 lss s0_12,"rg7","a12_hohoemi1" ;1
-aspt2 xpos,s0_12,-750
+aspt2_mem "xpos",s0_12,-750
 lss s0_13,"rg6","a12_akuwarai1" ;1
-aspt2 xpos,s0_13,-450
+aspt2_mem "xpos",s0_13,-450
 lss s0_14,"rg5","a12_akuwarai2" ;1
-aspt2 xpos,s0_14,-150
+aspt2_mem "xpos",s0_14,-150
 lss s0_15,"rg4","a12_defo1" ;1
-aspt2 xpos,s0_15,150
+aspt2_mem "xpos",s0_15,150
 lss s0_16,"rg3","a12_fuman1" ;1
-aspt2 xpos,s0_16,450
+aspt2_mem "xpos",s0_16,450
 lss s0_17,"rg2","a12_hohoemi1" ;1
-aspt2 xpos,s0_17,750
+aspt2_mem "xpos",s0_17,750
 lss s0_9,"rg1","a31_hohoemi1" ;1
-aspt2 flip,s0_9,1 ;horizontal flip
-seplay 1,57,100
+aspt2_mem "flip",s0_9,1 ;horizontal seplay 1,57,100
 seplay 2,57,100
 z_order_override2 s0_9,s0_17
-aspt2 breakup,s0_9,1000
-aspt2 breakup,s0_12,1000
-aspt2 breakup,s0_13,1000
-aspt2 breakup,s0_14,1000
-aspt2 breakup,s0_15,1000
-aspt2 breakup,s0_16,1000
-aspt2 breakup,s0_17,1000
-aspt2 alpha,s0_12,0
-aspt2 alpha,s0_13,0
-aspt2 alpha,s0_14,0
-aspt2 alpha,s0_15,0
-aspt2 alpha,s0_16,0
-aspt2 alpha,s0_17,0
+aspt2_mem "breakup",s0_9,1000
+aspt2_mem "breakup",s0_12,1000
+aspt2_mem "breakup",s0_13,1000
+aspt2_mem "breakup",s0_14,1000
+aspt2_mem "breakup",s0_15,1000
+aspt2_mem "breakup",s0_16,1000
+aspt2_mem "breakup",s0_17,1000
+aspt2_mem "alpha",s0_12,0
+aspt2_mem "alpha",s0_13,0
+aspt2_mem "alpha",s0_14,0
+aspt2_mem "alpha",s0_15,0
+aspt2_mem "alpha",s0_16,0
+aspt2_mem "alpha",s0_17,0
 flush 1
-aspt2 breakup,s0_9,0,1000
-aspt2 breakup,s0_12,0,1000
-aspt2 breakup,s0_13,0,1000
-aspt2 breakup,s0_14,0,1000
-aspt2 breakup,s0_15,0,1000
-aspt2 breakup,s0_16,0,1000
-aspt2 breakup,s0_17,0,1000
-aspt2 alpha,s0_12,255,1000
-aspt2 alpha,s0_13,255,1000
-aspt2 alpha,s0_14,255,1000
-aspt2 alpha,s0_15,255,1000
-aspt2 alpha,s0_16,255,1000
-aspt2 alpha,s0_17,255,1000
+aspt2_mem "breakup",s0_9,0,1000
+aspt2_mem "breakup",s0_12,0,1000
+aspt2_mem "breakup",s0_13,0,1000
+aspt2_mem "breakup",s0_14,0,1000
+aspt2_mem "breakup",s0_15,0,1000
+aspt2_mem "breakup",s0_16,0,1000
+aspt2_mem "breakup",s0_17,0,1000
+aspt2_mem "alpha",s0_12,255,1000
+aspt2_mem "alpha",s0_13,255,1000
+aspt2_mem "alpha",s0_14,255,1000
+aspt2_mem "alpha",s0_15,255,1000
+aspt2_mem "alpha",s0_16,255,1000
+aspt2_mem "alpha",s0_17,255,1000
 sptwait2 breakup,s0_9
 sptwait2 breakup,s0_12
 sptwait2 breakup,s0_13
@@ -369,23 +364,23 @@ return
 ;Ev2 turn
 *o3_ev2
 seplay 1,52,71
-aspt2 breakupdir,s0_8,1
-aspt2 breakup,s0_8,0
-aspt2 breakup,s0_8,1000,1500
-aspt2 alpha,s0_8,0,1500
-aspt2 breakupdir,s0_9,2
-aspt2 breakup,s0_9,0
-aspt2 breakup,s0_9,1000,1500
-aspt2 alpha,s0_9,0,1500
+aspt2_mem "breakupdir",s0_8,1
+aspt2_mem "breakup",s0_8,0
+aspt2_mem "breakup",s0_8,1000,1500
+aspt2_mem "alpha",s0_8,0,1500
+aspt2_mem "breakupdir",s0_9,2
+aspt2_mem "breakup",s0_9,0
+aspt2_mem "breakup",s0_9,1000,1500
+aspt2_mem "alpha",s0_9,0,1500
 sptwait2 breakup,s0_8
 sptwait2 breakup,s0_9
 csp_slot s0_8
 csp_slot s0_9
 flush 1
 ;Undarken Eva
-aspt2 darken_r,s0_10,255,1000
-aspt2 darken_g,s0_10,255,1000
-aspt2 darken_b,s0_10,255,1000
+aspt2_mem "darken_r",s0_10,255,1000
+aspt2_mem "darken_g",s0_10,255,1000
+aspt2_mem "darken_b",s0_10,255,1000
 sptwait2 darken_b,s0_10
 vol_bgm 0,5000
 wait2 5000
@@ -410,13 +405,13 @@ wait_on_d -1
 textoff
 wait2 4000
 lss s0_10,"s41","a11_akuwarai1" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 flush 10,167
 msgwnd_s41
 *o3_ev2_2
 d [ak][lv 0*"36"*"33500001"]`"Chiester{ruby:four‐one‐zero:410}. Right here."`[|][\]
 lss s0_8,"s45","a11_defo1" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 flush 10,167
 msgwnd_s45
 *o3_ev2_3
@@ -429,7 +424,7 @@ return
 *o3_char_select
 spriteset_enable 1
 aspritesetpt ypos,1,-1080
-lbg s1_3,"white"
+lbg "c:colour",s1_3,"white"
 lsp s1_4,":a;graphics\big_chars\ep3_1_rud_d_EP3_1_rud_d.png",-250,70
 lsp s1_5,":a;graphics\big_chars\ep3_1_kir_d_EP3_1_kir_d.png",50,70
 lsp s1_6,":a;graphics\big_chars\ep3_1_kla_d_EP3_1_kla_d.png",350+35,70
@@ -507,19 +502,19 @@ return
 return
 
 *o3_show_kir
-	lbg s0_21,"c_c0901_ca"
-	aspt2 xpos,s0_21,1920
-	aspt2 ypos,s0_21,1080
+lbg "a:cg/kir",s0_21,"c_c0901_ca"
+aspt2_mem "xpos",s0_21,1920
+aspt2_mem "ypos",s0_21,1080
 	flush 1
 	seplay 1,30,71
-	aspt2 xpos,s0_21,0,500
-	aspt2 ypos,s0_21,0,500
+aspt2_mem "xpos",s0_21,0,500
+aspt2_mem "ypos",s0_21,0,500
 	sptwait2 xpos,s0_21
 	msgwnd_kir
 	*o3_kir
 	d [ak][lv 0*"09"*"31300339"]`"You know, I can be pretty brutal when my husband isn't around."`[|][\]
 	textoff
-	aspt2 xpos,s0_21,1920,500
+aspt2_mem "xpos",s0_21,1920,500
 	sptwait2 xpos,s0_21
 	csp_slot s0_21
 	flush 1
@@ -527,7 +522,7 @@ return
 
 *o3_show_cla
 	lss s0_22,"cla","a15_defo1" ;1
-	aspt2 xpos,s0_22,-450
+aspt2_mem "xpos",s0_22,-450
 	seplay 1,30,71
 	flush 10,167
 	msgwnd_cla
@@ -535,34 +530,34 @@ return
 	d [ak][lv 0*"02"*"30800067"]`"Ludicrous...!`[|][@][lv 0*"02"*"10800310"]` In any event, this does not leave the realm of nonsense...!"`[|][\]
 	textoff
 	seplay 1,20,71
-	aspt2 xpos,s0_22,-1920,500
+aspt2_mem "xpos",s0_22,-1920,500
 	sptwait2 xpos,s0_22
 	csp_slot s0_22
 	flush 1
 return
 
 *o3_show_nat
-	lbg s0_21,"c_e0101_wall"
-	aspt2 xpos,s0_21,1920
-	aspt2 ypos,s0_21,1080
-	lbg s0_22,"c_e0101_c"
-	aspt2 xpos,s0_22,1920
-	aspt2 ypos,s0_22,1080
+lbg "a:cg/nat",s0_21,"c_e0101_wall"
+aspt2_mem "xpos",s0_21,1920
+aspt2_mem "ypos",s0_21,1080
+lbg "a:cg/nat",s0_22,"c_e0101_c"
+aspt2_mem "xpos",s0_22,1920
+aspt2_mem "ypos",s0_22,1080
 	flush 1
 	seplay 1,30,71
-	aspt2 xpos,s0_21,0,500
-	aspt2 ypos,s0_21,0,500
-	aspt2 xpos,s0_22,0,500
-	aspt2 ypos,s0_22,0,500
+aspt2_mem "xpos",s0_21,0,500
+aspt2_mem "ypos",s0_21,0,500
+aspt2_mem "xpos",s0_22,0,500
+aspt2_mem "ypos",s0_22,0,500
 	sptwait2 xpos,s0_22
 	msgwnd_nat
 	*o3_nat
 	d [ak][lv 0*"03"*"10900371"]`"I am Ushiromiya Natsuhi!!`[|][@][lv 0*"03"*"10900372"]` Although I do not have the right to wear the One‐winged Eagle on my body, it is certainly engraved in my heart!!"`[|][\]
 	textoff
-	aspt2 xpos,s0_21,1920,500
-	aspt2 ypos,s0_21,1080,500
-	aspt2 xpos,s0_22,1920,500
-	aspt2 ypos,s0_22,1080,500
+aspt2_mem "xpos",s0_21,1920,500
+aspt2_mem "ypos",s0_21,1080,500
+aspt2_mem "xpos",s0_22,1920,500
+aspt2_mem "ypos",s0_22,1080,500
 	sptwait2 xpos,s0_22
 	csp_slot s0_21
 	csp_slot s0_22
@@ -571,7 +566,7 @@ return
 
 *o3_show_hid
 	lss s0_22,"hid","a22_warai2" ;1
-	aspt2 xpos,s0_22,450
+aspt2_mem "xpos",s0_22,450
 	seplay 1,30,71
 	flush 10,167
 	msgwnd_hid
@@ -579,33 +574,33 @@ return
 	d [ak][lv 0*"06"*"11100021"]`"There you go!`[|][@][lv 0*"06"*"11100022"]` Well said!`[|][@][lv 0*"06"*"11100023"]` How about some candy as a reward?!"`[|][\]
 	textoff
 	seplay 1,20,71
-	aspt2 xpos,s0_22,1920,500
+aspt2_mem "xpos",s0_22,1920,500
 	sptwait2 xpos,s0_22
 	csp_slot s0_22
 	flush 1
 return
 
 *o3_show_ros
-	lbg s0_21,"c_c0205_wall"
-	aspt2 xpos,s0_21,-1920
-	lbg s0_22,"c_c0205_b"
-	aspt2 xpos,s0_22,-1920
+lbg "a:cg/ros",s0_21,"c_c0205_wall"
+aspt2_mem "xpos",s0_21,-1920
+lbg "a:cg/ros",s0_22,"c_c0205_b"
+aspt2_mem "xpos",s0_22,-1920
 	flush 1
 	seplay 1,30,71
-	aspt2 xpos,s0_21,0,500
-	aspt2 xpos,s0_22,0,500
+aspt2_mem "xpos",s0_21,0,500
+aspt2_mem "xpos",s0_22,0,500
 	sptwait2 xpos,s0_22
 	msgwnd_ros
 	*o3_ros
 	d2 [ak][lv 0*"12"*"21400906"]`"I'll show you...`[|][@][#][*][lv 0*"12"*"21400907"]`what a golden dream looks liiiiiiiiiiike!!!"`[|][\]
 	wait_on_d 0
-	lbg s0_22,"c_c0205_c"
+lbg "a:cg/ros",s0_22,"c_c0205_c"
 	flush 1
 	d_continue
 	wait_on_d -1
 	textoff
-	aspt2 xpos,s0_21,-1920,500
-	aspt2 xpos,s0_22,-1920,500
+aspt2_mem "xpos",s0_21,-1920,500
+aspt2_mem "xpos",s0_22,-1920,500
 	sptwait2 xpos,s0_22
 	csp_slot s0_21
 	csp_slot s0_22
@@ -936,9 +931,9 @@ if %Free6 >= %Free7 mov %Free28,1 ; death cause -> bullets >= ammo
 
 ;;Load them
 ;lss s0_10,"s41","a11_akuwarai1" ;1
-;aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 ;lss s0_8,"s45","a11_defo1" ;1
-;aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 ;flush 10,167
 lsp s0_10,":a;sprites\s41\1\s41_a11_akuwarai1.png",1129,-40
 lsp s0_8,":a;sprites\s45\1\s45_a11_defo1.png",6,19
@@ -1010,35 +1005,35 @@ goto *o3_ev2_fight_l
 	csp_slot s0_27
 	csp_slot s0_28
 	flush 1
-	aspt2 blur,s0_2,5000,3000
+aspt2_mem "blur",s0_2,5000,3000
 	sptwait2 blur,s0_2
 	csp_slot s0_8
 	csp_slot s0_10
-	lbg s0_20,"system1"
+lbg "c:locale_lan",s0_20,"system1"
 	flush 1
 	wait 667
 	seplay 3,57,100
 	textoff
 	waits 167
-	lbg s0_20,"system2"
+lbg "c:locale_lan",s0_20,"system2"
 	flush 1
 	wait 667
 	seplay 2,57,100
 	textoff
 	waits 167
-	lbg s0_20,"system3"
+lbg "c:locale_lan",s0_20,"system3"
 	flush 1
 	wait 667
 	seplay 3,57,100
 	textoff
 	waits 167
-	lbg s0_20,"system4"
+lbg "c:locale_lan",s0_20,"system4"
 	flush 1
 	wait 667
 	seplay 2,57,100
 	textoff
 	waits 167
-	lbg s0_20,"system5"
+lbg "c:locale_lan",s0_20,"system5"
 	flush 1
 	wait 667
 	seplay 1,57,100
@@ -1067,7 +1062,7 @@ goto *o3_ev2_fight_l
 	seplay 2,36,100
 	textoff
 	waits 167
-	lbg s0_3,"blood_1ar"
+lbg "c:efe",s0_3,"blood_1ar"
 	flush 1
 	agpt quakeycycle,100
 	agpt quakeyamp,30
@@ -1109,11 +1104,11 @@ goto *o3_ev2_fight_l
 *o3_ev2_success
 	;Die the desu!
 	custom_cursor "default"
-	lbg s0_16,"red_b"
-	aspt2 alpha,s0_16,0
+lbg "c:colour",s0_16,"red_b"
+aspt2_mem "alpha",s0_16,0
 	anim2 s0_17,"laser_b",1
 	blend_mode2 add,s0_17
-	aspt2 flip,s0_17,1
+aspt2_mem "flip",s0_17,1
 	seplay 1,74,100
 	seplay 2,36,100
 	seplay 3,75,100
@@ -1122,21 +1117,21 @@ goto *o3_ev2_fight_l
 	csp_slot s0_8
 	csp_slot s0_10
 	lss s0_10,"s41","a11_akuwarai1" ;1
-	aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 	lss s0_8,"s45","a11_defo1" ;1
-	aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 
 	flush 1
 	lss s0_10,"s41","a11_odoroki1" ;1
-	aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 	wait 1000
 	flush 1
-	aspt2 breakup,s0_17,0
-	aspt2 alpha,s0_16,70,500
-	aspt2 alpha,s0_8,220,500
-	aspt2 alpha,s0_10,220,500
-	aspt2 breakup,s0_17,1000,500
-	aspt2 alpha,s0_17,0,500
+aspt2_mem "breakup",s0_17,0
+aspt2_mem "alpha",s0_16,70,500
+aspt2_mem "alpha",s0_8,220,500
+aspt2_mem "alpha",s0_10,220,500
+aspt2_mem "breakup",s0_17,1000,500
+aspt2_mem "alpha",s0_17,0,500
 	sptwait2 breakup,s0_17
 	csp_slot s0_17
 	anim2 s0_17,"laser_r",1
@@ -1146,32 +1141,32 @@ goto *o3_ev2_fight_l
 	seplay 6,75,100
 	flush 1
 	lss s0_8,"s45","a11_komaru1" ;1
-	aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 	wait 1000
 	flush 1
-	aspt2 breakupdir,s0_17,1
-	aspt2 breakup,s0_17,0
-	aspt2 alpha,s0_16,100,500
-	aspt2 alpha,s0_8,180,500
-	aspt2 alpha,s0_10,180,500
-	aspt2 breakup,s0_17,1000,500
-	aspt2 alpha,s0_17,0,500
+aspt2_mem "breakupdir",s0_17,1
+aspt2_mem "breakup",s0_17,0
+aspt2_mem "alpha",s0_16,100,500
+aspt2_mem "alpha",s0_8,180,500
+aspt2_mem "alpha",s0_10,180,500
+aspt2_mem "breakup",s0_17,1000,500
+aspt2_mem "alpha",s0_17,0,500
 	sptwait2 breakup,s0_17
 	csp_slot s0_17
 	anim2 s0_17,"laser_g",1
 	blend_mode2 add,s0_17
-	aspt2 flip,s0_17,1
+aspt2_mem "flip",s0_17,1
 	seplay 7,74,100
 	seplay 8,36,100
 	seplay 9,75,100
 	flush 1
 	wait 1000
-	aspt2 breakup,s0_17,0
-	aspt2 alpha,s0_16,150,500
-	aspt2 alpha,s0_8,160,500
-	aspt2 alpha,s0_10,160,500
-	aspt2 breakup,s0_17,1000,500
-	aspt2 alpha,s0_17,0,500
+aspt2_mem "breakup",s0_17,0
+aspt2_mem "alpha",s0_16,150,500
+aspt2_mem "alpha",s0_8,160,500
+aspt2_mem "alpha",s0_10,160,500
+aspt2_mem "breakup",s0_17,1000,500
+aspt2_mem "alpha",s0_17,0,500
 	sptwait2 breakup,s0_17
 	csp_slot s0_17
 	anim2 s0_17,"laser_g",1
@@ -1181,13 +1176,13 @@ goto *o3_ev2_fight_l
 	seplay 6,75,100
 	flush 1
 	wait 1000
-	aspt2 breakupdir,s0_17,1
-	aspt2 breakup,s0_17,0
-	aspt2 alpha,s0_16,180,500
-	aspt2 alpha,s0_8,140,500
-	aspt2 alpha,s0_10,140,500
-	aspt2 breakup,s0_17,1000,500
-	aspt2 alpha,s0_17,0,500
+aspt2_mem "breakupdir",s0_17,1
+aspt2_mem "breakup",s0_17,0
+aspt2_mem "alpha",s0_16,180,500
+aspt2_mem "alpha",s0_8,140,500
+aspt2_mem "alpha",s0_10,140,500
+aspt2_mem "breakup",s0_17,1000,500
+aspt2_mem "alpha",s0_17,0,500
 	sptwait2 breakup,s0_17
 	csp_slot s0_17
 	anim2 s0_17,"no31",1
@@ -1248,7 +1243,7 @@ goto *o3_ev2_fight_l
 	vol_me 2,0,5000
 	wait2 5000
 	csp_slot s0_27
-	lbg s0_20,"no52_00089"
+lbg "c:efe",s0_20,"no52_00089"
 	pam 749,"no52",0
 	goto *o3_show_lost
 
@@ -1263,37 +1258,37 @@ goto *o3_ev2_fight_l
 	gptwait quakexamp
 	wait2 5000
 	csp_slot s0_27
-	lbg s0_20,"blood_2a"
+lbg "c:efe",s0_20,"blood_2a"
 	flush 1
 	wait 667
 	seplay 3,35,100
 	textoff
 	waits 167
-	lbg s0_20,"blood_2b"
+lbg "c:efe",s0_20,"blood_2b"
 	flush 1
 	wait 667
 	seplay 2,35,100
 	textoff
 	waits 167
-	lbg s0_20,"blood_2c"
+lbg "c:efe",s0_20,"blood_2c"
 	flush 1
 	wait 667
 	seplay 3,35,100
 	textoff
 	waits 167
-	lbg s0_20,"blood_2d"
+lbg "c:efe",s0_20,"blood_2d"
 	flush 1
 	wait 667
 	seplay 2,35,100
 	textoff
 	waits 167
-	lbg s0_20,"blood_2e"
+lbg "c:efe",s0_20,"blood_2e"
 	flush 1
 	wait 667
 	seplay 1,36,100
 	textoff
 	waits 167
-	lbg s0_20,"blood_1ar"
+lbg "c:efe",s0_20,"blood_1ar"
 	wait2 2000
 	goto *o3_show_lost
 
@@ -1350,9 +1345,9 @@ goto *o3_ev2_fight_l
 	lsp2 s0_16,":c;sound\bgm\Treasure.png",960,540,1,1
 	seplay 1,1010,100
 	flush 1
-	aspt2 rot,s0_16,-720,600
-	aspt2 scalex,s0_16,75,600
-	aspt2 scaley,s0_16,75,600
+aspt2_mem "rot",s0_16,-720,600
+aspt2_mem "scalex",s0_16,75,600
+aspt2_mem "scaley",s0_16,75,600
 	sptwait2 scaley,s0_16
 	set_window_simple 80
 	*o3_congr_d

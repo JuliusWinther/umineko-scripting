@@ -30,12 +30,12 @@ _csp 100
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-lbg s0_1,"m1f_s1a_bg"
-lbg s0_3,"m1f_s1a"
+lbg "c:backgrounds",s0_1,"m1f_s1a_bg"
+lbg "a:backgrounds",s0_3,"m1f_s1a"
 lss s0_10,"cla","a11_defo1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 lss s0_8,"gen","a11_defo1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 24
 msgwnd_cla
 *trailer1
@@ -43,19 +43,19 @@ d [ak][lv 0*"02"*"50800192"]`"Welcome to Rokkenjima.`[|][\]
 textoff2
 csp_slot s0_1
 csp_slot s0_8
-lbg s0_3,"m1f_s1c"
+lbg "c:backgrounds",s0_3,"m1f_s1c"
 lss s0_10,"eri","a12_defo1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 24
 msgwnd_eri
 *trailer2
 d [ak][lv 0*"46"*"54500009"]`"............Hello.`[|][@][lv 0*"46"*"54500010"]` My name is Furudo Erika.`[|][\]
 textoff2
 csp_slot s0_10
-lbg s0_1,"mhal_2ar_bg"
-lbg s0_3,"mhal_2ar"
+lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
+lbg "a:backgrounds",s0_3,"mhal_2ar"
 lss s0_8,"eri","a11_defo1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 23
 msgwnd_eri
 *trailer3
@@ -63,9 +63,9 @@ d [ak][lv 0*"46"*"54500032"]`"............Who is that?"`[|][\]
 textoff2
 csp_slot s0_1
 csp_slot s0_8
-lbg s0_3,"mhal_2cr"
+lbg "c:backgrounds",s0_3,"mhal_2cr"
 lss s0_10,"kum","a11_defo2" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 10,167
 msgwnd_kum
 *trailer4
@@ -73,19 +73,19 @@ d [ak][lv 0*"18"*"51800020"]`"......Oh, that is the Golden Witch, {f:5:Beatrice}
 textoff2
 csp_slot s0_1
 csp_slot s0_10
-lbg s0_3,"blood_2a"
+lbg "c:efe",s0_3,"blood_2a"
 set_scale_center s0_3,10,-550
-aspt2 scalex,s0_3,800
-aspt2 scaley,s0_3,800
+aspt2_mem "scalex",s0_3,800
+aspt2_mem "scaley",s0_3,800
 flush 10,167
 seplay 1,72,77
-aspt2 scalex,s0_3,100,333,2
-aspt2 scaley,s0_3,100,333,2
+aspt2_mem "scalex",s0_3,100,333,2
+aspt2_mem "scaley",s0_3,100,333,2
 sptwait2 scalex,s0_3
-lbg s0_3,"blood_2b"
+lbg "c:efe",s0_3,"blood_2b"
 flush 1
 wait 133
-lbg s0_3,"ep503_a"
+lbg "c:cg_box",s0_3,"ep503_a"
 chvol 0,%dlg_vol
 dwave 0,"graphics\trailer\eva1.ogg" 
 flush 10,167
@@ -93,10 +93,10 @@ waitvoice
 ;FIXME cg is moving here slowly
 lv 0,"08","51200143"
 waitvoice
-lbg s0_1,"g2f_p1a_bg"
-lbg s0_3,"g2f_p1a"
+lbg "c:backgrounds",s0_1,"g2f_p1a_bg"
+lbg "a:backgrounds",s0_3,"g2f_p1a"
 lss s0_10,"eri","a11_warai1" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 flush 24
 msgwnd_eri
 *trailer5
@@ -109,13 +109,13 @@ wait_on_d -1
 textoff2
 _csp 4
 csp_slot s0_1
-lbg s0_2,"black"
-lbg s0_3,"hibun"
-aspt2 ypos,s0_3,-400
+lbg "c:colour",s0_2,"black"
+lbg "c:locale_lan",s0_3,"hibun"
+aspt2_mem "ypos",s0_3,-400
 lss s0_10,"nat","a11_majime1" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 lss s0_8,"cla","a11_komaru1" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 flush2 2
 wait 901
 lv 0,"09","51300089"
@@ -135,11 +135,11 @@ wait_on_d -1
 textoff2
 csp_slot s0_10
 csp_slot s0_2
-lbg s0_1,"m1f_s1a_bg"
-lbg s0_3,"m1f_s1a"
+lbg "c:backgrounds",s0_1,"m1f_s1a_bg"
+lbg "a:backgrounds",s0_3,"m1f_s1a"
 lss s0_9,"kir","a38_majime2" ;1
 lss s0_8,"rud","a11_komaru1" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 flush 24
 dwavestop 1
 mov ?voice_s[1],off ;kill cla
@@ -150,22 +150,22 @@ textoff2
 csp_slot s0_1
 csp_slot s0_8
 csp_slot s0_9
-lbg s0_3,"g1f_s1bp"
+lbg "c:backgrounds",s0_3,"g1f_s1bp"
 lss s0_10,"but","b11_warai3" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 lss s0_8,"wal","a11_majime1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 24
 msgwnd_but
 *trailer8
 d2 [ak][text_speed_t 10][text_fade_t 0]`"Did you know?`[text_speed_t 5][text_fade_t 133][@][lv 0*"10"*"50100536"]` In mystery novels, they call things like these epitaph murders "plotline murders".`[!w2500][#][*][|][\]
 wait_on_d 0
 lsp2 4,":c;graphics\cg\cg_box\ep603.png",960,540
-aspt2 scalex,4,300
-aspt2 scaley,4,300
+aspt2_mem "scalex",4,300
+aspt2_mem "scaley",4,300
 flush 24
-aspt2 scalex,4,100,333,2
-aspt2 scaley,4,100,333,2
+aspt2_mem "scalex",4,100,333,2
+aspt2_mem "scaley",4,100,333,2
 sptwait2 scalex,4
 lsp2 4,":c;graphics\efe\blood_1b.png",0,0
 set_hotspot 4,"1214.5","1223"
@@ -176,7 +176,7 @@ textoff2
 _csp2 4
 csp_slot s0_10
 csp_slot s0_8
-lbg s0_3,"m1f_s1c"
+lbg "c:backgrounds",s0_3,"m1f_s1c"
 lss s0_9,"eri","b12_akuwarai3" ;1
 flush 24
 msgwnd_eri
@@ -186,7 +186,7 @@ textoff2
 csp_slot s0_1
 csp_slot s0_3
 csp_slot s0_9
-lbg s0_2,"black"
+lbg "c:colour",s0_2,"black"
 anim2 s0_3,"no0015",1,1
 flush 1
 seplay 1,1006,100
@@ -195,7 +195,7 @@ wait 650
 lv 0,"17","61700010"
 waitvideo
 csp_slot s0_2
-lbg s0_3,"m_door1"
+lbg "c:backgrounds",s0_3,"m_door1"
 lss s0_8,"goh","a11_ikari2" ;1
 flush 1
 msgwnd_goh
@@ -203,28 +203,28 @@ msgwnd_goh
 d [ak][text_speed_t 10][text_fade_t 0]`"......?! Krauss-sama! The chain on this room is also set...!"`[|][\]
 textoff2
 csp_slot s0_2
-lbg s0_3,"m_door1k"
+lbg "c:backgrounds",s0_3,"m_door1k"
 lss s0_8,"but","b11_komaru3" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 lss s0_10,"eri","a11_akuwarai5" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 flush 2
 msgwnd_eri
 *trailer11
 d2 [ak][lv 0*"46"*"54500306"]`"A locked room.`[|][@][#][*][lv 0*"46"*"54500307"]` .........<Good>.`[|][!w133][\]
 wait_on_d 0
 lss s0_10,"eri","a12_akuwarai1" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 flush 10,167
 d_continue
 wait_on_d -1
 textoff2
-lbg s0_3,"m1f_s1c"
+lbg "c:backgrounds",s0_3,"m1f_s1c"
 lss s0_8,"goh","a11_odoroki1" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 lss s0_9,"kan","a11_ikari1" ;1
 lss s0_10,"sha","a11_odoroki1" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 flush 10,167
 msgwnd_sha
 *trailer12
@@ -232,8 +232,8 @@ d2 [ak][text_speed_t 10][text_fade_t 0][lv 0*""+"15"*"../../../graphics/trailer/
 wait_on_d 0
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_5,"mlib_1a_bg"
-lbg s0_7,"mlib_1a"
+lbg "c:backgrounds",s0_5,"mlib_1a_bg"
+lbg "a:backgrounds",s0_7,"mlib_1a"
 lss s0_9,"bea","a11_futeki2" ;1
 d_continue
 wait_on_d -1
@@ -251,24 +251,24 @@ lv 0,"46","64500183"
 csp_slot s0_5
 csp_slot s0_7
 csp_slot s0_9
-lbg s0_1,"glob_1ar_bg"
-lbg s0_3,"glob_1ar"
+lbg "c:backgrounds",s0_1,"glob_1ar_bg"
+lbg "a:backgrounds",s0_3,"glob_1ar"
 lss s0_8,"but","b11_oya1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 lss s0_10,"eri","a11_akuwarai5" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 textoff2
 flush 2
 msgwnd_eri
 *trailer14
 d [ak][text_speed_t 10][text_fade_t 0]`"Exactly. Of course there's no way {f:5:Beatrice} is real."`[|][\]
 textoff2
-lbg s0_1,"m1f_p1br_bg"
-lbg s0_3,"m1f_p1br"
+lbg "c:backgrounds",s0_1,"m1f_p1br_bg"
+lbg "a:backgrounds",s0_3,"m1f_p1br"
 lss s0_8,"jes","b21_atya1" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 lss s0_10,"but","b11_niramu3" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 lss s0_9,"mar","a11_fukigen2" ;1
 flush 10,167
 msgwnd_mar
@@ -277,7 +277,7 @@ d [ak][text_speed_t 10][text_fade_t 0]`"Uu, she's real!`[text_speed_t 5][text_fa
 csp_slot s0_1
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_3,"moon_1p"
+lbg "c:backgrounds",s0_3,"moon_1p"
 lss s0_9,"mar","b11_ikari1" ;1
 textoff2
 flush 22
@@ -285,18 +285,18 @@ flush 22
 d [ak][text_speed_t 10][text_fade_t 0][lv 0*"13"*"60400076"]`"It's magic, it is magic!!`[|][\]
 textoff2
 csp_slot s0_9
-lbg s0_1,"m2f_p1b_bg"
-lbg s0_3,"m2f_p1b"
+lbg "c:backgrounds",s0_1,"m2f_p1b_bg"
+lbg "a:backgrounds",s0_3,"m2f_p1b"
 lss s0_10,"eri","a11_warai1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 lss s0_8,"but","b23_kuyasigaru1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 26
 msgwnd_but
 *trailer17
 d [ak][lv 0*"10"*"50100806"]`".........Do you even have a heart?"`[|][\]
 lss s0_10,"eri","a12_warai3" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 10,167
 msgwnd_eri
 *trailer18
@@ -308,7 +308,7 @@ textoff2
 csp_slot s0_8
 csp_slot s0_1
 csp_slot s0_10
-lbg s0_3,"different_space_1a"
+lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"eri","a11_warai5" ;1
 flush 23
 msgwnd_eri
@@ -318,10 +318,10 @@ textoff2
 csp_slot s0_3
 csp_slot s0_10
 seplay 1,52,100
-lbg s0_1,"mlib_1a_bg"
-lbg s0_3,"mlib_1a"
+lbg "c:backgrounds",s0_1,"mlib_1a_bg"
+lbg "a:backgrounds",s0_3,"mlib_1a"
 lss s0_9,"dla","a11b_warai1" ;1
-lbg s0_10,"black"
+lbg "c:colour",s0_10,"black"
 show_whirl
 csp_slot s0_10
 seplay 1,72,100
@@ -352,13 +352,13 @@ wait_on_d -1
 textoff2
 csp_slot s0_1
 csp_slot s0_9
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 anim2 s0_5,"laser_b",1
 flush 1
 seplay 1,36,100
 waitvideo
 csp_slot s0_5
-lbg s0_3,"wsan_1b"
+lbg "c:backgrounds",s0_3,"wsan_1b"
 lss s0_9,"but","b25_sakebu1" ;1
 flush 25
 msgwnd_but
@@ -366,18 +366,18 @@ msgwnd_but
 d [ak][text_speed_t 10][text_fade_t 0][lv 0*""+"10"*"../../../graphics/trailer/but3"]`"{p:2:Suppose there existed a method X that could lead someone to the second floor of the guesthouse without passing through the lounge!}`[|][\]
 textoff2
 csp_slot s0_9
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 anim2 s0_17,"laser_r",1
-aspt2 flip,s0_17,1
+aspt2_mem "flip",s0_17,1
 flush 1
 seplay 2,73,100
 seplay 1,1006,100
 waitvideo
 csp_slot s0_17
-lbg s0_1,"mlib_1a_bg"
-lbg s0_3,"mlib_1a"
+lbg "c:backgrounds",s0_1,"mlib_1a_bg"
+lbg "a:backgrounds",s0_3,"mlib_1a"
 lss s0_10,"eri","a12_warai3" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 23
 msgwnd_eri
 *trailer22
@@ -385,8 +385,8 @@ d [ak][text_speed_t 10][text_fade_t 0]`"It's because this is the mystery genre.`
 textoff2
 csp_slot s0_10
 csp_slot s0_1
-lbg s0_2,"black"
-lbg s0_3,"barrier1"
+lbg "c:colour",s0_2,"black"
+lbg "c:efe",s0_3,"barrier1"
 seplay 1,36,100
 seplay 2,1006,100
 flush 22
@@ -396,21 +396,21 @@ d [ak][lv 0*"27"*"80700775"]`"{p:1:It's useless.}`[|][\]
 textoff2
 csp_slot s0_2
 csp_slot s0_3
-lbg s0_1,"mlib_1c_bg"
-lbg s0_3,"mlib_1c"
+lbg "c:backgrounds",s0_1,"mlib_1c_bg"
+lbg "a:backgrounds",s0_3,"mlib_1c"
 lss s0_8,"eva","b23_majime1" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 lss s0_10,"rud","a12_odoroki1" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 lss s0_9,"kir","a27_futeki1" ;1
-lbg s0_21,"black"
-aspt2 alpha,s0_21,150
-lbg s0_22,"hana1"
-aspt2 alpha,s0_22,150
+lbg "c:colour",s0_21,"black"
+aspt2_mem "alpha",s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2_mem "alpha",s0_22,150
 lss s0_25,"dla","a11_defo3" ;1
-aspt2 xpos,s0_25,-370
+aspt2_mem "xpos",s0_25,-370
 lss s0_23,"bea","a31_akuwarai5" ;1
-aspt2 xpos,s0_23,370
+aspt2_mem "xpos",s0_23,370
 rain_pause s0_11
 flush 24
 msgwnd_bea
@@ -427,51 +427,51 @@ csp_slot s0_21
 csp_slot s0_22
 csp_slot s0_23
 csp_slot s0_25
-lbg s0_3,"efe1"
+lbg "c:efe",s0_3,"efe1"
 flush 1
-lbg s0_1,"mlib_1a_bg"
-lbg s0_3,"mlib_1a"
+lbg "c:backgrounds",s0_1,"mlib_1a_bg"
+lbg "a:backgrounds",s0_3,"mlib_1a"
 rain_resume s0_11
 seplay 2,1006,100
 show_glass 0
 lss s0_8,"ger","a11_defo1" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 seplay 1,52,71
-aspt2 breakup,s0_8,1000
-aspt2 alpha,s0_8,0
+aspt2_mem "breakup",s0_8,1000
+aspt2_mem "alpha",s0_8,0
 flush 1
-aspt2 breakup,s0_8,0,2000
-aspt2 alpha,s0_8,255,2000
+aspt2_mem "breakup",s0_8,0,2000
+aspt2_mem "alpha",s0_8,255,2000
 sptwait2 breakup,s0_8
 msgwnd_ger
 *trailer25
 d [ak][lv 0*"48"*"54800001"]`"Respected Sirs, I beg to inform you of the following.`[|][\]
 textoff2
 csp_slot s0_8
-lbg s0_1,"mlib_1a_bg"
-lbg s0_3,"mlib_1a"
+lbg "c:backgrounds",s0_1,"mlib_1a_bg"
+lbg "a:backgrounds",s0_3,"mlib_1a"
 lss s0_9,"s41","a11_defo1" ;1
 lss s0_10,"s45","a11_majime1" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 lss s0_8,"ger","a13_komaru1" ;1
-aspt2 xpos,s0_8,-550
-lbg s0_26,"barrier"
+aspt2_mem "xpos",s0_8,-550
+lbg "a:efe",s0_26,"barrier"
 seplay 1,36,100
 seplay 2,1006,100
 flush 1
 csp_slot s0_8
 csp_slot s0_26
-lbg s0_1,"mlib_1c_bg"
-lbg s0_3,"mlib_1c"
+lbg "c:backgrounds",s0_1,"mlib_1c_bg"
+lbg "a:backgrounds",s0_3,"mlib_1c"
 lss s0_10,"rud","a12_odoroki1" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 lss s0_9,"kir","a27_futeki1" ;1
-lbg s0_21,"black"
-aspt2 alpha,s0_21,150
-lbg s0_22,"hana1"
-aspt2 alpha,s0_22,150
+lbg "c:colour",s0_21,"black"
+aspt2_mem "alpha",s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2_mem "alpha",s0_22,150
 lss s0_25,"cor","a11_defo1" ;1
-aspt2 xpos,s0_25,-550
+aspt2_mem "xpos",s0_25,-550
 waits 1000
 rain_pause s0_11
 flush 2
@@ -484,12 +484,12 @@ csp_slot s0_10
 csp_slot s0_21
 csp_slot s0_22
 csp_slot s0_25
-lbg s0_1,"mlib_1a_bg"
-lbg s0_3,"mlib_1a"
+lbg "c:backgrounds",s0_1,"mlib_1a_bg"
+lbg "a:backgrounds",s0_3,"mlib_1a"
 lss s0_8,"bea","a11_akuwarai5" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 lss s0_10,"dla","a11_warai1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 rain_resume s0_11
 flush 80
 msgwnd_dla
@@ -501,18 +501,18 @@ dwave 25,"sound\voice\47\54600014.ogg"
 csp_slot s0_1
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_3,"m_door5"
+lbg "c:locale",s0_3,"m_door5"
 flush 26
 msgwnd_non
 *trailer28
 d [ak]`......What is that? ......Duct tape??`[!w800][\]
 textoff2
-lbg s0_3,"wsan_2c"
+lbg "c:backgrounds",s0_3,"wsan_2c"
 lss s0_9,"dla","b22_akuwarai1" ;1
 flush 1
 wait 800
 csp_slot s0_9
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 anim2 s0_17,"no31",1
 blend_mode2 add,s0_17
 flush 1
@@ -534,27 +534,27 @@ seplay 2,36,100
 wait 100
 waitvideo
 csp_slot s0_17
-lbg s0_3,"different_space_1a"
+lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"but","b11_odoroki3" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 lss s0_10,"ber","a21_warai2" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 1
 msgwnd_ber
 *trailer29
 d [ak][lv 0*"28"*"52100070"]`".........Yes,`[|][@][lv 0*"28"*"52100071"]` all of those violate the rules of a proper mystery.`[|][\]
 textoff2
 csp_slot s0_8
-lbg s0_3,"fea_r1cp"
+lbg "c:backgrounds",s0_3,"fea_r1cp"
 lss s0_10,"enj","a11_defo1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 24
 msgwnd_enj
 *trailer30
 d [ak][lv 0*"11"*"62000512"]`"This world is a game that is possible to explain with humans.`[|][\]
 textoff2
 csp_slot s0_10
-lbg s0_3,"chess2"
+lbg "c:backgrounds",s0_3,"chess2"
 lss s0_9,"eri","a11_majime1" ;1
 flush 26
 msgwnd_eri
@@ -562,7 +562,7 @@ msgwnd_eri
 d [ak][lv 0*"46"*"64501083"]`"{p:2:This is the one exception.}`[|][\]
 textoff2
 csp_slot s0_9
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 flush 80
 anim2 s0_17,"slash",1
 flush 1
@@ -580,15 +580,15 @@ seplay 1,1006,100
 waitvideo
 csp_slot s0_17
 flush 1
-lbg s0_3,"rose_3ap"
+lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_8,"be3","b11_akuwarai1" ;1
-aspt2 xpos,s0_8,-370
-lbg s0_21,"black"
-aspt2 alpha,s0_21,150
-lbg s0_22,"hana1"
-aspt2 alpha,s0_22,150
+aspt2_mem "xpos",s0_8,-370
+lbg "c:colour",s0_21,"black"
+aspt2_mem "alpha",s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2_mem "alpha",s0_22,150
 lss s0_23,"enj","a31_komaru3" ;1
-aspt2 xpos,s0_23,370
+aspt2_mem "xpos",s0_23,370
 flush 24
 msgwnd_enj
 *trailer32
@@ -598,44 +598,44 @@ csp_slot s0_8
 csp_slot s0_21
 csp_slot s0_22
 csp_slot s0_23
-lbg s0_3,"wsan_1aw"
+lbg "c:backgrounds",s0_3,"wsan_1aw"
 lss s0_10,"zep","a11_majime3" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 26
 msgwnd_non
 *trailer33
 d [ak][lv 0*"51"*"65100002"]`"People live for the sake of love!`[|][\]
 ;textoff2
 lss s0_8,"fur","a11_warai1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 10,167
 *trailer34
 d [ak][lv 0*"52"*"65200005"]`"Oh, how great is the power of love...!`[|][\]
 textoff2
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_3,"gun_1a"
+lbg "c:backgrounds",s0_3,"gun_1a"
 flush 26
 lv 0,"07","60300486"
 *trailer35
 d [ak]`Inside the case, ......there were two of them, ancient, like the kind used many centuries ago...`[|][\]
 textoff2
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 spriteset_enable 1
 aspritesetpt xpos,1,200
-lbg s1_3,"rose_2bp"
+lbg "c:backgrounds",s1_3,"rose_2bp"
 lss s1_10,"sha","b31_majime1" ;1
-aspt2 xpos,s1_10,370
-aspt2 xpos,s1_3,400
+aspt2_mem "xpos",s1_10,370
+aspt2_mem "xpos",s1_3,400
 mask_set msk1,msk_cutb,1
 flush 10,167
 spriteset_enable 2
 aspritesetpt xpos,2,-1920
-lbg s2_3,"rose_2bp"
+lbg "c:backgrounds",s2_3,"rose_2bp"
 lss s2_8,"kan","b32_nayamu1" ;1
 lips_sprite s2_8_b
-aspt2 xpos,s2_8,-370
-aspt2 xpos,s2_3,-400
+aspt2_mem "xpos",s2_8,-370
+aspt2_mem "xpos",s2_3,-400
 mask_set msk2,msk_cuta,2
 flush 1 ;flush2: 1 frames
 aspritesetpt xpos,2,-200,500
@@ -649,19 +649,19 @@ csp -11
 csp msk1
 csp -12
 csp msk2
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 flush 1
 spriteset_enable 2
 aspritesetpt xpos,2,0
-lbg s2_3,"gun_2b"
-aspt2 xpos,s2_3,-300
+lbg "c:backgrounds",s2_3,"gun_2b"
+aspt2_mem "xpos",s2_3,-300
 mask_set msk1,msk_cuta,2
 flush 1 ;flush2: 1 frames
 lv 0,"15","60500255"
 spriteset_enable 1
 aspritesetpt xpos,1,1920
-lbg s1_3,"gun_2a"
-aspt2 xpos,s1_3,300
+lbg "c:backgrounds",s1_3,"gun_2a"
+aspt2_mem "xpos",s1_3,300
 mask_set msk2,msk_cutb,1
 flush 1 ;flush2: 1 frames
 waits 167
@@ -674,20 +674,20 @@ csp -12
 csp msk2
 waitvoice
 ;FIXME it moves
-lbg s0_3,"ep604_2"
+lbg "c:cg_box",s0_3,"ep604_2"
 lv 0,"00","awase6039"
 flush 2
 waitvoice
 seplay 1,46,100
 seplay 2,36,100
 waits 167
-lbg s0_3,"white"
+lbg "c:colour",s0_3,"white"
 flush 1
 waits 167
-lbg s0_3,"blood_1b"
+lbg "c:efe",s0_3,"blood_1b"
 flush 22
 wait 600
-lbg s0_3,"white"
+lbg "c:colour",s0_3,"white"
 flush 2
 wait 1000
 ;disable rain
@@ -696,24 +696,24 @@ rain_pause s0_11
 bgmvol %bgm_vol * 80 / 100
 bgm "graphics\trailer\umib_156_extra.ogg"
 ;bgmplay 156,80,0
-lbg s0_1,"fea_r1a_bg"
-lbg s0_3,"fea_r1a"
+lbg "c:backgrounds",s0_1,"fea_r1a_bg"
+lbg "a:backgrounds",s0_3,"fea_r1a"
 lss s0_10,"enj","a11_defo1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 2
 lss s0_8,"fea","a11_defo2" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 23
 msgwnd_bu3
 *trailer37
 d [ak][lv 0*"56"*"64900038"]`"The thing you came here to hear...`[|][@][lv 0*"56"*"64900039"]` ...It's the "truth" that I've reached, is it not?"`[|][\]
 textoff2
 csp_slot s0_1
-lbg s0_3,"cha_r2a"
+lbg "c:backgrounds",s0_3,"cha_r2a"
 lss s0_10,"kin","a11_fukigen1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 lss s0_8,"kum","a11_majime1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 23
 msgwnd_kum
 *trailer38
@@ -721,17 +721,17 @@ d [ak][lv 0*"18"*"71800030"]`"......My lord.`[|][@][lv 0*"18"*"71800031"]` Perha
 textoff2
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_3,"ep701"
+lbg "c:cg_box",s0_3,"ep701"
 flush 2
 msgwnd_non
 *trailer39
 d [ak][lv 0*"59"*"70700007"]`«I speak English.»`[|][\]
 textoff2
-lbg s0_3,"hill_1bf"
+lbg "c:backgrounds",s0_3,"hill_1bf"
 lss s0_10,"bea","c11_warai6" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 lss s0_8,"ki2","a12_futeki4" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 10,167
 msgwnd_be3
 *trailer40
@@ -739,34 +739,34 @@ d [ak][text_speed_t 10][text_fade_t 0]`«......I'm happy too.`[text_speed_t 5][t
 textoff2
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_3,"mhal_2co"
+lbg "c:backgrounds",s0_3,"mhal_2co"
 flush 42
 wait 300
-lbg s0_3,"white"
+lbg "c:colour",s0_3,"white"
 flush 1
-lbg s0_3,"mhal_2cr"
+lbg "c:backgrounds",s0_3,"mhal_2cr"
 lss s0_9,"bea","a15_1_hanbeso3star" ;1
-aspt2 alpha,s0_9,0
-aspt2 xpos,s0_9,550
+aspt2_mem "alpha",s0_9,0
+aspt2_mem "xpos",s0_9,550
 flush 2
 lv 0,"27","60700125"
-aspt2 alpha,s0_9,255,2000
+aspt2_mem "alpha",s0_9,255,2000
 sptwait2 alpha,s0_9
 waitvoice
 csp_slot s0_9
-lbg s0_3,"different_space_1a"
+lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"bea","a15_fuman2" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 23
 msgwnd_bea
 *trailer41
 d [ak][lv 0*"27"*"60700008"]`"......Am I somehow different...`[|][@][lv 0*"27"*"60700009"]`...from the {f:5:Beatrice} you all were expecting?"`[|][\]
 textoff2
-lbg s0_3,"mhal_2co"
+lbg "c:backgrounds",s0_3,"mhal_2co"
 lss s0_10,"bea","a15_1_nayamu3" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 lss s0_8,"be3","b11_majime1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 msgwnd_non
 *trailer42
 d [ak]`There I stood......along with another me.`[!w1000][\]
@@ -776,14 +776,14 @@ rain_resume s0_11
 textoff2
 csp_slot s0_10
 csp_slot s0_8
-lbg s0_3,"white"
+lbg "c:colour",s0_3,"white"
 flush 1
-lbg s0_1,"mhal_2ar_bg"
-lbg s0_3,"mhal_2ar"
+lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
+lbg "a:backgrounds",s0_3,"mhal_2ar"
 lss s0_8,"goh","a11_komaru2" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 lss s0_10,"jes","a11_akuwarai1" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 lss s0_9,"sha","a11_komaru1" ;1
 flush 80
 msgwnd_goh
@@ -794,13 +794,13 @@ csp_slot s0_1
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-lbg s0_3,"doll_1a"
+lbg "c:backgrounds",s0_3,"doll_1a"
 flush 22
 msgwnd_jes
 *trailer44
 d [ak][lv 0*"04"*"70200181"]`"......What is this, an offering or something?`[|][\]
 textoff2
-lbg s0_3,"sub_p1b"
+lbg "c:backgrounds",s0_3,"sub_p1b"
 flush 64
 seplay 1,46,100
 agpt quakeycycle,50
@@ -817,38 +817,38 @@ dwave 25,"sound\voice\99\tajim7002.ogg"
 d_continue
 wait_on_d -1
 textoff2
-lbg s0_3,"sub_d1a"
+lbg "c:backgrounds",s0_3,"sub_d1a"
 lss s0_8,"ki2","a11_odoroki1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 24
 msgwnd_non
 *trailer46
 d [ak][text_speed_t 10][text_fade_t 0]`"R-run away...`[!w100][text_speed_t 5][text_fade_t 133][@][lv 0*"99"*"tajim7003"]` W-we'll...we'll all be killed!!"`[|][\]
 textoff2
 csp_slot s0_8
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 flush 1
 seplay 1,46,100
 seplay 2,36,100
-lbg s0_5,"red_b"
-aspt2 alpha,s0_5,180
+lbg "c:colour",s0_5,"red_b"
+aspt2_mem "alpha",s0_5,180
 flush 1
 wait 500
 csp_slot s0_5
 flush 1
 wait 500
-lbg s0_3,"tel1a"
+lbg "c:backgrounds",s0_3,"tel1a"
 spriteset_enable 1
 aspritesetpt xpos,1,1920
 waits 167
-lbg s1_1,"mnat_1a_bg"
-lbg s1_3,"mnat_1a"
+lbg "c:backgrounds",s1_1,"mnat_1a_bg"
+lbg "a:backgrounds",s1_3,"mnat_1a"
 lss s1_10,"nat","a12_ikari2" ;1
 lips_sprite s1_10_b
-aspt2 scalex,s1_10,150
-aspt2 scaley,s1_10,150
-aspt2 ypos,s1_10,400
-aspt2 xpos,s1_10,500
+aspt2_mem "scalex",s1_10,150
+aspt2_mem "scaley",s1_10,150
+aspt2_mem "ypos",s1_10,400
+aspt2_mem "xpos",s1_10,500
 mask_set msk1,msk_cutb,1
 flush 22
 chvol 0,%dlg_vol
@@ -860,14 +860,14 @@ msgwnd_non
 d [ak]`"......I came back for revenge.`[|][\]
 textoff2
 csp -11
-lbg s0_1,"m2f_r4ao_bg"
-lbg s0_3,"m2f_r4ao"
-lbg s0_26,"view_efe"
+lbg "c:backgrounds",s0_1,"m2f_r4ao_bg"
+lbg "a:backgrounds",s0_3,"m2f_r4ao"
+lbg "a:efe",s0_26,"view_efe"
 lss s0_8,"hid","a11_komaru2" ;1
-aspt2 xpos,s0_8,-370
-aspt2 darken_r,s0_8,186
-aspt2 darken_g,s0_8,186
-aspt2 darken_b,s0_8,190
+aspt2_mem "xpos",s0_8,-370
+aspt2_mem "darken_r",s0_8,186
+aspt2_mem "darken_g",s0_8,186
+aspt2_mem "darken_b",s0_8,190
 flush 66
 msgwnd_hid
 *trailer48
@@ -876,39 +876,39 @@ textoff2
 csp_slot s0_1
 csp_slot s0_26
 csp_slot s0_8
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 flush 1
 seplay 1,46,100
 seplay 2,1006,100
-lbg s0_5,"red_b"
-aspt2 alpha,s0_5,180
+lbg "c:colour",s0_5,"red_b"
+aspt2_mem "alpha",s0_5,180
 flush 1
 wait 500
 csp_slot s0_5
 flush 1
 wait 500
-lbg s0_3,"wsan_1c"
-lbg s0_5,"no83_0051"
+lbg "c:backgrounds",s0_3,"wsan_1c"
+lbg "a:efe",s0_5,"no83_0051"
 lss s0_9,"but","d11_majime6r" ;1
-lbg s0_10,"efe1"
-aspt2 breakup,s0_10,0
+lbg "c:efe",s0_10,"efe1"
+aspt2_mem "breakup",s0_10,0
 flush 1
 seplay 1,52,71
-aspt2 breakup,s0_10,1000,3000
+aspt2_mem "breakup",s0_10,1000,3000
 sptwait2 breakup,s0_10
 csp_slot s0_10
 wait 1000
 csp_slot s0_5
 csp_slot s0_9
-lbg s0_3,"sub_r1b"
+lbg "c:backgrounds",s0_3,"sub_r1b"
 lss s0_12,"cla","a11_majime1" ;1
-aspt2 xpos,s0_12,200
+aspt2_mem "xpos",s0_12,200
 lss s0_13,"kir","a13_warai2" ;1
-aspt2 xpos,s0_13,700
+aspt2_mem "xpos",s0_13,700
 lss s0_14,"rud","a11_komaru1" ;1
-aspt2 xpos,s0_14,-700
+aspt2_mem "xpos",s0_14,-700
 lss s0_15,"eva","b25_odoroki1" ;1
-aspt2 xpos,s0_15,-200
+aspt2_mem "xpos",s0_15,-200
 flush 24
 msgwnd_eva
 *trailer49
@@ -918,17 +918,17 @@ csp_slot s0_12
 csp_slot s0_13
 csp_slot s0_14
 csp_slot s0_15
-lbg s0_3,"sub_clock1b"
+lbg "c:backgrounds",s0_3,"sub_clock1b"
 flush 22
 msgwnd_ros
 *trailer50
 d [ak]`"W‐we don't have any more time, Nee-san...!!"`[!w400][lv 0*"11"*"82000288"][|][\]
 textoff2
-lbg s0_3,"sub_clock2a"
+lbg "c:backgrounds",s0_3,"sub_clock2a"
 lss s0_8,"eva","b26_ikari2" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 lss s0_10,"ros","a14_akuwarai1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 24
 msgwnd_ros
 *trailer51
@@ -940,11 +940,11 @@ mov ?voice_s[1],off ;kill cla
 d_continue
 wait_on_d -1
 textoff2
-lbg s0_3,"res_i4a"
+lbg "c:backgrounds",s0_3,"res_i4a"
 lss s0_8,"enj","a11_defo1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 lss s0_10,"pro","a11_majime1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 24
 msgwnd_pro
 *trailer52
@@ -952,7 +952,7 @@ d [ak][lv 0*"23"*"84400007"]`"That idea provides the most logical explanation fo
 textoff2
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_3,"the_2a"
+lbg "c:backgrounds",s0_3,"the_2a"
 lss s0_9,"cur","a11_nayamu1" ;1
 flush 4
 msgwnd_non
@@ -960,17 +960,17 @@ msgwnd_non
 d [ak][lv 0*"55"*"75500002"]`".........Let it be heard.`[|][@][lv 0*"55"*"75500003"]` I am one yet many.`[|][\]
 textoff2
 csp_slot s0_9
-lbg s0_3,"cit_2a"
+lbg "c:backgrounds",s0_3,"cit_2a"
 lss s0_10,"enj","a31_komaru3" ;1
-aspt2 xpos,s0_10,370
-aspt2 darken_r,s0_10,156
-aspt2 darken_g,s0_10,156
-aspt2 darken_b,s0_10,160
+aspt2_mem "xpos",s0_10,370
+aspt2_mem "darken_r",s0_10,156
+aspt2_mem "darken_g",s0_10,156
+aspt2_mem "darken_b",s0_10,160
 lss s0_8,"ber","a21_defo2" ;1
-aspt2 xpos,s0_8,-370
-aspt2 darken_r,s0_8,156
-aspt2 darken_g,s0_8,156
-aspt2 darken_b,s0_8,160
+aspt2_mem "xpos",s0_8,-370
+aspt2_mem "darken_r",s0_8,156
+aspt2_mem "darken_g",s0_8,156
+aspt2_mem "darken_b",s0_8,160
 flush 24
 msgwnd_ber
 *trailer54
@@ -978,15 +978,15 @@ d [ak][lv 0*"28"*"82100182"]`"......The truth can betray you sometimes.`[|][\]
 textoff2
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_3,"ep503_b"
-lbg s0_21,"black"
-aspt2 alpha,s0_21,150
-lbg s0_22,"hana1"
-aspt2 alpha,s0_22,150
+lbg "c:cg_box",s0_3,"ep503_b"
+lbg "c:colour",s0_21,"black"
+aspt2_mem "alpha",s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2_mem "alpha",s0_22,150
 lss s0_23,"ber","a21_warai1" ;1
-aspt2 xpos,s0_23,370
+aspt2_mem "xpos",s0_23,370
 lss s0_25,"lam","a11_futeki1" ;1
-aspt2 xpos,s0_25,-370
+aspt2_mem "xpos",s0_25,-370
 flush 10,167
 msgwnd_lam
 *trailer55
@@ -996,17 +996,17 @@ csp_slot s0_21
 csp_slot s0_22
 csp_slot s0_23
 csp_slot s0_25
-lbg s0_3,"ebook1"
+lbg "c:backgrounds",s0_3,"ebook1"
 flush 22
 msgwnd_enj
 *trailer56
 d [ak][text_speed_t 10][text_fade_t 0]`".........<Eva>... ...<Ushiro>......<Ushiromiya>...`[text_speed_t 5][text_fade_t 133][@][lv 0*"11"*"82000926"]` ......Ushiromiya Eva...!"`[|][\]
 textoff2
-lbg s0_3,"mhal_2co"
+lbg "c:backgrounds",s0_3,"mhal_2co"
 lss s0_8,"rg1","e11_fuman1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 lss s0_10,"sha","a11_warai2" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 24
 msgwnd_sha
 *trailer57
@@ -1018,19 +1018,19 @@ wait_on_d -1
 textoff2
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_3,"ep802"
+lbg "c:cg_box",s0_3,"ep802"
 flush 22
 msgwnd_kin
 *trailer58
 d [ak][lv 0*"11"*"82000077"]`"AAAAAaaaaannnggeeeeeeeeeeeeeeeeeeeeee!!!"`[|][\]
 textoff2
-lbg s0_3,"mhal_h1c"
+lbg "c:backgrounds",s0_3,"mhal_h1c"
 lss s0_9,"eva","b25_warai1" ;1
 lss s0_8,"en2","a11_defo1" ;1
 lips_sprite s0_8_b
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 lss s0_10,"kin","a11_warai2" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 flush 24
 msgwnd_kin
 *trailer59
@@ -1043,7 +1043,7 @@ textoff2
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 lsp s0_5,":a;graphics\menu\cake\cake_cake.png",360,-1080
 lsp s0_7,":a;graphics\menu\cake\cake_cake01.png",742,335,0
 lsp s0_8,":a;graphics\menu\cake\cake_cake02.png",598,335,0
@@ -1081,10 +1081,10 @@ csp_slot s0_7
 csp_slot s0_8
 csp_slot s0_12
 csp_slot s0_13
-lbg s0_3,"mhal_h1c"
+lbg "c:backgrounds",s0_3,"mhal_h1c"
 lss s0_10,"en2","a11_defo1" ;1
 lss s0_9,"eva","a11_hohoemi1" ;1
-aspt2 xpos,s0_9,370
+aspt2_mem "xpos",s0_9,370
 flush 24
 msgwnd_enj
 *trailer60
@@ -1102,39 +1102,39 @@ d_continue
 wait_on_d -1
 textoff2
 csp_slot s0_9
-lbg s0_3,"the_1b"
+lbg "c:backgrounds",s0_3,"the_1b"
 lss s0_10,"enj","a11_hanbeso1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 24
 msgwnd_enj
 *trailer61
 d [ak][text_speed_t 10][text_fade_t 0]`".........You're lying......`[text_speed_t 5][text_fade_t 133][@][lv 0*"11"*"72000153"]` ......You're lying......lying...!!`[|][\]
 textoff2
 csp_slot s0_10
-lbg s0_3,"white"
+lbg "c:colour",s0_3,"white"
 flush 2
-lbg s0_3,"cha_i1ep"
+lbg "c:backgrounds",s0_3,"cha_i1ep"
 lss s0_10,"rio","a11_komaru1a" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 lss s0_8,"wil","a21_nayamu1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 80
 msgwnd_wil
 *trailer62
 d [ak][lv 0*"54"*"75400114"]`"Don't try to understand.`[|][@][lv 0*"54"*"75400115"]` You'll just get a headache."`[|][\]
 textoff2
-lbg s0_1,"cha_r1e_bg"
-lbg s0_3,"cha_r1e"
+lbg "c:backgrounds",s0_1,"cha_r1e_bg"
+lbg "a:backgrounds",s0_3,"cha_r1e"
 lss s0_10,"wil","a11_defo1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 lss s0_8,"rio","a11_akire1a" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 80
 msgwnd_rio
 *trailer63
 d [ak][lv 0*"53"*"75300318"]`"......Beatrice is a woman to whom Grandfather owes a great debt.`[|][\]
 lss s0_10,"wil","a11_niramu1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 80
 msgwnd_wil
 *trailer64
@@ -1144,17 +1144,17 @@ meplay 1,21,65
 csp_slot s0_1
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_3,"different_space_2a"
+lbg "c:backgrounds",s0_3,"different_space_2a"
 lss s0_8,"ber","a21_niramu1"
 lss s0_9,"ber","a21_akuwarai2"
 lss s0_10,"ber","a21_akuwarai3"
 cell2 s0_10_b,2
-aspt2 xpos,s0_10,-370
-aspt2 alpha,s0_10,0
-aspt2 xpos,s0_9,-370
+aspt2_mem "xpos",s0_10,-370
+aspt2_mem "alpha",s0_10,0
+aspt2_mem "xpos",s0_9,-370
 cell2 s0_8_b,2
-aspt2 xpos,s0_8,-370
-aspt2 alpha,s0_8,0
+aspt2_mem "xpos",s0_8,-370
+aspt2_mem "alpha",s0_8,0
 border_pad_push 5
 lsp s0_12,":s;#C7C7C7#FFFFFF`{p:8:Bern shell}`",1100,360
 lsp s0_13,":s;#C7C7C7#FFFFFF`{p:8:Loop nipah}`",1100,440
@@ -1173,18 +1173,18 @@ flush 1
 wait 500
 cell s0_13,0
 cell s0_14,1
-aspt2 alpha,s0_8,255
-aspt2 alpha,s0_9,0
+aspt2_mem "alpha",s0_8,255
+aspt2_mem "alpha",s0_9,0
 flush 1
 wait 500
 cell s0_14,0
 cell s0_15,1
-aspt2 alpha,s0_10,255
-aspt2 alpha,s0_8,0
+aspt2_mem "alpha",s0_10,255
+aspt2_mem "alpha",s0_8,0
 flush 1
 wait 500
-aspt2 alpha,s0_9,255
-aspt2 alpha,s0_10,0
+aspt2_mem "alpha",s0_9,255
+aspt2_mem "alpha",s0_10,0
 cell s0_15,0
 cell s0_16,1
 flush 1
@@ -1199,25 +1199,25 @@ flush 1
 wait 500
 cell s0_16,0
 cell s0_15,1
-aspt2 alpha,s0_10,255
-aspt2 alpha,s0_9,0
+aspt2_mem "alpha",s0_10,255
+aspt2_mem "alpha",s0_9,0
 flush 1
 wait 500
 cell s0_15,0
 cell s0_14,1
-aspt2 alpha,s0_8,255
-aspt2 alpha,s0_10,0
+aspt2_mem "alpha",s0_8,255
+aspt2_mem "alpha",s0_10,0
 flush 1
 wait 500
 cell s0_14,0
 cell s0_13,1
-aspt2 alpha,s0_9,255
-aspt2 alpha,s0_8,0
+aspt2_mem "alpha",s0_9,255
+aspt2_mem "alpha",s0_8,0
 flush 1
 wait 200
 lv 0,"28","92100174"
 ;lv 0*"28"*"72100493" or not
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
@@ -1246,13 +1246,13 @@ flush 1
 vol_me 1,-1,1000
 waitvideo
 csp_slot s0_17
-lbg s0_1,"mnat_1a_bg"
-lbg s0_3,"mnat_1a"
+lbg "c:backgrounds",s0_1,"mnat_1a_bg"
+lbg "a:backgrounds",s0_3,"mnat_1a"
 lss s0_8,"goh","a11_odoroki1" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 lss s0_9,"kum","a11_odoroki1" ;1
 lss s0_10,"sha","a11_majime3" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 flush 23
 msgwnd_sha
 *trailer65
@@ -1266,15 +1266,15 @@ csp_slot s0_1
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-lbg s0_3,"black"
-lbg s0_17,"ep812"
+lbg "c:colour",s0_3,"black"
+lbg "a:cg_box",s0_17,"ep812"
 anim2 s0_18,"no0018a",1
 flush 1
 seplay 1,75,71
 wait 600
 lv 0,"28","82100110"
 waitvideo
-lbg s0_19,"anm_no0018a"
+lbg "a:efe",s0_19,"anm_no0018a"
 anim2 s0_20,"no0018c",1
 flush 1
 seplay 1,66,100
@@ -1286,7 +1286,7 @@ csp_slot s0_18
 csp_slot s0_19
 csp_slot s0_20
 csp_slot s0_3
-lbg s0_2,"black"
+lbg "c:colour",s0_2,"black"
 flush 1
 rain_style 2
 rain_load s0_3,1
@@ -1294,9 +1294,9 @@ rain_load s0_4,1
 rain_params s0_3,50,500,1000
 rain_params s0_4,50,500,1000
 waits 167
-lbg s0_5,"cha_i1dp"
+lbg "c:backgrounds",s0_5,"cha_i1dp"
 lss s0_10,"wil","b11_majime2" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 anim2 s0_17,"no0017h_lub_s",1
 flush 1
 seplay 3,72,71
@@ -1308,7 +1308,7 @@ waitvideo
 csp_slot s0_17
 flush 1
 lss s0_10,"wil","b11_defo1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 flush 80
 msgwnd_wil
 *trailer66
@@ -1316,7 +1316,7 @@ d [ak][lv 0*"54"*"75401125"]`"Illusions to illusions.`[|][\]
 wait 300
 csp_slot s0_10
 csp_slot s0_5
-lbg s0_2,"ep702"
+lbg "c:cg_box",s0_2,"ep702"
 flush 2
 *trailer67
 d [ak][text_speed_t 10][text_fade_t 0]`"Illusions...to illusions.`[text_speed_t 5][text_fade_t 133][@][lv 0*"54"*"75401164"]` ......The promised reaper lowers the curtains on the tale regardless of the witch's will."`[|][\]
@@ -1324,9 +1324,9 @@ textoff2
 csp_slot s0_2
 csp_slot s0_3
 csp_slot s0_4
-lbg s0_5,"black"
+lbg "c:colour",s0_5,"black"
 anim2 s0_6,"laser_g",1
-aspt2 flip,s0_6,1
+aspt2_mem "flip",s0_6,1
 flush 1
 rain_style 0
 seplay 1,74,100
@@ -1335,11 +1335,11 @@ seplay 3,75,100
 waitvideo
 csp_slot s0_6
 csp_slot s0_5
-lbg s0_3,"rose_3ap"
+lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_10,"bea","a15_1_hajirai1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 lss s0_8,"be3","b11_1_warai1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 80
 msgwnd_be3
 *trailer68
@@ -1352,7 +1352,7 @@ textoff2
 wait_on_d -1
 csp_slot s0_8
 csp_slot s0_10
-lbg s0_3,"gold3"
+lbg "c:backgrounds",s0_3,"gold3"
 flush 1
 msgwnd_non
 *trailer69
@@ -1360,10 +1360,10 @@ d [ak][text_speed_t 10][text_fade_t 0]`It was...a mountain of gold ingots.`[\]
 lv 0,"03","50901004"
 textoff2
 wait 1000
-lbg s0_1,"m1f_s1ar_bg"
-lbg s0_3,"m1f_s1ar"
+lbg "c:backgrounds",s0_1,"m1f_s1ar_bg"
+lbg "a:backgrounds",s0_3,"m1f_s1ar"
 lss s0_8,"nat","a12_naku1" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 23
 msgwnd_nat
 *trailer70
@@ -1371,7 +1371,7 @@ d [ak][text_speed_t 10][text_fade_t 0]`"......What a pitiful person......`[|][te
 textoff2
 csp_slot s0_8
 csp_slot s0_1
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 spriteset_enable 1
 aspritesetpt xpos,1,2000
 rain_load s1_11
@@ -1380,8 +1380,8 @@ rain_params s1_11,400,800,0
 rain_params s1_7,400,500,0
 dwave 25,"sound/voice/46/64500330.ogg"
 chvol 25,%dlg_vol
-lbg s1_3,"moon_1bn"
-lbg s1_17,"c_e0103_la"
+lbg "c:backgrounds",s1_3,"moon_1bn"
+lbg "a:cg/but",s1_17,"c_e0103_la"
 z_order_override2 s1_17,s1_8
 mask_set msk1,msk_1920x1080,1
 flush 1 ;flush2: 1 frames
@@ -1393,7 +1393,7 @@ d [ak]`"Come, Furudo Erikaaaaaaaaaaaaaaaaa!!!"`[!w500][\]
 textoff2
 spriteset_enable 2
 aspritesetpt xpos,2,-2000
-lbg s2_3,"erc_ra"
+lbg "c:cg/eri",s2_3,"erc_ra"
 mask_set msk2,msk_1920x1080,2
 flush 26
 aspritesetpt xpos,2,0,333
@@ -1406,11 +1406,11 @@ csp -11
 csp msk1
 csp -12
 csp msk2
-lbg s0_3,"white"
+lbg "c:colour",s0_3,"white"
 flush 2
 wait 500
 waits 167
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 anim2 s0_17,"ship2",1,1
 flush 1
 seplay 1,74,100
@@ -1430,18 +1430,18 @@ seplay 2,2,100
 seplay 3,60,100
 waitvideo
 csp_slot s0_17
-lbg s0_3,"ep808"
+lbg "c:cg_box",s0_3,"ep808"
 set_scale_center s0_3,-1000,0
 spt2 xpos,s0_3,-60
-aspt2 scalex,s0_3,180
-aspt2 scaley,s0_3,180
+aspt2_mem "scalex",s0_3,180
+aspt2_mem "scaley",s0_3,180
 flush 2
 agpt onionalpha,190
 agpt onionscale,1100
 gptwait onionalpha
 spt2 xpos,s0_3,60,333,3
-aspt2 scalex,s0_3,100,333,3
-aspt2 scaley,s0_3,100,333,3
+aspt2_mem "scalex",s0_3,100,333,3
+aspt2_mem "scaley",s0_3,100,333,3
 sptwait2 scalex,s0_3
 gptwait onionalpha
 agpt onionalpha,0
@@ -1456,40 +1456,40 @@ rumble 63,500
 gptwait quakeyamp
 wait 500
 lv 0,"51","65100158"
-lbg s0_3,"c_c0401_lwall"
-aspt2 ypos,s0_3,910
-lbg s0_27,"c_c0401_la"
-aspt2 xpos,s0_27,-1920
-aspt2 ypos,s0_27,910
+lbg "c:cg/geo",s0_3,"c_c0401_lwall"
+aspt2_mem "ypos",s0_3,910
+lbg "a:cg/geo",s0_27,"c_c0401_la"
+aspt2_mem "xpos",s0_27,-1920
+aspt2_mem "ypos",s0_27,910
 flush 10,17
-aspt2 xpos,s0_27,0,167,1
+aspt2_mem "xpos",s0_27,0,167,1
 sptwait2 xpos,s0_27
 csp_slot s0_27
 csp_slot s0_3
 lsp2 s0_3,":c;graphics\cg\cg_box\ep809_a.png",960,540
-aspt2 scalex,s0_3,300
-aspt2 scaley,s0_3,300
+aspt2_mem "scalex",s0_3,300
+aspt2_mem "scaley",s0_3,300
 flush 24
-aspt2 scalex,s0_3,100,333,2
-aspt2 scaley,s0_3,100,333,2
+aspt2_mem "scalex",s0_3,100,333,2
+aspt2_mem "scaley",s0_3,100,333,2
 sptwait2 scalex,s0_3
 wait 300
 waitvoice
 lv 0,"52","65200149"
 lsp2 s0_3,":c;graphics\cg\cg_box\ep602_a.png",960,540
-aspt2 scalex,s0_3,300
-aspt2 scaley,s0_3,300
+aspt2_mem "scalex",s0_3,300
+aspt2_mem "scaley",s0_3,300
 flush 24
-aspt2 scalex,s0_3,100,333,2
-aspt2 scaley,s0_3,100,333,2
+aspt2_mem "scalex",s0_3,100,333,2
+aspt2_mem "scaley",s0_3,100,333,2
 sptwait2 scalex,s0_3
-lbg s0_1,"m2f_p1bnz_bg"
-lbg s0_3,"m2f_p1bnz"
+lbg "c:backgrounds",s0_1,"m2f_p1bnz_bg"
+lbg "a:backgrounds",s0_3,"m2f_p1bnz"
 lss s0_8,"kir","a27_komaru1" ;1
-aspt2 xpos,s0_8,-370
-aspt2 darken_r,s0_8,156
-aspt2 darken_g,s0_8,156
-aspt2 darken_b,s0_8,160
+aspt2_mem "xpos",s0_8,-370
+aspt2_mem "darken_r",s0_8,156
+aspt2_mem "darken_g",s0_8,156
+aspt2_mem "darken_b",s0_8,160
 waitvoice
 flush 10,167
 msgwnd_kir
@@ -1507,7 +1507,7 @@ lv 0,"54","75400014"
 mov ?voice_s[1],off ;kill kir
 textoff2
 csp_slot s0_8
-lbg s0_3,"cha_i1n"
+lbg "c:backgrounds",s0_3,"cha_i1n"
 lss s0_9,"ros","a11_komaru4" ;1
 wait 2000
 flush 26
@@ -1522,7 +1522,7 @@ d_continue
 wait_on_d -1
 textoff2
 csp_slot s0_9
-lbg s0_3,"ex01"
+lbg "c:cg_box",s0_3,"ex01"
 flush 2
 msgwnd_non
 *trailer75
@@ -1530,7 +1530,7 @@ d [ak]`"Well, you know,`[|][\]
 lv 0,"54","75400015"
 wait 500
 textoff2
-lbg s0_3,"ep601_d2"
+lbg "c:cg_box",s0_3,"ep601_d2"
 flush 2
 msgwnd_eri
 *trailer76
@@ -1542,10 +1542,10 @@ mov ?voice_s[1],off ;kill eri
 d_continue
 wait_on_d -1
 textoff2
-lbg s0_3,"white"
+lbg "c:colour",s0_3,"white"
 flush 1
 waits 167
-lbg s0_3,"wsan_1aw"
+lbg "c:backgrounds",s0_3,"wsan_1aw"
 seplay 1,1006,100
 waits 167
 seplay 2,1006,100
@@ -1561,11 +1561,11 @@ msgwnd_geo
 d [ak]`"Unnggg......ggnhh......!!"`[|][\]
 textoff2
 csp_slot s0_18
-lbg s0_3,"fea_r1cp"
+lbg "c:backgrounds",s0_3,"fea_r1cp"
 lss s0_10,"enj","a11_nayamu1" ;1
-aspt2 xpos,s0_10,370
+aspt2_mem "xpos",s0_10,370
 lss s0_8,"fea","b11_defo2" ;1
-aspt2 xpos,s0_8,-370
+aspt2_mem "xpos",s0_8,-370
 flush 2
 msgwnd_non
 *trailer77
@@ -1583,9 +1583,9 @@ lv 0,"56","64900122"
 wait 1000
 textoff2
 csp_slot s0_8
-lbg s0_3,"fea_r1c"
+lbg "c:backgrounds",s0_3,"fea_r1c"
 lss s0_10,"enj","a11_majime1" ;1
-aspt2 xpos,s0_10,550
+aspt2_mem "xpos",s0_10,550
 lss s0_9,"fea","a11_defo1" ;1
 flush 80
 msgwnd_bu3
@@ -1594,7 +1594,7 @@ d [ak][text_speed_t 10][text_fade_t 0]`".........No. ......I want you to think.`
 textoff2
 csp_slot s0_9
 csp_slot s0_10
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 lsp 100,"*10"
 video "graphics/trailer/ending.mp4",0,1
 print 1

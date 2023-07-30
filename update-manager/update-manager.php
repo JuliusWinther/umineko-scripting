@@ -509,16 +509,16 @@ function main($argc, $argv)
 					$tldir = $scripting . '/story/ep' . $i . '/en/';
 				$script .= inplaceLines($scripting . '/game/main/', $scripting . '/story/ep' . $i . '/jp/', $tldir, in_array($locale, REPLACE_GRIM_WITH_LOCALIZE));
 			}
-			$script .= inplaceLines(
+			/*$script .= inplaceLines(
 				$scripting . '/game/omake/',
 				$scripting . '/story/omake/jp/',
 				$scripting . '/story/omake/' . $locale . '/'
-			);
+			);*/
 
 			/*Build also saku scripts and transcriptions  - W_CUSTOM*/
 			$script .= inplaceLines(
 				$scripting . '/game/saku/',
-				$scripting . '/story/saku/en/',
+				$scripting . '/story/saku/jp/',
 				$scripting . '/story/saku/' . $locale . '/'
 			);
 			/*End Custom*/

@@ -2,7 +2,7 @@
 *omakeeee
 textoff
 ;waits 167
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 flush 50
 textoff
 meplay 1,12,40
@@ -15,16 +15,16 @@ if $omake_return == "omake8" mov $omake_return,"" : bgmplay 8,71,0 : goto *omake
 if $omake_return == "omake9" mov $omake_return,"" : bgmplay 8,71,0 : goto *omakeeee_mhal_2ar
 seplay 1,17,71
 waits 167
-lbg s0_1,"mhal_2ar_bg"
-lbg s0_3,"mhal_2ar"
+lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
+lbg "a:backgrounds",s0_3,"mhal_2ar"
 flush 50
 wait 1000
 bgmplay 8,71,0
 
 *omakeeee_mhal_2ar
 waits 167
-lbg s0_1,"mhal_2ar_bg"
-lbg s0_3,"mhal_2ar"
+lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
+lbg "a:backgrounds",s0_3,"mhal_2ar"
 flush 24
 ;lsp 110,":a/10,80,2;graphics\system\wnd\cursor1.png",500,690
 *omakeeee_mhal_2ar_loop
@@ -48,7 +48,7 @@ textoff
 seplay 1,18,71
 csp_slot s0_1
 csp_slot s0_3
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 vol_bgm -1,3000
 vol_me 1,-1,3000
 flush 11
@@ -59,8 +59,8 @@ goto *quick_reload
 *omakeeee_mhal_2br
 *omakeeee_mhal_2ar_up
 waits 167
-lbg s0_1,"mhal_2br_bg"
-lbg s0_3,"mhal_2br"
+lbg "c:backgrounds",s0_1,"mhal_2br_bg"
+lbg "a:backgrounds",s0_3,"mhal_2br"
 flush 24
 *omakeeee_mhal_2br_loop
 btndef ":a;graphics\omake\mhal_2br_omake.png"
@@ -101,8 +101,8 @@ goto *omakeeee_mhal_2br_loop
 *omakeeee_ment_1br
 *omakeeee_mhal_2ar_right
 waits 167
-lbg s0_1,"ment_1br_bg"
-lbg s0_3,"ment_1br"
+lbg "c:backgrounds",s0_1,"ment_1br_bg"
+lbg "a:backgrounds",s0_3,"ment_1br"
 flush 24
 *omakeeee_ment_1br_loop
 btndef ":a;graphics\omake\ment_1br_omake.png"
@@ -131,18 +131,18 @@ goto *omakeeee_mhal_2ar
 
 *omakeeee_ment_1br_bunnies
 csp_slot s0_1
-lbg s0_3,"mvip_1ar"
+lbg "c:backgrounds",s0_3,"mvip_1ar"
 flush 24
 lss s0_8,"s00","a13_majime2" ;1
-aspt2 xpos,s0_8,-550
+aspt2_mem "xpos",s0_8,-550
 lss s0_10,"s41","a13_akuwarai2" ;1
-aspt2 xpos,s0_10,-240
+aspt2_mem "xpos",s0_10,-240
 lss s0_9,"s45","a13_defo2" ;1
-aspt2 xpos,s0_9,70
+aspt2_mem "xpos",s0_9,70
 flush 10,167
 wait2 3000
 lss s0_13,"s55","a11_warai1" ;1
-aspt2 xpos,s0_13,500
+aspt2_mem "xpos",s0_13,500
 flush 10,167
 wait2 3000
 msgwnd_non
@@ -200,8 +200,8 @@ goto *omakeeee_ment_1br_loop
 *omakeeee_m1f_p2br
 *omakeeee_ment_1br_down
 waits 167
-lbg s0_1,"m1f_p2br_bg"
-lbg s0_3,"m1f_p2br"
+lbg "c:backgrounds",s0_1,"m1f_p2br_bg"
+lbg "a:backgrounds",s0_3,"m1f_p2br"
 flush 24
 *omakeeee_m1f_p2br_loop
 btndef ":a;graphics\omake\m1f_p2br_omake.png"
@@ -327,8 +327,8 @@ goto *omakeeee_m1f_p2br
 *omakeeee_m1f_p1br
 *omakeeee_m1f_p2br_down
 waits 167
-lbg s0_1,"m1f_p1br_bg"
-lbg s0_3,"m1f_p1br"
+lbg "c:backgrounds",s0_1,"m1f_p1br_bg"
+lbg "a:backgrounds",s0_3,"m1f_p1br"
 flush 24
 *omakeeee_m1f_p1br_loop
 btndef ":a;graphics\omake\m1f_p1br_omake.png"
@@ -419,18 +419,12 @@ goto *omakeeee_mhal_1ar
 ;goto *omakeeee_mhal_1ar
 *omakeeee_mhal_2cr_portrait
 waits 167
-if %omake_portrait=1 lbg s0_16,"portrait1"
-if %omake_portrait=2 lbg s0_16,"portrait3"
-if %omake_portrait=3 lbg s0_16,"portrait4"
-flush 2
+lbg "c:backgrounds",%omake_portrait=1lbg "c:backgrounds",%omake_portrait=2lbg "c:backgrounds",%omake_portrait=3flush 2
 if %omake_portrait=1 aspt2 ypos,s0_16,1200,6667,1
 goto *omakeeee_omakeeee_hibun_loop
 *omakeeee_mhal_2cr_portrait2
 waits 167
-if %omake_portrait=1 lbg s0_3,"mhal_2cr"
-if %omake_portrait=2 lbg s0_3,"mhal_2cr2"
-if %omake_portrait=3 lbg s0_3,"mhal_2cr3"
-flush 24
+lbg "c:backgrounds",%omake_portrait=1lbg "c:backgrounds",%omake_portrait=2lbg "c:backgrounds",%omake_portrait=3flush 24
 goto *omakeeee_mhal_2cr_loop
 
 *omakeeee_hibun
@@ -441,11 +435,11 @@ waits 167
 lsp2 s0_16,hibun,130,744,1,1
 seplay 1,1010,100
 flush 1
-aspt2 rot,s0_16,-360,400
-aspt2 scalex,s0_16,180,400
-aspt2 scaley,s0_16,180,400
-aspt2 xpos,s0_16,960,350
-aspt2 ypos,s0_16,540,350
+aspt2_mem "rot",s0_16,-360,400
+aspt2_mem "scalex",s0_16,180,400
+aspt2_mem "scaley",s0_16,180,400
+aspt2_mem "xpos",s0_16,960,350
+aspt2_mem "ypos",s0_16,540,350
 sptwait2 scaley,s0_16
 *omakeeee_omakeeee_hibun_loop
 btndef ""
@@ -463,8 +457,8 @@ goto *omakeeee_mhal_2cr_loop
 *omakeeee_m1f_p1br_down
 *omakeeee_mhal_2ar_left
 waits 167
-lbg s0_1,"mhal_1ar_bg"
-lbg s0_3,"mhal_1ar"
+lbg "c:backgrounds",s0_1,"mhal_1ar_bg"
+lbg "a:backgrounds",s0_3,"mhal_1ar"
 flush 24
 *omakeeee_mhal_1ar_loop
 btndef ":a;graphics\omake\mhal_1ar_omake.png"
@@ -487,14 +481,14 @@ goto *omakeeee_mhal_2ar
 *omakeeee_second_floor
 textoff
 btndef ""
-lbg s0_3,"black"
+lbg "c:colour",s0_3,"black"
 flush 23
 wait 1000
-lbg s0_1,"m2f_p1cr_bg"
-lbg s0_3,"m2f_p1cr"
+lbg "c:backgrounds",s0_1,"m2f_p1cr_bg"
+lbg "a:backgrounds",s0_3,"m2f_p1cr"
 flush 24
 wait 1500
-lbg s0_3,"white"
+lbg "c:colour",s0_3,"white"
 flush 22
 textoff
 goto *o9_0

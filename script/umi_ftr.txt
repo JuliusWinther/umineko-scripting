@@ -1327,7 +1327,7 @@ numalias r_used_lsp,%0			  ;Cleaner (last lsp from 100 to r_used_lsp)
 numalias r,61
 numalias r_cha_text,63
 dim ?r_cha_text[8][50][5]
-dim ?r[8][50][15] ;From if %CHIRU_MODE == 0 dim ?r[30][15] - W_CUSTOM
+dim ?r[8][50][15] ;Original Edited - From if %CHIRU_MODE == 0 dim ?r[30][15] - W_CUSTOM
 ;if %CHIRU_MODE == 1 dim ?r[8][50][15]
 ;Character state elements
 mov %1,6 					 			;Variables for states (1 ~ 5)
@@ -14767,7 +14767,7 @@ mono 0
 ;reset characters
 if %CHIRU_MODE != 0 jumpf
 	for %tmp = 1 to char_max
-		mov ?r[%scenario_Number][%tmp][condition],0 ;[%scenario_Number] added - W_CUSTOM
+		mov ?r[%scenario_Number][%tmp][condition],0 ;Original Edited - [%scenario_Number] added - W_CUSTOM
 	next
 ~
 
@@ -14878,7 +14878,7 @@ if %UMINEKOEND >= 90 meplay 1,2,100 : mov $tmp10,":c;graphics\menu\title\chiru\t
 ~
 ;end
 
-;Saku menu background - W_CUSTOM
+;Saku menu - background - W_CUSTOM
 if %CHIRU_MODE != 2 jumpf
 meplay 1,2,100 : mov $tmp10,":c;backgrounds\glib_1a.png"
 ;meplay 1,2,100 : mov $tmp10,":c;backgrounds\fea_l4.png"
@@ -14900,7 +14900,7 @@ lsph t_logo_lsp,t_logo_rondo,860,45
 if %CHIRU_MODE != 1 jumpf
 lsph t_logo_lsp,t_logo_chiru,860,45
 ~
-if %CHIRU_MODE != 2 jumpf ;Saku menu - W_CUSTOM
+if %CHIRU_MODE != 2 jumpf ;Saku menu - logo - W_CUSTOM
 lsph t_logo_lsp,t_logo_saku,855,45
 ~
 ;----------------------
@@ -14918,7 +14918,7 @@ lsph t_logo_lsp,t_logo_saku,855,45
 if %CHIRU_MODE != 0 jumpf
 	;Main Menu
 
-	;Changed different values and conditions - W_CUSTOM
+	;Original Edited - Changed different values and conditions - W_CUSTOM
 	lsph t_btn_start_lsp,t_btn_start,1325,424 ;extra -30(450) to correspond to ps3 ;10
 	lsph t_btn_web_lsp,t_btn_web,1325,488 ;9
 	if %UMINEKOEND = 0 lsph t_btn_exit_lsp,t_btn_exit,1325,616
@@ -14928,7 +14928,7 @@ if %CHIRU_MODE != 0 jumpf
 	if %UMINEKOEND >= 20 && %UMINEKOEND < 50 lsph t_btn_exit_lsp,t_btn_exit5,1325,1000
 	if %UMINEKOEND >= 40 lsph t_btn_exit_lsp,t_btn_exit5,1325,1000 ;from the bottom, 1
 
-	if %UMINEKOEND > 11 lsph t_btn_tea_lsp,t_btn_tea,1325,552 ;8 ;Before was '>=' (disable button before tea 1 end) - W_CUSTOM
+	if %UMINEKOEND > 11 lsph t_btn_tea_lsp,t_btn_tea,1325,552 ;8 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
 	if %UMINEKOEND > 12 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,616 ;7
 	if %UMINEKOEND >= 20 lsph t_btn_tips_lsp,t_btn_tips,1325,744 ;5
 	if %UMINEKOEND > 12 lsph t_btn_music_lsp,t_btn_music,1325,936 ;pos: 2 ;Appears after ??? 1
@@ -14948,7 +14948,7 @@ if %CHIRU_MODE != 0 jumpf
 	if %UMINEKOEND = 12 lsph t_cg_lsp,t_cg3,1325,680 ;744
 
 
-	;if %UMINEKOEND_FLG = 11 lsph t_btn_tea_lsp,t_btn_tea_new,1325,552 ;Commented (disable button before tea 1 end) - W_CUSTOM
+	;if %UMINEKOEND_FLG = 11 lsph t_btn_tea_lsp,t_btn_tea_new,1325,552 ;Original Edited - Commented (disable button before tea 1 end) - W_CUSTOM
 	if %UMINEKOEND_FLG > 12 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,616 ;From = to > and removed new label
 	if %UMINEKOEND_TIPS_FLG = 1 lsph t_btn_tips_lsp,t_btn_tips_new,1325,736
 	if %UMINEKOEND_TIPS_CHA_FLG = 1 lsph t_chars_lsp,t_chars_new,1325,680
@@ -15008,21 +15008,21 @@ if %CHIRU_MODE != 1 jumpf
 	lsph t_btn_start_lsp,t_btn_start,1325,424 ;extra -30(450) to correspond to ps3 ;10
 	lsph t_btn_web_lsp,t_btn_web,1325,488 ;9
 	
-	;Visualizing 'Boxes' from the start in chiru - W_CUSTOM
+	;Original Edited - Visualizing 'Boxes' from the start in chiru - W_CUSTOM
 	if %UMINEKOEND < 50 lsph t_cg_lsp,t_cg1,1325,616
 	if %UMINEKOEND < 50 lsph t_btn_music_lsp,t_btn_music1,1325,680
 	;End Custom
 
-	;Changed different values and conditions - W_CUSTOM
+	;Original Edited - Changed different values and conditions - W_CUSTOM
 	if %UMINEKOEND = 50 lsph t_config_lsp,t_config_newgame,1325,552 ;4
 	if %UMINEKOEND = 50 lsph t_cg_lsp,t_cg1,1325,616
 	if %UMINEKOEND = 50 lsph t_btn_music_lsp,t_btn_music1,1325,680
 	if %UMINEKOEND = 50 lsph t_btn_exit_lsp,t_btn_exit1,1325,744
 
 	if %UMINEKOEND = 51 lsph t_btn_exit_lsp,t_btn_exit2,1325,808 ;744
-	if %UMINEKOEND > 51 lsph t_btn_tea_lsp,t_btn_tea,1325,552 ;8 Before was '>=' (disable button before tea 1 end) - W_CUSTOM
+	if %UMINEKOEND > 51 lsph t_btn_tea_lsp,t_btn_tea,1325,552 ;8 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
 	;if %UMINEKOEND = 51 lsph t_btn_music_lsp,t_btn_music2,1325,744
-	if %UMINEKOEND > 51 lsph t_cg_lsp,t_cg,1325,872 ;3 Before was '>=' (disable button before tea 1 end) - W_CUSTOM
+	if %UMINEKOEND > 51 lsph t_cg_lsp,t_cg,1325,872 ;3 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
 	if %UMINEKOEND = 51 lsph t_config_lsp,t_config2,1325,616 ;4
 	;if %UMINEKOEND = 51 lsph t_cg_lsp,t_cg2,1325,680
 	
@@ -15264,7 +15264,7 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 	if %BtnRes = -5 && $flag_scenario_1_op == "●" goto *show_opening
 	goto *b_title_button_loop
 
-;Switch Game - W_CUSTOM
+;Original Edited - Switch Game - W_CUSTOM
 ;*switch_game ;Played the laughing sound during transition, non needed anymore
 	;chvol 0,%dlg_vol
 	;dwave 0,"sound\voice\27\50700008.ogg" 
@@ -15348,7 +15348,7 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 		if %CHIRU_MODE = 1 lsph t_txt_ep8_lsp,t_txt_ep8,100,470
 
 		;TODO saku button description texts
-		;saku menu descriptions - W_CUSTOM
+		;Saku menu - button descriptions - W_CUSTOM
 		if %CHIRU_MODE = 2 lsph t_txt_ep1_lsp,t_txt_ep1,100,470
 		if %CHIRU_MODE = 2 lsph t_txt_ep2_lsp,t_txt_ep2,100,470
 		if %CHIRU_MODE = 2 lsph t_txt_ep3_lsp,t_txt_ep3,100,470
@@ -15478,7 +15478,7 @@ return
 		lsp t_btn_ep5_8_unlock_lsp,t_btn_ep_unlock,1430,728
 		lsp t_btn_load_lsp,t_btn_load,1562,788	
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 11 || %UMINEKOEND = 11 lsp t_btn_ep1_tea_lsp,t_btn_tea_new_temp,1562,488
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 12 || %UMINEKOEND = 12 lsp t_btn_ep1_ura_tea_lsp,t_btn_ura_tea_new_temp,1562,488
@@ -15502,7 +15502,7 @@ return
 		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P79"
 		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 11 || %UMINEKOEND = 11 exbtn t_btn_ep1_tea_lsp,t_btn_ep1_tea_lsp,"P86"
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 12 || %UMINEKOEND = 12 exbtn t_btn_ep1_ura_tea_lsp,t_btn_ep1_ura_tea_lsp,"P81"
@@ -15510,7 +15510,7 @@ return
 
 		btnwait2 %BtnRes
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %BtnRes = t_btn_ep1_tea_lsp btndef "" : mov %scenario_Number,1 : csp_rst : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *teatime_1
 		;??? Temp Buttons
 		if %BtnRes = t_btn_ep1_ura_tea_lsp btndef "" : mov %scenario_Number,1 : csp_rst : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *ura_teatime_1
@@ -15744,7 +15744,7 @@ return
 		lsp t_btn_ep5_8_unlock_lsp,t_btn_ep_unlock,1430,728
 		lsp t_btn_load_lsp,t_btn_load,1562,788		
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 21 || %UMINEKOEND = 21 lsp t_btn_ep2_tea_lsp,t_btn_tea_new_temp,1562,548
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 22 || %UMINEKOEND = 22 lsp t_btn_ep2_ura_tea_lsp,t_btn_ura_tea_new_temp,1562,548
@@ -15767,7 +15767,7 @@ return
 		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P79"
 		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 21 || %UMINEKOEND = 21 exbtn t_btn_ep2_tea_lsp,t_btn_ep2_tea_lsp,"P86"
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 22 || %UMINEKOEND = 22 exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,"P81"
@@ -15775,7 +15775,7 @@ return
 
 		btnwait2 %BtnRes
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %BtnRes = t_btn_ep2_tea_lsp btndef "" : mov %scenario_Number,2 : csp_rst  : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *teatime_2
 		;??? Temp Buttons
 		if %BtnRes = t_btn_ep2_ura_tea_lsp btndef "" : mov %scenario_Number,2 : csp_rst : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *ura_teatime_2
@@ -15957,7 +15957,7 @@ return
 		lsp t_btn_ep5_8_unlock_lsp,t_btn_ep_unlock,1430,728
 		lsp t_btn_load_lsp,t_btn_load,1562,788
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 31 || %UMINEKOEND = 31 lsp t_btn_ep3_tea_lsp,t_btn_tea_new_temp,1562,608
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 32 || %UMINEKOEND = 32 lsp t_btn_ep3_ura_tea_lsp,t_btn_ura_tea_new_temp,1562,608
@@ -15979,7 +15979,7 @@ return
 		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P79"
 		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 31 || %UMINEKOEND = 31 exbtn t_btn_ep3_tea_lsp,t_btn_ep3_tea_lsp,"P86"
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 32 || %UMINEKOEND = 32 exbtn t_btn_ep3_ura_tea_lsp,t_btn_ep3_ura_tea_lsp,"P81"
@@ -15987,7 +15987,7 @@ return
 
 		btnwait2 %BtnRes
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %BtnRes = t_btn_ep3_tea_lsp btndef "" : mov %scenario_Number,3 : csp_rst  : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *teatime_3
 		;??? Temp Buttons
 		if %BtnRes = t_btn_ep3_ura_tea_lsp btndef "" : mov %scenario_Number,3 : csp_rst : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *ura_teatime_3
@@ -16118,7 +16118,7 @@ return
 		lsp t_btn_ep5_8_unlock_lsp,t_btn_ep_unlock,1430,728
 		lsp t_btn_load_lsp,t_btn_load,1562,788
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 41 || %UMINEKOEND = 41 lsp t_btn_ep4_tea_lsp,t_btn_tea_new_temp,1562,668
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 42 || %UMINEKOEND = 42 lsp t_btn_ep4_ura_tea_lsp,t_btn_ura_tea_new_temp,1562,668
@@ -16139,7 +16139,7 @@ return
 		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P79"
 		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 41 || %UMINEKOEND = 41 exbtn t_btn_ep4_tea_lsp,t_btn_ep4_tea_lsp,"P86"
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 42 || %UMINEKOEND = 42 exbtn t_btn_ep4_ura_tea_lsp,t_btn_ep4_ura_tea_lsp,"P81"
@@ -16147,7 +16147,7 @@ return
 
 		btnwait2 %BtnRes
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %BtnRes = t_btn_ep4_tea_lsp btndef "" : mov %scenario_Number,4 : csp_rst  : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *teatime_4
 		;??? Temp Buttons
 		if %BtnRes = t_btn_ep4_ura_tea_lsp btndef "" : mov %scenario_Number,4 : csp_rst : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *ura_teatime_4
@@ -16273,7 +16273,7 @@ return
 		lsp t_btn_ep5_8_lsp,t_btn_ep1_4,1562,728
 		lsp t_btn_load_lsp,t_btn_load,1562,788	
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 51 || %UMINEKOEND = 51 lsp t_btn_ep1_tea_lsp,t_btn_tea_new_temp,1562,488
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 52 || %UMINEKOEND = 52 lsp t_btn_ep1_ura_tea_lsp,t_btn_ura_tea_new_temp,1562,488
@@ -16296,7 +16296,7 @@ return
 		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P73"
 		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 51 || %UMINEKOEND = 51 exbtn t_btn_ep1_tea_lsp,t_btn_ep1_tea_lsp,"P86"
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 52 || %UMINEKOEND = 52 exbtn t_btn_ep1_ura_tea_lsp,t_btn_ep1_ura_tea_lsp,"P81"
@@ -16304,7 +16304,7 @@ return
 
 		btnwait2 %BtnRes
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %BtnRes = t_btn_ep1_tea_lsp btndef "" : mov %scenario_Number,5 : csp_rst  : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *teatime_5
 		;??? Temp Buttons
 		if %BtnRes = t_btn_ep1_ura_tea_lsp btndef "" : mov %scenario_Number,5 : csp_rst : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *ura_teatime_5
@@ -16489,7 +16489,7 @@ return
 		lsp t_btn_ep5_8_lsp,t_btn_ep1_4,1562,728
 		lsp t_btn_load_lsp,t_btn_load,1562,788
 				
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 61 || %UMINEKOEND = 61 lsp t_btn_ep2_tea_lsp,t_btn_tea_new_temp,1562,548
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 62 || %UMINEKOEND = 62 lsp t_btn_ep2_ura_tea_lsp,t_btn_ura_tea_new_temp,1562,548
@@ -16511,7 +16511,7 @@ return
 		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P73"
 		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 61 || %UMINEKOEND = 61 exbtn t_btn_ep2_tea_lsp,t_btn_ep2_tea_lsp,"P86"
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 62 || %UMINEKOEND = 62 exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,"P81"
@@ -16519,7 +16519,7 @@ return
 
 		btnwait2 %BtnRes
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %BtnRes = t_btn_ep2_tea_lsp btndef "" : mov %scenario_Number,6 : csp_rst  : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *teatime_6
 		;??? Temp Buttons
 		if %BtnRes = t_btn_ep2_ura_tea_lsp btndef "" : mov %scenario_Number,6 : csp_rst : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *ura_teatime_6
@@ -16652,7 +16652,7 @@ return
 		lsp t_btn_ep5_8_lsp,t_btn_ep1_4,1562,728
 		lsp t_btn_load_lsp,t_btn_load,1562,788	
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 71 || %UMINEKOEND = 71 lsp t_btn_ep3_tea_lsp,t_btn_tea_new_temp,1562,608
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 72 || %UMINEKOEND = 72 lsp t_btn_ep3_ura_tea_lsp,t_btn_ura_tea_new_temp,1562,608
@@ -16673,7 +16673,7 @@ return
 		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P73"
 		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 71 || %UMINEKOEND = 71 exbtn t_btn_ep3_tea_lsp,t_btn_ep3_tea_lsp,"P86"
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 72 || %UMINEKOEND = 72 exbtn t_btn_ep3_ura_tea_lsp,t_btn_ep3_ura_tea_lsp,"P81"
@@ -16681,7 +16681,7 @@ return
 
 		btnwait2 %BtnRes
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %BtnRes = t_btn_ep3_tea_lsp btndef "" : mov %scenario_Number,7 : csp_rst  : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *teatime_7
 		;??? Temp Buttons
 		if %BtnRes = t_btn_ep3_ura_tea_lsp btndef "" : mov %scenario_Number,7 : csp_rst : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *ura_teatime_7
@@ -16763,7 +16763,7 @@ return
 		lsp t_btn_ep5_8_lsp,t_btn_ep1_4,1562,728
 		lsp t_btn_load_lsp,t_btn_load,1562,788	
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 81 || %UMINEKOEND = 81 lsp t_btn_ep4_tea_lsp,t_btn_tea_new_temp,1562,668
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 82 || %UMINEKOEND = 82 lsp t_btn_ep4_ura_tea_lsp,t_btn_ura_tea_new_temp,1562,668
@@ -16783,7 +16783,7 @@ return
 		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P73"
 		exbtn t_btn_load_lsp,t_btn_load_lsp,"P88"
 
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 81 || %UMINEKOEND = 81 exbtn t_btn_ep4_tea_lsp,t_btn_ep4_tea_lsp,"P86"
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 82 || %UMINEKOEND = 82 exbtn t_btn_ep4_ura_tea_lsp,t_btn_ep4_ura_tea_lsp,"P81"
@@ -16791,7 +16791,7 @@ return
 
 		btnwait2 %BtnRes
 		
-		;Tea Party Temp Buttons - W_CUSTOM
+		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %BtnRes = t_btn_ep4_tea_lsp btndef "" : mov %scenario_Number,8 : csp_rst  : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *teatime_8
 		;??? Temp Buttons
 		if %BtnRes = t_btn_ep4_ura_tea_lsp btndef "" : mov %scenario_Number,8 : csp_rst : seplay 9,17,100 : bg white,10 : delay 2000 : set_name_window_non : goto *ura_teatime_8
@@ -16809,7 +16809,7 @@ return
 		goto *start_sub_menu_btn_800_loop
 	*start_sub_menu_btn_800
 ;------------------------------
-;Saku sub menu (Tsubasa) - W_CUSTOM
+;Saku menu - sub menu (Tsubasa) button loop - W_CUSTOM
 
 *start_sub_menu_extra1_1
 	notif %UMINEKOEND_EXTRA < 20 goto *start_sub_menu_btn_extra1_1
@@ -17047,7 +17047,7 @@ return
 
 	*tea_sub_menu_100
 
-	;Removed the '>=' and the NEW labels - W_CUSTOM
+	;Original Edited - Removed the '>=' and the NEW labels - W_CUSTOM
 	;Adjust the layer you want to display by a clear state
 	if %UMINEKOEND > 11 lsp t_btn_ep1_tea_lsp,t_btn_ep1,1562,488
 	if %UMINEKOEND > 21 lsp t_btn_ep2_tea_lsp,t_btn_ep2,1562,548
@@ -17111,7 +17111,7 @@ goto *tea_sub_menu_btn_100_loop
 
 	*tea_sub_menu_100_chiru
 
-	;Removed the '>=' and the NEW labels - W_CUSTOM
+	;Original Edited - Removed the '>=' and the NEW labels - W_CUSTOM
 	if %UMINEKOEND > 51 lsp t_btn_ep1_tea_lsp,t_btn_ep5,1562,488
 	if %UMINEKOEND > 61 lsp t_btn_ep2_tea_lsp,t_btn_ep6,1562,548
 	if %UMINEKOEND > 71 lsp t_btn_ep3_tea_lsp,t_btn_ep7,1562,608
@@ -17186,7 +17186,7 @@ goto *tea_sub_menu_btn_100_loop_chiru
 
 	*ura_tea_sub_menu_100
 
-	;Removed the '>=' and the NEW labels - W_CUSTOM
+	;Original Edited - Removed the '>=' and the NEW labels - W_CUSTOM
 	;Adjust the layer you want to display by a clear state
 	if %UMINEKOEND > 12 lsp t_btn_ep1_ura_tea_lsp,t_btn_ep1,1562,488
 	if %UMINEKOEND > 22 lsp t_btn_ep2_ura_tea_lsp,t_btn_ep2,1562,548
@@ -17257,7 +17257,7 @@ goto *ura_tea_sub_menu_btn_100_loop
 
 	*ura_tea_sub_menu_100_chiru
 
-	;Removed the '>=' and the NEW labels - W_CUSTOM
+	;Original Edited - Removed the '>=' and the NEW labels - W_CUSTOM
 	;Adjust the layer you want to display by a clear state
 	if %UMINEKOEND > 52 lsp t_btn_ep1_ura_tea_lsp,t_btn_ep5,1562,488
 	if %UMINEKOEND > 62 lsp t_btn_ep2_ura_tea_lsp,t_btn_ep6,1562,548
@@ -17663,7 +17663,7 @@ return
 
 ;><><><><><><><><><><><><><><><><><><><>
 
-;Custom start for saku stories - W_CUSTOM
+;Saku - Custom start for saku stories - W_CUSTOM
 
 *umiextra_start
 csp_rst
@@ -18959,7 +18959,7 @@ return
 	mov %scenario_Number,8
 return
 
-;Saku scenario flags - W_CUSTOM
+;Saku - scenario flags - W_CUSTOM
 *umiextra1_1_flags
 *umiextra1_2_flags
 *umiextra1_3_flags
@@ -19982,7 +19982,7 @@ return
 ;Actual remove slot fn
 *csp_slot
 	getparam %cspParam
-	;Clear sprites cache - W_CUSTOM
+	;Original Edited - ;Sprite Cache - Clear sprites cache - W_CUSTOM
 	;Using for_index3 instead of 1 or 2 beacause of conflicts when the functon is called by *reload_slots (infinite loop caused by editing the for_index)
 	if %reloading_status == 1 jumpf
 		for %for_index3 = 0 to 26
@@ -22995,12 +22995,12 @@ return
 getparam %lss_slot,$lss_sec,$lss_key
 csp_slot %lss_slot
 
-;Variable Sprites Folder - W_CUSTOM
+;Original Edited - ;Dynamic Sprites - Variable Sprites Folder - W_CUSTOM
 lsp2 %lss_slot,":a;" +  $sprite_folder_name + "\" + $lss_sec + "\1\" + $lss_sec + "_" + $lss_key + ".png",0,0,100,100,0
 lips_sprite %lss_slot-1
 ;End Custom
 
-;Saving to slot cache - W_CUSTOM
+;Sprite Cache - Saving to slot cache - W_CUSTOM
 mov $?slot_cache[%lss_slot-750][0],$lss_sec + "|" + $lss_key
 ;End Custom
 
@@ -23009,7 +23009,7 @@ loadfromreg $lss_lips_x,$lss_sec,$lss_key + "_left" ;Variable,Category,Key - Rea
 loadfromreg $lss_lips_y,$lss_sec,$lss_key + "_top"
 set_hotspot %lss_slot,$lss_lips_x,$lss_lips_y		;
 
-;Variable Sprites Folder - W_CUSTOM
+;Original Edited - ;Dynamic Sprites - Variable Sprites Folder - W_CUSTOM
 fileexist %lss_lips,"" + $sprite_folder_name + "\" + $lss_sec + "\2\" + $lss_sec + "_" + $lss_key + ".png"
 
 if %lss_lips == 0 jumpf
@@ -23017,7 +23017,7 @@ if %lss_lips == 0 jumpf
 	atoi %lss_lips_x,$lss_temp
 	loadfromreg $lss_temp,$lss_sec,$lss_key + "_y"
 	atoi %lss_lips_y,$lss_temp
-	;Variable Sprites Folder - W_CUSTOM
+	;Original Edited - ;Dynamic Sprites - Variable Sprites Folder - W_CUSTOM
 	lsp2 %lss_slot-1,":a/4,0,3;" + $sprite_folder_name + "\" + $lss_sec + "\2\" + $lss_sec + "_" + $lss_key + ".png",%lss_lips_x,%lss_lips_y,100,100,0
 	if $lss_sec == "en2" mov $lss_sec,"enj"
 	if $lss_sec == "ka2" mov $lss_sec,"kan"
@@ -23029,7 +23029,7 @@ if %lss_lips == 0 jumpf
 if %enable_cache == 0 || %no_cache_atm == 1 return
 
 lookahead exsp,2,$lss_sec,$lss_key,$lss_temp,$lss_slot
-;Variable Sprites Folder - W_CUSTOM
+;Original Edited - ;Dynamic Sprites - Variable Sprites Folder - W_CUSTOM
 if $lss_sec != "" async_cache_img 2,"" + $sprite_folder_name + "\" + $lss_sec + "\1\" + $lss_sec + "_" + $lss_key + ".png"
 if $lss_temp != "" async_cache_img 2,"" + $sprite_folder_name + "\" + $lss_temp + "\1\" + $lss_temp + "_" + $lss_slot + ".png"
 
@@ -23038,7 +23038,7 @@ return
 
 
 ;****************************************************************************************************
-; aspt2_mem executes aspt2 while storing its values - used for sprite reloads - W_CUSTOM
+; ;Sprite Cache - aspt2_mem executes aspt2 while storing its values - used for sprite reloads - W_CUSTOM
 ;****************************************************************************************************
 
 *aspt2_mem
@@ -23093,7 +23093,7 @@ return
 ; lbg loads a new background
 ;**************************************************
 
-;Alternative bg command that generates the path dynamically - W_CUSTOM
+;Dynamic BGs - ;Sprite Cache - Alternative bg command that generates the path dynamically - W_CUSTOM
 ;Needed because of the changes to the background loading system (now without straliase)
 *bg_d
 *bg_dynamic
@@ -23121,6 +23121,7 @@ return
 
 ;End Custom
 
+;Original Edited - ;Dynamic BGs - ;Sprite Cache - 
 ;Substituted constant file paths with a dynamic path generator + saving to slot cache - W_CUSTOM
 *lbg
 *load_background
@@ -23441,7 +23442,7 @@ return
 
 *open_cg
 
-;Unified - W_CUSTOM
+;Original Edited - Unified basic and chiru - W_CUSTOM
 ;if %CHIRU_MODE = 1 jumpf
 if $lbg_name == "c0101_c" mov %8600,1 : return
 if $lbg_name == "c0201_f" mov %8601,1 : return
@@ -23591,7 +23592,7 @@ return
 
 *load_cg
 
-;if %CHIRU_MODE = 1 jumpf ; Commented - W_CUSTOM
+;Original Edited - if %CHIRU_MODE = 1 jumpf ; Commented - W_CUSTOM
 
 ;Pg1
 if $lbg_name == "c0101_c" mov ?cg_list[0][0],1 : return ;Story
@@ -26266,7 +26267,7 @@ return
 	tree_set 3,"99","non"
 	tree_set 3,"00","non"
 
-	;New Sprites - W_CUSTOM
+	;Saku sprites - New Sprites - W_CUSTOM
 	tree_set 3,"61","pie"
 	tree_set 3,"62","saku"
 	;End Custom
@@ -27136,7 +27137,7 @@ if $cur_character = "dla" mov $tmp5,name_dla  : jumpf
 if $cur_character = "ger" mov $tmp5,name_ger  : jumpf
 if $cur_character = "cor" mov $tmp5,name_cor  : jumpf
 
-;New Sprites - W_CUSTOM
+;Saku sprites - New Sprites - W_CUSTOM
 if $cur_character = "pie" mov $tmp5,name_pie  : jumpf
 if $cur_character = "saku" mov $tmp5,name_saku  : jumpf
 ;End Custom
@@ -27834,7 +27835,7 @@ return
 	if %scenario_Number == 2 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_2","*teatime_2","*umi2_18","*umi2_17","*umi2_16","*umi2_15","*umi2_14","*umi2_13","*umi2_12","*umi2_11","*umi2_10","*umi2_9","*umi2_8","*umi2_7","*umi2_6","*umi2_5","*umi2_4","*umi2_3","*umi2_2","*umi2_1","*umi2_op"
 	if %scenario_Number == 1 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_1","*teatime_1","*umi1_17","*umi1_16","*umi1_15","*umi1_14","*umi1_13","*umi1_12","*umi1_11","*umi1_10","*umi1_9","*umi1_8","*umi1_7","*umi1_6","*umi1_5","*umi1_4","*umi1_3","*umi1_2","*umi1_1","*umi1_op"
 
-	;Saku log_ch_current - W_CUSTOM
+	;Saku logs - log_ch_current - W_CUSTOM
 	if %extra_scenario_Number == 1 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_1"
 	if %extra_scenario_Number == 2 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_2"
 	if %extra_scenario_Number == 3 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_3"
@@ -27976,6 +27977,8 @@ lsp 313,":a;graphics\menu\logview\sel.png",1832,255
 lsp backlogupbtn,":a/2,0,3;graphics\system\wnd\uoncur.png",1827,210
 lsp backlogdownbtn,":a/2,0,3;graphics\system\wnd\uoffcur.png",1827,839
 lsph 314,":a;graphics\menu\logview\sep.png",0,0
+
+;getmousepos %mouse_pos_x,%mouse_pos_y
 
 scrollable 320,1,0,0,1785,1080 ;900 causes a line bug, explore it
 scrollable_cfg firstmargin,320,150
@@ -28221,7 +28224,7 @@ return
 	lsp 315,set_song_subtitles,135+3840,748
 	;lsp 316,set_alchemist_wording_edits,135+3840,835
 
-	;page 4 Config Texts - W_CUSTOM
+	;Config - page 4 Config Texts - W_CUSTOM
 	lsp 371,config_sprite_selector_text,135+5760,350 
 	lsp 312,set_textbox_window,135+5760,515
 	lsp 378,set_textbox_window,135+5760,748
@@ -28263,7 +28266,7 @@ return
 		gosub *settings_bgm_chapter_display ;6
 		gosub *settings_automode_speed ;3
 
-		;page 4 - W_CUSTOM
+		;Config - page 4 - W_CUSTOM
 		mov %mcoord_add,5760 ;additional coordinates for buttons
 		gosub *settings_sprite_type ;3
 		gosub *settings_textbox ;4
@@ -28507,7 +28510,7 @@ return
 	spbtn 200,170
 	;End
 
-	;Set custom buttons up - W_CUSTOM
+	;Config - Set custom buttons up - W_CUSTOM
 	;Sprite Selector
 	spbtn 372,171
 	spbtn 374,172
@@ -28599,7 +28602,7 @@ return
 	if %BtnRes = 50 mov %msgwnd_type,3 : gosub *settings_textbox
 	;End
 
-	;Sprite Selector Button Effect - W_CUSTOM
+	;Config - Sprite Selector Button Effect - W_CUSTOM
 	if %BtnRes = 171 mov $sprite_folder_name,"sprites2" : gosub *settings_sprite_type : gosub *reload_slots
 	if %BtnRes = 172 mov $sprite_folder_name,"sprites3" : gosub *settings_sprite_type : gosub *reload_slots
 	if %BtnRes = 173 mov $sprite_folder_name,"sprites" : gosub *settings_sprite_type : gosub *reload_slots
@@ -28808,7 +28811,7 @@ return
 	
 *settings_move
 
-;Edited Values - W_CUSTOM
+;Original Edited - ;Config - Edited Values - W_CUSTOM
 if %mcurrent_page!=1 jumpf ;page (1)
 	aspt2 xpos,config_main_lsp2,3840,1000,3 ;This line always indicates the virtual center of the image
 if %mmove_right!=1 jumpf ;From page (2)
@@ -28850,7 +28853,7 @@ if %mmove_right!=2 || %mcurrent_page==4 jumpf ;From page (3)
 ~
 ;End Custom
 
-;Add new option page - W_CUSTOM
+;Config - Add new option page - W_CUSTOM
 if %mcurrent_page!=3 jumpf ;page (3)
 	aspt2 xpos,config_main_lsp2,0,1000,3
 if %mmove_right!=1 jumpf ;From page (2)
@@ -28869,7 +28872,7 @@ if %mmove_right!=3 jumpf ;From page (4)
 ~
 ;End Custom
 
-;Edited - W_CUSTOM
+;Original Edited - ;Config - Edited - W_CUSTOM
 if %mcurrent_page!=4 jumpf ;page (4)
 	aspt2 xpos,config_main_lsp2,-1920,1000,3
 if %mmove_right!=2 jumpf ;From page (3)
@@ -29762,7 +29765,7 @@ return
 	;End
 return
 
-;Config: Choose Sprite Type - W_CUSTOM
+;Config - Choose Sprite Type - W_CUSTOM
 *settings_sprite_type
 	notif $sprite_folder_name = "sprites2" lsp 372,":s;#C7C7C7#FFFFFF`{p:9:Old}",1065+%mcoord_add,350 
 	if $sprite_folder_name = "sprites2" lsp 372,":s;#FFFFFF`{p:9:Old}",1065+%mcoord_add,350 
@@ -30023,7 +30026,7 @@ return
 
 *cg_loop2 ;Возврат в Picture Box
 
-	;Unified Pages - W_CUSTOM
+	;Original Edited - Unified Pages - W_CUSTOM
 	if %mcurrent_page=1 gosub *cg_page_story_1 ;Страница 1
 	if %mcurrent_page=2 gosub *cg_page_story_2 ;Страница 2
 	if %mcurrent_page=3 gosub *cg_page_story_3 ;Страница 3
@@ -30045,12 +30048,12 @@ return
 		spbtn 601,1
 
 		if %mcurrent_page=1 lsp 602,set_back_s,%msg_x,%msg_y
-		;if %CHIRU_MODE == 0 && %mcurrent_page=5 lsp 603,set_next_s,%msg_x+%msg_tmp_w+30,%msg_y ; Commented - W_CUSTOM
+		;if %CHIRU_MODE == 0 && %mcurrent_page=5 lsp 603,set_next_s,%msg_x+%msg_tmp_w+30,%msg_y ;Original Edited - Commented - W_CUSTOM
 		;if %CHIRU_MODE == 1 &&
 		if %mcurrent_page=11 lsp 603,set_next_s,%msg_x+%msg_tmp_w+30,%msg_y
 		
 		if %mcurrent_page>1 vsp 602,1:spbtn 602,2 ;Если больше 1 то срабатывает
-		;if %CHIRU_MODE == 0 && %mcurrent_page<5 vsp 603,1:spbtn 603,3 ; Commented - W_CUSTOM
+		;if %CHIRU_MODE == 0 && %mcurrent_page<5 vsp 603,1:spbtn 603,3 ;Original Edited - Commented - W_CUSTOM
 		;if %CHIRU_MODE == 1 &&
 		if %mcurrent_page<11 vsp 603,1:spbtn 603,3
  
@@ -30139,7 +30142,7 @@ return
 	if %BtnRes=623 seplay 9,1001,100 : goto *cg_112
 	;~
 	
-	;if %CHIRU_MODE != 1 jumpf ;Commented - W_CUSTOM
+	;if %CHIRU_MODE != 1 jumpf ;Original Edited - Commented - W_CUSTOM
 	;if %BtnRes=612 seplay 9,1001,100 : goto *cg_201
 	;if %BtnRes=613 seplay 9,1001,100 : goto *cg_202
 	;if %BtnRes=614 seplay 9,1001,100 : goto *cg_203
@@ -30326,7 +30329,7 @@ return
 		if %mcurrent_page=10 goto *bg_10_12
 		if %mcurrent_page=11 goto *bg_11_12
 		
-		;Chiru Content Removed - W_CUSTOM
+		;Original Edited - Chiru Content Removed - W_CUSTOM
 		;End Custom
 
 			*cg_player ;Начало показа Picture
@@ -31272,7 +31275,7 @@ return
  	csp_rst
 	return
 
-;All Changed - W_CUSTOM
+;Original Edited - All Changed to work with the unification - W_CUSTOM
 *cg_page_story_1 ;Картинки в странице
 csp_rst
 
@@ -33138,7 +33141,7 @@ if $cur_character = "en2" gosub *msgwnd_en2 : jumpf
 if $cur_character = "en3" gosub *msgwnd_en3 : jumpf
 if $cur_character = "non" gosub *msgwnd_non : jumpf
 
-;New Sprites - W_CUSTOM
+;Saku sprites - New Sprites - W_CUSTOM
 if $cur_character = "pie" gosub *msgwnd_pie : jumpf
 if $cur_character = "pie" gosub *msgwnd_saku : jumpf
 ;End Custom
@@ -33656,7 +33659,7 @@ if %vv_0 = 0 || %vv_99 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_inc,0
 if %cur_wndmode == off d_name ""
 return
 
-;New Sprites - W_CUSTOM
+;Saku sprites - New Sprites - W_CUSTOM
 *msgwnd_pie
 mov $cur_character,"pie"
 jnskip_s return ~
@@ -33675,6 +33678,7 @@ return
 ;End Custom
 
 ;Custom Subs - W_CUSTOM
+;Sprite Cache
 *reload_slots
 	for %for_index1=0 to 247
 
@@ -33839,7 +33843,7 @@ reset
 	if $msgwnd_type == "L" mov %msgwnd_type,0
 	if $msgwnd_type == "T" mov %msgwnd_type,3
 
-	;Off-Save Custom Config Options - W_CUSTOM
+	;Config - ;Dynamic Sprites - Off-Save Custom Config Options - W_CUSTOM
 	operate_config u_read,$sprite_folder_name,"sprite_folder_name"
 	if $sprite_folder_name == "sprites" mov $sprite_folder_name,"sprites"
 	if $sprite_folder_name == "sprites2" mov $sprite_folder_name,"sprites2"
@@ -34290,7 +34294,7 @@ if %Free1==0 mov $Free1,verify_backgrounds : gosub *verify_err
 fileexist %Free1,"graphics\system\fade\1920x1080.png"
 if %Free1==0 mov $Free1,verify_graphics : gosub *verify_err
 fileexist %Free1,"sound\bgm\bgm_final.ogg"
-;Variable Spec Sprites Folder - W_CUSTOM
+;Variable Spec Sprites Folder - W_CUSTOM - ??? what have i changed here? TODO
 if %Free1==0 mov $Free1,verify_sound : gosub *verify_err
 fileexist %Free1,"sprites\bea\1\bea_a11_akuwarai1.png"
 ;End Custom
@@ -34353,7 +34357,7 @@ if %Free1==0 goto *verify_chiru_err
 fileexist %Free1,"sound\bgm\umib_194.ogg"
 if %Free1==0 goto *verify_chiru_err
 
-;Variable Spec Sprites Folder - W_CUSTOM
+;Variable Spec Sprites Folder - W_CUSTOM - ??? what have i changed here? TODO
 fileexist %Free1,"sprites\ama\1\ama_a14_defo1.png"
 ;End Custom
 if %Free1==0 goto *verify_chiru_err
@@ -34595,7 +34599,7 @@ return
 	fileexist %Free1,"caches\goa_memory4.png"
 	if %Free1 == 0 jumpf
 	;Only for chiru
-	;if %CHIRU_MODE = 0 return ;Commented - W_CUSTOM
+	;if %CHIRU_MODE = 0 return ;Original Edited - Commented - W_CUSTOM
 	fileexist %Free1,"caches\kakera_memory1.png"
 	if %Free1 == 0 jumpf
 	fileexist %Free1,"caches\kakera_memory2.png"
@@ -39524,7 +39528,7 @@ return
 	
 	;mov %bern_game_mode,1 ;for test
 	
-	;Variable Spec Sprites Folder - W_CUSTOM
+	;Variable Spec Sprites Folder - W_CUSTOM - ??? what have i changed here? TODO
 	lsp s0_9,":a;sprites\ber\1\ber_a21_akuwarai2.png",150-1920,265
 	;End Custom
 
@@ -39749,7 +39753,7 @@ return
 	if %BtnRes != 5 aspt alpha,205,0,500,1
 	if %BtnRes != 6 aspt alpha,206,0,500,1
 	
-	;Variable Spec Sprites Folder - W_CUSTOM
+	;Variable Spec Sprites Folder - W_CUSTOM - ??? what have i changed here? TODO
 	if %BtnRes != 6 jumpf
 		lsp s0_9,":a;sprites\ber\1\ber_a21_akuwarai1.png",150,265
 		flush 1
@@ -40437,7 +40441,7 @@ return
 			inc %tmp
 		next
 		
-	;Variable Sprites Folder - W_CUSTOM
+	;Variable Sprites Folder - W_CUSTOM - ??? what have i changed here? TODO
 	lsp 200,":a;sprites\but\1\but_b11_majime3.png",1030,5
 	;End Custom
 	lbg "c:backgrounds",s0_4,"different_space_1a"
@@ -40471,7 +40475,7 @@ return
 	;answer rud(2 ^ 8)+kir(2 ^ 9)+but(2 ^ 10)=1792
 return
 *murder_story_answer_reply
-	;Variable Spec Sprites Folder - W_CUSTOM
+	;Variable Spec Sprites Folder - W_CUSTOM - ??? what have i changed here? TODO
 	mov $Free1,":a;sprites\but\1\but_b25_futeki3.png"
 	lsp 200,$Free1,935,10
 	flush 1

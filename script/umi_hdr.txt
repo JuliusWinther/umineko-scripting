@@ -21,7 +21,7 @@ nsa
 
 if %CHIRU_MODE == 0 versionstr "Umineko no Naku Koro ni EP4, ver1.005","created by 07th Expansion"
 if %CHIRU_MODE == 1 versionstr "Umineko no Naku Koro ni Chiru EP8, ver1.001","created by 07th Expansion"
-if %CHIRU_MODE == 2 versionstr "Umineko no Naku Koro ni Saku, ver1.000","created by 07th Expansion" ;W_CUSTOM
+if %CHIRU_MODE == 2 versionstr "Umineko no Naku Koro ni Saku, ver1.000","created by 07th Expansion" ;Saku - W_CUSTOM
 
 stralias localisation,"builder_localisation"
 numalias releasedate,builder_date
@@ -377,7 +377,7 @@ numalias vv_ki2,%0 : inc %0 ;58 young kinzo (shares kin)
 numalias vv_be2,%0 : inc %0 ;59 normal beatrice (shares bea)s
 numalias vv_be3,%0 : inc %0 ;60 nee beatrice
 
-;New Sprites - W_CUSTOM
+;Saku sprites - New Sprites - W_CUSTOM
 numalias vv_pie,%0 : inc %0 ;61 Piece
 numalias vv_saku,%0 : inc %0 ;62 Piece
 ;End Custom
@@ -712,7 +712,7 @@ numalias Free6,%0 : inc %0
 numalias Free7,%0 : inc %0
 numalias Free8,%0 : inc %0
 numalias Free9,%0 : inc %0
-;NumAliases - W_CUSTOM
+;Custom vars - NumAliases - W_CUSTOM
 numalias sprite_folder_name,8097 ;%0 : inc %0
 numalias bg_folder_name,8098
 ;Free temporaries (11-19)
@@ -1097,13 +1097,14 @@ numalias pro,43
 numalias si,44
 numalias en2,45
 numalias bu2,46
-;Saku - W_CUSTOM
-;numalias saku,47
-;numalias pie,48
+;Saku sprites - W_CUSTOM
+numalias saku,47
+numalias pie,48
 
 ;-----------------------------------------------
 
 ;--Backgrounds--
+;Original Edited - ;Dynamic BGs
 ;Substituted all [;backgrounds\] with [;" + $bg_folder_name + "\] - W_CUSTOM
 ;Converted in local automatic path generation
 ;--Backgrounds-end--
@@ -1143,10 +1144,12 @@ stralias kakera_memory10,":c;caches\kakera_memory10.png"
 ;--Caches-end--
 
 ;--Efe--
+;Original Edited - ;Dynamic BGs
 ;Converted in local automatic path generation - W_CUSTOM
 ;--Efe-end--
 
 ;--CG-start--
+;Original Edited - ;Dynamic BGs
 ;Converted in local automatic path generation - W_CUSTOM
 ;--CG-end--
 
@@ -1344,7 +1347,7 @@ defsub msgwnd_be4
 defsub msgwnd_en2
 defsub msgwnd_en3
 defsub msgwnd_non
-;New Sprites - W_CUSTOM
+;Saku sprites - New Sprites - W_CUSTOM
 defsub msgwnd_pie
 defsub msgwnd_saku
 ;End Custom
@@ -1352,7 +1355,9 @@ defsub msgwnd_saku
 ;Custom Subs - W_CUSTOM
 defsub reload_slots
 defsub aspt2_mem
+;End Custom
 
+;Custom Vars - W_CUSTOM
 numalias string_length,9500
 numalias string_temp1,9501
 numalias string_temp2,9502
@@ -1366,6 +1371,8 @@ numalias for_index3,9509
 numalias reloading_status,9510
 numalias extra_scenario_number,9511
 numalias UMINEKOEND_EXTRA, 9512
+numalias mouse_pos_x,9513
+numalias mouse_pos_y,9513
 
 numalias lbg_type,9521
 numalias paste_method,9522
@@ -1378,6 +1385,7 @@ numalias aspt_val1,9532
 numalias aspt_val2,9533
 numalias aspt_val3,9534
 
+;stralias that in the end were needed restored
 stralias hana1,":a;graphics\system\clock\hana1.png"
 stralias ware,":a;graphics\system\clock\ware.png"
 
@@ -1498,7 +1506,7 @@ numalias layer_q,69 : dim ?layer_q[10]		;layer queue
 numalias padding_s,70 : dim ?padding_s[10]	;border_padding stack
 numalias rain_q,71 : dim ?rain_q[10]		;rain queue
 
-;Array that stores sprites data for reload - W_CUSTOM
+;Sprite cache - Array that stores sprites data for reload - W_CUSTOM
 numalias slot_cache,9100 : dim ?slot_cache[248][27]
 ;End Custom
 
@@ -1544,11 +1552,6 @@ if %CHIRU_MODE == 2 setvoicewaitmul "0.4" : lips_lims "0.3","0.7" ;compensate fo
 if %CHIRU_MODE == 1 setvoicewaitmul "1"   : lips_lims "0.2","0.6" ;chiru voices are quieter
 if %CHIRU_MODE == 0 setvoicewaitmul "0.4" : lips_lims "0.3","0.7" ;compensate for no waits in rondo
 
-;Global Declarations -W_CUSTOM
-mov $sprite_folder_name,"sprites"
-mov $bg_folder_name,"backgrounds"
-;End Custom
-
 mov %no_log_gen,on
 mov %autom_no_cur,off
 
@@ -1573,7 +1576,11 @@ mov ?voice_s[5],0
 mov ?voice_s[6],0
 voice_vol
 
-;Initializing slot cache - W_CUSTOM
+;Initialization - Global Declarations -W_CUSTOM
+mov $sprite_folder_name,"sprites"
+mov $bg_folder_name,"backgrounds"
+
+;Sprite cache - Initializing slot cache - W_CUSTOM
 mov %0,9700
 
 for %for_index1=0 to 247

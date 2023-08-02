@@ -357,6 +357,7 @@ csp_slot s0_7
 bg black,0 ;black and white are native
 
 if %CHIRU_MODE = 1 jumpf
+if %CHIRU_MODE = 2 jumpf ;Saku - skip end game scenarios - W_CUSTOM
 
 if $name_chapter_save == "1_17" && $flag_scenario_1_17 == "●" trophy_open 22 : trophy_open 2 : trophy_open 3
 if $name_chapter_save == "2_18" && $flag_scenario_2_18 == "●" trophy_open 23 : trophy_open 4 : trophy_open 5
@@ -391,6 +392,7 @@ if $name_chapter_save == "4_ura" gosub *teatime_ep4b_end : gosub *credits_ep4
 ~
 
 if %CHIRU_MODE = 0 jumpf
+if %CHIRU_MODE = 2 jumpf ;Saku - skip end game scenarios - W_CUSTOM
 
 ;chiru
 if $name_chapter_save == "5_15" && $flag_scenario_5_15 == "●" trophy_open 40 : trophy_open 2 : trophy_open 3
@@ -17673,6 +17675,8 @@ bg white,10
 E_MA
 delay 2000
 
+mov %scenario_Number,0 ;Saku - not starting normal - W_CUSTOM
+
 if %extra_scenario_Number = 1 gosub *jump_sysdata_set1 : goto *umiextra1_1
 if %extra_scenario_Number = 2 gosub *jump_sysdata_set1 : goto *umiextra1_2
 if %extra_scenario_Number = 3 gosub *jump_sysdata_set1 : goto *umiextra1_3
@@ -17697,6 +17701,8 @@ if %omake = 0 || %omake_level <= 1 jumpf
 	E_MA
 	delay 2000
 ~
+
+mov %extra_scenario_Number,0 ;Saku - not starting extra - W_CUSTOM
 
 if %scenario_Number = 1 goto *umi1_standby
 if %scenario_Number = 2 goto *umi2_standby
@@ -18959,12 +18965,22 @@ return
 	mov %scenario_Number,8
 return
 
-;Saku - scenario flags - W_CUSTOM
+;Saku logs - scenario flags - W_CUSTOM
 *umiextra1_1_flags
+	gosub *jump_sysdata_set1
+	mov %extra_scenario_Number,1
+return
 *umiextra1_2_flags
+	gosub *jump_sysdata_set1
+	mov %extra_scenario_Number,2
+return
 *umiextra1_3_flags
+	gosub *jump_sysdata_set1
+	mov %extra_scenario_Number,3
+return
 *umiextra1_4_flags
 	gosub *jump_sysdata_set1
+	mov %extra_scenario_Number,4
 return
 ;End Custom
 
@@ -22651,8 +22667,25 @@ return
 	~
 return
 
+;****************************************************
+;Saku - new_extra_episode logs ep name by its id - W_CUSTOM
+;****************************************************
+*new_extra_episode
+	getparam %ep_id
+	if %ep_id == 1 mov $ep_id,extra_scenario_episode_1 : jumpf
+	if %ep_id == 2 mov $ep_id,extra_scenario_episode_2 : jumpf
+	if %ep_id == 3 mov $ep_id,extra_scenario_episode_3 : jumpf
+	if %ep_id == 4 mov $ep_id,extra_scenario_episode_4 : jumpf
 
-;TODO saku version of new_episode
+	~
+	if %no_log_gen == 1 setlog 1,$ep_id
+	if %no_log_gen != 0 jumpf
+		mark_read
+		;TODO skipping read content
+	~
+return
+;End Custom
+
 ;****************************************************
 ;new_episode logs ep name by its id
 ;****************************************************
@@ -22666,6 +22699,7 @@ return
 	if %ep_id == 6 mov $ep_id,scenario_episode_6 : jumpf
 	if %ep_id == 7 mov $ep_id,scenario_episode_7 : jumpf
 	if %ep_id == 8 mov $ep_id,scenario_episode_8 : jumpf
+	
 	~
 	if %no_log_gen == 1 setlog 1,$ep_id
 	if %no_log_gen != 0 jumpf
@@ -27351,17 +27385,17 @@ return
 
 	~
 
-	;Saku logs - W_CUSTOM
+	;Saku logs - W_CUSTOM ;AT must be in reverse order
 	if %CHIRU_MODE != 2 jumpf
 
+	past_label %TextCC12Flag,"*umiextra1_4"
+	if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra1_4","*umiextra1_4_end" : goto *log_none
+	past_label %TextCC12Flag,"*umiextra1_3"
+	if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra1_3","*umiextra1_3_end" : goto *log_none
+	past_label %TextCC12Flag,"*umiextra1_2"
+	if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra1_2","*umiextra1_2_end" : goto *log_none
 	past_label %TextCC12Flag,"*umiextra1_1"
 	if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra1_1","*umiextra1_1_end" : goto *log_none
-		past_label %TextCC12Flag,"*umiextra1_2"
-	if %TextCC12Flag == 2 sskip $TextCC12Flag,"*umiextra1_2","*umiextra1_2_end" : goto *log_none
-		past_label %TextCC12Flag,"*umiextra1_3"
-	if %TextCC12Flag == 3 sskip $TextCC12Flag,"*umiextra1_3","*umiextra1_3_end" : goto *log_none
-		past_label %TextCC12Flag,"*umiextra1_4"
-	if %TextCC12Flag == 4 sskip $TextCC12Flag,"*umiextra1_4","*umiextra1_4_end" : goto *log_none
 
 	~
 	;End Custom
@@ -27879,6 +27913,7 @@ return
 	; get_log_data INPUT_logentryindex,OUTPUT_label,OUTPUT_cvs
 	get_log_data %log_ch_next,$log_ch_next,%log_dst_cvs
 
+	if %CHIRU_MODE == 2 jumpf ;Original Edited - W_CUSTOM
 	if %scenario_Number == 8 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_8","*teatime_8","*umi8_16","*umi8_15","*umi8_14","*umi8_13","*umi8_12","*umi8_11","*umi8_10","*umi8_9","*umi8_8","*umi8_7","*umi8_6","*umi8_5","*umi8_4","*umi8_3","*umi8_2","*umi8_1","*umi8_op"
 	if %scenario_Number == 7 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_7","*teatime_7","*umi7_18","*umi7_17","*umi7_16","*umi7_15","*umi7_14","*umi7_13","*umi7_12","*umi7_11","*umi7_10","*umi7_9","*umi7_8","*umi7_7","*umi7_6","*umi7_5","*umi7_4","*umi7_3","*umi7_2","*umi7_1","*umi7_op"
 	if %scenario_Number == 6 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_6","*teatime_6","*umi6_18","*umi6_17","*umi6_16","*umi6_15","*umi6_14","*umi6_13","*umi6_12","*umi6_11","*umi6_10","*umi6_9","*umi6_8","*umi6_7","*umi6_6","*umi6_5","*umi6_4","*umi6_3","*umi6_2","*umi6_1","*umi6_op"
@@ -27887,12 +27922,15 @@ return
 	if %scenario_Number == 3 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_3","*teatime_3","*umi3_18","*umi3_17","*umi3_16","*umi3_15","*umi3_14","*umi3_13","*umi3_12","*umi3_11","*umi3_10","*umi3_9","*umi3_8","*umi3_7","*umi3_6","*umi3_5","*umi3_4","*umi3_3","*umi3_2","*umi3_1","*umi3_op"
 	if %scenario_Number == 2 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_2","*teatime_2","*umi2_18","*umi2_17","*umi2_16","*umi2_15","*umi2_14","*umi2_13","*umi2_12","*umi2_11","*umi2_10","*umi2_9","*umi2_8","*umi2_7","*umi2_6","*umi2_5","*umi2_4","*umi2_3","*umi2_2","*umi2_1","*umi2_op"
 	if %scenario_Number == 1 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_1","*teatime_1","*umi1_17","*umi1_16","*umi1_15","*umi1_14","*umi1_13","*umi1_12","*umi1_11","*umi1_10","*umi1_9","*umi1_8","*umi1_7","*umi1_6","*umi1_5","*umi1_4","*umi1_3","*umi1_2","*umi1_1","*umi1_op"
+	~
 
-	;Saku logs - log_ch_current - W_CUSTOM
-	if %extra_scenario_Number == 1 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_1"
-	if %extra_scenario_Number == 2 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_2"
-	if %extra_scenario_Number == 3 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_3"
-	if %extra_scenario_Number == 4 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_4"
+	;Saku logs - log_ch_current - W_CUSTOM ;AT must be in reversed order
+	if %CHIRU_MODE != 2 jumpf
+		if %extra_scenario_Number == 4 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_4"
+		if %extra_scenario_Number == 3 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_3"
+		if %extra_scenario_Number == 2 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_2"
+		if %extra_scenario_Number == 1 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_1"
+	~
 	;End Custom
 
 	;Knowing the nearest label is no longer enough. We need to look up the log entry index of the above label (any occurrence will do, there will only be one)	

@@ -3,8 +3,13 @@ log_reset
 new_extra_episode 2
 ;START
 
-;inserisci immagine iniziale
-
+seplay 10,52,77
+lbg "c:tsu2",s0_3,"title_tanabata1"
+flush 6
+wait 2000
+lbg "c:local_saku",s0_3,"title_tanabata2"
+flush 99,3000,"whirl.dll/r"
+wait 5000
 lbg "c:backgrounds",s0_3,"cit_1a"
 flush 8
 bgmplay 35,71,0
@@ -78,31 +83,47 @@ textoff
 lbg "c:colour",s0_3,"white"
 flush 42
 wait 1
-;suono
+seplay 10,56,90
 lbg "c:colour",s0_3,"black"
 wait 1
-flush 43
+flush 4
 lbg "c:backgrounds",s0_3,"rose_2bp"
 
-
-;sostituire sprite
-
-
-lss s0_8 "mar","b11_defo1"
+lss s0_8,"mar","b11_id6-2_0"
 aspt2_mem "xpos",s0_8,370
+lsl s0_8,"mar","b11_id6-2_0",1
 flush 46
+lss s0_8,"mar","b11_defo1"
+aspt2_mem "xpos",s0_8,370
+flush 80
 msgwnd_mar
 *e2_19
 d2 [lv 0*"13"*"mar_00010"]`{qt}...Eh?`[@][#][*][lv 0*"13"*"mar_00020"]` ...Oh, it's BEATRICE..!`[@][lv 0*"13"*"mar_00030"]` BEATRICE came to Maria in a dream..!{qt}`[\]
 wait_on_d 0
-lss s0_8 "mar","b11_odoroki1"
+lss s0_8,"mar","b11_odoroki1"
 aspt2_mem "xpos",s0_8,370
 flush 80
 d_continue
 wait_on_d -1
+csp_slot s0_8
+textoff
 
-
-
+lbg "c:colour",s0_3,"white"
+flush 4
+lbg "c:backgrounds",s0_3,"rose_3ap"
+flush 4
+seplay 10,22,100
+anim s0_17,"no82",1
+flush 1
+waitvideo
+csp_slot s0_17
+seplay 11,52,77
+lss s0_8,"bea","a11_defo2"
+lsl s0_8,"bea","a11_defo2",1
+show_whirl
+flush 8
+lss s0_8,"bea","a11_defo1"
+flush 80
 msgwnd_bea
 *e2_20
 d [lv 0*"27"*"bea_00030"]`{qt}Indeed.`[@][lv 0*"27"*"bea_00040"]` Today, you hung a Tanabata wish on some bamboo, did you not?`[@][lv 0*"27"*"bea_00050"]` That wish has reached me,`[@][lv 0*"27"*"bea_00060"]` ...and I have come to grant it.{qt}`[\]

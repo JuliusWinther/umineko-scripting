@@ -33771,8 +33771,41 @@ if %cur_wndmode == off d_name $tmp5
 return
 ;End Custom
 
+
+;**************************************************
 ;Custom Subs - W_CUSTOM
-;Sprite Cache
+;**************************************************
+
+
+;*************************
+; lsl loads a standing sprite with lips
+;*************************
+*lsl
+*load_sprite_lips
+getparam %lss_slot,$lss_sec,$lss_key,%lips_cell
+csp_slot %lss_slot-1
+
+;TODO add lips standing sprite to sprites cache
+
+fileexist %lss_lips,"" + $sprite_folder_name + "\" + $lss_sec + "\2\" + $lss_sec + "_" + $lss_key + ".png"
+
+if %lss_lips == 0 jumpf
+	loadfromreg $lss_temp,$lss_sec,$lss_key + "_x"
+	atoi %lss_lips_x,$lss_temp
+	loadfromreg $lss_temp,$lss_sec,$lss_key + "_y"
+	atoi %lss_lips_y,$lss_temp
+	lsp2 %lss_slot-1,":a/4,0,3;" + $sprite_folder_name + "\" + $lss_sec + "\2\" + $lss_sec + "_" + $lss_key + ".png",%lss_lips_x,%lss_lips_y,100,100,0
+	if $lss_sec == "en2" mov $lss_sec,"enj"
+	if $lss_sec == "ka2" mov $lss_sec,"kan"
+	if $lss_sec == "be2" mov $lss_sec,"bea"
+	cell %lss_slot-1,%lips_cell
+	
+~
+;End Custom
+
+;*************************
+;Sprite Cache reload
+;*************************
 *reload_slots
 	for %for_index1=0 to 247
 
@@ -33858,7 +33891,10 @@ return
 	next
 
 return
-;End Custom
+
+;**************************************************
+;End Custom Subs
+;**************************************************
 
 *quick_reload
 mov %title_skip,1

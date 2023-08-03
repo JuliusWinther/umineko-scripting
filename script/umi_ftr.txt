@@ -23164,58 +23164,9 @@ return
 	csp_slot %lbg_slot
 	jskip_s gosub *open_cg ~
 
-	split $lbg_type,":",$paste_method,$lbg_type
-
-	if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
-
-	;TODO Add variations when bg is not in backgrounds folder for all the following methods ;Localization
-	;DONE - Needs testing
-	if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "local_saku" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\local_saku\" + $lbg_name + ".png" : jumpf 
-
-	;CGs
-	if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
-
-	;Saku
-	if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
-	~
+	split $lbg_type,":",$paste_method,$lbg_type ;Must be outside search_bg function
+	search_bg $lbg_type,$lbg_name
+	
 	lsp2 %lbg_slot,$lbg_path,0,0
 
 	mov $?slot_cache[%lbg_slot-750][0],$paste_method+":"+$lbg_type + "|" + $lbg_name
@@ -23229,57 +23180,9 @@ return
 	csp_slot %lbg_slot
 	jskip_s gosub *open_cg ~
 
-	split $lbg_type,":",$paste_method,$lbg_type
+	split $lbg_type,":",$paste_method,$lbg_type ;Must be outside search_bg function
+	search_bg $lbg_type,$lbg_name
 
-	if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
-
-	;Localization
-	if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "local_saku" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\local_saku\" + $lbg_name + ".png" : jumpf 
-
-	;CGs
-	if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
-
-	;Saku
-	if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
-	~
 	lbsp2 %lbg_slot,$lbg_path,0,0
 
 	mov $?slot_cache[%lbg_slot-750][0],$paste_method+":"+$lbg_type + "|" + $lbg_name
@@ -23299,55 +23202,8 @@ return
 
 	if $lbg_name == "" jumpf
 
-		if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
-
-		;Localization
-		if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "local_saku" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\local_saku\" + $lbg_name + ".png" : jumpf 
-
-		;CGs
-		if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
-
-		;Saku
-		if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
-		~
+		search_bg $lbg_type,$lbg_name
+		
 		len %lbg_path,$lbg_path
 		mid $lbg_path,$lbg_path,3,%lbg_path-3
 		async_cache_img 1,$lbg_path
@@ -23355,55 +23211,7 @@ return
 
 	if $lbg_left == "" jumpf
 
-		if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
-
-		;Localization
-		if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
-		if $lbg_type == "local_saku" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\local_saku\" + $lbg_name + ".png" : jumpf 
-
-		;CGs
-		if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
-		if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
-
-		;Saku
-		if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
-		~
+		search_bg $lbg_type,$lbg_name
 
 		len %lbg_path,$lbg_path
 		mid $lbg_path,$lbg_path,3,%lbg_path-3
@@ -23414,57 +23222,8 @@ return
 *drop_cache
 	getparam $lbg_type,$lbg_name
 
-	split $lbg_type,":",$paste_method,$lbg_type
-
-	if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
-
-	;Localization
-	if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
-	if $lbg_type == "local_saku" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\local_saku\" + $lbg_name + ".png" : jumpf 
-
-	;CGs
-	if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
-	if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
-
-	;Saku
-	if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
-	~
+	split $lbg_type,":",$paste_method,$lbg_type ;Must be outside search_bg function
+	search_bg $lbg_type,$lbg_name
 
 	len %lbg_path,$lbg_path
 	mid $lbg_path,$lbg_path,3,%lbg_path-3
@@ -33776,6 +33535,61 @@ return
 ;Custom Subs - W_CUSTOM
 ;**************************************************
 
+*search_bg
+	getparam $lbg_type,$lbg_name
+
+	if $lbg_type == "backgrounds" : mov $lbg_path,":"+$paste_method+";" + $bg_folder_name + "\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "clock" : mov $lbg_path,":"+$paste_method+";graphics\system\clock\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "colour" : mov $lbg_path,":"+$paste_method+";graphics\colour\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "efe" : mov $lbg_path,":"+$paste_method+";graphics\efe\" + $lbg_name + ".png" : jumpf  
+
+	;TODO Add variations when bg is not in backgrounds folder for all the following methods ;Localization
+	;DONE - Needs testing
+	if $lbg_type == "locale" : mov $lbg_path,":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "locale_lan" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "alibi" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "cas" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\cas\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "comment" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\comment\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "dai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\dai\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "mondai" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\mondai\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "murderer" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "story" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "text" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "local_saku" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\local_saku\" + $lbg_name + ".png" : jumpf 
+
+	;CGs
+	if $lbg_type == "cg" : mov $lbg_path,":"+$paste_method+";graphics\cg\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ev2" : mov $lbg_path,":"+$paste_method+";graphics\cg\ev2\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/eva" : mov $lbg_path,":"+$paste_method+";graphics\cg\eva\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/fea" : mov $lbg_path,":"+$paste_method+";graphics\cg\fea\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/gap" : mov $lbg_path,":"+$paste_method+";graphics\cg\gap\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/geo" : mov $lbg_path,":"+$paste_method+";graphics\cg\geo\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/jes" : mov $lbg_path,":"+$paste_method+";graphics\cg\jes\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/kan" : mov $lbg_path,":"+$paste_method+";graphics\cg\kan\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/kir" : mov $lbg_path,":"+$paste_method+";graphics\cg\kir\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/lam" : mov $lbg_path,":"+$paste_method+";graphics\cg\lam\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/nat" : mov $lbg_path,":"+$paste_method+";graphics\cg\nat\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ron" : mov $lbg_path,":"+$paste_method+";graphics\cg\ron\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/ros" : mov $lbg_path,":"+$paste_method+";graphics\cg\ros\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/rud" : mov $lbg_path,":"+$paste_method+";graphics\cg\rud\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/s" : mov $lbg_path,":"+$paste_method+";graphics\cg\s\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/sak" : mov $lbg_path,":"+$paste_method+";graphics\cg\sak\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/sha" : mov $lbg_path,":"+$paste_method+";graphics\cg\sha\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/wal" : mov $lbg_path,":"+$paste_method+";graphics\cg\wal\" + $lbg_name + ".png" : jumpf
+	if $lbg_type == "cg/wil" : mov $lbg_path,":"+$paste_method+";graphics\cg\wil\" + $lbg_name + ".png" : jumpf
+
+	;Saku
+	if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : jumpf
+	~
+
+return
 
 ;*************************
 ; lsl loads a standing sprite with lips

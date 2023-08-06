@@ -8,7 +8,7 @@ lbg "c:tsu2",s0_3,"title_tanabata1"
 flush 6
 wait 2000
 lbg "c:local_saku",s0_3,"title_tanabata2"
-flush 99,3000,"whirl.dll/r"
+flush 99,2000,"whirl.dll/r"
 wait 5000
 lbg "c:backgrounds",s0_3,"cit_1a"
 flush 8
@@ -38,7 +38,7 @@ lbg "c:colour",s0_3,"black"
 flush 8
 set_window_simple 80,430
 *e2_8
-d `{a:c:``{qt}I wish that my Mama would come home every day{qt}`}[\]
+d `{a:c:``{qt}I wish that my Mama would come home every day{qt}}`[\]
 set_name_window_non
 textoff
 
@@ -89,19 +89,19 @@ wait 1
 flush 4
 lbg "c:backgrounds",s0_3,"rose_2bp"
 
-lss s0_8,"mar","b11_id6-2_0"
-aspt2_mem "xpos",s0_8,370
-lsl s0_8,"mar","b11_id6-2_0",1
+lss s0_10,"mar","b11_id6-2_0"
+aspt2_mem "xpos",s0_10,370
+lsl s0_10,"mar","b11_id6-2_0",1
 flush 46
-lss s0_8,"mar","b11_defo1"
-aspt2_mem "xpos",s0_8,370
+lss s0_10,"mar","b11_defo1"
+aspt2_mem "xpos",s0_10,370
 flush 80
 msgwnd_mar
 *e2_19
-d2 [lv 0*"13"*"mar_00010"]`{qt}...Eh?`[@][#][*][lv 0*"13"*"mar_00020"]` ...Oh, it's BEATRICE..!`[@][lv 0*"13"*"mar_00030"]` BEATRICE came to Maria in a dream..!{qt}`[\]
+d2 [lv 0*"13"*"mar_00010"]`{qt}...Eh?`[@][#][*][lv 0*"13"*"mar_00020"]` ...Oh, it's {f:5:Beatrice}..!`[@][lv 0*"13"*"mar_00030"]` {f:5:Beatrice} came to Maria in a dream..!{qt}`[\]
 wait_on_d 0
-lss s0_8,"mar","b11_odoroki1"
-aspt2_mem "xpos",s0_8,370
+lss s0_10,"mar","b11_odoroki1"
+aspt2_mem "xpos",s0_10,370
 flush 80
 d_continue
 wait_on_d -1
@@ -126,10 +126,86 @@ lss s0_8,"bea","a11_defo1"
 flush 80
 msgwnd_bea
 *e2_20
-d [lv 0*"27"*"bea_00030"]`{qt}Indeed.`[@][lv 0*"27"*"bea_00040"]` Today, you hung a Tanabata wish on some bamboo, did you not?`[@][lv 0*"27"*"bea_00050"]` That wish has reached me,`[@][lv 0*"27"*"bea_00060"]` ...and I have come to grant it.{qt}`[\]
+d2 [lv 0*"27"*"bea_00030"]`{qt}Indeed.`[@][lv 0*"27"*"bea_00040"]` Today, you hung a Tanabata wish on some bamboo, did you not?`[@][lv 0*"27"*"bea_00050"]` That wish has reached me,`[@][#][*][lv 0*"27"*"bea_00060"]` ...and I have come to grant it.{qt}`[\]
+wait_on_d 0
+lss s0_8,"bea","a11_1_warai1"
+flush 80
+d_continue
+wait_on_d -1
+csp_slot s0_8
+lss s0_8,"bea","a11_1_warai1"
+aspt2_mem "xpos",s0_8,530
+lss s0_10,"mar","b11_odoroki1"
+aspt2_mem "xpos",s0_10,-530
+flush 80
+msgwnd_mar
+*e2_21
+d2 [lv 0*"13"*"mar_00040"]`{qt}Really?!`[@][#][*][lv 0*"13"*"mar_00050"]` Thanks, {f:5:Beatrice}!`[@][lv 0*"13"*"mar_00060"]` Uu!{qt}`[\]
+wait_on_d 0
+lss s0_10,"mar","b22_warai2"
+aspt2_mem "xpos",s0_10,-530
+flush 80
+d_continue
+wait_on_d -1
+lss s0_8,"bea","a11_fukigen2"
+aspt2_mem "xpos",s0_8,530
+flush 80
+msgwnd_bea
+*e2_22
+d [lv 0*"27"*"bea_00070"]`{qt}Now, let us discuss your wish.`[@][lv 0*"27"*"bea_00080"]` You have wished for {qt}your mother to come home every day{qt}.`[@][lv 0*"27"*"bea_00090"]` But, are you quite sure?{qt}`[\]
+lss s0_10,"mar","b11_niyari1"
+aspt2_mem "xpos",s0_10,-530
+flush 80
+msgwnd_mar
+*e2_23
+d [lv 0*"13"*"mar_00070"]`{qt}Yes.`[@][lv 0*"13"*"mar_00080"]` Just that alone will make me happy.{qt}`[\]
+textoff
 
+csp_slot s0_8
+csp_slot s0_10
+lbg "c:colour",s0_3,"black"
+flush 28
+lbg "c:backgrounds",s0_3,"rose_1cp"
+flush 28
+msgwnd_bea
+*e2_24
+d [lv 0*"27"*"bea_00100"]`{qt}Hrm...{qt}`[\]
+msgwnd_non
+*e2_25
+d `Beato crossed her arms and mumbled to herself.`[\]
+*e2_26
+d `It seemed as if she was considering turning Maria down, and was thinking of how to best explain herself.`[\]
+*e2_27
+d `When Maria saw Beato, whom she considered all-powerful, make such a face,`[@]` she grew anxious...`[\]
+textoff
 
-
+lbg "c:colour",s0_3,"white"
+flush 24
+lbg "c:backgrounds",s0_3,"rose_3ap"
+lss s0_10,"mar","b11_id6-2_0"
+aspt2_mem "xpos",s0_10,-530
+flush 24
+msgwnd_mar
+*e2_28
+d [lv 0*"13"*"mar_00090"]`{qt}...Uu.`[@][lv 0*"13"*"mar_00100"]` Is having Mama come back home a difficult wish to grant?{qt}`[\]
+lss s0_8,"bea","a11_majime1"
+aspt2_mem "xpos",s0_8,530
+msgwnd_bea
+*e2_29
+d2 [lv 0*"27"*"bea_00110"]`{qt}No.`[@][lv 0*"27"*"bea_00120"]` Quite honestly,`[@][#][*][lv 0*"27"*"bea_00130"]` it's a piece of cake.`[@][#][*][lv 0*"27"*"bea_00140"]` But Maria,`[@][lv 0*"27"*"bea_00150"]` consider it carefully.`[@][lv 0*"27"*"bea_00160"]` Is her merely coming home actually enough?{qt}`[\]
+wait_on_d 0
+csp_slot s0_8
+lss s0_8,"bea","a11_majime2"
+aspt2_mem "xpos",s0_8,530
+flush 80
+d_continue
+wait_on_d 1
+csp_slot s0_8
+lss s0_8,"bea","a11_majime1"
+aspt2_mem "xpos",s0_8,530
+flush 80
+d_continue
+wait_on_d -1
 
 
 

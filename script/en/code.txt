@@ -56,7 +56,16 @@ return
 	if %legacy_op == on  && %track_id == 1012 mov $track_id,"legacy\sub\both_eng.ass" : return
 return
 
-*redefine_text_presets
+*redefine_text_presets ;Custom presets - W_CUSTOM
+
+;number,font,size,colour,bold,italic,underline,border,border-width,border-colour,shadow,shadow-x,shadow-y,colour,character_spacing,line_height
+;last param (line_height) is to be used only with LSP sprites and for the whole text, -1 means "don't change"
+;PLEASE, if possible do NOT change any value in here
+
+;TODO before release all important presets must be present in code.txt files
+;preset_define 43,10,35,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0 ;'Episode' text
+;preset_define 44,10,27,#FFFFFF,1,0,0,0,0,#FFFFFF,0,0,0,#000000,2 ;number of the episode
+
 return
 
 *backup_disable_lang

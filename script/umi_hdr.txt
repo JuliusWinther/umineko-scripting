@@ -1356,6 +1356,7 @@ defsub new_extra_episode
 defsub search_bg
 defsub lsl
 defsub write_special_text
+defsub csp_text
 ;End Custom
 
 ;Custom Vars - W_CUSTOM
@@ -1375,6 +1376,7 @@ numalias UMINEKOEND_EXTRA, 9512
 numalias lips_cell, 9513
 numalias sprite_folder_name,9514
 numalias bg_folder_name,9515
+numalias txt_to_csp,9516
 
 numalias lbg_type,9521
 numalias paste_method,9522
@@ -1474,18 +1476,18 @@ preset_define 32,1,40,#FFFFFF,0,0,0,1,8,#000000,0,0,0,#000000,2,20,1590 ;Menu mu
 
 ;Custom presets - W_CUSTOM
 preset_define 43,10,35,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0,58 ;'Episode' text
-preset_define 44,10,27,#FFFFFF,1,0,0,0,0,#FFFFFF,0,-1,0,#FFFFFF,2,58 ;number of the episode
-preset_define 45,10,33,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0,58 ; Extra Episode text
+preset_define 44,10,27,#FFFFFF,1,0,0,0,0,#FFFFFF,0,-1,0,#FFFFFF,2,58 ; number of the episode
+preset_define 45,10,33,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0,58 ; Extra shadowe text
 
 preset_define 83,10,35,#000000,0,0,0,0,0,#000000,0,1,2,#000000,0,58 ;'Episode' text - shadow
-preset_define 84,10,27,#000000,1,0,0,0,0,#000000,0,1,2,#000000,2,58 ;number of the episode - shadow
-preset_define 85,10,33,#000000,0,0,0,0,0,#000000,0,1,2,#000000,0,58 ;Extra Episode text - shadow
+preset_define 84,10,27,#000000,1,0,0,0,0,#000000,0,1,2,#000000,2,58 ; number of the episode - shadow
+preset_define 85,10,33,#000000,0,0,0,0,0,#000000,0,1,2,#000000,0,58 ; Extra shadowe text text - shadow
 ;End Custom
 
 
 gosub *redefine_text_presets
 
-enable_gradients 1
+enable_gradients 1 
 
 ;System commands
 pretextgosub *pretext

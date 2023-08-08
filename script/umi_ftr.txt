@@ -33860,7 +33860,8 @@ return
 *lsl
 *load_sprite_lips
 getparam %lss_slot,$lss_sec,$lss_key,%lips_cell
-csp_slot %lss_slot
+csp_slot %lss_slot-1
+lips_sprite %lss_slot-1
 
 ;TODO add lips standing sprite to sprites cache
 
@@ -33871,12 +33872,14 @@ if %lss_lips == 0 jumpf
 	atoi %lss_lips_x,$lss_temp
 	loadfromreg $lss_temp,$lss_sec,$lss_key + "_y"
 	atoi %lss_lips_y,$lss_temp
-	lsp2 %lss_slot,":a/4,0,3;" + $sprite_folder_name + "\" + $lss_sec + "\2\" + $lss_sec + "_" + $lss_key + ".png",%lss_lips_x,%lss_lips_y,100,100,0
+	lsp2 %lss_slot-1,":a/4,0,3;" + $sprite_folder_name + "\" + $lss_sec + "\2\" + $lss_sec + "_" + $lss_key + ".png",%lss_lips_x,%lss_lips_y,100,100,0
 	if $lss_sec == "en2" mov $lss_sec,"enj"
 	if $lss_sec == "ka2" mov $lss_sec,"kan"
 	if $lss_sec == "be2" mov $lss_sec,"bea"
-	cell %lss_slot,%lips_cell
+	lips_sprite %lss_slot-1,$lss_sec
 ~
+
+cell %lss_slot-1,%lips_cell
 ;End Custom
 
 ;*************************

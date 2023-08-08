@@ -3959,7 +3959,11 @@ return
 	lsp r_logs_lsp2,r_click_buttons_logs,50,450	;6
 	lsp r_clear_lsp,r_click_buttons_clear,50,530	;7
 	lsp r_system_lsp,r_click_buttons_system,50,610	;8
-	lsp name_chapter_r_click,$name_chapter_r_click,0,0
+	;lsp name_chapter_r_click,$name_chapter_r_click,0,0 ;Original Edited - substituted with text generation - W_CUSTOM
+	;Text Generator - generating chapter name - W_CUSTOM
+	lsp gen_txt_10,transparent,0,0
+	write_special_text gen_txt_10,"ch_name",960,740,$name_chapter_r_click,$name_chapter_r_click_l2,$name_chapter_r_click_l3
+	;End Custom
 
 	gosub *rmenu_draw_time 
 	print 1
@@ -4096,6 +4100,7 @@ goto *text_cw_lookback
 	_csp r_bg_lsp
 	_csp r_black_lsp
 	_csp name_chapter_r_click
+	csp_text gen_txt_10 ;Text Generator - clean chapter name - W_CUSTOM
 	_csp 451
 return
 ;********************************************************************************
@@ -33790,6 +33795,11 @@ return
 		lsp %lsp_slot+1,":s;#000000`{a:l:{s:1,2:{p:83:"+$lsp_text1+"}{n}}",%lsp_x,%lsp_y+1
 		spt blur,%lsp_slot+1,300
 	~
+	if $lsp_type != "ch_name" jumpf
+		lsp %lsp_slot,":s;#FFFFFF`{w:900:{a:r:{p:46:"+$lsp_text1+"}}  {n}{a:r:{p:46:"+$lsp_text2+"}}  {n}{a:r:{p:46:"+$lsp_text3+"}}  {n}}",%lsp_x,%lsp_y
+		lsp %lsp_slot+1,":s;#000000`{w:900:{a:r:{p:86:"+$lsp_text1+"}}  {n}{a:r:{p:86:"+$lsp_text2+"}}  {n}{a:r:{p:86:"+$lsp_text3+"}}  {n}}",%lsp_x,%lsp_y
+		spt blur,%lsp_slot+1,500
+	~
 
 return
 
@@ -34773,6 +34783,9 @@ return
 	fileexist %Free2,"fonts\usr\font10.ttf",%Free3 ;Text generator - caching font10 - W_CUSTOM
 	itoa $Free2,%Free3
 	add $Free1,$Free2
+	fileexist %Free2,"fonts\usr\font11.ttf",%Free3 ;Text generator - caching font11 - W_CUSTOM
+	itoa $Free2,%Free3
+	add $Free1,$Free2
 
 	fileexist %Free2,"fonts\usr\default.otf",%Free3
 	itoa $Free2,%Free3
@@ -34806,6 +34819,9 @@ return
 	add $Free1,$Free2
 
 	fileexist %Free2,"fonts\usr\font10.otf",%Free3 ;Text generator - caching font10 - W_CUSTOM
+	itoa $Free2,%Free3
+	add $Free1,$Free2
+	fileexist %Free2,"fonts\usr\font11.otf",%Free3 ;Text generator - caching font11 - W_CUSTOM
 	itoa $Free2,%Free3
 	add $Free1,$Free2
 

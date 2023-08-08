@@ -33862,7 +33862,6 @@ return
 *load_sprite_lips
 getparam %lss_slot,$lss_sec,$lss_key,%lips_cell
 csp_slot %lss_slot-1
-lips_sprite %lss_slot-1
 
 ;TODO add lips standing sprite to sprites cache
 
@@ -33877,10 +33876,8 @@ if %lss_lips == 0 jumpf
 	if $lss_sec == "en2" mov $lss_sec,"enj"
 	if $lss_sec == "ka2" mov $lss_sec,"kan"
 	if $lss_sec == "be2" mov $lss_sec,"bea"
-	lips_sprite %lss_slot-1,$lss_sec
+	cell %lss_slot-1,%lips_cell
 ~
-
-cell %lss_slot-1,%lips_cell
 
 return
 ;End Custom

@@ -24194,10 +24194,24 @@ waitvideo
 mov %anim_mode,off
 lr_trap off
 *pam_end
+;Op Skip - gently interrupt the video if in an episode - W_CUSTOM
+;TODO make security checks on scenario_Number
+if %scenario_Number == 0 jumpf 
+	csp_rst
+	bg black,0
+	vol_mix_fade 1000
+	flush 4
+	wait 1300
+~
+;End Custom
 if %anim_mode == on lr_trap off ;%anim_mode is left on on trap
 
 _csp %anim_sprite
 dwavestop 9
+
+;Op Skip - if in an episode, skip to the given point - W_CUSTOM
+if %scenario_Number == 1 goto *op_skip_ep1
+;End Custom
 
 return
 

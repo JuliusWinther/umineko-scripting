@@ -5,6 +5,7 @@ mov $name_chapter_r_click,r_click_chapters_1_op
 mov $name_chapter_r_click_l2,r_click_chapters_1_op_l2
 mov $name_chapter_r_click_l3,r_click_chapters_1_op_l3
 mov $name_chapter_save, "1_op"
+skip_on
 new_episode 1
 flush 10,167
 textoff
@@ -20,8 +21,8 @@ flush 2
 wait 1000
 seplay 1,28,100
 textoff
-waits 167
-lbg "c:locale_lan",s0_3,"text001"
+;waits 167
+;lbg "c:locale_lan",s0_3,"text001"
 flush 1
 wait 6000
 textoff
@@ -308,7 +309,7 @@ waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 skip_off
-;pam 749,"op",0 ;Opening Video
+pam 749,"op",1 ;CONVERSION last param from 0 to 1 to enable skip
 skip_on
 textoff
 waits 167
@@ -317,6 +318,7 @@ flush 1
 textoff
 waits 167
 wait 5000
+*op_skip_ep1 ;CONVERSION when the op is skipped it restarts from here to skip the 5s wait
 seplay 1,29,71
 textoff
 waits 167

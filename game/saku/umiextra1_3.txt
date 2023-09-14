@@ -170,7 +170,7 @@ textoff
 lbg "c:colour",s0_3,"black"
 seplay 11,16,100
 flush 22
-lbg "c:backgrounds",s0_3,"m_door2hp"
+lbg "c:backgrounds",s0_3,"m_door1hp"
 lss s0_6,"gen","a11_defo1"
 aspt2_mem "xpos",s0_6,-550
 flush 22
@@ -183,7 +183,7 @@ textoff
 csp_slot s0_6
 lbg "c:backgrounds",s0_3,"mlib_1ap"
 lss s0_16,"but","d11_defo1"
-flush 2
+flush 22
 msgwnd_but
 *e3_26
 d [lv 0*"10"*"bat_00200"]`{qt}Oh, it's Genji.`[@][lv 0*"10"*"bat_00210"]` And as I thought, you brought Kumasawa, Gohda and Nanjo with you.`[@][lv 0*"10"*"bat_00220"]` All the adult servants are here.{qt}`[\] 
@@ -199,7 +199,7 @@ aspt2_mem "xpos",s0_6,-550
 flush 80
 msgwnd_goh
 *e3_27
-d [lv 0*"17"*"goh_00010"]`{qt}Long time no see, Battler-sama.`[@][lv 0*"17"*"goh_00020"]` Gohda is at your service.`{qt}[\]
+d [lv 0*"17"*"goh_00010"]`{qt}Long time no see, Battler-sama.`[@][lv 0*"17"*"goh_00020"]` Gohda is at your service.{qt}`[\]
 lss s0_7,"kum","a11_defo1"
 aspt2_mem "xpos",s0_7,550
 flush 22
@@ -266,6 +266,7 @@ msgwnd_nan
 *e3_34
 d [lv 0*"19"*"nan_00030"]`{qt}We heard you were having quite a bit of trouble.`[@][lv 0*"19"*"nan_00040"]` We thought this might be a good opportunity for you to take a short break.`[@][lv 0*"19"*"nan_00050"]` The most important thing for maintaining your ability to concentrate is rest.{qt}`[\]
 msgwnd_goh
+*e3_35
 d [lv 0*"17"*"goh_00050"]`{qt}...Then if you will allow me, I will set the table.{qt}`[\]
 textoff
 
@@ -275,7 +276,7 @@ csp_slot s0_4
 lbg "c:backgrounds",s0_3,"sweet2"
 flush 2
 msgwnd_non
-*e3_35
+*e3_36
 d `Just what you'd expect from the adult servants.`[@]` They tidied up the desk nimbly, took out various colorful desserts from the stack of three boxes,`[@]` and in the blink of an eye, brightened up the dim study by laying out a smorgasbord of desserts.`[\]
 textoff
 
@@ -287,13 +288,13 @@ flush 2
 lss s0_5,"kum","a12_warai1"
 flush 80
 msgwnd_kum
-*e3_36
+*e3_37
 d [lv 0*"18"*"kum_00060"]`{qt}Come, come, eat up.`[@][lv 0*"18"*"kum_00070"]` If you can settle for this decrepit old lady, perhaps I could spoonfeed you as well?`[@][lv 0*"18"*"kum_00080"]` Ohohohoho!{qt}`[\]
 lss s0_16,"but","d11_defo1"
 aspt2_mem "xpos",s0_16,550
 flush 80
 msgwnd_but
-*e3_37
+*e3_38
 d2 [lv 0*"10"*"bat_00270"]`{qt}Sorry, but... I'm just going to eat myself.`[@][lv 0*"10"*"bat_00280"]` Let's eat!`[@][#][*][lv 0*"10"*"bat_00290"]` Oh, you even made tea..!`[@][lv 0*"10"*"bat_00300"]` How thoughtful of you!{qt}`[\]
 wait_on_d 0
 lss s0_16,"but","d11_warai1"
@@ -303,6 +304,7 @@ d_continue
 wait_on_d -1
 textoff
 
+csp_slot s0_5
 csp_slot s0_16
 lbg "c:colour",s0_3,"black"
 flush 3
@@ -311,11 +313,12 @@ lss s0_6,"gen","a11_defo1"
 aspt2_mem "xpos",s0_6,550
 flush 3
 msgwnd_gen
-*e3_38
+*e3_39
 d [lv 0*"14"*"gen_00050"]`{qt}...Take whatever you like, Battler-sama.`[@][lv 0*"14"*"gen_00060"]` I have served my Lord and Lady {f:5:Beatrice} for a long time.`[@][lv 0*"14"*"gen_00070"]` I know how difficult it is to create a story for a gameboard.{qt}`[\]
 lss s0_8,"nan","a1_fumu1"
 aspt2_mem "xpos",s0_8,-550
 msgwnd_nan
+*e3_40
 d [lv 0*"19"*"nan_00060"]`{qt}No one had yet congratulated you on your promotion to Game Master, Battler.`[@][lv 0*"19"*"nan_00070"]` Please think of this as a gift and courtesy visit from us old people.{qt}`[\]
 textoff
 
@@ -325,7 +328,7 @@ lbg "c:backgrounds",s0_3,"mlib_1ap"
 lss s0_16,"but","d11_defo2"
 flush 2
 msgwnd_but
-*e3_39
+*e3_41
 d2 [lv 0*"10"*"bat_00310"]`{qt}Oh, but don't go calling yourselves old..!`[@][lv 0*"10"*"bat_00320"]` I'd never slight my seniors in life.`[@][#][*][lv 0*"10"*"bat_00330"]` Come on, let's eat.`[@][lv 0*"10"*"bat_00340"]` Gohda, come join in too, let's all eat together!{qt}`[\]
 wait_on_d 0
 lss s0_16,"but","d11_warai1"
@@ -340,14 +343,14 @@ lss s0_6,"goh","a11_defo1"
 aspt2_mem "xpos",s0_6,550
 flush 22
 msgwnd_goh
-*e3_40
+*e3_42
 d [lv 0*"17"*"goh_00060"]`{qt}Thank you very much.`[@][lv 0*"17"*"goh_00070"]` Then, if you'll allow me...{qt}`[\]
 lss s0_8,"kum","a12_warai1"
 aspt2_mem "xpos",s0_8,-550
 flush 80
 msgwnd_kum
-*e3_41
-d [lv 0*"18"*"kum_00090"]`{qt}Hohohohoho.`[@][lv 0*"18"*"kum_00100"]` Ahh, what a blessing, what a blessing.`[@][lv 0*"18"*"kum_00110"]` It's delicious~!`[@][lv 0*"18"*"kum_00120"]` My cheeks are falling off♪{qt}`[\]
+*e3_43
+d [lv 0*"18"*"kum_00090"]`{qt}Hohohohoho.`[@][lv 0*"18"*"kum_00100"]` Ahh, what a blessing, what a blessing.`[@][lv 0*"18"*"kum_00110"]` It's delicious~!`[@][lv 0*"18"*"kum_00120"]` My cheeks are falling off~{qt}`[\]
 textoff
 
 csp_slot s0_8
@@ -355,11 +358,11 @@ csp_slot s0_6
 lbg "c:backgrounds",s0_3,"mlib_1ep"
 flush 22
 msgwnd_non
-*e3_42
-d `Like they said, a rest might be exactly what I need.`[\]
-*e3_43
-d `I'm not coming up with any new ideas and my concentration is just getting worse.`[@]` It's not like I'll get anywhere just sitting in front of the desk with my arms folded.`[\]
 *e3_44
+d `Like they said, a rest might be exactly what I need.`[\]
+*e3_45
+d `I'm not coming up with any new ideas and my concentration is just getting worse.`[@]` It's not like I'll get anywhere just sitting in front of the desk with my arms folded.`[\]
+*e3_46
 d `While thanking his seniors in life for their concern, Battler forgot about the heavy responsibility of the Game Master for a bit,`[@]` and improved his mood by leisurely chatting and enjoying himself...`[\]
 textoff
 
@@ -370,17 +373,18 @@ wait 1200
 lbg "c:backgrounds",s0_3,"mlib_1bp"
 lss s0_6,"goh","a11_hohoemi1"
 aspt2_mem "xpos",s0_6,-550
-lss s0_16,"but","a11_defo2"
+lss s0_16,"but","d11_defo2"
 aspt2_mem "xpos",s0_16,550
 msgwnd_goh
-*e3_45
+*e3_47
 d [lv 0*"17"*"goh_00080"]`{qt}...By the way, Battler-sama.`[@][lv 0*"17"*"goh_00090"]` How is EP6 coming along?{qt}`[\]
 bgmplay 174,80,0
 lss s0_16,"but","d11_aseru1"
 aspt2_mem "xpos",s0_16,550
 flush 80
 msgwnd_but
-
+*e3_48
+d [lv 0*"10"*"bat_00350"]`{qt}Ugh.`[@][lv 0*"10"*"bat_00360"]` Honestly, I'm completely lost on that.`[@][lv 0*"10"*"bat_00370"]` ...I already complained about this to {f:5:Lambdadelta} before, too. This story has way too many characters.`[@][lv 0*"10"*"bat_00380"]` I want to give everyone some time to shine, but...`[@][lv 0*"10"*"bat_00390"]` It's way too hard to fit all that into a scenario for just one episode...`[@][lv 0*"10"*"bat_00400"]` Eh?`[@][lv 0*"10"*"bat_00410"]` Wait a moment. Didn't you guys say it's 'convenient' that I'm still coming up with the plot?`[\]
 
 
 

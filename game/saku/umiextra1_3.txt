@@ -108,6 +108,11 @@ wait_on_d 0
 lss s0_16,"but","d11_aseru2"
 aspt2_mem "xpos",s0_16,550
 seplay 11,10,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 flush 80
 wait 200
 lss s0_8,"lam","a11_odoroki2"
@@ -307,16 +312,17 @@ textoff
 csp_slot s0_5
 csp_slot s0_16
 lbg "c:colour",s0_3,"black"
-flush 3
+flush 4
 lbg "c:backgrounds",s0_3,"mlib_1bp"
 lss s0_6,"gen","a11_defo1"
 aspt2_mem "xpos",s0_6,550
-flush 3
+flush 4
 msgwnd_gen
 *e3_39
 d [lv 0*"14"*"gen_00050"]`{qt}...Take whatever you like, Battler-sama.`[@][lv 0*"14"*"gen_00060"]` I have served my Lord and Lady {f:5:Beatrice} for a long time.`[@][lv 0*"14"*"gen_00070"]` I know how difficult it is to create a story for a gameboard.{qt}`[\]
 lss s0_8,"nan","a1_fumu1"
 aspt2_mem "xpos",s0_8,-550
+flush 80
 msgwnd_nan
 *e3_40
 d [lv 0*"19"*"nan_00060"]`{qt}No one had yet congratulated you on your promotion to Game Master, Battler.`[@][lv 0*"19"*"nan_00070"]` Please think of this as a gift and courtesy visit from us old people.{qt}`[\]
@@ -350,7 +356,7 @@ aspt2_mem "xpos",s0_8,-550
 flush 80
 msgwnd_kum
 *e3_43
-d [lv 0*"18"*"kum_00090"]`{qt}Hohohohoho.`[@][lv 0*"18"*"kum_00100"]` Ahh, what a blessing, what a blessing.`[@][lv 0*"18"*"kum_00110"]` It's delicious~!`[@][lv 0*"18"*"kum_00120"]` My cheeks are falling off~{qt}`[\]
+d [lv 0*"18"*"kum_00090"]`{qt}Hohohohoho.`[@][lv 0*"18"*"kum_00100"]` Ahh, what a blessing, what a blessing.`[@][lv 0*"18"*"kum_00110"]` It's delicious~!`[@][lv 0*"18"*"kum_00120"]` My cheeks are falling off{p:0:♪}{qt}`[\]
 textoff
 
 csp_slot s0_8
@@ -375,6 +381,7 @@ lss s0_6,"goh","a11_hohoemi1"
 aspt2_mem "xpos",s0_6,-550
 lss s0_16,"but","d11_defo2"
 aspt2_mem "xpos",s0_16,550
+flush 22
 msgwnd_goh
 *e3_47
 d [lv 0*"17"*"goh_00080"]`{qt}...By the way, Battler-sama.`[@][lv 0*"17"*"goh_00090"]` How is EP6 coming along?{qt}`[\]
@@ -384,17 +391,412 @@ aspt2_mem "xpos",s0_16,550
 flush 80
 msgwnd_but
 *e3_48
-d [lv 0*"10"*"bat_00350"]`{qt}Ugh.`[@][lv 0*"10"*"bat_00360"]` Honestly, I'm completely lost on that.`[@][lv 0*"10"*"bat_00370"]` ...I already complained about this to {f:5:Lambdadelta} before, too. This story has way too many characters.`[@][lv 0*"10"*"bat_00380"]` I want to give everyone some time to shine, but...`[@][lv 0*"10"*"bat_00390"]` It's way too hard to fit all that into a scenario for just one episode...`[@][lv 0*"10"*"bat_00400"]` Eh?`[@][lv 0*"10"*"bat_00410"]` Wait a moment. Didn't you guys say it's 'convenient' that I'm still coming up with the plot?`[\]
+d2 [lv 0*"10"*"bat_00350"]`{qt}Ugh.`[@][lv 0*"10"*"bat_00360"]` Honestly, I'm completely lost on that.`[@][lv 0*"10"*"bat_00370"]` ...I already complained about this to {f:5:Lambdadelta} before, too. This story has way too many characters.`[@][lv 0*"10"*"bat_00380"]` I want to give everyone some time to shine, but...`[@][lv 0*"10"*"bat_00390"]` It's way too hard to fit all that into a scenario for just one episode...`[@][#][*][lv 0*"10"*"bat_00400"]` Eh?`[@][lv 0*"10"*"bat_00410"]` Wait a moment. Didn't you guys say it's 'convenient' that I'm still coming up with the plot?`[\]
+wait_on_d 0
+lss s0_16,"but","d11_oya1"
+aspt2_mem "xpos",s0_16,550
+flush 80
+d_continue
+wait_on_d -1
+lss s0_8,"kum","a12_warai1"
+flush 80
+msgwnd_goh
+*e3_49
+d [lv 0*"17"*"goh_00100"]`{qt}Y...Yes, about that, well...`[\]
+msgwnd_non
+*e3_50
+d `Gohda and Kumasawa, despite their age, laughed shyly.`[\]
+textoff
 
+csp_slot s0_16
+csp_slot s0_8
+csp_slot s0_6
+lbg "c:backgrounds",s0_3,"mlib_1ap"
+lss s0_8,"gen","a11_defo1"
+aspt2_mem "xpos",s0_8,-550
+flush 22
+*e3_51
+d `When Battler stared at them blankly, wondering what was up, Genji spoke with dignity.`[\]
+lss s0_8,"gen","a21_kashikomari1"
+aspt2_mem "xpos",s0_8,-550
+flush 80
+msgwnd_gen
+*e3_52
+d [lv 0*"14"*"gen_00080"]`{qt}...Battler-sama, have you seen the results of the latest popularity poll?{qt}`[\]
+lss s0_16,"but","d11_futeki1"
+aspt2_mem "xpos",s0_16,550
+flush 80
+msgwnd_but
+*e3_53
+d2 [lv 0*"10"*"bat_00420"]`{qt}Eh?`[@][lv 0*"10"*"bat_00430"]` Oh, the one from our sponsors!?`[@][#][*][lv 0*"10"*"bat_00440"]` I took first place in that, haha... awkward...{qt}`[\]
+wait_on_d 0
+lss s0_16,"but","d11_aseru1"
+aspt2_mem "xpos",s0_16,550
+flush 80
+d_continue
+wait_on_d -1
+textoff
 
+lbg "c:colour",s0_3,"white"
+lss s0_16,"ber","a21_warai3"
+aspt2_mem "xpos",s0_16,550
+aspt2_mem "flip",s0_16,1
+lss s0_10,"be2","a15_1_hoshin2star"
+lss s0_8,"enj","c11_warai2"
+aspt2_mem "xpos",s0_8,-550
+flush 8
+msgwnd_non
+*e3_54
+d `...Usually girls end up taking first place.`[\]
+*e3_55
+d `It's really rare for a man to take first place...`[@]`Ah, well, I guess that was the case with Keiichi from "Higurashi", too...`[\]
+textoff
 
+csp_slot s0_16
+csp_slot s0_10
+csp_slot s0_8
+lbg "c:colour",s0_3,"white"
+flush 2
+lbg "c:backgrounds",s0_3,"mlib_1ap"
+lss s0_8,"gen","a11_defo1"
+aspt2_mem "xpos",s0_8,-550
+lss s0_16,"but","d11_komaru3"
+aspt2_mem "xpos",s0_16,550
+flush 22
+msgwnd_gen
+*e3_56
+d [lv 0*"14"*"gen_00090"]`{qt}...The one who fared best among the servants was Gohda, who came 22nd.`[@][lv 0*"14"*"gen_00100"]` Doctor Nanjo took 48th.`[@][lv 0*"14"*"gen_00110"]` And Kumasawa was stuck in 53rd...{qt}`[\]
+lss s0_10,"kum","a11_defo1"
+flush 80
+msgwnd_kum
+*e3_57
+d [lv 0*"18"*"kum_00130"]`{qt}Hohoho...`[@][lv 0*"18"*"kum_00140"]` Sounds about right for an old lady like myself.{qt}`[\]
+lss s0_16,"but","d11_oya1"
+aspt2_mem "xpos",s0_16,550
+flush 80
+msgwnd_but
+*e3_58
+d [lv 0*"10"*"bat_00450"]`{qt}What of Genji?{qt}`[\]
+lss s0_8,"nan","a1_komaru3"
+aspt2_mem "xpos",s0_8,-550
+flush 80
+msgwnd_nan
+*e3_59
+d [lv 0*"19"*"nan_00080"]`{qt}41st.`[@][lv 0*"19"*"nan_00090"]` ...We can hardly compete with the younger generation.{qt}`[\]
+textoff
 
+csp_slot s0_10
+csp_slot s0_16
+csp_slot s0_8
+lbg "c:backgrounds",s0_3,"mlib_1ep"
+flush 2
+msgwnd_but
+*e3_60
+d [lv 0*"10"*"bat_00460"]`{qt}From the first episode, you guys have all been stuck in horrible roles, and took them on without complaining even once... It's kind of sad you're ranked that low.`[@][lv 0*"10"*"bat_00470"]` Especially when that annoying bitch Erika managed to get 6th place without doing anything halfway decent, you know?{qt}`[\]
+msgwnd_goh
+*e3_61
+d [lv 0*"17"*"goh_00110"]`{qt}Well, it's a popularity poll...`[@][lv 0*"17"*"goh_00120"]` Of course, everyone is voting for the beautiful young ladies...{qt}`[\]
+textoff
 
+lbg "c:backgrounds",s0_3,"mlib_1ap"
+lss s0_8,"nan","a1_komaru3"
+aspt2_mem "xpos",s0_8,-550
+lss s0_9,"goh","a11_komaru1"
+lss s0_10,"kum","a11_komaru1"
+aspt2_mem "xpos",s0_10,550
+flush 22
+msgwnd_non
+*e3_62
+d `Wearing bitter smiles, everyone deflated a little...`[\]
+*e3_63
+d `The fun time we had been having eating desserts and drinking tea seemed to wither away and end quietly.`[\]
+*e3_64
+d `I want to cheer everyone up somehow...`[\]
+textoff
 
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+vol_bgm -1,2000
+lbg "c:colour",s0_3,"black"
+flush 2
+seplay 11,70,100
+lbg "c:backgrounds",s0_3,"mlib_1ap"
+lss s0_16,"but","d11_majime1"
+flush 22
+msgwnd_but
+*e3_65
+d2 [lv 0*"10"*"bat_00480"]`{qt}Wait...`[@][#][*][lv 0*"10"*"bat_00490"]` Wow, I'm an idiot.`[@][lv 0*"10"*"bat_00500"]` Am I the Game Master or what?`[@][#][*][lv 0*"10"*"bat_00510"]` ...Alright then!`[@][lv 0*"10"*"bat_00520"]` To boost your popularity, I can just give you guys some more screentime!{qt}`[\]
+wait_on_d 0
+lss s0_16,"but","d11_futeki3"
+flush 80
+d_continue
+wait_on_d 1
+lss s0_16,"but","d11_warai1"
+bgmplay 137,70,0
+flush 80
+d_continue
+wait_on_d -1
+textoff
 
+csp_slot s0_16
+lbg "c:colour",s0_3,"white"
+seplay 11,2,100
+flush 80
+lbg "c:backgrounds",s0_3,"mlib_1ap"
+lss s0_16,"but","d11_warai1"
+flush 22
 
+csp_slot s0_16
+lbg "c:backgrounds",s0_3,"mlib_1bp"
+lss s0_6,"kum","a12_warai1"
+aspt2_mem "xpos",s0_6,-730
+lss s0_7,"goh","a11_omakase2"
+aspt2_mem "xpos",s0_7,-250
+lss s0_8,"gen","a21_kashikomari1"
+aspt2_mem "xpos",s0_8,270
+lss s0_5,"nan","a1_fumu1"
+aspt2_mem "xpos",s0_5,720
+flush 22
+msgwnd_non
+*e3_66
+d `Everyone perked up and broke into a smile.`[\]
+*e3_67
+d `...I get it.`[@]` This is precisely what they came here for.`[\]
+*e3_68
+d `In "Umineko", where the younger generation stands out more, the adults don't usually get huge roles...`[@]
+*e3_69
+d `Especially the older servants, who are often killed on the first twilight.`[@]` And, well, even when they do survive, all the good parts are usually snatched away by me and Beato, so they never really get their chance to shine...`[\]
+textoff
 
+csp_slot s0_5
+csp_slot s0_6
+csp_slot s0_7
+csp_slot s0_8
+lbg "c:colour",s0_3,"black"
+flush 25
+lbg "c:backgrounds",s0_3,"mlib_1ep"
+flush 26
+msgwnd_but
+*e3_70
+d [lv 0*"10"*"bat_00530"]`{qt}Geez, how careless of me...`[@][lv 0*"10"*"bat_00540"]` If I sympathize with you about the popularity poll results, I should try and do something about it.`[@][lv 0*"10"*"bat_00550"]` Popularity is proportional to the amount of time you get to shine..!`[@][lv 0*"10"*"bat_00560"]` Sorry for not realising that sooner..!{qt}`[\]
+*e3_71
+d [lv 0*"10"*"bat_00570"]`{qt}It seems you guys were really unfortunate in Beato's and Lambda's scenarios, but now I'm Game Master!`[@][lv 0*"10"*"bat_00580"]` You can count on me.`[@][lv 0*"10"*"bat_00590"]` To make your popularity go way up, I'll make sure to give you guys tons of scenes!`[\]
+textoff
 
+lbg "c:colour",s0_3,"white"
+seplay 11,74,100
+flush 80
+lbg "c:colour",s0_3,"black"
+seplay 12,54,100
+flush 22
+msgwnd_non
+*e3_72
+d `...Well, that was easier said than done.`[@]` What kind of scenes can I even give them?`[\]
+textoff
+
+lbg "c:backgrounds",s0_3,"different_spiral_1a"
+flush 22
+*e3_73
+d `In this world of witches and reasoning, where can I fit them in..?`[\]
+textoff
+
+lbg "c:colour",s0_3,"black"
+flush 22
+lbg "c:backgrounds",s0_3,"mlib_1ap"
+lss s0_10,"but","d11_futeki1"
+aspt2_mem "xpos",s0_10,-550
+flush 22
+msgwnd_but
+*e3_74
+d [lv 0*"10"*"bat_00600"]`{qt}...How about I just ask?`[@][lv 0*"10"*"bat_00610"]` Hey guys, what kind of a role do you all want?`[@][lv 0*"10"*"bat_00620"]` As thanks for these delicious desserts,`[|][lv 0*"10"*"bat_00630"]` I'll give you any role you ask for!{qt}`[\]
+lss s0_12,"goh","a11_omakase1"
+aspt2_mem "xpos",s0_12,550
+flush 80
+seplay 11,4,70
+msgwnd_goh
+*e3_75
+d [lv 0*"17"*"goh_00130"]`{qt}Then...`[@][lv 0*"17"*"goh_00140"]` Allow me to do something amazing in the kitchen!{qt}`[\]
+lss s0_10,"but","d11_defo1"
+aspt2_mem "xpos",s0_10,-550
+flush 80
+msgwnd_but
+*e3_76
+d [lv 0*"10"*"bat_00640"]`{qt}Well, of course...`[@][lv 0*"10"*"bat_00650"]` But if you do nothing but cook, you'll fade away into the background as soon as the murders start...{qt}`[\]
+lss s0_12,"goh","a11_defo1"
+aspt2_mem "xpos",s0_12,550
+flush 80
+msgwnd_goh
+*e3_77
+d [lv 0*"17"*"goh_00150"]`{qt}No-no, you don't understand..!`[@][lv 0*"17"*"goh_00160"]` If it's in the kitchen, I can't lose!`[@][lv 0*"17"*"goh_00170"]` What if I were to take part in a huge battle wielding kitchen supplies!?{qt}`[\]
+csp_slot s0_10
+lss s0_8,"nan","a1_fumu1"
+aspt2_mem "xpos",s0_8,-550
+flush 80
+msgwnd_nan
+*e3_78
+d2 [lv 0*"19"*"nan_00100"]`{qt}He will appear completely cornered in the kitchen.`[@][lv 0*"19"*"nan_00110"]` But once someone insults his cooking skill, the strength of rage will manifest and the tables will turn the on the opponent!`[@][#][*][lv 0*"19"*"nan_00120"]` Hmm, this could be appealing to the younger generation as well.{qt}`[\]
+wait_on_d 0
+lss s0_8,"nan","a1_defo1"
+aspt2_mem "xpos",s0_8,-550
+flush 80
+d_continue
+wait_on_d -1
+lss s0_12,"goh","a11_omakase1"
+aspt2_mem "xpos",s0_12,550
+flush 80
+msgwnd_goh
+*e3_79
+d2 [lv 0*"17"*"goh_00180"]`{qt}Let my catchphrase be: "In the kitchen, I am immortal!"{qt}`[#][*][\]
+wait_on_d 0
+seplay 11,74,50
+d_continue
+wait_on_d -1
+lss s0_10,"but","d11_warai1"
+flush 80
+msgwnd_but
+*e3_80
+d [lv 0*"10"*"bat_00660"]`{qt}Yeah, that's not bad at all.`[@][lv 0*"10"*"bat_00670"]` The chef, Gohda, will use his aikido techniques to blow away the swarm of goats!`[@][lv 0*"10"*"bat_00680"]` Then if we make sure to play some pumped up battle music there, the scene's sure to stick in everyone's minds..!`[@][lv 0*"10"*"bat_00690"]` Right, it's decided.`[@][lv 0*"10"*"bat_00700"]` I'll definitely make preparations for Gohda-san's awesome battle scene!{qt}`[\]
+msgwnd_goh
+*e3_81
+d [lv 0*"17"*"goh_00190"]`{qt}Oooooohhh!`[@][lv 0*"17"*"goh_00200"]` Thank you so very very much!!!{qt}`[\]
+textoff
+
+csp_slot s0_8
+csp_slot s0_10
+csp_slot s0_12
+lbg "c:colour",s0_3,"black"
+flush 24
+lbg "c:backgrounds",s0_3,"mlib_1bp"
+lss s0_10,"but","d11_defo1"
+aspt2_mem "xpos",s0_10,550
+flush 24
+msgwnd_but
+*e3_82
+d [lv 0*"10"*"bat_00710"]`{qt}What would you like, Kumasawa?`[@][lv 0*"10"*"bat_00720"]` Perhaps,`[|][lv 0*"10"*"bat_00730"]` you could be the perfect servant who's always stealthily witnessing the key scenes from a crack in the door?!{qt}`[\]
+lss s0_8,"kum","a11_defo1"
+aspt2_mem "xpos",s0_8,-550
+flush 80
+msgwnd_kum
+*e3_83
+d2 [lv 0*"18"*"kum_00150"]`{qt}Hohoho..!`[@][lv 0*"18"*"kum_00160"]` A role that makes use of my age and experience like this is quite appropriate indeed...`[@][lv 0*"18"*"kum_00170"]` Because of my plentiful life experience, I immediately sense that something seems out of place at the crime scene, and find the key to solving the mystery.`[@][#][*][lv 0*"18"*"kum_00180"]` ...However, the culprit discovers this, silences me in a heartrending scene, and I leave behind a dying message:`[@][lv 0*"18"*"kum_00190"]` 'Ah, track down the culprit~~!'`[@][lv 0*"18"*"kum_00200"]` Ta-da!{qt}`[\]
+wait_on_d 0
+lss s0_8,"kum","a11_defo2"
+aspt2_mem "xpos",s0_8,-550
+flush 80
+d_continue
+wait_on_d -1
+lss s0_10,"but","d11_warai1"
+aspt2_mem "xpos",s0_10,550
+flush 80
+msgwnd_but
+*e3_84
+d [lv 0*"10"*"bat_00740"]`{qt}Wahaha, that's quite dark!`[@][lv 0*"10"*"bat_00750"]` But that's alright!`[@][lv 0*"10"*"bat_00760"]` I'll give you that kind of role, Kumasawa.`[@][lv 0*"10"*"bat_00770"]` It's pretty easy to make you stand out with a big, dramatic death scene.`[@][lv 0*"10"*"bat_00780"]` I'll make it a real tearjerker!{qt}`[\]
+textoff
+
+csp_slot s0_10
+csp_slot s0_8
+lbg "c:colour",s0_3,"black"
+flush 22
+msgwnd_non
+*e3_85
+d2 `Moving right along,`[@][#][*]` Nanjo will be a super-surgeon who's capable of saving people using nothing but a sewing set he happened to have on himself.`[@][#][*]` Besides, his robe is actually full of scalpels and lethal drugs, so he could even fight if he had to!`[\]
+wait_on_d 0
+lbg "c:backgrounds",s0_3,"nan_r1a"
+lss s0_8,"nan","a1_fumu1"
+flush 22
+d_continue
+wait_on_d 1
+
+csp_slot s0_8
+lbg "c:colour",s0_3,"black"
+flush 80
+lbg "a:efe",s0_4,"blade1r"
+color_mod2 s0_4,#ffffff
+flush 1
+seplay 11,58,100
+lbg "a:efe",s0_4,"blade5r"
+color_mod2 s0_4,#ffffff
+flush 1
+d_continue
+wait_on_d -1
+textoff
+
+csp_slot s0_4
+flush 80
+lbg "a:backgrounds",s0_3,"glob_1ar"
+lbg "a:backgrounds",s0_2,"glob_1ar_bg"
+lss s0_6,"gen","a21_kashikomari1"
+aspt2_mem "xpos",s0_6,550
+flush 22
+lss s0_6,"gen","a11_defo1"
+aspt2_mem "xpos",s0_6,550
+flush 80
+*e3_86
+d `Genji will play a modest support role.`[@]` He'll be making a cocktail or something in the guesthouse lounge, reminiscing about the old days.`[\]
+*e3_87
+d2 `He won't get a battle scene, but a really strong enemy character will say something like: "Ge-`[|][#][*]` Genji..?!`[@]` That's impossible, you're supposed to be dead!"`[@]` and this will give us a glimpse of how awesome he was in the past.`[\]
+wait_on_d 0
+seplay 11,72,80
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
+d_continue
+wait_on_d -1
+textoff
+
+csp_slot s0_6
+lbg "c:backgrounds",s0_3,"mlib_1bp"
+lss s0_10,"but","d11_defo2"
+flush 24
+msgwnd_but
+*e3_88
+d [lv 0*"10"*"bat_00790"]`{qt}Hehe...Okay, okay...`[@][lv 0*"10"*"bat_00800"]` This time, the adults will get better roles.`[@][lv 0*"10"*"bat_00810"]` With your plentiful life experience and cunning wit, you'll be able to leave a scratch on the 1000-year-old witch and her familiars..!`[@][lv 0*"10"*"bat_00820"]` Thanks, everyone!`[@][lv 0*"10"*"bat_00830"]` Now that I know what direction to take the story, I might start getting more ideas!{qt}`[\]
+lss s0_12,"nan","a1_defo1"
+aspt2_mem "xpos",s0_12,550
+flush 80
+msgwnd_nan
+*e3_89
+d [lv 0*"19"*"nan_00130"]`{qt}Excellent..!`[@][lv 0*"19"*"nan_00140"]` We're glad we were able to help.{qt}`[\]
+lss s0_16,"gen","a11_defo1"
+aspt2_mem "xpos",s0_16,550
+flush 80
+lss s0_16,"gen","a11_majime1"
+aspt2_mem "xpos",s0_16,550
+msgwnd_gen
+*e3_90
+d [lv 0*"14"*"gen_00120"]`{qt}...Well then, we should probably take our leave.`[@][lv 0*"14"*"gen_00130"]` We wouldn't want to distract you...{qt}`[\]
+lss s0_10,"but","d11_warai1"
+flush 80
+msgwnd_but
+*e3_91
+d [lv 0*"10"*"bat_00840"]`{qt}Thank you very much for your concern!`[@][lv 0*"10"*"bat_00850"]` And for collaborating with me!`[@][lv 0*"10"*"bat_00860"]` I'll be sure to write an awesome scenario and give you guys enough spotlight that you'll all rank in the top 10 in the next popularity poll!{qt}`[\]
+textoff
+
+csp_slot s0_16
+csp_slot s0_10
+csp_slot s0_12
+lbg "c:colour",s0_3,"black"
+flush 22
+lbg "c:backgrounds",s0_3,"mlib_1ep"
+flush 22
+msgwnd_non
+*e3_92
+d `Gohda, Kumasawa, Nanjo...`[@]` and even Genji were choking on tears of gratitude.`[\]
+*e3_93
+d `Battler, in order to clear away their long-standing regrets, immersed himself even more in the production of the EP6 scenario...`[\]
+textoff
+
+lbg "c:colour",s0_3,"black"
+vol_bgm -1,2500
+flush 42
+seplay 11,16,100
+*e3_94
+d `*knock, knock*!`[@]` Again with the knocking.`[\]
+*e3_95
+d ` Who is it?`[@]` ...Well, this sure is an unexpected character.`[\]
 
 
 

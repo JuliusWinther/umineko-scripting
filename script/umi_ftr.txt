@@ -1661,8 +1661,8 @@ numalias unlock_no_lsp,%0 : dec %0	;8
 
 ;Text Generator - creating new sprite slots above the buttons - W_CUSTOM
 mov %0,55
-numalias gen_txt_1,%0 : dec %0 : dec %0 ;55
-numalias gen_txt_2,%0 : dec %0 : dec %0 ;53 
+numalias gen_txt_1,%0 : dec %0 : dec %0 ;55 ;s-56
+numalias gen_txt_2,%0 : dec %0 : dec %0 ;53 ;s-54 
 numalias gen_txt_3,%0 : dec %0 : dec %0 ;51 
 numalias gen_txt_4,%0 : dec %0 : dec %0 ;49 
 numalias gen_txt_5,%0 : dec %0 : dec %0 ;47 
@@ -1670,7 +1670,7 @@ numalias gen_txt_6,%0 : dec %0 : dec %0	;45
 numalias gen_txt_7,%0 : dec %0 : dec %0	;43
 numalias gen_txt_8,%0 : dec %0 : dec %0	;41
 numalias gen_txt_9,%0 : dec %0 : dec %0	;39
-numalias gen_txt_10,%0 : dec %0 : dec %0 ;37
+numalias gen_txt_10,%0 : dec %0 : dec %0 ;37 ;s-38
 numalias gen_txt_11,%0 : dec %0 : dec %0 ;35
 numalias gen_txt_12,%0 : dec %0 : dec %0 ;33
 numalias gen_txt_13,%0 : dec %0 : dec %0 ;31
@@ -14968,76 +14968,78 @@ if %CHIRU_MODE != 0 jumpf
 	;Main Menu
 
 	;Original Edited - Changed different values and conditions - W_CUSTOM
-	lsph t_btn_start_lsp,t_btn_start,1325,424 ;extra -30(450) to correspond to ps3 ;10
-	lsph t_btn_web_lsp,t_btn_web,1325,488 ;9
-	if %UMINEKOEND = 0 lsph t_btn_exit_lsp,t_btn_exit,1325,616
-	if %UMINEKOEND = 1 lsph t_btn_exit_lsp,t_btn_exit1_cg,1325,680
-	if %UMINEKOEND = 11 lsph t_btn_exit_lsp,t_btn_exit2,1325,744 ;808	
-	if %UMINEKOEND = 12 lsph t_btn_exit_lsp,t_btn_exit3,1325,808	
-	if %UMINEKOEND >= 20 && %UMINEKOEND < 50 lsph t_btn_exit_lsp,t_btn_exit5,1325,1000
-	if %UMINEKOEND >= 40 lsph t_btn_exit_lsp,t_btn_exit5,1325,1000 ;from the bottom, 1
+	lsph t_btn_start_lsp,title_btn_1,1325,424 ;extra -30(450) to correspond to ps3 ;10
+	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_start_txt
+	lsph t_btn_web_lsp,title_btn_2,1325,488 ;9
+	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_web_txt
+	if %UMINEKOEND = 0 lsph t_btn_exit_lsp,title_btn_4,1325,616
+	if %UMINEKOEND = 1 lsph t_btn_exit_lsp,title_btn_5,1325,680
+	if %UMINEKOEND = 11 lsph t_btn_exit_lsp,title_btn_7,1325,744 ;808	
+	if %UMINEKOEND = 12 lsph t_btn_exit_lsp,title_btn_8,1325,808	
+	if %UMINEKOEND >= 20 && %UMINEKOEND < 50 lsph t_btn_exit_lsp,title_btn_10,1325,1000
+	if %UMINEKOEND >= 40 lsph t_btn_exit_lsp,title_btn_10,1325,1000 ;from the bottom, 1
 
-	if %UMINEKOEND > 11 lsph t_btn_tea_lsp,t_btn_tea,1325,552 ;8 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
-	if %UMINEKOEND > 12 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,616 ;7
-	if %UMINEKOEND >= 20 lsph t_btn_tips_lsp,t_btn_tips,1325,744 ;5
-	if %UMINEKOEND > 12 lsph t_btn_music_lsp,t_btn_music,1325,936 ;pos: 2 ;Appears after ??? 1
-	;if %UMINEKOEND = 11 lsph t_btn_music_lsp,t_btn_music2,1325,744 ;Music Button - Appears after ep 1 -------------------
-	if %UMINEKOEND = 12 lsph t_btn_music_lsp,t_btn_music3,1325,744 ;Appears after tea 1 ;808
+	if %UMINEKOEND > 11 lsph t_btn_tea_lsp,title_btn_3,1325,552 ;8 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
+	if %UMINEKOEND > 12 lsph t_btn_ura_tea_lsp,title_btn_4,1325,616 ;7
+	if %UMINEKOEND >= 20 lsph t_btn_tips_lsp,title_btn_6,1325,744 ;5
+	if %UMINEKOEND > 12 lsph t_btn_music_lsp,title_btn_9,1325,936 ;pos: 2 ;Appears after ??? 1
+	;if %UMINEKOEND = 11 lsph t_btn_music_lsp,title_btn_6,1325,744 ;Music Button - Appears after ep 1 ------------------- moved below
+	if %UMINEKOEND = 12 lsph t_btn_music_lsp,title_btn_7,1325,744 ;Appears after tea 1 ;808
 
 	;new
-	if %UMINEKOEND >= 20 lsph t_chars_lsp,t_chars,1325,680 ;6
-	if %UMINEKOEND > 11 lsph t_cg_lsp,t_cg,1325,872 ;3 ;>=
-	if %UMINEKOEND = 1 lsph t_cg_lsp,t_cg1,1325,616 ;3
-	if %UMINEKOEND >= 0 lsph t_config_lsp,t_config_newgame,1325,552 ;4
-	if %UMINEKOEND = 12 lsph t_config_lsp,t_config3,1325,616 ;4 ;680
-	if %UMINEKOEND >= 20 lsph t_config_lsp,t_config,1325,808 ;4
+	if %UMINEKOEND >= 20 lsph t_chars_lsp,title_btn_5,1325,680 ;6
+	if %UMINEKOEND > 11 lsph t_cg_lsp,title_btn_8,1325,872 ;3 ;>=
+	if %UMINEKOEND = 1 lsph t_cg_lsp,title_btn_4,1325,616 ;3
+	if %UMINEKOEND >= 0 lsph t_config_lsp,title_btn_3,1325,552 ;4
+	if %UMINEKOEND = 12 lsph t_config_lsp,title_btn_5,1325,616 ;4 ;680
+	if %UMINEKOEND >= 20 lsph t_config_lsp,title_btn_7,1325,808 ;4
 	;end 1ep
-	if %UMINEKOEND = 11 lsph t_config_lsp,t_config2,1325,552 ;4 ;616
-	;if %UMINEKOEND = 11 lsph t_cg_lsp,t_cg2,1325,680 ---------------------
-	if %UMINEKOEND = 12 lsph t_cg_lsp,t_cg3,1325,680 ;744
+	if %UMINEKOEND = 11 lsph t_config_lsp,title_btn_4,1325,552 ;4 ;616
+	;if %UMINEKOEND = 11 lsph t_cg_lsp,t_cg2,1325,680 --------------------- moved below
+	if %UMINEKOEND = 12 lsph t_cg_lsp,title_btn_6,1325,680 ;744
 
 
 	;if %UMINEKOEND_FLG = 11 lsph t_btn_tea_lsp,t_btn_tea_new,1325,552 ;Original Edited - Commented (disable button before tea 1 end) - W_CUSTOM
-	if %UMINEKOEND_FLG > 12 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,616 ;From = to > and removed new label
-	if %UMINEKOEND_TIPS_FLG = 1 lsph t_btn_tips_lsp,t_btn_tips_new,1325,736
-	if %UMINEKOEND_TIPS_CHA_FLG = 1 lsph t_chars_lsp,t_chars_new,1325,680
+	if %UMINEKOEND_FLG > 12 lsph t_btn_ura_tea_lsp,title_btn_4,1325,616 ;From = to > and removed new label
+	if %UMINEKOEND_TIPS_FLG = 1 lsph t_btn_tips_lsp,title_btn_6_new,1325,736
+	if %UMINEKOEND_TIPS_CHA_FLG = 1 lsph t_chars_lsp,title_btn_5_new,1325,680
 
-	if %UMINEKOEND_FLG = 20 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 21 lsph t_btn_tea_lsp,t_btn_tea,1325,544
-	if %UMINEKOEND_FLG = 22 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,552
-	if %UMINEKOEND_TIPS_FLG = 2 lsph t_btn_tips_lsp,t_btn_tips_new,1325,672
-	if %UMINEKOEND_TIPS_CHA_FLG = 2 lsph t_chars_lsp,t_chars_new,1325,680
+	if %UMINEKOEND_FLG = 20 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 21 lsph t_btn_tea_lsp,title_btn_3,1325,544
+	if %UMINEKOEND_FLG = 22 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
+	if %UMINEKOEND_TIPS_FLG = 2 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
+	if %UMINEKOEND_TIPS_CHA_FLG = 2 lsph t_chars_lsp,title_btn_5_new,1325,680
 
-	if %UMINEKOEND_FLG = 30 lsph t_btn_start_lsp,t_btn_start_new,1325,424
-	if %UMINEKOEND_FLG = 31 lsph t_btn_tea_lsp,t_btn_tea,1325,544
-	if %UMINEKOEND_FLG = 32 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,552
-	if %UMINEKOEND_TIPS_FLG = 3 lsph t_btn_tips_lsp,t_btn_tips_new,1325,672
-	if %UMINEKOEND_TIPS_CHA_FLG = 3 lsph t_chars_lsp,t_chars_new,1325,680
+	if %UMINEKOEND_FLG = 30 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+	if %UMINEKOEND_FLG = 31 lsph t_btn_tea_lsp,title_btn_3,1325,544
+	if %UMINEKOEND_FLG = 32 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
+	if %UMINEKOEND_TIPS_FLG = 3 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
+	if %UMINEKOEND_TIPS_CHA_FLG = 3 lsph t_chars_lsp,title_btn_5_new,1325,680
 
-	if %UMINEKOEND_FLG = 40 lsph t_btn_start_lsp,t_btn_start_new,1325,424
-	if %UMINEKOEND_FLG = 41 lsph t_btn_tea_lsp,t_btn_tea,1325,544
-	if %UMINEKOEND_FLG = 42 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,552
-	if %UMINEKOEND_TIPS_FLG = 4 lsph t_btn_tips_lsp,t_btn_tips_new,1325,672
-	if %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,t_btn_music_new,1325,744
-	if %UMINEKOEND_TIPS_CHA_FLG = 4 lsph t_chars_lsp,t_chars_new,1325,680
-	if %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,t_cg_new1,1325,680
-	if %UMINEKOEND = 12 && %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,t_btn_music_new2,1325,744 ;808
-	if %UMINEKOEND = 12 && %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,t_cg_new2,1325,680 ;744
-	if %UMINEKOEND >= 20 && %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,t_btn_music_new3,1325,936
-	if %UMINEKOEND >= 20 && %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,t_cg_new3,1325,872
+	if %UMINEKOEND_FLG = 40 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+	if %UMINEKOEND_FLG = 41 lsph t_btn_tea_lsp,title_btn_3,1325,544
+	if %UMINEKOEND_FLG = 42 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
+	if %UMINEKOEND_TIPS_FLG = 4 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
+	if %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,title_btn_6_new,1325,744
+	if %UMINEKOEND_TIPS_CHA_FLG = 4 lsph t_chars_lsp,title_btn_5_new,1325,680
+	if %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,title_btn_5_new,1325,680
+	if %UMINEKOEND = 12 && %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,title_btn_7_new,1325,744 ;808
+	if %UMINEKOEND = 12 && %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,title_btn_6_new,1325,680 ;744
+	if %UMINEKOEND >= 20 && %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,title_btn_9_new,1325,936
+	if %UMINEKOEND >= 20 && %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,title_btn_8_new,1325,872
 
 	;MENU AFTER EP 1 AND BEFORE EP 2
-	if %UMINEKOEND = 11 lsph t_cg_lsp,t_cg_new2,1325,616
-	if %UMINEKOEND = 11 lsph t_btn_music_lsp,t_btn_music_new2,1325,680
-	;NEW LABEL ON START MENU 
-	if %UMINEKOEND_FLG = 11 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 21 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 31 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 41 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 12 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 22 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 32 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 42 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
+	if %UMINEKOEND = 11 lsph t_cg_lsp,title_btn_6_new,1325,616
+	if %UMINEKOEND = 11 lsph t_btn_music_lsp,title_btn_7_new,1325,680
+	;'NEW' LABEL ON START MENU BUTTON FOR FIRST TIME TEA AND URAS
+	if %UMINEKOEND_FLG = 11 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 21 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 31 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 41 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 12 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 22 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 32 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 42 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
 	;End Custom
 
 	lsph t_trophy_lsp,t_trophy,-45,-45
@@ -15058,82 +15060,82 @@ if %CHIRU_MODE != 1 jumpf
 	lsph t_btn_web_lsp,t_btn_web,1325,488 ;9
 	
 	;Original Edited - Visualizing 'Boxes' from the start in chiru - W_CUSTOM
-	if %UMINEKOEND < 50 lsph t_cg_lsp,t_cg1,1325,616
-	if %UMINEKOEND < 50 lsph t_btn_music_lsp,t_btn_music1,1325,680
+	if %UMINEKOEND < 50 lsph t_cg_lsp,title_btn_4,1325,616
+	if %UMINEKOEND < 50 lsph t_btn_music_lsp,title_btn_5,1325,680
 	;End Custom
 
 	;Original Edited - Changed different values and conditions - W_CUSTOM
-	if %UMINEKOEND = 50 lsph t_config_lsp,t_config_newgame,1325,552 ;4
-	if %UMINEKOEND = 50 lsph t_cg_lsp,t_cg1,1325,616
-	if %UMINEKOEND = 50 lsph t_btn_music_lsp,t_btn_music1,1325,680
-	if %UMINEKOEND = 50 lsph t_btn_exit_lsp,t_btn_exit1,1325,744
+	if %UMINEKOEND = 50 lsph t_config_lsp,title_btn_3,1325,552 ;4
+	if %UMINEKOEND = 50 lsph t_cg_lsp,title_btn_4,1325,616
+	if %UMINEKOEND = 50 lsph t_btn_music_lsp,title_btn_5,1325,680
+	if %UMINEKOEND = 50 lsph t_btn_exit_lsp,title_btn_6,1325,744
 
-	if %UMINEKOEND = 51 lsph t_btn_exit_lsp,t_btn_exit2,1325,808 ;744
-	if %UMINEKOEND > 51 lsph t_btn_tea_lsp,t_btn_tea,1325,552 ;8 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
-	;if %UMINEKOEND = 51 lsph t_btn_music_lsp,t_btn_music2,1325,744
-	if %UMINEKOEND > 51 lsph t_cg_lsp,t_cg,1325,872 ;3 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
-	if %UMINEKOEND = 51 lsph t_config_lsp,t_config2,1325,616 ;4
+	if %UMINEKOEND = 51 lsph t_btn_exit_lsp,title_btn_7,1325,808 ;744
+	if %UMINEKOEND > 51 lsph t_btn_tea_lsp,title_btn_3,1325,552 ;8 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
+	;if %UMINEKOEND = 51 lsph t_btn_music_lsp,title_btn_6,1325,744
+	if %UMINEKOEND > 51 lsph t_cg_lsp,title_btn_8,1325,872 ;3 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
+	if %UMINEKOEND = 51 lsph t_config_lsp,title_btn_4,1325,616 ;4
 	;if %UMINEKOEND = 51 lsph t_cg_lsp,t_cg2,1325,680
 	
 	if %UMINEKOEND = 52 lsph t_btn_exit_lsp,t_btn_exit3,1325,808 ;872
-	if %UMINEKOEND > 52 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,616 ;7
-	if %UMINEKOEND > 52 lsph t_btn_music_lsp,t_btn_music,1325,936 ;2
-	if %UMINEKOEND = 52 lsph t_btn_music_lsp,t_btn_music3,1325,744 ;808
-	if %UMINEKOEND = 52 lsph t_config_lsp,t_config3,1325,616 ;4 ;680
-	if %UMINEKOEND = 52 lsph t_cg_lsp,t_cg3,1325,680 ;744
+	if %UMINEKOEND > 52 lsph t_btn_ura_tea_lsp,title_btn_4,1325,616 ;7
+	if %UMINEKOEND > 52 lsph t_btn_music_lsp,title_btn_9,1325,936 ;2
+	if %UMINEKOEND = 52 lsph t_btn_music_lsp,title_btn_7,1325,744 ;808
+	if %UMINEKOEND = 52 lsph t_config_lsp,title_btn_5,1325,616 ;4 ;680
+	if %UMINEKOEND = 52 lsph t_cg_lsp,title_btn_6,1325,680 ;744
 	
-	if %UMINEKOEND >= 60 && %UMINEKOEND < 90 lsph t_btn_exit_lsp,t_btn_exit5,1325,1000
-	if %UMINEKOEND >= 90 lsph t_btn_exit_lsp,t_btn_exit5,1325,1000 ;from the bottom, 1
-	if %UMINEKOEND >= 60 lsph t_btn_tips_lsp,t_btn_tips,1325,744 ;5
-	if %UMINEKOEND >= 60 lsph t_chars_lsp,t_chars,1325,680 ;6
-	if %UMINEKOEND >= 60 lsph t_config_lsp,t_config,1325,808 ;4
+	if %UMINEKOEND >= 60 && %UMINEKOEND < 90 lsph t_btn_exit_lsp,title_btn_10,1325,1000
+	if %UMINEKOEND >= 90 lsph t_btn_exit_lsp,title_btn_10,1325,1000 ;from the bottom, 1
+	if %UMINEKOEND >= 60 lsph t_btn_tips_lsp,title_btn_6,1325,744 ;5
+	if %UMINEKOEND >= 60 lsph t_chars_lsp,title_btn_5,1325,680 ;6
+	if %UMINEKOEND >= 60 lsph t_config_lsp,title_btn_7,1325,808 ;4
 	
 	;if %UMINEKOEND = 1 lsph t_btn_exit_lsp,t_btn_exit1_cg,1325,680
-	;if %UMINEKOEND = 1 lsph t_cg_lsp,t_cg1,1325,616 ;3
+	;if %UMINEKOEND = 1 lsph t_cg_lsp,title_btn_4,1325,616 ;3
 		
-	if %UMINEKOEND_FLG = 50 lsph t_btn_start_lsp,t_btn_start_new,1325,424
-	if %UMINEKOEND_FLG = 51 lsph t_btn_tea_lsp,t_btn_tea,1325,552
-	;if %UMINEKOEND_FLG = 52 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,616
-	if %UMINEKOEND_TIPS_FLG = 5 lsph t_btn_tips_lsp,t_btn_tips_new,1325,736
-	if %UMINEKOEND_TIPS_CHA_FLG = 5 lsph t_chars_lsp,t_chars_new,1325,680
+	if %UMINEKOEND_FLG = 50 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+	if %UMINEKOEND_FLG = 51 lsph t_btn_tea_lsp,title_btn_3,1325,552
+	;if %UMINEKOEND_FLG = 52 lsph t_btn_ura_tea_lsp,title_btn_4,1325,616
+	if %UMINEKOEND_TIPS_FLG = 5 lsph t_btn_tips_lsp,title_btn_6_new,1325,736
+	if %UMINEKOEND_TIPS_CHA_FLG = 5 lsph t_chars_lsp,title_btn_5_new,1325,680
 	
-	if %UMINEKOEND_FLG = 60 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 61 lsph t_btn_tea_lsp,t_btn_tea,1325,544
-	if %UMINEKOEND_FLG = 62 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,552
-	if %UMINEKOEND_TIPS_FLG = 6 lsph t_btn_tips_lsp,t_btn_tips_new,1325,672
-	if %UMINEKOEND_TIPS_CHA_FLG = 6 lsph t_chars_lsp,t_chars_new,1325,680
+	if %UMINEKOEND_FLG = 60 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 61 lsph t_btn_tea_lsp,title_btn_3,1325,544
+	if %UMINEKOEND_FLG = 62 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
+	if %UMINEKOEND_TIPS_FLG = 6 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
+	if %UMINEKOEND_TIPS_CHA_FLG = 6 lsph t_chars_lsp,title_btn_5_new,1325,680
 
-	if %UMINEKOEND_FLG = 70 lsph t_btn_start_lsp,t_btn_start_new,1325,424
-	if %UMINEKOEND_FLG = 71 lsph t_btn_tea_lsp,t_btn_tea,1325,544
-	if %UMINEKOEND_FLG = 72 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,552
-	if %UMINEKOEND_TIPS_FLG = 7 lsph t_btn_tips_lsp,t_btn_tips_new,1325,672
-	if %UMINEKOEND_TIPS_CHA_FLG = 7 lsph t_chars_lsp,t_chars_new,1325,680
+	if %UMINEKOEND_FLG = 70 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+	if %UMINEKOEND_FLG = 71 lsph t_btn_tea_lsp,title_btn_3,1325,544
+	if %UMINEKOEND_FLG = 72 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
+	if %UMINEKOEND_TIPS_FLG = 7 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
+	if %UMINEKOEND_TIPS_CHA_FLG = 7 lsph t_chars_lsp,title_btn_5_new,1325,680
 
-	if %UMINEKOEND_FLG = 80 lsph t_btn_start_lsp,t_btn_start_new,1325,424
-	if %UMINEKOEND_FLG = 81 lsph t_btn_tea_lsp,t_btn_tea,1325,544
-	if %UMINEKOEND_FLG = 82 lsph t_btn_ura_tea_lsp,t_btn_ura_tea,1325,552
-	if %UMINEKOEND_TIPS_FLG = 8 lsph t_btn_tips_lsp,t_btn_tips_new,1325,672
+	if %UMINEKOEND_FLG = 80 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+	if %UMINEKOEND_FLG = 81 lsph t_btn_tea_lsp,title_btn_3,1325,544
+	if %UMINEKOEND_FLG = 82 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
+	if %UMINEKOEND_TIPS_FLG = 8 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
 	if %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,t_btn_music_new,1325,744
-	if %UMINEKOEND_TIPS_CHA_FLG = 8 lsph t_chars_lsp,t_chars_new,1325,680
-	if %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,t_cg_new1,1325,680
+	if %UMINEKOEND_TIPS_CHA_FLG = 8 lsph t_chars_lsp,title_btn_5_new,1325,680
+	if %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,title_btn_5_new,1325,680
 	
-	if %UMINEKOEND = 52 && %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,t_btn_music_new2,1325,744
-	if %UMINEKOEND = 52 && %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,t_cg_new2,1325,680
-	if %UMINEKOEND >= 60 && %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,t_btn_music_new3,1325,936
-	if %UMINEKOEND >= 60 && %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,t_cg_new3,1325,872
+	if %UMINEKOEND = 52 && %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,title_btn_7_new,1325,744
+	if %UMINEKOEND = 52 && %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,title_btn_6_new,1325,680
+	if %UMINEKOEND >= 60 && %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,title_btn_9_new,1325,936
+	if %UMINEKOEND >= 60 && %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,title_btn_8_new,1325,872
 	
 	;MENU AFTER EP 1 AND BEFORE EP 2
-	if %UMINEKOEND = 51 lsph t_cg_lsp,t_cg_new2,1325,680
-	if %UMINEKOEND = 51 lsph t_btn_music_lsp,t_btn_music_new2,1325,744
+	if %UMINEKOEND = 51 lsph t_cg_lsp,title_btn_6_new,1325,680
+	if %UMINEKOEND = 51 lsph t_btn_music_lsp,title_btn_7_new,1325,744
 	;NEW LABEL ON START MENU 
-	if %UMINEKOEND_FLG = 51 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 61 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 71 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 81 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 52 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 62 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 72 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-	if %UMINEKOEND_FLG = 82 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
+	if %UMINEKOEND_FLG = 51 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 61 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 71 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 81 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 52 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 62 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 72 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	if %UMINEKOEND_FLG = 82 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
 	;End Custom
 
 	lsph t_trophy_lsp,t_trophy,-45,-45	
@@ -15150,13 +15152,13 @@ if %CHIRU_MODE != 2 jumpf
 	;808
 	;936
 
-	lsph t_btn_start_lsp,t_btn_start,1325,424 ;extra -30(450) to correspond to ps3 ;10
-	lsph t_btn_web_lsp,t_btn_web,1325,488 ;9
+	lsph t_btn_start_lsp,title_btn_1,1325,424 ;extra -30(450) to correspond to ps3 ;10
+	lsph t_btn_web_lsp,title_btn_2,1325,488 ;9
 	
-	lsph t_config_lsp,t_config_newgame,1325,552 ;4
-	lsph t_cg_lsp,t_cg1,1325,616
-	lsph t_btn_music_lsp,t_btn_music1,1325,680
-	lsph t_btn_exit_lsp,t_btn_exit1,1325,744
+	lsph t_config_lsp,title_btn_3,1325,552 ;4
+	lsph t_cg_lsp,title_btn_4,1325,616
+	lsph t_btn_music_lsp,title_btn_5,1325,680
+	lsph t_btn_exit_lsp,title_btn_6,1325,744
 
 	lsph t_trophy_lsp,t_trophy,-45,-45	
 ~
@@ -15189,8 +15191,8 @@ if %title_skip = 1 goto *b_title_skip_100
 	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
 	vsp t_hane_lsp,1 : print 5
 	vsp t_logo_lsp,1 : print 22
-	vsp t_btn_start_lsp,1 : print 22
-	vsp t_btn_web_lsp,1 : print 22
+	vsp t_btn_start_lsp,1 : vsp_special gen_txt_11,1 : print 22
+	vsp t_btn_web_lsp,1 : vsp_special gen_txt_12,1 : print 22
 	 
 	if %CHIRU_MODE != 0 jumpf
 		if %UMINEKOEND >= 11 vsp t_btn_tea_lsp,1 : amsp t_btn_tea_lsp,1325,552,250 : print 22
@@ -15247,8 +15249,8 @@ if %title_skip = 1 goto *b_title_skip_100
 	vsp t_bg_lsp,1
 	vsp t_hane_lsp,1
 	vsp t_logo_lsp,1
-	vsp t_btn_start_lsp,1
-	vsp t_btn_web_lsp,1
+	vsp t_btn_start_lsp,1 : vsp_special gen_txt_11,1
+	vsp t_btn_web_lsp,1 : vsp_special gen_txt_12,1
 	vsp t_btn_exit_lsp,1
 	if %UMINEKOEND >= 1 vsp t_cg_lsp,1
 	vsp t_config_lsp,1
@@ -15291,7 +15293,7 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 	btndef ""
 	transbtn
 	;Text Generator - all display strings have been adapted to the new sprite ids - W_CUSTOM
-	exbtn_d "C122-125C132-137C139-149C161C163C165"
+	exbtn_d "C122-125C132-137C139-149C161C163C165P9-36C37-56"
 	exbtn t_btn_start_lsp,t_btn_start_lsp,"P165P143"
 	exbtn t_btn_web_lsp,t_btn_web_lsp,"P165P147"
 	exbtn t_btn_tea_lsp,t_btn_tea_lsp,"P165P146"
@@ -15844,12 +15846,15 @@ return
 	notif %UMINEKOEND < 30 goto *start_sub_menu_btn_200
 	
 		if %omake = 1 goto *omake_sub_menu_ep
-		
+
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
 		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
-		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
-		if %UMINEKOEND_FLG = 20 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548
-		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+		;lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
+		;if %UMINEKOEND_FLG = 20 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548
+		;write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+		if %test_var = 1 lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
+		if %UMINEKOEND_FLG = 20 if %test_var = 1 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548
+		if %test_var = 1 write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
 		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
@@ -15864,7 +15869,10 @@ return
 
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
-	
+
+		;W_TEMP
+		if %UMINEKOEND_FLG = 20 if %test_var = 0 lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
+		if %UMINEKOEND_FLG = 20 if %test_var = 0 lsp s0_9,ep_btn_bg_black,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 21 || %UMINEKOEND = 21 lsp t_btn_ep2_tea_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep",1562+19,548+3,tea_title_btn_txt
@@ -15894,6 +15902,13 @@ return
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 22 || %UMINEKOEND = 22 exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,"P165P141"
 		;End Custom
+
+		;W_TEMP
+		if %UMINEKOEND_FLG = 20 if %test_var = 0 wait 800 : cell t_btn_ep2_unlock_lsp,1 : seplay 9,1001,100 : wait 270
+		if %UMINEKOEND_FLG = 20 if %test_var = 0 aspt breakupdir,t_btn_ep2_unlock_lsp,0 : flush 1 : aspt breakup,t_btn_ep2_unlock_lsp,1000,3500 : wait 1800
+		if %UMINEKOEND_FLG = 20 if %test_var = 0 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548 : aspt alpha,t_btn_ep2_lsp,0 : flush 1 : aspt alpha,t_btn_ep2_lsp,255,600 : sptwait alpha,t_btn_ep2_lsp
+		if %UMINEKOEND_FLG = 20 if %test_var = 0 _csp t_btn_ep2_unlock_lsp : _csp s0_9 : exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
+		mov %test_var,1
 
 		btnwait2 %BtnRes
 		
@@ -17773,9 +17788,9 @@ return
 *omake_sub_menu_end
 	if %CHIRU_MODE = 1 goto *omake_sub_menu_end_chiru
 		lsp t_btn_start_lsp,t_btn_start,1325,424
-		if %UMINEKOEND_FLG = 20 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-		if %UMINEKOEND_FLG = 30 lsph t_btn_start_lsp,t_btn_start_new,1325,424
-		if %UMINEKOEND_FLG = 40 lsph t_btn_start_lsp,t_btn_start_new,1325,424
+		if %UMINEKOEND_FLG = 20 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+		if %UMINEKOEND_FLG = 30 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+		if %UMINEKOEND_FLG = 40 lsph t_btn_start_lsp,title_btn_1_new,1325,424
 		lsph t_txt_start_lsp,t_txt_start,100,470
 		lsph t_txt_ep1_lsp,t_txt_ep1,100,470
 		lsph t_txt_ep2_lsp,t_txt_ep2,100,470
@@ -17786,9 +17801,9 @@ return
 
 *omake_sub_menu_end_chiru
 		lsp t_btn_start_lsp,t_btn_start,1325,424
-		if %UMINEKOEND_FLG = 60 lsph t_btn_start_lsp,t_btn_start_new,1325,424 
-		if %UMINEKOEND_FLG = 70 lsph t_btn_start_lsp,t_btn_start_new,1325,424
-		if %UMINEKOEND_FLG = 80 lsph t_btn_start_lsp,t_btn_start_new,1325,424
+		if %UMINEKOEND_FLG = 60 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+		if %UMINEKOEND_FLG = 70 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+		if %UMINEKOEND_FLG = 80 lsph t_btn_start_lsp,title_btn_1_new,1325,424
 		lsph t_txt_start_lsp,t_txt_start,100,470
 		lsph t_txt_ep5_lsp,t_txt_ep5,100,470
 		lsph t_txt_ep6_lsp,t_txt_ep6,100,470
@@ -34151,11 +34166,14 @@ return
 	~
 	if $lsp_type != "title_btn_desc" jumpf
 		lsph %lsp_slot,":s;#FFFFFF`{p:43:{interline:-13:"+$lsp_text1+"}} {interline:20:{n}}{p:47:{interline:-13:"+$lsp_text2+" {n}}}",%lsp_x,%lsp_y
-		;child_image %parent_slot,%lsp_slot
 	~
 	if $lsp_type != "ep_btn_desc" jumpf
 		lsph %lsp_slot,":s;#FFFFFF`{p:43:{interline:-13:"+$lsp_text1+"}} {interline:20:{n}}{p:48:{interline:-13:"+$lsp_text2+" {n}}}",%lsp_x,%lsp_y
-		;child_image %parent_slot,%lsp_slot
+	~
+	if $lsp_type != "title_btn_txt" jumpf
+		lsph %lsp_slot,":s;#FFFFFF`{w:504:{fit:{a:r:{p:49:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
+		lsph %lsp_slot+1,":s;#000000`{w:504:{fit:{a:r:{p:89:"+$lsp_text1+"}{n}}}}",%lsp_x+2,%lsp_y+1
+		spt blur,%lsp_slot+1,300
 	~
 
 return
@@ -34164,6 +34182,12 @@ return
 getparam %txt_to_csp
 	_csp %txt_to_csp
 	_csp %txt_to_csp+1
+return
+
+*vsp_special
+getparam %txt_to_csp,%vsp_special_param
+	vsp %txt_to_csp,%vsp_special_param
+	vsp %txt_to_csp+1,%vsp_special_param
 return
 
 *search_bg

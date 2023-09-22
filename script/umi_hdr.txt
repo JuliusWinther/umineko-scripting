@@ -1357,6 +1357,7 @@ defsub search_bg
 defsub lsl
 defsub write_special_text
 defsub csp_text
+defsub vsp_special
 ;End Custom
 
 ;====================================================   Custom Vars - W_CUSTOM
@@ -1381,10 +1382,14 @@ numalias name_chapter_r_click_l2,9517
 numalias name_chapter_r_click_l3,9518
 numalias parent_slot,9519
 
+numalias test_var,9520
+
 numalias lbg_type,9521
 numalias paste_method,9522
 numalias purified_lbg_path, 9523
 numalias bg_effect, 9524
+
+numalias vsp_special_param, 9525
 
 numalias aspt_prop,9530
 numalias aspt_slot,9531
@@ -1497,17 +1502,19 @@ preset_define 32,1,40,#FFFFFF,0,0,0,1,8,#000000,0,0,0,#000000,2,20,1590 ;Menu mu
 
 ;Custom presets - W_CUSTOM
 ;number,font,size,colour,bold,italic,underline,border,border-width,border-colour,shadow,shadow-x,shadow-y,shadow colour,character_spacing,line_height,text_wrap
-preset_define 43,10,35,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0,58,818 ;'Episode' text and btn desc title
+preset_define 43,10,35,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0,0,818 ;'Episode' text and btn desc title
 preset_define 44,10,27,#FFFFFF,0,0,0,0,0,#FFFFFF,0,-1,0,#FFFFFF,2,58 ; number of the episode
 preset_define 45,10,33,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0,58 ; Increased shadow text
 preset_define 46,11,70,#FFFFFF,0,0,0,1,3,#FFFFFF,0,0,0,#000000,1,0 ; Chapter name text
 preset_define 47,11,36,#FFFFFF,0,0,0,1,1,#FFFFFF,0,0,0,#000000,1,0,818 ; Title btn description sub
 preset_define 48,11,28,#FFFFFF,0,0,0,1,1,#FFFFFF,0,0,0,#000000,1,0,818 ; Ep btn description sub
+preset_define 49,10,40,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,1,0,818 ; Ep btn description sub
 
 preset_define 83,10,35,#000000,0,0,0,0,0,#000000,0,1,2,#000000,0,58 ;'Episode' text - shadow
 preset_define 84,10,27,#000000,0,0,0,0,0,#000000,0,1,2,#000000,2,58 ; number of the episode - shadow
 preset_define 85,10,33,#000000,0,0,0,0,0,#000000,0,1,2,#000000,0,58 ; Increased shadow text text - shadow
 preset_define 86,11,70,#000000,0,0,0,1,13,#000000,0,0,0,#000000,1,0 ; Chapter name text - shadow
+preset_define 89,10,40,#000000,0,0,0,1,2,#000000,1,1,0,#000000,1,0,818 ; Ep btn description sub
 ;End Custom
 
 
@@ -1624,6 +1631,8 @@ mov ?voice_s[4],0
 mov ?voice_s[5],0
 mov ?voice_s[6],0
 voice_vol
+
+mov %test_var,0 ;W_TEMP
 
 ;Initialization - Global Declarations -W_CUSTOM
 mov $sprite_folder_name,"sprites"

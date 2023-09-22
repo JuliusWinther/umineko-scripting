@@ -15293,7 +15293,8 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 	btndef ""
 	transbtn
 	;Text Generator - all display strings have been adapted to the new sprite ids - W_CUSTOM
-	exbtn_d "C122-125C132-137C139-149C161C163C165P9-36C37-56"
+	exbtn_d "C122-125C132-137C139-149C161C163C165"
+	exbtn_d "C37-56P9-36"
 	exbtn t_btn_start_lsp,t_btn_start_lsp,"P165P143"
 	exbtn t_btn_web_lsp,t_btn_web_lsp,"P165P147"
 	exbtn t_btn_tea_lsp,t_btn_tea_lsp,"P165P146"
@@ -15532,15 +15533,15 @@ return
 	;Display the Unlock button and a clear state EP2 UMINEKOEND not <20, does not blink
 	;To view the EP2 clear, and may blink UMINEKOEND> = 20 EP1.
 
-	vsp t_btn_web_lsp,0
-	vsp t_btn_tea_lsp,0
-	vsp t_btn_tips_lsp,0
-	vsp t_btn_exit_lsp,0
-	vsp t_btn_music_lsp,0
-	vsp t_btn_ura_tea_lsp,0
-	vsp t_chars_lsp,0
-	vsp t_cg_lsp,0
-	vsp t_config_lsp,0
+	vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_special gen_txt_13,0
+	vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
+	vsp t_btn_exit_lsp,0 : vsp_special gen_txt_15,0
+	vsp t_btn_music_lsp,0 : vsp_special gen_txt_16,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_special gen_txt_17,0
+	vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_special gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_special gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	print 1
@@ -15586,7 +15587,7 @@ return
 
 		*start_sub_menu_btn_100_loop
 		btndef ""
-
+		
 		exbtn_d "P157,1C122-125C139-149C161C163C165" ;o: -60
 
 		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
@@ -17282,16 +17283,16 @@ if %CHIRU_MODE != 2 jumpf
 	;Turn off the button other than the tea party, tea party button to display per episode
 	;Note to clear the flag, go to view at least ep2 ep1, 3 in more than one.
 
-	vsp t_btn_start_lsp,0
-	vsp t_btn_web_lsp,0
+	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
 	;vsp t_btn_tea_lsp,0
-	vsp t_btn_tips_lsp,0
-	vsp t_btn_exit_lsp,0
-	vsp t_btn_music_lsp,0
-	vsp t_btn_ura_tea_lsp,0
-	vsp t_chars_lsp,0
-	vsp t_cg_lsp,0
-	vsp t_config_lsp,0
+	vsp t_btn_tips_lsp,0 : vsp_text gen_txt_14,0
+	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_15,0
+	vsp t_btn_music_lsp,0 : vsp_text gen_txt_16,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_text gen_txt_17,0
+	vsp t_chars_lsp,0 : vsp_text gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
 	vsp t_trophy_lsp,0
 	
 	seplay 1,51,100
@@ -17326,6 +17327,7 @@ if %CHIRU_MODE != 2 jumpf
 
 	*tea_sub_menu_btn_100_loop
 		btndef ""
+
 		exbtn_d "P154,1C141-C147C149C161C163C165C102-105P165P146,1" ;o: -60
 
 		exbtn t_btn_ep1_tea_lsp,t_btn_ep1_tea_lsp,""
@@ -17347,16 +17349,16 @@ goto *tea_sub_menu_btn_100_loop
 *tea_sub_menu_chiru
 	btndef ""
 
-	vsp t_btn_start_lsp,0
-	vsp t_btn_web_lsp,0
+	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
 	;vsp t_btn_tea_lsp,0
-	vsp t_btn_tips_lsp,0
-	vsp t_btn_exit_lsp,0
-	vsp t_btn_music_lsp,0
-	vsp t_btn_ura_tea_lsp,0
-	vsp t_chars_lsp,0
-	vsp t_cg_lsp,0
-	vsp t_config_lsp,0
+	vsp t_btn_tips_lsp,0 : vsp_text gen_txt_14,0
+	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_15,0
+	vsp t_btn_music_lsp,0 : vsp_text gen_txt_16,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_text gen_txt_17,0
+	vsp t_chars_lsp,0 : vsp_text gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	seplay 1,51,100
@@ -17389,6 +17391,7 @@ goto *tea_sub_menu_btn_100_loop
 
 	*tea_sub_menu_btn_100_loop_chiru
 		btndef ""
+
 		exbtn_d "P154,1P154,1C141-147C149C161C163C165C102-105P165P146,1" ;o: -60
 
 		exbtn t_btn_ep1_tea_lsp,t_btn_ep1_tea_lsp,""
@@ -17419,16 +17422,16 @@ goto *tea_sub_menu_btn_100_loop_chiru
 	;To erase any button other than the tea party, tea party button to display per episode
 	;Note to clear the flag, go to view at least ep2 ep1, 3 in more than one.
 
-	vsp t_btn_start_lsp,0
-	vsp t_btn_web_lsp,0
-	vsp t_btn_tea_lsp,0
-	vsp t_btn_tips_lsp,0
-	vsp t_btn_exit_lsp,0
-	vsp t_btn_music_lsp,0
+	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_text gen_txt_13,0
+	vsp t_btn_tips_lsp,0 : vsp_text gen_txt_15,0
+	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_16,0
+	vsp t_btn_music_lsp,0 : vsp_text gen_txt_17,0
 	;vsp t_btn_ura_tea_lsp,0
-	vsp t_chars_lsp,0
-	vsp t_cg_lsp,0
-	vsp t_config_lsp,0
+	vsp t_chars_lsp,0 : vsp_text gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	seplay 1,51,100
@@ -17490,16 +17493,16 @@ goto *ura_tea_sub_menu_btn_100_loop
 	;To erase any button other than the tea party, tea party button to display per episode
 	;Note to clear the flag, go to view at least ep2 ep1, 3 in more than one.
 
-	vsp t_btn_start_lsp,0
-	vsp t_btn_web_lsp,0
-	vsp t_btn_tea_lsp,0
-	vsp t_btn_tips_lsp,0
-	vsp t_btn_exit_lsp,0
-	vsp t_btn_music_lsp,0
+	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_text gen_txt_13,0
+	vsp t_btn_tips_lsp,0 : vsp_text gen_txt_15,0
+	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_16,0
+	vsp t_btn_music_lsp,0 : vsp_text gen_txt_17,0
 	;vsp t_btn_ura_tea_lsp,0
-	vsp t_chars_lsp,0
-	vsp t_cg_lsp,0
-	vsp t_config_lsp,0
+	vsp t_chars_lsp,0 : vsp_text gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	seplay 1,51,100
@@ -17559,16 +17562,16 @@ goto *ura_tea_sub_menu_btn_100_loop_chiru
 *tips_sub_menu
 	btndef ""
 
-	vsp t_btn_start_lsp,0
-	vsp t_btn_web_lsp,0
-	vsp t_btn_tea_lsp,0
+	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_text gen_txt_13,0
 	;vsp t_btn_tips_lsp,0
-	vsp t_btn_exit_lsp,0
-	vsp t_btn_music_lsp,0
-	vsp t_btn_ura_tea_lsp,0
-	vsp t_chars_lsp,0
-	vsp t_cg_lsp,0
-	vsp t_config_lsp,0
+	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_14,0
+	vsp t_btn_music_lsp,0 : vsp_text gen_txt_15,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_text gen_txt_17,0
+	vsp t_chars_lsp,0 : vsp_text gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	seplay 8,1001,100
@@ -17669,16 +17672,16 @@ goto *tips_sub_menu_btn_100_loop_chiru
 *char_sub_menu
 	btndef ""
 
-	vsp t_btn_start_lsp,0
-	vsp t_btn_web_lsp,0
-	vsp t_btn_tea_lsp,0
-	vsp t_btn_tips_lsp,0
-	vsp t_btn_exit_lsp,0
-	vsp t_btn_music_lsp,0
-	vsp t_btn_ura_tea_lsp,0
+	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_text gen_txt_13,0
+	vsp t_btn_tips_lsp,0 : vsp_text gen_txt_14,0
+	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_16,0
+	vsp t_btn_music_lsp,0 : vsp_text gen_txt_17,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_text gen_txt_18,0
 	;vsp t_chars_lsp,0
-	vsp t_cg_lsp,0
-	vsp t_config_lsp,0
+	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	seplay 8,1001,100

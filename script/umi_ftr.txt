@@ -15056,8 +15056,10 @@ if %CHIRU_MODE != 1 jumpf
 	;808
 	;936
 
-	lsph t_btn_start_lsp,t_btn_start,1325,424 ;extra -30(450) to correspond to ps3 ;10
-	lsph t_btn_web_lsp,t_btn_web,1325,488 ;9
+	lsph t_btn_start_lsp,title_btn_1,1325,424 ;extra -30(450) to correspond to ps3 ;10
+	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_start_txt
+	lsph t_btn_web_lsp,title_btn_2,1325,488 ;9
+	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_web_txt
 	
 	;Original Edited - Visualizing 'Boxes' from the start in chiru - W_CUSTOM
 	if %UMINEKOEND < 50 lsph t_cg_lsp,title_btn_4,1325,616
@@ -15153,7 +15155,9 @@ if %CHIRU_MODE != 2 jumpf
 	;936
 
 	lsph t_btn_start_lsp,title_btn_1,1325,424 ;extra -30(450) to correspond to ps3 ;10
+	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_start_txt
 	lsph t_btn_web_lsp,title_btn_2,1325,488 ;9
+	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_web_txt
 	
 	lsph t_config_lsp,title_btn_3,1325,552 ;4
 	lsph t_cg_lsp,title_btn_4,1325,616
@@ -17790,7 +17794,7 @@ return
 
 *omake_sub_menu_end
 	if %CHIRU_MODE = 1 goto *omake_sub_menu_end_chiru
-		lsp t_btn_start_lsp,t_btn_start,1325,424
+		lsp t_btn_start_lsp,title_btn_1,1325,424
 		if %UMINEKOEND_FLG = 20 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
 		if %UMINEKOEND_FLG = 30 lsph t_btn_start_lsp,title_btn_1_new,1325,424
 		if %UMINEKOEND_FLG = 40 lsph t_btn_start_lsp,title_btn_1_new,1325,424
@@ -17803,7 +17807,7 @@ return
 return
 
 *omake_sub_menu_end_chiru
-		lsp t_btn_start_lsp,t_btn_start,1325,424
+		lsp t_btn_start_lsp,title_btn_1,1325,424
 		if %UMINEKOEND_FLG = 60 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
 		if %UMINEKOEND_FLG = 70 lsph t_btn_start_lsp,title_btn_1_new,1325,424
 		if %UMINEKOEND_FLG = 80 lsph t_btn_start_lsp,title_btn_1_new,1325,424

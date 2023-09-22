@@ -1551,7 +1551,7 @@ numalias t_btn_omake_end_lsp,%0	: dec %0 ;109
 numalias t_btn_omake_lsp,%0		: dec %0 ;108
 numalias t_trophy_lsp,%0		: dec %0 ;107
 numalias t_cg_lsp,%0 			: dec %0 ;106
-numalias t_txt_cg_lsp,%0 		: dec %0 ;105
+numalias t_txt_bg_lsp,%0 		: dec %0 ;105 ;+60=165
 numalias t_chars_lsp,%0 		: dec %0 ;104
 numalias t_txt_chars_lsp,%0 	: dec %0 ;103
 numalias t_config_lsp,%0 		: dec %0 ;102
@@ -1568,10 +1568,10 @@ numalias t_btn_music_lsp,%0 	: dec %0 ;92
 numalias t_btn_ura_tea_lsp,%0 	: dec %0 ;91
 numalias t_btn_load_lsp,%0 		: dec %0 ;90
 
-numalias t_txt_bg_lsp,%0 		: dec %0 ;89
+numalias t_txt_cg_lsp,%0 		: dec %0 ;89 ;+60=149
 numalias t_txt_load_lsp,%0 		: dec %0 ;88
 numalias t_txt_web_lsp,%0		: dec %0 ;87
-numalias t_txt_tea_lsp,%0		: dec %0 ;86
+numalias t_txt_tea_lsp,%0		: dec %0 ;86 ;146
 numalias t_txt_tips_lsp,%0		: dec %0 ;85
 numalias t_txt_music_lsp,%0 	: dec %0 ;84
 
@@ -1585,12 +1585,12 @@ numalias t_txt_unlock_lsp,%0 	: dec %0 ;79
 numalias CHIRU_MODE_button,%0 	: dec %0 ;78
 
 mov %0,137
-numalias t_txt_ep5_lsp,%0 		: dec %0 ;77
-numalias t_txt_ep6_lsp,%0 		: dec %0 ;76
-numalias t_txt_ep7_lsp,%0 		: dec %0 ;75
-numalias t_txt_ep8_lsp,%0 		: dec %0 ;74
-numalias t_txt_ep1_4_lsp,%0 	: dec %0 ;73
-numalias t_txt_ep5_8_lsp,%0 	: dec %0 ;72
+numalias t_txt_ep5_lsp,%0 		: dec %0 ;77 ;137
+numalias t_txt_ep6_lsp,%0 		: dec %0 ;76 ;136
+numalias t_txt_ep7_lsp,%0 		: dec %0 ;75 ;135
+numalias t_txt_ep8_lsp,%0 		: dec %0 ;74 ;134
+numalias t_txt_ep1_4_lsp,%0 	: dec %0 ;73 ;133
+numalias t_txt_ep5_8_lsp,%0 	: dec %0 ;72 ;132
 
 mov %0,130
 numalias t_btn_ep1_lsp,%0 		: dec %0 ;70
@@ -1600,10 +1600,10 @@ numalias t_btn_ep4_lsp,%0 		: dec %0 ;67
 numalias t_btn_ep5_8_lsp,%0 	: dec %0 ;66
 
 mov %0,125
-numalias t_txt_ep1_lsp,%0 		: dec %0 ;65
-numalias t_txt_ep2_lsp,%0 		: dec %0 ;64
-numalias t_txt_ep3_lsp,%0 		: dec %0 ;63
-numalias t_txt_ep4_lsp,%0 		: dec %0 ;62
+numalias t_txt_ep1_lsp,%0 		: dec %0 ;65 ;125
+numalias t_txt_ep2_lsp,%0 		: dec %0 ;64 ;124
+numalias t_txt_ep3_lsp,%0 		: dec %0 ;63 ;123
+numalias t_txt_ep4_lsp,%0 		: dec %0 ;62 ;122
 
 mov %0,120
 numalias t_btn_ep1_lock_lsp,%0 	: dec %0 ;60
@@ -8121,11 +8121,11 @@ return
 	;lsp title_back_yes_lsp,title_back_yes,762,432
 
 	;Text Generator - yes and no r menu - W_CUSTOM
-	;We use t_txt_ep?_lsp as id to prevent any kind of conslift having used all 10 gen_txt in the r-menu
+	;We use t_txt_ep?_lsp as id to prevent any kind of conflict having used all 10 gen_txt in the r-menu
 	lsp title_back_yes_lsp,l_ep_btn_bg,762,432
-	write_special_text t_txt_ep1_lsp,"left",762+19,432+3,yes_btn_txt
+	write_special_text gen_txt_11,"left",762+19,432+3,yes_btn_txt
 	lsp title_back_no_lsp,l_ep_btn_bg,762,508
-	write_special_text t_txt_ep3_lsp,"left",762+19,508+3,no_btn_txt
+	write_special_text gen_txt_12,"left",762+19,508+3,no_btn_txt
 	;End Custom
 	print 1
 
@@ -8151,9 +8151,9 @@ return
 		goto *quick_reload
 	~
 
-	if %tmp = title_back_no_lsp seplay 9,1001,100 : _csp title_back_bg_lsp : _csp title_back_yes_lsp : _csp title_back_no_lsp : csp_text t_txt_ep1_lsp : csp_text t_txt_ep3_lsp : return
-	if %tmp = -1 _csp title_back_bg_lsp : _csp title_back_yes_lsp : _csp title_back_no_lsp : csp_text t_txt_ep1_lsp : csp_text t_txt_ep3_lsp  : return ;Exit by right-clicking
-	if %tmp = -10 _csp title_back_bg_lsp : _csp title_back_yes_lsp : _csp title_back_no_lsp : csp_text t_txt_ep1_lsp : csp_text t_txt_ep3_lsp  : return ;Exit by ESC
+	if %tmp = title_back_no_lsp seplay 9,1001,100 : _csp title_back_bg_lsp : _csp title_back_yes_lsp : _csp title_back_no_lsp : csp_text gen_txt_11 : csp_text gen_txt_12 : return
+	if %tmp = -1 _csp title_back_bg_lsp : _csp title_back_yes_lsp : _csp title_back_no_lsp : csp_text gen_txt_11 : csp_text gen_txt_12  : return ;Exit by right-clicking
+	if %tmp = -10 _csp title_back_bg_lsp : _csp title_back_yes_lsp : _csp title_back_no_lsp : csp_text gen_txt_11 : csp_text gen_txt_12  : return ;Exit by ESC
 	
 	
 	goto *rmenu_title_back_btn_lp
@@ -14888,7 +14888,7 @@ if %UMINEKOEND = 0 meplay 1,2,100 : mov $tmp10,":c;graphics\menu\title\title1_bg
 if %UMINEKOEND = 1 meplay 1,2,100 : mov $tmp10,":c;graphics\menu\title\title1_bg1.png"
 if %UMINEKOEND = 11 meplay 1,2,100 : mov $tmp10,":c;graphics\menu\title\title1_bg1.png" ;End ep 1
 if %UMINEKOEND = 12 meplay 1,2,100 : mov $tmp10,":c;graphics\menu\title\title1_bg1.png" ;End tea 1
-if $flag_scenario_1_1 == "●" meplay 1,12,100 : mov $tmp10,":c;backgrounds\m_o1ar.png" ;W_TEMP
+;if $flag_scenario_1_1 == "●" meplay 1,12,100 : mov $tmp10,":c;backgrounds\m_o1ar.png" ;W_TEMP
 
 if %UMINEKOEND = 20 meplay 1,2,100 : mov $tmp10,":c;graphics\menu\title\title2_bg2.png" ;End ??? 1
 if %UMINEKOEND = 21 meplay 1,2,100 : mov $tmp10,":c;graphics\menu\title\title2_bg2.png"
@@ -15185,8 +15185,8 @@ if %title_skip = 1 goto *b_title_skip_100
 	vsp t_warning_lsp,1
 
 	bg $tmp10,6
-	if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
-	if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
+	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
+	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
 	vsp t_hane_lsp,1 : print 5
 	vsp t_logo_lsp,1 : print 22
 	vsp t_btn_start_lsp,1 : print 22
@@ -15219,10 +15219,8 @@ if %title_skip = 1 goto *b_title_skip_100
 	_csp t_btn_ep1_tips_lsp : _csp t_btn_ep2_tips_lsp : _csp t_btn_ep3_tips_lsp : _csp t_btn_ep4_tips_lsp
 	_csp t_btn_ep1_ura_tea_lsp : _csp t_btn_ep2_ura_tea_lsp : _csp t_btn_ep3_ura_tea_lsp : _csp t_btn_ep4_ura_tea_lsp
 	;Text Generator - ereasing base + shadow (txt_12) - W_CUSTOM
-	_csp gen_txt_1 : _csp gen_txt_2 : _csp gen_txt_3 : _csp gen_txt_4 : _csp gen_txt_5
-	_csp gen_txt_6 : _csp gen_txt_7 : _csp gen_txt_8 : _csp gen_txt_9 : _csp gen_txt_10
-	_csp gen_txt_1+1 : _csp gen_txt_2+1 : _csp gen_txt_3+1 : _csp gen_txt_4+1 : _csp gen_txt_5+1
-	_csp gen_txt_6+1 : _csp gen_txt_7+1 : _csp gen_txt_8+1 : _csp gen_txt_9+1 : _csp gen_txt_10+1
+	csp_text gen_txt_1 : csp_text gen_txt_2 : csp_text gen_txt_3 : csp_text gen_txt_4 : csp_text gen_txt_5
+	csp_text gen_txt_6 : csp_text gen_txt_7 : csp_text gen_txt_8 : csp_text gen_txt_9 : csp_text gen_txt_10
 	;End Custom
     ;Clear the standing images
     cl a,1
@@ -15241,8 +15239,8 @@ if %title_skip = 1 goto *b_title_skip_100
 	*b_title_no_load
 
 	bg $tmp10,1
-	if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
-	if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
+	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
+	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
 	vsp t_btn_omake_lsp,1
 	vsp t_trophy_lsp,1
 	vsp t_warning_lsp,1
@@ -15278,10 +15276,8 @@ if %title_skip = 1 goto *b_title_skip_100
 	_csp t_btn_ep1_tips_lsp : _csp t_btn_ep2_tips_lsp : _csp t_btn_ep3_tips_lsp : _csp t_btn_ep4_tips_lsp
 	_csp t_btn_ep1_ura_tea_lsp : _csp t_btn_ep2_ura_tea_lsp : _csp t_btn_ep3_ura_tea_lsp : _csp t_btn_ep4_ura_tea_lsp
 	;Text Generator - ereasing base + shadow - W_CUSTOM
-	_csp gen_txt_1 : _csp gen_txt_2 : _csp gen_txt_3 : _csp gen_txt_4 : _csp gen_txt_5 
-	_csp gen_txt_6 : _csp gen_txt_7 : _csp gen_txt_8 : _csp gen_txt_9 : _csp gen_txt_10 
-	_csp gen_txt_1+1 : _csp gen_txt_2+1 : _csp gen_txt_3+1 : _csp gen_txt_4+1 : _csp gen_txt_5+1 
-	_csp gen_txt_6+1 : _csp gen_txt_7+1 : _csp gen_txt_8+1 : _csp gen_txt_9+1 : _csp gen_txt_10+1
+	csp_text gen_txt_1 : csp_text gen_txt_2 : csp_text gen_txt_3 : csp_text gen_txt_4 : csp_text gen_txt_5
+	csp_text gen_txt_6 : csp_text gen_txt_7 : csp_text gen_txt_8 : csp_text gen_txt_9 : csp_text gen_txt_10
 	;End Custom
 
 	_csp 
@@ -15295,17 +15291,17 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 	btndef ""
 	transbtn
 	;Text Generator - all display strings have been adapted to the new sprite ids - W_CUSTOM
-	exbtn_d "C122-125C132-137C139-148C161C163C165"
-	exbtn t_btn_start_lsp,t_btn_start_lsp,"P143"
-	exbtn t_btn_web_lsp,t_btn_web_lsp,"P147"
-	exbtn t_btn_tea_lsp,t_btn_tea_lsp,"P146"
-	exbtn t_btn_ura_tea_lsp,t_btn_ura_tea_lsp,"P141"
-	exbtn t_chars_lsp,t_chars_lsp,"P163"
-	exbtn t_btn_tips_lsp,t_btn_tips_lsp,"P145"
-	exbtn t_config_lsp,t_config_lsp,"P161"
-	exbtn t_cg_lsp,t_cg_lsp,"P165"
-	exbtn t_btn_music_lsp,t_btn_music_lsp,"P144"
-	exbtn t_btn_exit_lsp,t_btn_exit_lsp,"P142"
+	exbtn_d "C122-125C132-137C139-149C161C163C165"
+	exbtn t_btn_start_lsp,t_btn_start_lsp,"P165P143"
+	exbtn t_btn_web_lsp,t_btn_web_lsp,"P165P147"
+	exbtn t_btn_tea_lsp,t_btn_tea_lsp,"P165P146"
+	exbtn t_btn_ura_tea_lsp,t_btn_ura_tea_lsp,"P165P141"
+	exbtn t_chars_lsp,t_chars_lsp,"P165P163"
+	exbtn t_btn_tips_lsp,t_btn_tips_lsp,"P165P145"
+	exbtn t_config_lsp,t_config_lsp,"P165P161"
+	exbtn t_cg_lsp,t_cg_lsp,"P165P149"
+	exbtn t_btn_music_lsp,t_btn_music_lsp,"P165P144"
+	exbtn t_btn_exit_lsp,t_btn_exit_lsp,"P165P142"
 	spbtn t_trophy_lsp,t_trophy_lsp
 	if %omake = 0 spbtn t_btn_omake_lsp,t_btn_omake_lsp
 	if %omake = 1 spbtn t_btn_omake_lsp,t_btn_omake_end_lsp
@@ -15339,6 +15335,7 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 
 *switch_game_q
 	csp_rst ;Non ingame reset call that will remove all the sprites. As an additional feature it ensures that you have cursor icons ready.
+
 	;bg black,0 ;Not needed
 	;print 18,50,msk_down ;":c;graphics\system\fade\down.png" ;Not Needed
 
@@ -15404,23 +15401,25 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 		lsp 4,loading_progres,1170,898
 		print 1
 
+		lsph t_txt_bg_lsp,btn_desc_bg,100,470 ;Text generator - btn descriptors common bg - W_CUSTOM
+
 		;Description texts
-		if %CHIRU_MODE = 0 lsph t_txt_ep1_lsp,t_txt_ep1,100,470
-		if %CHIRU_MODE = 0 lsph t_txt_ep2_lsp,t_txt_ep2,100,470
-		if %CHIRU_MODE = 0 lsph t_txt_ep3_lsp,t_txt_ep3,100,470
-		if %CHIRU_MODE = 0 lsph t_txt_ep4_lsp,t_txt_ep4,100,470
+		if %CHIRU_MODE = 0 write_special_text t_txt_ep1_lsp,"ep_btn_desc",100+42,470+22,ep1_btn_desc_t,ep1_btn_desc_s,""
+		if %CHIRU_MODE = 0 write_special_text t_txt_ep2_lsp,"ep_btn_desc",100+42,470+22,ep2_btn_desc_t,ep2_btn_desc_s,""
+		if %CHIRU_MODE = 0 write_special_text t_txt_ep3_lsp,"ep_btn_desc",100+42,470+22,ep3_btn_desc_t,ep3_btn_desc_s,""
+		if %CHIRU_MODE = 0 write_special_text t_txt_ep4_lsp,"ep_btn_desc",100+42,470+22,ep4_btn_desc_t,ep4_btn_desc_s,""
 		
-		if %CHIRU_MODE = 1 lsph t_txt_ep5_lsp,t_txt_ep5,100,470
-		if %CHIRU_MODE = 1 lsph t_txt_ep6_lsp,t_txt_ep6,100,470
-		if %CHIRU_MODE = 1 lsph t_txt_ep7_lsp,t_txt_ep7,100,470
-		if %CHIRU_MODE = 1 lsph t_txt_ep8_lsp,t_txt_ep8,100,470
+		if %CHIRU_MODE = 1 write_special_text t_txt_ep5_lsp,"ep_btn_desc",100+42,470+22,ep5_btn_desc_t,ep5_btn_desc_s,""
+		if %CHIRU_MODE = 1 write_special_text t_txt_ep6_lsp,"ep_btn_desc",100+42,470+22,ep6_btn_desc_t,ep6_btn_desc_s,""
+		if %CHIRU_MODE = 1 write_special_text t_txt_ep7_lsp,"ep_btn_desc",100+42,470+22,ep7_btn_desc_t,ep7_btn_desc_s,""
+		if %CHIRU_MODE = 1 write_special_text t_txt_ep8_lsp,"ep_btn_desc",100+42,470+22,ep8_btn_desc_t,ep8_btn_desc_s,""
 
 		;TODO saku button description texts
 		;Saku menu - button descriptions - W_CUSTOM
-		if %CHIRU_MODE = 2 lsph t_txt_ep1_lsp,t_txt_ep1,100,470
-		if %CHIRU_MODE = 2 lsph t_txt_ep2_lsp,t_txt_ep2,100,470
-		if %CHIRU_MODE = 2 lsph t_txt_ep3_lsp,t_txt_ep3,100,470
-		if %CHIRU_MODE = 2 lsph t_txt_ep4_lsp,t_txt_ep4,100,470
+		if %CHIRU_MODE = 2 write_special_text t_txt_ep1_lsp,"ep_btn_desc",100+42,470+22,extra_ep1_btn_desc_t,extra_ep1_btn_desc_s,""
+		if %CHIRU_MODE = 2 write_special_text t_txt_ep2_lsp,"ep_btn_desc",100+42,470+22,extra_ep2_btn_desc_t,extra_ep2_btn_desc_s,""
+		if %CHIRU_MODE = 2 write_special_text t_txt_ep3_lsp,"ep_btn_desc",100+42,470+22,extra_ep3_btn_desc_t,extra_ep3_btn_desc_s,""
+		if %CHIRU_MODE = 2 write_special_text t_txt_ep4_lsp,"ep_btn_desc",100+42,470+22,extra_ep4_btn_desc_t,extra_ep4_btn_desc_s,""
 		;End Custom
 		
 		;Discord - W_CUSTOM
@@ -15429,39 +15428,40 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 		if %CHIRU_MODE == 1 && $USE_DISCORD == "noval" discordrpc "Nocturne of Truth and Illusions", "~In title screen", "bat-bg", "Reading Umineko no Naku Koro ni Chiru", "butterfly", "Powered by Umineko Project", $ds_Free1
 		if %CHIRU_MODE == 2 && $USE_DISCORD == "noval" discordrpc "Symphony of Catbox and Dreams", "~In title screen", "concerto-logo-ds", "Reading Umineko no Naku Koro ni Saku", "butterfly", "Powered by Umineko Project", $ds_Free1
 		;End Custom
+	
+		;lsph t_txt_start_lsp,btn_desc_bg,100,470
+		;Original Edited ;Text generator - removed old btn descriptors, add generators - W_CUSTOM
+
+		write_special_text t_txt_ep1_4_lsp,"title_btn_desc",100+42,470+22,ep1_4_btn_desc_t,ep1_4_btn_desc_s,"" ;W_TEMP
+		write_special_text t_txt_ep5_8_lsp,"title_btn_desc",100+42,470+22,ep5_8_btn_desc_t,ep5_8_btn_desc_s,"" ;W_TEMP
+
+		write_special_text t_txt_load_lsp,"title_btn_desc",100+42,470+22,load_btn_desc_t,load_btn_desc_s,"" ;W_TEMP
+
+		write_special_text t_txt_lock_lsp,"title_btn_desc",100+42,470+22,warn_btn_desc_t,warn_btn_desc_s,"" ;W_TEMP
+		write_special_text t_txt_unlock_lsp,"title_btn_desc",100+42,470+22,unlock_btn_desc_t,unlock_btn_desc_s,"" ;W_TEMP
+				
+
+		write_special_text t_txt_start_lsp,"title_btn_desc",100+42,470+22,start_btn_desc_t,start_btn_desc_s,"" ;W_TEMP
+
+		write_special_text t_txt_web_lsp,"title_btn_desc",100+42,470+22,web_btn_desc_t,web_btn_desc_s,"" ;W_TEMP
 		
-		lsph t_txt_ep1_4_lsp,t_txt_ep1_4,100,470
-		lsph t_txt_ep5_8_lsp,t_txt_ep5_8,100,470
-		
-		lsph t_txt_load_lsp,t_txt_load,100,470
+		write_special_text t_txt_tea_lsp,"title_btn_desc",100+42,470+22,tea_btn_desc_t,tea_btn_desc_s,"" ;W_TEMP
 
-		lsph t_txt_lock_lsp,t_txt_lock,100,470
-		lsph t_txt_unlock_lsp,t_txt_unlock,100,470
+		write_special_text t_txt_ura_tea_lsp,"title_btn_desc",100+42,470+22,ura_btn_desc_t,ura_btn_desc_s,"" ;W_TEMP
 
-		lsph t_txt_start_lsp,btn_desc_bg,100,470
-		write_special_text gen_txt_13,"title_desc",42,22,start_btn_desc_t,start_btn_desc_s,"",t_txt_start_lsp ;W_TEMP
+		write_special_text t_txt_chars_lsp,"title_btn_desc",100+42,470+22,char_btn_desc_t,char_btn_desc_s,"" ;W_TEMP
 
-		lsph t_txt_web_lsp,btn_desc_bg,100,470
-		write_special_text gen_txt_14,"title_desc",42,22,web_btn_desc_t,web_btn_desc_t,"",t_txt_web_lsp ;W_TEMP
-		
-		lsph t_txt_tea_lsp,btn_desc_bg,100,470
-		write_special_text gen_txt_15,"title_desc",42,22,tea_btn_desc_t,tea_btn_desc_s,"",t_txt_tea_lsp ;W_TEMP
+		write_special_text t_txt_tips_lsp,"title_btn_desc",100+42,470+22,tips_btn_desc_t,tips_btn_desc_s,"" ;W_TEMP
 
-		lsph t_txt_ura_tea_lsp,btn_desc_bg,100,470
-		write_special_text gen_txt_16,"title_desc",42,22,ura_btn_desc_t,ura_btn_desc_t,"",t_txt_ura_tea_lsp ;W_TEMP
+		write_special_text t_txt_config_lsp,"title_btn_desc",100+42,470+22,cfg_btn_desc_t,cfg_btn_desc_s,"" ;W_TEMP
 
-		lsph t_txt_chars_lsp,t_txt_chars,100,470
+		write_special_text t_txt_cg_lsp,"title_btn_desc",100+42,470+22,cg_btn_desc_t,cg_btn_desc_s,"" ;W_TEMP
 
-		lsph t_txt_tips_lsp,t_txt_tips,100,470
+		write_special_text t_txt_music_lsp,"title_btn_desc",100+42,470+22,bgm_btn_desc_t,bgm_btn_desc_s,"" ;W_TEMP
 
-		lsph t_txt_config_lsp,t_txt_config,100,470
+		write_special_text t_txt_exit_lsp,"title_btn_desc",100+42,470+22,exit_btn_desc_t,exit_btn_desc_s,"" ;W_TEMP
 
-		lsph t_txt_cg_lsp,t_txt_cg,100,470
-
-		lsph t_txt_music_lsp,t_txt_music,100,470
-
-		lsph t_txt_exit_lsp,t_txt_exit,100,470
-		
+		;End Custom
 
 		if %enable_cache == 0 goto *skip_load_ru
 
@@ -15555,13 +15555,13 @@ return
 		if %omake = 1 goto *omake_sub_menu_ep
 
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
-		write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_lsp
+		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
 		lsp t_btn_ep2_lsp,ep_btn_bg_black,1562,548
-		write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_lsp
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
-		write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_lsp
+		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
-		write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_lsp
+		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg_black,1562,728
 		write_special_text gen_txt_5,"ep_set_change",1581,728,eps_txt,ep5_n_txt,ep8_n_txt
@@ -15585,23 +15585,23 @@ return
 		*start_sub_menu_btn_100_loop
 		btndef ""
 
-		exbtn_d "P157,1C122-125C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C122-125C139-149C161C163C165" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P125"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P140"
-		exbtn t_btn_ep2_unlock_lsp,t_btn_ep2_unlock_lsp,"P139"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P140"
-		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P139"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P140"
-		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P139"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P140"
-		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P139"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P140"
+		exbtn t_btn_ep2_unlock_lsp,t_btn_ep2_unlock_lsp,"P165P139"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P140"
+		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P165P139"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P140"
+		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P165P139"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P140"
+		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P165P139"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
-		if %UMINEKOEND_FLG = 11 || %UMINEKOEND = 11 exbtn t_btn_ep1_tea_lsp,t_btn_ep1_tea_lsp,"P146"
+		if %UMINEKOEND_FLG = 11 || %UMINEKOEND = 11 exbtn t_btn_ep1_tea_lsp,t_btn_ep1_tea_lsp,"P165P146"
 		;??? Temp Buttons
-		if %UMINEKOEND_FLG = 12 || %UMINEKOEND = 12 exbtn t_btn_ep1_ura_tea_lsp,t_btn_ep1_ura_tea_lsp,"P141"
+		if %UMINEKOEND_FLG = 12 || %UMINEKOEND = 12 exbtn t_btn_ep1_ura_tea_lsp,t_btn_ep1_ura_tea_lsp,"P165P141"
 		;End Custom
 
 		btnwait2 %BtnRes
@@ -15846,14 +15846,14 @@ return
 		if %omake = 1 goto *omake_sub_menu_ep
 		
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
-		write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_lsp
+		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
 		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
 		if %UMINEKOEND_FLG = 20 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548
-		write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_lsp
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
-		write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_lsp
+		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
-		write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_lsp
+		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg_black,1562,728
 		write_special_text gen_txt_5,"ep_set_change",1581,728,eps_txt,ep5_n_txt,ep8_n_txt
@@ -15877,22 +15877,22 @@ return
 		*start_sub_menu_btn_200_loop
 		btndef ""
 
-		exbtn_d "P157,1C122-125C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C122-125C139-149C161C163C165" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P125"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P140"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P140"
-		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P139"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P140"
-		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P139"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P140"
-		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P139"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P140"
+		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P165P139"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P140"
+		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P165P139"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P140"
+		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P165P139"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
-		if %UMINEKOEND_FLG = 21 || %UMINEKOEND = 21 exbtn t_btn_ep2_tea_lsp,t_btn_ep2_tea_lsp,"P146"
+		if %UMINEKOEND_FLG = 21 || %UMINEKOEND = 21 exbtn t_btn_ep2_tea_lsp,t_btn_ep2_tea_lsp,"P165P146"
 		;??? Temp Buttons
-		if %UMINEKOEND_FLG = 22 || %UMINEKOEND = 22 exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,"P141"
+		if %UMINEKOEND_FLG = 22 || %UMINEKOEND = 22 exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,"P165P141"
 		;End Custom
 
 		btnwait2 %BtnRes
@@ -16082,14 +16082,14 @@ return
 		if %omake = 1 goto *omake_sub_menu_ep
 	
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
-		write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_lsp
+		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
 		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
-		write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_lsp
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg,1562,608
 		if %UMINEKOEND_FLG = 30 lsp t_btn_ep3_lsp,ep_btn_bg_new,1562,608
-		write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_lsp
+		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
-		write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_lsp
+		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg_black,1562,728
 		write_special_text gen_txt_5,"ep_set_change",1581,728,eps_txt,ep5_n_txt,ep8_n_txt
@@ -16112,21 +16112,21 @@ return
 		*start_sub_menu_btn_300_loop
 		btndef ""
 
-		exbtn_d "P157,1C122-125C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C122-125C139-149C161C163C165" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P125"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P140"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P140"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P140"
-		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P139"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P140"
-		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P139"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P123"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P140"
+		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P165P139"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P140"
+		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P165P139"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
-		if %UMINEKOEND_FLG = 31 || %UMINEKOEND = 31 exbtn t_btn_ep3_tea_lsp,t_btn_ep3_tea_lsp,"P146"
+		if %UMINEKOEND_FLG = 31 || %UMINEKOEND = 31 exbtn t_btn_ep3_tea_lsp,t_btn_ep3_tea_lsp,"P165P146"
 		;??? Temp Buttons
-		if %UMINEKOEND_FLG = 32 || %UMINEKOEND = 32 exbtn t_btn_ep3_ura_tea_lsp,t_btn_ep3_ura_tea_lsp,"P141"
+		if %UMINEKOEND_FLG = 32 || %UMINEKOEND = 32 exbtn t_btn_ep3_ura_tea_lsp,t_btn_ep3_ura_tea_lsp,"P165P141"
 		;End Custom
 
 		btnwait2 %BtnRes
@@ -16262,14 +16262,14 @@ return
 		if %omake = 1 goto *omake_sub_menu_ep
 	
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
-		write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_lsp
+		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
 		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
-		write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_lsp
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg,1562,608
-		write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_lsp
+		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg,1562,668
 		if %UMINEKOEND_FLG = 40 lsp t_btn_ep4_lsp,ep_btn_bg_new,1562,668
-		write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_lsp
+		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg_black,1562,728
 		write_special_text gen_txt_5,"ep_set_change",1581,728,eps_txt,ep5_n_txt,ep8_n_txt
@@ -16290,20 +16290,20 @@ return
 		*start_sub_menu_btn_400_loop
 		btndef ""
 
-		exbtn_d "P157,1C122-125C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C122-125C139-149C161C163C165" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P125"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P140"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P140"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P140"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P140"
-		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P139"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P123"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P122"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P140"
+		exbtn t_btn_ep5_8_unlock_lsp,t_btn_ep5_8_unlock_lsp,"P165P139"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
-		if %UMINEKOEND_FLG = 41 || %UMINEKOEND = 41 exbtn t_btn_ep4_tea_lsp,t_btn_ep4_tea_lsp,"P146"
+		if %UMINEKOEND_FLG = 41 || %UMINEKOEND = 41 exbtn t_btn_ep4_tea_lsp,t_btn_ep4_tea_lsp,"P165P146"
 		;??? Temp Buttons
-		if %UMINEKOEND_FLG = 42 || %UMINEKOEND = 42 exbtn t_btn_ep4_ura_tea_lsp,t_btn_ep4_ura_tea_lsp,"P141"
+		if %UMINEKOEND_FLG = 42 || %UMINEKOEND = 42 exbtn t_btn_ep4_ura_tea_lsp,t_btn_ep4_ura_tea_lsp,"P165P141"
 		;End Custom
 
 		btnwait2 %BtnRes
@@ -16382,15 +16382,15 @@ return
 	notif %UMINEKOEND >= 50 goto *start_sub_menu_btn_450
 	
 		if %omake = 1 goto *omake_sub_menu_ep
-	;1562+19,488
+	
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
-		write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_lsp
+		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
 		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
-		write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_lsp
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg,1562,608
-		write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_lsp
+		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg,1562,668
-		write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_lsp
+		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg,1562,728
 		write_special_text gen_txt_5,"ep_set_change",1581,728,eps_txt,ep5_n_txt,ep8_n_txt
@@ -16403,14 +16403,14 @@ return
 		*start_sub_menu_btn_450_loop
 		btndef ""
 
-		exbtn_d "P157,1C122-125C139-148C161C163C165C132" ;o: -60
+		exbtn_d "P157,1C122-125C139-149C161C163C165C132" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P125"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P124"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P123"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P122"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P132"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P123"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P122"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P132"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		btnwait2 %BtnRes
 
@@ -16436,13 +16436,13 @@ return
 	
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
 		if %UMINEKOEND_FLG = 50 lsp t_btn_ep1_lsp,ep_btn_bg_new,1562,488
-		write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep5_n_txt,"",t_btn_ep1_lsp
+		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
 		lsp t_btn_ep2_lsp,ep_btn_bg_black,1562,548
-		write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep6_n_txt,"",t_btn_ep2_lsp
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
-		write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep7_n_txt,"",t_btn_ep3_lsp
+		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
-		write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt,"",t_btn_ep4_lsp
+		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
 
 		lsp t_btn_ep2_unlock_lsp,t_btn_ep_unlock,1430+72,548
 		lsp t_btn_ep3_unlock_lsp,t_btn_ep_unlock,1430+72,608
@@ -16465,22 +16465,22 @@ return
 		*start_sub_menu_btn_500_loop
 		btndef ""
 
-		exbtn_d "P157,1C133-137C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C133-137C139-149C161C163C165" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P137"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P140"
-		exbtn t_btn_ep2_unlock_lsp,t_btn_ep2_unlock_lsp,"P139"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P140"
-		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P139"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P140"
-		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P139"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P133"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P137"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P140"
+		exbtn t_btn_ep2_unlock_lsp,t_btn_ep2_unlock_lsp,"P165P139"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P140"
+		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P165P139"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P140"
+		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P165P139"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P133"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
-		if %UMINEKOEND_FLG = 51 || %UMINEKOEND = 51 exbtn t_btn_ep1_tea_lsp,t_btn_ep1_tea_lsp,"P146"
+		if %UMINEKOEND_FLG = 51 || %UMINEKOEND = 51 exbtn t_btn_ep1_tea_lsp,t_btn_ep1_tea_lsp,"P165P146"
 		;??? Temp Buttons
-		if %UMINEKOEND_FLG = 52 || %UMINEKOEND = 52 exbtn t_btn_ep1_ura_tea_lsp,t_btn_ep1_ura_tea_lsp,"P141"
+		if %UMINEKOEND_FLG = 52 || %UMINEKOEND = 52 exbtn t_btn_ep1_ura_tea_lsp,t_btn_ep1_ura_tea_lsp,"P165P141"
 		;End Custom
 
 		btnwait2 %BtnRes
@@ -16673,14 +16673,14 @@ return
 		if %omake = 1 goto *omake_sub_menu_ep
 		
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
-		write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep5_n_txt,"",t_btn_ep1_lsp
+		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
 		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
 		if %UMINEKOEND_FLG = 60 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548
-		write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep6_n_txt,"",t_btn_ep2_lsp
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
-		write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep7_n_txt,"",t_btn_ep3_lsp
+		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
-		write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt,"",t_btn_ep4_lsp
+		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
 
 		lsp t_btn_ep3_unlock_lsp,t_btn_ep_unlock,1430+72,608
 		lsp t_btn_ep4_unlock_lsp,t_btn_ep_unlock,1430+72,668
@@ -16702,21 +16702,21 @@ return
 		*start_sub_menu_btn_600_loop
 		btndef ""
 		
-		exbtn_d "P157,1C133-137C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C133-137C139-149C161C163C165" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P137"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P140"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P140"
-		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P139"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P140"
-		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P139"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P133"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P137"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P136"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P140"
+		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P165P139"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P140"
+		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P165P139"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P133"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
-		if %UMINEKOEND_FLG = 61 || %UMINEKOEND = 61 exbtn t_btn_ep2_tea_lsp,t_btn_ep2_tea_lsp,"P146"
+		if %UMINEKOEND_FLG = 61 || %UMINEKOEND = 61 exbtn t_btn_ep2_tea_lsp,t_btn_ep2_tea_lsp,"P165P146"
 		;??? Temp Buttons
-		if %UMINEKOEND_FLG = 62 || %UMINEKOEND = 62 exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,"P141"
+		if %UMINEKOEND_FLG = 62 || %UMINEKOEND = 62 exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,"P165P141"
 		;End Custom
 
 		btnwait2 %BtnRes
@@ -16852,16 +16852,16 @@ return
 	if %UMINEKOEND >= 80 goto *start_sub_menu_btn_700
 	
 		if %omake = 1 goto *omake_sub_menu_ep
-	
+
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
-		write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep5_n_txt,"",t_btn_ep1_lsp
-		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
-		write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep6_n_txt,"",t_btn_ep2_lsp
-		lsp t_btn_ep3_lsp,ep_btn_bg,1562,608
+		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+		lsp t_btn_ep2_lsp,ep_btn_bg_black,1562,548
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
 		if %UMINEKOEND_FLG = 70 lsp t_btn_ep3_lsp,ep_btn_bg_new,1562,608
-		write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep7_n_txt,"",t_btn_ep3_lsp
+		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
-		write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt,"",t_btn_ep4_lsp
+		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
 
 		lsp t_btn_ep4_unlock_lsp,t_btn_ep_unlock,1430+72,668
 
@@ -16882,20 +16882,20 @@ return
 		*start_sub_menu_btn_700_loop
 		btndef ""
 
-		exbtn_d "P157,1C133-137C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C133-137C139-149C161C163C165" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P137"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P140"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P140"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P140"
-		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P139"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P133"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P137"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P136"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P135"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P140"
+		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P165P139"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P133"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
-		if %UMINEKOEND_FLG = 71 || %UMINEKOEND = 71 exbtn t_btn_ep3_tea_lsp,t_btn_ep3_tea_lsp,"P146"
+		if %UMINEKOEND_FLG = 71 || %UMINEKOEND = 71 exbtn t_btn_ep3_tea_lsp,t_btn_ep3_tea_lsp,"P165P146"
 		;??? Temp Buttons
-		if %UMINEKOEND_FLG = 72 || %UMINEKOEND = 72 exbtn t_btn_ep3_ura_tea_lsp,t_btn_ep3_ura_tea_lsp,"P141"
+		if %UMINEKOEND_FLG = 72 || %UMINEKOEND = 72 exbtn t_btn_ep3_ura_tea_lsp,t_btn_ep3_ura_tea_lsp,"P165P141"
 		;End Custom
 
 		btnwait2 %BtnRes
@@ -16979,13 +16979,15 @@ return
 		if %omake = 1 goto *omake_sub_menu_ep
 	
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
-		write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep5_n_txt,"",t_btn_ep1_lsp
-		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
-		write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep6_n_txt,"",t_btn_ep2_lsp
-		lsp t_btn_ep3_lsp,ep_btn_bg,1562,608
-		write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep7_n_txt,"",t_btn_ep3_lsp
-		lsp t_btn_ep4_lsp,ep_btn_bg,1562,668
+		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+		lsp t_btn_ep2_lsp,ep_btn_bg_black,1562,548
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
+		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
+		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
 		if %UMINEKOEND_FLG = 80 lsp t_btn_ep4_lsp,ep_btn_bg_new,1562,668
+		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
+		
 		write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt,"",t_btn_ep4_lsp
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg,1562,728
@@ -17005,19 +17007,19 @@ return
 		*start_sub_menu_btn_800_loop
 		btndef ""
 
-		exbtn_d "P157,1C133-137C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C133-137C139-149C161C163C165" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P137"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P136"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P135"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P134"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P133"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P137"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P136"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P135"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P134"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P133"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
-		if %UMINEKOEND_FLG = 81 || %UMINEKOEND = 81 exbtn t_btn_ep4_tea_lsp,t_btn_ep4_tea_lsp,"P146"
+		if %UMINEKOEND_FLG = 81 || %UMINEKOEND = 81 exbtn t_btn_ep4_tea_lsp,t_btn_ep4_tea_lsp,"P165P146"
 		;??? Temp Buttons
-		if %UMINEKOEND_FLG = 82 || %UMINEKOEND = 82 exbtn t_btn_ep4_ura_tea_lsp,t_btn_ep4_ura_tea_lsp,"P141"
+		if %UMINEKOEND_FLG = 82 || %UMINEKOEND = 82 exbtn t_btn_ep4_ura_tea_lsp,t_btn_ep4_ura_tea_lsp,"P165P141"
 		;End Custom
 
 		btnwait2 %BtnRes
@@ -17061,17 +17063,17 @@ if %CHIRU_MODE != 2 jumpf
 		*start_sub_menu_btn_extra1_1_loop
 		btndef ""
 
-		exbtn_d "P157,1C133-137C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C133-137C139-149C161C163C165" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P137"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P140"
-		exbtn t_btn_ep2_unlock_lsp,t_btn_ep2_unlock_lsp,"P139"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P140"
-		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P139"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P140"
-		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P139"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P133"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P137"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P140"
+		exbtn t_btn_ep2_unlock_lsp,t_btn_ep2_unlock_lsp,"P165P139"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P140"
+		exbtn t_btn_ep3_unlock_lsp,t_btn_ep3_unlock_lsp,"P165P139"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P140"
+		exbtn t_btn_ep4_unlock_lsp,t_btn_ep4_unlock_lsp,"P165P139"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P133"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		btnwait2 %BtnRes
 
@@ -17114,7 +17116,7 @@ if %CHIRU_MODE != 2 jumpf
 		*start_sub_menu_btn_extra1_2_loop
 		btndef ""
 
-		exbtn_d "P157,1C133-137C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C133-137C139-149C161C163C165" ;o: -60
 
 		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P137"
 		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P140"
@@ -17167,7 +17169,7 @@ if %CHIRU_MODE != 2 jumpf
 		*start_sub_menu_btn_extra1_3_loop
 		btndef ""
 
-		exbtn_d "P157,1C133-137C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C133-137C139-149C161C163C165" ;o: -60
 
 		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P137"
 		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P140"
@@ -17226,14 +17228,14 @@ if %CHIRU_MODE != 2 jumpf
 		*start_sub_menu_btn_extra1_4_loop
 		btndef ""
 
-		exbtn_d "P157,1C133-137C139-148C161C163C165" ;o: -60
+		exbtn_d "P157,1C122-125C133-137C139-149C161C163C165" ;o: -60
 
-		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P137"
-		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P136"
-		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P135"
-		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P134"
-		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P133"
-		exbtn t_btn_load_lsp,t_btn_load_lsp,"P148"
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
+		exbtn t_btn_ep3_lsp,t_btn_ep3_lsp,"P165P123"
+		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P122"
+		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P133"
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
 
 		btnwait2 %BtnRes
 
@@ -17294,10 +17296,10 @@ if %CHIRU_MODE != 2 jumpf
 
 	;Original Edited - Removed the '>=' and the NEW labels - W_CUSTOM
 	;Adjust the layer you want to display by a clear state
-	if %UMINEKOEND > 11 lsp t_btn_ep1_tea_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_tea_lsp
-	if %UMINEKOEND > 21 lsp t_btn_ep2_tea_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_tea_lsp
-	if %UMINEKOEND > 31 lsp t_btn_ep3_tea_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_tea_lsp
-	if %UMINEKOEND > 41 lsp t_btn_ep4_tea_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_tea_lsp
+	if %UMINEKOEND > 11 lsp t_btn_ep1_tea_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
+	if %UMINEKOEND > 21 lsp t_btn_ep2_tea_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+	if %UMINEKOEND > 31 lsp t_btn_ep3_tea_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
+	if %UMINEKOEND > 41 lsp t_btn_ep4_tea_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 	;new
 	;if %UMINEKOEND_FLG = 11 lsp t_btn_ep1_tea_lsp,t_btn_ep1_new,1562,488
 	;if %UMINEKOEND_FLG = 21 lsp t_btn_ep2_tea_lsp,t_btn_ep2_new,1562,548
@@ -17309,7 +17311,7 @@ if %CHIRU_MODE != 2 jumpf
 
 	*tea_sub_menu_btn_100_loop
 		btndef ""
-		exbtn_d "P154,1C141-C147C161C163C165C102-105P146,1" ;o: -60
+		exbtn_d "P154,1C141-C147C149C161C163C165C102-105P165P146,1" ;o: -60
 
 		exbtn t_btn_ep1_tea_lsp,t_btn_ep1_tea_lsp,""
 		exbtn t_btn_ep2_tea_lsp,t_btn_ep2_tea_lsp,""
@@ -17357,10 +17359,10 @@ goto *tea_sub_menu_btn_100_loop
 	*tea_sub_menu_100_chiru
 
 	;Original Edited - Removed the '>=' and the NEW labels - W_CUSTOM
-	if %UMINEKOEND > 51 lsp t_btn_ep1_tea_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep5_n_txt,"",t_btn_ep1_tea_lsp
-	if %UMINEKOEND > 61 lsp t_btn_ep2_tea_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep6_n_txt,"",t_btn_ep2_tea_lsp
-	if %UMINEKOEND > 71 lsp t_btn_ep3_tea_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep7_n_txt,"",t_btn_ep3_tea_lsp
-	if %UMINEKOEND > 81 lsp t_btn_ep4_tea_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt,"",t_btn_ep4_tea_lsp
+	if %UMINEKOEND > 51 lsp t_btn_ep1_tea_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+	if %UMINEKOEND > 61 lsp t_btn_ep2_tea_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+	if %UMINEKOEND > 71 lsp t_btn_ep3_tea_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
+	if %UMINEKOEND > 81 lsp t_btn_ep4_tea_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
 	;new
 	;if %UMINEKOEND_FLG = 51 lsp t_btn_ep1_tea_lsp,t_btn_ep5_new,1562,488
 	;if %UMINEKOEND_FLG = 61 lsp t_btn_ep2_tea_lsp,t_btn_ep6_new,1562,548
@@ -17372,7 +17374,7 @@ goto *tea_sub_menu_btn_100_loop
 
 	*tea_sub_menu_btn_100_loop_chiru
 		btndef ""
-		exbtn_d "P154,1P154,1C141-147C161C163C165C102-105P146,1" ;o: -60
+		exbtn_d "P154,1P154,1C141-147C149C161C163C165C102-105P165P146,1" ;o: -60
 
 		exbtn t_btn_ep1_tea_lsp,t_btn_ep1_tea_lsp,""
 		exbtn t_btn_ep2_tea_lsp,t_btn_ep2_tea_lsp,""
@@ -17433,10 +17435,10 @@ goto *tea_sub_menu_btn_100_loop_chiru
 
 	;Original Edited - Removed the '>=' and the NEW labels - W_CUSTOM
 	;Adjust the layer you want to display by a clear state
-	if %UMINEKOEND > 12 lsp t_btn_ep1_ura_tea_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_ura_tea_lsp
-	if %UMINEKOEND > 22 lsp t_btn_ep2_ura_tea_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_ura_tea_lsp
-	if %UMINEKOEND > 32 lsp t_btn_ep3_ura_tea_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_ura_tea_lsp
-	if %UMINEKOEND > 42 lsp t_btn_ep4_ura_tea_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_ura_tea_lsp
+	if %UMINEKOEND > 12 lsp t_btn_ep1_ura_tea_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
+	if %UMINEKOEND > 22 lsp t_btn_ep2_ura_tea_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+	if %UMINEKOEND > 32 lsp t_btn_ep3_ura_tea_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
+	if %UMINEKOEND > 42 lsp t_btn_ep4_ura_tea_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 	;new
 	;if %UMINEKOEND_FLG = 12 lsp t_btn_ep1_ura_tea_lsp,t_btn_ep1_new,1562,488
 	;if %UMINEKOEND_FLG = 22 lsp t_btn_ep2_ura_tea_lsp,t_btn_ep2_new,1562,548
@@ -17449,7 +17451,7 @@ goto *tea_sub_menu_btn_100_loop_chiru
 	*ura_tea_sub_menu_btn_100_loop
 		btndef ""
 
-		exbtn_d "P151,1C142-147C161C163C165C82-85P141,1" ;o: -60
+		exbtn_d "P151,1C142-147C149C161C163C165C82-85P165P141,1" ;o: -60
 
 		exbtn t_btn_ep1_ura_tea_lsp,t_btn_ep1_ura_tea_lsp,""
 		exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,""
@@ -17504,10 +17506,10 @@ goto *ura_tea_sub_menu_btn_100_loop
 
 	;Original Edited - Removed the '>=' and the NEW labels - W_CUSTOM
 	;Adjust the layer you want to display by a clear state
-	if %UMINEKOEND > 52 lsp t_btn_ep1_ura_tea_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep5_n_txt,"",t_btn_ep1_ura_tea_lsp
-	if %UMINEKOEND > 62 lsp t_btn_ep2_ura_tea_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep6_n_txt,"",t_btn_ep2_ura_tea_lsp
-	if %UMINEKOEND > 72 lsp t_btn_ep3_ura_tea_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep7_n_txt,"",t_btn_ep3_ura_tea_lsp
-	if %UMINEKOEND > 82 lsp t_btn_ep4_ura_tea_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt,"",t_btn_ep4_ura_tea_lsp
+	if %UMINEKOEND > 52 lsp t_btn_ep1_ura_tea_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+	if %UMINEKOEND > 62 lsp t_btn_ep2_ura_tea_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+	if %UMINEKOEND > 72 lsp t_btn_ep3_ura_tea_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
+	if %UMINEKOEND > 82 lsp t_btn_ep4_ura_tea_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
 	;new
 	;if %UMINEKOEND_FLG = 52 lsp t_btn_ep1_ura_tea_lsp,t_btn_ep5_new,1562,488
 	;if %UMINEKOEND_FLG = 62 lsp t_btn_ep2_ura_tea_lsp,t_btn_ep6_new,1562,548
@@ -17520,7 +17522,7 @@ goto *ura_tea_sub_menu_btn_100_loop
 	*ura_tea_sub_menu_btn_100_loop_chiru
 		btndef ""
 
-		exbtn_d "P151,1P151,1C142-147C161C163C165C82-85P141,1" ;o: -60
+		exbtn_d "P151,1P151,1C142-147C149C161C163C165C82-85P165P141,1" ;o: -60
 
 		exbtn t_btn_ep1_ura_tea_lsp,t_btn_ep1_ura_tea_lsp,""
 		exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,""
@@ -17578,22 +17580,22 @@ goto *ura_tea_sub_menu_btn_100_loop_chiru
 	*tips_sub_menu_100
 
 	;Adjust the layer you want to display by a clear state
-	if %UMINEKOEND >= 20 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_tips_lsp
-	if %UMINEKOEND >= 30 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_tips_lsp
-	if %UMINEKOEND >= 40 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_tips_lsp
-	if %UMINEKOEND >= 50 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_tips_lsp
+	if %UMINEKOEND >= 20 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
+	if %UMINEKOEND >= 30 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+	if %UMINEKOEND >= 40 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
+	if %UMINEKOEND >= 50 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 	;new
-	if %UMINEKOEND_TIPS_FLG = 1 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_tips_lsp
-	if %UMINEKOEND_TIPS_FLG = 2 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_tips_lsp
-	if %UMINEKOEND_TIPS_FLG = 3 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_tips_lsp
-	if %UMINEKOEND_TIPS_FLG = 4 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_tips_lsp	
+	if %UMINEKOEND_TIPS_FLG = 1 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 2 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 3 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 4 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 	
 	print 85 ;15,10
 
 	*tips_sub_menu_btn_100_loop
 		btndef ""
 
-		exbtn_d "P153,1C141-147C161C163C165C92-95P145,1" ;o: -60
+		exbtn_d "P153,1C141-147C149C161C163C165C92-95P165P145,1" ;o: -60
 
 		exbtn t_btn_ep1_tips_lsp,t_btn_ep1_tips_lsp,""
 		exbtn t_btn_ep2_tips_lsp,t_btn_ep2_tips_lsp,""
@@ -17614,22 +17616,22 @@ goto *tips_sub_menu_btn_100_loop
 *tips_sub_menu_100_chiru
 
 	;Adjust the layer you want to display by a clear state
-	if %UMINEKOEND >= 60 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep5_n_txt,"",t_btn_ep1_tips_lsp
-	if %UMINEKOEND >= 70 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep6_n_txt,"",t_btn_ep2_tips_lsp
-	if %UMINEKOEND >= 80 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep7_n_txt,"",t_btn_ep3_tips_lsp
-	if %UMINEKOEND >= 90 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt	,"",t_btn_ep4_tips_lsp
+	if %UMINEKOEND >= 60 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+	if %UMINEKOEND >= 70 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+	if %UMINEKOEND >= 80 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
+	if %UMINEKOEND >= 90 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt	,""
 	;new
-	if %UMINEKOEND_TIPS_FLG = 5 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep5_n_txt,"",t_btn_ep1_tips_lsp
-	if %UMINEKOEND_TIPS_FLG = 6 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep6_n_txt,"",t_btn_ep2_tips_lsp
-	if %UMINEKOEND_TIPS_FLG = 7 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep7_n_txt,"",t_btn_ep3_tips_lsp
-	if %UMINEKOEND_TIPS_FLG = 8 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt,"",t_btn_ep4_tips_lsp
+	if %UMINEKOEND_TIPS_FLG = 5 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 6 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 7 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 8 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
 
 	print 85 ;15,10
 
 	*tips_sub_menu_btn_100_loop_chiru
 		btndef ""
 
-		exbtn_d "P153,1C141-147C161C163C165C82-85P145,1" ;o: -60
+		exbtn_d "P153,1C141-147C149C161C163C165C82-85P165P145,1" ;o: -60
 
 		exbtn t_btn_ep1_tips_lsp,t_btn_ep1_tips_lsp,""
 		exbtn t_btn_ep2_tips_lsp,t_btn_ep2_tips_lsp,""
@@ -17686,22 +17688,22 @@ goto *tips_sub_menu_btn_100_loop_chiru
 	*char_sub_menu_100
 
 	;Adjust the layer you want to display by a clear state
-	if %UMINEKOEND >= 20 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_tips_lsp
-	if %UMINEKOEND >= 30 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_tips_lsp
-	if %UMINEKOEND >= 40 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_tips_lsp
-	if %UMINEKOEND >= 50 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_tips_lsp
+	if %UMINEKOEND >= 20 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
+	if %UMINEKOEND >= 30 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+	if %UMINEKOEND >= 40 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
+	if %UMINEKOEND >= 50 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 	;new
-	if %UMINEKOEND_TIPS_CHA_FLG = 1 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep1_n_txt,"",t_btn_ep1_tips_lsp
-	if %UMINEKOEND_TIPS_CHA_FLG = 2 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep2_n_txt,"",t_btn_ep2_tips_lsp
-	if %UMINEKOEND_TIPS_CHA_FLG = 3 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep3_n_txt,"",t_btn_ep3_tips_lsp
-	if %UMINEKOEND_TIPS_CHA_FLG = 4 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep4_n_txt,"",t_btn_ep4_tips_lsp
+	if %UMINEKOEND_TIPS_CHA_FLG = 1 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 2 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 3 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 4 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 
 	print 85 ;15,10
 
 	*char_sub_menu_btn_100_loop
 		btndef ""
 
-		exbtn_d "P164,1C141-147C161C165C92-95P163,1" ;o: -60
+		exbtn_d "P164,1C141-147C149C161C165C92-95P165P163,1" ;o: -60
 
 		exbtn t_btn_ep1_tips_lsp,t_btn_ep1_tips_lsp,""
 		exbtn t_btn_ep2_tips_lsp,t_btn_ep2_tips_lsp,""
@@ -17720,22 +17722,22 @@ goto *char_sub_menu_btn_100_loop
 *char_sub_menu_100_chiru
 
 	;Adjust the layer you want to display by a clear state
-	if %UMINEKOEND >= 60 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep5_n_txt,"",t_btn_ep1_tips_lsp	
-	if %UMINEKOEND >= 70 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep6_n_txt,"",t_btn_ep2_tips_lsp	
-	if %UMINEKOEND >= 80 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep7_n_txt,"",t_btn_ep3_tips_lsp	
-	if %UMINEKOEND >= 90 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt,"",t_btn_ep4_tips_lsp	
+	if %UMINEKOEND >= 60 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+	if %UMINEKOEND >= 70 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+	if %UMINEKOEND >= 80 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""	
+	if %UMINEKOEND >= 90 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""	
 	;new
-	if %UMINEKOEND_TIPS_CHA_FLG = 5 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",19,0,ep_txt,ep5_n_txt,"",t_btn_ep1_tips_lsp	
-	if %UMINEKOEND_TIPS_CHA_FLG = 6 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",19,0,ep_txt,ep6_n_txt,"",t_btn_ep2_tips_lsp	
-	if %UMINEKOEND_TIPS_CHA_FLG = 7 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",19,0,ep_txt,ep7_n_txt,"",t_btn_ep3_tips_lsp	
-	if %UMINEKOEND_TIPS_CHA_FLG = 8 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt,"",t_btn_ep4_tips_lsp			
+	if %UMINEKOEND_TIPS_CHA_FLG = 5 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 6 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 7 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 8 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
 
 	print 85 ;15,10
 
 	*char_sub_menu_btn_100_loop_chiru
 		btndef ""
 
-		exbtn_d "P164,1C141-147C161C165C92-95P163,1" ;o: -60
+		exbtn_d "P164,1C141-147C149C161C165C92-95P165P163,1" ;o: -60
 
 		exbtn t_btn_ep1_tips_lsp,t_btn_ep1_tips_lsp,""
 		exbtn t_btn_ep2_tips_lsp,t_btn_ep2_tips_lsp,""
@@ -34121,8 +34123,6 @@ return
 		lsp %lsp_slot,":s;#FFFFFF`{w:245:{fit:{a:r:{p:43:"+$lsp_text1+"} {s:-1,0:{p:44:"+$lsp_text2+"}}{n}}}}",%lsp_x,%lsp_y
 		lsp %lsp_slot+1,":s;#000000`{w:245:{fit:{a:r:{s:1,2:{p:83:"+$lsp_text1+"} {p:84:"+$lsp_text2+"}}{n}}}}",%lsp_x,%lsp_y+1
 		spt blur,%lsp_slot+1,300
-		child_image %parent_slot,%lsp_slot,1
-		child_image %parent_slot,%lsp_slot+1,0
 	~
 	if $lsp_type != "ep" jumpf
 		lsp %lsp_slot,":s;#FFFFFF`{w:245:{fit:{a:r:{p:43:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
@@ -34149,9 +34149,13 @@ return
 		lsp %lsp_slot+1,":s;#000000`{w:900:{a:r:{p:86:"+$lsp_text1+"}}  {n}{a:r:{p:86:"+$lsp_text2+"}}  {n}{a:r:{p:86:"+$lsp_text3+"}}  {n}}",%lsp_x,%lsp_y
 		spt blur,%lsp_slot+1,500
 	~
-	if $lsp_type != "title_desc" jumpf
-		lsp %lsp_slot,":s;#FFFFFF`{p:43:{interline:20:"+$lsp_text1+" {n}}}{p:47:{interline:-13:"+$lsp_text2+" {n}}}",%lsp_x,%lsp_y
-		child_image %parent_slot,%lsp_slot
+	if $lsp_type != "title_btn_desc" jumpf
+		lsph %lsp_slot,":s;#FFFFFF`{p:43:{interline:-13:"+$lsp_text1+"}} {interline:20:{n}}{p:47:{interline:-13:"+$lsp_text2+" {n}}}",%lsp_x,%lsp_y
+		;child_image %parent_slot,%lsp_slot
+	~
+	if $lsp_type != "ep_btn_desc" jumpf
+		lsph %lsp_slot,":s;#FFFFFF`{p:43:{interline:-13:"+$lsp_text1+"}} {interline:20:{n}}{p:48:{interline:-13:"+$lsp_text2+" {n}}}",%lsp_x,%lsp_y
+		;child_image %parent_slot,%lsp_slot
 	~
 
 return
@@ -34215,6 +34219,7 @@ return
 	if $lbg_type == "saku" : mov $lbg_path,":"+$paste_method+";graphics\saku\" + $lbg_name + ".png" : return
 	if $lbg_type == "tsu1" : mov $lbg_path,":"+$paste_method+";graphics\saku\tsu1\" + $lbg_name + ".png" : return
 	if $lbg_type == "tsu2" : mov $lbg_path,":"+$paste_method+";graphics\saku\tsu2\" + $lbg_name + ".png" : return
+	if $lbg_type == "tsu3" : mov $lbg_path,":"+$paste_method+";graphics\saku\tsu3\" + $lbg_name + ".png" : return
 
 return
 

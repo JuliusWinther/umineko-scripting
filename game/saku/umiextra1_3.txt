@@ -111,6 +111,7 @@ set_name_window_non
 
 *e3_178
 d `...If something like this were posted,`[@]` there was no doubt the Seven Sisters would run off to see Battler.`[\]
+textoff
 
 csp_slot s0_3
 flush 22
@@ -144,7 +145,7 @@ gptwait quakeyamp
 msgwnd_rg3
 *e3_181
 d [lv 0*"40"*"rg3_00010"]`{qt}We all know the answer!`[@][lv 0*"40"*"rg3_00020"]` It's all Lucy's fault!{qt}`[\]
-
+textoff
 
 seplay 11,52,100
 lss s0_7,"rg4","a12_warai1"
@@ -260,7 +261,7 @@ csp_slot s0_9
 flush 22
 lss s0_8,"rg7","a12_warai1"
 lss s0_6,"rg2","a12_warai1"
-aspt2_mem "xpos",s0_7,-500
+aspt2_mem "xpos",s0_6,-500
 lss s0_9,"rg6","a12_warai1"
 aspt2_mem "xpos",s0_9,500
 flush 80
@@ -270,7 +271,7 @@ msgwnd_non
 d [lv 0*"00"*"saku3"]`{qt}{qt}{qt}There's no doubt about it!{qt}{qt}{qt}`[\]
 textoff
 
-csp_slot s0_7
+csp_slot s0_6
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_3
@@ -383,29 +384,47 @@ flush 80
 msgwnd_but
 *e3_196
 d [lv 0*"10"*"bat_01620"]`{qt}...Yo, Lucifer.`[@][lv 0*"10"*"bat_01630"]` Who'd think a day like this would ever come, eeeeeeh?`[@][lv 0*"10"*"bat_01640"]` Ihihi...{qt}`[\]
+textoff
 
-
+csp_slot s0_9
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 lss s0_9,"rg1","a12_odoroki1"
-
+aspt2_mem "xpos",s0_9,500
+flush 23
 lss s0_9,"rg1","a12_ikari1"
+aspt2_mem "xpos",s0_9,500
+flush 80
 
 msgwnd_rg1
 *e3_197
 d [lv 0*"38"*"rg1_00040"]`{qt}Kh...{qt}`[\]
+textoff
 
-
-seplay 11,52,100
-
-lss s0_9,"rg7","a12_naku1"
+lss s0_6,"rg7","a12_naku1"
+aspt2_mem "xpos",s0_6,-500
+aspt2 breakup,s0_6,1000
+aspt2 alpha,s0_6,0
+aspt2 breakupdir,s0_6,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_6,0,2000
+aspt2 alpha,s0_6,255
+sptwait2 breakup,s0_6
 
 msgwnd_rg7
 *e3_198
 d [lv 0*"44"*"rg7_00070"]`{qt}Battler-sama!`[@][lv 0*"44"*"rg7_00080"]` We wanna have roles!{qt}`[\]
+textoff
 
-
-seplay 11,52,100
+lss s0_16,"rg5","a12_ikari2"
+aspt2 breakup,s0_16,1000
+aspt2 alpha,s0_16,0
+aspt2 breakupdir,s0_16,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_16,0,2000
+aspt2 alpha,s0_16,255
+sptwait2 breakup,s0_16
 
 msgwnd_rg5
 *e3_199
@@ -415,464 +434,619 @@ d [lv 0*"42"*"rg5_00060"]`{qt}We'll do anything you want, so please give us rooo
 msgwnd_non
 *e3_200
 d `The sisters pleaded on their knees.`[\]
+textoff
 
-
+csp_slot s0_9
+csp_slot s0_6
+csp_slot s0_16
 lbg "c:backgrounds",s0_3,"mlib_1cp"
-
 lss s0_9,"but","d11_nayamu2"
+aspt2_mem "xpos",s0_9,-500
+flush 23
 
 msgwnd_but
 *e3_201
 d [lv 0*"10"*"bat_01650"]`{qt}Nfufufu.`[@][lv 0*"10"*"bat_01660"]` It seems that only the six of you want to be in my story, but...`[@][lv 0*"10"*"bat_01670"]` Lucifer alone does not?{qt}`[\]
 
-
-lss s0_9,"rg1","a12_ikari2"
+lss s0_6,"rg1","a12_ikari2"
+aspt2_mem "xpos",s0_6,600
+flush 80
 
 msgwnd_rg1
 *e3_202
 d [lv 0*"38"*"rg1_00050"]`{qt}...Yeah! If I have to kneel before you for it, I don't care if I never get a role again for the rest of my life..!`[@][lv 0*"38"*"rg1_00060"]` Who would ever kneel before you!?{qt}`[\]
 
-
 lss s0_9,"but","d11_futeki3"
+aspt2_mem "xpos",s0_9,-500
+flush 80
 
 msgwnd_but
 *e3_203
-d2 [lv 0*"10"*"bat_01680"]`{qt}But the Seven Sisters of Purgatory are a unit.`[@][lv 0*"10"*"bat_01690"]` If one does not obey me, I guess that means none of you get any roles.{qt}[#][*]`[\]
+d2 [lv 0*"10"*"bat_01680"]`{qt}But the Seven Sisters of Purgatory are a unit.`[@][lv 0*"10"*"bat_01690"]` If one does not obey me, I guess that means none of you get any roles.{qt} [#][*]`[\]
 wait_on_d 0
+seplay 11,57,100
+seplay 11,75,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 d_continue
 wait_on_d -1
+textoff
 
-
-seplay 11,57,100
-
-seplay 11,75,100
-
+csp_slot s0_9
+csp_slot s0_6
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 seplay 11,13,100
+agpt quakeycycle,47
+agpt quakeyamp,10
+agpt quakeyamp,0,100,1
+rumble 63,100
+gptwait quakeyamp
 
 msgwnd_non
 *e3_204
-d `@o50.`[|][lv 0*"39"*"rg2_00050|40"]`{qt}{qt}{qt}Don't do this to uuuuuuuuuuuuuuuus, Battler-samaaaaaaaaaa!{qt}{qt}{qt}`[\]
-
+d [lv 0*"00"*"saku5"]`{qt}{qt}{qt}Don't do this to uuuuuuuuuuuuuuuus, Battler-samaaaaaaaaaa!{qt}{qt}{qt}`[\]
+textoff
 
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
-lss s0_9,"rg3","a12_odoroki1"
+flush 22
+lss s0_9,"rg1","a12_ikari1"
+flush 80
+wait 200
+lss s0_8,"rg3","a12_odoroki1"
+aspt2_mem "xpos",s0_8,-500
+flush 80
 
 msgwnd_rg3
 *e3_205
-d2 [lv 0*"40"*"rg3_00040"]`{qt}Stupid sis![#][*]`[@][lv 0*"40"*"rg3_00050"]` Your stubborness is causing all of us trouble!{qt}`[\]
+d2 [lv 0*"40"*"rg3_00040"]`{qt}Stupid sis! [#][*]`[@][lv 0*"40"*"rg3_00050"]` Your stubborness is causing all of us trouble!{qt}`[\]
 wait_on_d 0
+seplay 11,11,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 d_continue
 wait_on_d -1
 
-
-seplay 11,11,100
-
-lss s0_9,"rg2","a12_odoroki1"
+lss s0_7,"rg2","a12_odoroki1"
+aspt2_mem "xpos",s0_7,500
+flush 80
 
 msgwnd_rg2
 *e3_206
 d [lv 0*"39"*"rg2_00060"]`{qt}Do it!`[@][lv 0*"39"*"rg2_00070"]` Kneel and apologise!{qt}`[\]
 
-
+lss s0_9,"rg1","a12_ikari2"
+aspt2_mem "xpos",s0_9,0
+flush 80
+aspt2_mem "ypos",s0_9,350,500,0
+sptwait2 ypos,s0_9
 seplay 11,12,100
 
-lss s0_9,"rg5","a12_akuwarai2"
-
+lss s0_6,"rg5","a12_akuwarai2"
+flush 80
 msgwnd_rg5
 *e3_207
 d [lv 0*"42"*"rg5_00080"]`{qt}Yeah, yeah! Press your forehead to the floor and apologize!{qt}`[\]
 
-
+aspt2_mem "ypos",s0_9,800,800,0
+sptwait2 ypos,s0_9
 seplay 11,12,100
-
-seplay 11,13,100
+seplay 12,13,100
+wait 200
+csp_slot s0_9
 
 msgwnd_non
 *e3_208
 d `The younger sisters all held Lucifer down together, and forced her to her knees by pushing her against the floor.`[\]
 
-
 *e3_209
 d `Lucifer refused to give it up, holding back tears and grinding her teeth.`[\]
 
-
-lbg "c:backgrounds",s0_3,"mlib_1bp"
-
+csp_slot s0_6
+csp_slot s0_8
+csp_slot s0_7
+flush 80
 lss s0_9,"rg4","a31_komaru2"
+flush 80
 
 msgwnd_rg4
 *e3_210
 d [lv 0*"41"*"rg4_00050"]`{qt}Battler-sama, Lucy is also asking for forgiveness, so please calm your rage.{qt}`[\]
 
-
 seplay 11,4,100
-
-lss s0_9,"rg7","a12_warai3"
+lss s0_10,"rg7","a12_warai3"
+aspt2_mem "xpos",s0_10,600
+flush 80
 
 msgwnd_rg7
 *e3_211
 d [lv 0*"44"*"rg7_00100"]`{qt}Please give me a role where I meet a handsome prince~!{qt}`[\]
 
-
 seplay 11,47,100
-
-lss s0_9,"rg6","a12_warai1"
+lss s0_8,"rg6","a12_warai1"
+aspt2_mem "xpos",s0_8,-600
+flush 80
 
 msgwnd_rg6
 *e3_212
 d [lv 0*"43"*"rg6_00100"]`{qt}Please give me a role where I eat a lot of yummy food~!{qt}`[\]
+textoff
 
-
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+flush 30
 lbg "c:backgrounds",s0_3,"mlib_1cp"
+lss s0_9,"but","d11_warai1"
+flush 30
 
 msgwnd_but
 *e3_213
 d2 [lv 0*"10"*"bat_01700"]`{qt}Alright, alright.`[@][lv 0*"10"*"bat_01710"]` Well, if I would be in a good mood right now, I would give you any role you want.`[@][#][*][lv 0*"10"*"bat_01720"]` But, ahhh, my shoulders are so stiff.{qt}`[\]
 wait_on_d 0
+seplay 11,48,100
+lss s0_9,"but","d11_defo2"
+flush 80
 d_continue
 wait_on_d -1
+textoff
 
+lss s0_8,"rg7","a12_warai1"
+aspt2_mem "xpos",s0_8,-300
+aspt2 breakup,s0_8,1000
+aspt2 alpha,s0_8,0
+aspt2 breakupdir,s0_8,3
 
-seplay 11,48,100
-
-lss s0_9,"rg7","a12_warai1"
-
-lss s0_9,"rg6","a12_warai1"
-
+lss s0_7,"rg6","a12_warai1"
+aspt2_mem "xpos",s0_7,300
+aspt2 breakup,s0_7,1000
+aspt2 alpha,s0_7,0
+aspt2 breakupdir,s0_7,3
+flush 1
 seplay 11,52,100
+
+aspt2 breakup,s0_8,0,2000
+aspt2 alpha,s0_8,255
+
+aspt2 breakup,s0_7,0,2000
+aspt2 alpha,s0_7,255
+sptwait2 breakup,s0_7
 
 msgwnd_non
 *e3_214
-d `@o75.`[|][lv 0*"43"*"rg6_00110|44"]`{qt}{qt}Oka~y, we'll rub them!{qt}{qt}`[\]
-
+d [lv 0*"00"*"saku6"]`{qt}{qt}Oka~y, we'll rub them!{qt}{qt}`[\]
 
 msgwnd_but
 *e3_215
 d [lv 0*"10"*"bat_01730"]`{qt}Aah, my calves are pretty stiff, too. Could you rub those, too~?{qt}`[\]
+textoff
 
-
-seplay 11,52,100
-
-lss s0_9,"rg5","a12_warai1"
+lss s0_6,"rg5","a12_warai1"
+aspt2_mem "xpos",s0_6,-700
+aspt2 breakup,s0_6,1000
+aspt2 alpha,s0_6,0
+aspt2 breakupdir,s0_6,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_6,0,2000
+aspt2 alpha,s0_6,255
+sptwait2 breakup,s0_6
 
 msgwnd_rg5
 *e3_216
 d [lv 0*"42"*"rg5_00090"]`{qt}Yes, leave it to me!{qt}`[\]
+textoff
 
-
-seplay 11,52,100
-
-lss s0_9,"rg4","a12_warai1"
+lss s0_5,"rg4","a12_warai1"
+aspt2_mem "xpos",s0_5,700
+aspt2 breakup,s0_5,1000
+aspt2 alpha,s0_5,0
+aspt2 breakupdir,s0_5,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_5,0,2000
+aspt2 alpha,s0_5,255
+sptwait2 breakup,s0_5
 
 msgwnd_rg4
 *e3_217
 d [lv 0*"41"*"rg4_00060"]`{qt}As you wish!{qt} `[\]
 
-
 msgwnd_non
 *e3_218
-d `Mammon is taking care of my right calf.`[@]`Belphe is massaging my left calf.`[\]
-
+d `Mammon is taking care of my right calf.`[@]` Belphe is massaging my left calf.`[\]
 
 *e3_219
-d `Asmo is taking care of my right arm.`[@]`Beelze is massaging my left arm.`[\]
+d `Asmo is taking care of my right arm.`[@]` Beelze is massaging my left arm.`[\]
 
-
+csp_slot s0_3
+csp_slot s0_9
+csp_slot s0_8
+csp_slot s0_7
+csp_slot s0_6
+csp_slot s0_5
+flush 26
 *e3_220
 d2 `Ahhh, my two arms... [#][*]are being held between warm fruits. [#][*]...W-What bliss...`[\]
 wait_on_d 0
-d_continue
-wait_on_d 1
+seplay 11,48,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 d_continue
 
+wait_on_d 1
+seplay 11,48,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
+d_continue
 wait_on_d -1
 
-
-seplay 11,48,100
-
-seplay 11,48,100
-
 *e3_221
-d `...Damn, being a Game Master is fantastic...`[@]`All hail the Game Master!`[\]
-
-
-seplay 11,20,100
+d `...Damn, being a Game Master is fantastic...`[@]` All hail the Game Master!`[\]
+textoff
 
 seplay 11,20,100
-
+wait 150
 seplay 11,20,100
+wait 150
+seplay 11,20,100
+wait 150
 
 *e3_222
 d2 `I am a god of this new game![#][*]`[\]
 wait_on_d 0
+seplay 11,57,100
+seplay 11,74,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 d_continue
 wait_on_d -1
-
-
-seplay 11,57,100
-
-seplay 11,74,100
+textoff
 
 lbg "c:backgrounds",s0_3,"mlib_1ep"
+flush 26
 
 msgwnd_but
 *e3_223
 d [lv 0*"10"*"bat_01740"]`{qt}The six younger sisters are now forgiven~`[@][lv 0*"10"*"bat_01750"]` But I'm still mad at Lucifer for EP3.`[@][lv 0*"10"*"bat_01760"]` You gouged and stabbed me so many times with that stake of yours, stabbing, stabbing, over and over!`[@][lv 0*"10"*"bat_01770"]` Dammit, just remembering it is painful!{qt}`[\]
+textoff
 
-
+csp_slot s0_3
+flush 22
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 lss s0_9,"rg7","a12_akuwarai1"
-
+aspt2_mem "xpos",s0_9,600
+flush 22
 msgwnd_rg7
 *e3_224
 d [lv 0*"44"*"rg7_00120"]`{qt}Oh well~`[@][lv 0*"44"*"rg7_00130"]` I suppose it's Battler's turn to stab Lucy.{qt}`[\]
 
-
-lss s0_9,"rg6","a12_warai1"
+lss s0_8,"rg6","a12_warai1"
+aspt2_mem "xpos",s0_8,-600
+flush 80
 
 msgwnd_rg6
 *e3_225
 d [lv 0*"43"*"rg6_00120"]`{qt}Great idea!`[@][lv 0*"43"*"rg6_00130"]` Until Battler-sama is satisfied, he should torture her all night long!{qt}`[\]
+textoff
 
-
+csp_slot s0_9
+csp_slot s0_8
 lbg "c:backgrounds",s0_3,"mlib_1ap"
-
 lss s0_9,"rg1","a12_odoroki1"
+flush 23
 
 msgwnd_rg1
 *e3_226
 d2 [lv 0*"38"*"rg1_00070"]`{qt}W-what are you saying?!`[@][#][*][lv 0*"38"*"rg1_00080"]` H-hey, let me go!{qt}`[\]
 wait_on_d 0
+lss s0_8,"rg2","a12_akuwarai1"
+aspt2_mem "xpos",s0_8,-300
+flush 80
+seplay 11,13,100
+agpt quakexcycle,47
+agpt quakexamp,10
+agpt quakexamp,0,200,1
+rumble 63,150
+gptwait quakexamp
 d_continue
 wait_on_d -1
 
-
-lss s0_9,"rg2","a12_akuwarai1"
-
-seplay 11,13,100
-
-lss s0_9,"rg2","a21_akuwarai4"
+lss s0_8,"rg2","a21_akuwarai4"
+aspt2_mem "xpos",s0_8,-300
 
 msgwnd_rg2
 *e3_227
 d [lv 0*"39"*"rg2_00080"]`{qt}Oh, I know, Sis Lucifer.`[@][lv 0*"39"*"rg2_00090"]` Your weak spot is your back, right..?{qt}`[\]
 
-
 lss s0_9,"rg1","a12_odoroki3"
+flush 80
 
 msgwnd_rg1
 *e3_228
 d [lv 0*"38"*"rg1_00090"]`{qt}L-Levia?!`[@][lv 0*"38"*"rg1_00100"]` H-how do you know that?!{qt}`[\]
 
-
-lss s0_9,"rg2","a21_akuwarai3"
+lss s0_8,"rg2","a21_akuwarai3"
+aspt2_mem "xpos",s0_8,-300
 
 msgwnd_rg2
 *e3_229
 d [lv 0*"39"*"rg2_00100"]`{qt}Everyone knows your weak spot!`[@][lv 0*"39"*"rg2_00110"]` You were the only one who thought we didn't know, weren't you!`[@][lv 0*"39"*"rg2_00120"]` You're too careless, Sis!{qt}`[\]
 
-
-lss s0_9,"but","d11_futeki1"
+csp_slot s0_8
+lss s0_7,"but","d11_futeki1"
+aspt2_mem "xpos",s0_7,300
 
 msgwnd_but
 *e3_230
 d [lv 0*"10"*"bat_01780"]`{qt}Hohoho, her back, you say? Hohoho!{qt}`[\]
 
+lss s0_9,"rg1","a12_odoroki1"
+flush 80
 
 msgwnd_rg1
 *e3_231
 d [lv 0*"38"*"rg1_00110"]`{qt}W-wait!`[@][lv 0*"38"*"rg1_00120"]` Do you think I'll surrender if you do that?!`[@][lv 0*"38"*"rg1_00130"]` Do you really think I'll cry and beg for forgiveness?!{qt}`[\]
 
-
-lss s0_9,"but","d11_warai1"
+lss s0_7,"but","d11_warai1"
+aspt2_mem "xpos",s0_7,300
+flush 80
 
 msgwnd_but
 *e3_232
 d2 [lv 0*"10"*"bat_01790"]`{qt}Ah, shut up, shut up!!`[@][lv 0*"10"*"bat_01800"]` Learn my pain from the time when you stabbed me over and over!`[@][#][*][lv 0*"10"*"bat_01810"]` Is it here?`[@][#][*][lv 0*"10"*"bat_01820"]` Or maybe here?`[@][#][*][lv 0*"10"*"bat_01830"]` Take that, and that, and this too!{qt}`[\]
 wait_on_d 0
-
+seplay 11,47,100
+agpt quakexcycle,30
+agpt quakexamp,30
+agpt quakexamp,0,150,1
+rumble 63,100
+gptwait quakexamp
 d_continue
+
 wait_on_d 1
-
+seplay 11,47,100
+agpt quakexcycle,30
+agpt quakexamp,30
+agpt quakexamp,0,150,1
+rumble 63,100
+wait 20
+seplay 11,47,100
+agpt quakexcycle,30
+agpt quakexamp,30
+agpt quakexamp,0,150,1
+rumble 63,100
+gptwait quakexamp
 d_continue
-wait_on_d 2
 
+wait_on_d 2
+seplay 11,20,100
 d_continue
 wait_on_d -1
 
-
-seplay 11,47,100
-
-seplay 11,47,100
-
-seplay 11,47,100
-
-seplay 11,20,100
+lss s0_9,"rg1","a12_naku1"
+flush 80
 
 msgwnd_rg1
 *e3_233
 d [lv 0*"38"*"rg1_00140"]`{qt}Ahhiiiiiiiiiiiii!{qt}`[\]
 
-
 seplay 11,36,100
-
-lss s0_9,"but","d11_futeki2"
+agpt quakexcycle,30
+agpt quakexamp,30
+agpt quakexamp,0,150,1
+rumble 63,100
+gptwait quakexamp
+lss s0_7,"but","d11_futeki2"
+aspt2_mem "xpos",s0_7,300
+flush 80
 
 msgwnd_but
 *e3_234
 d [lv 0*"10"*"bat_01840"]`{qt}Or maybe it's this place?!{qt}`[\]
+textoff
 
-
+csp_slot s0_9
+csp_slot s0_7
 lbg "c:backgrounds",s0_3,"mlib_1ep"
-
+flush 22
 seplay 11,4,100
+agpt quakeycycle,30
+agpt quakeyamp,30
+agpt quakeyamp,0,150,1
+rumble 63,100
+gptwait quakeyamp
 
 msgwnd_rg1
 *e3_235
-d2 [lv 0*"38"*"rg1_00150"]`{qt}Ahaaaaaaa![#][*]`[@][lv 0*"38"*"rg1_00160"]` Noooo, [#][*]forgive me, Battler-sama, aaaaaaaa!{qt}[#][*]`[\]
+d2 [lv 0*"38"*"rg1_00150"]`{qt}Ahaaaaaaa! [#][*]`[@][lv 0*"38"*"rg1_00160"]` Noooo,  [#][*]forgive me, Battler-sama, aaaaaaaa!{qt} [#][*]`[\]
 wait_on_d 0
-
+seplay 12,36,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 d_continue
+
 wait_on_d 1
-
+seplay 11,48,100
+agpt quakeycycle,30
+agpt quakeyamp,30
+agpt quakeyamp,0,150,1
+rumble 63,100
+wait 30
+seplay 12,48,100
+agpt quakeycycle,30
+agpt quakeyamp,30
+agpt quakeyamp,0,150,1
+rumble 63,100
+gptwait quakeyamp
 d_continue
-wait_on_d 2
 
+wait_on_d 2
+lbg "c:colour",s0_3,"white"
+flush 80
+seplay 11,36,100
+seplay 12,74,100
+seplay 13,27,100
+seplay 14,13,100
+wait 50
+csp_slot s0_3
+flush 80
 d_continue
 wait_on_d -1
-
-
-seplay 11,36,100
-
-seplay 11,48,100
-
-seplay 11,48,100
-
-seplay 11,36,100
-
-seplay 11,74,100
-
-seplay 11,27,100
-
-seplay 11,13,100
 
 msgwnd_non
 *e3_236
 d `...He finally got his chance at revenge that was never given to him before.`[@]`Battler was happily grinding against Lucifer's back...`[\]
-
+textoff
 
 lbg "c:backgrounds",s0_3,"mlib_1cp"
-
 lss s0_9,"rg7","a12_warai3"
+aspt2_mem "xpos",s0_9,600
+flush 22
 
 msgwnd_rg7
 *e3_237
 d [lv 0*"44"*"rg7_00140"]`{qt}Well, Battler-sama?`[@][lv 0*"44"*"rg7_00150"]` Are you feeling any better?{qt}`[\]
 
-
-lss s0_9,"but","d11_warai1"
+lss s0_8,"but","d11_warai1"
+aspt2_mem "xpos",s0_8,-600
+flush 80
 
 msgwnd_but
 *e3_238
 d [lv 0*"10"*"bat_01850"]`{qt}Yep, I feel great...`[@][lv 0*"10"*"bat_01860"]` My long-standing grudge has been totally cleared up, and I feel all fresh, like I've finally shed my skin!{qt}`[\]
 
-
 msgwnd_non
 *e3_239
 d `Lucifer's shoulders heaved as she caught her breath. She had collapsed with her clothes in disarray, and it looked very much like the aftermath of...`[@]`... well, you know.`[\]
 
-
 lss s0_9,"rg7","a12_warai1"
+aspt2_mem "xpos",s0_9,600
+flush 80
 
 msgwnd_rg7
 *e3_240
 d [lv 0*"44"*"rg7_00160"]`{qt}So do we all get roles now..?{qt}`[\]
 
-
-lss s0_9,"but","d11_warai2"
+lss s0_8,"but","d11_warai2"
+aspt2_mem "xpos",s0_8,-600
+flush 80
 
 msgwnd_but
 *e3_241
 d [lv 0*"10"*"bat_01870"]`{qt}Sure!`[@][lv 0*"10"*"bat_01880"]` I've resolved all of my grudges!`[@][lv 0*"10"*"bat_01890"]` Don't worry, your screentime is secure!`[@][lv 0*"10"*"bat_01900"]` Uhahahahahahaha!{qt}`[\]
 
-
 lss s0_9,"rg7","b31_akuwarai4"
+aspt2_mem "xpos",s0_9,550
+flush 80
 
 msgwnd_rg7
 *e3_242
 d [lv 0*"44"*"rg7_00170"]`{qt}Then,`[@][lv 0*"44"*"rg7_00180"]` I want a scene where I meet a handsome prince!{qt}`[\]
+textoff
 
-
+csp_slot s0_9
+csp_slot s0_8
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 lss s0_9,"rg6","a12_warai1"
+aspt2_mem "xpos",s0_9,-600
+flush 24
 
 msgwnd_rg6
 *e3_243
 d [lv 0*"43"*"rg6_00140"]`{qt}I want a role where I eat lots of food!{qt}`[\]
 
-
-lss s0_9,"rg5","a12_warai1"
+lss s0_10,"rg5","a12_warai1"
+flush 80
 
 msgwnd_rg5
 *e3_244
 d [lv 0*"42"*"rg5_00100"]`{qt}I don't need any big scenes, but make sure I'm in the 7th game, too!{qt}`[\]
 
-
-lss s0_9,"rg4","a12_akuwarai2"
+lss s0_11,"rg4","a12_akuwarai2"
+aspt2_mem "xpos",s0_11,600
+flush 80
 
 msgwnd_rg4
 *e3_245
 d [lv 0*"41"*"rg4_00070"]`{qt}I would like to fight against a formidable enemy, and fall beautifully in battle.{qt}`[\]
+textoff
 
-
+csp_slot s0_9
+csp_slot s0_10
+csp_slot s0_11
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 lss s0_9,"rg3","a12_odoroki1"
+flush 23
 
 msgwnd_rg3
 *e3_246
 d [lv 0*"40"*"rg3_00060"]`{qt}Hey, hey!`[@][lv 0*"40"*"rg3_00070"]` If you ask for all that at once, Battler-sama's going to get confused!`[@][lv 0*"40"*"rg3_00080"]` Write your requests on paper instead!{qt}`[\]
 
-
-lss s0_9,"rg1","a12_komaru3"
+lss s0_16,"rg1","a12_komaru3"
+aspt2_mem "xpos",s0_16,500
+flush 80
 
 msgwnd_rg1
 *e3_247
 d [lv 0*"38"*"rg1_00170"]`{qt}...I'm... fine... with even the smallest of roles...`[@][lv 0*"38"*"rg1_00180"]` ...I won't defy you again, so can I please have a role too..?{qt}`[\]
 
-
-lss s0_9,"rg2","a12_odoroki1"
+lss s0_8,"rg2","a12_odoroki1"
+aspt2_mem "xpos",s0_8,-500
+flush 80
 
 msgwnd_rg2
 *e3_248
 d [lv 0*"39"*"rg2_00130"]`{qt}What are you on about? Sis Lucy, you always stand out the most! I'm so jelaous, argh!{qt}`[\]
+textoff
 
-
+csp_slot s0_16
+csp_slot s0_9
+csp_slot s0_8
+csp_slot s0_3
+flush 28
 lbg "c:backgrounds",s0_3,"mlib_1cp"
-
 lss s0_9,"but","d11_warai1"
+flush 28
 
 msgwnd_but
 *e3_249
 d [lv 0*"10"*"bat_01910"]`{qt}Wahahaha!`[@][lv 0*"10"*"bat_01920"]` The Game Master is a god!`[@][lv 0*"10"*"bat_01930"]` I'll grant any wish you may have!`[@][lv 0*"10"*"bat_01940"]` Anything at all!{qt}`[\]
+textoff
 
-
+csp_slot s0_9
 lbg "c:backgrounds",s0_3,"mlib_1ep"
+flush 26
 
 *e3_250
 d2 [lv 0*"10"*"bat_01950"]`{qt}Oh?`[@][lv 0*"10"*"bat_01960"]` Someone else came.`[@][lv 0*"10"*"bat_01970"]` Could it be the Chiester sisters this time?`[@][lv 0*"10"*"bat_01980"]` Or maybe Dlanor's group?`[@][lv 0*"10"*"bat_01990"]` Come to think of it, Ange, you've got some nerve, not coming to congratulate me when you're my own little sister!`[@][lv 0*"10"*"bat_02000"]` I've already received a full-body massage from the Seven Sisters.`[@][lv 0*"10"*"bat_02010"]` Maybe I'll have the Chiester Sisters wipe the sweat off my brow with their tails~?`[@][lv 0*"10"*"bat_02020"]` And just what should I get out of Dlanor?`[@][#][*][lv 0*"10"*"bat_02030"]` Uhyahyahyahaaaaa!{qt}`[\]
 wait_on_d 0
+seplay 11,37,100
 d_continue
 wait_on_d -1
+textoff
 
-
-seplay 11,37,100
-
+vol_bgm -1,2000
+csp_slot s0_3
+flush 2
 meplay 11,5,100
 
 msgwnd_non
@@ -890,14 +1064,14 @@ d `時にそれは逆になるが、それは必ず一対になって訪れる.`
 
 *e3_254
 d `Battler has made use of his rights as Game Master and now he had to fulfill the responsibility to grant their requests.`[\]
-
+textoff
 
 lbg "c:backgrounds",s0_3,"mlib_1ep"
-
+flush 22
 lbg "c:backgrounds",s0_3,"mlib_1bp"
+flush 23
 
 seplay 11,52,100
-
 lss s0_9,"wal","a11_majime1"
 
 

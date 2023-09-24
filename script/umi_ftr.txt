@@ -204,6 +204,8 @@ return
 		wait2 10000
 		csp_slot s0_3
 		flush 22
+		if %UNLOCK_PROGRESS < 21 mov %UNLOCK_PROGRESS,20 ;Animations - unlocks the next episode - prevents reassignment of re-reading ura
+		config_write_num "unlock_animation_tracker",%UNLOCK_PROGRESS ;Animations - Used for the one time unlock animation of each new episode - W_CUSTOM
 	~
 	if %UMINEKOEND < 20 mov %UMINEKOEND,20 : mov %UMINEKOEND_FLG,20 : mov %UMINEKOEND_TIPS_FLG,1 : mov %UMINEKOEND_TIPS_CHA_FLG,1
 return
@@ -216,6 +218,8 @@ return
 		wait2 10000
 		csp_slot s0_3
 		flush 22
+		if %UNLOCK_PROGRESS < 31 mov %UNLOCK_PROGRESS,30 ;Animations - unlocks the next episode - prevents reassignment of re-reading ura
+		config_write_num "unlock_animation_tracker",%UNLOCK_PROGRESS ;Animations - Used for the one time unlock animation of each new episode - W_CUSTOM
 	~
 	if %UMINEKOEND < 30 mov %UMINEKOEND,30 : mov %UMINEKOEND_FLG,30 : mov %UMINEKOEND_TIPS_FLG,2 : mov %UMINEKOEND_TIPS_CHA_FLG,2
 return
@@ -228,6 +232,8 @@ return
 		wait2 10000
 		csp_slot s0_3
 		flush 22
+		if %UNLOCK_PROGRESS < 41 mov %UNLOCK_PROGRESS,40 ;Animations - unlocks the next episode - prevents reassignment of re-reading ura
+		config_write_num "unlock_animation_tracker",%UNLOCK_PROGRESS ;Animations - Used for the one time unlock animation of each new episode - W_CUSTOM
 	~
 	if %UMINEKOEND < 40 mov %UMINEKOEND,40 : mov %UMINEKOEND_FLG,40 : mov %UMINEKOEND_TIPS_FLG,3 : mov %UMINEKOEND_TIPS_CHA_FLG,3
 return
@@ -240,6 +246,8 @@ return
 		wait2 10000
 		csp_slot s0_3
 		flush 22
+		if %UNLOCK_PROGRESS < 51 mov %UNLOCK_PROGRESS,50 ;Animations - unlocks the next episode - prevents reassignment of re-reading ura
+		config_write_num "unlock_animation_tracker",%UNLOCK_PROGRESS ;Animations - Used for the one time unlock animation of each new episode - W_CUSTOM
 	~
 	if %UMINEKOEND < 50 mov %UMINEKOEND,50 : mov %UMINEKOEND_FLG,50 : mov %UMINEKOEND_TIPS_FLG,4 : mov %UMINEKOEND_TIPS_CHA_FLG,4
 return
@@ -252,6 +260,8 @@ return
 		wait2 10000
 		csp_slot s0_3
 		flush 22
+		if %UNLOCK_PROGRESS < 61 mov %UNLOCK_PROGRESS,60 ;Animations - unlocks the next episode - prevents reassignment of re-reading ura
+		config_write_num "unlock_animation_tracker",%UNLOCK_PROGRESS ;Animations - Used for the one time unlock animation of each new episode - W_CUSTOM
 	~
 	if %UMINEKOEND < 60 mov %UMINEKOEND,60 : mov %UMINEKOEND_FLG,60 : mov %UMINEKOEND_TIPS_FLG,5 : mov %UMINEKOEND_TIPS_CHA_FLG,5
 return
@@ -264,6 +274,8 @@ return
 		wait2 10000
 		csp_slot s0_3
 		flush 22
+		if %UNLOCK_PROGRESS < 71 mov %UNLOCK_PROGRESS,70 ;Animations - unlocks the next episode - prevents reassignment of re-reading ura
+		config_write_num "unlock_animation_tracker",%UNLOCK_PROGRESS ;Animations - Used for the one time unlock animation of each new episode - W_CUSTOM
 	~
 	if %UMINEKOEND < 70 mov %UMINEKOEND,70 : mov %UMINEKOEND_FLG,70 : mov %UMINEKOEND_TIPS_FLG,6 : mov %UMINEKOEND_TIPS_CHA_FLG,6
 return
@@ -276,6 +288,8 @@ return
 		wait2 10000
 		csp_slot s0_3
 		flush 22
+		mov %UNLOCK_PROGRESS,80 ;Animations - unlocks the next episode
+		config_write_num "unlock_animation_tracker",%UNLOCK_PROGRESS ;Animations - Used for the one time unlock animation of each new episode - W_CUSTOM
 	~
 	if %UMINEKOEND < 80 mov %UMINEKOEND,80 : mov %UMINEKOEND_FLG,80 : mov %UMINEKOEND_TIPS_FLG,7 : mov %UMINEKOEND_TIPS_CHA_FLG,7
 return
@@ -3976,7 +3990,7 @@ return
 	
 	;lsp name_chapter_r_click,$name_chapter_r_click,0,0 ;Original Edited - substituted with text generation - W_CUSTOM
 	;Text Generator - generating chapter name - W_CUSTOM
-	lsp gen_txt_10,transparent,0,0
+	lsp gen_txt_10,blank,0,0
 	write_special_text gen_txt_10,"ch_name",960,740,$name_chapter_r_click,$name_chapter_r_click_l2,$name_chapter_r_click_l3
 	;End Custom
 
@@ -15843,12 +15857,11 @@ return
 
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
 		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
-		;lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
-		;if %UMINEKOEND_FLG = 20 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548
-		;write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
-		if %test_var = 1 lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
-		if %UMINEKOEND_FLG = 20 if %test_var = 1 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548
-		if %test_var = 1 write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
+		;Animations - sprites to load without unlocking animation - W_CUSTOM
+		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 21 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548
+		;End Custom
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
 		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
@@ -15864,9 +15877,20 @@ return
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
 
-		;W_TEMP
-		if %UMINEKOEND_FLG = 20 if %test_var = 0 lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
-		if %UMINEKOEND_FLG = 20 if %test_var = 0 lsp s0_9,ep_btn_bg_black,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+		;Animations - preparing fake ep blocked buttons - W_CUSTOM
+		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
+		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 lsp s0_9,ep_btn_bg_black,1562,548
+		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548 : aspt alpha,t_btn_ep2_lsp,0 : flush 1
+		;End Custom
+
+		;Animations - Executing Unlock Animations - W_CUSTOM
+		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 wait 800 : cell t_btn_ep2_unlock_lsp,1 : seplay 9,1001,100 : wait 270
+		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 aspt breakupdir,t_btn_ep2_unlock_lsp,0 : flush 1 : aspt breakup,t_btn_ep2_unlock_lsp,1000,3500 : wait 1800
+		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 aspt alpha,t_btn_ep2_lsp,255,600 : sptwait alpha,t_btn_ep2_lsp
+		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 _csp t_btn_ep2_unlock_lsp : _csp s0_9
+		mov %UNLOCK_PROGRESS,21
+		config_write_num "unlock_animation_tracker",%UNLOCK_PROGRESS
+		;End Custom
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 21 || %UMINEKOEND = 21 lsp t_btn_ep2_tea_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep",1562+19,548+3,tea_title_btn_txt
@@ -15896,13 +15920,6 @@ return
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 22 || %UMINEKOEND = 22 exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,"P165P141"
 		;End Custom
-
-		;W_TEMP
-		if %UMINEKOEND_FLG = 20 if %test_var = 0 wait 800 : cell t_btn_ep2_unlock_lsp,1 : seplay 9,1001,100 : wait 270
-		if %UMINEKOEND_FLG = 20 if %test_var = 0 aspt breakupdir,t_btn_ep2_unlock_lsp,0 : flush 1 : aspt breakup,t_btn_ep2_unlock_lsp,1000,3500 : wait 1800
-		if %UMINEKOEND_FLG = 20 if %test_var = 0 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548 : aspt alpha,t_btn_ep2_lsp,0 : flush 1 : aspt alpha,t_btn_ep2_lsp,255,600 : sptwait alpha,t_btn_ep2_lsp
-		if %UMINEKOEND_FLG = 20 if %test_var = 0 _csp t_btn_ep2_unlock_lsp : _csp s0_9 : exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
-		mov %test_var,1
 
 		btnwait2 %BtnRes
 		
@@ -17946,7 +17963,7 @@ return
 csp_rst
 if %omake = 1 && %omake_level > 1 jumpf
 	seplay 9,17,100
-	bg white,10
+	bg black,10 ;Original Edited - From white to black door opening screen (skip blinding) - W_CUSTOM
 	E_MA
 	delay 2000
 ~
@@ -34191,6 +34208,19 @@ return
 getparam %txt_to_csp,%vsp_special_param
 	vsp %txt_to_csp,%vsp_special_param
 	vsp %txt_to_csp+1,%vsp_special_param
+return
+
+*config_write_str
+getparam $config_name,$config_value
+operate_config u_write, $config_value, $config_name
+operate_config save
+return
+
+*config_write_num
+getparam $config_name,%config_value
+itoa $config_value,%config_value
+operate_config u_write, $config_value, $config_name
+operate_config save
 return
 
 *search_bg

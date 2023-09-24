@@ -1358,6 +1358,8 @@ defsub lsl
 defsub write_special_text
 defsub csp_text
 defsub vsp_special
+defsub config_write_str
+defsub config_write_num
 ;End Custom
 
 ;====================================================   Custom Vars - W_CUSTOM
@@ -1382,21 +1384,27 @@ numalias name_chapter_r_click_l2,9517
 numalias name_chapter_r_click_l3,9518
 numalias parent_slot,9519
 
-numalias test_var,9520
+numalias UNLOCK_PROGRESS,9520
 
+;Params for dynamic backgrounds
 numalias lbg_type,9521
 numalias paste_method,9522
 numalias purified_lbg_path, 9523
 numalias bg_effect, 9524
 
-numalias vsp_special_param, 9525
+numalias vsp_special_param, 9525 ;Param for sub: vsp_special, may be 0 or 1, determines visibility
 
+numalias config_name, 9526
+numalias config_value, 9527
+
+;Params for aspt2_mem
 numalias aspt_prop,9530
 numalias aspt_slot,9531
 numalias aspt_val1,9532
 numalias aspt_val2,9533
 numalias aspt_val3,9534
 
+;Params for write_special_text
 numalias lsp_slot, 9540
 numalias lsp_type, 9541
 numalias lsp_x, 9542
@@ -1406,6 +1414,7 @@ numalias lsp_text2, 9545
 numalias lsp_text3, 9546
 
 ;Discord - W_CUSTOM
+
 numalias USE_DISCORD,9600 
 numalias ds_Free1,9602
 timestamp %ds_Free1
@@ -1425,7 +1434,7 @@ stralias hana1,":a;graphics\system\clock\hana1.png"
 stralias ware,":a;graphics\system\clock\ware.png"
 
 ;new straliases
-stralias transparent,":a;B:graphics\colour\transparent.png"
+stralias blank,":a;B:graphics\colour\transparent.png"
 
 ;From 9700 onward are used for slot_cache
 
@@ -1632,11 +1641,11 @@ mov ?voice_s[5],0
 mov ?voice_s[6],0
 voice_vol
 
-mov %test_var,0 ;W_TEMP
-
 ;Initialization - Global Declarations -W_CUSTOM
 mov $sprite_folder_name,"sprites"
 mov $bg_folder_name,"backgrounds"
+operate_config u_read, $UNLOCK_PROGRESS, "unlock_animation_tracker" ;Animations - checks if it has to do the unlock animation - W_CUSTOM
+atoi %UNLOCK_PROGRESS,$UNLOCK_PROGRESS ;Animations - convert from string to num
 
 ;Sprite cache - Initializing slot cache - W_CUSTOM
 mov %0,9700

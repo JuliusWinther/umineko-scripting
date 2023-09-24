@@ -14962,75 +14962,80 @@ lsph t_logo_lsp,t_logo_saku,855,45
 ;680
 ;744
 ;808
+;872
 ;936
+;1000
 
 if %CHIRU_MODE != 0 jumpf
 	;Main Menu
 
-	;Original Edited - Changed different values and conditions - W_CUSTOM
-	lsph t_btn_start_lsp,title_btn_1,1325,424 ;extra -30(450) to correspond to ps3 ;10
+	;Original Edited - Changed different values and conditions (basically remade and reordered everything) - W_CUSTOM
+
+	lsph t_btn_start_lsp,title_btn_1,1325,424
 	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_start_txt
-	lsph t_btn_web_lsp,title_btn_2,1325,488 ;9
+	lsph t_btn_web_lsp,title_btn_2,1325,488
 	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_web_txt
+
+	;First Start
+	if %UMINEKOEND = 0 lsph t_config_lsp,title_btn_3,1325,552 : write_special_text gen_txt_17,"title_btn_txt",1325,552,title_config_txt
 	if %UMINEKOEND = 0 lsph t_btn_exit_lsp,title_btn_4,1325,616 : write_special_text gen_txt_20,"title_btn_txt",1325,616,title_exit_txt
-	if %UMINEKOEND = 1 lsph t_btn_exit_lsp,title_btn_5,1325,680 : write_special_text gen_txt_20,"title_btn_txt",1325,680,title_exit_txt
-	if %UMINEKOEND = 11 lsph t_btn_exit_lsp,title_btn_7,1325,744 : write_special_text gen_txt_20,"title_btn_txt",1325,744,title_exit_txt ;808	
-	if %UMINEKOEND = 12 lsph t_btn_exit_lsp,title_btn_8,1325,808 : write_special_text gen_txt_20,"title_btn_txt",1325,808,title_exit_txt	
-	if %UMINEKOEND >= 20 && %UMINEKOEND < 50 lsph t_btn_exit_lsp,title_btn_10,1325,1000 : write_special_text gen_txt_20,"title_btn_txt",1325,1000,title_exit_txt
-	if %UMINEKOEND >= 40 lsph t_btn_exit_lsp,title_btn_10,1325,1000 : write_special_text gen_txt_20,"title_btn_txt",1325,1000,title_exit_txt ;from the bottom, 1
 
-	if %UMINEKOEND > 11 lsph t_btn_tea_lsp,title_btn_3,1325,552 ;8 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
-	if %UMINEKOEND > 12 lsph t_btn_ura_tea_lsp,title_btn_4,1325,616 ;7
-	if %UMINEKOEND >= 20 lsph t_btn_tips_lsp,title_btn_6,1325,744 ;5
-	if %UMINEKOEND > 12 lsph t_btn_music_lsp,title_btn_9,1325,936 ;pos: 2 ;Appears after ??? 1
-	;if %UMINEKOEND = 11 lsph t_btn_music_lsp,title_btn_6,1325,744 ;Music Button - Appears after ep 1 ------------------- moved below
-	if %UMINEKOEND = 12 lsph t_btn_music_lsp,title_btn_7,1325,744 ;Appears after tea 1 ;808
+	;End EP1 - Before First Tea Party
+	if %UMINEKOEND = 11 lsph t_config_lsp,title_btn_3,1325,552 : write_special_text gen_txt_17,"title_btn_txt",1325,552,title_config_txt
+	if %UMINEKOEND = 11 lsph t_cg_lsp,title_btn_4,1325,616 : write_special_text gen_txt_18,"title_btn_txt",1325,616,title_cg_txt
+	if %UMINEKOEND = 11 lsph t_btn_music_lsp,title_btn_5,1325,680 : write_special_text gen_txt_19,"title_btn_txt",1325,680,title_bgm_txt
+	if %UMINEKOEND = 11 lsph t_btn_exit_lsp,title_btn_6,1325,744 : write_special_text gen_txt_20,"title_btn_txt",1325,744,title_exit_txt
+	
+	;After First Tea Party - Before First Ura
+	if %UMINEKOEND >= 12 lsph t_btn_tea_lsp,title_btn_3,1325,552 : write_special_text gen_txt_13,"title_btn_txt",1325,552,title_tea_txt
+	if %UMINEKOEND = 12 lsph t_config_lsp,title_btn_4,1325,616 : write_special_text gen_txt_17,"title_btn_txt",1325,616,title_config_txt 
+	if %UMINEKOEND = 12 lsph t_cg_lsp,title_btn_5,1325,680 : write_special_text gen_txt_18,"title_btn_txt",1325,680,title_cg_txt
+	if %UMINEKOEND = 12 lsph t_btn_music_lsp,title_btn_6,1325,744 : write_special_text gen_txt_19,"title_btn_txt",1325,744,title_bgm_txt 
+	if %UMINEKOEND = 12 lsph t_btn_exit_lsp,title_btn_7,1325,808 : write_special_text gen_txt_20,"title_btn_txt",1325,808,title_exit_txt	
+	
+	;After First Ura - Before Second Episode - After Second Episode
+	;btn 3 in the before section
+	if %UMINEKOEND > 12 lsph t_btn_ura_tea_lsp,title_btn_4,1325,616 : write_special_text gen_txt_14,"title_btn_txt",1325,616,title_ura_txt 
+	if %UMINEKOEND >= 20 lsph t_chars_lsp,title_btn_5,1325,680 : write_special_text gen_txt_15,"title_btn_txt",1325,680,title_char_txt 
+	if %UMINEKOEND >= 20 lsph t_btn_tips_lsp,title_btn_6,1325,744 : write_special_text gen_txt_16,"title_btn_txt",1325,744,title_tips_txt 
+	if %UMINEKOEND >= 20 lsph t_config_lsp,title_btn_7,1325,808 : write_special_text gen_txt_17,"title_btn_txt",1325,808,title_config_txt 
+	if %UMINEKOEND >= 20 lsph t_cg_lsp,title_btn_8,1325,872 : write_special_text gen_txt_18,"title_btn_txt",1325,872,title_cg_txt
+	if %UMINEKOEND >= 20 lsph t_btn_music_lsp,title_btn_9,1325,936 : write_special_text gen_txt_19,"title_btn_txt",1325,936,title_bgm_txt 
+	if %UMINEKOEND >= 20 lsph t_btn_exit_lsp,title_btn_10,1325,1000 : write_special_text gen_txt_20,"title_btn_txt",1325,1000,title_exit_txt
+	
+	;Flags - for 'new' label
 
-	;new
-	if %UMINEKOEND >= 20 lsph t_chars_lsp,title_btn_5,1325,680 ;6
-	if %UMINEKOEND > 11 lsph t_cg_lsp,title_btn_8,1325,872 ;3 ;>=
-	if %UMINEKOEND = 1 lsph t_cg_lsp,title_btn_4,1325,616 ;3
-	if %UMINEKOEND >= 0 lsph t_config_lsp,title_btn_3,1325,552 ;4
-	if %UMINEKOEND = 12 lsph t_config_lsp,title_btn_5,1325,616 ;4 ;680
-	if %UMINEKOEND >= 20 lsph t_config_lsp,title_btn_7,1325,808 ;4
-	;end 1ep
-	if %UMINEKOEND = 11 lsph t_config_lsp,title_btn_4,1325,552 ;4 ;616
-	;if %UMINEKOEND = 11 lsph t_cg_lsp,t_cg2,1325,680 --------------------- moved below
-	if %UMINEKOEND = 12 lsph t_cg_lsp,title_btn_6,1325,680 ;744
-
-
-	;if %UMINEKOEND_FLG = 11 lsph t_btn_tea_lsp,t_btn_tea_new,1325,552 ;Original Edited - Commented (disable button before tea 1 end) - W_CUSTOM
-	if %UMINEKOEND_FLG > 12 lsph t_btn_ura_tea_lsp,title_btn_4,1325,616 ;From = to > and removed new label
-	if %UMINEKOEND_TIPS_FLG = 1 lsph t_btn_tips_lsp,title_btn_6_new,1325,736
-	if %UMINEKOEND_TIPS_CHA_FLG = 1 lsph t_chars_lsp,title_btn_5_new,1325,680
-
-	if %UMINEKOEND_FLG = 20 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
-	if %UMINEKOEND_FLG = 21 lsph t_btn_tea_lsp,title_btn_3,1325,544
-	if %UMINEKOEND_FLG = 22 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
-	if %UMINEKOEND_TIPS_FLG = 2 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
-	if %UMINEKOEND_TIPS_CHA_FLG = 2 lsph t_chars_lsp,title_btn_5_new,1325,680
-
-	if %UMINEKOEND_FLG = 30 lsph t_btn_start_lsp,title_btn_1_new,1325,424
-	if %UMINEKOEND_FLG = 31 lsph t_btn_tea_lsp,title_btn_3,1325,544
-	if %UMINEKOEND_FLG = 32 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
-	if %UMINEKOEND_TIPS_FLG = 3 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
-	if %UMINEKOEND_TIPS_CHA_FLG = 3 lsph t_chars_lsp,title_btn_5_new,1325,680
-
-	if %UMINEKOEND_FLG = 40 lsph t_btn_start_lsp,title_btn_1_new,1325,424
-	if %UMINEKOEND_FLG = 41 lsph t_btn_tea_lsp,title_btn_3,1325,544
-	if %UMINEKOEND_FLG = 42 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
-	if %UMINEKOEND_TIPS_FLG = 4 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
-	if %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,title_btn_6_new,1325,744
-	if %UMINEKOEND_TIPS_CHA_FLG = 4 lsph t_chars_lsp,title_btn_5_new,1325,680
-	if %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,title_btn_5_new,1325,680
-	if %UMINEKOEND = 12 && %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,title_btn_7_new,1325,744 ;808
-	if %UMINEKOEND = 12 && %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,title_btn_6_new,1325,680 ;744
-	if %UMINEKOEND >= 20 && %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,title_btn_9_new,1325,936
+	;multiple are needed because even if the notification isn't remvoed, the button still moves
+	;End EP1
+	if %UMINEKOEND < 12 if %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,title_btn_4_new,1325,616
+	if %UMINEKOEND < 12 if %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,title_btn_5_new,1325,680
+	;Adding Tea Party Button
+	if %UMINEKOEND = 12 && %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,title_btn_5_new,1325,680
+	if %UMINEKOEND = 12 && %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,title_btn_6_new,1325,744
+	;Final Position
 	if %UMINEKOEND >= 20 && %UMINEKOEND_CG_FLG = 1 lsph t_cg_lsp,title_btn_8_new,1325,872
+	if %UMINEKOEND >= 20 && %UMINEKOEND_MUSIC_FLG = 1 lsph t_btn_music_lsp,title_btn_9_new,1325,936
 
-	;MENU AFTER EP 1 AND BEFORE EP 2
-	if %UMINEKOEND = 11 lsph t_cg_lsp,title_btn_6_new,1325,616
-	if %UMINEKOEND = 11 lsph t_btn_music_lsp,title_btn_7_new,1325,680
+	;Char and Tips - EP 1
+	if %UMINEKOEND_TIPS_CHA_FLG = 1 lsph t_chars_lsp,title_btn_5_new,1325,680
+	if %UMINEKOEND_TIPS_FLG = 1 lsph t_btn_tips_lsp,title_btn_6_new,1325,744
+	;Char and Tips - EP 2
+	if %UMINEKOEND_TIPS_CHA_FLG = 2 lsph t_chars_lsp,title_btn_5_new,1325,680
+	if %UMINEKOEND_TIPS_FLG = 2 lsph t_btn_tips_lsp,title_btn_6_new,1325,744
+	;Char and Tips - EP 3
+	if %UMINEKOEND_TIPS_CHA_FLG = 3 lsph t_chars_lsp,title_btn_5_new,1325,680
+	if %UMINEKOEND_TIPS_FLG = 3 lsph t_btn_tips_lsp,title_btn_6_new,1325,744
+	;Char and Tips - EP 4
+	if %UMINEKOEND_TIPS_CHA_FLG = 4 lsph t_chars_lsp,title_btn_5_new,1325,680
+	if %UMINEKOEND_TIPS_FLG = 4 lsph t_btn_tips_lsp,title_btn_6_new,1325,744
+
+	;New EP2
+	if %UMINEKOEND_FLG = 20 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	;New EP3
+	if %UMINEKOEND_FLG = 30 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+	;New EP4
+	if %UMINEKOEND_FLG = 40 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+
 	;'NEW' LABEL ON START MENU BUTTON FOR FIRST TIME TEA AND URAS
 	if %UMINEKOEND_FLG = 11 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
 	if %UMINEKOEND_FLG = 21 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
@@ -15047,89 +15052,72 @@ if %CHIRU_MODE != 0 jumpf
 
 if %CHIRU_MODE != 1 jumpf
 
-	;424
-	;488
-	;552
-	;616
-	;680
-	;744
-	;808
-	;936
+	;424 ;1
+	;488 ;2
+	;552 ;3
+	;616 ;4
+	;680 ;5
+	;744 ;6
+	;808 ;7
+	;872 ;8
+	;936 ;9
+	;1000
 
-	lsph t_btn_start_lsp,title_btn_1,1325,424 ;extra -30(450) to correspond to ps3 ;10
+	;Original Edited - Changed different values and conditions (basically remade and reordered everything) - W_CUSTOM
+
+	lsph t_btn_start_lsp,title_btn_1,1325,424
 	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_start_txt
-	lsph t_btn_web_lsp,title_btn_2,1325,488 ;9
+	lsph t_btn_web_lsp,title_btn_2,1325,488
 	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_web_txt
-	
-	;Original Edited - Visualizing 'Boxes' from the start in chiru - W_CUSTOM
-	if %UMINEKOEND < 50 lsph t_cg_lsp,title_btn_4,1325,616
-	if %UMINEKOEND < 50 lsph t_btn_music_lsp,title_btn_5,1325,680
-	;End Custom
 
-	;Original Edited - Changed different values and conditions - W_CUSTOM
-	if %UMINEKOEND = 50 lsph t_config_lsp,title_btn_3,1325,552 ;4
-	if %UMINEKOEND = 50 lsph t_cg_lsp,title_btn_4,1325,616
-	if %UMINEKOEND = 50 lsph t_btn_music_lsp,title_btn_5,1325,680
-	if %UMINEKOEND = 50 lsph t_btn_exit_lsp,title_btn_6,1325,744 : write_special_text gen_txt_20,"title_btn_txt",1325,744,title_exit_txt
+	;First Start Chiru
+	if %UMINEKOEND <= 50 lsph t_config_lsp,title_btn_3,1325,552 : write_special_text gen_txt_17,"title_btn_txt",1325,552,title_config_txt
+	if %UMINEKOEND <= 50 lsph t_cg_lsp,title_btn_4,1325,616 : write_special_text gen_txt_18,"title_btn_txt",1325,616,title_cg_txt
+	if %UMINEKOEND <= 50 lsph t_btn_music_lsp,title_btn_5,1325,680 : write_special_text gen_txt_19,"title_btn_txt",1325,680,title_bgm_txt
+	if %UMINEKOEND <= 50 lsph t_btn_exit_lsp,title_btn_6,1325,744 : write_special_text gen_txt_20,"title_btn_txt",1325,744,title_exit_txt
 
-	if %UMINEKOEND = 51 lsph t_btn_exit_lsp,title_btn_7,1325,808 : write_special_text gen_txt_20,"title_btn_txt",1325,808,title_exit_txt ;744
-	if %UMINEKOEND > 51 lsph t_btn_tea_lsp,title_btn_3,1325,552 ;8 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
-	;if %UMINEKOEND = 51 lsph t_btn_music_lsp,title_btn_6,1325,744
-	if %UMINEKOEND > 51 lsph t_cg_lsp,title_btn_8,1325,872 ;3 ;Original Edited - Before was '>=' (disable button before tea 1 end) - W_CUSTOM
-	if %UMINEKOEND = 51 lsph t_config_lsp,title_btn_4,1325,616 ;4
-	;if %UMINEKOEND = 51 lsph t_cg_lsp,t_cg2,1325,680
+	;End EP5 - Before First Tea Party - no change
+
+	;After First Tea Party - Before First Ura
+	if %UMINEKOEND >= 52 lsph t_btn_tea_lsp,title_btn_3,1325,552 : write_special_text gen_txt_13,"title_btn_txt",1325,552,title_tea_txt
+	if %UMINEKOEND = 52 lsph t_config_lsp,title_btn_4,1325,616 : write_special_text gen_txt_17,"title_btn_txt",1325,616,title_config_txt 
+	if %UMINEKOEND = 52 lsph t_cg_lsp,title_btn_5,1325,680 : write_special_text gen_txt_18,"title_btn_txt",1325,680,title_cg_txt
+	if %UMINEKOEND = 52 lsph t_btn_music_lsp,title_btn_6,1325,744 : write_special_text gen_txt_19,"title_btn_txt",1325,744,title_bgm_txt 
+	if %UMINEKOEND = 52 lsph t_btn_exit_lsp,title_btn_7,1325,808 : write_special_text gen_txt_20,"title_btn_txt",1325,808,title_exit_txt	
 	
-	if %UMINEKOEND = 52 lsph t_btn_exit_lsp,t_btn_exit3,1325,808 : write_special_text gen_txt_20,"title_btn_txt",1325,1000,title_exit_txt ;872
-	if %UMINEKOEND > 52 lsph t_btn_ura_tea_lsp,title_btn_4,1325,616 ;7
-	if %UMINEKOEND > 52 lsph t_btn_music_lsp,title_btn_9,1325,936 ;2
-	if %UMINEKOEND = 52 lsph t_btn_music_lsp,title_btn_7,1325,744 ;808
-	if %UMINEKOEND = 52 lsph t_config_lsp,title_btn_5,1325,616 ;4 ;680
-	if %UMINEKOEND = 52 lsph t_cg_lsp,title_btn_6,1325,680 ;744
+	;After First Ura - Before Sixth Episode - After Fifth Episode
+	;btn 3 in the before section
+	if %UMINEKOEND > 52 lsph t_btn_ura_tea_lsp,title_btn_4,1325,616 : write_special_text gen_txt_14,"title_btn_txt",1325,616,title_ura_txt 
+	if %UMINEKOEND >= 60 lsph t_chars_lsp,title_btn_5,1325,680 : write_special_text gen_txt_15,"title_btn_txt",1325,680,title_char_txt 
+	if %UMINEKOEND >= 60 lsph t_btn_tips_lsp,title_btn_6,1325,744 : write_special_text gen_txt_16,"title_btn_txt",1325,744,title_tips_txt 
+	if %UMINEKOEND >= 60 lsph t_config_lsp,title_btn_7,1325,808 : write_special_text gen_txt_17,"title_btn_txt",1325,808,title_config_txt 
+	if %UMINEKOEND >= 60 lsph t_cg_lsp,title_btn_8,1325,872 : write_special_text gen_txt_18,"title_btn_txt",1325,872,title_cg_txt
+	if %UMINEKOEND >= 60 lsph t_btn_music_lsp,title_btn_9,1325,936 : write_special_text gen_txt_19,"title_btn_txt",1325,936,title_bgm_txt 
+	if %UMINEKOEND >= 60 lsph t_btn_exit_lsp,title_btn_10,1325,1000 : write_special_text gen_txt_20,"title_btn_txt",1325,1000,title_exit_txt
 	
-	if %UMINEKOEND >= 60 && %UMINEKOEND < 90 lsph t_btn_exit_lsp,title_btn_10,1325,1000 : write_special_text gen_txt_20,"title_btn_txt",1325,1000,title_exit_txt
-	if %UMINEKOEND >= 90 lsph t_btn_exit_lsp,title_btn_10,1325,1000 : write_special_text gen_txt_20,"title_btn_txt",1325,1000,title_exit_txt ;from the bottom, 1
-	if %UMINEKOEND >= 60 lsph t_btn_tips_lsp,title_btn_6,1325,744 ;5
-	if %UMINEKOEND >= 60 lsph t_chars_lsp,title_btn_5,1325,680 ;6
-	if %UMINEKOEND >= 60 lsph t_config_lsp,title_btn_7,1325,808 ;4
-	
-	;if %UMINEKOEND = 1 lsph t_btn_exit_lsp,t_btn_exit1_cg,1325,680
-	;if %UMINEKOEND = 1 lsph t_cg_lsp,title_btn_4,1325,616 ;3
-		
-	if %UMINEKOEND_FLG = 50 lsph t_btn_start_lsp,title_btn_1_new,1325,424
-	if %UMINEKOEND_FLG = 51 lsph t_btn_tea_lsp,title_btn_3,1325,552
-	;if %UMINEKOEND_FLG = 52 lsph t_btn_ura_tea_lsp,title_btn_4,1325,616
-	if %UMINEKOEND_TIPS_FLG = 5 lsph t_btn_tips_lsp,title_btn_6_new,1325,736
+	;Flags - for 'new' label
+
+	;Char and Tips - EP 5
 	if %UMINEKOEND_TIPS_CHA_FLG = 5 lsph t_chars_lsp,title_btn_5_new,1325,680
-	
-	if %UMINEKOEND_FLG = 60 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
-	if %UMINEKOEND_FLG = 61 lsph t_btn_tea_lsp,title_btn_3,1325,544
-	if %UMINEKOEND_FLG = 62 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
-	if %UMINEKOEND_TIPS_FLG = 6 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
+	if %UMINEKOEND_TIPS_FLG = 5 lsph t_btn_tips_lsp,title_btn_6_new,1325,744
+	;Char and Tips - EP 6
 	if %UMINEKOEND_TIPS_CHA_FLG = 6 lsph t_chars_lsp,title_btn_5_new,1325,680
-
-	if %UMINEKOEND_FLG = 70 lsph t_btn_start_lsp,title_btn_1_new,1325,424
-	if %UMINEKOEND_FLG = 71 lsph t_btn_tea_lsp,title_btn_3,1325,544
-	if %UMINEKOEND_FLG = 72 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
-	if %UMINEKOEND_TIPS_FLG = 7 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
+	if %UMINEKOEND_TIPS_FLG = 6 lsph t_btn_tips_lsp,title_btn_6_new,1325,744
+	;Char and Tips - EP 7
 	if %UMINEKOEND_TIPS_CHA_FLG = 7 lsph t_chars_lsp,title_btn_5_new,1325,680
-
-	if %UMINEKOEND_FLG = 80 lsph t_btn_start_lsp,title_btn_1_new,1325,424
-	if %UMINEKOEND_FLG = 81 lsph t_btn_tea_lsp,title_btn_3,1325,544
-	if %UMINEKOEND_FLG = 82 lsph t_btn_ura_tea_lsp,title_btn_4,1325,552
-	if %UMINEKOEND_TIPS_FLG = 8 lsph t_btn_tips_lsp,title_btn_6_new,1325,672
-	if %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,t_btn_music_new,1325,744
+	if %UMINEKOEND_TIPS_FLG = 7 lsph t_btn_tips_lsp,title_btn_6_new,1325,744
+	;Char and Tips - EP 8
 	if %UMINEKOEND_TIPS_CHA_FLG = 8 lsph t_chars_lsp,title_btn_5_new,1325,680
-	if %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,title_btn_5_new,1325,680
-	
-	if %UMINEKOEND = 52 && %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,title_btn_7_new,1325,744
-	if %UMINEKOEND = 52 && %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,title_btn_6_new,1325,680
-	if %UMINEKOEND >= 60 && %UMINEKOEND_MUSIC_FLG = 5 lsph t_btn_music_lsp,title_btn_9_new,1325,936
-	if %UMINEKOEND >= 60 && %UMINEKOEND_CG_FLG = 5 lsph t_cg_lsp,title_btn_8_new,1325,872
-	
-	;MENU AFTER EP 1 AND BEFORE EP 2
-	if %UMINEKOEND = 51 lsph t_cg_lsp,title_btn_6_new,1325,680
-	if %UMINEKOEND = 51 lsph t_btn_music_lsp,title_btn_7_new,1325,744
-	;NEW LABEL ON START MENU 
+	if %UMINEKOEND_TIPS_FLG = 8 lsph t_btn_tips_lsp,title_btn_6_new,1325,744
+
+	;New EP6
+	if %UMINEKOEND_FLG = 60 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
+	;New EP7
+	if %UMINEKOEND_FLG = 70 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+	;New EP8
+	if %UMINEKOEND_FLG = 80 lsph t_btn_start_lsp,title_btn_1_new,1325,424
+
+	;'NEW' LABEL ON START MENU BUTTON FOR FIRST TIME TEA AND URAS
 	if %UMINEKOEND_FLG = 51 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
 	if %UMINEKOEND_FLG = 61 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
 	if %UMINEKOEND_FLG = 71 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
@@ -15140,28 +15128,30 @@ if %CHIRU_MODE != 1 jumpf
 	if %UMINEKOEND_FLG = 82 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
 	;End Custom
 
-	lsph t_trophy_lsp,t_trophy,-45,-45	
+	lsph t_trophy_lsp,t_trophy,-45,-45
 ~
 
 if %CHIRU_MODE != 2 jumpf
 
-	;424
-	;488
-	;552
-	;616
-	;680
-	;744
-	;808
-	;936
+	;424 ;1
+	;488 ;2
+	;552 ;3
+	;616 ;4
+	;680 ;5
+	;744 ;6
+	;808 ;7
+	;872 ;8
+	;936 ;9
+	;1000
 
-	lsph t_btn_start_lsp,title_btn_1,1325,424 ;extra -30(450) to correspond to ps3 ;10
+	lsph t_btn_start_lsp,title_btn_1,1325,424 
 	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_start_txt
-	lsph t_btn_web_lsp,title_btn_2,1325,488 ;9
+	lsph t_btn_web_lsp,title_btn_2,1325,488 
 	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_web_txt
 	
-	lsph t_config_lsp,title_btn_3,1325,552 ;4
-	lsph t_cg_lsp,title_btn_4,1325,616
-	lsph t_btn_music_lsp,title_btn_5,1325,680
+	lsph t_config_lsp,title_btn_3,1325,552 : write_special_text gen_txt_17,"title_btn_txt",1325,552,title_config_txt
+	lsph t_cg_lsp,title_btn_4,1325,616 : write_special_text gen_txt_18,"title_btn_txt",1325,616,title_cg_txt
+	lsph t_btn_music_lsp,title_btn_5,1325,680 : write_special_text gen_txt_19,"title_btn_txt",1325,680,title_bgm_txt
 	lsph t_btn_exit_lsp,title_btn_6,1325,744 : write_special_text gen_txt_20,"title_btn_txt",1325,744,title_exit_txt
 
 	lsph t_trophy_lsp,t_trophy,-45,-45	
@@ -15199,22 +15189,22 @@ if %title_skip = 1 goto *b_title_skip_100
 	vsp t_btn_web_lsp,1 : vsp_special gen_txt_12,1 : print 22
 	 
 	if %CHIRU_MODE != 0 jumpf
-		if %UMINEKOEND >= 11 vsp t_btn_tea_lsp,1 : amsp t_btn_tea_lsp,1325,552,250 : print 22
-		if %UMINEKOEND >= 12 vsp t_btn_ura_tea_lsp,1 : amsp t_btn_ura_tea_lsp,1325,616,250 :  print 22
-		if %UMINEKOEND >= 20 vsp t_chars_lsp,1 : amsp t_chars_lsp,1325,680,250 : print 22
-		if %UMINEKOEND >= 20 vsp t_btn_tips_lsp,1 : amsp t_btn_tips_lsp,1325,744,250 : print 22
+		if %UMINEKOEND >= 11 vsp t_btn_tea_lsp,1 : vsp_special gen_txt_13,1 : amsp t_btn_tea_lsp,1325,552,250 : print 22
+		if %UMINEKOEND >= 12 vsp t_btn_ura_tea_lsp,1 : vsp_special gen_txt_14,1 : amsp t_btn_ura_tea_lsp,1325,616,250 :  print 22
+		if %UMINEKOEND >= 20 vsp t_chars_lsp,1 : vsp_special gen_txt_15,1 : amsp t_chars_lsp,1325,680,250 : print 22
+		if %UMINEKOEND >= 20 vsp t_btn_tips_lsp,1 : vsp_special gen_txt_16,1 : amsp t_btn_tips_lsp,1325,744,250 : print 22
 	~
 	
 	if %CHIRU_MODE != 1 jumpf
-		if %UMINEKOEND >= 51 vsp t_btn_tea_lsp,1 : amsp t_btn_tea_lsp,1325,552,250 : print 22
-		if %UMINEKOEND >= 52 vsp t_btn_ura_tea_lsp,1 : amsp t_btn_ura_tea_lsp,1325,616,250 :  print 22
-		if %UMINEKOEND >= 60 vsp t_chars_lsp,1 : amsp t_chars_lsp,1325,680,250 : print 22
-		if %UMINEKOEND >= 60 vsp t_btn_tips_lsp,1 : amsp t_btn_tips_lsp,1325,744,250 : print 22
+		if %UMINEKOEND >= 51 vsp t_btn_tea_lsp,1 : vsp_special gen_txt_13,1 : amsp t_btn_tea_lsp,1325,552,250 : print 22
+		if %UMINEKOEND >= 52 vsp t_btn_ura_tea_lsp,1 : vsp_special gen_txt_14,1 : amsp t_btn_ura_tea_lsp,1325,616,250 :  print 22
+		if %UMINEKOEND >= 60 vsp t_chars_lsp,1 : vsp_special gen_txt_15,1 : amsp t_chars_lsp,1325,680,250 : print 22
+		if %UMINEKOEND >= 60 vsp t_btn_tips_lsp,1 : vsp_special gen_txt_16,1 : amsp t_btn_tips_lsp,1325,744,250 : print 22
 	~
 	
-	vsp t_config_lsp,1 : print 22
-	if %UMINEKOEND >= 1 vsp t_cg_lsp,1 : print 22
-	if %UMINEKOEND >= 1 vsp t_btn_music_lsp,1 : print 22
+	vsp t_config_lsp,1 : vsp_special gen_txt_17,1 : print 22
+	if %UMINEKOEND >= 1 vsp t_cg_lsp,1 : vsp_special gen_txt_18,1 : print 22
+	if %UMINEKOEND >= 1 vsp t_btn_music_lsp,1 : vsp_special gen_txt_19,1 : print 22
 	vsp t_btn_exit_lsp,1 : vsp_special gen_txt_20,1 : print 22
 	
 	;Erase the submenus
@@ -15256,8 +15246,8 @@ if %title_skip = 1 goto *b_title_skip_100
 	vsp t_btn_start_lsp,1 : vsp_special gen_txt_11,1
 	vsp t_btn_web_lsp,1 : vsp_special gen_txt_12,1
 	vsp t_btn_exit_lsp,1 : vsp_special gen_txt_20,1
-	if %UMINEKOEND >= 1 vsp t_cg_lsp,1
-	vsp t_config_lsp,1
+	if %UMINEKOEND >= 1 vsp t_cg_lsp,1 : vsp_special gen_txt_18,1
+	vsp t_config_lsp,1 : vsp_special gen_txt_17,1
 	vsp t_btn_ep1_lsp,0
 	vsp t_btn_ep2_lsp,0
 	vsp t_btn_ep3_lsp,0
@@ -15268,11 +15258,11 @@ if %title_skip = 1 goto *b_title_skip_100
 	vsp t_btn_ep4_unlock_lsp,0
 	vsp t_btn_ep5_8_unlock_lsp,0
 	vsp t_btn_load_lsp,0
-	if %UMINEKOEND >= 11 vsp t_btn_tea_lsp,1 : amsp t_btn_tea_lsp,1325,552,250
-	if %UMINEKOEND >= 12 vsp t_btn_ura_tea_lsp,1 : amsp t_btn_ura_tea_lsp,1325,616,250
-	if %UMINEKOEND >= 20 vsp t_btn_tips_lsp,1 : amsp t_btn_tips_lsp,1325,744,250	
-	if %UMINEKOEND >= 1 vsp t_btn_music_lsp,1
-	if %UMINEKOEND >= 20 vsp t_chars_lsp,1 : amsp t_chars_lsp,1325,680,250
+	if %UMINEKOEND >= 11 vsp t_btn_tea_lsp,1 : vsp_special gen_txt_13,1 : amsp t_btn_tea_lsp,1325,552,250
+	if %UMINEKOEND >= 12 vsp t_btn_ura_tea_lsp,1 : vsp_special gen_txt_14,1 : amsp t_btn_ura_tea_lsp,1325,616,250
+	if %UMINEKOEND >= 20 vsp t_btn_tips_lsp,1 : vsp_special gen_txt_16,1 : amsp t_btn_tips_lsp,1325,744,250	
+	if %UMINEKOEND >= 1 vsp t_btn_music_lsp,1 : vsp_special gen_txt_19,1
+	if %UMINEKOEND >= 20 vsp t_chars_lsp,1 : vsp_special gen_txt_15,1 : amsp t_chars_lsp,1325,680,250
 
 	;Erase the submenus
 	_csp t_btn_ep1_lsp : _csp t_btn_ep2_lsp : _csp t_btn_ep3_lsp : _csp t_btn_ep4_lsp : _csp t_btn_ep5_8_lsp
@@ -15297,8 +15287,7 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 	btndef ""
 	transbtn
 	;Text Generator - all display strings have been adapted to the new sprite ids - W_CUSTOM
-	exbtn_d "C122-125C132-137C139-149C161C163C165"
-	exbtn_d "C37-56P9-36"
+	exbtn_d "C37-56P9-36C122-125C132-137C139-149C161C163C165"
 	exbtn t_btn_start_lsp,t_btn_start_lsp,"P165P143"
 	exbtn t_btn_web_lsp,t_btn_web_lsp,"P165P147"
 	exbtn t_btn_tea_lsp,t_btn_tea_lsp,"P165P146"
@@ -17287,16 +17276,16 @@ if %CHIRU_MODE != 2 jumpf
 	;Turn off the button other than the tea party, tea party button to display per episode
 	;Note to clear the flag, go to view at least ep2 ep1, 3 in more than one.
 
-	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
-	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
+	vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
 	;vsp t_btn_tea_lsp,0
-	vsp t_btn_tips_lsp,0 : vsp_text gen_txt_14,0
-	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_15,0
-	vsp t_btn_music_lsp,0 : vsp_text gen_txt_16,0
-	vsp t_btn_ura_tea_lsp,0 : vsp_text gen_txt_17,0
-	vsp t_chars_lsp,0 : vsp_text gen_txt_18,0
-	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
-	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
+	vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
+	vsp t_btn_exit_lsp,0 : vsp_special gen_txt_15,0
+	vsp t_btn_music_lsp,0 : vsp_special gen_txt_16,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_special gen_txt_17,0
+	vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_special gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_special gen_txt_20,0
 	vsp t_trophy_lsp,0
 	
 	seplay 1,51,100
@@ -17353,16 +17342,16 @@ goto *tea_sub_menu_btn_100_loop
 *tea_sub_menu_chiru
 	btndef ""
 
-	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
-	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
+	vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
 	;vsp t_btn_tea_lsp,0
-	vsp t_btn_tips_lsp,0 : vsp_text gen_txt_14,0
-	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_15,0
-	vsp t_btn_music_lsp,0 : vsp_text gen_txt_16,0
-	vsp t_btn_ura_tea_lsp,0 : vsp_text gen_txt_17,0
-	vsp t_chars_lsp,0 : vsp_text gen_txt_18,0
-	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
-	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
+	vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
+	vsp t_btn_exit_lsp,0 : vsp_special gen_txt_15,0
+	vsp t_btn_music_lsp,0 : vsp_special gen_txt_16,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_special gen_txt_17,0
+	vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_special gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_special gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	seplay 1,51,100
@@ -17426,16 +17415,16 @@ goto *tea_sub_menu_btn_100_loop_chiru
 	;To erase any button other than the tea party, tea party button to display per episode
 	;Note to clear the flag, go to view at least ep2 ep1, 3 in more than one.
 
-	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
-	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
-	vsp t_btn_tea_lsp,0 : vsp_text gen_txt_13,0
-	vsp t_btn_tips_lsp,0 : vsp_text gen_txt_15,0
-	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_16,0
-	vsp t_btn_music_lsp,0 : vsp_text gen_txt_17,0
+	vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_special gen_txt_13,0
+	vsp t_btn_tips_lsp,0 : vsp_special gen_txt_15,0
+	vsp t_btn_exit_lsp,0 : vsp_special gen_txt_16,0
+	vsp t_btn_music_lsp,0 : vsp_special gen_txt_17,0
 	;vsp t_btn_ura_tea_lsp,0
-	vsp t_chars_lsp,0 : vsp_text gen_txt_18,0
-	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
-	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
+	vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_special gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_special gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	seplay 1,51,100
@@ -17497,16 +17486,16 @@ goto *ura_tea_sub_menu_btn_100_loop
 	;To erase any button other than the tea party, tea party button to display per episode
 	;Note to clear the flag, go to view at least ep2 ep1, 3 in more than one.
 
-	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
-	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
-	vsp t_btn_tea_lsp,0 : vsp_text gen_txt_13,0
-	vsp t_btn_tips_lsp,0 : vsp_text gen_txt_15,0
-	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_16,0
-	vsp t_btn_music_lsp,0 : vsp_text gen_txt_17,0
+	vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_special gen_txt_13,0
+	vsp t_btn_tips_lsp,0 : vsp_special gen_txt_15,0
+	vsp t_btn_exit_lsp,0 : vsp_special gen_txt_16,0
+	vsp t_btn_music_lsp,0 : vsp_special gen_txt_17,0
 	;vsp t_btn_ura_tea_lsp,0
-	vsp t_chars_lsp,0 : vsp_text gen_txt_18,0
-	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
-	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
+	vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_special gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_special gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	seplay 1,51,100
@@ -17566,16 +17555,16 @@ goto *ura_tea_sub_menu_btn_100_loop_chiru
 *tips_sub_menu
 	btndef ""
 
-	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
-	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
-	vsp t_btn_tea_lsp,0 : vsp_text gen_txt_13,0
+	vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_special gen_txt_13,0
 	;vsp t_btn_tips_lsp,0
-	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_14,0
-	vsp t_btn_music_lsp,0 : vsp_text gen_txt_15,0
-	vsp t_btn_ura_tea_lsp,0 : vsp_text gen_txt_17,0
-	vsp t_chars_lsp,0 : vsp_text gen_txt_18,0
-	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
-	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
+	vsp t_btn_exit_lsp,0 : vsp_special gen_txt_14,0
+	vsp t_btn_music_lsp,0 : vsp_special gen_txt_15,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_special gen_txt_17,0
+	vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_special gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_special gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	seplay 8,1001,100
@@ -17676,16 +17665,16 @@ goto *tips_sub_menu_btn_100_loop_chiru
 *char_sub_menu
 	btndef ""
 
-	vsp t_btn_start_lsp,0 : vsp_text gen_txt_11,0
-	vsp t_btn_web_lsp,0 : vsp_text gen_txt_12,0
-	vsp t_btn_tea_lsp,0 : vsp_text gen_txt_13,0
-	vsp t_btn_tips_lsp,0 : vsp_text gen_txt_14,0
-	vsp t_btn_exit_lsp,0 : vsp_text gen_txt_16,0
-	vsp t_btn_music_lsp,0 : vsp_text gen_txt_17,0
-	vsp t_btn_ura_tea_lsp,0 : vsp_text gen_txt_18,0
+	vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_special gen_txt_13,0
+	vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
+	vsp t_btn_exit_lsp,0 : vsp_special gen_txt_16,0
+	vsp t_btn_music_lsp,0 : vsp_special gen_txt_17,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_special gen_txt_18,0
 	;vsp t_chars_lsp,0
-	vsp t_cg_lsp,0 : vsp_text gen_txt_19,0
-	vsp t_config_lsp,0 : vsp_text gen_txt_20,0
+	vsp t_cg_lsp,0 : vsp_special gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_special gen_txt_20,0
 	vsp t_trophy_lsp,0
 
 	seplay 8,1001,100

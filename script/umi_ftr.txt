@@ -15196,7 +15196,7 @@ if %title_skip = 1 goto *b_title_skip_100
 	vsp t_btn_web_lsp,1 : vsp_special gen_txt_12,1 : print 22
 	 
 	if %CHIRU_MODE != 0 jumpf
-		if %UMINEKOEND >= 11 vsp t_btn_tea_lsp,1 : vsp_special gen_txt_13,1 : amsp t_btn_tea_lsp,1325,552,250 : print 22
+		if %UMINEKOEND >= 11 vsp t_btn_tea_lsp,1 : vsp_special gen_txt_13,1 : amsp t_btn_tea_lsp,1325,552,250 : amsp gen_txt_13,1325,552,250 : print 22
 		if %UMINEKOEND >= 12 vsp t_btn_ura_tea_lsp,1 : vsp_special gen_txt_14,1 : amsp t_btn_ura_tea_lsp,1325,616,250 :  print 22
 		if %UMINEKOEND >= 20 vsp t_chars_lsp,1 : vsp_special gen_txt_15,1 : amsp t_chars_lsp,1325,680,250 : print 22
 		if %UMINEKOEND >= 20 vsp t_btn_tips_lsp,1 : vsp_special gen_txt_16,1 : amsp t_btn_tips_lsp,1325,744,250 : print 22
@@ -15265,7 +15265,7 @@ if %title_skip = 1 goto *b_title_skip_100
 	vsp t_btn_ep4_unlock_lsp,0
 	vsp t_btn_ep5_8_unlock_lsp,0
 	vsp t_btn_load_lsp,0
-	if %UMINEKOEND >= 11 vsp t_btn_tea_lsp,1 : vsp_special gen_txt_13,1 : amsp t_btn_tea_lsp,1325,552,250
+	if %UMINEKOEND >= 11 vsp t_btn_tea_lsp,1 : vsp_special gen_txt_13,1 : amsp t_btn_tea_lsp,1325,552,250 : amsp gen_txt_13,1325,552,250
 	if %UMINEKOEND >= 12 vsp t_btn_ura_tea_lsp,1 : vsp_special gen_txt_14,1 : amsp t_btn_ura_tea_lsp,1325,616,250
 	if %UMINEKOEND >= 20 vsp t_btn_tips_lsp,1 : vsp_special gen_txt_16,1 : amsp t_btn_tips_lsp,1325,744,250	
 	if %UMINEKOEND >= 1 vsp t_btn_music_lsp,1 : vsp_special gen_txt_19,1
@@ -17304,10 +17304,10 @@ if %CHIRU_MODE != 2 jumpf
 
 	;Shift on the Tea Party button.
 	resettimer
-	msp t_btn_tea_lsp,0,-32,-100 : print 1 : waittimer 50
-	msp t_btn_tea_lsp,0,-32,0 : print 1 : waittimer 100
-	msp t_btn_tea_lsp,0,-32,0 : print 1 : waittimer 150
-	msp t_btn_tea_lsp,0,-32,100 :print 1	
+	msp t_btn_tea_lsp,0,-32,-100 : msp gen_txt_13,0,-32,-100 : msp gen_txt_13+1,0,-32,-100 	: print 1 : waittimer 50
+	msp t_btn_tea_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 	: print 1 : waittimer 100
+	msp t_btn_tea_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 	: print 1 : waittimer 150
+	msp t_btn_tea_lsp,0,-32,100	 : msp gen_txt_13,0,-32,100 : msp gen_txt_13+1,0,-32,100 	: print 1	
 	seplay 9,1001,100
 
 	*tea_sub_menu_100
@@ -17369,10 +17369,10 @@ goto *tea_sub_menu_btn_100_loop
 	wait 100
 
 	resettimer
-	msp t_btn_tea_lsp,0,-32,-100 : print 1 : waittimer 50
-	msp t_btn_tea_lsp,0,-32,0 : print 1 : waittimer 100
-	msp t_btn_tea_lsp,0,-32,0 : print 1 : waittimer 150
-	msp t_btn_tea_lsp,0,-32,100 :print 1
+	msp t_btn_tea_lsp,0,-32,-100 : msp gen_txt_13,0,-32,-100 : msp gen_txt_13+1,0,-32,-100 : print 1 : waittimer 50
+	msp t_btn_tea_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 100
+	msp t_btn_tea_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 150
+	msp t_btn_tea_lsp,0,-32,100	 : msp gen_txt_13,0,-32,100 : msp gen_txt_13+1,0,-32,100 :print 1
 	seplay 9,1001,100
 
 	*tea_sub_menu_100_chiru
@@ -17443,12 +17443,12 @@ goto *tea_sub_menu_btn_100_loop_chiru
 
 	;Shift on the Tea Party button.
 	resettimer
-	msp t_btn_ura_tea_lsp,0,-32,-100 : print 1 : waittimer 50
-	msp t_btn_ura_tea_lsp,0,-32,0 : print 1 : waittimer 100
-	msp t_btn_ura_tea_lsp,0,-32,0 : print 1 : waittimer 150
-	msp t_btn_ura_tea_lsp,0,-32,0 : print 1 : waittimer 200
-	msp t_btn_ura_tea_lsp,0,-32,50 : print 1 : waittimer 250
-	msp t_btn_ura_tea_lsp,0,-32,50 :print 1	
+	msp t_btn_ura_tea_lsp,0,-32,-100 : msp gen_txt_13,0,-32,-100 : msp gen_txt_13+1,0,-32,-100 : print 1 : waittimer 50
+	msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 100
+	msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 150
+	msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 200
+	msp t_btn_ura_tea_lsp,0,-32,50	 : msp gen_txt_13,0,-32,50 : msp gen_txt_13+1,0,-32,50	 : print 1 : waittimer 250
+	msp t_btn_ura_tea_lsp,0,-32,50	 : msp gen_txt_13,0,-32,50 : msp gen_txt_13+1,0,-32,50	 :print 1	
 	seplay 9,1001,100
 
 	*ura_tea_sub_menu_100
@@ -17514,12 +17514,12 @@ goto *ura_tea_sub_menu_btn_100_loop
 
 	;Shift on the Tea Party button.
 	resettimer
-	msp t_btn_ura_tea_lsp,0,-32,-100 : print 1 : waittimer 50
-	msp t_btn_ura_tea_lsp,0,-32,0 : print 1 : waittimer 100
-	msp t_btn_ura_tea_lsp,0,-32,0 : print 1 : waittimer 150
-	msp t_btn_ura_tea_lsp,0,-32,0 : print 1 : waittimer 200
-	msp t_btn_ura_tea_lsp,0,-32,50 : print 1 : waittimer 250
-	msp t_btn_ura_tea_lsp,0,-32,50 :print 1	
+	msp t_btn_ura_tea_lsp,0,-32,-100 : msp gen_txt_13,0,-32,-100 : msp gen_txt_13+1,0,-32,-100 : print 1 : waittimer 50
+	msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 100
+	msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 150
+	msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 200
+	msp t_btn_ura_tea_lsp,0,-32,50	 : msp gen_txt_13,0,-32,50 : msp gen_txt_13+1,0,-32,50 : print 1 : waittimer 250
+	msp t_btn_ura_tea_lsp,0,-32,50	 : msp gen_txt_13,0,-32,50 : msp gen_txt_13+1,0,-32,50 :print 1	
 	seplay 9,1001,100
 
 	*ura_tea_sub_menu_100_chiru
@@ -17583,16 +17583,16 @@ goto *ura_tea_sub_menu_btn_100_loop_chiru
 
 	;Shift on the Tips button.
 	resettimer
-	msp t_btn_tips_lsp,0,-32,-100 : print 1 : waittimer 50
-	msp t_btn_tips_lsp,0,-32,0 : print 1 : waittimer 100
-	msp t_btn_tips_lsp,0,-32,0 : print 1 : waittimer 150
-	msp t_btn_tips_lsp,0,-32,0 : print 1 : waittimer 200
-	msp t_btn_tips_lsp,0,-32,0 : print 1 : waittimer 250
-	msp t_btn_tips_lsp,0,-32,0 : print 1 : waittimer 300
-	msp t_btn_tips_lsp,0,-32,0 : print 1 : waittimer 300
-	msp t_btn_tips_lsp,0,-32,0 : print 1 : waittimer 300
-	msp t_btn_tips_lsp,0,-32,50 : print 1 : waittimer 350
-	msp t_btn_tips_lsp,0,-32,50 :print 1		
+	msp t_btn_tips_lsp,0,-32,-100: msp gen_txt_13,0,-32,-100 : msp gen_txt_13+1,0,-32,-100 : print 1 : waittimer 50
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 100
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 150
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 200
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 250
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 300
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 300
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0 : print 1 : waittimer 300
+	msp t_btn_tips_lsp,0,-32,50	 : msp gen_txt_13,0,-32,50 : msp gen_txt_13+1,0,-32,50 : print 1 : waittimer 350
+	msp t_btn_tips_lsp,0,-32,50	 : msp gen_txt_13,0,-32,50 : msp gen_txt_13+1,0,-32,50 :print 1		
 	seplay 9,1001,100
 	
 	if %CHIRU_MODE = 1 goto *tips_sub_menu_100_chiru
@@ -17693,14 +17693,14 @@ goto *tips_sub_menu_btn_100_loop_chiru
 
 	;Shift on the Tips button.
 	resettimer
-	msp t_chars_lsp,0,-32,-100 : print 1 : waittimer 50
-	msp t_chars_lsp,0,-32,0 : print 1 : waittimer 100
-	msp t_chars_lsp,0,-32,0 : print 1 : waittimer 150
-	msp t_chars_lsp,0,-32,0 : print 1 : waittimer 200
-	msp t_chars_lsp,0,-32,0 : print 1 : waittimer 250
-	msp t_chars_lsp,0,-32,0 : print 1 : waittimer 300
-	msp t_chars_lsp,0,-32,50 : print 1 : waittimer 350
-	msp t_chars_lsp,0,-32,50 :print 1		
+	msp t_chars_lsp,0,-32,-100	 : msp gen_txt_13,0,-32,-100 : msp gen_txt_13+1,0,-32,-100  : print 1 : waittimer 50
+	msp t_chars_lsp,0,-32,0		 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0  : print 1 : waittimer 100
+	msp t_chars_lsp,0,-32,0		 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0  : print 1 : waittimer 150
+	msp t_chars_lsp,0,-32,0		 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0  : print 1 : waittimer 200
+	msp t_chars_lsp,0,-32,0		 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0  : print 1 : waittimer 250
+	msp t_chars_lsp,0,-32,0		 : msp gen_txt_13,0,-32,0 : msp gen_txt_13+1,0,-32,0  : print 1 : waittimer 300
+	msp t_chars_lsp,0,-32,50	 : msp gen_txt_13,0,-32,50 : msp gen_txt_13+1,0,-32,50  : print 1 : waittimer 350
+	msp t_chars_lsp,0,-32,50	 : msp gen_txt_13,0,-32,50 : msp gen_txt_13+1,0,-32,50  :print 1		
 	seplay 9,1001,100
 	
 	if %CHIRU_MODE = 1 goto *char_sub_menu_100_chiru

@@ -14959,6 +14959,7 @@ lsph t_logo_lsp,t_logo_chiru,860,45
 if %CHIRU_MODE != 2 jumpf ;Saku menu - logo - W_CUSTOM
 lsph t_logo_lsp,t_logo_saku,855,45
 ~
+
 ;----------------------
 ;Button placement
 
@@ -15084,6 +15085,10 @@ if %CHIRU_MODE != 1 jumpf
 	if %UMINEKOEND <= 50 lsph t_btn_exit_lsp,title_btn_6,1325,744 : write_special_text gen_txt_20,"title_btn_txt",1325,744,title_exit_txt
 
 	;End EP5 - Before First Tea Party - no change
+	if %UMINEKOEND = 51 lsph t_config_lsp,title_btn_3,1325,552 : write_special_text gen_txt_17,"title_btn_txt",1325,552,title_config_txt
+	if %UMINEKOEND = 51 lsph t_cg_lsp,title_btn_4,1325,616 : write_special_text gen_txt_18,"title_btn_txt",1325,616,title_cg_txt
+	if %UMINEKOEND = 51 lsph t_btn_music_lsp,title_btn_5,1325,680 : write_special_text gen_txt_19,"title_btn_txt",1325,680,title_bgm_txt
+	if %UMINEKOEND = 51 lsph t_btn_exit_lsp,title_btn_6,1325,744 : write_special_text gen_txt_20,"title_btn_txt",1325,744,title_exit_txt
 
 	;After First Tea Party - Before First Ura
 	if %UMINEKOEND >= 52 lsph t_btn_tea_lsp,title_btn_3,1325,552 : write_special_text gen_txt_13,"title_btn_txt",1325,552,title_tea_txt
@@ -15187,7 +15192,8 @@ if %title_skip = 1 goto *b_title_skip_100
 	vsp t_trophy_lsp,1
 	vsp t_warning_lsp,1
 
-	bg $tmp10,6
+	if %block_unlocking = 0 bg $tmp10,6
+	if %block_unlocking = 1 mov %block_unlocking,0 : seplay 9,17,70 : bg $tmp10,10
 	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
 	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
 	vsp t_hane_lsp,1 : print 5
@@ -15326,9 +15332,10 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 	if %CHIRU_MODE = 0 && %BtnRes = t_btn_omake_lsp gosub *omake_sub_menu
 	if %CHIRU_MODE = 1 && %BtnRes = t_btn_omake_lsp mov %scenario_Number,5 mov %omake,1 : goto *umi_start
 	if %BtnRes = t_btn_omake_end_lsp gosub *omake_sub_menu_end
-	; Show the op only after ep1 prologue
-	if %BtnRes = -5 && %UMINEKOEND > 0 goto *show_opening
-	if %BtnRes = -5 && $flag_scenario_1_op == "●" goto *show_opening
+	; Show the op only after ep1 prologue ;Original Edited - commented, do not show OP in the main menu - W_CUSTOM
+	;if %BtnRes = -5 && %UMINEKOEND > 0 goto *show_opening
+	;if %BtnRes = -5 && $flag_scenario_1_op == "●" goto *show_opening
+	;End Custom
 	goto *b_title_button_loop
 
 ;Original Edited - Switch Game - W_CUSTOM
@@ -15745,6 +15752,8 @@ return
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
 			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
 
+			lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,1
+
 			print 24
 			
 			;Button processing
@@ -15756,23 +15765,40 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep4_unlock_100
 				;One state to clear the episode.
-				seplay 3,1001,100
+				;seplay 3,1001,100
 				mov %UMINEKOEND,40
 				mov %UMINEKOEND_FLG,40
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				;wait 1000
+				;seplay 1,31,100
+				;csp_rst
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;bg black,22
+
+				;Animations - preparing fake ep blocked buttons - W_CUSTOM
+				lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
+				lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 700 : seplay 9,1001,100 : cell t_btn_ep2_unlock_lsp,1 : cell t_btn_ep3_unlock_lsp,1 : flush 1 : wait 770
+				mov %UNLOCK_PROGRESS,41
+				;End Custom
 				
-				wait 2000
-				seplay 1,25,100
-				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				E_A
+				csp_rst
+				seplay 9,18,70
+				bg black,11
+				wait 3000
+				mov %block_unlocking,1
+				;flush 10
 				E_A
 				goto *b_title
+
 			*ep4_unlock_100
 				
 			notif %BtnRes = unlock_no_lsp notif %BtnRes = -1 goto *ep4_unlock_200
@@ -15874,8 +15900,6 @@ return
 		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
 		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 lsp s0_9,ep_btn_bg_black,1562,548
 		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548 : aspt alpha,t_btn_ep2_lsp,0 : flush 1
-		;End Custom
-
 		;Animations - Executing Unlock Animations - W_CUSTOM
 		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 wait 800 : cell t_btn_ep2_unlock_lsp,1 : seplay 9,1001,100 : wait 270
 		if %UMINEKOEND_FLG = 20 if %UNLOCK_PROGRESS = 20 aspt breakupdir,t_btn_ep2_unlock_lsp,0 : flush 1 : aspt breakup,t_btn_ep2_unlock_lsp,1000,3500 : wait 1800
@@ -16104,7 +16128,8 @@ return
 		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
 		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg,1562,608
-		if %UMINEKOEND_FLG = 30 lsp t_btn_ep3_lsp,ep_btn_bg_new,1562,608
+		;Animations - sprites to load without unlocking animation - W_CUSTOM
+		if %UMINEKOEND_FLG = 30 if %UNLOCK_PROGRESS = 31 lsp t_btn_ep3_lsp,ep_btn_bg_new,1562,608
 		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
 		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
@@ -16118,6 +16143,17 @@ return
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
 
+		;Animations - preparing fake ep blocked buttons - W_CUSTOM
+		if %UMINEKOEND_FLG = 30 if %UNLOCK_PROGRESS = 30 lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,0
+		if %UMINEKOEND_FLG = 30 if %UNLOCK_PROGRESS = 30 lsp s0_9,ep_btn_bg_black,1562,608
+		if %UMINEKOEND_FLG = 30 if %UNLOCK_PROGRESS = 30 lsp t_btn_ep3_lsp,ep_btn_bg_new,1562,608 : aspt alpha,t_btn_ep3_lsp,0 : flush 1
+		;Animations - Executing Unlock Animations - W_CUSTOM
+		if %UMINEKOEND_FLG = 30 if %UNLOCK_PROGRESS = 30 wait 800 : cell t_btn_ep3_unlock_lsp,1 : seplay 9,1001,100 : wait 270
+		if %UMINEKOEND_FLG = 30 if %UNLOCK_PROGRESS = 30 aspt breakupdir,t_btn_ep3_unlock_lsp,0 : flush 1 : aspt breakup,t_btn_ep3_unlock_lsp,1000,3500 : wait 1800
+		if %UMINEKOEND_FLG = 30 if %UNLOCK_PROGRESS = 30 aspt alpha,t_btn_ep3_lsp,255,600 : sptwait alpha,t_btn_ep3_lsp
+		if %UMINEKOEND_FLG = 30 if %UNLOCK_PROGRESS = 30 _csp t_btn_ep3_unlock_lsp : _csp s0_9
+		mov %UNLOCK_PROGRESS,31
+		;End Custom
 
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 31 || %UMINEKOEND = 31 lsp t_btn_ep3_tea_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep",1562+19,608+3,tea_title_btn_txt
@@ -16286,7 +16322,8 @@ return
 		lsp t_btn_ep3_lsp,ep_btn_bg,1562,608
 		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg,1562,668
-		if %UMINEKOEND_FLG = 40 lsp t_btn_ep4_lsp,ep_btn_bg_new,1562,668
+		;Animations - sprites to load without unlocking animation - W_CUSTOM
+		if %UMINEKOEND_FLG = 40 if %UNLOCK_PROGRESS = 41 lsp t_btn_ep4_lsp,ep_btn_bg_new,1562,668
 		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg_black,1562,728
@@ -16297,6 +16334,18 @@ return
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
 		
+		;Animations - preparing fake ep blocked buttons - W_CUSTOM
+		if %UMINEKOEND_FLG = 40 if %UNLOCK_PROGRESS = 40 lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,0
+		if %UMINEKOEND_FLG = 40 if %UNLOCK_PROGRESS = 40 lsp s0_9,ep_btn_bg_black,1562,668
+		if %UMINEKOEND_FLG = 40 if %UNLOCK_PROGRESS = 40 lsp t_btn_ep4_lsp,ep_btn_bg_new,1562,668 : aspt alpha,t_btn_ep4_lsp,0 : flush 1
+		;Animations - Executing Unlock Animations - W_CUSTOM
+		if %UMINEKOEND_FLG = 40 if %UNLOCK_PROGRESS = 40 wait 800 : cell t_btn_ep4_unlock_lsp,1 : seplay 9,1001,100 : wait 270
+		if %UMINEKOEND_FLG = 40 if %UNLOCK_PROGRESS = 40 aspt breakupdir,t_btn_ep4_unlock_lsp,0 : flush 1 : aspt breakup,t_btn_ep4_unlock_lsp,1000,3500 : wait 1800
+		if %UMINEKOEND_FLG = 40 if %UNLOCK_PROGRESS = 40 aspt alpha,t_btn_ep4_lsp,255,600 : sptwait alpha,t_btn_ep4_lsp
+		if %UMINEKOEND_FLG = 40 if %UNLOCK_PROGRESS = 40 _csp t_btn_ep4_unlock_lsp : _csp s0_9
+		mov %UNLOCK_PROGRESS,41
+		;End Custom
+
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 41 || %UMINEKOEND = 41 lsp t_btn_ep4_tea_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep",1562+19,668+3,tea_title_btn_txt
 		;??? Temp Buttons
@@ -16411,10 +16460,24 @@ return
 		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg,1562,728
+		;Animations - sprites to load without unlocking animation - W_CUSTOM
+		if %UMINEKOEND_FLG = 40 if %UNLOCK_PROGRESS = 41 lsp t_btn_ep5_8_lsp,ep_btn_bg_new,1562,728
 		write_special_text gen_txt_5,"ep_set_change",1581,728,eps_txt,ep5_n_txt,ep8_n_txt
 
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
+
+		;Animations - preparing fake ep blocked buttons - W_CUSTOM
+		if %UMINEKOEND_FLG = 50 if %UNLOCK_PROGRESS = 50 lsp t_btn_ep5_8_unlock_lsp,unlock_btn_anim,1430+72,728 : cell t_btn_ep5_8_unlock_lsp,0
+		if %UMINEKOEND_FLG = 50 if %UNLOCK_PROGRESS = 50 lsp s0_9,ep_btn_bg_black,1562,728
+		if %UMINEKOEND_FLG = 50 if %UNLOCK_PROGRESS = 50 lsp t_btn_ep5_8_lsp,ep_btn_bg_new,1562,728 : aspt alpha,t_btn_ep5_8_lsp,0 : flush 1
+		;Animations - Executing Unlock Animations - W_CUSTOM
+		if %UMINEKOEND_FLG = 50 if %UNLOCK_PROGRESS = 50 wait 800 : cell t_btn_ep5_8_unlock_lsp,1 : seplay 9,1001,100 : wait 270
+		if %UMINEKOEND_FLG = 50 if %UNLOCK_PROGRESS = 50 aspt breakupdir,t_btn_ep5_8_unlock_lsp,0 : flush 1 : aspt breakup,t_btn_ep5_8_unlock_lsp,1000,3500 : wait 1800
+		if %UMINEKOEND_FLG = 50 if %UNLOCK_PROGRESS = 50 aspt alpha,t_btn_ep5_8_lsp,255,600 : sptwait alpha,t_btn_ep5_8_lsp
+		if %UMINEKOEND_FLG = 50 if %UNLOCK_PROGRESS = 50 _csp t_btn_ep5_8_unlock_lsp : _csp s0_9
+		mov %UNLOCK_PROGRESS,51
+		;End Custom
 
 		print 85
 
@@ -16693,7 +16756,8 @@ return
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
 		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
 		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
-		if %UMINEKOEND_FLG = 60 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548
+		;Animations - sprites to load without unlocking animation - W_CUSTOM
+		if %UMINEKOEND_FLG = 60 if %UNLOCK_PROGRESS = 61 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548
 		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
 		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
 		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
@@ -16708,6 +16772,18 @@ return
 
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
+
+		;Animations - preparing fake ep blocked buttons - W_CUSTOM
+		if %UMINEKOEND_FLG = 60 if %UNLOCK_PROGRESS = 60 lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
+		if %UMINEKOEND_FLG = 60 if %UNLOCK_PROGRESS = 60 lsp s0_9,ep_btn_bg_black,1562,548
+		if %UMINEKOEND_FLG = 60 if %UNLOCK_PROGRESS = 60 lsp t_btn_ep2_lsp,ep_btn_bg_new,1562,548 : aspt alpha,t_btn_ep2_lsp,0 : flush 1
+		;Animations - Executing Unlock Animations - W_CUSTOM
+		if %UMINEKOEND_FLG = 60 if %UNLOCK_PROGRESS = 60 wait 800 : cell t_btn_ep2_unlock_lsp,1 : seplay 9,1001,100 : wait 270
+		if %UMINEKOEND_FLG = 60 if %UNLOCK_PROGRESS = 60 aspt breakupdir,t_btn_ep2_unlock_lsp,0 : flush 1 : aspt breakup,t_btn_ep2_unlock_lsp,1000,3500 : wait 1800
+		if %UMINEKOEND_FLG = 60 if %UNLOCK_PROGRESS = 60 aspt alpha,t_btn_ep2_lsp,255,600 : sptwait alpha,t_btn_ep2_lsp
+		if %UMINEKOEND_FLG = 60 if %UNLOCK_PROGRESS = 60 _csp t_btn_ep2_unlock_lsp : _csp s0_9
+		mov %UNLOCK_PROGRESS,61
+		;End Custom
 				
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 61 || %UMINEKOEND = 61 lsp t_btn_ep2_tea_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep",1562+19,548+3,tea_title_btn_txt
@@ -16873,10 +16949,11 @@ return
 
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
 		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
-		lsp t_btn_ep2_lsp,ep_btn_bg_black,1562,548
+		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
 		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
-		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
-		if %UMINEKOEND_FLG = 70 lsp t_btn_ep3_lsp,ep_btn_bg_new,1562,608
+		lsp t_btn_ep3_lsp,ep_btn_bg,1562,608
+		;Animations - sprites to load without unlocking animation - W_CUSTOM
+		if %UMINEKOEND_FLG = 70 if %UNLOCK_PROGRESS = 71 lsp t_btn_ep3_lsp,ep_btn_bg_new,1562,608
 		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
 		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
 		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
@@ -16888,6 +16965,18 @@ return
 
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
+
+		;Animations - preparing fake ep blocked buttons - W_CUSTOM
+		if %UMINEKOEND_FLG = 70 if %UNLOCK_PROGRESS = 70 lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,0
+		if %UMINEKOEND_FLG = 70 if %UNLOCK_PROGRESS = 70 lsp s0_9,ep_btn_bg_black,1562,608
+		if %UMINEKOEND_FLG = 70 if %UNLOCK_PROGRESS = 70 lsp t_btn_ep3_lsp,ep_btn_bg_new,1562,608 : aspt alpha,t_btn_ep3_lsp,0 : flush 1
+		;Animations - Executing Unlock Animations - W_CUSTOM
+		if %UMINEKOEND_FLG = 70 if %UNLOCK_PROGRESS = 70 wait 800 : cell t_btn_ep3_unlock_lsp,1 : seplay 9,1001,100 : wait 270
+		if %UMINEKOEND_FLG = 70 if %UNLOCK_PROGRESS = 70 aspt breakupdir,t_btn_ep3_unlock_lsp,0 : flush 1 : aspt breakup,t_btn_ep3_unlock_lsp,1000,3500 : wait 1800
+		if %UMINEKOEND_FLG = 70 if %UNLOCK_PROGRESS = 70 aspt alpha,t_btn_ep3_lsp,255,600 : sptwait alpha,t_btn_ep3_lsp
+		if %UMINEKOEND_FLG = 70 if %UNLOCK_PROGRESS = 70 _csp t_btn_ep3_unlock_lsp : _csp s0_9
+		mov %UNLOCK_PROGRESS,71
+		;End Custom
 		
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 71 || %UMINEKOEND = 71 lsp t_btn_ep3_tea_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep",1562+19,608+3,tea_title_btn_txt
@@ -16998,21 +17087,32 @@ return
 	
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
 		write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
-		lsp t_btn_ep2_lsp,ep_btn_bg_black,1562,548
+		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
 		write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
-		lsp t_btn_ep3_lsp,ep_btn_bg_black,1562,608
+		lsp t_btn_ep3_lsp,ep_btn_bg,1562,608
 		write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
-		lsp t_btn_ep4_lsp,ep_btn_bg_black,1562,668
-		if %UMINEKOEND_FLG = 80 lsp t_btn_ep4_lsp,ep_btn_bg_new,1562,668
+		lsp t_btn_ep4_lsp,ep_btn_bg,1562,668
+		;Animations - sprites to load without unlocking animation - W_CUSTOM
+		if %UMINEKOEND_FLG = 80 if %UNLOCK_PROGRESS = 81 lsp t_btn_ep4_lsp,ep_btn_bg_new,1562,668
 		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
-		
-		write_special_text gen_txt_4,"ep_w_n",19,0,ep_txt,ep8_n_txt,"",t_btn_ep4_lsp
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg,1562,728
 		write_special_text gen_txt_5,"ep",1581,728+3,to_extra_btn_txt
 
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
+
+		;Animations - preparing fake ep blocked buttons - W_CUSTOM
+		if %UMINEKOEND_FLG = 80 if %UNLOCK_PROGRESS = 80 lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,0
+		if %UMINEKOEND_FLG = 80 if %UNLOCK_PROGRESS = 80 lsp s0_9,ep_btn_bg_black,1562,668
+		if %UMINEKOEND_FLG = 80 if %UNLOCK_PROGRESS = 80 lsp t_btn_ep4_lsp,ep_btn_bg_new,1562,668 : aspt alpha,t_btn_ep4_lsp,0 : flush 1
+		;Animations - Executing Unlock Animations - W_CUSTOM
+		if %UMINEKOEND_FLG = 80 if %UNLOCK_PROGRESS = 80 wait 800 : cell t_btn_ep4_unlock_lsp,1 : seplay 9,1001,100 : wait 270
+		if %UMINEKOEND_FLG = 80 if %UNLOCK_PROGRESS = 80 aspt breakupdir,t_btn_ep4_unlock_lsp,0 : flush 1 : aspt breakup,t_btn_ep4_unlock_lsp,1000,3500 : wait 1800
+		if %UMINEKOEND_FLG = 80 if %UNLOCK_PROGRESS = 80 aspt alpha,t_btn_ep4_lsp,255,600 : sptwait alpha,t_btn_ep4_lsp
+		if %UMINEKOEND_FLG = 80 if %UNLOCK_PROGRESS = 80 _csp t_btn_ep4_unlock_lsp : _csp s0_9
+		mov %UNLOCK_PROGRESS,81
+		;End Custom
 		
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
 		if %UMINEKOEND_FLG = 81 || %UMINEKOEND = 81 lsp t_btn_ep4_tea_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep",1562+19,668+3,tea_title_btn_txt

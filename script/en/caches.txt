@@ -183,6 +183,7 @@
 	textoff
 	;Saku - Cache - W_CUSTOM
 	;Game Master Battler
+	set_name_window_non
 	lsp s0_3,gmb_01_src,0,0
 	msgwnd_but
 		*gmb_01
@@ -222,7 +223,7 @@
 		d_continue
 		wait_on_d -1
 	textoff
-	lsp s0_3,different_spiral_1a,0,0
+	lsp2 s0_3,":c;backgrounds\different_spiral_1a.png",960,540
 		*gmb_04
 		d2 [ak][text_fade_t 0][text_speed_t 10]`If we don't love each other, ......the logic won't open up.`[#][*][\]
 		wait_on_d 0
@@ -233,6 +234,7 @@
 		savescreenshot "caches\gmb_04.png"
 		d_continue
 		wait_on_d -1
+		csp_slot s0_3
 	textoff
 	lsp s0_3,gmb_05_src,0,0
 		*gmb_05
@@ -259,11 +261,11 @@
 		d_continue
 		wait_on_d -1
 	textoff
-	lsp s0_3,black,0,0
+	lsp s0_3,":c;graphics\colour\black.png",0,0
 	set_window_simple 80,430
 	msgwnd_non
 		*gmb_07
-		d2 [ak][text_fade_t 0][text_speed_t 10]`You... ......really are... ...an idiot...... ......A huge idiot.........`[#][*][\]
+		d2 [ak][text_fade_t 0][text_speed_t 10]`{a:c:You... ......really are... ...an idiot...... ......A huge idiot.........}`[#][*][\]
 		wait_on_d 0
 		getcursorpos %x,%y
 		amsp 5,%x,%y-33
@@ -273,9 +275,9 @@
 		d_continue
 		wait_on_d -1
 	textoff
-	lsp s0_3,wsan_2aw,0,0
+	lsp2 s0_3,":c;backgrounds\wsan_2aw.png",960,540
 		*gmb_08
-		d2 [ak][text_fade_t 0][text_speed_t 10]`She kept on appealing to me, over and over and over again, .........and because I was so incompetent......I couldn't even begin to understand the truth.`[#][*][\]
+		d2 [ak][text_fade_t 0][text_speed_t 10]`{a:c:She kept on appealing to me, over and over and over again, .........and because I was so incompetent......I couldn't even begin to understand the truth.}`[#][*][\]
 		wait_on_d 0
 		getcursorpos %x,%y
 		amsp 5,%x,%y-33
@@ -286,7 +288,8 @@
 		wait_on_d -1
 		set_name_window_non
 	textoff
-	lsp s0_3,blood_2e,0,0
+	csp_slot s0_3
+	lsp2 s0_3,":c;graphics\efe\blood_2e.png",960,540
 		*gmb_09
 		d2 [ak][text_fade_t 0][text_speed_t 10]`In this moment, ......Ushiromiya Battler...knew. And understood.`[#][*][\]
 		wait_on_d 0
@@ -298,6 +301,7 @@
 		d_continue
 		wait_on_d -1
 	textoff
+	csp_slot s0_3
 	lsp s0_3,gmb_10_src,0,0
 	msgwnd_eri
 		*gmb_10
@@ -392,7 +396,7 @@
 	lsp s0_3,gmb_17_src,0,0
 	set_window_simple 80,430
 		*gmb_17
-		d2 [ak][text_fade_t 0][text_speed_t 10]`{qt}Faced with the tyranny of a single plausible truth claiming to be the sole truth and exterminating all the fragile others, ......you would surely have protected the real {f:5:truth}...!!{qt}`[#][*][\]
+		d2 [ak][text_fade_t 0][text_speed_t 10]`{a:c:{qt}Faced with the tyranny of a single plausible truth claiming to be the sole truth and exterminating all the fragile others, ......you would surely have protected the real {f:5:truth}...!!{qt}}`[#][*][\]
 		wait_on_d 0
 		getcursorpos %x,%y
 		amsp 5,%x,%y-33

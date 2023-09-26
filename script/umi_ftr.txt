@@ -15186,14 +15186,18 @@ if %title_skip = 1 goto *b_title_skip_100
 	mov %title_skip,0
 	
 	gosub *title_loading
+
+	if %block_unlocking = 0 bg $tmp10,6
+	if %block_unlocking = 1 goto *b_title_no_load
 	
 	lr_trap *b_title_moment
 	
 	vsp t_trophy_lsp,1
 	vsp t_warning_lsp,1
 
-	if %block_unlocking = 0 bg $tmp10,6
-	if %block_unlocking = 1 mov %block_unlocking,0 : seplay 9,17,70 : bg $tmp10,10
+	;if %block_unlocking = 0 bg $tmp10,6
+	;if %block_unlocking = 1 mov %block_unlocking,0 : seplay 9,17,70 : bg $tmp10,49
+
 	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
 	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
 	vsp t_hane_lsp,1 : print 5
@@ -15247,7 +15251,9 @@ if %title_skip = 1 goto *b_title_skip_100
 	
 	*b_title_no_load
 
-	bg $tmp10,1
+	if %block_unlocking = 0 bg $tmp10,1
+	if %block_unlocking = 1 bg $tmp10,29 : goto *start_sub_menu
+
 	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
 	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
 	vsp t_btn_omake_lsp,1
@@ -15534,7 +15540,8 @@ return
 *start_sub_menu
 	btndef ""
 
-	seplay 1,51,100
+	if %block_unlocking = 0 seplay 1,51,65
+	if %block_unlocking = 1 mov %block_unlocking,0  ;Original Edited - lowered bell sound volume from 100 - W_CUSTOM
 	;To erase any button other than the start, to place the button ep1 start small, of the load.
 	;to place the button, Unlock ep2 (Note: The branch in a clear state)
 	;Display the Unlock button and a clear state EP2 UMINEKOEND not <20, does not blink
@@ -15630,7 +15637,7 @@ return
 
 		if %BtnRes = t_btn_ep2_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep2_unlock ;Out to unlock a confirmation message.
 		if %BtnRes = t_btn_ep3_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep3_unlock ;Out to unlock a confirmation message.
-		if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep4_unlock ;Out to unlock a confirmation message.
+		if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep4_unlock ;Out to unlock a confirmation message.
 		if %BtnRes = t_btn_ep5_8_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep5_8_unlock ;Out to unlock a confirmation message.
 
 		if %BtnRes = t_btn_load_lsp btndef "" : _csp t_warning_lsp : seplay 9,1001,100 : mov %load_for_title,1 : gosub *loadmode : mov %title_skip,1 : goto *b_title
@@ -15710,6 +15717,7 @@ return
 			btnwait2 %BtnRes   ;%bm_p
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep3_unlock_100
+				vol_se 1,0,1000
 				;One state to clear the episode.
 				seplay 3,1001,100
 				mov %UMINEKOEND,30
@@ -15785,15 +15793,24 @@ return
 				lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
 				lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,0
 				;Animations - Executing Unlock Animations - W_CUSTOM
-				wait 700 : seplay 9,1001,100 : cell t_btn_ep2_unlock_lsp,1 : cell t_btn_ep3_unlock_lsp,1 : flush 1 : wait 770
+				wait 800 : seplay 9,1001,100 : cell t_btn_ep2_unlock_lsp,1 : cell t_btn_ep3_unlock_lsp,1 : flush 1 : wait 690
+				aspt breakup,t_btn_ep2_unlock_lsp,1000,3500 : aspt breakup,t_btn_ep3_unlock_lsp,1000,3500 : aspt breakup,t_btn_ep4_unlock_lsp,1000,3500 : wait 400
 				mov %UNLOCK_PROGRESS,41
 				;End Custom
 				
 				E_A
 				csp_rst
-				seplay 9,18,70
-				bg black,11
-				wait 3000
+				;seplay 9,18,70
+				bg black,8
+				anim s0_17,"no82",1
+				flush 1
+				seplay 2,22,61
+				waitvideo
+				_csp s0_17
+				anim s0_17,"no84",1
+				flush 1
+				waitvideo
+				_csp s0_17
 				mov %block_unlocking,1
 				;flush 10
 				E_A
@@ -35364,6 +35381,46 @@ return
 	if %Free1 == 0 jumpf
 	fileexist %Free1,"caches\kakera_memory10.png"
 	if %Free1 == 0 jumpf
+	;Saku - Game Master Battler - Cache - W_CUSTOM
+	fileexist %Free1,"caches\gmb_01.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_02.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_03.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_04.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_05.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_06.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_07.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_08.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_09.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_10.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_11.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_12.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_13.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_14.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_15.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_16.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_17.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_18.png"
+	if %Free1 == 0 jumpf
+	fileexist %Free1,"caches\gmb_19.png"
+	if %Free1 == 0 jumpf
+	;End GMB
 	return
 	
 	~

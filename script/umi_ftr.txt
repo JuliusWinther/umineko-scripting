@@ -3959,7 +3959,7 @@ return
 
 ;----------------------------------------
 ;Preliminary menu system before entering the right-click
-
+;r_menu 
 *rmenu_custom     ;Right-click the screen display
 	mov %r_for_title,0
 
@@ -3967,19 +3967,19 @@ return
 
 	btndef ""
 
-	;lsp r_black_lsp,":c;graphics\colour\black.png",0,0,black_toukaritu ;0
+	;Original Edited ;Text Generator - Remade r-menu - W_CUSTOM
 	lsp 451,":c;graphics\colour\black.png",0,0,black_toukaritu ;0
-	lsp r_load_lsp,r_click_buttons_load,50,50	;1
-	lsp r_save_lsp,r_click_buttons_save,50,130	;2
-	lsp r_chars_lsp,r_click_buttons_chars,50,210	;3
-	if %scenario_Number = 8 && $name_chapter_save = "8_op" lsp r_chars_lsp,r_click_buttons_chars,50,210,100
-	lsp r_tips_lsp2,r_click_buttons_tips,50,290	;4
-	if %scenario_Number = 4 && %grim_scene = 500 lsp r_tips_lsp2,r_click_buttons_tips,50,290,100
-	;if %scenario_Number = 8 lsp r_tips_lsp2,r_click_buttons_tips,50,290,100
-	lsp r_volume_lsp,r_click_buttons_config,50,370	;5
-	lsp r_logs_lsp2,r_click_buttons_logs,50,450	;6
-	lsp r_clear_lsp,r_click_buttons_clear,50,530	;7
-	lsp r_system_lsp,r_click_buttons_system,50,610	;8
+	lsp r_load_lsp,r_menu_btn_1,50,50	
+	lsp r_save_lsp,r_menu_btn_2,50,130	
+	lsp r_chars_lsp,r_menu_btn_3,50,210	
+	if %scenario_Number = 8 && $name_chapter_save = "8_op" lsp r_chars_lsp,r_menu_btn_3,50,210,100
+	lsp r_tips_lsp2,r_menu_btn_4,50,290	
+	if %scenario_Number = 4 && %grim_scene = 500 lsp r_tips_lsp2,r_menu_btn_4,50,290,100
+	lsp r_volume_lsp,r_menu_btn_5,50,370	
+	lsp r_logs_lsp2,r_menu_btn_6,50,450	
+	lsp r_clear_lsp,r_menu_btn_7,50,530	
+	lsp r_system_lsp,r_menu_btn_8,50,610	
+	;End Custom
 	
 	;lsp name_chapter_r_click,$name_chapter_r_click,0,0 ;Original Edited - substituted with text generation - W_CUSTOM
 	;Text Generator - generating chapter name - W_CUSTOM
@@ -15487,14 +15487,16 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 		cache_img 0,"graphics\system\wnd\msgwnd3.png"
 		cache_img 0,"graphics\system\wnd\msgwnd4.png"
 
-		cache_img 0,r_btn_load2_cache
-		cache_img 0,r_btn_save2_cache
-		cache_img 0,r_btn_char_cache
-		cache_img 0,r_btn_tips_cache
-		cache_img 0,r_btn_setting_cache
-		cache_img 0,r_btn_logs_cache
-		cache_img 0,r_btn_clear_cache
-		cache_img 0,r_btn_system_cache
+		;Original Edited ;Text Generator - cached the new buttons - W_CUSTOM
+		cache_img 0,r_btn_1_cache
+		cache_img 0,r_btn_2_cache
+		cache_img 0,r_btn_3_cache
+		cache_img 0,r_btn_4_cache
+		cache_img 0,r_btn_5_cache
+		cache_img 0,r_btn_6_cache
+		cache_img 0,r_btn_7_cache
+		cache_img 0,r_btn_8_cache
+		;End Custom
 
 		lsph 5,cache_chars1,0,0 : _csp 5
 		lsph 5,cache_chars2,0,0 : _csp 5

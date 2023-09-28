@@ -15173,6 +15173,8 @@ if %CHIRU_MODE != 2 jumpf
 lsph t_btn_omake_lsp,":a;graphics\system\clock\clock_c.png",60,983,0
 
 gosub *verify_script_date
+
+if %block_unlocking = 1 mov %title_skip,1 : goto *b_title_skip_100
 	
 ;----------------------
 ;Skip the effects
@@ -15186,17 +15188,13 @@ if %title_skip = 1 goto *b_title_skip_100
 	mov %title_skip,0
 	
 	gosub *title_loading
-
-	if %block_unlocking = 0 bg $tmp10,6
-	if %block_unlocking = 1 goto *b_title_no_load
 	
 	lr_trap *b_title_moment
 	
 	vsp t_trophy_lsp,1
 	vsp t_warning_lsp,1
 
-	;if %block_unlocking = 0 bg $tmp10,6
-	;if %block_unlocking = 1 mov %block_unlocking,0 : seplay 9,17,70 : bg $tmp10,49
+	bg $tmp10,6
 
 	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
 	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
@@ -15251,8 +15249,7 @@ if %title_skip = 1 goto *b_title_skip_100
 	
 	*b_title_no_load
 
-	if %block_unlocking = 0 bg $tmp10,1
-	if %block_unlocking = 1 bg $tmp10,29 : goto *start_sub_menu
+	bg $tmp10,1
 
 	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
 	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
@@ -15298,6 +15295,9 @@ if %title_skip = 1 goto *b_title_skip_100
 	_csp 
 	;Clear the standing images
 	cl a,1
+
+	;if %block_unlocking = 1 bg $tmp10,6 : goto *start_sub_menu
+	if %block_unlocking = 1 goto *start_sub_menu
 
 if %CHIRU_MODE = 1 gosub *verify_chiru
 
@@ -15540,8 +15540,10 @@ return
 *start_sub_menu
 	btndef ""
 
-	if %block_unlocking = 0 seplay 1,51,65
-	if %block_unlocking = 1 mov %block_unlocking,0  ;Original Edited - lowered bell sound volume from 100 - W_CUSTOM
+	if %block_unlocking = 0 seplay 1,51,70
+	;if %block_unlocking = 1 lsph t_btn_start_lsp,title_btn_1,1325,424 : write_special_text gen_txt_11,"title_btn_txt",1325,424,title_start_txt
+	;if %block_unlocking = 1 vsp t_hane_lsp,1 : vsp t_logo_lsp,1 : vsp t_btn_start_lsp,1 : vsp_special gen_txt_11,1 : print 1
+	 ;Original Edited - lowered bell sound volume from 100 - W_CUSTOM
 	;To erase any button other than the start, to place the button ep1 start small, of the load.
 	;to place the button, Unlock ep2 (Note: The branch in a clear state)
 	;Display the Unlock button and a clear state EP2 UMINEKOEND not <20, does not blink
@@ -15717,7 +15719,6 @@ return
 			btnwait2 %BtnRes   ;%bm_p
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep3_unlock_100
-				vol_se 1,0,1000
 				;One state to clear the episode.
 				seplay 3,1001,100
 				mov %UMINEKOEND,30
@@ -15754,6 +15755,7 @@ return
 
 		;Check out the message, unlock processing
 		*ep4_unlock
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
@@ -15802,15 +15804,23 @@ return
 				csp_rst
 				;seplay 9,18,70
 				bg black,8
-				anim s0_17,"no82",1
-				flush 1
-				seplay 2,22,61
-				waitvideo
-				_csp s0_17
-				anim s0_17,"no84",1
-				flush 1
-				waitvideo
-				_csp s0_17
+				;anim s0_17,"no82",1
+				;flush 1
+				;seplay 2,22,61
+				;waitvideo
+				;_csp s0_17
+				;anim s0_17,"no84",1
+				;flush 1
+				;waitvideo
+				;_csp s0_17
+				seplay 1,25,100
+				bg_d "c:locale_lan","text006",22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
 				mov %block_unlocking,1
 				;flush 10
 				E_A
@@ -16389,6 +16399,8 @@ return
 		;??? Temp Buttons
 		if %UMINEKOEND_FLG = 42 || %UMINEKOEND = 42 exbtn t_btn_ep4_ura_tea_lsp,t_btn_ep4_ura_tea_lsp,"P165P141"
 		;End Custom
+
+		if %block_unlocking = 1 lsp 0,":c;graphics\colour\black.png",0,0 : screenflip 1 : _csp 0 : _csp 5 : print 46 : mov %block_unlocking,0
 
 		btnwait2 %BtnRes
 		
@@ -23510,7 +23522,7 @@ return
 ;**************************************************
 
 ;Dynamic BGs - ;Sprite Cache - Alternative bg command that generates the path dynamically - W_CUSTOM
-;Needed because of the changes to the background loading system (now without straliase)
+;Needed because of the changes to the background loading system (now without straliases)
 *bg_d
 *bg_dynamic
 	getparam $lbg_type,$lbg_name,%bg_effect
@@ -23523,6 +23535,7 @@ return
 
 	;TODO Add variations when bg is not in backgrounds folder for all the following methods ;Localization
 	;DONE - Needs testing
+	debug_str localisation
 	if $lbg_type == "locale" : bg ":"+$paste_method+";graphics\locale\" + $lbg_name + ".png" : jumpf  
 	if $lbg_type == "locale_lan" : bg ":"+$paste_method+";graphics\locale_"+localisation+"\" + $lbg_name + ".png", %bg_effect : jumpf
 	if $lbg_type == "alibi" : bg ":"+$paste_method+";graphics\locale_"+localisation+"\alibi\" + $lbg_name + ".png", %bg_effect : jumpf  
@@ -23533,8 +23546,10 @@ return
 	if $lbg_type == "murderer" : bg ":"+$paste_method+";graphics\locale_"+localisation+"\murderer\" + $lbg_name + ".png", %bg_effect : jumpf  
 	if $lbg_type == "story" : bg ":"+$paste_method+";graphics\locale_"+localisation+"\story\" + $lbg_name + ".png", %bg_effect : jumpf  
 	if $lbg_type == "text" : bg ":"+$paste_method+";graphics\locale_"+localisation+"\text\" + $lbg_name + ".png", %bg_effect : jumpf 
-	if $lbg_type == "local_saku" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\local_saku\" + $lbg_name + ".png" : jumpf  
+	if $lbg_type == "local_saku" : mov $lbg_path,":"+$paste_method+";graphics\locale_"+localisation+"\local_saku\" + $lbg_name + ".png", %bg_effect : jumpf  
 
+~
+return
 ;End Custom
 
 ;Original Edited - ;Dynamic BGs - ;Sprite Cache - 

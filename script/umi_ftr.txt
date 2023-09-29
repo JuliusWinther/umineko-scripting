@@ -27581,6 +27581,9 @@ return
 	;Also do not ignore "show_coin_counter" commands -- these do important work setting certain variables... instead we'll ignore some subfn of them
 	ignore_cmd "click","break_glass3","break_glass4","show_coin_counter_real","show_coin_counter2_real","show_coin_counter3_real","cake","quiz","quiz2","all_presents_discarded","murder_story"
 	ignore_inl_cmd "wait","delay","text_fade_t","gstg","text_speed_t"
+	;Saku logs - ignore custom commands - W_CUSTOM
+	ignore_cmd "aspt2_mem", "lsl", "bg_d"
+	;End Custom
 return
 
 *log_generate
@@ -27687,7 +27690,7 @@ return
 
 	~
 
-	;Saku logs - W_CUSTOM ;AT must be in reverse order
+	;Saku logs - W_CUSTOM ;ATTENTION must be in reverse order
 	if %CHIRU_MODE != 2 jumpf
 
 	past_label %TextCC12Flag,"*umiextra1_4"
@@ -28216,14 +28219,14 @@ return
 	get_log_data %log_ch_next,$log_ch_next,%log_dst_cvs
 
 	if %CHIRU_MODE == 2 jumpf ;Original Edited - W_CUSTOM
-	if %scenario_Number == 8 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_8","*teatime_8","*umi8_16","*umi8_15","*umi8_14","*umi8_13","*umi8_12","*umi8_11","*umi8_10","*umi8_9","*umi8_8","*umi8_7","*umi8_6","*umi8_5","*umi8_4","*umi8_3","*umi8_2","*umi8_1","*umi8_op"
-	if %scenario_Number == 7 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_7","*teatime_7","*umi7_18","*umi7_17","*umi7_16","*umi7_15","*umi7_14","*umi7_13","*umi7_12","*umi7_11","*umi7_10","*umi7_9","*umi7_8","*umi7_7","*umi7_6","*umi7_5","*umi7_4","*umi7_3","*umi7_2","*umi7_1","*umi7_op"
-	if %scenario_Number == 6 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_6","*teatime_6","*umi6_18","*umi6_17","*umi6_16","*umi6_15","*umi6_14","*umi6_13","*umi6_12","*umi6_11","*umi6_10","*umi6_9","*umi6_8","*umi6_7","*umi6_6","*umi6_5","*umi6_4","*umi6_3","*umi6_2","*umi6_1","*umi6_op"
-	if %scenario_Number == 5 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_5","*teatime_5","*umi5_15","*umi5_14","*umi5_13","*umi5_12","*umi5_11","*umi5_10","*umi5_9","*umi5_8","*umi5_7","*umi5_6","*umi5_5","*umi5_4","*umi5_3","*umi5_2","*umi5_1","*umi5_op"
-	if %scenario_Number == 4 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_4","*teatime_4","*umi4_19","*umi4_18","*umi4_17","*umi4_16","*umi4_15","*umi4_14","*umi4_13","*umi4_12","*umi4_11","*umi4_10","*umi4_9","*umi4_8","*umi4_7","*umi4_6","*umi4_5","*umi4_4","*umi4_3","*umi4_2","*umi4_1","*umi4_op"
-	if %scenario_Number == 3 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_3","*teatime_3","*umi3_18","*umi3_17","*umi3_16","*umi3_15","*umi3_14","*umi3_13","*umi3_12","*umi3_11","*umi3_10","*umi3_9","*umi3_8","*umi3_7","*umi3_6","*umi3_5","*umi3_4","*umi3_3","*umi3_2","*umi3_1","*umi3_op"
-	if %scenario_Number == 2 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_2","*teatime_2","*umi2_18","*umi2_17","*umi2_16","*umi2_15","*umi2_14","*umi2_13","*umi2_12","*umi2_11","*umi2_10","*umi2_9","*umi2_8","*umi2_7","*umi2_6","*umi2_5","*umi2_4","*umi2_3","*umi2_2","*umi2_1","*umi2_op"
-	if %scenario_Number == 1 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_1","*teatime_1","*umi1_17","*umi1_16","*umi1_15","*umi1_14","*umi1_13","*umi1_12","*umi1_11","*umi1_10","*umi1_9","*umi1_8","*umi1_7","*umi1_6","*umi1_5","*umi1_4","*umi1_3","*umi1_2","*umi1_1","*umi1_op"
+		if %scenario_Number == 8 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_8","*teatime_8","*umi8_16","*umi8_15","*umi8_14","*umi8_13","*umi8_12","*umi8_11","*umi8_10","*umi8_9","*umi8_8","*umi8_7","*umi8_6","*umi8_5","*umi8_4","*umi8_3","*umi8_2","*umi8_1","*umi8_op"
+		if %scenario_Number == 7 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_7","*teatime_7","*umi7_18","*umi7_17","*umi7_16","*umi7_15","*umi7_14","*umi7_13","*umi7_12","*umi7_11","*umi7_10","*umi7_9","*umi7_8","*umi7_7","*umi7_6","*umi7_5","*umi7_4","*umi7_3","*umi7_2","*umi7_1","*umi7_op"
+		if %scenario_Number == 6 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_6","*teatime_6","*umi6_18","*umi6_17","*umi6_16","*umi6_15","*umi6_14","*umi6_13","*umi6_12","*umi6_11","*umi6_10","*umi6_9","*umi6_8","*umi6_7","*umi6_6","*umi6_5","*umi6_4","*umi6_3","*umi6_2","*umi6_1","*umi6_op"
+		if %scenario_Number == 5 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_5","*teatime_5","*umi5_15","*umi5_14","*umi5_13","*umi5_12","*umi5_11","*umi5_10","*umi5_9","*umi5_8","*umi5_7","*umi5_6","*umi5_5","*umi5_4","*umi5_3","*umi5_2","*umi5_1","*umi5_op"
+		if %scenario_Number == 4 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_4","*teatime_4","*umi4_19","*umi4_18","*umi4_17","*umi4_16","*umi4_15","*umi4_14","*umi4_13","*umi4_12","*umi4_11","*umi4_10","*umi4_9","*umi4_8","*umi4_7","*umi4_6","*umi4_5","*umi4_4","*umi4_3","*umi4_2","*umi4_1","*umi4_op"
+		if %scenario_Number == 3 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_3","*teatime_3","*umi3_18","*umi3_17","*umi3_16","*umi3_15","*umi3_14","*umi3_13","*umi3_12","*umi3_11","*umi3_10","*umi3_9","*umi3_8","*umi3_7","*umi3_6","*umi3_5","*umi3_4","*umi3_3","*umi3_2","*umi3_1","*umi3_op"
+		if %scenario_Number == 2 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_2","*teatime_2","*umi2_18","*umi2_17","*umi2_16","*umi2_15","*umi2_14","*umi2_13","*umi2_12","*umi2_11","*umi2_10","*umi2_9","*umi2_8","*umi2_7","*umi2_6","*umi2_5","*umi2_4","*umi2_3","*umi2_2","*umi2_1","*umi2_op"
+		if %scenario_Number == 1 past_label2 $log_ch_current,$log_ch_next,"*ura_teatime_1","*teatime_1","*umi1_17","*umi1_16","*umi1_15","*umi1_14","*umi1_13","*umi1_12","*umi1_11","*umi1_10","*umi1_9","*umi1_8","*umi1_7","*umi1_6","*umi1_5","*umi1_4","*umi1_3","*umi1_2","*umi1_1","*umi1_op"
 	~
 
 	;Saku logs - log_ch_current - W_CUSTOM ;AT must be in reversed order

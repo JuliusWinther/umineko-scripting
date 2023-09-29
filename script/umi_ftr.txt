@@ -18024,7 +18024,7 @@ return
 	if %vv_lam = 0 mov %vv_lam,1
 *do_unlock_chars1
 	if %vv_nan = 0 mov %vv_nan,1
-	if %vv_0 = 0 || %vv_99 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_inc,0
+	if %vv_0 = 0 || %vv_99 = 0 || %vv_98 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_98,1 : mov %vv_inc,0 ;Original Edited ;Saku voice - %vv_98 - W_CUSTOM
 	if %vv_kin = 0 || %vv_ki2 = 0 mov %vv_kin,1 : mov %vv_ki2,1
 	if %vv_gen = 0 mov %vv_gen,1
 	if %vv_but = 0 mov %vv_but,1
@@ -34289,13 +34289,6 @@ gosub *get_name
 if %cur_wndmode == off d_name $tmp5
 return
 
-*msgwnd_non
-mov $cur_character,"non"
-jnskip_s return ~
-if %vv_0 = 0 || %vv_99 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_inc,0
-if %cur_wndmode == off d_name ""
-return
-
 ;Saku sprites - New Sprites - W_CUSTOM
 *msgwnd_pie
 mov $cur_character,"pie"
@@ -34313,6 +34306,13 @@ gosub *get_name
 if %cur_wndmode == off d_name $tmp5
 return
 ;End Custom
+
+*msgwnd_non
+mov $cur_character,"non"
+jnskip_s return ~
+if %vv_0 = 0 || %vv_99 = 0 || %vv_98 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_98,1 : mov %vv_inc,0  ;Original Edited ;Saku voice - %vv_98 - W_CUSTOM
+if %cur_wndmode == off d_name ""
+return
 
 
 ;**************************************************

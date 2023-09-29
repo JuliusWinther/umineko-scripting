@@ -24039,10 +24039,11 @@ next
 
 return
 
-*lv_special
+*lv_special ;99 is standard - 00 is chiru - 98 is saku
 
-if %CHIRU_MODE = 1 || %lv_f != 8199 jumpf ;If Standard Skip
-if %CHIRU_MODE = 2 || %lv_f != 8198 jumpf ;If Saku, Skip
+if %CHIRU_MODE = 1 || %lv_f = 8100 jumpf ;If Chiru, Skip
+if %CHIRU_MODE = 2 || %lv_f = 8198 jumpf ;If Saku, Skip
+	;STANDARD
 	if $lv_v == "awase0016" lips_channel %lv_ch,"rg7","rg6","rg5","rg4","rg3","rg2" : return
 	if $lv_v == "awase0017" lips_channel %lv_ch,"rg7","rg6","rg5","rg4","rg3","rg2" : return
 	if $lv_v == "awase0018" lips_channel %lv_ch,"rg7","rg6","rg5","rg4","rg2" : return
@@ -24054,8 +24055,9 @@ if %CHIRU_MODE = 2 || %lv_f != 8198 jumpf ;If Saku, Skip
 	return
 ~
 
-if %CHIRU_MODE = 0 || %lv_f != 8100 jumpf ;If Standard Skip
-if %CHIRU_MODE = 2 || %lv_f != 8198 jumpf ;If Saku, Skip
+if %CHIRU_MODE = 0 || %lv_f = 8199 jumpf ;If Standard Skip
+if %CHIRU_MODE = 2 || %lv_f = 8198 jumpf ;If Saku, Skip
+	;CHIRU
 	if $lv_v == "awase7004_o" lips_channel %lv_ch,"fur","zep" : return
 	if $lv_v == "awase7003_o" lips_channel %lv_ch,"fur","zep" : return
 	if $lv_v == "awase6096_o" lips_channel %lv_ch,"fur","zep" : return
@@ -24257,20 +24259,20 @@ if %CHIRU_MODE = 2 || %lv_f != 8198 jumpf ;If Saku, Skip
 	if $lv_v == "awase8030" lips_channel %lv_ch,"lam","ber" : return
 ~
 
-if %CHIRU_MODE = 0 || %lv_f != 8100 jumpf ;If Standard Skip
-if %CHIRU_MODE = 1 || %lv_f != 8199 jumpf ;If Chiru Skip
+if %CHIRU_MODE = 0 || %lv_f = 8199 jumpf ;If Standard Skip
+if %CHIRU_MODE = 1 || %lv_f = 8100 jumpf ;If Chiru Skip
 	;Saku voice - moving multiple lips for a single voiceline - W_CUSTOM
-	if $lv_v == "saku1" lips_channel %lv_ch,"rg4","rg5","rg6","rg7" : return
-	if $lv_v == "saku2" lips_channel %lv_ch,"rg4","rg5","rg6","rg7" : return
-	if $lv_v == "saku3" lips_channel %lv_ch,"rg2","rg6","rg7" : return
-	if $lv_v == "saku6" lips_channel %lv_ch,"rg6","rg7" : return
-	if $lv_v == "saku7" lips_channel %lv_ch,"wal","ron" : return
-	if $lv_v == "saku8" lips_channel %lv_ch,"wal","ron" : return
-	if $lv_v == "saku9" lips_channel %lv_ch,"zep","fur" : return
-	if $lv_v == "saku10" lips_channel %lv_ch,"zep","fur" : return
-	if $lv_v == "saku11" lips_channel %lv_ch,"zep","fur" : return
-	if $lv_v == "saku12" lips_channel %lv_ch,"zep","fur" : return
-	if $lv_v == "saku13" lips_channel %lv_ch,"zep","fur" : return
+	if $lv_v == "merged_saku1" lips_channel %lv_ch,"rg4","rg5","rg6","rg7" : return
+	if $lv_v == "merged_saku2" lips_channel %lv_ch,"rg4","rg5","rg6","rg7" : return
+	if $lv_v == "merged_saku3" lips_channel %lv_ch,"rg2","rg6","rg7" : return
+	if $lv_v == "merged_saku6" lips_channel %lv_ch,"rg6","rg7" : return
+	if $lv_v == "merged_saku7" lips_channel %lv_ch,"wal","ron" : return
+	if $lv_v == "merged_saku8" lips_channel %lv_ch,"wal","ron" : return
+	if $lv_v == "merged_saku9" lips_channel %lv_ch,"zep","fur" : return
+	if $lv_v == "merged_saku10" lips_channel %lv_ch,"zep","fur" : return
+	if $lv_v == "merged_saku11" lips_channel %lv_ch,"zep","fur" : return
+	if $lv_v == "merged_saku12" lips_channel %lv_ch,"zep","fur" : return
+	if $lv_v == "merged_saku13" lips_channel %lv_ch,"zep","fur" : return
 	;End Custom
 ~
 

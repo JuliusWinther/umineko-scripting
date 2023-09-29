@@ -33698,12 +33698,14 @@ return
 	goto *update_msgwnd_direct
 
 *update_msgwnd
+debug_str "DEBUG - TESTA"
 	jskip_s
 		if %msgwnd_type = 0 setwindowd msgwnd
 		if %msgwnd_type = 1 setwindowd msgwnd2
 		if %msgwnd_type = 2 setwindowd msgwnd3
 		if %msgwnd_type = 3 setwindowd msgwnd4
 	~
+debug_str "DEBUG - TESTB"
 
 *update_msgwnd_direct
 
@@ -33770,18 +33772,22 @@ if $cur_character = "be4" gosub *msgwnd_be4 : jumpf
 if $cur_character = "en2" gosub *msgwnd_en2 : jumpf
 if $cur_character = "en3" gosub *msgwnd_en3 : jumpf
 if $cur_character = "non" gosub *msgwnd_non : jumpf
-
+debug_str "DEBUG - TESTC"
 ;Saku sprites - New Sprites - W_CUSTOM
 if $cur_character = "pie" gosub *msgwnd_pie : jumpf
 if $cur_character = "sku" gosub *msgwnd_sku : jumpf
 ;End Custom
+debug_str "DEBUG - TESTD"
 
 ~
+
 ;This is needed for window updates
 borderstyle 5,#000000 : shadedistance 0,0
 borderstyle 5,#000000,1 : shadedistance 0,0,#000000,1
+debug_str "DEBUG - TESTE"
 if %msgwnd_type == 3 shadedistance 2,2 : shadedistance 2,2,#000000,1
 d_name_refresh
+debug_str "DEBUG - TESTF"
 
 return
 

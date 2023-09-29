@@ -23565,7 +23565,7 @@ return
 
 	split $lbg_type,":",$paste_method,$lbg_type ;Must be outside search_bg function
 	search_bg $lbg_type,$lbg_name
-	
+
 	lsp2 %lbg_slot,$lbg_path,0,0
 
 	mov $?slot_cache[%lbg_slot-750][0],$paste_method+":"+$lbg_type + "|" + $lbg_name
@@ -23597,24 +23597,23 @@ return
 
 	if %enable_cache == 0 || %no_cache_atm == 1 return
 
-	lookahead exbg,1,$lbg_name,$lbg_left
+	lookahead exbg,2,$lbg_type,$lbg_name,$lbg_left ;Dynamic BGs - adapter Regex sequence - W_CUSTOM
+
+	split $lbg_type,":",$paste_method,$lbg_type ;Must be outside search_bg function
+	search_bg $lbg_type,$lbg_name
+	len %lbg_path,$lbg_path
+	mid $lbg_path,$lbg_path,3,%lbg_path-3
 
 	if $lbg_name == "" jumpf
-
-		search_bg $lbg_type,$lbg_name
 		
-		len %lbg_path,$lbg_path
-		mid $lbg_path,$lbg_path,3,%lbg_path-3
 		async_cache_img 1,$lbg_path
+		;debug_str "Caching lbg by name"
 	~
 
-	if $lbg_left == "" jumpf
+	if $lbg_left == "" jumpf ;Is this really necessary?
 
-		search_bg $lbg_type,$lbg_name
-
-		len %lbg_path,$lbg_path
-		mid $lbg_path,$lbg_path,3,%lbg_path-3
 		async_cache_img 1,$lbg_path
+		;debug_str "Caching lbg by hotspot"
 	~
 return
 
@@ -28231,6 +28230,7 @@ return
 
 	;Saku logs - log_ch_current - W_CUSTOM ;AT must be in reversed order
 	if %CHIRU_MODE != 2 jumpf
+		debug_str "DEBUG - next: " + $log_ch_next ;DEBUG - W_TEMP
 		if %extra_scenario_Number == 4 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_4"
 		if %extra_scenario_Number == 3 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_3"
 		if %extra_scenario_Number == 2 past_label2 $log_ch_current,$log_ch_next,"*umiextra1_2"
@@ -28240,11 +28240,14 @@ return
 
 	;Knowing the nearest label is no longer enough. We need to look up the log entry index of the above label (any occurrence will do, there will only be one)	
 	; get_unique_log_entry_index OUTPUT_log_entry_index,INPUT_label
+	
+	debug_str "DEBUG - current ch:" + $log_ch_current ;DEBUG - W_TEMP
 	get_unique_log_entry_index %log_src_cvs,$log_ch_current
 	
 	; and then find out what CVS it corresponds to using get_log_data. I'll call this src_CVS.
 	; get_log_data INPUT_logentryindex,OUTPUT_label,OUTPUT_cvs
 	get_log_data %log_src_cvs,$log_ch_current,%log_src_cvs
+	debug_str "DEBUG - TEST1" ;DEBUG - W_TEMP
 
 	gosub *log_clean_section
 *log_jump_execute
@@ -28275,6 +28278,8 @@ return
 	mov %r_display_cha,0
 	mov %r_display_cha_enj,0
 	mov %r_display_cha_ma,0
+
+	debug_str "DEBUG - TEST2" ;DEBUG - W_TEMP
 
 	; Before we sskip, we want to update the current choice vector lookup index position used by accept_choice and set it to the src_CVS.
 	accept_choice_next_index %log_src_cvs
@@ -28311,7 +28316,9 @@ return
 	if %cur_wndmode == on set_window_simple %log_sw_x,%log_sw_y
 	; So that we save after jumping
 	mov %TextCC12Flag,1
+	debug_str "DEBUG - TEST3" ;DEBUG - W_TEMP
 	main_goto $log_ch_next
+	debug_str "DEBUG - TEST4" ;DEBUG - W_TEMP
 return
 
 *ep8_varset_sskip
@@ -34356,15 +34363,15 @@ return
 
 *config_write_str
 getparam $config_name,$config_value
-operate_config u_write, $config_value, $config_name
-operate_config save
+	operate_config u_write, $config_value, $config_name
+	operate_config save
 return
 
 *config_write_num
 getparam $config_name,%config_value
-itoa $config_value,%config_value
-operate_config u_write, $config_value, $config_name
-operate_config save
+	itoa $config_value,%config_value
+	operate_config u_write, $config_value, $config_name
+	operate_config save
 return
 
 *search_bg
@@ -34460,6 +34467,8 @@ return
 *reload_slots
 	for %for_index1=0 to 247
 
+		debug_str "TEST"
+
 		mov %reloading_status,0
 
 		;Subset position 0 contains sprite/bg path
@@ -34479,6 +34488,9 @@ return
 		if $string_temp1 == "colour" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 		if $string_temp1 == "clock" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 		if $string_temp1 == "efe" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cache" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+
+		if $string_temp1 == "quiz" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 
 		;Localization
 		if $string_temp1 == "locale" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
@@ -34525,6 +34537,7 @@ return
 		if $string_temp1 == "saku" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 		if $string_temp1 == "tsu1" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 		if $string_temp1 == "tsu2" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "tsu3" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 
 		;Ends BGs reload
 

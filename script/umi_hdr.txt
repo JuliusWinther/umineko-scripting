@@ -1431,7 +1431,7 @@ numalias txt_to_csp,9515
 numalias name_chapter_r_click_l2,9516
 numalias name_chapter_r_click_l3,9517
 numalias parent_slot,9518
-numalias block_unlocking, 9519
+numalias block_unlocking,9519
 
 numalias test_var, 9520
 
@@ -1441,13 +1441,13 @@ numalias UMINEKOEND_EXTRA, 2903 ;Global Variable = Saved
 ;Params for dynamic backgrounds
 numalias lbg_type,9521
 numalias paste_method,9522
-numalias purified_lbg_path, 9523
-numalias bg_effect, 9524
+numalias purified_lbg_path,9523
+numalias bg_effect,9524
 
-numalias vsp_special_param, 9525 ;Param for sub: vsp_special, may be 0 or 1, determines visibility
+numalias vsp_special_param,9525 ;Param for sub: vsp_special, may be 0 or 1, determines visibility
 
-numalias config_name, 9526
-numalias config_value, 9527
+numalias config_name,9526
+numalias config_value,9527
 
 ;Params for aspt2_mem
 numalias aspt_prop,9530
@@ -1457,13 +1457,13 @@ numalias aspt_val2,9533
 numalias aspt_val3,9534
 
 ;Params for write_special_text
-numalias lsp_slot, 9540
-numalias lsp_type, 9541
-numalias lsp_x, 9542
-numalias lsp_y, 9543
-numalias lsp_text1, 9544
-numalias lsp_text2, 9545
-numalias lsp_text3, 9546
+numalias lsp_slot,9540
+numalias lsp_type,9541
+numalias lsp_x,9542
+numalias lsp_y,9543
+numalias lsp_text1,9544
+numalias lsp_text2,9545
+numalias lsp_text3,9546
 
 ;Discord - W_CUSTOM
 
@@ -1486,7 +1486,7 @@ stralias hana1,":a;graphics\system\clock\hana1.png"
 stralias ware,":a;graphics\system\clock\ware.png"
 
 ;new straliases
-stralias blank,":a;B:graphics\colour\transparent.png"
+stralias blank,":a;graphics\colour\transparent.png"
 
 ;From 9700 onward are used for slot_cache
 
@@ -1635,8 +1635,11 @@ numalias exsp,1
 regex_define exsp,"lss s\d_\d+,"+$0+"([a-z0-9_]+)"+$0+","+$0+"([a-z0-9_]+)"
 numalias exbg,2
 getram %Free1 ; Avoid caching big images on low memory devices
-if %Free1 <= 2048 regex_define exbg,"lbg s\d_\d+,"+$0+"([a-z0-9_]+)"+$0
-if %Free1  > 2048 regex_define exbg,"lbg2? s\d_\d+,"+$0+"([a-z0-9_]+)"+$0
+;Original Edited ;Dynamic BGs - adapted rexex to accept the new parameter - W_CUSTOM ($0 are \")
+if %Free1 <= 2048 regex_define exbg,"lbg "+$0+"([a-z0-9_:]+)"+$0+",s\d_\d+,"+$0+"([a-z0-9_]+)"+$0
+if %Free1  > 2048 regex_define exbg,"lbg2? "+$0+"([a-z0-9_:]+)"+$0+",s\d_\d+,"+$0+"([a-z0-9_]+)"+$0
+;"c:backgrounds",s0_1,"mlib_1a_bg"
+;End Custom
 numalias exse,3
 regex_define exse,"seplay \d+,(\d+),"
 

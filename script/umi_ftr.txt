@@ -28286,12 +28286,15 @@ return
 	accept_choice_vector_size %log_dst_cvs
 	; Delete any log and choice vector entries after the dst choicepoint.
 	clearlog 1,%log_dst_cvs
+	debug_str "DEBUG - TEST2.3"
 	mov %log_is_generated_to_cvs,%log_dst_cvs
 	; And now sskip, last param allows us not to load images until late.
 	sskip $log_ch_prev,$log_ch_current,$log_ch_next,%sskip_turbo
 
 	ignore_cmd_clear
 	ignore_inl_cmd_clear
+
+	debug_str "DEBUG - TEST2.5"
 
 	mov %r_display,0
 	;stopwatch "log_jump_end"
@@ -28311,6 +28314,8 @@ return
 	if %me_enable_5 = 1 meplay 5,%me_num_5,%me_current_vol_5
 	if %me_enable_6 = 1 meplay 6,%me_num_6,%me_current_vol_6
 	if %me_enable_7 = 1 meplay 7,%me_num_7,%me_current_vol_7
+
+	debug_str "DEBUG - TEST2.7"
 
 	if %cur_wndmode == off gosub *update_msgwnd
 	if %cur_wndmode == on set_window_simple %log_sw_x,%log_sw_y

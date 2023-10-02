@@ -1678,7 +1678,7 @@ numalias gen_txt_7,%0 : dec %0 : dec %0	;43
 numalias gen_txt_8,%0 : dec %0 : dec %0	;41
 numalias gen_txt_9,%0 : dec %0 : dec %0	;39
 numalias gen_txt_10,%0 : dec %0 : dec %0 ;37 ;s-38
-numalias gen_txt_11,%0 : dec %0 : dec %0 ;35
+numalias gen_txt_11,%0 : dec %0 : dec %0 ;35 ;s-36
 numalias gen_txt_12,%0 : dec %0 : dec %0 ;33
 numalias gen_txt_13,%0 : dec %0 : dec %0 ;31
 numalias gen_txt_14,%0 : dec %0 : dec %0 ;29 
@@ -3970,15 +3970,23 @@ return
 	;Original Edited ;Text Generator - Remade r-menu - W_CUSTOM
 	lsp 451,":c;graphics\colour\black.png",0,0,black_toukaritu ;0
 	lsp r_load_lsp,r_menu_btn_1,50,50	
+	write_special_text gen_txt_1,"r_menu_btn",50,50+9,"Load"
 	lsp r_save_lsp,r_menu_btn_2,50,130	
+	write_special_text gen_txt_2,"r_menu_btn",50,130+9,"Save"
 	lsp r_chars_lsp,r_menu_btn_3,50,210	
 	if %scenario_Number = 8 && $name_chapter_save = "8_op" lsp r_chars_lsp,r_menu_btn_3,50,210,100
+	write_special_text gen_txt_3,"r_menu_btn",50,210+9,"Characters"
 	lsp r_tips_lsp2,r_menu_btn_4,50,290	
 	if %scenario_Number = 4 && %grim_scene = 500 lsp r_tips_lsp2,r_menu_btn_4,50,290,100
+	write_special_text gen_txt_4,"r_menu_btn",50,290+9,"Tips"
 	lsp r_volume_lsp,r_menu_btn_5,50,370	
+	write_special_text gen_txt_5,"r_menu_btn",50,370+9,"Config"
 	lsp r_logs_lsp2,r_menu_btn_6,50,450	
+	write_special_text gen_txt_6,"r_menu_btn",50,450+9,"Logs"
 	lsp r_clear_lsp,r_menu_btn_7,50,530	
+	write_special_text gen_txt_7,"r_menu_btn",50,530+9,"Clear"
 	lsp r_system_lsp,r_menu_btn_8,50,610	
+	write_special_text gen_txt_8,"r_menu_btn",50,610+9,"Title"
 	;End Custom
 	
 	;lsp name_chapter_r_click,$name_chapter_r_click,0,0 ;Original Edited - substituted with text generation - W_CUSTOM
@@ -3997,20 +4005,21 @@ return
 
 	*rmenu_btlp
 		btndef ""
+		exbtn_d "C21-36"
 		;save/load
-		spbtn r_load_lsp,r_load_lsp
-		spbtn r_save_lsp,r_save_lsp
+		exbtn r_load_lsp,r_load_lsp,"P35P36"
+		exbtn r_save_lsp,r_save_lsp,"P33P34"
 		;other
-		spbtn r_chars_lsp,r_chars_lsp
-		spbtn r_tips_lsp2,r_tips_lsp2
+		exbtn r_chars_lsp,r_chars_lsp,"P31P32"
+		exbtn r_tips_lsp2,r_tips_lsp2,"P29P30"
 		
 		;bgm volume	
-		spbtn r_volume_lsp,r_volume_lsp
+		exbtn r_volume_lsp,r_volume_lsp,"P27P28"
 		
-		spbtn r_logs_lsp2,r_logs_lsp2
+		exbtn r_logs_lsp2,r_logs_lsp2,"P25P26"
 		
-		spbtn r_clear_lsp,r_clear_lsp
-		spbtn r_system_lsp,r_system_lsp
+		exbtn r_clear_lsp,r_clear_lsp,"P23P24"
+		exbtn r_system_lsp,r_system_lsp,"P21P22"
 
 	*rmenu_btlp2
 		if %skip_flg == off gosub *rmenu_draw_time 
@@ -4122,6 +4131,10 @@ goto *text_cw_lookback
 	_csp r_bg_lsp
 	_csp r_black_lsp
 	_csp name_chapter_r_click
+	csp_text gen_txt_1 : csp_text gen_txt_2 : csp_text gen_txt_3 : csp_text gen_txt_4 : csp_text gen_txt_5
+	csp_text gen_txt_6 : csp_text gen_txt_7 : csp_text gen_txt_8
+	csp_text gen_txt_11 : csp_text gen_txt_12 : csp_text gen_txt_13 : csp_text gen_txt_14 : csp_text gen_txt_15
+	csp_text gen_txt_16 : csp_text gen_txt_17 : csp_text gen_txt_18
 	csp_text gen_txt_10 ;Text Generator - clean chapter name - W_CUSTOM
 	_csp 451
 return
@@ -34629,6 +34642,12 @@ return
 		lsph %lsp_slot,":s;#FFFFFF`{w:504:{fit:{a:r:{p:49:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
 		lsph %lsp_slot+1,":s;#000000`{w:504:{fit:{a:r:{p:89:"+$lsp_text1+"}{n}}}}",%lsp_x+2,%lsp_y+1
 		spt blur,%lsp_slot+1,300
+	~
+	if $lsp_type != "r_menu_btn" jumpf
+		lsp %lsp_slot,":s;#B2B2B2`{w:396:{fit:{a:c:{p:50:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
+		lsph %lsp_slot-20,":s;#FFFFFF`{w:396:{fit:{a:c:{p:51:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
+		lsph %lsp_slot-19,":s;#FFFFFF`{w:396:{fit:{a:c:{p:91:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
+		spt blur,%lsp_slot-19,900
 	~
 
 return

@@ -15130,6 +15130,7 @@ if %CHIRU_MODE != 1 jumpf
 	if %UMINEKOEND_FLG = 80 lsph t_btn_start_lsp,title_btn_1_new,1325,424
 
 	;'NEW' LABEL ON START MENU BUTTON FOR FIRST TIME TEA AND URAS
+	if %UMINEKOEND_FLG = 50 lsph t_btn_start_lsp,title_btn_1_new,1325,424
 	if %UMINEKOEND_FLG = 51 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
 	if %UMINEKOEND_FLG = 61 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
 	if %UMINEKOEND_FLG = 71 lsph t_btn_start_lsp,title_btn_1_new,1325,424 
@@ -15639,10 +15640,10 @@ return
 		if %BtnRes = t_btn_ep4_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_100_loop ;Button to make a sound processing was run over by
 		if %BtnRes = t_btn_ep5_8_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_100_loop ;Button to make a sound processing was run over by
 
-		if %BtnRes = t_btn_ep2_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep2_unlock ;Out to unlock a confirmation message.
-		if %BtnRes = t_btn_ep3_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep3_unlock ;Out to unlock a confirmation message.
+		if %BtnRes = t_btn_ep2_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep2_unlock ;Out to unlock a confirmation message.
+		if %BtnRes = t_btn_ep3_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep3_unlock ;Out to unlock a confirmation message.
 		if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep4_unlock ;Out to unlock a confirmation message.
-		if %BtnRes = t_btn_ep5_8_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep5_8_unlock ;Out to unlock a confirmation message.
+		if %BtnRes = t_btn_ep5_8_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep5_8_unlock ;Out to unlock a confirmation message.
 
 		if %BtnRes = t_btn_load_lsp btndef "" : _csp t_warning_lsp : seplay 9,1001,100 : mov %load_for_title,1 : gosub *loadmode : mov %title_skip,1 : goto *b_title
 		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
@@ -15652,12 +15653,16 @@ return
 		goto *start_sub_menu_btn_100_loop
 
 		;Check out the message, unlock processing
+		;Original Edited - remade the whole unlocking process - W_CUSTOM
 		*ep2_unlock
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
 			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt
+
+			lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,1
 
 			print 24
 			
@@ -15670,21 +15675,35 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep2_unlock_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,20
 				mov %UMINEKOEND_FLG,20
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 400 : seplay 9,1001,100
+				mov %UNLOCK_PROGRESS,21
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep2_unlock_100
@@ -15705,11 +15724,14 @@ return
 
 		;Check out the message, unlock processing
 		*ep3_unlock
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
 			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,1
 
 			print 24
 				
@@ -15722,21 +15744,35 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep3_unlock_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,30
 				mov %UMINEKOEND_FLG,30
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 800 : seplay 9,1001,100 : cell t_btn_ep2_unlock_lsp,1 : flush 1 : wait 690
+				mov %UNLOCK_PROGRESS,31
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep3_unlock_100
@@ -15777,13 +15813,9 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep4_unlock_100
 				;One state to clear the episode.
-				;seplay 3,1001,100
 				mov %UMINEKOEND,40
 				mov %UMINEKOEND_FLG,40
 				gosub *do_unlock
-				;wait 1000
-				;seplay 1,31,100
-				;csp_rst
 				_csp unlock_bg_lsp
 				_csp unlock_yes_lsp
 				_csp unlock_no_lsp
@@ -15791,30 +15823,17 @@ return
 				csp_text gen_txt_10
 				btndef ""
 				print 1
-				;bg black,22
-
-				;Animations - preparing fake ep blocked buttons - W_CUSTOM
+				;Animations - resetting locks cell - W_CUSTOM
 				lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
 				lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,0
 				;Animations - Executing Unlock Animations - W_CUSTOM
 				wait 800 : seplay 9,1001,100 : cell t_btn_ep2_unlock_lsp,1 : cell t_btn_ep3_unlock_lsp,1 : flush 1 : wait 690
-				aspt breakup,t_btn_ep2_unlock_lsp,1000,3500 : aspt breakup,t_btn_ep3_unlock_lsp,1000,3500 : aspt breakup,t_btn_ep4_unlock_lsp,1000,3500 : wait 400
 				mov %UNLOCK_PROGRESS,41
 				;End Custom
 				
 				E_A
 				csp_rst
-				;seplay 9,18,70
 				bg black,8
-				;anim s0_17,"no82",1
-				;flush 1
-				;seplay 2,22,61
-				;waitvideo
-				;_csp s0_17
-				;anim s0_17,"no84",1
-				;flush 1
-				;waitvideo
-				;_csp s0_17
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
 				delay 6000
@@ -15824,7 +15843,6 @@ return
 				print 1
 				screenflip 0
 				mov %block_unlocking,1
-				;flush 10
 				E_A
 				goto *b_title
 
@@ -15845,11 +15863,14 @@ return
 		
 		;Check out the message, unlock processing
 		*ep5_8_unlock
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
 			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep5_8_unlock_lsp,unlock_btn_anim,1430+72,728 : cell t_btn_ep5_8_unlock_lsp,1
 
 			print 24
 			
@@ -15862,21 +15883,37 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep5_8_unlock_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,50
 				mov %UMINEKOEND_FLG,50
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
+				lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,0
+				lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 800 : seplay 9,1001,100 : cell t_btn_ep2_unlock_lsp,1 : cell t_btn_ep3_unlock_lsp,1 : cell t_btn_ep4_unlock_lsp,1 : flush 1 : wait 690
+				mov %UNLOCK_PROGRESS,51
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep5_8_unlock_100
@@ -15894,6 +15931,7 @@ return
 			*ep5_8_unlock_200
 		goto *ep5_8_unlock_loop
 	*start_sub_menu_btn_100
+	;End Custom - remade all the unlocking processes
 
    ;------------------------------
    ;Not clear a clear state 2 episode, episode
@@ -15966,6 +16004,9 @@ return
 		if %UMINEKOEND_FLG = 22 || %UMINEKOEND = 22 exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,"P165P141"
 		;End Custom
 
+		;Animations - end of a block-unlcok animation - W_CUSTOM
+		if %block_unlocking = 1 lsp 0,":c;graphics\colour\black.png",0,0 : screenflip 1 : _csp 0 : _csp 5 : print 92 : mov %block_unlocking,0
+
 		btnwait2 %BtnRes
 		
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
@@ -15989,16 +16030,19 @@ return
 		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
 		goto *start_sub_menu_btn_200_loop
 
-		;Check out the message, unlock processing
+		;Original Edited - remade the whole unlocking process - W_CUSTOM
 		*ep3_unlock_2
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
-			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt		
-			
+			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,1
+
 			print 24
-			
+				
 			;Button processing
 			*ep3_unlock_2_loop
 			btndef ""
@@ -16008,21 +16052,34 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep3_unlock_2_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,30
 				mov %UMINEKOEND_FLG,30
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 400 : seplay 9,1001,100
+				mov %UNLOCK_PROGRESS,31
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep3_unlock_2_100
@@ -16040,14 +16097,18 @@ return
 			*ep3_unlock_2_200
 		goto *ep3_unlock_2_loop
 
+
 		;Check out the message, unlock processing
 		*ep4_unlock_2
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
-			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt		
-			
+			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,1
+
 			print 24
 			
 			;Button processing
@@ -16059,23 +16120,38 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep4_unlock_2_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,40
 				mov %UMINEKOEND_FLG,40
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 800 : seplay 9,1001,100 : cell t_btn_ep3_unlock_lsp,1 : flush 1 : wait 690
+				mov %UNLOCK_PROGRESS,41
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
+
 			*ep4_unlock_2_100
 				
 			notif %BtnRes = unlock_no_lsp notif %BtnRes = -1 goto *ep4_unlock_2_200
@@ -16091,19 +16167,21 @@ return
 			*ep4_unlock_2_200
 		goto *ep4_unlock_2_loop
 		
-		
 		;Check out the message, unlock processing
 		*ep5_8_unlock_2
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
-			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt		
-			
+			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep5_8_unlock_lsp,unlock_btn_anim,1430+72,728 : cell t_btn_ep5_8_unlock_lsp,1
+
 			print 24
 			
-		;Button processing
-		*ep5_8_unlock_2_loop
+			;Button processing
+			*ep5_8_unlock_2_loop
 			btndef ""
 			spbtn unlock_yes_lsp,unlock_yes_lsp
 			spbtn unlock_no_lsp,unlock_no_lsp
@@ -16111,21 +16189,36 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep5_8_unlock_2_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,50
 				mov %UMINEKOEND_FLG,50
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,0
+				lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 800 : seplay 9,1001,100 : cell t_btn_ep3_unlock_lsp,1 : cell t_btn_ep4_unlock_lsp,1 : flush 1 : wait 690
+				mov %UNLOCK_PROGRESS,51
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep5_8_unlock_2_100
@@ -16143,6 +16236,7 @@ return
 			*ep5_8_unlock_2_200
 		goto *ep5_8_unlock_2_loop
 	*start_sub_menu_btn_200
+	;End Custom - remade all the unlocking processes
 
    ;------------------------------
    ;Clear two-state episode
@@ -16212,6 +16306,9 @@ return
 		if %UMINEKOEND_FLG = 32 || %UMINEKOEND = 32 exbtn t_btn_ep3_ura_tea_lsp,t_btn_ep3_ura_tea_lsp,"P165P141"
 		;End Custom
 
+		;Animations - end of a block-unlcok animation - W_CUSTOM
+		if %block_unlocking = 1 lsp 0,":c;graphics\colour\black.png",0,0 : screenflip 1 : _csp 0 : _csp 5 : print 92 : mov %block_unlocking,0
+
 		btnwait2 %BtnRes
 		
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
@@ -16234,13 +16331,17 @@ return
 		goto *start_sub_menu_btn_300_loop
 
 		;Check out the message, unlock processing
+		;Original Edited - remade the whole unlocking process - W_CUSTOM
 		*ep4_unlock_3
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
-			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt		
-			
+			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,1
+
 			print 24
 			
 			;Button processing
@@ -16250,25 +16351,38 @@ return
 			spbtn unlock_no_lsp,unlock_no_lsp
 			btnwait2 %BtnRes   ;%bm_p
 			
-			notif %BtnRes = unlock_yes_lsp goto *ep4_unlock_3_100
+			notif %BtnRes = unlock_yes_lsp goto *ep4_unlock_2_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,40
 				mov %UMINEKOEND_FLG,40
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 400 : seplay 9,1001,100
+				mov %UNLOCK_PROGRESS,41
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
+
 			*ep4_unlock_3_100
 				
 			notif %BtnRes = unlock_no_lsp notif %BtnRes = -1 goto *ep4_unlock_3_200
@@ -16286,11 +16400,14 @@ return
 		
 		;Check out the message, unlock processing
 		*ep5_8_unlock_3
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
 			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep5_8_unlock_lsp,unlock_btn_anim,1430+72,728 : cell t_btn_ep5_8_unlock_lsp,1
 
 			print 24
 			
@@ -16303,21 +16420,35 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep5_8_unlock_3_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,50
 				mov %UMINEKOEND_FLG,50
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 800 : seplay 9,1001,100 cell t_btn_ep4_unlock_lsp,1 : flush 1 : wait 690
+				mov %UNLOCK_PROGRESS,51
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep5_8_unlock_3_100
@@ -16334,8 +16465,9 @@ return
 				goto *start_sub_menu_300
 			*ep5_8_unlock_3_200
 		goto *ep5_8_unlock_3_loop
-		
 	*start_sub_menu_btn_300
+	;End Custom - remade all the unlocking processes
+
    ;------------------------------
    ;Clear state episode 3
 	*start_sub_menu_400
@@ -16402,6 +16534,7 @@ return
 		if %UMINEKOEND_FLG = 42 || %UMINEKOEND = 42 exbtn t_btn_ep4_ura_tea_lsp,t_btn_ep4_ura_tea_lsp,"P165P141"
 		;End Custom
 
+		;Animations - end of a block-unlcok animation - W_CUSTOM
 		if %block_unlocking = 1 lsp 0,":c;graphics\colour\black.png",0,0 : screenflip 1 : _csp 0 : _csp 5 : print 92 : mov %block_unlocking,0
 
 		btnwait2 %BtnRes
@@ -16424,12 +16557,17 @@ return
 		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
 		goto *start_sub_menu_btn_400_loop
 		
+		;Check out the message, unlock processing
+		;Original Edited - remade the whole unlocking process - W_CUSTOM
 		*ep5_8_unlock_4
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
 			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep5_8_unlock_lsp,unlock_btn_anim,1430+72,728 : cell t_btn_ep5_8_unlock_lsp,1
 
 			print 24
 			
@@ -16442,21 +16580,33 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep5_8_unlock_4_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,50
 				mov %UMINEKOEND_FLG,50
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 400 : seplay 9,1001,100
+				mov %UNLOCK_PROGRESS,51
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep5_8_unlock_4_100
@@ -16473,8 +16623,8 @@ return
 				goto *start_sub_menu_400
 			*ep5_8_unlock_4_200
 		goto *ep5_8_unlock_4_loop
-		
 	*start_sub_menu_btn_400
+	;End Custom - remade all the unlocking processes
 ;------------------------------
 *start_sub_menu_450
 	notif %UMINEKOEND >= 50 goto *start_sub_menu_btn_450
@@ -16523,6 +16673,9 @@ return
 		exbtn t_btn_ep4_lsp,t_btn_ep4_lsp,"P165P122"
 		exbtn t_btn_ep5_8_lsp,t_btn_ep5_8_lsp,"P165P132"
 		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
+
+		;Animations - end of a block-unlcok animation - W_CUSTOM
+		if %block_unlocking = 1 lsp 0,":c;graphics\colour\black.png",0,0 : screenflip 1 : _csp 0 : _csp 5 : print 92 : mov %block_unlocking,0
 
 		btnwait2 %BtnRes
 
@@ -16608,9 +16761,9 @@ return
 		if %BtnRes = t_btn_ep3_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_500_loop ;Button to make a sound processing was run over by
 		if %BtnRes = t_btn_ep4_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_500_loop ;Button to make a sound processing was run over by
 
-		if %BtnRes = t_btn_ep2_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep6_unlock ;Out to unlock a confirmation message.
-		if %BtnRes = t_btn_ep3_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep7_unlock ;Out to unlock a confirmation message.
-		if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep8_unlock ;Out to unlock a confirmation message.
+		if %BtnRes = t_btn_ep2_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep6_unlock ;Out to unlock a confirmation message.
+		if %BtnRes = t_btn_ep3_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep7_unlock ;Out to unlock a confirmation message.
+		if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep8_unlock ;Out to unlock a confirmation message.
 		
 		if %BtnRes = t_btn_ep5_8_lsp : goto *switch_game_q ;Previously without _q
 		
@@ -16621,12 +16774,16 @@ return
 		goto *start_sub_menu_btn_500_loop
 
 		;Check out the message, unlock processing
+		;Original Edited - remade the whole unlocking process - W_CUSTOM
 		*ep6_unlock
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
 			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt
+
+			lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,1
 
 			print 24
 			
@@ -16639,21 +16796,35 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep6_unlock_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,60
 				mov %UMINEKOEND_FLG,60
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 400 : seplay 9,1001,100
+				mov %UNLOCK_PROGRESS,61
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep6_unlock_100
@@ -16674,11 +16845,14 @@ return
 
 		;Check out the message, unlock processing
 		*ep7_unlock
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
 			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,1
 
 			print 24
 				
@@ -16695,17 +16869,32 @@ return
 				mov %UMINEKOEND,70
 				mov %UMINEKOEND_FLG,70
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 800 : seplay 9,1001,100 : cell t_btn_ep2_unlock_lsp,1 : flush 1 : wait 690
+				mov %UNLOCK_PROGRESS,71
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep7_unlock_100
@@ -16726,11 +16915,14 @@ return
 
 		;Check out the message, unlock processing
 		*ep8_unlock
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
 			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,1
 
 			print 24
 			
@@ -16743,21 +16935,36 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep8_unlock_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,80
 				mov %UMINEKOEND_FLG,80
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				lsp t_btn_ep2_unlock_lsp,unlock_btn_anim,1430+72,548 : cell t_btn_ep2_unlock_lsp,0
+				lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 800 : seplay 9,1001,100 : cell t_btn_ep2_unlock_lsp,1 : cell t_btn_ep3_unlock_lsp,1 : flush 1 : wait 690
+				mov %UNLOCK_PROGRESS,81
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep8_unlock_100
@@ -16775,6 +16982,7 @@ return
 			*ep8_unlock_200
 		goto *ep8_unlock_loop
 	*start_sub_menu_btn_500
+	;End Custom - remade all the unlocking processes
 ;------------------------------
 *start_sub_menu_600
 	;notif %UMINEKOEND >= 60 goto *start_sub_menu_btn_600
@@ -16844,6 +17052,9 @@ return
 		if %UMINEKOEND_FLG = 62 || %UMINEKOEND = 62 exbtn t_btn_ep2_ura_tea_lsp,t_btn_ep2_ura_tea_lsp,"P165P141"
 		;End Custom
 
+		;Animations - end of a block-unlcok animation - W_CUSTOM
+		if %block_unlocking = 1 lsp 0,":c;graphics\colour\black.png",0,0 : screenflip 1 : _csp 0 : _csp 5 : print 92 : mov %block_unlocking,0
+
 		btnwait2 %BtnRes
 		
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
@@ -16856,8 +17067,8 @@ return
 		if %BtnRes = t_btn_ep2_lsp mov %scenario_Number,6 : goto *umi_start
 		if %BtnRes = t_btn_ep3_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_600_loop ;Button to make a sound processing was run over by
 		if %BtnRes = t_btn_ep4_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_600_loop ;Button to make a sound processing was run over by
-		if %BtnRes = t_btn_ep3_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep7_unlock_2 ;Out to unlock a confirmation message.
-		if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep8_unlock_2 ;Out to unlock a confirmation message.
+		if %BtnRes = t_btn_ep3_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep7_unlock_2 ;Out to unlock a confirmation message.
+		if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep8_unlock_2 ;Out to unlock a confirmation message.
 		if %BtnRes = t_btn_ep5_8_lsp : goto *switch_game_q ;Previously without _q
 		if %BtnRes = t_btn_load_lsp btndef "" : _csp t_warning_lsp : seplay 9,1001,100 : mov %load_for_title,1 : gosub *loadmode : mov %title_skip,1 : goto *b_title
 		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
@@ -16866,15 +17077,19 @@ return
 		goto *start_sub_menu_btn_600_loop
 
 		;Check out the message, unlock processing
+		;Original Edited - remade the whole unlocking process - W_CUSTOM
 		*ep7_unlock_2
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
-			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt		
-			
+			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,1
+
 			print 24
-			
+				
 			;Button processing
 			*ep7_unlock_2_loop
 			btndef ""
@@ -16888,17 +17103,30 @@ return
 				mov %UMINEKOEND,70
 				mov %UMINEKOEND_FLG,70
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 400 : seplay 9,1001,100
+				mov %UNLOCK_PROGRESS,71
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep7_unlock_2_100
@@ -16916,14 +17144,18 @@ return
 			*ep7_unlock_2_200
 		goto *ep7_unlock_2_loop
 
+
 		;Check out the message, unlock processing
 		*ep8_unlock_2
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
-			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt		
-			
+			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,1
+
 			print 24
 			
 			;Button processing
@@ -16935,21 +17167,35 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep8_unlock_2_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,80
 				mov %UMINEKOEND_FLG,80
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - resetting locks cell - W_CUSTOM
+				lsp t_btn_ep3_unlock_lsp,unlock_btn_anim,1430+72,608 : cell t_btn_ep3_unlock_lsp,0
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 800 : seplay 9,1001,100 : cell t_btn_ep3_unlock_lsp,1 : flush 1 : wait 690
+				mov %UNLOCK_PROGRESS,81
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep8_unlock_2_100
@@ -16967,6 +17213,7 @@ return
 			*ep8_unlock_2_200
 		goto *ep8_unlock_2_loop
 	*start_sub_menu_btn_600
+	;End Custom - remade all the unlocking processes
 
    ;------------------------------
    ;Clear two-state episode
@@ -17036,6 +17283,9 @@ return
 		if %UMINEKOEND_FLG = 72 || %UMINEKOEND = 72 exbtn t_btn_ep3_ura_tea_lsp,t_btn_ep3_ura_tea_lsp,"P165P141"
 		;End Custom
 
+		;Animations - end of a block-unlcok animation - W_CUSTOM
+		if %block_unlocking = 1 lsp 0,":c;graphics\colour\black.png",0,0 : screenflip 1 : _csp 0 : _csp 5 : print 92 : mov %block_unlocking,0
+
 		btnwait2 %BtnRes
 		
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
@@ -17048,7 +17298,7 @@ return
 		if %BtnRes = t_btn_ep2_lsp mov %scenario_Number,6 : goto *umi_start
 		if %BtnRes = t_btn_ep3_lsp mov %scenario_Number,7 : goto *umi_start
 		if %BtnRes = t_btn_ep4_lsp btndef "" : seplay 9,5,100 : goto *start_sub_menu_btn_700_loop ;Button to make a sound processing was run over by
-		if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,1001,100 : goto *ep8_unlock_3 ;Out to unlock a confirmation message.
+		if %BtnRes = t_btn_ep4_unlock_lsp btndef "" : seplay 9,31,100 : goto *ep8_unlock_3 ;Out to unlock a confirmation message.
 		if %BtnRes = t_btn_ep5_8_lsp : goto *switch_game_q ;Previously without _q
 		if %BtnRes = t_btn_load_lsp btndef "" : _csp t_warning_lsp : seplay 9,1001,100 : mov %load_for_title,1 : gosub *loadmode : mov %title_skip,1 : goto *b_title
 		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
@@ -17057,13 +17307,17 @@ return
 		goto *start_sub_menu_btn_700_loop
 
 		;Check out the message, unlock processing
+		;Check out the message, unlock processing
 		*ep8_unlock_3
+			vol_se 1,0,1900
 			lsp unlock_bg_lsp,unlock_bg,750,400
 			lsp unlock_yes_lsp,l_ep_btn_bg,789,494
 			write_special_text gen_txt_9,"left",789+19,494+3,yes_btn_txt
 			lsp unlock_no_lsp,l_ep_btn_bg,789,566			
-			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt		
-			
+			write_special_text gen_txt_10,"left",789+19,566+3,no_btn_txt	
+
+			lsp t_btn_ep4_unlock_lsp,unlock_btn_anim,1430+72,668 : cell t_btn_ep4_unlock_lsp,1
+
 			print 24
 			
 			;Button processing
@@ -17075,21 +17329,33 @@ return
 			
 			notif %BtnRes = unlock_yes_lsp goto *ep8_unlock_3_100
 				;One state to clear the episode.
-				seplay 3,1001,100
 				mov %UMINEKOEND,80
 				mov %UMINEKOEND_FLG,80
 				gosub *do_unlock
-				wait 1000
-				E_A
-				seplay 1,31,100
-				csp_rst
-				bg black,22
+				_csp unlock_bg_lsp
+				_csp unlock_yes_lsp
+				_csp unlock_no_lsp
+				csp_text gen_txt_9
+				csp_text gen_txt_10
+				btndef ""
+				print 1
+				;Animations - Executing Unlock Animations - W_CUSTOM
+				wait 400 : seplay 9,1001,100
+				mov %UNLOCK_PROGRESS,81
+				;End Custom
 				
-				wait 2000
+				E_A
+				csp_rst
+				bg black,8
 				seplay 1,25,100
 				bg_d "c:locale_lan","text006",22
-				delay 12000
-				bg black,22
+				delay 6000
+				bg black,8
+				set_window_simple 150,100
+				setwindow5 ":a;graphics\system\empty.png"
+				print 1
+				screenflip 0
+				mov %block_unlocking,1
 				E_A
 				goto *b_title
 			*ep8_unlock_3_100
@@ -17171,6 +17437,9 @@ return
 		if %UMINEKOEND_FLG = 82 || %UMINEKOEND = 82 exbtn t_btn_ep4_ura_tea_lsp,t_btn_ep4_ura_tea_lsp,"P165P141"
 		;End Custom
 
+		;Animations - end of a block-unlcok animation - W_CUSTOM
+		if %block_unlocking = 1 lsp 0,":c;graphics\colour\black.png",0,0 : screenflip 1 : _csp 0 : _csp 5 : print 92 : mov %block_unlocking,0
+
 		btnwait2 %BtnRes
 		
 		;Original Edited - Tea Party Temp Buttons - W_CUSTOM
@@ -17182,7 +17451,7 @@ return
 		if %BtnRes = t_btn_ep1_lsp mov %scenario_Number,5 : goto *umi_start
 		if %BtnRes = t_btn_ep2_lsp mov %scenario_Number,6 : goto *umi_start
 		if %BtnRes = t_btn_ep3_lsp mov %scenario_Number,7 : goto *umi_start
-		if %BtnRes = t_btn_ep4_lsp mov %scenario_Number,8 : goto *umi_start
+		if %BtnRes = t_btn_ep4_lsp mov %scenario_Number,8 : goto *umi_start 
 		if %BtnRes = t_btn_ep5_8_lsp : goto *switch_game_q ;Previously without _q
 		if %BtnRes = t_btn_load_lsp btndef "" : _csp t_warning_lsp : seplay 9,1001,100 : mov %load_for_title,1 : gosub *loadmode : mov %title_skip,1 : goto *b_title
 		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
@@ -34436,6 +34705,7 @@ return
 	if $lbg_type == "tsu1" : mov $lbg_path,":"+$paste_method+";graphics\saku\tsu1\" + $lbg_name + ".png" : return
 	if $lbg_type == "tsu2" : mov $lbg_path,":"+$paste_method+";graphics\saku\tsu2\" + $lbg_name + ".png" : return
 	if $lbg_type == "tsu3" : mov $lbg_path,":"+$paste_method+";graphics\saku\tsu3\" + $lbg_name + ".png" : return
+	if $lbg_type == "tsu7" : mov $lbg_path,":"+$paste_method+";graphics\saku\tsu7\" + $lbg_name + ".png" : return
 
 return
 
@@ -34541,6 +34811,7 @@ return
 		if $string_temp1 == "tsu1" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 		if $string_temp1 == "tsu2" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 		if $string_temp1 == "tsu3" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "tsu7" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
 
 		;Ends BGs reload
 

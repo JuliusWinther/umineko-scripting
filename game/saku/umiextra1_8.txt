@@ -1,6 +1,6 @@
-*umiextra1_2
+*umiextra1_8
 log_reset
-;new_extra_episode 8
+new_extra_episode 8
 ;START
 
 lbg "c:colour",s0_1,"black"
@@ -1221,26 +1221,31 @@ d `Eva took her present and went to the kitchen.`[\]
 
 *e8_144
 d `And while smiling to herself, she carefully removed the wrapping paper...`[\]
+textoff
 
-seplay 11,52,100
-
-lss s0_19,"bea","a11_akuwarai2"
-aspt2_mem "xpos",s0_19,550
-flush 80
+seplay 11,52,80
+lbg "c:colour",s0_21,"black"
+aspt2 alpha,s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2 alpha,s0_22,150
+lss s0_29,"bea","a11_akuwarai2"
+aspt2_mem "xpos",s0_29,550
+flush 22
 
 msgwnd_bea
 *e8_145
 d2 [lv 0*"27"*"bea_00890"]`{qt}My apologies, Eva~!`[@][lv 0*"27"*"bea_00900"]` This is where you are actually supposed to get a high class kitchen knife.`[@][lv 0*"27"*"bea_00910"]` But with that setup, you would just say`[|][lv 0*"27"*"bea_00911"][#][*]` 'Ah~ Thank you~{p:0:☆} I'll use this knife to work hard on my cooking from now on~'`[|][lv 0*"27"*"bea_00912"][#][*]`, and that'd be that.`[@][#][*][lv 0*"27"*"bea_00920"]` So you shall receive Jessica's present instead!{qt}`[\]
 wait_on_d 0
-lss s0_19,"bea","a11_warai4"
-aspt2_mem "xpos",s0_19,550
+lss s0_29,"bea","a11_warai4"
+aspt2_mem "xpos",s0_29,550
 d_continue
 wait_on_d 1
-lss s0_19,"bea","a11_akuwarai2"
-aspt2_mem "xpos",s0_19,550
+lss s0_29,"bea","a11_akuwarai2"
+aspt2_mem "xpos",s0_29,550
 d_continue
 wait_on_d 2
-lss s0_19,"bea","a11_akuwarai4"
+lss s0_29,"bea","a11_akuwarai4"
+aspt2_mem "xpos",s0_29,550
 d_continue
 wait_on_d -1
 textoff
@@ -1249,7 +1254,9 @@ seplay 11,22,100
 seplay 12,52,100
 lbg "c:colour",s0_30,"white"
 flush 8
-csp_slot s0_19
+csp_slot s0_21
+csp_slot s0_22
+csp_slot s0_29
 csp_slot s0_30
 flush 99,1000,"whirl.dll/r"
 lss s0_9,"eva","b25_warai1"
@@ -2585,6 +2592,7 @@ d [lv 0*"30"*"wal_00720"]`{qt}...{qt}`[\]
 msgwnd_non
 *e8_324
 d `In a rare occurrence, both of {f:5:Virgilia}'s eyes... opened.`[\]
+textoff
 
 meplay 1,5,60
 seplay 11,2,100
@@ -2643,7 +2651,7 @@ lss s0_8,"ron","a11_warai1"
 flush 80
 d_continue
 wait_on_d -1
-
+textoff
 meplay 2,16,60
 
 csp_slot s0_9
@@ -2688,7 +2696,7 @@ msgwnd_bea
 d [lv 0*"27"*"bea_01180"]`{qt}About respect for the elderly?{qt}`[\]
 
 vol_mix_fade 50
-seplay 11,57,100
+seplay 11,57,80
 bgmplay 65,70,0
 csp_slot s0_7
 lss s0_18,"wal","a11_akuwarai2"
@@ -2719,7 +2727,7 @@ textoff
 csp_slot s0_3
 csp_slot s0_9
 csp_slot s0_18
-pam s0_10,"no01a",0
+anim2 s0_10,"no01a",1,1
 flush 1
 seplay 10,22,90
 seplay 1,2,71
@@ -2733,20 +2741,20 @@ wait 500
 seplay 1,2,27
 waitvideo
 csp_slot s0_10
-flush 1
-pam s0_10,"no38b",0
-color_mod2 s0_10,#FF0000
+anim2 s0_11,"no38b",1,1
+color_mod s0_11,#FF0000
 flush 1
 seplay 11,56,100
 wait 700
 seplay 12,57,90
 waitvideo
-csp_slot s0_10
+csp_slot s0_11
+
 lbg "c:cg/s",s0_3,"c_e0305_la"
 aspt2_mem "ypos",s0_3,230
 seplay 14,56,100
 flush 1
-aspt2_mem "ypos",s0_3,1912,800,0
+aspt2_mem "ypos",s0_3,1912,1800,0
 sptwait2 ypos,s0_3
 
 *e8_335
@@ -2758,21 +2766,23 @@ seplay 11,57,80
 flush 80
 csp_slot s0_3
 flush 80
-pam s0_17,"no83",0
+anim2 s0_17,"no33",1
 flush 1
-seplay 11,57,80
+seplay 11,57,70
 wait 400
-seplay 11,57,80
+seplay 11,57,70
 wait 400
-seplay 11,57,80
+seplay 11,57,70
 wait 400
-seplay 11,57,80
+seplay 11,57,70
 wait 400
-seplay 11,57,80
+seplay 11,57,70
 wait 400
-seplay 11,57,80
+seplay 11,57,100
 waitvideo
 csp_slot s0_17
+flush 80
+wait 500
 
 lss s0_18,"bea","a11_akuwarai3"
 aspt2_mem "xpos",s0_18,550
@@ -2805,7 +2815,8 @@ wait_on_d -1
 textoff
 
 csp_slot s0_18
-anim s0_17,"no55",1
+anim2 s0_15,"no55",1,1
+lbg "c:efe",s0_14,"no55_00059"
 flush 1
 seplay 11,56,100
 wait 800
@@ -2817,44 +2828,25 @@ seplay 11,56,50
 wait 100
 seplay 11,46,50
 wait 100
+csp_slot s0_15
 anim s0_17,"no31",1
+blend_mode add,s0_17
 flush 1
 seplay 2,46,100
-seplay 3,46,100
-wait 83
+wait 183
 seplay 1,46,100
 waits 167
-seplay 2,46,100
-waits 167
-seplay 2,46,100
 seplay 3,46,100
-wait 83
-seplay 1,46,100
+wait 183
 waits 167
 seplay 2,46,100
 waits 167
-seplay 2,46,100
 seplay 3,46,100
-wait 83
-seplay 1,46,100
+wait 183
 waits 167
 seplay 2,46,100
-waits 167
-seplay 2,46,100
-seplay 3,46,100
-wait 83
-seplay 1,46,100
-waits 167
-seplay 2,46,100
-waits 167
-seplay 2,46,100
-seplay 3,46,100
-wait 83
-seplay 1,46,100
-waits 167
-seplay 2,46,100
-waits 167
 waitvideo
+csp_slot s0_15
 csp_slot s0_17
 lbg "c:colour",s0_3,"white"
 flush 80
@@ -2869,7 +2861,7 @@ flush 22
 set_window_simple 80,430
 msgwnd_non
 *e8_337
-d2 `And so, things`[#][*]` ended`[#][*]` with a bang.`[#][*][\]
+d2 `{a:c:And so, things`[#][*]` ended`[#][*]` with a bang.}`[#][*][\]
 wait_on_d 0
 agpt quakexcycle,67
 agpt quakexamp,30
@@ -2877,6 +2869,7 @@ agpt quakexamp,0,250,1
 rumble 63,250
 seplay 10,12,100
 gptwait quakexamp
+wait 1000
 d_continue
 wait_on_d 1
 agpt quakexcycle,67
@@ -2888,6 +2881,7 @@ seplay 12,72,100
 seplay 13,73,100
 seplay 14,13,100
 gptwait quakexamp
+wait 1000
 d_continue
 wait_on_d 2
 seplay 15,3,100
@@ -2908,6 +2902,7 @@ lbg "c:colour",s0_30,"white"
 flush 80
 csp_slot s0_30
 flush 80
+wait 800
 seplay 12,12,100
 agpt quakeycycle,67
 agpt quakeyamp,30
@@ -2918,6 +2913,9 @@ seplay 13,11,100
 seplay 11,36,100
 lbg "c:colour",s0_30,"white"
 flush 80
+csp_slot s0_30
+flush 80
+wait 800
 seplay 12,27,100
 agpt quakeycycle,67
 agpt quakeyamp,30
@@ -2954,5 +2952,5 @@ flush 42
 
 
 ;END
-*umiextra1_2_end
+*umiextra1_8_end
 goto *end_game

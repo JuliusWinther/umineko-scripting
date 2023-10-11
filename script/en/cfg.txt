@@ -1,0 +1,580 @@
+;****************************
+; Main config function
+;****************************
+
+*settings
+	;stopwatch "config start"
+ 	
+ 	;9th for chiru		
+	trophy_open 10-%CHIRU_MODE
+	mov %mcurrent_page,1
+	mov %meffect_right,0
+	mov %meffect_left,0
+	mov %mmove_right,0
+	mov %mmove_left,0
+	
+	gosub *update_textspeed
+
+	getscriptnum %Free5
+
+	for %Free2 = 0 to %Free5-1
+		getscriptpath $Free3,%Free2,1
+		if localisation == $Free3 mov %Free4,%Free2 ;: debug_var %Free4,"curent language num"
+	next
+	getscriptpath $Free3,%Free4,1
+	mov %Free5,%Free4
+	dec %Free2
+
+	getrenderernum %Free9
+	for %Free6 = 0 to %Free9-1
+		getrenderername $Free7,%Free6
+	next
+	getrenderername $Free7,-1 ;save current renderer in $Free7
+	mov %Free9,%Free8
+	dec %Free6
+
+	border_pad_push 4
+
+*settings_elems
+
+	;write_special_text params
+	;getparam %lsp_slot,$lsp_type,%lsp_x,%lsp_y,$lsp_text1,$lsp_text2,$lsp_text3,%parent_slot
+
+	;112,187 coord of upper left corner of the window
+	mov %cfg_temp1,112+43 ;Distance from elft border of option names
+	mov %cfg_temp2,100+4 ;Vertical distance between option names
+	mov %cfg_height,45
+
+	;Config Title
+	write_special_text 105,"config_title",960,45,"Configuration"
+	;Config BG
+	lsp 451,cfg_menu_bg,0,0
+	;lsp2 config_main_lsp2,config_main,3840,540,100,100,0 ;Needs to be placed at the virtual center
+
+	;Gray center window
+	lsp 440,cfg_menu_wnd,0,%cfg_height
+
+		;Distance between focus and separator is 4px, height of the whole thing is 100px
+		lsp 321,cfg_focus,111,187+42+%cfg_height
+		;cell 321,2
+		lsp 322,cfg_focus,111,187+42+%cfg_temp2+%cfg_height
+		;cell 322,2
+		lsp 323,cfg_focus,111,187+42+((%cfg_temp2)*2)+%cfg_height
+		;cell 323,2
+		lsp 324,cfg_focus,111,187+42+((%cfg_temp2)*3)+%cfg_height
+		;cell 324,2
+		lsp 325,cfg_focus,111,187+42+((%cfg_temp2)*4)+%cfg_height
+		;cell 325,2
+		lsp 326,cfg_focus_last,111,187+42+((%cfg_temp2)*5)+%cfg_height
+		;cell 326,2
+
+	*rewrite
+
+	lsp 330,cfg_section_btn,155+10,85+%cfg_height
+	lsp 331,cfg_section_btn,155+316+10,85+%cfg_height
+	lsp 332,cfg_section_btn,155+(316*2)+10,85+%cfg_height
+	lsp 333,cfg_section_btn,155+(316*3)+10,85+%cfg_height
+	lsp 334,cfg_section_btn,155+(316*4)+10,85+%cfg_height
+	write_special_text gen_txt_1,"config_section",155+10-40,84+%cfg_height,"SYSTEM"
+	write_special_text gen_txt_2,"config_section",(155+316+10)-40,84+%cfg_height,"GAME"
+	write_special_text gen_txt_3,"config_section",(155+(316*2)+10)-40,84+%cfg_height,"SOUND"
+	write_special_text gen_txt_4,"config_section",(155+(316*3)+10)-40,84+%cfg_height,"LANGUAGE"
+	write_special_text gen_txt_5,"config_section",(155+(316*4)+10)-40,84+%cfg_height,"GRAPHICS"
+
+	if %cfg_current_page != 1 jumpf ;System
+		lsp 330,cfg_section_btn_selected,155+10,85+%cfg_height
+		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,"Display Settings"
+		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,"Game Renderer"
+		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,"Input Mode"
+		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,"Menu Animations"
+		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,"Proactive Caching"
+		write_special_text 306,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*5+%cfg_height,"Mouse-Wheel Hides Textbox"
+	~
+	if %cfg_current_page != 2 jumpf ;Game
+		lsp 331,cfg_section_btn_selected,155+316+10,85+%cfg_height
+		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,"Text Display Speed"
+		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,"Automode Speed"
+		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,"Gamepad Rumble Strength"
+		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,"Show Music and Chapter Name"
+		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,"Prevent SKipping Unread Text"
+		write_special_text 306,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*5+%cfg_height,"Remove Sexualized Content"
+	~
+	if %cfg_current_page != 3 jumpf ;Sound
+		lsp 332,cfg_section_btn_selected,155+(316*2)+10,85+%cfg_height
+		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,"Music Volume"
+		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,"Sound Effect Volume"
+		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,"Voice Volume"
+		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,"Mute Specific Characters"
+		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,"Lower Music Volume during Dialogue"
+		write_special_text 306,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*5+%cfg_height,"Lip Synchronization"
+	~
+	if %cfg_current_page != 4 jumpf ;Language
+		lsp 333,cfg_section_btn_selected,155+(316*3)+10,85+%cfg_height
+		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,"Game Language"
+		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,"Voice Language"
+		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,"Music Titles"
+		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,"Song Subtitles"
+		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,"Steam Conventions"
+	~
+	if %cfg_current_page != 5 jumpf ;Graphics
+		lsp 334,cfg_section_btn_selected,155+(316*4)+10,85+%cfg_height
+		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,"Sprite Type"
+		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,"Background Type"
+		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,"Textbox Type"
+		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,"Book Mode"
+		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,"Background Movement"
+	~
+
+    lsp 103,set_exit,0,0
+	lsp 104,set_reset,0,0
+	
+	align_buttons_l 104
+	align_buttons_r 103
+
+		;gosub *settings_video_res REMOVED
+
+		;System
+		if %cfg_current_page != 1 jumpf
+			gosub *settings_window_resolution
+			gosub *settings_window_mode
+			gosub *settings_render
+			gosub *settings_interface_kb_dual
+			gosub *settings_menu_anim
+			gosub *settings_image_cache
+			gosub *settings_wheel_hides_txt
+		~
+
+		;Game
+		if %cfg_current_page != 2 jumpf
+			gosub *settings_textspeed
+			gosub *settings_automode_speed
+			;gosub *settings_rumble_strength
+			;gosub *settings_bgm_chapter_display ;TODO Need to be divided
+			;Prevent skipping unread text
+			;Remove sexualized content
+		~
+
+		;Sound
+		if %cfg_current_page != 3 jumpf
+			;gosub *settings_bgm_vol
+			;gosub *settings_sfx_vol
+			;gosub *settings_voice_vol		
+			;if %CHIRU_MODE = 0 gosub *settings_voice_vol_chars
+			;if %CHIRU_MODE = 1 gosub *settings_voice_vol_chars_chiru
+			;Lower music volume during dialogue
+			;gosub *settings_lips
+		~
+
+		;Language
+		if %cfg_current_page != 4 jumpf
+			;gosub *settings_game_language
+			;Voice language
+			;gosub *settings_bgm_title_language
+			;gosub *settings_op_ed_song_subtitles
+			;Steam conventions
+		~
+
+		;Graphics
+		if %cfg_current_page != 5 jumpf
+			;gosub *settings_sprite_type
+			;gosub *settings_textbox 
+			;gosub *settings_bg_type 
+			;Book Mode
+			;Background Movment
+		~
+
+		;lsp 2,":c;graphics\colour\black.png",0,0
+		;print 10,500
+		;_csp 2
+		;print 10,100
+
+		;stopwatch "config end"
+
+*settings_loop ;START SETTINGS LOOP =========================================================================
+		
+	btndef ""
+
+	;Sections
+	if %cfg_current_page != 1 spbtn 330,330 
+	if %cfg_current_page != 2 spbtn 331,331
+	if %cfg_current_page != 3 spbtn 332,332
+	if %cfg_current_page != 4 spbtn 333,333 
+	if %cfg_current_page != 5 spbtn 334,334 
+	
+	;Exit
+	spbtn 103,103
+	;Reset
+	spbtn 104,104
+
+	;Options
+	spbtn 203,203 ;Screen Mode Left
+	spbtn 204,204 ;Screen Mode Right
+	spbtn 205,205 ;Resolution Left
+	spbtn 206,206 ;Resolution Right
+	spbtn 207,207 ;Renderer Left
+	spbtn 208,208 ;Renderer Right
+	spbtn 211,211 ;Keyboard Input
+	spbtn 212,212 ;Gamepad Input
+	spbtn 213,213 ;Menu Animations
+	spbtn 214,214 ;Object Cache
+	spbtn 215,215 ;Wheel hides textbox
+	
+	btndown 1
+
+	btnwait %BtnRes
+
+	if %BtnRes = 330 mov %cfg_current_page,1 : gosub *clear_config_options : goto *rewrite
+	if %BtnRes = 331 mov %cfg_current_page,2 : gosub *clear_config_options : goto *rewrite
+	if %BtnRes = 332 mov %cfg_current_page,3 : gosub *clear_config_options : goto *rewrite
+	if %BtnRes = 333 mov %cfg_current_page,4 : gosub *clear_config_options : goto *rewrite
+	if %BtnRes = 334 mov %cfg_current_page,5 : gosub *clear_config_options : goto *rewrite
+
+	if %BtnRes = -1 goto *settings_end ;Exit by right-clicking
+	if %BtnRes = -10 goto *settings_end ;Exit by ESC
+	if %BtnRes = 103 goto *settings_end 
+	if %BtnRes = 104 gosub *settings_full_reset
+	if %BtnRes = 0  goto *settings_loop
+
+if %cfg_current_page != 1 goto *skip_config_page_1 ;System
+	;WINDOW MODE SELECTOR
+	if %BtnRes != 203 jumpf ;<
+		if %full_window_auto = 0 mov %full_window_auto,2 : goto *settings_window_mode2
+		if %full_window_auto = 1 mov %full_window_auto,0 : goto *settings_window_mode2
+		if %full_window_auto = 2 mov %full_window_auto,1 : goto *settings_window_mode2
+	~
+	if %BtnRes != 204 goto *skip_window_mode ;>
+		if %full_window_auto = 0 mov %full_window_auto,1 : goto *settings_window_mode2
+		if %full_window_auto = 1 mov %full_window_auto,2 : goto *settings_window_mode2
+		if %full_window_auto = 2 mov %full_window_auto,0 : goto *settings_window_mode2
+		*settings_window_mode2
+			if %full_window_auto != 0 jumpf
+				operate_config unset,"fullscreen"
+				operate_config unset,"window"
+				operate_config write,"noval","scale"
+				operate_config save
+				;lsp 373,set_restarted_apply,0,910
+			~
+			if %full_window_auto != 1 jumpf
+				operate_config unset,"fullscreen"
+				operate_config write,"noval","window"
+				operate_config write,"noval","scale"
+				operate_config save
+				menu_window
+			~
+			if %full_window_auto != 2 jumpf
+				operate_config unset,"window"
+				operate_config write,"noval","fullscreen"
+				operate_config write,"noval","scale"
+				operate_config save
+				menu_full	
+			~
+			gosub *settings_window_mode
+	*skip_window_mode
+	;END
+	
+
+	;WINDOW RESOLUTION SELECTOR
+	if %BtnRes != 205 jumpf ;<
+		if $window_size = "1280" mov $window_size,"2560" : goto *settings_window_resolution2
+		if $window_size = "1366" mov $window_size,"1280" : goto *settings_window_resolution2
+		if $window_size = "1440" mov $window_size,"1366" : goto *settings_window_resolution2
+		if $window_size = "1600" mov $window_size,"1440" : goto *settings_window_resolution2
+		if $window_size = "1920" mov $window_size,"1600" : goto *settings_window_resolution2
+		if $window_size = "2560" mov $window_size,"1920" : goto *settings_window_resolution2
+		;For Custom
+		mov $window_size,"1920" : goto *settings_window_resolution2
+	~
+	if %BtnRes != 206 jumpf ;>
+		if $window_size = "2560" mov $window_size,"1280" : goto *settings_window_resolution2
+		if $window_size = "1920" mov $window_size,"2560" : goto *settings_window_resolution2
+		if $window_size = "1600" mov $window_size,"1920" : goto *settings_window_resolution2
+		if $window_size = "1440" mov $window_size,"1600" : goto *settings_window_resolution2
+		if $window_size = "1366" mov $window_size,"1440" : goto *settings_window_resolution2
+		if $window_size = "1280" mov $window_size,"1366" : goto *settings_window_resolution2
+		;For Custom
+		mov $window_size,"1920" : goto *settings_window_resolution2
+
+		**settings_window_resolution2
+			operate_config write,$window_size,"window-width"
+			operate_config save
+			;lsp 373,set_restarted_apply,0,910
+			gosub **settings_window_resolution
+	~
+	;END
+
+	;RENDERER SELECTOR
+	if %BtnRes != 207 jumpf ;left
+		if %Free9 <= 0 getrenderernum %Free9
+		dec %Free9
+		goto *settings_render2
+	~
+	if %BtnRes != 208 jumpf ;right
+		getrenderernum %Free6
+		dec %Free6
+		if %Free9 < 0 mov %Free9,0
+		if %Free9 >= %Free6 mov %Free9,-1
+		inc %Free9
+		goto *settings_render2
+
+		*settings_render2
+			getrenderername $Free7,%Free9
+			operate_config write,$Free7,"prefer-renderer"
+			operate_config unset,"root"
+			operate_config save
+			lsp 373,set_restarted_apply,0,910
+			gosub *settings_render
+	~
+	;END
+
+
+	;INPUT DEVICE
+	if %BtnRes != 211 jumpf
+		mov %interface_kb_dual,0 : gosub *settings_interface_kb_dual
+	~
+	if %BtnRes != 212 jumpf
+		mov %interface_kb_dual,1 : gosub *settings_interface_kb_dual
+	~
+	;END
+
+
+	;MENU ANIMATIONS
+	if %BtnRes != 213 jumpf
+		if %cfg_menu_anim = 0 mov %cfg_menu_anim,1 : gosub *settings_menu_anim : jumpf
+		if %cfg_menu_anim = 1 mov %cfg_menu_anim,0 : gosub *settings_menu_anim : jumpf
+	~
+	;END
+
+	
+	;OBJECT CACHE
+	if %BtnRes != 214 jumpf
+		if %enable_cache = 0 mov %enable_cache,1 : gosub *settings_image_cache : jumpf
+		if %enable_cache = 1 mov %enable_cache,0 : gosub *settings_image_cache : jumpf
+	~
+	;END
+
+
+	;WHEEL DOWN HIDES TEXTBOX
+	if %BtnRes != 215 jumpf
+		if %hide_textbox = 0 mov %hide_textbox,1 : config_write_str "wheel_down_hides_textbox","true" : gosub *settings_image_cache
+		if %hide_textbox = 1 mov %hide_textbox,0 : config_write_str "wheel_down_hides_textbox","false" : gosub *settings_image_cache
+	~
+	;END
+
+*skip_config_page_1
+
+if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
+
+	;TEXT DISPLAY SPEED
+	if %BtnRes != 203 goto *skip_text_speed
+		for %for_index3=0 to 2
+			isdown %cfg_mouse_click ;Checks if mouse is still pressed
+			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
+			getmousepos %cfg_mouse_x,%cfg_temp_var
+			mov %cfg_temp_var,%cfg_mouse_x-(1048+36-22)
+			if %cfg_mouse_x < 1048+36-22 aspt xpos,203,1048+36-22 : mov %cfg_txt_speed_cursor_x,1048+36-22 : mov %textspeed,-116 : jumpf
+			if %cfg_mouse_x > 1048+36+564-22 aspt xpos,203,1048+36+564-20 : mov %cfg_txt_speed_cursor_x,1048+36+564-22 : mov %textspeed,10 : jumpf
+				if %cfg_temp_var <= 0 aspt xpos,203,1048+36-22 : mov %textspeed,-116 : jumpf
+				if %cfg_temp_var > 0 && %cfg_temp_var <= 56 aspt xpos,203,1048+36+51-22 : mov %textspeed,1 : jumpf
+				if %cfg_temp_var > 56 && %cfg_temp_var <= 56*2 aspt xpos,203,1048+36+(51*2)-22 : mov %textspeed,2 : jumpf
+				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,203,1048+36+(51*3)-22 : mov %textspeed,3 : jumpf
+				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,203,1048+36+(51*4)-22 : mov %textspeed,4 : jumpf
+				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,203,1048+36+(51*5)-22 : mov %textspeed,5 : jumpf
+				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,203,1048+36+(51*6)-22 : mov %textspeed,6 : jumpf
+				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,203,1048+36+(51*7)-22 : mov %textspeed,7 : jumpf
+				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,203,1048+36+(51*8)-22 : mov %textspeed,8 : jumpf
+				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,203,1048+36+(51*9)-22 : mov %textspeed,9 : jumpf
+				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,203,1048+36+(51*10)-20 : mov %textspeed,10 : jumpf
+			~
+			mov %for_index3,0 ;Infinite Cycle
+		next
+		gosub *settings_textspeed
+	*skip_text_speed
+	;END
+
+
+	;AUTOMODE SPEED
+	if %BtnRes != 205 goto *skip_automode_speed
+		for %for_index3=0 to 2
+			isdown %cfg_mouse_click ;Checks if mouse is still pressed
+			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
+			getmousepos %cfg_mouse_x,%cfg_temp_var
+			mov %cfg_temp_var,%cfg_mouse_x-(1048+36-22)
+			if %cfg_mouse_x < 1048+36-22 aspt xpos,205,1048+36-22 : mov %cfg_automode_speed_cursor_x,1048+36-22 : mov %automodespeed,0 : jumpf
+			if %cfg_mouse_x > 1048+36+564-22 aspt xpos,205,1048+36+564-20 : mov %cfg_automode_speed_cursor_x,1048+36+564-22 : mov %automodespeed,10 : jumpf
+				if %cfg_temp_var <= 0 aspt xpos,205,1048+36-22 : mov %automodespeed,0 : jumpf
+				if %cfg_temp_var > 0 && %cfg_temp_var <= 56 aspt xpos,205,1048+36+51-22 : mov %automodespeed,-116 : jumpf
+				if %cfg_temp_var > 56 && %cfg_temp_var <= 56*2 aspt xpos,205,1048+36+(51*2)-22 : mov %automodespeed,-90 : jumpf
+				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,205,1048+36+(51*3)-22 : mov %automodespeed,-70 : jumpf
+				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,205,1048+36+(51*4)-22 : mov %automodespeed,-55 : jumpf
+				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,205,1048+36+(51*5)-22 : mov %automodespeed,-43 : jumpf
+				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,205,1048+36+(51*6)-22 : mov %automodespeed,-33 : jumpf
+				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,205,1048+36+(51*7)-22 : mov %automodespeed,-26 : jumpf
+				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,205,1048+36+(51*8)-22 : mov %automodespeed,-20 : jumpf
+				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,205,1048+36+(51*9)-22 : mov %automodespeed,-16 : jumpf
+				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,205,1048+36+(51*10)-20 : mov %automodespeed,-9 : jumpf
+			~
+			mov %for_index3,0 ;Infinite Cycle
+		next
+		gosub *settings_automode_speed2
+	*skip_automode_speed
+	;END
+
+
+*skip_config_page_2
+
+
+
+if %cfg_current_page != 3 goto *skip_config_page_3 ;Game
+
+*skip_config_page_3
+
+
+if %cfg_current_page != 4 goto *skip_config_page_4 ;Game
+
+*skip_config_page_4
+
+
+if %cfg_current_page != 5 goto *skip_config_page_5 ;Game
+
+*skip_config_page_5
+
+
+goto *settings_loop ;END SETTINGS LOOP =========================================================================
+
+*settings_end
+	for %tmp = 100 to config_main_lsp2 : _csp %tmp : _csp2 %tmp next
+	seplay 9,1005,100 : wait 50
+	border_pad_pop
+	dwavestop 0
+	gosub *apply_msgwnd_settings
+return
+
+*clear_config_options
+	_csp 203
+	_csp 204
+	_csp 205
+	_csp 206
+	_csp 207
+	_csp 208 : _csp 209
+	_csp 211
+	_csp 212
+	_csp 213
+	_csp 214
+	_csp 215
+	_csp 311 : _csp 312 : _csp 313
+return
+
+;SETTINGS SUBS =================================================================================================
+
+*settings_window_mode
+	if %full_window_auto = 1 write_special_text 311,"config_option",900,187+64+%cfg_height,"Windowed" : jumpf
+	if %full_window_auto = 2 write_special_text 311,"config_option",900,187+64+%cfg_height,"Fullscreen" : jumpf
+	if %full_window_auto = 0 write_special_text 311,"config_option",900,187+64+%cfg_height,"Auto" : jumpf 
+	~
+	lsp 203,":a/2,0,3;graphics\menu_en\config\config_left.png",900,187+60+%cfg_height
+	lsp 204,":a/2,0,3;graphics\menu_en\config\config_right.png",1207,187+60+%cfg_height
+return
+
+*settings_window_resolution
+	if $window_size = "1280" write_special_text 312,"config_option",1317,187+64+%cfg_height,"1280x720" : jumpf
+	if $window_size = "1366" write_special_text 312,"config_option",1317,187+64+%cfg_height,"1366x768" : jumpf
+	if $window_size = "1440" write_special_text 312,"config_option",1317,187+64+%cfg_height,"1440х810" : jumpf
+	if $window_size = "1600" write_special_text 312,"config_option",1317,187+64+%cfg_height,"1600x900" : jumpf
+	if $window_size = "1920" write_special_text 312,"config_option",1317,187+64+%cfg_height,"1920x1080" : jumpf
+	if $window_size = "2560" write_special_text 312,"config_option",1317,187+64+%cfg_height,"2560x1440" : jumpf
+	write_special_text 312,"config_option",1317,187+64+%cfg_height,"Custom"
+	~
+	lsp 205,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_height
+	lsp 206,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_height
+return
+
+*settings_render
+	if $Free7 == "GL2" mov $Free7,"OpenGL 2.1" : jumpf
+	if $Free7 == "GLES2" mov $Free7,"OpenGLES 2" : jumpf
+	if $Free7 == "GLES3" mov $Free7,"OpenGLES 3" : jumpf
+	if $Free7 == "ANGLE2" mov $Free7,"ANGLE 2" : jumpf
+	if $Free7 == "ANGLE3" mov $Free7,"ANGLE 3" : jumpf
+	~
+	write_special_text 313,"config_option",1317,187+64+%cfg_temp2+%cfg_height,$Free7
+	lsp 207,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_temp2+%cfg_height
+	lsp 208,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_temp2+%cfg_height
+return
+
+*settings_interface_kb_dual
+	lsph 209,cfg_keyboard_btn_selected,1347,187+53+(%cfg_temp2*2)+%cfg_height
+	lsph 210,cfg_gamepad_btn_selected,1584,187+53+(%cfg_temp2*2)+%cfg_height
+	lsp 211,cfg_keyboard_btn,1347,187+53+(%cfg_temp2*2)+%cfg_height
+	lsp 212,cfg_gamepad_btn,1584,187+53+(%cfg_temp2*2)+%cfg_height
+	if %interface_kb_dual = 0 vsp 209,1 : vsp 210,0
+	if %interface_kb_dual = 1 vsp 209,0 : vsp 210,1
+return
+
+*settings_menu_anim
+	if %cfg_menu_anim = 0 lsp 213,cfg_switch_btn,1465,187+53+(%cfg_temp2*3)+%cfg_height : return
+	if %cfg_menu_anim = 1 lsp 213,cfg_switch_btn_selected,1465,187+53+(%cfg_temp2*3)+%cfg_height : return
+return
+
+*settings_image_cache
+	if %enable_cache = 0 lsp 214,cfg_switch_btn,1465,187+53+(%cfg_temp2*4)+%cfg_height : return
+	if %enable_cache = 1 lsp 214,cfg_switch_btn_selected,1465,187+53+(%cfg_temp2*4)+%cfg_height : return
+return
+
+*settings_wheel_hides_txt
+	if %hide_textbox = 0 lsp 215,cfg_switch_btn,1465,187+53+(%cfg_temp2*5)+%cfg_height : return
+	if %hide_textbox = 1 lsp 215,cfg_switch_btn_selected,1465,187+53+(%cfg_temp2*5)+%cfg_height : return
+return
+
+*settings_textspeed
+	lsp 204,cfg_slider,1030+36,187+117 ;width 600 - usable 564 - 1px = 0.18%
+
+		if %textspeed = 0 mov %cfg_txt_speed_cursor_x,1048+36-22 : jumpf
+		if %textspeed = 1 mov %cfg_txt_speed_cursor_x,1048+36+51-22 : jumpf
+		if %textspeed = 2 mov %cfg_txt_speed_cursor_x,1048+36+(51*2)-22 : jumpf
+		if %textspeed = 3 mov %cfg_txt_speed_cursor_x,1048+36+(51*3)-22 : jumpf
+		if %textspeed = 4 mov %cfg_txt_speed_cursor_x,1048+36+(51*4)-22 : jumpf
+		if %textspeed = 5 mov %cfg_txt_speed_cursor_x,1048+36+(51*5)-22 : jumpf
+		if %textspeed = 6 mov %cfg_txt_speed_cursor_x,1048+36+(51*6)-22 : jumpf
+		if %textspeed = 7 mov %cfg_txt_speed_cursor_x,1048+36+(51*7)-22 : jumpf
+		if %textspeed = 8 mov %cfg_txt_speed_cursor_x,1048+36+(51*8)-22 : jumpf
+		if %textspeed = 9 mov %cfg_txt_speed_cursor_x,1048+36+(51*9)-22 : jumpf
+		if %textspeed = 10 mov %cfg_txt_speed_cursor_x,1048+36+(51*10)-20 : jumpf
+		~
+
+	lsp 203,cfg_slider_cursor,%cfg_txt_speed_cursor_x,187+117-20 ;1048+36-22 starting x pos
+
+	mov %textspeed2,%textspeed
+
+	itoa $test_var,%textspeed2
+	debug_str $test_var
+
+	gosub *update_textspeed
+return
+
+*settings_automode_speed2
+	automode_time %automodespeed
+	gosub *settings_automode_speed
+return
+
+*settings_automode_speed
+	lsp 206,cfg_slider,1030+36,187+117+106 ;width 600 - usable 564 - 1px = 0.18%
+
+		if %automodespeed = -116 mov %cfg_automode_speed_cursor_x,1048+36-22 : jumpf
+		if %automodespeed = -90 mov %cfg_automode_speed_cursor_x,1048+36+51-22 : jumpf
+		if %automodespeed = -70 mov %cfg_automode_speed_cursor_x,1048+36+(51*2)-22 : jumpf
+		if %automodespeed = -55 mov %cfg_automode_speed_cursor_x,1048+36+(51*3)-22 : jumpf
+		if %automodespeed = -43 mov %cfg_automode_speed_cursor_x,1048+36+(51*4)-22 : jumpf
+		if %automodespeed = -33 mov %cfg_automode_speed_cursor_x,1048+36+(51*5)-22 : jumpf
+		if %automodespeed = -26 mov %cfg_automode_speed_cursor_x,1048+36+(51*6)-22 : jumpf
+		if %automodespeed = -20 mov %cfg_automode_speed_cursor_x,1048+36+(51*7)-22 : jumpf
+		if %automodespeed = -16 mov %cfg_automode_speed_cursor_x,1048+36+(51*8)-22 : jumpf
+		if %automodespeed = -12 mov %cfg_automode_speed_cursor_x,1048+36+(51*9)-22 : jumpf
+		if %automodespeed = -9  mov %cfg_automode_speed_cursor_x,1048+36+(51*10)-20 : jumpf
+		~
+
+	lsp 205,cfg_slider_cursor,%cfg_automode_speed_cursor_x,187+117-20+106  ;1048+36-22 starting x pos
+return
+
+;SETTINGS SUBS END =============================================================================================
+	
+
+

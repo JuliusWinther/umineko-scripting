@@ -1,0 +1,1832 @@
+
+*settings
+	;stopwatch "config start"
+ 	
+ 	;9th for chiru		
+	trophy_open 10-%CHIRU_MODE
+	mov %mcurrent_page,1
+	mov %meffect_right,0
+	mov %meffect_left,0
+	mov %mmove_right,0
+	mov %mmove_left,0
+	
+	gosub *update_textspeed
+
+	getscriptnum %Free5
+
+	for %Free2 = 0 to %Free5-1
+		getscriptpath $Free3,%Free2,1
+		if localisation == $Free3 mov %Free4,%Free2 ;: debug_var %Free4,"curent language num"
+	next
+	getscriptpath $Free3,%Free4,1
+	mov %Free5,%Free4
+	dec %Free2
+
+	getrenderernum %Free9
+	for %Free6 = 0 to %Free9-1
+		getrenderername $Free7,%Free6
+	next
+	getrenderername $Free7,-1 ;save current renderer in $Free7
+	mov %Free9,%Free8
+	dec %Free6
+
+	border_pad_push 4
+
+*settings_elems
+
+	lsp 105,config_caption,20,0
+	lsp 451,":c;graphics\menu\config\bg_config.png",0,0
+	lbsp2 config_main_lsp2,config_main,3840,540,100,100,0 ;Needs to be placed at the virtual center
+	lsp 440,":a;graphics\menu\SystemBtn\black_buttons.png",0,0
+	;FIXME: lsp 100,":a;graphics\menu_en\config\gamepad_buttons.png",862,990
+	
+	
+	;page 1
+	lsp 301,set_game_language,135,226 ;1
+	lsp 302,set_bgm_title_language,135,313 ;2
+	lsp 319,set_render,135,400 ;3
+	lsp 303,set_window_size,135,487 ;4
+	lsp 317,set_display_mode,135,574 ;5
+	lsp 304,set_video_resolution,135,661 ;6
+	lsp 305,set_interface,135,748 ;7
+	lsp 306,set_object_caching,135,835 ;8
+	;page 2
+	lsp 307,set_bgm_volume,135+1920,226 
+	lsp 308,set_effect_volume,135+1920,313 ;+87
+	lsp 309,set_voice_volume,135+1920,400
+	;page 3
+	lsp 310,set_rumble_strength,135+3840,226 
+	lsp 311,set_text_speed,135+3840,313 ;+87
+	lsp 318,set_automode_speed,135+3840,400
+	;lsp 312,set_textbox_window,135+3840,487
+	lsp 313,set_lip_synchronization,135+3840,574
+	lsp 314,set_bgm_chapter_display,135+3840,661
+	lsp 315,set_song_subtitles,135+3840,748
+	;lsp 316,set_alchemist_wording_edits,135+3840,835
+
+	;Config - page 4 Config Texts - W_CUSTOM
+	lsp 371,config_sprite_selector_text,135+5760,350 
+	lsp 312,set_textbox_window,135+5760,515
+	lsp 378,set_textbox_window,135+5760,748
+	;End Custom
+
+	lsp 103,set_exit,0,0
+	lsp 101,set_back,0,0
+	lsp 102,set_next,0,0
+	lsp 104,set_reset,0,0
+	
+	align_buttons_l 104
+	align_buttons_r 103,102,101
+
+		;page 1
+		gosub *settings_bgm_title_language
+		gosub *settings_interface_kb_dual
+		gosub *settings_game_language
+		gosub *settings_image_cache
+		gosub *settings_video_res
+		gosub *settings_window_size
+		gosub *settings_full_window_auto
+		gosub *settings_render
+		
+		;page 2
+		mov %mcoord_add,1920 ;additional coordinates for buttons
+		gosub *settings_bgm_vol
+		gosub *settings_sfx_vol
+		gosub *settings_voice_vol		
+		if %CHIRU_MODE = 0 gosub *settings_voice_vol_chars
+		if %CHIRU_MODE = 1 gosub *settings_voice_vol_chars_chiru
+		
+		;page 3
+		mov %mcoord_add,3840 ;additional coordinates for buttons
+		gosub *settings_op_ed_song_subtitles ;7
+		gosub *settings_lips ;5
+		gosub *settings_textspeed ;2
+		;gosub *settings_textbox ;4
+		gosub *settings_rumble_strength ;1
+		gosub *settings_bgm_chapter_display ;6
+		gosub *settings_automode_speed ;3
+
+		;Config - page 4 - W_CUSTOM
+		mov %mcoord_add,5760 ;additional coordinates for buttons
+		gosub *settings_sprite_type ;3
+		gosub *settings_textbox ;4
+		gosub *settings_bg_type ;2
+		;End Custom
+
+		mov %mcoord_add,0 ;additional coordinates for buttons
+		;vsp 100,0
+		;vsp 371,0
+		;vsp 372,0
+
+		lsp 2,":c;graphics\colour\black.png",0,0
+		print 10,500
+		_csp 2
+		print 10,100
+
+		;stopwatch "config end"
+
+*settings_loop
+	; We are to redefine buttons after every action
+		
+	btndef ""
+	
+	spbtn 101,371
+	spbtn 102,372
+	spbtn 103,373
+	spbtn 104,374
+
+	;Voice vol button
+	spbtn 201,1
+	spbtn 202,2
+	spbtn 203,3
+	spbtn 204,4
+	spbtn 205,5
+	spbtn 206,6
+	spbtn 207,7
+	spbtn 208,8
+	spbtn 209,9
+	spbtn 210,10
+	spbtn 211,11
+	;End
+
+	;Effect vol button
+	spbtn 212,12
+	spbtn 213,13
+	spbtn 214,14
+	spbtn 215,15
+	spbtn 216,16
+	spbtn 217,17
+	spbtn 218,18
+	spbtn 219,19
+	spbtn 220,20
+	spbtn 221,21
+	spbtn 222,22
+	;End
+
+	;BGM vol button
+	spbtn 223,23
+	spbtn 224,24
+	spbtn 225,25
+	spbtn 226,26
+	spbtn 227,27
+	spbtn 228,28
+	spbtn 229,29
+	spbtn 230,30
+	spbtn 231,31
+	spbtn 232,32
+	spbtn 233,33
+	;End
+
+	;vol all button
+	spbtn 234,34
+	spbtn 235,35
+	spbtn 236,36
+	spbtn 237,37
+	spbtn 238,38
+	spbtn 239,39
+	spbtn 240,40
+	spbtn 241,41
+	spbtn 242,42
+	spbtn 243,43
+	spbtn 244,44
+	;End
+
+	;1080p or 720p button
+	spbtn 245,45
+	spbtn 246,46
+	;End
+
+	;Type button
+	spbtn 247,47
+	spbtn 248,48
+	spbtn 249,49
+	spbtn 250,50
+	;End
+
+	;Speed button
+	spbtn 251,51
+	spbtn 252,52
+	spbtn 253,53
+	spbtn 254,54
+	spbtn 255,55
+	spbtn 256,56
+	spbtn 257,57
+	spbtn 258,58
+	spbtn 259,59
+	spbtn 260,60
+	spbtn 261,61
+	;End
+
+	;Moving lips button
+	spbtn 264,64
+	spbtn 265,65
+	;end
+
+	;Image cache button
+	spbtn 266,66
+	spbtn 267,67
+	;end
+	
+	;Game language button
+	spbtn 380,68
+	spbtn 381,69
+	;end
+	
+	;Interface kb dual button
+	spbtn 270,70
+	spbtn 271,71
+	;end
+	
+	;Game render button
+	spbtn 382,72
+	spbtn 383,73
+	;end
+	
+	;Op/Ed song subtitles button
+	spbtn 276,76
+	spbtn 277,77
+	;end
+	
+	;Display mode button
+	spbtn 279,79
+	spbtn 280,80
+	spbtn 281,81
+	;end
+	
+	;Bgm title language button
+	spbtn 282,82
+	spbtn 283,83
+	;end
+	
+	;Rumble strength button
+	spbtn 284,84
+	spbtn 285,85
+	spbtn 286,86
+	spbtn 287,87
+	spbtn 288,88
+	spbtn 289,89
+	spbtn 290,90
+	spbtn 291,91
+	spbtn 292,92
+	spbtn 293,93
+	spbtn 294,94
+	;end
+	
+	;Bgm chapter display button
+	spbtn 295,95
+	spbtn 296,96
+	;end
+	
+	;Window size button
+	spbtn 297,97
+	spbtn 298,98
+	;end
+	
+	;Voice vol chars button
+	spbtn 320,100
+	spbtn 321,101
+	spbtn 322,102
+	spbtn 323,103
+	spbtn 324,104
+	spbtn 325,105
+	spbtn 326,106
+	spbtn 327,107
+	spbtn 328,108
+	spbtn 329,109
+	spbtn 330,110
+	spbtn 331,111
+	spbtn 332,112
+	spbtn 333,113
+	spbtn 334,114
+	spbtn 335,115
+	spbtn 336,116
+	spbtn 337,117
+	spbtn 338,118
+	spbtn 339,119
+	spbtn 340,120
+	spbtn 341,121
+	spbtn 342,122
+	spbtn 343,123
+	spbtn 344,124
+	spbtn 345,125
+	spbtn 346,126
+	spbtn 347,127
+	spbtn 348,128
+	spbtn 349,129
+	spbtn 350,130
+	spbtn 351,131
+	spbtn 352,132
+	spbtn 353,133
+	spbtn 354,134
+	spbtn 355,135
+	spbtn 356,136
+	spbtn 357,137
+	spbtn 358,138
+	spbtn 359,139
+	spbtn 360,140
+	spbtn 361,141
+	spbtn 362,142
+	spbtn 363,143
+	spbtn 364,144
+	spbtn 365,145
+	spbtn 366,146
+	spbtn 367,147
+	spbtn 368,148
+	spbtn 369,149
+	spbtn 370,150
+	;end
+
+	;Automode button
+	spbtn 190,160
+	spbtn 191,161
+	spbtn 192,162
+	spbtn 193,163
+	spbtn 194,164
+	spbtn 195,165
+	spbtn 196,166
+	spbtn 197,167
+	spbtn 198,168
+	spbtn 199,169
+	spbtn 200,170
+	;End
+
+	;Config - Set custom buttons up - W_CUSTOM
+	;Sprite Selector
+	spbtn 372,171
+	spbtn 374,172
+	spbtn 375,173
+	;Background Selector
+	spbtn 376,174
+	spbtn 377,175
+	;End Custom
+	
+	btnwait %BtnRes
+
+	if %BtnRes = -1 goto *settings_end ;Exit by right-clicking
+	if %BtnRes = -10 goto *settings_end ;Exit by ESC
+	if %BtnRes = 373 goto *settings_end 
+	if %BtnRes = 374 gosub *settings_full_reset
+	if %BtnRes = 0  goto *settings_loop
+	if %BtnRes=-2  dec %mcurrent_page : gosub *settings_move
+	if %BtnRes=-3  inc %mcurrent_page : gosub *settings_move
+	
+	if %BtnRes = 371 dec %mcurrent_page : gosub *settings_move
+	if %BtnRes = 372 inc %mcurrent_page : gosub *settings_move
+	
+	;Voice vol chars button
+	if %CHIRU_MODE == 0 gosub *settings_voice_chr_rondo
+	if %CHIRU_MODE == 1 gosub *settings_voice_chr_chiru
+	;end
+	
+	;Voice vol button
+	if %BtnRes = 1 mov %dlg_vol,100 : voice_vol : gosub *settings_voice_vol
+	if %BtnRes = 2 mov %dlg_vol,90 : voice_vol : gosub *settings_voice_vol
+	if %BtnRes = 3 mov %dlg_vol,80 : voice_vol : gosub *settings_voice_vol
+	if %BtnRes = 4 mov %dlg_vol,70 : voice_vol : gosub *settings_voice_vol
+	if %BtnRes = 5 mov %dlg_vol,60 : voice_vol : gosub *settings_voice_vol
+	if %BtnRes = 6 mov %dlg_vol,50 : voice_vol : gosub *settings_voice_vol
+	if %BtnRes = 7 mov %dlg_vol,40 : voice_vol : gosub *settings_voice_vol
+	if %BtnRes = 8 mov %dlg_vol,30 : voice_vol : gosub *settings_voice_vol
+	if %BtnRes = 9 mov %dlg_vol,20 : voice_vol : gosub *settings_voice_vol
+	if %BtnRes = 10 mov %dlg_vol,10 : voice_vol : gosub *settings_voice_vol
+	if %BtnRes = 11 mov %dlg_vol,0 : voice_vol : gosub *settings_voice_vol
+	;End
+
+	;Effect vol button
+	if %BtnRes = 12 mov %sfx_vol,100 : effect_vol : gosub *settings_sfx_vol
+	if %BtnRes = 13 mov %sfx_vol,90 : effect_vol : gosub *settings_sfx_vol
+	if %BtnRes = 14 mov %sfx_vol,80 : effect_vol : gosub *settings_sfx_vol
+	if %BtnRes = 15 mov %sfx_vol,70 : effect_vol : gosub *settings_sfx_vol
+	if %BtnRes = 16 mov %sfx_vol,60 : effect_vol : gosub *settings_sfx_vol
+	if %BtnRes = 17 mov %sfx_vol,50 : effect_vol : gosub *settings_sfx_vol
+	if %BtnRes = 18 mov %sfx_vol,40 : effect_vol : gosub *settings_sfx_vol
+	if %BtnRes = 19 mov %sfx_vol,30 : effect_vol : gosub *settings_sfx_vol
+	if %BtnRes = 20 mov %sfx_vol,20 : effect_vol : gosub *settings_sfx_vol
+	if %BtnRes = 21 mov %sfx_vol,10 : effect_vol : gosub *settings_sfx_vol
+	if %BtnRes = 22 mov %sfx_vol,0 : effect_vol : gosub *settings_sfx_vol
+	;End
+
+	;BGM vol button
+	if %BtnRes = 23 mov %bgm_vol,100 : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	if %BtnRes = 24 mov %bgm_vol,90 : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	if %BtnRes = 25 mov %bgm_vol,80 : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	if %BtnRes = 26 mov %bgm_vol,70 : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	if %BtnRes = 27 mov %bgm_vol,60 : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	if %BtnRes = 28 mov %bgm_vol,50 : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	if %BtnRes = 29 mov %bgm_vol,40 : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	if %BtnRes = 30 mov %bgm_vol,30 : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	if %BtnRes = 31 mov %bgm_vol,20 : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	if %BtnRes = 32 mov %bgm_vol,10 : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	if %BtnRes = 33 mov %bgm_vol,0  : vol_bgm %bgm_current_vol : gosub *settings_bgm_vol
+	;End
+
+	;1080p or 720p button
+	if %BtnRes = 46 mov %video_res,0 : gosub *settings_video_res
+	if %BtnRes = 45 mov %video_res,1 : gosub *settings_video_res
+	;End
+
+	;Moving lips button
+	if %BtnRes = 64 mov %animated_lips,1 : gosub *settings_lips
+	if %BtnRes = 65 mov %animated_lips,0 : lips_channel 0,"non" : lips_channel 1,"non" : lips_channel 2,"non" : lips_channel 43,"non" : lips_channel 44,"non" : lips_channel 45,"non" : lips_channel 46,"non" : gosub *settings_lips
+	;end
+
+	;Image cache button
+	if %BtnRes = 66 mov %enable_cache,1 : gosub *settings_image_cache
+	if %BtnRes = 67 mov %enable_cache,0 : clear_cache_img 1 : clear_cache_img 2 : clear_cache_snd 1 : clear_cache_snd 2 : gosub *settings_image_cache
+	;end
+
+	;Type button
+	if %BtnRes = 47 mov %msgwnd_type,2 : gosub *settings_textbox
+	if %BtnRes = 48 mov %msgwnd_type,1 : gosub *settings_textbox
+	if %BtnRes = 49 mov %msgwnd_type,0 : gosub *settings_textbox
+	if %BtnRes = 50 mov %msgwnd_type,3 : gosub *settings_textbox
+	;End
+
+	;Config - Sprite Selector Button Effect - W_CUSTOM
+	if %BtnRes = 171 mov $sprite_folder_name,"sprites2" : gosub *settings_sprite_type : gosub *reload_slots
+	if %BtnRes = 172 mov $sprite_folder_name,"sprites3" : gosub *settings_sprite_type : gosub *reload_slots
+	if %BtnRes = 173 mov $sprite_folder_name,"sprites" : gosub *settings_sprite_type : gosub *reload_slots
+
+	if %BtnRes == 174 mov $bg_folder_name,"backgrounds2" : gosub *settings_bg_type : gosub *reload_slots
+	if %BtnRes == 175 mov $bg_folder_name,"backgrounds" : gosub *settings_bg_type : gosub *reload_slots
+	;End Custom
+
+	;Speed button
+	if %BtnRes = 51 mov %textspeed2,0 : gosub *settings_textspeed
+	if %BtnRes = 52 mov %textspeed2,1 : gosub *settings_textspeed
+	if %BtnRes = 53 mov %textspeed2,2 : gosub *settings_textspeed
+	if %BtnRes = 54 mov %textspeed2,3 : gosub *settings_textspeed
+	if %BtnRes = 55 mov %textspeed2,4 : gosub *settings_textspeed
+	if %BtnRes = 56 mov %textspeed2,5 : gosub *settings_textspeed
+	if %BtnRes = 57 mov %textspeed2,6 : gosub *settings_textspeed
+	if %BtnRes = 58 mov %textspeed2,7 : gosub *settings_textspeed
+	if %BtnRes = 59 mov %textspeed2,8 : gosub *settings_textspeed
+	if %BtnRes = 60 mov %textspeed2,9 : gosub *settings_textspeed
+	if %BtnRes = 61 mov %textspeed2,10 : gosub *settings_textspeed
+	;End
+	
+	;automode speed button
+	;-116, -90, -70, -55, -43, -33, -26, -20, -16, -12, -9
+	if %BtnRes = 160 mov %automodespeed,-116 : gosub *settings_automode_speed2
+	if %BtnRes = 161 mov %automodespeed,-90 : gosub *settings_automode_speed2
+	if %BtnRes = 162 mov %automodespeed,-70 : gosub *settings_automode_speed2
+	if %BtnRes = 163 mov %automodespeed,-55 : gosub *settings_automode_speed2
+	if %BtnRes = 164 mov %automodespeed,-43 : gosub *settings_automode_speed2
+	if %BtnRes = 165 mov %automodespeed,-33 : gosub *settings_automode_speed2
+	if %BtnRes = 166 mov %automodespeed,-26 : gosub *settings_automode_speed2
+	if %BtnRes = 167 mov %automodespeed,-20 : gosub *settings_automode_speed2
+	if %BtnRes = 168 mov %automodespeed,-16 : gosub *settings_automode_speed2
+	if %BtnRes = 169 mov %automodespeed,-12 : gosub *settings_automode_speed2
+	if %BtnRes = 170 mov %automodespeed,-9 : gosub *settings_automode_speed2
+	;end
+	
+	;Game language button
+	if %BtnRes != 68 jumpf ;left
+		if %Free5 <= 0 getscriptnum %Free5
+		dec %Free5
+		goto *settings_game_language2
+	~
+	if %BtnRes != 69 jumpf ;right
+		if %Free5 >= %Free2 mov %Free5,-1
+		inc %Free5
+		goto *settings_game_language2
+		
+		*settings_game_language2
+			getscriptpath $Free4,%Free5
+			getscriptpath $Free3,%Free5,1
+			operate_config write,$Free4,"game-script"
+			operate_config unset,"root"
+			operate_config save 
+			lsp 373,set_restarted_apply,0,910
+		gosub *settings_game_language
+	~
+	;end
+	
+	;Interface kb dual button
+	if %BtnRes != 70 jumpf
+	vsp 100,0
+	vsp 371,1
+	vsp 372,1
+	mov %interface_kb_dual,0 : gosub *settings_interface_kb_dual
+	~
+	if %BtnRes != 71 jumpf
+	vsp 371,0
+	vsp 372,0
+	vsp 100,1
+	mov %interface_kb_dual,1 : gosub *settings_interface_kb_dual
+	~
+	;end
+	
+	;Op/Ed song subtitles button
+	if %BtnRes != 76 jumpf
+		if %op_ed_song_subtitles = 1 mov %op_ed_song_subtitles,5
+		dec %op_ed_song_subtitles : gosub *settings_op_ed_song_subtitles
+	~	
+	if %BtnRes != 77 jumpf
+		if %op_ed_song_subtitles = 4 mov %op_ed_song_subtitles,0
+		inc %op_ed_song_subtitles : gosub *settings_op_ed_song_subtitles
+	~
+	;end
+	
+	;Display mode button
+	if %full_window_auto = 1 jumpf	
+		if %BtnRes != 79 jumpf 
+			operate_config unset,"fullscreen"
+			operate_config write,"noval","window"
+			operate_config write,"noval","scale"
+			operate_config save
+			menu_window
+			mov %full_window_auto,1
+			gosub *settings_full_window_auto
+	~
+	if %full_window_auto = 2 jumpf
+		if %BtnRes != 80 jumpf
+			operate_config unset,"window"
+			operate_config write,"noval","fullscreen"
+			operate_config write,"noval","scale"
+			operate_config save
+			menu_full
+			mov %full_window_auto,2
+			gosub *settings_full_window_auto
+	~
+	if %full_window_auto = 0 jumpf
+		if %BtnRes != 81 jumpf
+			operate_config unset,"fullscreen"
+			operate_config unset,"window"
+			operate_config write,"noval","scale"
+			operate_config save
+			lsp 373,set_restarted_apply,0,910
+			mov %full_window_auto,0
+			gosub *settings_full_window_auto
+	~
+	;end
+	
+	;Bgm title language button
+	if %BtnRes != 82 jumpf
+		if %bgm_title_language = 1 mov %bgm_title_language,5
+		;spt xpos,278,-100,1000,3
+		;click
+		dec %bgm_title_language : gosub *settings_bgm_title_language
+	~
+	if %BtnRes != 83 jumpf
+		if %bgm_title_language = 4 mov %bgm_title_language,0
+		inc %bgm_title_language : gosub *settings_bgm_title_language
+	~
+	;end
+	
+	;Rumble strength button
+	if %BtnRes = 84 mov %rumble_strength,0 : gosub *settings_rumble_strength : rumble 63,500
+	if %BtnRes = 85 mov %rumble_strength,4 : gosub *settings_rumble_strength : rumble 63,500
+	if %BtnRes = 86 mov %rumble_strength,8 : gosub *settings_rumble_strength : rumble 63,500
+	if %BtnRes = 87 mov %rumble_strength,12 : gosub *settings_rumble_strength : rumble 63,500
+	if %BtnRes = 88 mov %rumble_strength,16 : gosub *settings_rumble_strength : rumble 63,500
+	if %BtnRes = 89 mov %rumble_strength,20 : gosub *settings_rumble_strength : rumble 63,500
+	if %BtnRes = 90 mov %rumble_strength,26 : gosub *settings_rumble_strength : rumble 63,500
+	if %BtnRes = 91 mov %rumble_strength,32 : gosub *settings_rumble_strength : rumble 63,500
+	if %BtnRes = 92 mov %rumble_strength,38 : gosub *settings_rumble_strength : rumble 63,500
+	if %BtnRes = 93 mov %rumble_strength,44 : gosub *settings_rumble_strength : rumble 63,500
+	if %BtnRes = 94 mov %rumble_strength,50 : gosub *settings_rumble_strength : rumble 63,500
+	;end
+	
+	;Bgm chapter display button
+	if %BtnRes = 95 mov %bgm_chapter_display,1 : gosub *settings_bgm_chapter_display
+	if %BtnRes = 96 mov %bgm_chapter_display,0 : gosub *settings_bgm_chapter_display
+	;end
+	
+	;Window size button
+
+	if %BtnRes != 97 jumpf ;<
+		if $window_size = "1280" mov $window_size,"2560" : goto *settings_window_size2
+		if $window_size = "1366" mov $window_size,"1280" : goto *settings_window_size2
+		if $window_size = "1440" mov $window_size,"1366" : goto *settings_window_size2
+		if $window_size = "1600" mov $window_size,"1440" : goto *settings_window_size2
+		if $window_size = "1920" mov $window_size,"1600" : goto *settings_window_size2
+		if $window_size = "2560" mov $window_size,"1920" : goto *settings_window_size2
+		;For Custom
+		mov $window_size,"1920" : goto *settings_window_size2
+	~
+	if %BtnRes != 98 jumpf ;>
+		if $window_size = "2560" mov $window_size,"1280" : goto *settings_window_size2
+		if $window_size = "1920" mov $window_size,"2560" : goto *settings_window_size2
+		if $window_size = "1600" mov $window_size,"1920" : goto *settings_window_size2
+		if $window_size = "1440" mov $window_size,"1600" : goto *settings_window_size2
+		if $window_size = "1366" mov $window_size,"1440" : goto *settings_window_size2
+		if $window_size = "1280" mov $window_size,"1366" : goto *settings_window_size2
+		;For Custom
+		mov $window_size,"1920" : goto *settings_window_size2
+
+		*settings_window_size2
+			operate_config write,$window_size,"window-width"
+			operate_config save
+			lsp 373,set_restarted_apply,0,910
+			gosub *settings_window_size
+	~
+	;end
+	
+	;Render button
+	if %BtnRes != 72 jumpf ;left
+		if %Free9 <= 0 getrenderernum %Free9
+		dec %Free9
+		goto *settings_render2
+	~
+	if %BtnRes != 73 jumpf ;right
+		getrenderernum %Free6
+		dec %Free6
+		if %Free9 < 0 mov %Free9,0
+		if %Free9 >= %Free6 mov %Free9,-1
+		inc %Free9
+		goto *settings_render2
+
+		*settings_render2
+			getrenderername $Free7,%Free9
+			operate_config write,$Free7,"prefer-renderer"
+			operate_config unset,"root"
+			operate_config save
+			lsp 373,set_restarted_apply,0,910
+			gosub *settings_render
+	~
+	;end
+	
+	goto *settings_loop
+	
+*settings_move
+
+;Original Edited - ;Config - Edited Values - W_CUSTOM
+if %mcurrent_page!=1 jumpf ;page (1)
+	aspt2 xpos,config_main_lsp2,3840,1000,3 ;This line always indicates the virtual center of the image
+if %mmove_right!=1 jumpf ;From page (2)
+	for %Free1 = 190 to 384
+		spt xpos,%Free1,1920,1000,3
+		spt2 xpos,%Free1,1920,1000,3
+	next
+	mov %mmove_right,0
+	mov %mmove_left,0
+~
+		
+if %mcurrent_page!=5 jumpf ;page (1)
+	aspt2 xpos,config_main_lsp2,3840,1000,3
+if %mmove_left!=1 jumpf
+	for %Free1 = 190 to 384 ;From page (4)
+		spt xpos,%Free1,5760,1000,3
+		spt2 xpos,%Free1,5760,1000,3
+	next
+	mov %mmove_right,0
+	mov %mmove_left,0
+	mov %mcurrent_page,1
+~
+
+if %mcurrent_page!=2 jumpf ;page (2)
+	aspt2 xpos,config_main_lsp2,1920,1000,3
+if %mmove_right!=0 jumpf ;From page (1)
+	for %Free1 = 190 to 384
+		spt xpos,%Free1,-1920,1000,3
+		spt2 xpos,%Free1,-1920,1000,3
+	next
+	mov %mmove_right,1
+~
+if %mmove_right!=2 || %mcurrent_page==4 jumpf ;From page (3)
+	for %Free1 = 190 to 384
+		spt xpos,%Free1,1920,1000,3
+		aspt2 xpos,%Free1,1920,1000,3
+	next
+	mov %mmove_right,1
+~
+;End Custom
+
+;Config - Add new option page - W_CUSTOM
+if %mcurrent_page!=3 jumpf ;page (3)
+	aspt2 xpos,config_main_lsp2,0,1000,3
+if %mmove_right!=1 jumpf ;From page (2)
+	for %Free1 = 190 to 384
+		spt xpos,%Free1,-1920,1000,3
+		spt2 xpos,%Free1,-1920,1000,3
+	next
+	mov %mmove_right,2
+~
+if %mmove_right!=3 jumpf ;From page (4)
+	for %Free1 = 190 to 384
+		spt xpos,%Free1,1920,1000,3
+		aspt2 xpos,%Free1,1920,1000,3
+	next
+	mov %mmove_right,2
+~
+;End Custom
+
+;Original Edited - ;Config - Edited - W_CUSTOM
+if %mcurrent_page!=4 jumpf ;page (4)
+	aspt2 xpos,config_main_lsp2,-1920,1000,3
+if %mmove_right!=2 jumpf ;From page (3)
+	for %Free1 = 190 to 384
+		spt xpos,%Free1,-1920,1000,3
+		spt2 xpos,%Free1,-1920,1000,3
+	next
+	mov %mmove_right,3
+	mov %mmove_left,1
+~
+
+if %mcurrent_page!=0 jumpf ;page (4)
+	aspt2 xpos,config_main_lsp2,-1920,1000,3
+if %mmove_left!=0 jumpf ;From page(1)
+	for %Free1 = 190 to 384
+		spt xpos,%Free1,-5760,1000,3
+		spt2 xpos,%Free1,-5760,1000,3
+	next
+	mov %mmove_right,3
+	mov %mmove_left,1
+	mov %mcurrent_page,4
+~
+;End Custom
+
+; might need a very slight wait if the rest move longer, that is not expected though
+sptwait2 xpos,config_main_lsp2
+
+return
+
+*settings_voice_chr_rondo
+	if %BtnRes != 100 jumpf
+		if %vv_cla = 1 mov %vv_cla,2:goto *settings_vv_btn
+		if %vv_cla = 2 mov %vv_cla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\02\50800292.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 101 jumpf
+		if %vv_nat = 1 mov %vv_nat,2:goto *settings_vv_btn
+		if %vv_nat = 2 mov %vv_nat,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\03\50900927.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 102 jumpf
+		if %vv_jes = 1 mov %vv_jes,2:goto *settings_vv_btn
+		if %vv_jes = 2 mov %vv_jes,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\04\50200034.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 103 jumpf
+		if %vv_eva = 1 mov %vv_eva,2:goto *settings_vv_btn
+		if %vv_eva = 2 mov %vv_eva,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\05\51000334.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 104 jumpf
+		if %vv_hid = 1 mov %vv_hid,2:goto *settings_vv_btn
+		if %vv_hid = 2 mov %vv_hid,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\06\51100191.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 105 jumpf
+		if %vv_geo = 1 mov %vv_geo,2:goto *settings_vv_btn
+		if %vv_geo = 2 mov %vv_geo,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\07\50300029.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 106 jumpf
+		if %vv_rud = 1 mov %vv_rud,2:goto *settings_vv_btn
+		if %vv_rud = 2 mov %vv_rud,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\08\51200233.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 107 jumpf
+		if %vv_kir = 1 mov %vv_kir,2:goto *settings_vv_btn
+		if %vv_kir = 2 mov %vv_kir,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\09\51300152.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 108 jumpf
+		if %vv_but = 1 mov %vv_but,2:goto *settings_vv_btn
+		if %vv_but = 2 mov %vv_but,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\10\40100556.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 109 jumpf
+		if %vv_ros = 1 mov %vv_ros,2:goto *settings_vv_btn
+		if %vv_ros = 2 mov %vv_ros,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\12\51400112.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 110 jumpf
+		if %vv_mar = 1 mov %vv_mar,2:goto *settings_vv_btn
+		if %vv_mar = 2 mov %vv_mar,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\13\50400034.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 111 jumpf
+		if %vv_kin = 1 mov %vv_kin,2:mov %vv_ki2,2:goto *settings_vv_btn
+		if %vv_kin = 2 mov %vv_kin,1:mov %vv_ki2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\01\51500238.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 112 jumpf
+		if %vv_nan = 1 mov %vv_nan,2:goto *settings_vv_btn
+		if %vv_nan = 2 mov %vv_nan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\19\51900077.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 113 jumpf
+		if %vv_gen = 1 mov %vv_gen,2:goto *settings_vv_btn
+		if %vv_gen = 2 mov %vv_gen,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\14\51600110.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 114 jumpf
+		if %vv_kum = 1 mov %vv_kum,2:goto *settings_vv_btn
+		if %vv_kum = 2 mov %vv_kum,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\18\51800076.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 115 jumpf
+		if %vv_goh = 1 mov %vv_goh,2:goto *settings_vv_btn
+		if %vv_goh = 2 mov %vv_goh,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\17\51700095.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 116 jumpf
+		if %vv_sha = 1 mov %vv_sha,2:goto *settings_vv_btn
+		if %vv_sha = 2 mov %vv_sha,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\15\50500065.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 117 jumpf
+		if %vv_kan = 1 mov %vv_kan,2:goto *settings_vv_btn
+		if %vv_kan = 2 mov %vv_kan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\16\50600081.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 118 jumpf
+		if %vv_bea = 1 mov %vv_bea,2:mov %vv_be2,2:mov %vv_be3,2:goto *settings_vv_btn
+		if %vv_bea = 2 mov %vv_bea,1:mov %vv_be2,1:mov %vv_be3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\27\20700021.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 119 jumpf
+		if %vv_ber = 1 mov %vv_ber,2:goto *settings_vv_btn
+		if %vv_ber = 2 mov %vv_ber,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\28\92100252.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 120 jumpf
+		if %vv_lam = 1 mov %vv_lam,2:goto *settings_vv_btn
+		if %vv_lam = 2 mov %vv_lam,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\29\52200497.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 121 jumpf
+		if %vv_enj = 1 mov %vv_enj,2:goto *settings_vv_btn
+		if %vv_enj = 2 mov %vv_enj,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\11\42001574.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 122 jumpf
+		if %vv_wal = 1 mov %vv_wal,2:goto *settings_vv_btn
+		if %vv_wal = 2 mov %vv_wal,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\30\53200236.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 123 jumpf
+		if %vv_ev2 = 1 mov %vv_ev2,2:goto *settings_vv_btn
+		if %vv_ev2 = 2 mov %vv_ev2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\34\33300003.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 124 jumpf
+		if %vv_ron = 1 mov %vv_ron,2:goto *settings_vv_btn
+		if %vv_ron = 2 mov %vv_ron,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\31\53100157.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 125 jumpf
+		if %vv_rg1 = 1 mov %vv_rg1,2:goto *settings_vv_btn
+		if %vv_rg1 = 2 mov %vv_rg1,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\38\32300041.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 126 jumpf
+		if %vv_rg2 = 1 mov %vv_rg2,2:goto *settings_vv_btn
+		if %vv_rg2 = 2 mov %vv_rg2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\39\32400048.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 127 jumpf
+		if %vv_rg3 = 1 mov %vv_rg3,2:goto *settings_vv_btn
+		if %vv_rg3 = 2 mov %vv_rg3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\40\42500001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 128 jumpf
+		if %vv_rg4 = 1 mov %vv_rg4,2:goto *settings_vv_btn
+		if %vv_rg4 = 2 mov %vv_rg4,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\41\32600026.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 129 jumpf
+		if %vv_rg5 = 1 mov %vv_rg5,2:goto *settings_vv_btn
+		if %vv_rg5 = 2 mov %vv_rg5,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\42\42700385.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 130 jumpf
+		if %vv_rg6 = 1 mov %vv_rg6,2:goto *settings_vv_btn
+		if %vv_rg6 = 2 mov %vv_rg6,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\43\42800016.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 131 jumpf
+		if %vv_rg7 = 1 mov %vv_rg7,2:goto *settings_vv_btn
+		if %vv_rg7 = 2 mov %vv_rg7,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\44\42900001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 132 jumpf
+		if %vv_sak = 1 mov %vv_sak,2:goto *settings_vv_btn
+		if %vv_sak = 2 mov %vv_sak,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\33\44200009.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 133 jumpf
+		if %vv_gap = 1 mov %vv_gap,2:goto *settings_vv_btn
+		if %vv_gap = 2 mov %vv_gap,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\32\53700161.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 134 jumpf
+		if %vv_s00 = 1 mov %vv_s00,2:goto *settings_vv_btn
+		if %vv_s00 = 2 mov %vv_s00,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\37\43600001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 135 jumpf
+		if %vv_s41 = 1 mov %vv_s41,2:goto *settings_vv_btn
+		if %vv_s41 = 2 mov %vv_s41,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\36\43500001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 136 jumpf
+		if %vv_s45 = 1 mov %vv_s45,2:goto *settings_vv_btn
+		if %vv_s45 = 2 mov %vv_s45,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\35\43400001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 137 jumpf
+		if %vv_kas = 1 mov %vv_kas,2:goto *settings_vv_btn
+		if %vv_kas = 2 mov %vv_kas,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\22\44300054.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 138 jumpf
+		if %vv_ama = 1 mov %vv_ama,2:goto *settings_vv_btn
+		if %vv_ama = 2 mov %vv_ama,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\20\43000047.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 139 jumpf
+		if %vv_oko = 1 mov %vv_oko,2:goto *settings_vv_btn
+		if %vv_oko = 2 mov %vv_oko,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\21\44100146.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 140 jumpf
+		if %vv_ku2 = 1 mov %vv_ku2,2:goto *settings_vv_btn
+		if %vv_ku2 = 2 mov %vv_ku2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\26\44000020.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 141 jumpf
+		if %vv_pro = 1 mov %vv_pro,2:goto *settings_vv_btn
+		if %vv_pro = 2 mov %vv_pro,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\23\44400089.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 142 jumpf
+		if %vv_kaw = 1 mov %vv_kaw,2:goto *settings_vv_btn
+		if %vv_kaw = 2 mov %vv_kaw,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\24\43800106.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 143 jumpf
+		if %vv_na2 = 1 mov %vv_na2,2:goto *settings_vv_btn
+		if %vv_na2 = 2 mov %vv_na2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\25\43900007.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 144 jumpf
+		if %vv_goa = 1 mov %vv_goa,2:goto *settings_vv_btn
+		if %vv_goa = 2 mov %vv_goa,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\45\yagim2001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 145 jumpf
+		if %vv_99 = 1 mov %vv_99,2:mov %vv_0,2:goto *settings_vv_btn
+		if %vv_99 = 2 mov %vv_99,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\99\anaf1001.ogg":mov %vv_0,1:goto *settings_vv_btn
+	*settings_vv_btn
+		if %CHIRU_MODE = 0 gosub *settings_voice_vol_chars
+		if %CHIRU_MODE = 1 gosub *settings_voice_vol_chars_chiru
+	~
+return
+
+*settings_voice_chr_chiru
+	if %BtnRes != 100 jumpf
+		if %vv_cla = 1 mov %vv_cla,2:goto *settings_vv_btn
+		if %vv_cla = 2 mov %vv_cla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\02\50800292.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 101 jumpf
+		if %vv_nat = 1 mov %vv_nat,2:goto *settings_vv_btn
+		if %vv_nat = 2 mov %vv_nat,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\03\50900927.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 102 jumpf
+		if %vv_jes = 1 mov %vv_jes,2:goto *settings_vv_btn
+		if %vv_jes = 2 mov %vv_jes,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\04\50200034.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 103 jumpf
+		if %vv_eva = 1 mov %vv_eva,2:goto *settings_vv_btn
+		if %vv_eva = 2 mov %vv_eva,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\05\51000334.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 104 jumpf
+		if %vv_hid = 1 mov %vv_hid,2:goto *settings_vv_btn
+		if %vv_hid = 2 mov %vv_hid,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\06\51100191.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 105 jumpf
+		if %vv_geo = 1 mov %vv_geo,2:goto *settings_vv_btn
+		if %vv_geo = 2 mov %vv_geo,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\07\50300029.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 106 jumpf
+		if %vv_rud = 1 mov %vv_rud,2:goto *settings_vv_btn
+		if %vv_rud = 2 mov %vv_rud,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\08\51200233.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 107 jumpf
+		if %vv_kir = 1 mov %vv_kir,2:goto *settings_vv_btn
+		if %vv_kir = 2 mov %vv_kir,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\09\51300152.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 108 jumpf
+		if %vv_but = 1 mov %vv_but,2:goto *settings_vv_btn
+		if %vv_but = 2 mov %vv_but,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\10\40100556.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 109 jumpf
+		if %vv_ros = 1 mov %vv_ros,2:goto *settings_vv_btn
+		if %vv_ros = 2 mov %vv_ros,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\12\51400112.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 110 jumpf
+		if %vv_mar = 1 mov %vv_mar,2:goto *settings_vv_btn
+		if %vv_mar = 2 mov %vv_mar,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\13\50400034.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 111 jumpf
+		if %vv_kin = 1 mov %vv_kin,2:mov %vv_ki2,2:goto *settings_vv_btn
+		if %vv_kin = 2 mov %vv_kin,1:mov %vv_ki2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\01\51500238.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 112 jumpf
+		if %vv_nan = 1 mov %vv_nan,2:goto *settings_vv_btn
+		if %vv_nan = 2 mov %vv_nan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\19\51900077.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 113 jumpf
+		if %vv_gen = 1 mov %vv_gen,2:goto *settings_vv_btn
+		if %vv_gen = 2 mov %vv_gen,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\14\51600110.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 114 jumpf
+		if %vv_kum = 1 mov %vv_kum,2:goto *settings_vv_btn
+		if %vv_kum = 2 mov %vv_kum,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\18\51800076.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 115 jumpf
+		if %vv_goh = 1 mov %vv_goh,2:goto *settings_vv_btn
+		if %vv_goh = 2 mov %vv_goh,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\17\51700095.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 116 jumpf
+		if %vv_sha = 1 mov %vv_sha,2:goto *settings_vv_btn
+		if %vv_sha = 2 mov %vv_sha,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\15\50500065.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 117 jumpf
+		if %vv_kan = 1 mov %vv_kan,2:goto *settings_vv_btn
+		if %vv_kan = 2 mov %vv_kan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\16\50600081.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 118 jumpf
+		if %vv_bea = 1 mov %vv_bea,2:mov %vv_be2,2:mov %vv_be3,2:goto *settings_vv_btn
+		if %vv_bea = 2 mov %vv_bea,1:mov %vv_be2,1:mov %vv_be3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\27\20700021.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 119 jumpf
+		if %vv_ber = 1 mov %vv_ber,2:goto *settings_vv_btn
+		if %vv_ber = 2 mov %vv_ber,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\28\92100252.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 120 jumpf
+		if %vv_eri = 1 mov %vv_eri,2:goto *settings_vv_btn
+		if %vv_eri = 2 mov %vv_eri,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\46\54500010.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 121 jumpf
+		if %vv_lam = 1 mov %vv_lam,2:goto *settings_vv_btn
+		if %vv_lam = 2 mov %vv_lam,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\29\52200497.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 122 jumpf
+		if %vv_enj = 1 mov %vv_enj,2:goto *settings_vv_btn
+		if %vv_enj = 2 mov %vv_enj,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\11\42001574.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 123 jumpf
+		if %vv_wal = 1 mov %vv_wal,2:goto *settings_vv_btn
+		if %vv_wal = 2 mov %vv_wal,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\30\53200236.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 124 jumpf
+		if %vv_ev2 = 1 mov %vv_ev2,2:goto *settings_vv_btn
+		if %vv_ev2 = 2 mov %vv_ev2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\34\33300003.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 125 jumpf
+		if %vv_ron = 1 mov %vv_ron,2:goto *settings_vv_btn
+		if %vv_ron = 2 mov %vv_ron,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\31\53100157.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 126 jumpf
+		if %vv_rg1 = 1 mov %vv_rg1,2:goto *settings_vv_btn
+		if %vv_rg1 = 2 mov %vv_rg1,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\38\32300041.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 127 jumpf
+		if %vv_rg2 = 1 mov %vv_rg2,2:goto *settings_vv_btn
+		if %vv_rg2 = 2 mov %vv_rg2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\39\32400048.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 128 jumpf
+		if %vv_rg3 = 1 mov %vv_rg3,2:goto *settings_vv_btn
+		if %vv_rg3 = 2 mov %vv_rg3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\40\42500001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 129 jumpf
+		if %vv_rg4 = 1 mov %vv_rg4,2:goto *settings_vv_btn
+		if %vv_rg4 = 2 mov %vv_rg4,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\41\32600026.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 130 jumpf
+		if %vv_rg5 = 1 mov %vv_rg5,2:goto *settings_vv_btn
+		if %vv_rg5 = 2 mov %vv_rg5,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\42\42700385.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 131 jumpf
+		if %vv_rg6 = 1 mov %vv_rg6,2:goto *settings_vv_btn
+		if %vv_rg6 = 2 mov %vv_rg6,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\43\42800016.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 132 jumpf
+		if %vv_rg7 = 1 mov %vv_rg7,2:goto *settings_vv_btn
+		if %vv_rg7 = 2 mov %vv_rg7,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\44\42900001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 133 jumpf
+		if %vv_sak = 1 mov %vv_sak,2:goto *settings_vv_btn
+		if %vv_sak = 2 mov %vv_sak,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\33\44200009.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 134 jumpf
+		if %vv_gap = 1 mov %vv_gap,2:goto *settings_vv_btn
+		if %vv_gap = 2 mov %vv_gap,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\32\53700161.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 135 jumpf
+		if %vv_s00 = 1 mov %vv_s00,2:goto *settings_vv_btn
+		if %vv_s00 = 2 mov %vv_s00,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\37\43600001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 136 jumpf
+		if %vv_s41 = 1 mov %vv_s41,2:goto *settings_vv_btn
+		if %vv_s41 = 2 mov %vv_s41,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\36\43500001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 137 jumpf
+		if %vv_s45 = 1 mov %vv_s45,2:goto *settings_vv_btn
+		if %vv_s45 = 2 mov %vv_s45,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\35\43400001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 138 jumpf
+		if %vv_dla = 1 mov %vv_dla,2:goto *settings_vv_btn
+		if %vv_dla = 2 mov %vv_dla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\47\54600002.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 139 jumpf
+		if %vv_cor = 1 mov %vv_cor,2:goto *settings_vv_btn
+		if %vv_cor = 2 mov %vv_cor,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\49\54700056.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 140 jumpf
+		if %vv_ger = 1 mov %vv_ger,2:goto *settings_vv_btn
+		if %vv_ger = 2 mov %vv_ger,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\48\54800049.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 141 jumpf
+		if %vv_zep = 1 mov %vv_zep,2:goto *settings_vv_btn
+		if %vv_zep = 2 mov %vv_zep,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\51\65100042.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 142 jumpf
+		if %vv_fur = 1 mov %vv_fur,2:goto *settings_vv_btn
+		if %vv_fur = 2 mov %vv_fur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\52\65200038.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 143 jumpf
+		if %vv_ama = 1 mov %vv_ama,2:goto *settings_vv_btn
+		if %vv_ama = 2 mov %vv_ama,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\20\43000047.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 144 jumpf
+		if %vv_bu3 = 1 mov %vv_bu3,2:goto *settings_vv_btn
+		if %vv_bu3 = 2 mov %vv_bu3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\56\64900002.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 145 jumpf
+		if %vv_fea = 1 mov %vv_fea,2:mov %vv_fe2,2:goto *settings_vv_btn
+		if %vv_fea = 2 mov %vv_fea,1:mov %vv_fe2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\50\65000057.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 146 jumpf
+		if %vv_wil = 1 mov %vv_wil,2:goto *settings_vv_btn
+		if %vv_wil = 2 mov %vv_wil,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\54\75400183.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 147 jumpf
+		if %vv_rio = 1 mov %vv_rio,2:goto *settings_vv_btn
+		if %vv_rio = 2 mov %vv_rio,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\53\75300002.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 148 jumpf
+		if %vv_cur = 1 mov %vv_cur,2:goto *settings_vv_btn
+		if %vv_cur = 2 mov %vv_cur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\55\75500003.ogg":goto *settings_vv_btn
+		goto *settings_vv_btn
+	~
+	if %BtnRes != 149 jumpf
+		if %vv_goa = 1 mov %vv_goa,2:goto *settings_vv_btn
+		if %vv_goa = 2 mov %vv_goa,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\45\yagim2001.ogg":goto *settings_vv_btn
+	~
+	if %BtnRes != 150 jumpf
+		if %vv_99 = 1 mov %vv_99,2:mov %vv_0,2:goto *settings_vv_btn
+		if %vv_99 = 2 mov %vv_99,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\99\anaf1001.ogg":mov %vv_0,1:goto *settings_vv_btn
+		goto *settings_vv_btn
+	~
+return
+
+*settings_voice_vol
+	;Voice vol
+	notif %dlg_vol = 100 lsp 201,":a/2,0,3;graphics\menu\SystemBtn\circle_100.png",1650+%mcoord_add,405 
+	notif %dlg_vol = 90 lsp 202,":a/2,0,3;graphics\menu\SystemBtn\circle_90.png",1610+%mcoord_add,405 ; x:-40 от 100%
+	notif %dlg_vol = 80 lsp 203,":a/2,0,3;graphics\menu\SystemBtn\circle_80.png",1570+%mcoord_add,405
+	notif %dlg_vol = 70 lsp 204,":a/2,0,3;graphics\menu\SystemBtn\circle_70.png",1530+%mcoord_add,405
+	notif %dlg_vol = 60 lsp 205,":a/2,0,3;graphics\menu\SystemBtn\circle_60.png",1490+%mcoord_add,405
+	notif %dlg_vol = 50 lsp 206,":a/2,0,3;graphics\menu\SystemBtn\circle_50.png",1450+%mcoord_add,405
+	notif %dlg_vol = 40 lsp 207,":a/2,0,3;graphics\menu\SystemBtn\circle_40.png",1410+%mcoord_add,405
+	notif %dlg_vol = 30 lsp 208,":a/2,0,3;graphics\menu\SystemBtn\circle_30.png",1370+%mcoord_add,405
+	notif %dlg_vol = 20 lsp 209,":a/2,0,3;graphics\menu\SystemBtn\circle_20.png",1330+%mcoord_add,405
+	notif %dlg_vol = 10 lsp 210,":a/2,0,3;graphics\menu\SystemBtn\circle_10.png",1290+%mcoord_add,405
+	notif %dlg_vol = 0 lsp 211,":a/2,0,3;graphics\menu\SystemBtn\circle_0.png",1250+%mcoord_add,405
+	if %dlg_vol = 100 lsp 201,":a/2,0,3;graphics\menu\SystemBtn\circle_100_b.png",1650+%mcoord_add,405
+	if %dlg_vol = 90 lsp 202,":a/2,0,3;graphics\menu\SystemBtn\circle_90_b.png",1610+%mcoord_add,405
+	if %dlg_vol = 80 lsp 203,":a/2,0,3;graphics\menu\SystemBtn\circle_80_b.png",1570+%mcoord_add,405
+	if %dlg_vol = 70 lsp 204,":a/2,0,3;graphics\menu\SystemBtn\circle_70_b.png",1530+%mcoord_add,405
+	if %dlg_vol = 60 lsp 205,":a/2,0,3;graphics\menu\SystemBtn\circle_60_b.png",1490+%mcoord_add,405
+	if %dlg_vol = 50 lsp 206,":a/2,0,3;graphics\menu\SystemBtn\circle_50_b.png",1450+%mcoord_add,405
+	if %dlg_vol = 40 lsp 207,":a/2,0,3;graphics\menu\SystemBtn\circle_40_b.png",1410+%mcoord_add,405
+	if %dlg_vol = 30 lsp 208,":a/2,0,3;graphics\menu\SystemBtn\circle_30_b.png",1370+%mcoord_add,405
+	if %dlg_vol = 20 lsp 209,":a/2,0,3;graphics\menu\SystemBtn\circle_20_b.png",1330+%mcoord_add,405
+	if %dlg_vol = 10 lsp 210,":a/2,0,3;graphics\menu\SystemBtn\circle_10_b.png",1290+%mcoord_add,405
+	if %dlg_vol = 0 lsp 211,":a/2,0,3;graphics\menu\SystemBtn\circle_0_b.png",1250+%mcoord_add,405
+	;End
+return
+	
+*settings_sfx_vol
+	;Effect vol
+	notif %sfx_vol = 100 lsp 212,":a/2,0,3;graphics\menu\SystemBtn\circle_100.png",1650+%mcoord_add,325 ; x:-40 от 100% y:-80 от нижней
+	notif %sfx_vol = 90 lsp 213,":a/2,0,3;graphics\menu\SystemBtn\circle_90.png",1610+%mcoord_add,325 
+	notif %sfx_vol = 80 lsp 214,":a/2,0,3;graphics\menu\SystemBtn\circle_80.png",1570+%mcoord_add,325
+	notif %sfx_vol = 70 lsp 215,":a/2,0,3;graphics\menu\SystemBtn\circle_70.png",1530+%mcoord_add,325
+	notif %sfx_vol = 60 lsp 216,":a/2,0,3;graphics\menu\SystemBtn\circle_60.png",1490+%mcoord_add,325
+	notif %sfx_vol = 50 lsp 217,":a/2,0,3;graphics\menu\SystemBtn\circle_50.png",1450+%mcoord_add,325
+	notif %sfx_vol = 40 lsp 218,":a/2,0,3;graphics\menu\SystemBtn\circle_40.png",1410+%mcoord_add,325
+	notif %sfx_vol = 30 lsp 219,":a/2,0,3;graphics\menu\SystemBtn\circle_30.png",1370+%mcoord_add,325
+	notif %sfx_vol = 20 lsp 220,":a/2,0,3;graphics\menu\SystemBtn\circle_20.png",1330+%mcoord_add,325
+	notif %sfx_vol = 10 lsp 221,":a/2,0,3;graphics\menu\SystemBtn\circle_10.png",1290+%mcoord_add,325
+	notif %sfx_vol = 0 lsp 222,":a/2,0,3;graphics\menu\SystemBtn\circle_0.png",1250+%mcoord_add,325
+	if %sfx_vol = 100 lsp 212,":a/2,0,3;graphics\menu\SystemBtn\circle_100_b.png",1650+%mcoord_add,325
+	if %sfx_vol = 90 lsp 213,":a/2,0,3;graphics\menu\SystemBtn\circle_90_b.png",1610+%mcoord_add,325
+	if %sfx_vol = 80 lsp 214,":a/2,0,3;graphics\menu\SystemBtn\circle_80_b.png",1570+%mcoord_add,325
+	if %sfx_vol = 70 lsp 215,":a/2,0,3;graphics\menu\SystemBtn\circle_70_b.png",1530+%mcoord_add,325
+	if %sfx_vol = 60 lsp 216,":a/2,0,3;graphics\menu\SystemBtn\circle_60_b.png",1490+%mcoord_add,325
+	if %sfx_vol = 50 lsp 217,":a/2,0,3;graphics\menu\SystemBtn\circle_50_b.png",1450+%mcoord_add,325
+	if %sfx_vol = 40 lsp 218,":a/2,0,3;graphics\menu\SystemBtn\circle_40_b.png",1410+%mcoord_add,325
+	if %sfx_vol = 30 lsp 219,":a/2,0,3;graphics\menu\SystemBtn\circle_30_b.png",1370+%mcoord_add,325
+	if %sfx_vol = 20 lsp 220,":a/2,0,3;graphics\menu\SystemBtn\circle_20_b.png",1330+%mcoord_add,325
+	if %sfx_vol = 10 lsp 221,":a/2,0,3;graphics\menu\SystemBtn\circle_10_b.png",1290+%mcoord_add,325
+	if %sfx_vol = 0 lsp 222,":a/2,0,3;graphics\menu\SystemBtn\circle_0_b.png",1250+%mcoord_add,325
+	;End
+return
+
+*settings_bgm_vol
+	;BGM vol
+	notif %bgm_vol = 100 lsp 223,":a/2,0,3;graphics\menu\SystemBtn\circle_100.png",1650+%mcoord_add,245 ; x:-40 от 100% y:-80 от нижней
+	notif %bgm_vol = 90 lsp 224,":a/2,0,3;graphics\menu\SystemBtn\circle_90.png",1610+%mcoord_add,245 
+	notif %bgm_vol = 80 lsp 225,":a/2,0,3;graphics\menu\SystemBtn\circle_80.png",1570+%mcoord_add,245
+	notif %bgm_vol = 70 lsp 226,":a/2,0,3;graphics\menu\SystemBtn\circle_70.png",1530+%mcoord_add,245
+	notif %bgm_vol = 60 lsp 227,":a/2,0,3;graphics\menu\SystemBtn\circle_60.png",1490+%mcoord_add,245
+	notif %bgm_vol = 50 lsp 228,":a/2,0,3;graphics\menu\SystemBtn\circle_50.png",1450+%mcoord_add,245
+	notif %bgm_vol = 40 lsp 229,":a/2,0,3;graphics\menu\SystemBtn\circle_40.png",1410+%mcoord_add,245
+	notif %bgm_vol = 30 lsp 230,":a/2,0,3;graphics\menu\SystemBtn\circle_30.png",1370+%mcoord_add,245
+	notif %bgm_vol = 20 lsp 231,":a/2,0,3;graphics\menu\SystemBtn\circle_20.png",1330+%mcoord_add,245
+	notif %bgm_vol = 10 lsp 232,":a/2,0,3;graphics\menu\SystemBtn\circle_10.png",1290+%mcoord_add,245
+	notif %bgm_vol = 0 lsp 233,":a/2,0,3;graphics\menu\SystemBtn\circle_0.png",1250+%mcoord_add,245 ;1385
+	if %bgm_vol = 100 lsp 223,":a/2,0,3;graphics\menu\SystemBtn\circle_100_b.png",1650+%mcoord_add,245
+	if %bgm_vol = 90 lsp 224,":a/2,0,3;graphics\menu\SystemBtn\circle_90_b.png",1610+%mcoord_add,245
+	if %bgm_vol = 80 lsp 225,":a/2,0,3;graphics\menu\SystemBtn\circle_80_b.png",1570+%mcoord_add,245
+	if %bgm_vol = 70 lsp 226,":a/2,0,3;graphics\menu\SystemBtn\circle_70_b.png",1530+%mcoord_add,245
+	if %bgm_vol = 60 lsp 227,":a/2,0,3;graphics\menu\SystemBtn\circle_60_b.png",1490+%mcoord_add,245
+	if %bgm_vol = 50 lsp 228,":a/2,0,3;graphics\menu\SystemBtn\circle_50_b.png",1450+%mcoord_add,245
+	if %bgm_vol = 40 lsp 229,":a/2,0,3;graphics\menu\SystemBtn\circle_40_b.png",1410+%mcoord_add,245
+	if %bgm_vol = 30 lsp 230,":a/2,0,3;graphics\menu\SystemBtn\circle_30_b.png",1370+%mcoord_add,245
+	if %bgm_vol = 20 lsp 231,":a/2,0,3;graphics\menu\SystemBtn\circle_20_b.png",1330+%mcoord_add,245
+	if %bgm_vol = 10 lsp 232,":a/2,0,3;graphics\menu\SystemBtn\circle_10_b.png",1290+%mcoord_add,245
+	if %bgm_vol = 0 lsp 233,":a/2,0,3;graphics\menu\SystemBtn\circle_0_b.png",1250+%mcoord_add,245
+	;End
+return
+
+*settings_chars_refresh
+	if %vv_inc == 0 return ;nothing added
+
+	if %x2 == 0 mov %x2,%vv_inc ;first sprite in a row
+	mov %x3,%vv_inc ;last sprite in a row
+	
+	add %x,95 ;cell width
+	inc %y3
+
+	if %x < %y2*95+%Free1 jumpf
+		;rondo has smaller second row
+		if %CHIRU_MODE = 0 && %y2 == 17 dec %y2 : add %Free1,47
+		mov %x,%Free1
+		add %y,107 ;cell height
+		mov %x2,0
+		mov %x3,0
+		mov %y3,0
+	~
+
+	mov %vv_inc,0
+return
+
+*settings_chars_realign
+	;do not align first line or complete table
+	if %x2 == 0 || %y == 520 return
+	;the line is complete
+	if %x >= %y2*95+%Free1 return
+
+	;deltax = длина_ряда - (ширина_ячейки * (endSp - startSp)) / 2;
+
+	mul %y3,95
+	mov %x,%y2*95-%y3
+	div %x,2
+
+	~
+		if %x2 > %x3 return
+		msp %x2,%x,0
+		inc %x2
+		jumpb
+return
+
+*settings_voice_vol_chars
+	mov %vv_inc,0
+	mov %Free1,135+%mcoord_add
+	mov %x,%Free1
+	mov %y,520
+	mov %y2,17 ;first row has 17
+	mov %x2,0 ;start sprite
+	mov %x3,0 ;end sprite
+	mov %y3,0 ;row sprite count
+
+	if %vv_cla = 1 lsp 320,":c/1,0,3;graphics\chars\chars_kla0.png",%x,%y : mov %vv_inc,320
+	if %vv_cla = 2 lsp 320,":c/1,0,3;graphics\chars\chars_kla0.png",%x,%y,90 : mov %vv_inc,320
+	gosub *settings_chars_refresh
+	if %vv_nat = 1 lsp 321,":c/1,0,3;graphics\chars\chars_nat0.png",%x,%y : mov %vv_inc,321
+	if %vv_nat = 2 lsp 321,":c/1,0,3;graphics\chars\chars_nat0.png",%x,%y,90 : mov %vv_inc,321
+	gosub *settings_chars_refresh
+	if %vv_jes = 1 lsp 322,":c/1,0,3;graphics\chars\chars_jes0.png",%x,%y : mov %vv_inc,322
+	if %vv_jes = 2 lsp 322,":c/1,0,3;graphics\chars\chars_jes0.png",%x,%y,90 : mov %vv_inc,322
+	gosub *settings_chars_refresh
+	if %vv_eva = 1 lsp 323,":c/1,0,3;graphics\chars\chars_eva0.png",%x,%y : mov %vv_inc,323
+	if %vv_eva = 2 lsp 323,":c/1,0,3;graphics\chars\chars_eva0.png",%x,%y,90 : mov %vv_inc,323
+	gosub *settings_chars_refresh
+	if %vv_hid = 1 lsp 324,":c/1,0,3;graphics\chars\chars_hid0.png",%x,%y : mov %vv_inc,324
+	if %vv_hid = 2 lsp 324,":c/1,0,3;graphics\chars\chars_hid0.png",%x,%y,90 : mov %vv_inc,324
+	gosub *settings_chars_refresh
+	if %vv_geo = 1 lsp 325,":c/1,0,3;graphics\chars\chars_geo0.png",%x,%y : mov %vv_inc,325
+	if %vv_geo = 2 lsp 325,":c/1,0,3;graphics\chars\chars_geo0.png",%x,%y,90 : mov %vv_inc,325
+	gosub *settings_chars_refresh
+	if %vv_rud = 1 lsp 326,":c/1,0,3;graphics\chars\chars_rud0.png",%x,%y : mov %vv_inc,326
+	if %vv_rud = 2 lsp 326,":c/1,0,3;graphics\chars\chars_rud0.png",%x,%y,90 : mov %vv_inc,326
+	gosub *settings_chars_refresh
+	if %vv_kir = 1 lsp 327,":c/1,0,3;graphics\chars\chars_kir0.png",%x,%y : mov %vv_inc,327
+	if %vv_kir = 2 lsp 327,":c/1,0,3;graphics\chars\chars_kir0.png",%x,%y,90 : mov %vv_inc,327
+	gosub *settings_chars_refresh
+	if %vv_but = 1 lsp 328,":c/1,0,3;graphics\chars\chars_but0.png",%x,%y : mov %vv_inc,328
+	if %vv_but = 2 lsp 328,":c/1,0,3;graphics\chars\chars_but0.png",%x,%y,90 : mov %vv_inc,328
+	gosub *settings_chars_refresh
+	if %vv_ros = 1 lsp 329,":c/1,0,3;graphics\chars\chars_ros0.png",%x,%y : mov %vv_inc,329
+	if %vv_ros = 2 lsp 329,":c/1,0,3;graphics\chars\chars_ros0.png",%x,%y,90 : mov %vv_inc,329
+	gosub *settings_chars_refresh
+	if %vv_mar = 1 lsp 330,":c/1,0,3;graphics\chars\chars_mar0.png",%x,%y : mov %vv_inc,330
+	if %vv_mar = 2 lsp 330,":c/1,0,3;graphics\chars\chars_mar0.png",%x,%y,90 : mov %vv_inc,330
+	gosub *settings_chars_refresh
+	if %vv_kin = 1 lsp 331,":c/1,0,3;graphics\chars\chars_kin0.png",%x,%y : mov %vv_inc,331
+	if %vv_kin = 2 lsp 331,":c/1,0,3;graphics\chars\chars_kin0.png",%x,%y,90 : mov %vv_inc,331
+	gosub *settings_chars_refresh
+	if %vv_nan = 1 lsp 332,":c/1,0,3;graphics\chars\chars_nan0.png",%x,%y : mov %vv_inc,332
+	if %vv_nan = 2 lsp 332,":c/1,0,3;graphics\chars\chars_nan0.png",%x,%y,90 : mov %vv_inc,332
+	gosub *settings_chars_refresh
+	if %vv_gen = 1 lsp 333,":c/1,0,3;graphics\chars\chars_gen0.png",%x,%y : mov %vv_inc,333
+	if %vv_gen = 2 lsp 333,":c/1,0,3;graphics\chars\chars_gen0.png",%x,%y,90 : mov %vv_inc,333
+	gosub *settings_chars_refresh
+	if %vv_kum = 1 lsp 334,":c/1,0,3;graphics\chars\chars_kum0.png",%x,%y : mov %vv_inc,334
+	if %vv_kum = 2 lsp 334,":c/1,0,3;graphics\chars\chars_kum0.png",%x,%y,90 : mov %vv_inc,334
+	gosub *settings_chars_refresh
+	if %vv_goh = 1 lsp 335,":c/1,0,3;graphics\chars\chars_goh0.png",%x,%y : mov %vv_inc,335
+	if %vv_goh = 2 lsp 335,":c/1,0,3;graphics\chars\chars_goh0.png",%x,%y,90 : mov %vv_inc,335
+	gosub *settings_chars_refresh
+	if %vv_sha = 1 lsp 336,":c/1,0,3;graphics\chars\chars_sha0.png",%x,%y : mov %vv_inc,336
+	if %vv_sha = 2 lsp 336,":c/1,0,3;graphics\chars\chars_sha0.png",%x,%y,90 : mov %vv_inc,336
+	gosub *settings_chars_refresh
+	if %vv_kan = 1 lsp 337,":c/1,0,3;graphics\chars\chars_kan0.png",%x,%y : mov %vv_inc,337
+	if %vv_kan = 2 lsp 337,":c/1,0,3;graphics\chars\chars_kan0.png",%x,%y,90 : mov %vv_inc,337
+	gosub *settings_chars_refresh
+	if %vv_bea = 1 lsp 338,":c/1,0,3;graphics\chars\chars_bea0.png",%x,%y : mov %vv_inc,338
+	if %vv_bea = 2 lsp 338,":c/1,0,3;graphics\chars\chars_bea0.png",%x,%y,90 : mov %vv_inc,338
+	gosub *settings_chars_refresh
+	if %vv_ber = 1 lsp 339,":c/1,0,3;graphics\chars\chars_ber0.png",%x,%y : mov %vv_inc,339
+	if %vv_ber = 2 lsp 339,":c/1,0,3;graphics\chars\chars_ber0.png",%x,%y,90 : mov %vv_inc,339
+	gosub *settings_chars_refresh
+	if %vv_lam = 1 lsp 340,":c/1,0,3;graphics\chars\chars_lam0.png",%x,%y : mov %vv_inc,340
+	if %vv_lam = 2 lsp 340,":c/1,0,3;graphics\chars\chars_lam0.png",%x,%y,90 : mov %vv_inc,340
+	gosub *settings_chars_refresh
+	if %vv_enj = 1 lsp 341,":c/1,0,3;graphics\chars\chars_enj0.png",%x,%y : mov %vv_inc,341
+	if %vv_enj = 2 lsp 341,":c/1,0,3;graphics\chars\chars_enj0.png",%x,%y,90 : mov %vv_inc,341
+	gosub *settings_chars_refresh
+	if %vv_wal = 1 lsp 342,":c/1,0,3;graphics\chars\chars_wal0.png",%x,%y : mov %vv_inc,342
+	if %vv_wal = 2 lsp 342,":c/1,0,3;graphics\chars\chars_wal0.png",%x,%y,90 : mov %vv_inc,342
+	gosub *settings_chars_refresh
+	if %vv_ev2 = 1 lsp 343,":c/1,0,3;graphics\chars\chars_evb0.png",%x,%y : mov %vv_inc,343
+	if %vv_ev2 = 2 lsp 343,":c/1,0,3;graphics\chars\chars_evb0.png",%x,%y,90 : mov %vv_inc,343
+	gosub *settings_chars_refresh
+	if %vv_ron = 1 lsp 344,":c/1,0,3;graphics\chars\chars_ron0.png",%x,%y : mov %vv_inc,344
+	if %vv_ron = 2 lsp 344,":c/1,0,3;graphics\chars\chars_ron0.png",%x,%y,90 : mov %vv_inc,344
+	gosub *settings_chars_refresh
+	if %vv_rg1 = 1 lsp 345,":c/1,0,3;graphics\chars\chars_rgk0.png",%x,%y : mov %vv_inc,345
+	if %vv_rg1 = 2 lsp 345,":c/1,0,3;graphics\chars\chars_rgk0.png",%x,%y,90 : mov %vv_inc,345
+	gosub *settings_chars_refresh
+	if %vv_rg2 = 1 lsp 346,":c/1,0,3;graphics\chars\chars_rgk1.png",%x,%y : mov %vv_inc,346
+	if %vv_rg2 = 2 lsp 346,":c/1,0,3;graphics\chars\chars_rgk1.png",%x,%y,90 : mov %vv_inc,346
+	gosub *settings_chars_refresh
+	if %vv_rg3 = 1 lsp 347,":c/1,0,3;graphics\chars\chars_rgk2.png",%x,%y : mov %vv_inc,347
+	if %vv_rg3 = 2 lsp 347,":c/1,0,3;graphics\chars\chars_rgk2.png",%x,%y,90 : mov %vv_inc,347
+	gosub *settings_chars_refresh
+	if %vv_rg4 = 1 lsp 348,":c/1,0,3;graphics\chars\chars_rgk3.png",%x,%y : mov %vv_inc,348
+	if %vv_rg4 = 2 lsp 348,":c/1,0,3;graphics\chars\chars_rgk3.png",%x,%y,90 : mov %vv_inc,348
+	gosub *settings_chars_refresh
+	if %vv_rg5 = 1 lsp 349,":c/1,0,3;graphics\chars\chars_rgk4.png",%x,%y : mov %vv_inc,349
+	if %vv_rg5 = 2 lsp 349,":c/1,0,3;graphics\chars\chars_rgk4.png",%x,%y,90 : mov %vv_inc,349
+	gosub *settings_chars_refresh
+	if %vv_rg6 = 1 lsp 350,":c/1,0,3;graphics\chars\chars_rgk5.png",%x,%y : mov %vv_inc,350
+	if %vv_rg6 = 2 lsp 350,":c/1,0,3;graphics\chars\chars_rgk5.png",%x,%y,90 : mov %vv_inc,350
+	gosub *settings_chars_refresh
+	if %vv_rg7 = 1 lsp 351,":c/1,0,3;graphics\chars\chars_rgk6.png",%x,%y : mov %vv_inc,351
+	if %vv_rg7 = 2 lsp 351,":c/1,0,3;graphics\chars\chars_rgk6.png",%x,%y,90 : mov %vv_inc,351
+	gosub *settings_chars_refresh
+	if %vv_sak = 1 lsp 352,":c/1,0,3;graphics\chars\chars_sak0.png",%x,%y : mov %vv_inc,352
+	if %vv_sak = 2 lsp 352,":c/1,0,3;graphics\chars\chars_sak0.png",%x,%y,90 : mov %vv_inc,352
+	gosub *settings_chars_refresh
+	if %vv_gap = 1 lsp 353,":c/1,0,3;graphics\chars\chars_gap0.png",%x,%y : mov %vv_inc,353
+	if %vv_gap = 2 lsp 353,":c/1,0,3;graphics\chars\chars_gap0.png",%x,%y,90 : mov %vv_inc,353
+	gosub *settings_chars_refresh
+	if %vv_s00 = 1 lsp 354,":c/1,0,3;graphics\chars\chars_sie0.png",%x,%y : mov %vv_inc,354
+	if %vv_s00 = 2 lsp 354,":c/1,0,3;graphics\chars\chars_sie0.png",%x,%y,90 : mov %vv_inc,354
+	gosub *settings_chars_refresh
+	if %vv_s41 = 1 lsp 355,":c/1,0,3;graphics\chars\chars_sie1.png",%x,%y : mov %vv_inc,355
+	if %vv_s41 = 2 lsp 355,":c/1,0,3;graphics\chars\chars_sie1.png",%x,%y,90 : mov %vv_inc,355
+	gosub *settings_chars_refresh
+	if %vv_s45 = 1 lsp 356,":c/1,0,3;graphics\chars\chars_sie2.png",%x,%y : mov %vv_inc,356
+	if %vv_s45 = 2 lsp 356,":c/1,0,3;graphics\chars\chars_sie2.png",%x,%y,90 : mov %vv_inc,356
+	gosub *settings_chars_refresh
+	if %vv_kas = 1 lsp 357,":c/1,0,3;graphics\chars\chars_kas0.png",%x,%y : mov %vv_inc,357
+	if %vv_kas = 2 lsp 357,":c/1,0,3;graphics\chars\chars_kas0.png",%x,%y,90 : mov %vv_inc,357
+	gosub *settings_chars_refresh
+	if %vv_ama = 1 lsp 358,":c/1,0,3;graphics\chars\chars_ama0.png",%x,%y : mov %vv_inc,358
+	if %vv_ama = 2 lsp 358,":c/1,0,3;graphics\chars\chars_ama0.png",%x,%y,90 : mov %vv_inc,358
+	gosub *settings_chars_refresh
+	if %vv_oko = 1 lsp 359,":c/1,0,3;graphics\chars\chars_oko0.png",%x,%y : mov %vv_inc,359
+	if %vv_oko = 2 lsp 359,":c/1,0,3;graphics\chars\chars_oko0.png",%x,%y,90 : mov %vv_inc,359
+	gosub *settings_chars_refresh
+	if %vv_ku2 = 1 lsp 360,":c/1,0,3;graphics\chars\chars_sab0.png",%x,%y : mov %vv_inc,360
+	if %vv_ku2 = 2 lsp 360,":c/1,0,3;graphics\chars\chars_sab0.png",%x,%y,90 : mov %vv_inc,360
+	gosub *settings_chars_refresh
+	if %vv_pro = 1 lsp 361,":c/1,0,3;graphics\chars\chars_pro0.png",%x,%y : mov %vv_inc,361
+	if %vv_pro = 2 lsp 361,":c/1,0,3;graphics\chars\chars_pro0.png",%x,%y,90 : mov %vv_inc,361
+	gosub *settings_chars_refresh
+	if %vv_kaw = 1 lsp 362,":c/1,0,3;graphics\chars\chars_kwa0.png",%x,%y : mov %vv_inc,362
+	if %vv_kaw = 2 lsp 362,":c/1,0,3;graphics\chars\chars_kwa0.png",%x,%y,90 : mov %vv_inc,362
+	gosub *settings_chars_refresh
+	if %vv_na2 = 1 lsp 363,":c/1,0,3;graphics\chars\chars_mas0.png",%x,%y : mov %vv_inc,363
+	if %vv_na2 = 2 lsp 363,":c/1,0,3;graphics\chars\chars_mas0.png",%x,%y,90 : mov %vv_inc,363
+	gosub *settings_chars_refresh
+	if %vv_goa = 1 lsp 364,":c/1,0,3;graphics\chars\chars_goa0.png",%x,%y : mov %vv_inc,364
+	if %vv_goa = 2 lsp 364,":c/1,0,3;graphics\chars\chars_goa0.png",%x,%y,90 : mov %vv_inc,364
+	gosub *settings_chars_refresh
+	if %vv_99 = 1 lsp 365,":c/1,0,3;graphics\chars\chars_99.png",%x,%y : mov %vv_inc,365
+	if %vv_99 = 2 lsp 365,":c/1,0,3;graphics\chars\chars_99.png",%x,%y,90 : mov %vv_inc,365
+	gosub *settings_chars_refresh
+	gosub *settings_chars_realign
+return
+
+*settings_voice_vol_chars_chiru
+	mov %vv_inc,0
+	mov %Free1,135+%mcoord_add
+	mov %x,%Free1
+	mov %y,520
+	mov %y2,17 ;first row has 17
+	mov %x2,0 ;start sprite
+	mov %x3,0 ;end sprite
+	mov %y3,0 ;row sprite count
+
+	if %vv_cla = 1 lsp 320,":c/1,0,3;graphics\chars\chars_kla0.png",%x,%y : mov %vv_inc,320
+	if %vv_cla = 2 lsp 320,":c/1,0,3;graphics\chars\chars_kla0.png",%x,%y,90 : mov %vv_inc,320
+	gosub *settings_chars_refresh
+	if %vv_nat = 1 lsp 321,":c/1,0,3;graphics\chars\chars_nat0.png",%x,%y : mov %vv_inc,321
+	if %vv_nat = 2 lsp 321,":c/1,0,3;graphics\chars\chars_nat0.png",%x,%y,90 : mov %vv_inc,321
+	gosub *settings_chars_refresh
+	if %vv_jes = 1 lsp 322,":c/1,0,3;graphics\chars\chars_jes0.png",%x,%y : mov %vv_inc,322
+	if %vv_jes = 2 lsp 322,":c/1,0,3;graphics\chars\chars_jes0.png",%x,%y,90 : mov %vv_inc,322
+	gosub *settings_chars_refresh
+	if %vv_eva = 1 lsp 323,":c/1,0,3;graphics\chars\chars_eva0.png",%x,%y : mov %vv_inc,323
+	if %vv_eva = 2 lsp 323,":c/1,0,3;graphics\chars\chars_eva0.png",%x,%y,90 : mov %vv_inc,323
+	gosub *settings_chars_refresh
+	if %vv_hid = 1 lsp 324,":c/1,0,3;graphics\chars\chars_hid0.png",%x,%y : mov %vv_inc,324
+	if %vv_hid = 2 lsp 324,":c/1,0,3;graphics\chars\chars_hid0.png",%x,%y,90 : mov %vv_inc,324
+	gosub *settings_chars_refresh
+	if %vv_geo = 1 lsp 325,":c/1,0,3;graphics\chars\chars_geo0.png",%x,%y : mov %vv_inc,325
+	if %vv_geo = 2 lsp 325,":c/1,0,3;graphics\chars\chars_geo0.png",%x,%y,90 : mov %vv_inc,325
+	gosub *settings_chars_refresh
+	if %vv_rud = 1 lsp 326,":c/1,0,3;graphics\chars\chars_rud0.png",%x,%y : mov %vv_inc,326
+	if %vv_rud = 2 lsp 326,":c/1,0,3;graphics\chars\chars_rud0.png",%x,%y,90 : mov %vv_inc,326
+	gosub *settings_chars_refresh
+	if %vv_kir = 1 lsp 327,":c/1,0,3;graphics\chars\chars_kir0.png",%x,%y : mov %vv_inc,327
+	if %vv_kir = 2 lsp 327,":c/1,0,3;graphics\chars\chars_kir0.png",%x,%y,90 : mov %vv_inc,327
+	gosub *settings_chars_refresh
+	if %vv_but = 1 lsp 328,":c/1,0,3;graphics\chars\chars_but0.png",%x,%y : mov %vv_inc,328
+	if %vv_but = 2 lsp 328,":c/1,0,3;graphics\chars\chars_but0.png",%x,%y,90 : mov %vv_inc,328
+	gosub *settings_chars_refresh
+	if %vv_ros = 1 lsp 329,":c/1,0,3;graphics\chars\chars_ros0.png",%x,%y : mov %vv_inc,329
+	if %vv_ros = 2 lsp 329,":c/1,0,3;graphics\chars\chars_ros0.png",%x,%y,90 : mov %vv_inc,329
+	gosub *settings_chars_refresh
+	if %vv_mar = 1 lsp 330,":c/1,0,3;graphics\chars\chars_mar0.png",%x,%y : mov %vv_inc,330
+	if %vv_mar = 2 lsp 330,":c/1,0,3;graphics\chars\chars_mar0.png",%x,%y,90 : mov %vv_inc,330
+	gosub *settings_chars_refresh
+	if %vv_kin = 1 lsp 331,":c/1,0,3;graphics\chars\chars_kin0.png",%x,%y : mov %vv_inc,331
+	if %vv_kin = 2 lsp 331,":c/1,0,3;graphics\chars\chars_kin0.png",%x,%y,90 : mov %vv_inc,331
+	gosub *settings_chars_refresh
+	if %vv_nan = 1 lsp 332,":c/1,0,3;graphics\chars\chars_nan0.png",%x,%y : mov %vv_inc,332
+	if %vv_nan = 2 lsp 332,":c/1,0,3;graphics\chars\chars_nan0.png",%x,%y,90 : mov %vv_inc,332
+	gosub *settings_chars_refresh
+	if %vv_gen = 1 lsp 333,":c/1,0,3;graphics\chars\chars_gen0.png",%x,%y : mov %vv_inc,333
+	if %vv_gen = 2 lsp 333,":c/1,0,3;graphics\chars\chars_gen0.png",%x,%y,90 : mov %vv_inc,333
+	gosub *settings_chars_refresh
+	if %vv_kum = 1 lsp 334,":c/1,0,3;graphics\chars\chars_kum0.png",%x,%y : mov %vv_inc,334
+	if %vv_kum = 2 lsp 334,":c/1,0,3;graphics\chars\chars_kum0.png",%x,%y,90 : mov %vv_inc,334
+	gosub *settings_chars_refresh
+	if %vv_goh = 1 lsp 335,":c/1,0,3;graphics\chars\chars_goh0.png",%x,%y : mov %vv_inc,335
+	if %vv_goh = 2 lsp 335,":c/1,0,3;graphics\chars\chars_goh0.png",%x,%y,90 : mov %vv_inc,335
+	gosub *settings_chars_refresh
+	if %vv_sha = 1 lsp 336,":c/1,0,3;graphics\chars\chars_sha0.png",%x,%y : mov %vv_inc,336
+	if %vv_sha = 2 lsp 336,":c/1,0,3;graphics\chars\chars_sha0.png",%x,%y,90 : mov %vv_inc,336
+	gosub *settings_chars_refresh
+	if %vv_kan = 1 lsp 337,":c/1,0,3;graphics\chars\chars_kan0.png",%x,%y : mov %vv_inc,337
+	if %vv_kan = 2 lsp 337,":c/1,0,3;graphics\chars\chars_kan0.png",%x,%y,90 : mov %vv_inc,337
+	gosub *settings_chars_refresh
+	if %vv_bea = 1 lsp 338,":c/1,0,3;graphics\chars\chars_bea0.png",%x,%y : mov %vv_inc,338
+	if %vv_bea = 2 lsp 338,":c/1,0,3;graphics\chars\chars_bea0.png",%x,%y,90 : mov %vv_inc,338
+	gosub *settings_chars_refresh
+	if %vv_ber = 1 lsp 339,":c/1,0,3;graphics\chars\chars_ber0.png",%x,%y : mov %vv_inc,339
+	if %vv_ber = 2 lsp 339,":c/1,0,3;graphics\chars\chars_ber0.png",%x,%y,90 : mov %vv_inc,339
+	gosub *settings_chars_refresh
+	if %vv_eri = 1 lsp 340,":c/1,0,3;graphics\chars\chiru\chars_eri0.png",%x,%y : mov %vv_inc,340
+	if %vv_eri = 2 lsp 340,":c/1,0,3;graphics\chars\chiru\chars_eri0.png",%x,%y,90 : mov %vv_inc,340
+	gosub *settings_chars_refresh
+	if %vv_lam = 1 lsp 341,":c/1,0,3;graphics\chars\chars_lam0.png",%x,%y : mov %vv_inc,341
+	if %vv_lam = 2 lsp 341,":c/1,0,3;graphics\chars\chars_lam0.png",%x,%y,90 : mov %vv_inc,341
+	gosub *settings_chars_refresh
+	if %vv_enj = 1 lsp 342,":c/1,0,3;graphics\chars\chars_enj0.png",%x,%y : mov %vv_inc,342
+	if %vv_enj = 2 lsp 342,":c/1,0,3;graphics\chars\chars_enj0.png",%x,%y,90 : mov %vv_inc,342
+	gosub *settings_chars_refresh
+	if %vv_wal = 1 lsp 343,":c/1,0,3;graphics\chars\chars_wal0.png",%x,%y : mov %vv_inc,343
+	if %vv_wal = 2 lsp 343,":c/1,0,3;graphics\chars\chars_wal0.png",%x,%y,90 : mov %vv_inc,343
+	gosub *settings_chars_refresh
+	if %vv_ev2 = 1 lsp 344,":c/1,0,3;graphics\chars\chars_evb0.png",%x,%y : mov %vv_inc,344
+	if %vv_ev2 = 2 lsp 344,":c/1,0,3;graphics\chars\chars_evb0.png",%x,%y,90 : mov %vv_inc,344
+	gosub *settings_chars_refresh
+	if %vv_ron = 1 lsp 345,":c/1,0,3;graphics\chars\chars_ron0.png",%x,%y : mov %vv_inc,345
+	if %vv_ron = 2 lsp 345,":c/1,0,3;graphics\chars\chars_ron0.png",%x,%y,90 : mov %vv_inc,345
+	gosub *settings_chars_refresh
+	if %vv_rg1 = 1 lsp 346,":c/1,0,3;graphics\chars\chars_rgk0.png",%x,%y : mov %vv_inc,346
+	if %vv_rg1 = 2 lsp 346,":c/1,0,3;graphics\chars\chars_rgk0.png",%x,%y,90 : mov %vv_inc,346
+	gosub *settings_chars_refresh
+	if %vv_rg2 = 1 lsp 347,":c/1,0,3;graphics\chars\chars_rgk1.png",%x,%y : mov %vv_inc,347
+	if %vv_rg2 = 2 lsp 347,":c/1,0,3;graphics\chars\chars_rgk1.png",%x,%y,90 : mov %vv_inc,347
+	gosub *settings_chars_refresh
+	if %vv_rg3 = 1 lsp 348,":c/1,0,3;graphics\chars\chars_rgk2.png",%x,%y : mov %vv_inc,348
+	if %vv_rg3 = 2 lsp 348,":c/1,0,3;graphics\chars\chars_rgk2.png",%x,%y,90 : mov %vv_inc,348
+	gosub *settings_chars_refresh
+	if %vv_rg4 = 1 lsp 349,":c/1,0,3;graphics\chars\chars_rgk3.png",%x,%y : mov %vv_inc,349
+	if %vv_rg4 = 2 lsp 349,":c/1,0,3;graphics\chars\chars_rgk3.png",%x,%y,90 : mov %vv_inc,349
+	gosub *settings_chars_refresh
+	if %vv_rg5 = 1 lsp 350,":c/1,0,3;graphics\chars\chars_rgk4.png",%x,%y : mov %vv_inc,350
+	if %vv_rg5 = 2 lsp 350,":c/1,0,3;graphics\chars\chars_rgk4.png",%x,%y,90 : mov %vv_inc,350
+	gosub *settings_chars_refresh
+	if %vv_rg6 = 1 lsp 351,":c/1,0,3;graphics\chars\chars_rgk5.png",%x,%y : mov %vv_inc,351
+	if %vv_rg6 = 2 lsp 351,":c/1,0,3;graphics\chars\chars_rgk5.png",%x,%y,90 : mov %vv_inc,351
+	gosub *settings_chars_refresh
+	if %vv_rg7 = 1 lsp 352,":c/1,0,3;graphics\chars\chars_rgk6.png",%x,%y : mov %vv_inc,352
+	if %vv_rg7 = 2 lsp 352,":c/1,0,3;graphics\chars\chars_rgk6.png",%x,%y,90 : mov %vv_inc,352
+	gosub *settings_chars_refresh	
+	if %vv_sak = 1 lsp 353,":c/1,0,3;graphics\chars\chars_sak0.png",%x,%y : mov %vv_inc,353
+	if %vv_sak = 2 lsp 353,":c/1,0,3;graphics\chars\chars_sak0.png",%x,%y,90 : mov %vv_inc,353
+	gosub *settings_chars_refresh
+	if %vv_gap = 1 lsp 354,":c/1,0,3;graphics\chars\chars_gap0.png",%x,%y : mov %vv_inc,354
+	if %vv_gap = 2 lsp 354,":c/1,0,3;graphics\chars\chars_gap0.png",%x,%y,90 : mov %vv_inc,354
+	gosub *settings_chars_refresh
+	if %vv_s00 = 1 lsp 355,":c/1,0,3;graphics\chars\chars_sie0.png",%x,%y : mov %vv_inc,355
+	if %vv_s00 = 2 lsp 355,":c/1,0,3;graphics\chars\chars_sie0.png",%x,%y,90 : mov %vv_inc,355
+	gosub *settings_chars_refresh
+	if %vv_s41 = 1 lsp 356,":c/1,0,3;graphics\chars\chars_sie1.png",%x,%y : mov %vv_inc,356
+	if %vv_s41 = 2 lsp 356,":c/1,0,3;graphics\chars\chars_sie1.png",%x,%y,90 : mov %vv_inc,356
+	gosub *settings_chars_refresh
+	if %vv_s45 = 1 lsp 357,":c/1,0,3;graphics\chars\chars_sie2.png",%x,%y : mov %vv_inc,357
+	if %vv_s45 = 2 lsp 357,":c/1,0,3;graphics\chars\chars_sie2.png",%x,%y,90 : mov %vv_inc,357
+	gosub *settings_chars_refresh
+	if %vv_dla = 1 lsp 358,":c/1,0,3;graphics\chars\chiru\chars_dla1.png",%x,%y : mov %vv_inc,358
+	if %vv_dla = 2 lsp 358,":c/1,0,3;graphics\chars\chiru\chars_dla1.png",%x,%y,90 : mov %vv_inc,358
+	gosub *settings_chars_refresh
+	if %vv_cor = 1 lsp 359,":c/1,0,3;graphics\chars\chiru\chars_cor0.png",%x,%y : mov %vv_inc,359
+	if %vv_cor = 2 lsp 359,":c/1,0,3;graphics\chars\chiru\chars_cor0.png",%x,%y,90 : mov %vv_inc,359
+	gosub *settings_chars_refresh
+	if %vv_ger = 1 lsp 360,":c/1,0,3;graphics\chars\chiru\chars_gur0.png",%x,%y : mov %vv_inc,360
+	if %vv_ger = 2 lsp 360,":c/1,0,3;graphics\chars\chiru\chars_gur0.png",%x,%y,90 : mov %vv_inc,360
+	gosub *settings_chars_refresh
+	if %vv_zep = 1 lsp 361,":c/1,0,3;graphics\chars\chiru\chars_zep0.png",%x,%y : mov %vv_inc,361
+	if %vv_zep = 2 lsp 361,":c/1,0,3;graphics\chars\chiru\chars_zep0.png",%x,%y,90 : mov %vv_inc,361
+	gosub *settings_chars_refresh
+	if %vv_fur = 1 lsp 362,":c/1,0,3;graphics\chars\chiru\chars_ful0.png",%x,%y : mov %vv_inc,362
+	if %vv_fur = 2 lsp 362,":c/1,0,3;graphics\chars\chiru\chars_ful0.png",%x,%y,90 : mov %vv_inc,362
+	gosub *settings_chars_refresh
+	if %vv_ama = 1 lsp 363,":c/1,0,3;graphics\chars\chars_ama0.png",%x,%y : mov %vv_inc,363
+	if %vv_ama = 2 lsp 363,":c/1,0,3;graphics\chars\chars_ama0.png",%x,%y,90 : mov %vv_inc,363
+	gosub *settings_chars_refresh
+	if %vv_bu3 = 1 lsp 364,":c/1,0,3;graphics\chars\chiru\chars_fea0.png",%x,%y : mov %vv_inc,364
+	if %vv_bu3 = 2 lsp 364,":c/1,0,3;graphics\chars\chiru\chars_fea0.png",%x,%y,90 : mov %vv_inc,364
+	gosub *settings_chars_refresh
+	if %vv_fea = 1 lsp 365,":c/1,0,3;graphics\chars\chiru\chars_fea1.png",%x,%y : mov %vv_inc,365
+	if %vv_fea = 2 lsp 365,":c/1,0,3;graphics\chars\chiru\chars_fea1.png",%x,%y,90 : mov %vv_inc,365
+	gosub *settings_chars_refresh
+	if %vv_wil = 1 lsp 366,":c/1,0,3;graphics\chars\chiru\chars_wil0.png",%x,%y : mov %vv_inc,366
+	if %vv_wil = 2 lsp 366,":c/1,0,3;graphics\chars\chiru\chars_wil0.png",%x,%y,90 : mov %vv_inc,366
+	gosub *settings_chars_refresh
+	if %vv_rio = 1 lsp 367,":c/1,0,3;graphics\chars\chiru\chars_rio0.png",%x,%y : mov %vv_inc,367
+	if %vv_rio = 2 lsp 367,":c/1,0,3;graphics\chars\chiru\chars_rio0.png",%x,%y,90 : mov %vv_inc,367
+	gosub *settings_chars_refresh
+	if %vv_cur = 1 lsp 368,":c/1,0,3;graphics\chars\chiru\chars_cur0.png",%x,%y : mov %vv_inc,368
+	if %vv_cur = 2 lsp 368,":c/1,0,3;graphics\chars\chiru\chars_cur0.png",%x,%y,90 : mov %vv_inc,368
+	gosub *settings_chars_refresh
+	if %vv_goa = 1 lsp 369,":c/1,0,3;graphics\chars\chars_goa0.png",%x,%y : mov %vv_inc,369
+	if %vv_goa = 2 lsp 369,":c/1,0,3;graphics\chars\chars_goa0.png",%x,%y,90 : mov %vv_inc,369
+	gosub *settings_chars_refresh
+	if %vv_99 = 1 lsp 370,":c/1,0,3;graphics\chars\chars_99.png",%x,%y : mov %vv_inc,370
+	if %vv_99 = 2 lsp 370,":c/1,0,3;graphics\chars\chars_99.png",%x,%y,90 : mov %vv_inc,370
+	gosub *settings_chars_refresh
+	gosub *settings_chars_realign
+return
+
+*settings_video_res
+	;1080p or 720p
+	; Disable 1080p playback for iOS
+	fileexist %Free1,"video\1080p\no46.mp4"
+	if %Free1==0 mov %video_res,1
+	notif %video_res = 1 lsp 245,":s;#C7C7C7#FFFFFF`{p:8:720p}",1330,661 ; no 720p
+	if %video_res = 1 lsp 245,":s;#FFFFFF`{p:8:720p}",1330,661 ; yes 720p
+	notif %video_res = 0 lsp 246,":s;#C7C7C7#FFFFFF`{p:8:1080p}",1520,661 ; no 1080p
+	if %video_res = 0 lsp 246,":s;#FFFFFF`{p:8:1080p}",1520,661 ; yes 1080p
+	;End
+return
+
+*settings_textbox
+	;Type
+	notif %msgwnd_type = 3 lsp 250,":s;#C7C7C7#FFFFFF`{p:9:Transp}",785+%mcoord_add,515
+	if %msgwnd_type = 3 lsp 250,":s;#FFFFFF`{p:9:Transp}",785+%mcoord_add,515
+	notif %msgwnd_type = 0 lsp 249,":s;#C7C7C7#FFFFFF`{p:9:Black}",1055+%mcoord_add,515
+	if %msgwnd_type = 0 lsp 249,":s;#FFFFFF`{p:9:Black}",1055+%mcoord_add,515
+	notif %msgwnd_type = 1 lsp 248,":s;#C7C7C7#FFFFFF`{p:9:Gold}",1300+%mcoord_add,515
+	if %msgwnd_type = 1 lsp 248,":s;#FFFFFF`{p:9:Gold}",1300+%mcoord_add,515
+	notif %msgwnd_type = 2 lsp 247,":s;#C7C7C7#FFFFFF`{p:9:Normal}",1510+%mcoord_add,515
+	if %msgwnd_type = 2 lsp 247,":s;#FFFFFF`{p:9:Normal}",1510+%mcoord_add,515
+	;End
+return
+
+;Config - Choose Sprite Type - W_CUSTOM
+*settings_sprite_type
+	notif $sprite_folder_name = "sprites2" lsp 372,":s;#C7C7C7#FFFFFF`{p:9:Old}",1065+%mcoord_add,350 
+	if $sprite_folder_name = "sprites2" lsp 372,":s;#FFFFFF`{p:9:Old}",1065+%mcoord_add,350 
+	notif $sprite_folder_name = "sprites3" lsp 374,":s;#C7C7C7#FFFFFF`{p:9:Steam}",1290+%mcoord_add,350 
+	if $sprite_folder_name = "sprites3" lsp 374,":s;#FFFFFF`{p:9:Steam}",1290+%mcoord_add,350 
+	notif $sprite_folder_name = "sprites" lsp 375,":s;#C7C7C7#FFFFFF`{p:9:PS3}",1570+%mcoord_add,350 
+	if $sprite_folder_name = "sprites" lsp 375,":s;#FFFFFF`{p:9:PS3}",1570+%mcoord_add,350
+	operate_config u_write,$sprite_folder_name,"sprite_folder_name"
+	operate_config save
+return
+
+*settings_bg_type
+	notif $bg_folder_name = "backgrounds2" lsp 376,":s;#C7C7C7#FFFFFF`{p:9:Old}",1130+%mcoord_add,748 
+	if $bg_folder_name = "backgrounds2" lsp 376,":s;#FFFFFF`{p:9:Old}",1130+%mcoord_add,748 
+	notif $bg_folder_name = "backgrounds" lsp 377,":s;#C7C7C7#FFFFFF`{p:9:New}",1490+%mcoord_add,748 
+	if $bg_folder_name = "backgrounds" lsp 377,":s;#FFFFFF`{p:9:New}",1490+%mcoord_add,748 
+	operate_config u_write,$bg_folder_name,"bg_folder_name"
+	operate_config save
+return
+;End Custom
+
+*settings_textspeed
+	;Speed
+	if %textspeed2 >= 0 lsp 251,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1250+%mcoord_add,340
+	if %textspeed2 < 0 lsp 251,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1250+%mcoord_add,340
+	if %textspeed2 >= 1 lsp 252,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1290+%mcoord_add,340
+	if %textspeed2 < 1 lsp 252,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1290+%mcoord_add,340
+	if %textspeed2 >= 2 lsp 253,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1330+%mcoord_add,340
+	if %textspeed2 < 2 lsp 253,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1330+%mcoord_add,340
+	if %textspeed2 >= 3 lsp 254,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1370+%mcoord_add,340
+	if %textspeed2 < 3 lsp 254,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1370+%mcoord_add,340
+	if %textspeed2 >= 4 lsp 255,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1410+%mcoord_add,340
+	if %textspeed2 < 4 lsp 255,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1410+%mcoord_add,340
+	if %textspeed2 >= 5 lsp 256,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1450+%mcoord_add,340
+	if %textspeed2 < 5 lsp 256,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1450+%mcoord_add,340
+	if %textspeed2 >= 6 lsp 257,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1490+%mcoord_add,340
+	if %textspeed2 < 6 lsp 257,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1490+%mcoord_add,340
+	if %textspeed2 >= 7 lsp 258,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1530+%mcoord_add,340
+	if %textspeed2 < 7 lsp 258,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1530+%mcoord_add,340
+	if %textspeed2 >= 8 lsp 259,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1570+%mcoord_add,340
+	if %textspeed2 < 8 lsp 259,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1570+%mcoord_add,340
+	if %textspeed2 >= 9 lsp 260,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1610+%mcoord_add,340
+	if %textspeed2 < 9 lsp 260,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1610+%mcoord_add,340
+	if %textspeed2 >= 10 lsp 261,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1650+%mcoord_add,340
+	if %textspeed2 < 10 lsp 261,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1650+%mcoord_add,340
+	gosub *update_textspeed
+	;End
+return
+
+*settings_automode_speed
+	if %automodespeed >= -116 lsp 190,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1250+%mcoord_add,427
+	if %automodespeed < -116 lsp 190,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1250+%mcoord_add,427
+	if %automodespeed >= -90 lsp 191,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1290+%mcoord_add,427
+	if %automodespeed < -90 lsp 191,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1290+%mcoord_add,427
+	if %automodespeed >= -70 lsp 192,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1330+%mcoord_add,427
+	if %automodespeed < -70 lsp 192,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1330+%mcoord_add,427
+	if %automodespeed >= -55 lsp 193,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1370+%mcoord_add,427
+	if %automodespeed < -55 lsp 193,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1370+%mcoord_add,427
+	if %automodespeed >= -43 lsp 194,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1410+%mcoord_add,427
+	if %automodespeed < -43 lsp 194,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1410+%mcoord_add,427
+	if %automodespeed >= -33 lsp 195,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1450+%mcoord_add,427
+	if %automodespeed < -33 lsp 195,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1450+%mcoord_add,427
+	if %automodespeed >= -26 lsp 196,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1490+%mcoord_add,427
+	if %automodespeed < -26 lsp 196,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1490+%mcoord_add,427
+	if %automodespeed >= -20 lsp 197,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1530+%mcoord_add,427
+	if %automodespeed < -20 lsp 197,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1530+%mcoord_add,427
+	if %automodespeed >= -16 lsp 198,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1570+%mcoord_add,427
+	if %automodespeed < -16 lsp 198,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1570+%mcoord_add,427
+	if %automodespeed >= -12 lsp 199,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1610+%mcoord_add,427
+	if %automodespeed < -12 lsp 199,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1610+%mcoord_add,427
+	if %automodespeed >= -9 lsp 200,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1650+%mcoord_add,427
+	if %automodespeed < -9 lsp 200,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1650+%mcoord_add,427
+return
+
+*settings_automode_speed2
+	automode_time %automodespeed
+	gosub *settings_automode_speed
+return
+
+*settings_lips
+	notif %animated_lips = 1 lsp 264,set_on,settings_base_off1+%mcoord_add,574
+	if %animated_lips = 1 lsp 264,set_on2,settings_base_off1+%mcoord_add,574
+	notif %animated_lips = 0 lsp 265,set_off,settings_base_off2+%mcoord_add,574
+	if %animated_lips = 0 lsp 265,set_off2,settings_base_off2+%mcoord_add,574
+return
+
+*settings_image_cache
+	notif %enable_cache = 1 lsp 266,set_on,settings_base_off1,835
+	if %enable_cache = 1 lsp 266,set_on2,settings_base_off1,835
+	notif %enable_cache = 0 lsp 267,set_off,settings_base_off2,835
+	if %enable_cache = 0 lsp 267,set_off2,settings_base_off2,835
+return
+
+*settings_game_language
+	if $Free3 == "en" mov $Free3,"English"
+	if $Free3 == "ru" mov $Free3,"Русская"
+	if $Free3 == "pt" mov $Free3,"Português"
+	if $Free3 == "wh" mov $Free3,"Witch-Hunt"
+	if $Free3 == "cn" mov $Free3,"Chinese Simp."
+	if $Free3 == "cht" mov $Free3,"Chinese Trad."
+	if $Free3 == "it" mov $Free3,"Italiano"
+	lsp 268,":s;#FFFFFF`{p:8:{w:350:}{a:c:}{fit}" + $Free3 + "}",1280,226
+	lsp 380,":a/2,0,3;graphics\menu_en\config\config_left.png",1210,226
+	lsp 381,":a/2,0,3;graphics\menu_en\config\config_right.png",1640,226
+return
+
+*settings_interface_kb_dual
+	notif %interface_kb_dual = 0 lsp 270,set_interface_kb_mouse,settings_base_off3,748
+	if %interface_kb_dual = 0 lsp 270,set_interface_kb_mouse_on,settings_base_off3,748 : vsp 100,0
+	notif %interface_kb_dual = 1 lsp 271,set_interface_dualshock,settings_base_off4,748
+	if %interface_kb_dual = 1 lsp 271,set_interface_dualshock_on,settings_base_off4,748
+return
+	
+*settings_op_ed_song_subtitles
+	if %op_ed_song_subtitles = 1 lsp 272,set_song_subtitles_no,1260+%mcoord_add,748 ;lsp 2 1455+%mcoord_add,745
+	if %op_ed_song_subtitles = 2 lsp 272,set_song_subtitles_trans,1260+%mcoord_add,748
+	if %op_ed_song_subtitles = 3 lsp 272,set_song_subtitles_rom,1260+%mcoord_add,748
+	if %op_ed_song_subtitles = 4 lsp 272,set_song_subtitles_both,1260+%mcoord_add,748
+	lsp 276,":a/2,0,3;graphics\menu_en\config\config_left.png",1210+%mcoord_add,759
+	lsp 277,":a/2,0,3;graphics\menu_en\config\config_right.png",1640+%mcoord_add,759
+return
+
+*settings_full_window_auto
+	notif %full_window_auto = 1 lsp 279,set_display_mode_win,settings_base_off5,574
+	if %full_window_auto = 1 lsp 279,set_display_mode_win_on,settings_base_off5,574
+	notif %full_window_auto = 2 lsp 280,set_display_mode_full,settings_base_off6,574
+	if %full_window_auto = 2 lsp 280,set_display_mode_full_on,settings_base_off6,574
+	notif %full_window_auto = 0 lsp 281,set_display_mode_auto,settings_base_off7,574
+	if %full_window_auto = 0 lsp 281,set_display_mode_auto_on,settings_base_off7,574
+return
+
+*settings_bgm_title_language
+	if %bgm_title_language = 1 lsp 278,set_bgm_title_language_en,1260,313
+	if %bgm_title_language = 2 lsp 278,set_bgm_title_language_tl,1260,313
+	if %bgm_title_language = 3 lsp 278,set_bgm_title_language_jp,1260,313
+	if %bgm_title_language = 4 lsp 278,set_bgm_title_language_rom,1260,313
+	lsp 282,":a/2,0,3;graphics\menu_en\config\config_left.png",1210,325
+	lsp 283,":a/2,0,3;graphics\menu_en\config\config_right.png",1640,325
+return
+
+*settings_render
+	if $Free7 == "GL2" mov $Free7,"OpenGL 2.1"
+	if $Free7 == "GLES2" mov $Free7,"OpenGLES 2"
+	if $Free7 == "GLES3" mov $Free7,"OpenGLES 3"
+	if $Free7 == "ANGLE2" mov $Free7,"ANGLE 2"
+	if $Free7 == "ANGLE3" mov $Free7,"ANGLE 3"
+	lsp 384,":s;#FFFFFF`{p:8:{w:375:}{a:c:}{fit}" + $Free7 + "}",1260,400
+	lsp 382,":a/2,0,3;graphics\menu_en\config\config_left.png",1210,412
+	lsp 383,":a/2,0,3;graphics\menu_en\config\config_right.png",1640,412
+return
+
+*settings_rumble_strength
+	lsp 284,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1250+%mcoord_add,250
+	notif %rumble_strength >= 4 lsp 285,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1290+%mcoord_add,250
+	if %rumble_strength >= 4 lsp 285,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1290+%mcoord_add,250
+	notif %rumble_strength >= 8 lsp 286,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1330+%mcoord_add,250
+	if %rumble_strength >= 8 lsp 286,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1330+%mcoord_add,250
+	notif %rumble_strength >= 12 lsp 287,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1370+%mcoord_add,250
+	if %rumble_strength >= 12 lsp 287,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1370+%mcoord_add,250
+	notif %rumble_strength >= 16 lsp 288,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1410+%mcoord_add,250
+	if %rumble_strength >= 16 lsp 288,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1410+%mcoord_add,250
+	notif %rumble_strength >= 20 lsp 289,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1450+%mcoord_add,250
+	if %rumble_strength >= 20 lsp 289,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1450+%mcoord_add,250
+	notif %rumble_strength >= 26 lsp 290,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1490+%mcoord_add,250
+	if %rumble_strength >= 26 lsp 290,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1490+%mcoord_add,250
+	notif %rumble_strength >= 32 lsp 291,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1530+%mcoord_add,250
+	if %rumble_strength >= 32 lsp 291,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1530+%mcoord_add,250
+	notif %rumble_strength >= 38 lsp 292,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1570+%mcoord_add,250
+	if %rumble_strength >= 38 lsp 292,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1570+%mcoord_add,250
+	notif %rumble_strength >= 44 lsp 293,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1610+%mcoord_add,250
+	if %rumble_strength >= 44 lsp 293,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1610+%mcoord_add,250
+	notif %rumble_strength >= 50 lsp 294,":a/2,0,3;graphics\menu\SystemBtn\speed.png",1650+%mcoord_add,250
+	if %rumble_strength >= 50 lsp 294,":a/2,0,3;graphics\menu\SystemBtn\speed_b.png",1650+%mcoord_add,250
+return
+
+*settings_bgm_chapter_display
+	notif %bgm_chapter_display = 1 lsp 295,set_on,settings_base_off1+%mcoord_add,661
+	if %bgm_chapter_display = 1 lsp 295,set_on2,settings_base_off1+%mcoord_add,661
+	notif %bgm_chapter_display = 0 lsp 296,set_off,settings_base_off2+%mcoord_add,661
+	if %bgm_chapter_display = 0 lsp 296,set_off2,settings_base_off2+%mcoord_add,661
+return
+
+*settings_window_size
+	if $window_size = "1280" lsp 299,":s;#FFFFFF`{p:8:{w:350:}{a:c:}{fit}1280x720}",1280,487 : jumpf
+	if $window_size = "1366" lsp 299,":s;#FFFFFF`{p:8:{w:350:}{a:c:}{fit}1366x768}",1280,487 : jumpf
+	if $window_size = "1440" lsp 299,":s;#FFFFFF`{p:8:{w:350:}{a:c:}{fit}1440х810}",1280,487 : jumpf
+	if $window_size = "1600" lsp 299,":s;#FFFFFF`{p:8:{w:350:}{a:c:}{fit}1600x900}",1280,487 : jumpf
+	if $window_size = "1920" lsp 299,":s;#FFFFFF`{p:8:{w:350:}{a:c:}{fit}1920x1080}",1280,487 : jumpf
+	if $window_size = "2560" lsp 299,":s;#FFFFFF`{p:8:{w:350:}{a:c:}{fit}2560x1440}",1280,487 : jumpf
+	lsp 299,set_window_size_custom,1280,487
+	~
+	lsp 297,":a/2,0,3;graphics\menu_en\config\config_left.png",1210,499
+	lsp 298,":a/2,0,3;graphics\menu_en\config\config_right.png",1640,499
+return
+
+*settings_end
+	for %tmp = 100 to config_main_lsp2 : _csp %tmp : _csp2 %tmp next
+	seplay 9,1005,100 : wait 50
+	border_pad_pop
+	dwavestop 0
+	gosub *apply_msgwnd_settings
+return
+
+*settings_full_reset
+	lsp 5,":c;graphics\colour\black.png",0,0,180
+
+	lsp 2,reset_hint_text,0,0
+	lsp 3,action_yes,0,0
+	lsp 4,action_no,0,0
+	align_message_l 2,3,4
+	
+	btndef ""
+
+	spbtn 3,503
+	spbtn 4,504
+
+	*settings_full_reset_loop
+
+	btnwait2 %btnRes
+
+	if %btnRes = 503 _csp 2,5 : savereset
+	if %btnRes = 504 _csp 2,5 : return
+
+	goto *settings_full_reset_loop

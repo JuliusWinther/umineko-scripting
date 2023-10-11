@@ -1410,6 +1410,8 @@ defsub vsp_special
 defsub config_write_str
 defsub config_write_num
 defsub b_title_subroutine
+defsub clear_config_options
+defsub settings_menu_anim
 ;End Custom
 
 ;====================================================   Custom Vars - W_CUSTOM
@@ -1451,11 +1453,11 @@ numalias config_name,9526
 numalias config_value,9527
 
 ;Params for aspt2_mem
-numalias aspt_prop,9530
-numalias aspt_slot,9531
-numalias aspt_val1,9532
-numalias aspt_val2,9533
-numalias aspt_val3,9534
+numalias aspt_prop,9531
+numalias aspt_slot,9532
+numalias aspt_val1,9533
+numalias aspt_val2,9534
+numalias aspt_val3,9535
 
 ;Params for write_special_text
 numalias lsp_slot,9540
@@ -1465,6 +1467,18 @@ numalias lsp_y,9543
 numalias lsp_text1,9544
 numalias lsp_text2,9545
 numalias lsp_text3,9546
+
+;New Configs
+numalias cfg_current_page,9550
+numalias cfg_temp1,9551
+numalias cfg_temp2,9552
+numalias cfg_height,9553
+numalias cfg_menu_anim,9554 ;0 = off - 1 = on
+numalias cfg_mouse_x,9555
+numalias cfg_temp_var,9556
+numalias cfg_mouse_click,9557
+numalias cfg_txt_speed_cursor_x,9558
+numalias cfg_automode_speed_cursor_x,9559
 
 ;Discord - W_CUSTOM
 
@@ -1564,15 +1578,19 @@ preset_define 32,1,40,#FFFFFF,0,0,0,1,8,#000000,0,0,0,#000000,2,20,1590 ;Menu mu
 
 ;Custom presets - W_CUSTOM
 ;number,font,size,colour,bold,italic,underline,border,border-width,border-colour,shadow,shadow-x,shadow-y,shadow colour,character_spacing,line_height,text_wrap
-preset_define 43,10,35,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0,0,818 ;'Episode' text and btn desc title
-preset_define 44,10,27,#FFFFFF,0,0,0,0,0,#FFFFFF,0,-1,0,#FFFFFF,2,58 ; number of the episode
-preset_define 45,10,33,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0,58 ; Increased shadow text
-preset_define 46,11,70,#FFFFFF,0,0,0,1,3,#FFFFFF,0,0,0,#000000,1,0 ; Chapter name text
-preset_define 47,11,36,#FFFFFF,0,0,0,1,1,#FFFFFF,0,0,0,#000000,1,0,818 ; Title btn description sub
-preset_define 48,11,28,#FFFFFF,0,0,0,1,1,#FFFFFF,0,0,0,#000000,1,0,818 ; Ep btn description sub
-preset_define 49,10,40,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,1,0,818 ; Ep btn description sub
-preset_define 50,10,40,#B2B2B2,0,0,0,0,0,#B2B2B2,0,0,0,#000000,1,0,396 ; R-Menu not selectd btn
-preset_define 51,10,40,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,1,0,396 ; R-Menu selectd btn
+preset_define 43,10,35,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0		;'Episode' text and btn desc title
+preset_define 44,10,27,#FFFFFF,0,0,0,0,0,#FFFFFF,0,-1,0,#FFFFFF,2	; number of the episode
+preset_define 45,10,33,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,0 	; Increased shadow text
+preset_define 46,11,70,#FFFFFF,0,0,0,1,3,#FFFFFF,0,0,0,#000000,1 	; Chapter name text
+preset_define 47,11,36,#FFFFFF,0,0,0,1,1,#FFFFFF,0,0,0,#000000,1 	; Title btn description sub
+preset_define 48,11,28,#FFFFFF,0,0,0,1,1,#FFFFFF,0,0,0,#000000,1 	; Ep btn description sub
+preset_define 49,10,40,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,1 	; Ep btn description sub
+preset_define 50,10,40,#B2B2B2,0,0,0,0,0,#B2B2B2,0,0,0,#000000,1 	; R-Menu not selectd btn
+preset_define 51,10,40,#FFFFFF,0,0,0,0,0,#FFFFFF,0,0,0,#000000,1 	; R-Menu selectd btn
+preset_define 52,10,90,#FFFFFF,0,0,0,1,10,#000000,0,0,0,#000000,2 	; Config Title
+preset_define 53,10,43,#181818,0,0,0,0,0,#000000,0,0,0,#000000,0 	; Config Section
+preset_define 54,1,47,#FFFFFF,0,0,0,1,10,#2C1611,0,0,0,#000000,2 	; Config Option Name
+preset_define 55,1,47,#FFFFFF,0,0,0,1,10,#2C1611,0,0,0,#000000,2 	; Config Option
 
 preset_define 83,10,35,#000000,0,0,0,0,0,#000000,0,1,2,#000000,0,58 ;'Episode' text - shadow
 preset_define 84,10,27,#000000,0,0,0,0,0,#000000,0,1,2,#000000,2,58 ; number of the episode - shadow
@@ -1703,7 +1721,11 @@ voice_vol
 ;Initialization - Global Declarations -W_CUSTOM
 mov $sprite_folder_name,"sprites"
 mov $bg_folder_name,"backgrounds"
-mov %block_unlocking,0 ;Aniamtions
+mov %block_unlocking,0 ;Animations
+mov %cfg_current_page,1
+
+	;DEBUG ;TODO remove
+	mov %cfg_menu_anim,1
 
 ;Sprite cache - Initializing slot cache - W_CUSTOM
 mov %0,9700
@@ -1718,7 +1740,7 @@ for %for_index1=0 to 247
 	next
 next
 
-mov %reloading_status,0
+mov %reloading_status,0 ;Used for Sprites Reload, VERY improtant when clearing slots
 
 mov %UMINEKOEND_EXTRA,99 ;TODO DEBUG for progressive episode unlock, remove this
 

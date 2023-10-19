@@ -124,59 +124,51 @@ csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 1
-lbg "c:colour",s0_2,"white"
-aspt2 alpha,s0_2,200
+wait 60
 seplay 11,57,100
 flush 1
-csp_slot s0_2
 lbg "a:efe",s0_3,"homing1"
 flush 1
 wait 60
-lbg "c:colour",s0_2,"white"
-aspt2 alpha,s0_2,200
+
 seplay 11,57,100
 flush 1
-csp_slot s0_2
+csp_slot s0_3
 lbg "a:efe",s0_3,"homing2"
 flush 1
 wait 60
-lbg "c:colour",s0_2,"white"
-aspt2 alpha,s0_2,200
+
 seplay 11,57,100
 flush 1
-csp_slot s0_2
+csp_slot s0_3
 lbg "a:efe",s0_3,"homing3"
 flush 1
 wait 60
-lbg "c:colour",s0_2,"white"
-aspt2 alpha,s0_2,200
+
 seplay 11,57,100
 flush 1
-csp_slot s0_2
+csp_slot s0_3
 lbg "a:efe",s0_3,"homing4"
 flush 1
 wait 60
-lbg "c:colour",s0_2,"white"
-aspt2 alpha,s0_2,200
+
 seplay 11,57,100
 flush 1
-csp_slot s0_2
+csp_slot s0_3
 lbg "a:efe",s0_3,"homing5"
 flush 1
 wait 60
-lbg "c:colour",s0_2,"white"
-aspt2 alpha,s0_2,200
+
 seplay 11,57,100
 flush 1
-csp_slot s0_2
+csp_slot s0_3
 lbg "a:efe",s0_3,"homing6"
 flush 1
 wait 60
-lbg "c:colour",s0_2,"white"
-aspt2 alpha,s0_2,200
+
 seplay 11,57,100
 flush 1
-csp_slot s0_2
+csp_slot s0_3
 lbg "a:efe",s0_3,"homing7"
 flush 1
 wait 100
@@ -206,6 +198,11 @@ d_continue
 wait_on_d 1
 seplay 11,72,100
 seplay 12,73,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 d_continue
 wait_on_d -1
 
@@ -250,86 +247,112 @@ csp_slot s0_9
 csp_slot s0_3
 flush 80
 wait 300
-lbg "c:locale_en",s0_3,"system1"
+lbg "c:locale",s0_3,"system1"
 seplay 11,57,100
 flush 80
-wait 300
-lbg "c:locale_en",s0_3,"system2"
+wait 100
+lbg "c:locale",s0_3,"system2"
 seplay 11,57,100
 flush 80
-wait 300
-lbg "c:locale_en",s0_3,"system3"
+wait 100
+lbg "c:locale",s0_3,"system3"
 seplay 11,57,100
 flush 80
-wait 300
-lbg "c:locale_en",s0_3,"system4"
+wait 100
+lbg "c:locale",s0_3,"system4"
 seplay 11,57,100
 flush 80
-wait 300
-lbg "c:locale_en",s0_3,"system5"
+wait 100
+lbg "c:locale",s0_3,"system5"
 seplay 11,57,100
 flush 80
-wait 300
+wait 100
 
 msgwnd_non
 *e10_136
 d `The next target:`[@]` that irritating Amakusa himself.`[\]
+textoff
 
+csp_slot s0_3
+flush 80
 
 msgwnd_ama
 *e10_137
 d2 [lv 0*"20"*"ama_00090"]`{qt}What's been lost isn't important, after all.`[@][lv 0*"20"*"ama_00100"]` More importantly...`[@][#][*][lv 0*"20"*"ama_00110"]` What the hell!?`[@][lv 0*"20"*"ama_00120"]` Hrrk!{qt}`[\]
 wait_on_d 0
-
+seplay 11,36,100
+lbg "c:colour",s0_3,"white"
+lbg "a:efe",s0_14,"1a2"
+flush 1
+wait 100
+lbg "c:backgrounds",s0_3,"bui_r1a"
+lss s0_9,"rg7","a11_warai3"
+flush 80
 d_continue
 wait_on_d -1
-
-seplay 11,36,100
-
-lbg "c:backgrounds",s0_3,"bui_r1a"
-
-lss s0_9,"rg7","a11_warai3"
-
+textoff
 seplay 11,13,100
-
+csp_slot s0_14
+flush 25
+csp_slot s0_9
+flush 80
 lss s0_9,"rg7","a12_naku1"
+aspt2_mem "ypos",s0_9,1300
+aspt2_mem "scalex",s0_9,240
+aspt2_mem "scaley",s0_9,240
+flush 80
 
 msgwnd_rg7
 *e10_138
 d2 [lv 0*"44"*"rg7_00720"]`{qt}Kyaaa,`[#][*]` Amakusaaaaaaaaa,`[#][*]` stay strong!!!{qt}`[#][*][\]
 wait_on_d 0
-
+seplay 11,11,100
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
 d_continue
 wait_on_d 1
-
+seplay 12,12,100
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
 d_continue
 wait_on_d 2
-
+seplay 13,8,100
 d_continue
 wait_on_d -1
 
-seplay 11,11,100
-
-seplay 11,12,100
-
-seplay 11,8,100
 
 msgwnd_ama
 *e10_139
 d2 [lv 0*"20"*"ama_00130"]`{qt}<C- ...ool...>`[@][#][*][lv 0*"20"*"ama_00140"]`...ugh.{qt}`[#][*][\]
 wait_on_d 0
-
+lbg "c:backgrounds",s0_3,"bui_r1a"
+color_mod2 s0_3,#ffffff
+lss s0_9,"rg7","a12_naku1"
+aspt2_mem "ypos",s0_9,1300
+aspt2_mem "scalex",s0_9,240
+aspt2_mem "scaley",s0_9,240
+color_mod2 s0_9,#ffffff
 d_continue
 wait_on_d 1
-
+seplay 11,13,100
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
 d_continue
 wait_on_d -1
+textoff
 
-lbg "c:backgrounds",s0_3,"bui_r1a"
-
-lss s0_9,"rg7","a12_naku1"
-
-seplay 11,13,100
+csp_slot s0_9
+csp_slot s0_3
+flush 80
 
 msgwnd_non
 *e10_140
@@ -337,532 +360,807 @@ d `The second target:`[@]` Gohda's high-class chocolate that Beelzebub was just 
 
 
 seplay 11,57,100
+flush 1
+lbg "a:efe",s0_3,"homing1"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing2"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing3"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing4"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing5"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing6"
+flush 1
+wait 60
 
 seplay 11,57,100
-
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing7"
+flush 1
+wait 100
 seplay 11,36,100
-
-seplay 11,1022,100
-
-lbg "c:backgrounds",s0_3,"glob_1a"
-
+seplay 12,1022,100
+lbg "c:colour",s0_3,"white"
+flush 80
+lbg "a:backgrounds",s0_3,"glob_1a"
+lbg "a:backgrounds",s0_2,"glob_1a_bg"
 lss s0_9,"rg6","a12_naku1"
+flush 22
 
 msgwnd_rg6
 *e10_141
 d [lv 0*"43"*"rg6_00530"]`{qt}Uwaaaaaaaaa!!`[@][lv 0*"43"*"rg6_00540"]` Gohda's Belgian chocolate just exploded in my mooouuth!{qt}`[\]
+textoff
 
-
-lss s0_9,"goh","a11_odoroki1"
+csp_slot s0_9
+flush 80
+lss s0_10,"goh","a11_odoroki1"
+aspt2_mem "xpos",s0_10,550
 
 msgwnd_goh
 *e10_142
 d2 [lv 0*"17"*"goh_01090"]`{qt}Impossible!`[#][*][@][lv 0*"17"*"goh_01100"]` It's the royal family secret recipe! Did I make a mistake somewhere!?`[@][#][*][lv 0*"17"*"goh_01110"]` Am I still that unskiiiilled?!`[#][*][@][#][*][lv 0*"17"*"goh_01120"]` I m-must return to Belgium for further training!{qt}`[\]
 wait_on_d 0
-
+seplay 11,8,100
+seplay 12,12,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 d_continue
 wait_on_d 1
-
+lss s0_10,"goh","a11_komaru1"
+aspt2_mem "xpos",s0_10,550
 d_continue
 wait_on_d 2
-
+seplay 11,57,100
+seplay 12,72,100
+seplay 13,1010,100
 d_continue
 wait_on_d 3
-
+lss s0_10,"goh","a11_ikari2"
+aspt2_mem "xpos",s0_10,550
 d_continue
 wait_on_d -1
+textoff
 
-seplay 11,8,100
-
-seplay 11,12,100
-
-lss s0_9,"goh","a11_komaru1"
-
-seplay 11,57,100
-
-seplay 11,72,100
-
-seplay 11,1010,100
-
-lss s0_9,"goh","a11_ikari2"
+csp_slot s0_10
+flush 80
 
 seplay 11,20,100
-
+wait 200
 seplay 11,20,100
-
+wait 200
 seplay 11,20,100
-
-seplay 11,1022,100
-
-seplay 11,1022,100
-
+wait 300
+seplay 12,1022,100
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 1000
 seplay 11,3,100
-
 lbg "c:backgrounds",s0_3,"glob_1a"
-
 lss s0_9,"rg6","a12_odoroki3"
-
+flush 80
 lss s0_9,"rg6","a12_naku1"
+flush 80
 
 msgwnd_rg6
 *e10_143
 d [lv 0*"43"*"rg6_00550"]`{qt}F-forget Belgium, just make me another box!`[@][lv 0*"43"*"rg6_00560"]` Uwaaaaaa!{qt}`[\]
 
-
 msgwnd_non
 *e10_144
 d `However, Gohda had already left to seek the mystery of Belgian chocolate...`[\]
+textoff
 
-
+csp_slot s0_3
+csp_slot s0_2
+csp_slot s0_9
+flush 22
 lbg "c:backgrounds",s0_3,"gdin_1ad"
-
 lss s0_9,"enj","a11_warai3"
-
-lss s0_9,"sak","a11_warai2"
+lss s0_10,"sak","a11_warai2"
+aspt2_mem "xpos",s0_10,550
+flush 22
 
 *e10_145
 d `Third target:`[@]` The pancakes Ange had made for her tea party with Mammon and Sakutaro.`[\]
+textoff
 
-
+csp_slot s0_9
+csp_slot s0_10
 lbg "c:colour",s0_3,"black"
+flush 1
+wait 60
+seplay 11,57,100
+flush 1
+lbg "a:efe",s0_3,"homing1"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing2"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing3"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing4"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing5"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing6"
+flush 1
+wait 60
 
 seplay 11,57,100
-
-seplay 11,57,100
-
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing7"
+flush 1
 seplay 11,36,100
-
-seplay 11,57,100
-
+seplay 12,57,100
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 300
+csp_slot s0_3
+flush 22
+wait 100
 seplay 11,39,100
-
 lbg "c:backgrounds",s0_3,"gdin_1ad"
-
 seplay 11,16,100
-
 lss s0_9,"rg5","a12_odoroki1"
+flush 80
 
 msgwnd_rg5
 *e10_146
 d [lv 0*"42"*"rg5_00440"]`{qt}A-Ange, Sakutaro, are you alright?!{qt}`[\]
+textoff
 
-
-lss s0_9,"sak","a21_naku1"
-
-lss s0_9,"enj","a11_nayamu1"
-
-lss s0_9,"enj","a11_fuman1"
+lss s0_8,"sak","a21_naku1"
+aspt2_mem "xpos",s0_8,-550
+lss s0_10,"enj","a11_nayamu1"
+aspt2_mem "xpos",s0_10,550
+flush 80
+lss s0_10,"enj","a11_fuman1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_enj
 *e10_147
 d2 [lv 0*"11"*"enj_00280"]`{qt}...I had no idea...`[@][lv 0*"11"*"enj_00290"]` that pancakes would become explosive if cooked for too long.`[@][#][*][lv 0*"11"*"enj_00300"]`...Good going, me.`[@][lv 0*"11"*"enj_00310"]` I guess there was a reason I got such low scores in Home Economics.{qt}`[\]
 wait_on_d 0
-
+lss s0_10,"enj","a11_nayamu1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 d_continue
 wait_on_d -1
-
-lss s0_9,"enj","a11_nayamu1"
 
 msgwnd_non
 *e10_148
 d `I decided to make some pancakes while we're enjoying the aroma of the tea.`[\]
 
-
 *e10_149
 d `But because I don't make them often, or, rather, I always just buy them premade, I thought I might burn some of them.`[@]`...Well, now we're surrounded by burning stench.`[\]
 
-
 lss s0_9,"rg5","a12_komaru3"
+flush 80
 
 msgwnd_rg5
 *e10_150
 d [lv 0*"42"*"rg5_00450"]`{qt}N-no, even if you burn pancakes to charcoal, they shouldn't explode...`[@][lv 0*"42"*"rg5_00460"]` Could it be..?{qt}`[\]
 
-
-lss s0_9,"sak","a11_odoroki1"
+lss s0_8,"sak","a11_odoroki1"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_sak
 *e10_151
 d [lv 0*"33"*"sak_00140"]`{qt}...U-uryu.`[@][lv 0*"33"*"sak_00150"]` I'm okay...somehow.`[@][lv 0*"33"*"sak_00160"]` Are you okay, Ange?`[@][lv 0*"33"*"sak_00170"]` What about you, Mammon..!?{qt}`[\]
 
-
 lss s0_9,"rg5","a12_odoroki1"
+flush 80
 
 msgwnd_rg5
 *e10_152
 d [lv 0*"42"*"rg5_00470"]`{qt}Sakutaro wasn't targeted, ...does that mean someone from the Alliance is attacking us?!{qt}`[\]
+textoff
 
-
+csp_slot s0_3
+csp_slot s0_9
+csp_slot s0_10
+csp_slot s0_8
+flush 22
 lbg "c:backgrounds",s0_3,"shop_1a"
-
-lss s0_9,"rud","a11_defo1"
-
-lss s0_9,"rg4","a12_hohoemi1"
+lss s0_11,"rud","a11_defo1"
+lss s0_10,"rg4","a12_hohoemi1"
+aspt2_mem "xpos",s0_10,550
+flush 22
 
 msgwnd_non
 *e10_153
 d `Fourth target:`[@]` Rudolf, currently shopping with Belphegor.`[\]
+textoff
 
-
+csp_slot s0_11
+csp_slot s0_10
 lbg "c:colour",s0_3,"black"
+flush 80
+wait 60
+seplay 11,57,100
+flush 1
+lbg "a:efe",s0_3,"homing1"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing2"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing3"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing4"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing5"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing6"
+flush 1
+wait 60
 
 seplay 11,57,100
-
-seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing7"
+flush 1
 
 seplay 11,36,100
-
-seplay 11,57,100
-
+seplay 12,57,100
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 300
 seplay 11,35,100
-
 lbg "c:efe",s0_3,"blood_2a"
-
+flush 80
 seplay 11,35,100
-
 lbg "c:efe",s0_3,"blood_2b"
+flush 80
 
 msgwnd_rg4
 *e10_154
 d [lv 0*"41"*"rg4_00420"]`{qt}R- ...Rudolf, are... are you alright..?{qt}`[\]
-
+textoff
 
 seplay 11,35,100
-
 lbg "c:efe",s0_3,"blood_2c"
+flush 80
 
 msgwnd_rud
 *e10_155
 d [lv 0*"08"*"rud_00510"]`{qt}Heh. ...So this is the action they took.`[@][lv 0*"08"*"rud_00520"]` Sorry, sweetheart.`[@][lv 0*"08"*"rud_00530"]`...Looks like they mistook you for my woman.`[@][lv 0*"08"*"rud_00540"]` At least I was able to protect you.{qt}`[\]
 
-
 msgwnd_non
 *e10_156
 d2 `Of course they were actually aiming at Rudolf.`[@]` Trying to dodge while pretending to protect is one of Rudolf's talents.`[#][*][\]
 wait_on_d 0
-
+seplay 11,4,100
 d_continue
 wait_on_d -1
 
-seplay 11,4,100
-
-seplay 11,4,100
-
 *e10_157
 d `And, if it fails, it's the perfect technique for making it look like you were trying to defend someone.`[\]
-
 
 seplay 11,3,100
 
 *e10_158
 d `...And of course, Belphegor, unused to moves like this, was completely taken in.`[\]
-
+textoff
 
 lbg "c:backgrounds",s0_3,"shop_1a"
-
 lss s0_9,"rg4","a12_odoroki3"
+flush 26
 
 msgwnd_rg4
 *e10_159
 d2 [lv 0*"41"*"rg4_00430"]`{qt}W-were they... aiming at me..?`[@][#][*][lv 0*"41"*"rg4_00440"]`...But that sniping, ...it can't be...{qt}`[\]
 wait_on_d 0
-
+lss s0_9,"rg4","a12_komaru3"
+flush 80
 d_continue
 wait_on_d -1
-
-lss s0_9,"rg4","a12_komaru3"
 
 msgwnd_rud
 *e10_160
 d [lv 0*"08"*"rud_00550"]`{qt}You know, a man that defends a woman can usually be revived with a kiss...{qt}`[\]
 
-
 msgwnd_rg4
 *e10_161
 d2 [lv 0*"41"*"rg4_00450"]`{qt}I'm not going to f-fall for that one!`[@][lv 0*"41"*"rg4_00460"]` Let's get you some medical help right now.`[@][#][*][lv 0*"41"*"rg4_00470"]`...Ah-{qt}`[\]
 wait_on_d 0
-
+lss s0_9,"rg4","a12_odoroki3"
+flush 80
 d_continue
 wait_on_d -1
+textoff
 
+csp_slot s0_9
+flush 80
 lss s0_9,"rg4","a12_odoroki3"
-
-lss s0_9,"rg4","a12_odoroki3"
-
-lbg "c:backgrounds",s0_3,"shop_1a"
-
+aspt2_mem "ypos",s0_9,1300
+aspt2_mem "scalex",s0_9,260
+aspt2_mem "scaley",s0_9,260
+flush 80
 seplay 11,13,100
-
+csp_slot s0_9
+flush 25
 seplay 11,1010,100
-
+wait 200
 seplay 11,1010,100
-
+wait 300
 seplay 11,48,100
-
+wait 300
 seplay 11,1,100
+lbg "c:colour",s0_3,"white"
+flush 42
+csp_slots s0_3
+flush 2
 
 msgwnd_non
 *e10_162
 d `Fifth target:`[@]` Kyrie, currently stalking Rudolf with Leviathan.`[\]
+textoff
 
+lbg "c:colour",s0_3,"black"
+flush 1
+wait 60
+seplay 11,57,100
+flush 1
+lbg "a:efe",s0_3,"homing1"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing2"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing3"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing4"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing5"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing6"
+flush 1
+wait 60
 
 seplay 11,57,100
-
-seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing7"
+flush 1
+wait 50
 
 seplay 11,36,100
-
-seplay 11,57,100
+seplay 12,57,100
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 300
 
 lbg "c:backgrounds",s0_3,"shop_3a"
-
-lss s0_9,"rg2","a12_odoroki1"
-
+lss s0_8,"rg2","a12_odoroki1"
+aspt2_mem "xpos",s0_8,-550
 lss s0_9,"kir","a11_majime1"
-
+flush 80
 lss s0_9,"kir","a11_komaru2"
+flush 80
 
 msgwnd_kir
 *e10_163
 d [lv 0*"09"*"kir_00160"]`{qt}Are you alright!?`[@][lv 0*"09"*"kir_00170"]` Hang in there!`[@][lv 0*"09"*"kir_00180"]` Your wound isn't too deep..!{qt}`[\]
 
-
-lss s0_9,"rg2","a12_ikari2"
+lss s0_8,"rg2","a12_ikari2"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_rg2
 *e10_164
 d [lv 0*"39"*"rg2_00440"]`{qt}...That was close...`[@][lv 0*"39"*"rg2_00450"]` Taking this shot in your stead, I, Leviathan of Envy, ...d-don't regret anything...{qt}`[\]
 
-
 lss s0_9,"kir","a11_komaru1"
+flush 80
 
 msgwnd_kir
 *e10_165
 d [lv 0*"09"*"kir_00190"]`{qt}Heh.`[@][lv 0*"09"*"kir_00200"]` Even though you're a stake?`[@][lv 0*"09"*"kir_00210"]` *giggle* Don't act so full of yourself.`[@][lv 0*"09"*"kir_00220"]` Let me help you to a hospital.{qt}`[\]
 
-
-lss s0_9,"rg2","a12_odoroki1"
+lss s0_8,"rg2","a12_odoroki1"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_rg2
 *e10_166
 d2 [lv 0*"39"*"rg2_00460"]`{qt}Forget about that! I'd rather see you bring down divine wrath upon that cheater, Rudolf...!`[@][lv 0*"39"*"rg2_00470"]` I'll watch from here, so please!`[@][lv 0*"39"*"rg2_00480"]` S, see, look!`[@][lv 0*"39"*"rg2_00490"]` Him, with Belphegor,`[@][#][*][lv 0*"39"*"rg2_00500"]`...hiiiiii!{qt}`[#][*][\]
 wait_on_d 0
-
+lss s0_8,"rg2","a12_naku1"
+aspt2_mem "xpos",s0_8,-550
 d_continue
 wait_on_d 1
-
+seplay 11,72,100
+seplay 12,57,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 d_continue
 wait_on_d -1
 
-lss s0_9,"rg2","a12_naku1"
-
-seplay 11,72,100
-
-seplay 11,57,100
-
-lss s0_9,"kir","a11_warai2"
+csp_slot s0_9
+flush 80
+lss s0_10,"kir","a11_warai2"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_kir
 *e10_167
 d2 [lv 0*"09"*"kir_00230"]`{qt}...I'll take you to the hospital in a moment.`[@][lv 0*"09"*"kir_00240"]` They're going to need at least two beds...`[@][#][*][lv 0*"09"*"kir_00250"]`...24 x 365 x 67940323580435798436759847598788...{qt}`[\]
 wait_on_d 0
-
+seplay 11,20,100
+csp_slot s0_10
+lbg "c:colour",s0_3,"white"
+flush 80
+csp_slot s0_30
+flush 80
 d_continue
 wait_on_d -1
+textoff
 
-seplay 11,20,100
-
-seplay 11,20,100
-
-seplay 11,20,100
-
-lss s0_9,"rg2","a12_akuwarai1"
-
+lss s0_8,"rg2","a12_akuwarai1"
+aspt2_mem "xpos",s0_8,-550
+flush 80
+wait 1000
+csp_slot s0_3
+csp_slot s0_8
 lss s0_9,"rud","a11_akuwarai1"
-
-lss s0_9,"rg4","b22_naku1"
-
+aspt2_mem "ypos",s0_9,800
+aspt2_mem "scalex",s0_9,260
+aspt2_mem "scaley",s0_9,260
+lss s0_10,"rg4","b22_naku1"
+aspt2_mem "ypos",s0_10,1600
+aspt2_mem "xpos",s0_10,-600
+aspt2_mem "scalex",s0_10,260
+aspt2_mem "scaley",s0_10,260
+flush 80
+wait 300
 seplay 11,20,100
-
+wait 200
 seplay 11,20,100
-
+wait 200
 seplay 11,20,100
-
+wait 200
 seplay 11,57,100
-
-seplay 11,34,100
-
+agpt quakeycycle,37
+agpt quakeyamp,20
+agpt quakeyamp,0,150,1
+rumble 33,150
+gptwait quakeyamp
+seplay 12,34,100
+lsp s0_8,":a;graphics\saku\red_eye.png",650,800
+aspt2_mem "scalex",s0_8,260
+aspt2_mem "scaley",s0_8,260
+flush 22
 lss s0_9,"rud","a11_odoroki1"
-
+aspt2_mem "ypos",s0_9,800
+aspt2_mem "scalex",s0_9,260
+aspt2_mem "scaley",s0_9,260
+flush 80
 seplay 11,20,100
-
-seplay 11,20,100
-
-seplay 11,72,100
-
+wait 50
+seplay 12,72,100
+csp_slot s0_10
+csp_slot s0_8
+csp_slot s0_9
 lbg "c:efe",s0_3,"blood_2a"
-
+flush 80
 seplay 11,73,100
-
 lbg "c:efe",s0_3,"blood_2b"
-
+flush 80
 seplay 11,74,100
-
 lbg "c:efe",s0_3,"blood_2c"
-
+flush 80
 seplay 11,20,100
-
+wait 20
 seplay 11,20,100
-
+wait 20
 seplay 11,20,100
-
+wait 200
 seplay 11,46,100
-
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 200
 lbg "c:efe",s0_3,"bullet_1a"
-
 seplay 11,46,100
-
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 200
 lbg "c:efe",s0_3,"bullet_1b"
-
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 200
 seplay 11,46,100
-
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 200
 lbg "c:efe",s0_3,"bullet_1c"
-
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 200
 seplay 11,46,100
-
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 200
 lbg "c:efe",s0_3,"bullet_1d"
-
 seplay 11,36,100
-
-seplay 11,72,100
-
+seplay 12,72,100
 lbg "c:efe",s0_3,"blood_1a"
-
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 63,150
+gptwait quakexamp
+flush 80
+csp_slot s0_3
+flush 22
+wait 1000
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
-
 lss s0_9,"rg3","a12_komaru3"
+flush 22
 
 msgwnd_non
 *e10_168
 d `Sixth target:`[@]` The bottle of perfume Satan got from Kanon.`[\]
-
+textoff
 
 lbg "c:colour",s0_3,"black"
+flush 1
+wait 60
+seplay 11,57,100
+flush 1
+lbg "a:efe",s0_3,"homing1"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing2"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing3"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing4"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing5"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing6"
+flush 1
+wait 60
 
 seplay 11,57,100
-
-seplay 11,57,100
-
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing7"
+flush 1
+wait 50
 seplay 11,36,100
-
-seplay 11,57,100
-
-seplay 11,1022,100
-
+seplay 12,57,100
+seplay 13,1022,100
+lbg "c:colour",s0_3,"white"
+flush 80
+wait 300
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
-
 lss s0_9,"rg3","a12_odoroki3"
+flush 80
 
 msgwnd_rg3
 *e10_169
 d2 [lv 0*"40"*"rg3_00750"]`{qt}Ah, ...but...`[@][lv 0*"40"*"rg3_00760"]` just now, were those... the Chiester sisters?!`[@][#][*][lv 0*"40"*"rg3_00770"]`...Urk, ...grk, ...this must be... my punishment for getting caught up in White Day...{qt}`[\]
 wait_on_d 0
-
+lss s0_9,"rg3","a12_komaru3"
+flush 80
 d_continue
 wait_on_d -1
 
-lss s0_9,"rg3","a12_komaru3"
-
 lss s0_9,"rg3","a12_odoroki1"
+flush 80
 
 *e10_170
 d [lv 0*"40"*"rg3_00780"]`{qt}That's right.`[@][lv 0*"40"*"rg3_00790"]` Kanon isn't any ordinary rival.`[@][lv 0*"40"*"rg3_00800"]`...But he has such good taste, I thought it might be okay...`[@][lv 0*"40"*"rg3_00810"]` ..This hurts...`[|][lv 0*"40"*"rg3_00820"]` No, this is unacceptable! I have to pull myself together! I am furniture in service of {f:5:Beatrice}-sama, one of the Seven Sisters, Satan of Wrath!`[\]
 
-
 lss s0_9,"rg3","a12_ikari2"
+flush 80
 
 *e10_171
 d [lv 0*"40"*"rg3_00830"]`{qt}I must not despair... ...just because a gift from him broke!`[@][lv 0*"40"*"rg3_00840"]`...*sniff*{qt}`[\]
-
+textoff
 
 seplay 11,13,100
+csp_slot s0_9
+flush 25
+csp_slot s0_3
+flush 22
 
 msgwnd_non
 *e10_172
 d `Seventh target:`[@]` That tea Lucifer got from ...ahh, whatever.`[@]` Just put some holes into that obnoxious Battler already.`[\]
+textoff
 
+lbg "c:colour",s0_3,"black"
+flush 1
+wait 60
+seplay 11,57,100
+flush 1
+lbg "a:efe",s0_3,"homing1"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing2"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing3"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing4"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing5"
+flush 1
+wait 60
 
 seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing6"
+flush 1
+wait 60
 
 seplay 11,57,100
-
-seplay 11,57,100
+flush 1
+csp_slot s0_3
+lbg "a:efe",s0_3,"homing7"
+flush 1
+wait 100
 
 lbg "c:backgrounds",s0_3,"g2f_r1a"
-
 lss s0_9,"but","b22_odoroki2"
-
+flush 22
 seplay 11,20,100
-
 lss s0_9,"but","b25_odoroki1"
+flush 80
 
 msgwnd_but
 *e10_173
@@ -1054,7 +1352,7 @@ seplay 11,20,100
 lss s0_9,"but","b25_majime4"
 
 *e10_188
-d2 [lv 0*"10"*"bat_03650"]`I will never ever, from this day forward, get you something for White Day!.`[#][*][\]
+d2 [lv 0*"10"*"bat_03650"]`{c:ff0000:I will never ever, from this day forward, get you something for White Day!.}`[#][*][\]
 wait_on_d 0
 
 d_continue

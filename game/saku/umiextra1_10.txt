@@ -13,14 +13,21 @@ vol_bgm -1 1000
 lbg "c:colour",s0_30,"white"
 flush 8
 seplay 11,22,100
+csp_slot s0_30
 lbg "a:backgrounds",s0_3,"mkit_1a"
 lbg "a:backgrounds",s0_2,"mkit_1a_bg"
 lbg "c:backgrounds",s0_4,"different_spiral_1a"
-aspt2 alpha,s0_4,200
+aspt2 alpha,s0_4,220
 flush 99,1500,"whirl.dll/r"
+wait 800
 csp_slot s0_2
+csp_slot s0_3
+csp_slot s0_4
+flush 24
 lbg "c:backgrounds",s0_3,"mkit_1c"
-flush 22
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
+flush 24
 
 *e10_246
 d `Beato regained her consciousness in the kitchen, and was looking through Ronove's recipe book.`[\]
@@ -33,18 +40,22 @@ seplay 11,1010,100
 *e10_247
 d `On many of the pages were tags with the word 'Easy!' written on them, pointing out chocolate recipes simple enough for even a beginner to make.`[@]` Of course, Ronove was the one who added those.`[\]
 
-
-lss s0_9,"bea","a13_aseru1"
+lss s0_10,"bea","a13_aseru1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_bea
 *e10_248
 d2 [lv 0*"27"*"bea_02460"]`{qt}...If I'm supposed to take this seriously, I can't do something 'easy'!`[#][*][@][lv 0*"27"*"bea_02470"]` I'll show them what I can really do!{qt}`[\]
 wait_on_d 0
-
+seplay 11,13,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 d_continue
 wait_on_d -1
-
-seplay 11,13,100
 
 seplay 11,1010,100
 
@@ -52,383 +63,444 @@ msgwnd_non
 *e10_249
 d `...And so, in her enthusiasm, Beato ignored the tags and chose a complicated recipe that looked good...`[\]
 
-
-lss s0_9,"bea","a13_fukigen1"
+lss s0_10,"bea","a13_fukigen1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_bea
 *e10_250
 d2 [lv 0*"27"*"bea_02480"]`{qt}Ronove could certainly make this.`[@][lv 0*"27"*"bea_02490"]` And how is it possible that I, Great Lady {f:5:Beatrice}, wouldn't be able to do the same?`[@][lv 0*"27"*"bea_02500"]` I'll make everyone regret underestimating me!`[@][#][*][lv 0*"27"*"bea_02510"]` Fwahahahaha!{qt}`[\]
 wait_on_d 0
-
+lss s0_10,"bea","a13_akuwarai3"
+aspt2_mem "xpos",s0_10,550
+flush 80
 d_continue
 wait_on_d -1
-
-lss s0_9,"bea","a13_akuwarai3"
 
 msgwnd_non
 *e10_251
 d `Oh dear...`[@]` {f:5:Virgilia}, watching through the magical three way mirror, sighed. It seems like Beato was hopeless.`[\]
+textoff
 
+csp_slot s0_10
+csp_slot s0_4
+csp_slot s0_3
+flush 25
 
 *e10_252
 d `Half a day went by in a spectacular violence that would have shocked the culinary world.`[\]
 
-
 *e10_253
 d `Chocolate exploded out of pots.`[\]
 
-
 seplay 11,61,100
-
-seplay 11,1022,100
+seplay 12,1022,100
 
 *e10_254
 d `Chocolate was sweetly scorched, exploded, and pulverized.`[\]
-
+textoff
 
 seplay 11,48,100
-
+wait 300
 seplay 11,3,100
 
 lbg "c:backgrounds",s0_3,"mkit_1c"
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
+flush 22
 
 *e10_255
 d `Chocolate grew legs and ran around the kitchen.`[@]` Chocolate grew wings and took to the air.`[\]
-
 
 seplay 11,20,100
 
 *e10_256
 d2 `Thus, a butterfly net was soon added to Beato's {qt}chocolate-making{qt} utensils...`[#][*][\]
 wait_on_d 0
-
+seplay 12,12,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 d_continue
 wait_on_d -1
 
-seplay 11,12,100
-
 *e10_257
 d `At this point, you couldn't even call what she was doing {qt}making chocolate{qt}...`[\]
+textoff
 
-
-lbg "c:backgrounds",s0_3,"mkit_1a"
-
+csp_slot s0_3
+csp_slot s0_4
+flush 5
+lbg "a:backgrounds",s0_3,"mkit_1a"
+lbg "a:backgrounds",s0_2,"mkit_1a_bg"
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
 lss s0_9,"bea","a13_1_warai1"
+flush 2
 
 *e10_258
 d `However, even though she had failed enough times that the kitchen was coated in chocolate,`[@]` its heavy scent hanging in the air kept reminding her of what she was trying to accomplish.`[\]
 
-
 lss s0_9,"bea","a13_warai2"
+flush 80
 
 msgwnd_bea
 *e10_259
 d [lv 0*"27"*"bea_02520"]`{qt}This chocolate is absolutely stuffed with my feelings, considering how hard I've worked to make it!`[@][lv 0*"27"*"bea_02530"]` That damn Battler better accept it,`[|][lv 0*"27"*"bea_02540"]` and give me something amazing back on White Day.`[@][lv 0*"27"*"bea_02550"]` Kihihihi!{qt}`[\]
+textoff
 
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_9
+flush 22
 
 msgwnd_non
 *e10_260
 d `As she laughed while mixing it in the pot, her mind brought forth the words of her Master.`[\]
+textoff
 
-
-lss s0_9,"wal","a11_fuman1"
+lss s0_10,"wal","a11_fuman1"
+aspt2_mem "xpos",s0_10,550
+color_mod2 s0_10,#ffffff
+flush 22
 
 *e10_261
 d `{qt}Don't make the mistake of thinking White Day is an excuse to be given something{qt}.`[\]
+textoff
 
-
-lbg "c:backgrounds",s0_3,"mkit_1a"
+csp_slot s0_10
+flush 22
+lbg "a:backgrounds",s0_3,"mkit_1a"
+lbg "a:backgrounds",s0_2,"mkit_1a_bg"
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
+flush 22
 
 *e10_262
 d `...T-that's right.`[@]` This is the chance Master gave me with her secret ability.`[\]
 
-
 *e10_263
 d `I can't be thinking such insolent thoughts.`[\]
-
 
 *e10_264
 d `That sort of attitude is what I'm trying to solve with this spell.`[\]
 
-
 *e10_265
 d `Beato looked up at the page-a-day calendar that indicated this was the 13th of February, and remembered her last attempt,`[@]` before shaking her head and engrossing herself in her work once again.`[\]
-
+textoff
 
 seplay 11,52,100
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_2
+flush 8
 
 lbg "c:backgrounds",s0_3,"mkit_1c"
-
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
 lss s0_9,"gap","a11_akuwarai1"
+flush 22
 
 msgwnd_gap
 *e10_266
 d [lv 0*"32"*"gap_00010"]`{qt}Oh, something smells great.`[@][lv 0*"32"*"gap_00020"]` So you've decided to push yourself into candy making, huh, Beato?`[@][lv 0*"32"*"gap_00030"]` I guess this means the world is ending.{qt}`[\]
+textoff
 
-
-lbg "c:backgrounds",s0_3,"mkit_1a"
-
-lss s0_9,"bea","a12_futeki1"
+csp_slot s0_9
+lbg "a:backgrounds",s0_2,"mkit_1a_bg"
+lbg "a:backgrounds",s0_3,"mkit_1a"
+lss s0_8,"bea","a12_futeki1"
+aspt2_mem "xpos",s0_8,-550
+flush 23
 
 msgwnd_bea
 *e10_267
 d [lv 0*"27"*"bea_02560"]`{qt}That voice..!`[@][lv 0*"27"*"bea_02570"]` Gaap?{qt}`[\]
 
-
 msgwnd_non
 *e10_268
 d `The refrigerator opened, and Gaap came out of there.`[\]
+textoff
 
+csp_slot s0_4
+csp_slot s0_2
+csp_slot s0_3
+csp_slot s0_8
+flush 22
 
 *e10_269
 d `It's not like she was actually spending her time hiding inside the fridge.`[@]` She had just used the fridge door to materialize one of her warp holes.`[\]
 
-
 *e10_270
 d `Since directly appearing so suddenly in front of a friend was rude,`[@]` she used the appearance of a door as a measure of small etiquette.`[\]
+textoff
 
-
-lbg "c:backgrounds",s0_3,"mkit_1a"
-
-lss s0_9,"gap","a11_warai2"
+lbg "a:backgrounds",s0_3,"mkit_1a"
+lbg "a:backgrounds",s0_2,"mkit_1a_bg"
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
+lss s0_10,"gap","a11_warai2"
+aspt2_mem "xpos",s0_10,550
+flush 22
 
 msgwnd_gap
 *e10_271
 d [lv 0*"32"*"gap_00040"]`{qt}Did I pick a bad time to come and play?`[@][lv 0*"32"*"gap_00050"]` Are you busy?{qt}`[\]
 
-
-lss s0_9,"bea","a12_warai2"
+lss s0_8,"bea","a12_warai2"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_bea
 *e10_272
 d [lv 0*"27"*"bea_02580"]`{qt}I don't mind.`[@][lv 0*"27"*"bea_02590"]` You chose a good time to be a test subject for my samples.{qt}`[\]
 
-
-lss s0_9,"gap","a11_akuwarai3a"
+lss s0_10,"gap","a11_akuwarai3a"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_gap
 *e10_273
 d [lv 0*"32"*"gap_00060"]`{qt}...Considering the condition of the kitchen from your cooking, I might have to think that one over...{qt}`[\]
 
-
 msgwnd_non
 *e10_274
 d `Even Gaap was amazed at the state of things.`[\]
 
-
 *e10_275
 d `But even more than that, she didn't understand why Beato was bothering at all.`[\]
 
-
-lss s0_9,"gap","a11_defo2"
+lss s0_10,"gap","a11_defo2"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_gap
 *e10_276
 d [lv 0*"32"*"gap_00070"]`{qt}Hey, Beato,`[@][lv 0*"32"*"gap_00080"]`...why are you making chocolate?{qt}`[\]
 
-
-lss s0_9,"bea","a12_futeki1"
+lss s0_8,"bea","a12_futeki1"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_bea
 *e10_277
 d [lv 0*"27"*"bea_02600"]`{qt}For Valentine's Day, of course!`[@][lv 0*"27"*"bea_02610"]` I have to have it done before tomorrow!{qt}`[\]
 
-
-lss s0_9,"gap","a11_defo1a"
+lss s0_10,"gap","a11_defo1a"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_gap
 *e10_278
 d2 [lv 0*"32"*"gap_00090"]`{qt}...`[@][#][*][lv 0*"32"*"gap_00100"]`...Isn't it White Day today?{qt}`[\]
 wait_on_d 0
-
+lss s0_10,"gap","a11_defo2"
+aspt2_mem "xpos",s0_10,550
+flush 80
 d_continue
 wait_on_d -1
 
-lss s0_9,"gap","a11_defo2"
-
-meplay 1,5,100
+meplay 1,5,60
 
 msgwnd_bea
 *e10_279
 d [lv 0*"27"*"bea_02620"]`{qt}...{qt}`[\]
+textoff
 
-
+vol_bgm -1 500
+csp_slot s0_2
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_8
+csp_slot s0_10
+flush 22
 msgwnd_non
 *e10_280
 d `...Beato stopped stirring.`[\]
 
-
 *e10_281
 d `From the way the atmosphere froze, Gaap guessed there was something more to this.`[\]
 
-
 *e10_282
 d `But there was no helping what she had said now.`[\]
-
+textoff
 
 lbg "c:backgrounds",s0_3,"mkit_1c"
-
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
 lss s0_9,"gap","a11_warai2"
-
+flush 22
 lss s0_9,"gap","a11_defo2a"
+flush 80
 
 msgwnd_gap
 *e10_283
 d [lv 0*"32"*"gap_00110"]`{qt}...I'm sorry.`[@][lv 0*"32"*"gap_00120"]` Did I say something wrong?`[@][lv 0*"32"*"gap_00130"]` You look busy.`[@][lv 0*"32"*"gap_00140"]` I'll just be going now.`[@][lv 0*"32"*"gap_00150"]` See you later.{qt}`[\]
 
-
 msgwnd_non
 *e10_284
 d `Beato didn't respond.`[\]
 
-
 *e10_285
 d `Gaap opened another warp portal and vanished into it without another word.`[\]
 
-
 *e10_286
 d `...All that remained was Beato, frozen like time had stopped.`[\]
-
+textoff
 
 seplay 11,52,100
-
+lbg "c:colour",s0_30,"black"
+csp_slot s0_9
+flush 28
+vol_mix_fade 1000
+wait 1000
 bgmplay 25,70,0
+csp_slot s0_30
+flush 22
 
 *e10_287
 d `...Of course, I ended up... starting to doubt...`[\]
 
-
 *e10_288
 d `Such powerful magic...`[@]` shouldn't have taken just a snap of Master's fingers...`[\]
+textoff
 
-
+csp_slot s0_3
+csp_slot s0_4
+flush 22
 seplay 11,35,100
 
 msgwnd_bea
 *e10_289
 d [lv 0*"27"*"bea_02630"]`{qt}...*sniff*...{qt}`[\]
 
-
 msgwnd_non
 *e10_290
 d `Salty tears ran down her face.`[\]
 
-
 *e10_291
 d `They fell one by one into the bowl with the melted chocolate.`[\]
-
 
 *e10_292
 d `I'm so foolish, ...I'm such an idiot...`[\]
 
-
 *e10_293
 d `I can't even be angry at anyone.`[@]`...It was my fault for being dumb enough to fall for such a ridiculous lie. ...I'm upset at myself more than anything...`[\]
+textoff
 
-
-lbg "c:backgrounds",s0_3,"mkit_1a"
+lbg "a:backgrounds",s0_3,"mkit_1a"
+lbg "a:backgrounds",s0_2,"mkit_1a_bg"
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
+flush 26
 
 *e10_294
 d `How naive,`[@]` how foolish,`[@]` how gullible.`[\]
 
-
 *e10_295
 d `...And I only found out after I'd finally gotten close to tempering the chocolate.`[\]
 
-
 *e10_296
 d `...Who even cares anymore?`[@]` This is stupid.`[\]
+textoff
 
+csp_slot s0_2
+csp_slot s0_3
+csp_slot s0_4
+flush 22
 
 *e10_297
 d `This bowl I have in my hands. I'll get rid of it.`[@]`...I have to throw it away.`[\]
 
-
 *e10_298
 d `...I've worked on this for so long. ...This bowl, that I spent so much time on, is stopping me from forgetting all of this.`[\]
-
 
 *e10_299
 d `Why can't I... throw it away?`[\]
 
-
 *e10_300
 d `All I can do is cry...`[\]
-
+textoff
 
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
+flush 22
 
 *e10_301
 d `Valentine's Day. White Day.`[\]
 
-
 *e10_302
 d `...I wonder why I was so excited about them...`[\]
-
 
 *e10_303
 d `It wasn't really because of love or anything.`[\]
 
-
 *e10_304
 d `But... I wonder, ...is this just the season to feel this way?`[\]
-
 
 *e10_305
 d `...The time when the cold weather ends and the air begins to warm...`[\]
 
-
 *e10_306
 d `I wanted... to experience that with my feelings as well...`[@]` I didn't even want to get anything...`[\]
-
+textoff
 
 lbg "c:backgrounds",s0_3,"different_space_p1c"
+flush 25
 
 msgwnd_bea
 *e10_307
 d2 [lv 0*"27"*"bea_02640"]`{qt}...Uggggh, ...*sniff*..!`[@][lv 0*"27"*"bea_02650"]` Isn't... today... the day before Valentine's Day..?`[@][lv 0*"27"*"bea_02660"]` Why is it the 14th of March..?{qt}`[#][*][\]
 wait_on_d 0
-
+seplay 11,13,100
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
 d_continue
 wait_on_d -1
-
-seplay 11,13,100
 
 msgwnd_non
 *e10_308
 d `It was too late.`[\]
 
-
 *e10_309
 d `All of it.`[@]`...All of the feelings she had towards experiencing the mysterious Valentine's Day and White Day were already gone...`[\]
-
 
 *e10_310
 d `Ronove just changed the calendar.`[@]` It does read {qt}13th of February{qt}.`[\]
 
-
 *e10_311
 d `But that's a lie.`[\]
-
 
 msgwnd_bea
 *e10_312
 d [lv 0*"27"*"bea_02670"]`{qt}No matter what it might say, ...today isn't the 13th of February...{qt}`[\]
+textoff
 
+vol_bgm -1 500
+csp_slot s0_3
+flush 68
 
+set_window_simple 80,430
 msgwnd_but
 *e10_313
-d [lv 0*"10"*"bat_03660"]`{qt}Not the 13th, you say? What date is it, then?{qt}`[\]
-
+d [lv 0*"10"*"bat_03660"]`{a:c:{qt}Not the 13th, you say? What date is it, then?{qt}}`[\]
+textoff
+set_name_window_non
 
 lbg "c:backgrounds",s0_3,"mkit_1c"
-
-lss s0_9,"bea","a13_odoroki2"
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
+lss s0_8,"bea","a13_odoroki2"
+aspt2_mem "xpos",s0_8,-550
+flush 22
 
 msgwnd_bea
 *e10_314
 d [lv 0*"27"*"bea_02680"]`{qt}...Battler...{qt}`[\]
-
 
 bgmplay 140,70,0
 
@@ -436,373 +508,427 @@ msgwnd_non
 *e10_315
 d `Why had he come into the witch's kitchen..?`[\]
 
-
 *e10_316
 d `But she didn't even need to ask before he already answered.`[\]
 
-
-lss s0_9,"but","b34_majime5"
+lss s0_10,"but","b34_majime5"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_but
 *e10_317
 d2 [lv 0*"10"*"bat_03670"]`{qt}I came to see what that weird chocolate smell was.`[@][lv 0*"10"*"bat_03680"]` I sure got to see something funny.`[@][#][*][lv 0*"10"*"bat_03690"]` I can't believe Beato of all people is busy making chocolate for tomorrow.{qt}`[\]
 wait_on_d 0
-
+lss s0_10,"but","b34_majime4"
+aspt2_mem "xpos",s0_10,550
+flush 80
 d_continue
 wait_on_d -1
 
-lss s0_9,"but","b34_majime4"
-
-lss s0_9,"bea","a13_komaru2"
+lss s0_8,"bea","a13_komaru2"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_bea
 *e10_318
 d [lv 0*"27"*"bea_02690"]`{qt}...{qt}`[\]
 
-
-lss s0_9,"but","b34_futeki3"
+lss s0_10,"but","b34_futeki3"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_but
 *e10_319
 d2 [lv 0*"10"*"bat_03700"]`{qt}...I wonder who she's planning on giving it to.`[@][#][*][lv 0*"10"*"bat_03710"]` Well, sure hope it isn't me...{qt}`[\]
 wait_on_d 0
-
+lss s0_10,"but","b34_futeki1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 d_continue
 wait_on_d -1
-
-lss s0_9,"but","b34_futeki1"
 
 msgwnd_non
 *e10_320
 d `Battler's acting was terrible.`[\]
 
-
 *e10_321
 d `If he'd been a little bit better, Beato's wounded heart might have mended slightly.`[\]
 
-
-lss s0_9,"bea","a13_1_nayamu4"
+lss s0_8,"bea","a13_1_nayamu4"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 *e10_322
 d `But that acting only made Beato smile bitterly...`[\]
 
-
 *e10_323
 d `...She figured it out by now.`[\]
-
 
 *e10_324
 d `{f:5:Virgilia} and Ronove must have spoken to Battler, told him about her laughable circumstances, and asked him to help out.`[\]
 
-
-lss s0_9,"bea","a13_komaru4"
+lss s0_8,"bea","a13_komaru4"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 *e10_325
 d `This is pathetic...`[@]` Absolutely pathetic...`[\]
 
-
 *e10_326
 d `The Golden Witch {f:5:Beatrice}, one of the world's greatest... acting so absurdly...`[\]
 
-
-lss s0_9,"but","b24_komaru1"
+lss s0_10,"but","b24_komaru1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_but
 *e10_327
 d [lv 0*"10"*"bat_03720"]`{qt}...Ugggh.{qt}`[\]
 
-
 msgwnd_non
 *e10_328
 d `...Battler himself had probably realized how bad his own acting was.`[\]
 
-
 *e10_329
 d `Of course there was no way to continue the deceit with such obvious lies and simplistic acting...`[\]
 
-
 *e10_330
 d `The most Battler could do now...`[@]` was just staying silent not to hurt her even more...`[\]
+textoff
 
-
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_8
+csp_slot s0_10
+flush 22
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
+flush 22
 
 *e10_331
 d `It was time to end the charade.`[\]
 
-
 *e10_332
 d `If Beato smirked wickedly at Battler and began to verbally abuse him...`[\]
-
 
 *e10_333
 d `...things would go back to the way they were before.`[\]
 
-
 *e10_334
 d `...In other words, back to fights and arguments.`[\]
+textoff
 
-
+csp_slot s0_3
+flush 22
 lbg "c:backgrounds",s0_3,"g1f_s1a"
-
+color_mod2 s0_3,#ffffff
 lss s0_9,"bea","a11_1_odoroki3"
-
-lss s0_9,"wal","a11_majime1"
-
-lss s0_9,"ron","a11_odoroki1"
+color_mod2 s0_9,#ffffff
+lss s0_8,"wal","a11_majime1"
+aspt2_mem "xpos",s0_8,-550
+color_mod2 s0_8,#ffffff
+lss s0_10,"ron","a11_odoroki1"
+aspt2_mem "xpos",s0_10,550
+color_mod2 s0_10,#ffffff
+flush 22
 
 *e10_335
 d `Then, once again, for the last time, she remembered her Master's words...`[\]
 
-
-lss s0_9,"wal","a11_warai2"
+lss s0_8,"wal","a11_warai2"
+aspt2_mem "xpos",s0_8,-550
+color_mod2 s0_8,#ffffff
+flush 80
 
 *e10_336
 d `{qt}You must believe in it.`[@]` If you doubt that this is the world of the past, the spell will break.`[@]` That's the basis of magic.`[@]` As long as you believe, there's nothing magic can't accomplish.{qt}`[\]
+textoff
 
-
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+flush 22
 lbg "c:backgrounds",s0_3,"mkit_1c"
-
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
 lss s0_9,"bea","a13_hanbeso1"
+flush 22
 
 msgwnd_bea
 *e10_337
 d [lv 0*"27"*"bea_02700"]`{qt}...That's right...`[@][lv 0*"27"*"bea_02710"]`...*sniff*...{qt}`[\]
 
-
 msgwnd_non
 *e10_338
 d `I'm the Great Witch that can do any sort of incredible magic.`[\]
 
-
 *e10_339
 d `I'll show you... how great... my magic really is!`[\]
+textoff
 
-
-lbg "c:backgrounds",s0_3,"mkit_1a"
-
-lss s0_9,"but","b11_odoroki3"
-
-lss s0_9,"bea","a13_1_aseru2"
+csp_slot s0_9
+lbg "a:backgrounds",s0_3,"mkit_1a"
+lbg "a:backgrounds",s0_2,"mkit_1a_bg"
+lss s0_8,"but","b11_odoroki3"
+aspt2_mem "xpos",s0_8,-550
+lss s0_10,"bea","a13_1_aseru2"
+aspt2_mem "xpos",s0_10,550
+flush 23
 
 msgwnd_bea
 *e10_340
 d [lv 0*"27"*"bea_02720"]`{qt}Hoh...{qt}`[\]
 
-
-lss s0_9,"but","b11_niramu3"
+lss s0_8,"but","b11_niramu3"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_but
 *e10_341
 d [lv 0*"10"*"bat_03730"]`{qt}...Hoh?{qt}`[\]
 
-
-lss s0_9,"bea","a13_warai2"
+lss s0_10,"bea","a13_warai2"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_bea
 *e10_342
 d [lv 0*"27"*"bea_02730"]`{qt}That's right.`[@][lv 0*"27"*"bea_02740"]` You've figured it out! I'm making chocolate for Valentine's Day tomorrow!{qt}`[\]
 
-
 msgwnd_non
 *e10_343
 d `Even with tears still running down her face... she smiled mysteriously, like a demon attracted by fire.`[\]
 
-
-lss s0_9,"bea","a13_futeki2"
+lss s0_10,"bea","a13_futeki2"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_bea
 *e10_344
 d [lv 0*"27"*"bea_02750"]`{qt}You can be sure whoever gets my chocolate is in for a surprise!{qt}`[\]
 
-
-lss s0_9,"but","b11_warai3"
+lss s0_8,"but","b11_warai3"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_but
 *e10_345
 d [lv 0*"10"*"bat_03740"]`{qt}S-surprise, huh?`[@][lv 0*"10"*"bat_03750"]` Did you put something in there?`[@][lv 0*"10"*"bat_03760"]` They're not poisoned, are they?{qt}`[\]
 
-
-lss s0_9,"bea","a13_warai2"
+lss s0_10,"bea","a13_warai2"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_bea
 *e10_346
 d [lv 0*"27"*"bea_02760"]`{qt}Rude!`[@][lv 0*"27"*"bea_02770"]` I'll have you know this is just usual Valentine's Day chocolate!`[@][lv 0*"27"*"bea_02780"]` It's a miraculous holiday that takes place ones a year, when people get chocolate made by women.`[@][lv 0*"27"*"bea_02790"]` I wanted to participate too.{qt}`[\]
 
-
-lss s0_9,"but","b11_defo1"
+lss s0_8,"but","b11_defo1"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_but
 *e10_347
 d [lv 0*"10"*"bat_03770"]`{qt}Heh.`[@][lv 0*"10"*"bat_03780"]` I didn't know you had such a girly side to you.{qt}`[\]
 
-
 msgwnd_non
 *e10_348
 d `Strangely,`[@]` as the conversation progressed, ...Battler's words became more and more natural-sounding.`[\]
 
-
 *e10_349
 d `And, ...the day began to feel more and more like it really was February 13th...`[\]
+textoff
 
-
+csp_slot s0_3
+csp_slot s0_2
+csp_slot s0_4
+csp_slot s0_8
+csp_slot s0_10
+flush 25
 lbg "c:backgrounds",s0_3,"different_space_p1c"
+flush 22
 
 msgwnd_bea
 *e10_350
 d [lv 0*"27"*"bea_02800"]`{qt}I wonder if the person I give this chocolate to will give me anything on White Day..?{qt}`[\]
 
-
 msgwnd_but
 *e10_351
 d [lv 0*"10"*"bat_03790"]`{qt}Of course.`[@][lv 0*"10"*"bat_03800"]` I'm sure they will.{qt}`[\]
 
-
 msgwnd_bea
 *e10_352
 d [lv 0*"27"*"bea_02810"]`{qt}...But what if there was a red truth?`[@][lv 0*"27"*"bea_02820"]` One that says they'll never give me anything on White Day.`[@][lv 0*"27"*"bea_02830"]` They wouldn't be able to return the favor...{qt}`[\]
+textoff
 
+csp_slot s0_3
+flush 22
 
 msgwnd_but
 *e10_353
 d [lv 0*"10"*"bat_03810"]`{qt}No,`[@][lv 0*"10"*"bat_03820"]`...it can be done.{qt}`[\]
 
-
 msgwnd_bea
 *e10_354
 d [lv 0*"27"*"bea_02840"]`{qt}How?{qt}`[\]
+textoff
 
-
-lbg "c:backgrounds",s0_3,"mkit_1a"
-
+lbg "a:backgrounds",s0_3,"mkit_1a"
+lbg "a:backgrounds",s0_2,"mkit_1a_bg"
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
 lss s0_9,"but","b11_defo2"
-
+flush 26
 lss s0_9,"but","b11_futeki1"
+flush 80
 
 msgwnd_but
 *e10_355
 d [lv 0*"10"*"bat_03830"]`{qt}They just need to use the blue truth.`[@][lv 0*"10"*"bat_03840"]` That's how it works, no?{qt}`[\]
 
-
 lss s0_9,"but","b11_defo1"
-
+flush 80
 seplay 11,59,100
 
+set_window_simple 80,330
 msgwnd_non
 *e10_356
-d2 `White Day is the on the same day as Valentine's Day, just a month later.`[@][#][*]` So the person you give your chocolate to tomorrow will pay you back a month later.`[@][#][*]` That will be considered the return gift.`[\]
+d2 `{a:c:{p:2:White Day is the on the same day as Valentine's Day, just a month later.`[@][#][*]`{n}So the person you give your chocolate to tomorrow will pay you back a month later.`[@][#][*]`{n}That will be considered the return gift.}}`[\]
 wait_on_d 0
-
+seplay 12,59,100
 d_continue
 wait_on_d 1
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
+textoff
+set_name_window_non
 
-seplay 11,59,100
-
-seplay 11,59,100
-
-lss s0_9,"but","b11_warai3"
+csp_slot s0_9
+lss s0_8,"but","b11_warai3"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_but
 *e10_357
 d [lv 0*"10"*"bat_03850"]`{qt}It's tomorrow, right?`[@][lv 0*"10"*"bat_03860"]` Valentine's Day.{qt}`[\]
+textoff
 
-
+csp_slot s0_2
+csp_slot s0_8
 lbg "c:backgrounds",s0_3,"mkit_1c"
-
-lss s0_9,"bea","a12_fukigen2"
-
+lss s0_10,"bea","a12_fukigen2"
+aspt2_mem "xpos",s0_10,550
+flush 23
 msgwnd_bea
 *e10_358
 d [lv 0*"27"*"bea_02850"]`{qt}Y-yeah..?{qt}`[\]
 
-
-lss s0_9,"but","b11_warai1"
+lss s0_8,"but","b11_warai1"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_but
 *e10_359
 d [lv 0*"10"*"bat_03870"]`{qt}Then, you'll get your return gift a month after tomorrow.`[@][lv 0*"10"*"bat_03880"]` And since that day a month later isn't technically White Day,`[@][lv 0*"10"*"bat_03890"]` the person you're giving your chocolate to won't be violating the red truth.{qt}`[\]
 
-
-lss s0_9,"bea","a12_fukigen1"
+lss s0_10,"bea","a12_fukigen1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_bea
 *e10_360
 d2 [lv 0*"27"*"bea_02860"]`{qt}...Hmph. How complicated...`[@][#][*][lv 0*"27"*"bea_02870"]` Ahhh! H-hey, look at what you've done!`[@][lv 0*"27"*"bea_02880"]` I messed up on the tempering again because you were chattering away!`[#][*][@][lv 0*"27"*"bea_02890"]` Now I have to start all over from the boiling water!`[@][#][*][lv 0*"27"*"bea_02900"]` Come help me, my arms are getting tired!{qt}`[\]
 wait_on_d 0
-
+lss s0_10,"bea","a12_aseru1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 d_continue
 wait_on_d 1
-
+seplay 11,47,100
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 23,150
+gptwait quakexamp
 d_continue
 wait_on_d 2
-
+seplay 11,4,100
 d_continue
 wait_on_d -1
 
-lss s0_9,"bea","a12_aseru1"
-
-seplay 11,47,100
-
-seplay 11,4,100
-
-seplay 11,4,100
-
-lss s0_9,"but","b22_odoroki2"
+lss s0_8,"but","b22_odoroki2"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 
 msgwnd_but
 *e10_361
 d2 [lv 0*"10"*"bat_03900"]`{qt}Don't be so pushy!`[@][lv 0*"10"*"bat_03910"]` You want me to help, right?`[@][#][*][lv 0*"10"*"bat_03920"]`...Heh, I guess I can spend some time with you, just for today.{qt}`[\]
 wait_on_d 0
-
+lss s0_8,"but","b22_nayamu2"
+aspt2_mem "xpos",s0_8,-550
+flush 80
 d_continue
 wait_on_d -1
 
-lss s0_9,"but","b22_nayamu2"
-
 seplay 11,16,100
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_8
+csp_slot s0_10
+flush 80
 
 msgwnd_non
 *e10_362
 d `*thud*.`[\]
 
-
 *e10_363
 d `It seems there was a noise from the other side of the kitchen, but all that was there was the fridge.`[\]
 
-
 *e10_364
 d `Did the door just close?`[\]
+textoff
 
-
-lbg "c:backgrounds",s0_3,"mkit_1a"
+lbg "a:backgrounds",s0_2,"mkit_1a_bg"
+lbg "a:backgrounds",s0_3,"mkit_1a"
+lbg "c:backgrounds",s0_4,"different_spiral_1a"
+aspt2 alpha,s0_4,220
 lss s0_9,"but","a21_oyaa1"
+flush 22
 
 msgwnd_but
 *e10_365
 d [lv 0*"10"*"bat_03930"]`{qt}W-what is it?`[@][lv 0*"10"*"bat_03940"]` Your face is bright red.`[@][lv 0*"10"*"bat_03950"]` Did I do something wrong?{qt}`[\]
 
-
-lss s0_9,"bea","a12_gaman2"
+lss s0_10,"bea","a12_gaman2"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_bea
 *e10_366
 d2 [lv 0*"27"*"bea_02910"]`{qt}N-never mind that!`[#][*][@][lv 0*"27"*"bea_02920"]` Look, it's boiling, it's boiling!`[@][lv 0*"27"*"bea_02930"]` This is so much trouble. Maybe I should just dip you in chocolate and shove you in the oven!{qt}`[\]
 wait_on_d 0
-
+seplay 11,47,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 d_continue
 wait_on_d -1
+textoff
 
-seplay 11,47,100
-
+csp_slot s0_4
+csp_slot s0_9
+csp_slot s0_10
+lbg "c:colour",s0_3,"white"
+flush 2
+wait 300
 seplay 11,52,100
-
 lbg "c:local_saku",s0_3,"title_whiteday"
-
-
-
+flush 99,1500,"whirl.dll/r"
+wait 6000
+break_glass3
 
 
 

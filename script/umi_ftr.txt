@@ -1712,35 +1712,67 @@ numalias config_main_lsp2,%0 : inc %0
 ;8060 - moving lips
 ;8061 - animated rain
 
+;Original Edited - changed initial config values - W_CUSTOM
 if %init_done = 1 jumpf 
-	mov %bgm_vol,100 
-	mov %sfx_vol,100
-	mov %dlg_vol,100 
-	mov %textspeed,5
-	mov %textspeed2,5
-	mov %automodespeed,-20
-	getram %Free1 ; default to 720p on low memory devices (like iOS)
-	if %Free1 <= 2048 mov %video_res,1
-	if %Free1 >  2048 mov %video_res,0
-	mov %video_res,0
-	mov %old_wording,1
-	mov %msgwnd_type,0
-	mov %animated_lips,1
-	;mov %animated_rain,1
-	mov %enable_cache,1
-	mov %init_done,1
-	mov %bgm_title_language,1
 
-	mov %op_ed_song_subtitles,2
-	mov %rumble_strength,50
-	mov %bgm_chapter_display,1
-	mov %sskip_turbo,0
+	;System
+	;Display settings - choosen on startup
+	;Renderer - choosen on startup
+	;Input Mode - choosen on startup
+	mov %cfg_menu_anim,1
+	mov %enable_cache,1
+	mov %hide_textbox,0
+
+	;Game
+	mov %textspeed,7 : mov %textspeed2,7
+	mov %automodespeed,-43
+	mov %rumble_strength,20
+	mov %cfg_chapter_display,0 : mov %cfg_bgm_display,1
+	mov %skip_unread,1
+	mov %cfg_rm_sex_content_index,0 ;Keep Original
+
+	;Sound
+	mov %bgm_vol,50
+	mov %sfx_vol,50
+	mov %dlg_vol,70 
+	;Mute specific characters - no init required
+	mov %cfg_lower_music_on_d,0
+	mov %animated_lips,1
+
+	;Language
+	;Language - choosen on startup
+	mov %cfg_voice_language,1 ;Japanese
+	mov %bgm_title_language,1 ;English
+	mov %op_ed_song_subtitles,2 ;Translation
+	mov %cfg_steam_conventions,0 ;TODO actually choose
+
+	;Graphics
+	mov %cfg_sprite_type_index,3
+	mov %msgwnd_type,0 ;Black
+	mov %cfg_bg_type_index,2
+	mov %cfg_book_mode,0
+	mov %cfg_bg_movement,0
+
+
+	;Old code for low ram devices, c'mon, what has low ram now-a-days
+	;getram %Free1 ; default to 720p on low memory devices (like iOS)
+	;if %Free1 <= 2048 mov %video_res,1
+	;if %Free1 >  2048 mov %video_res,0
+	;mov %animated_rain,1 - never existed
+	;mov %bgm_chapter_display,1 - Separated
+
 
 	for %Free1 = flag_scenario_1_op to flag_scenario_8_ura
 		mov $%Free1,"○" ;●
 	next
 
-#locale_import "prefs.txt"
+	#locale_import "prefs.txt"
+
+	
+	mov %old_wording,1 ;This shouldn't have any use, so better not touch it
+	mov %video_res,0
+	mov %sskip_turbo,0 ;Foundamental
+	mov %init_done,1
 
 ~
 
@@ -1755,6 +1787,7 @@ if %did_unlock = 1 jumpf
 ~
 
 return
+;End Custom
 
 ;*************************************************
 
@@ -15502,11 +15535,12 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 
 		if %enable_cache == 0 goto *skip_load_ru
 
-		if %CHIRU_MODE = 0 cache_img 0,msgwnd_wnd
-		if %CHIRU_MODE = 1 cache_img 0,msgwnd_wnd_ep5
+		cache_img 0,"graphics\system\wnd\msgwnd0.png"
+		cache_img 0,"graphics\system\wnd\msgwnd1.png"
 		cache_img 0,"graphics\system\wnd\msgwnd2.png"
 		cache_img 0,"graphics\system\wnd\msgwnd3.png"
 		cache_img 0,"graphics\system\wnd\msgwnd4.png"
+		cache_img 0,"graphics\system\wnd\msgwnd4_bg.png"
 
 		;Original Edited ;Text Generator - cached the new buttons - W_CUSTOM
 		cache_img 0,r_btn_1_cache
@@ -15553,6 +15587,7 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 		cache_img 0,"graphics\menu\config\bg_config.png"
 		cache_img 0,"graphics\menu\tips\bg_tips.png"
 		cache_img 0,"graphics\menu\chars\bg_chars.png"
+
 	~
 	
 	_csp 4
@@ -23412,7 +23447,7 @@ return
 *new_chapter
 	getparam $chapter_time,$chapter_title
 	jskip_s
-	if %bgm_chapter_display == 0 jumpf
+	if %cfg_chapter_display == 0 jumpf
 		border_pad_push 3
 		enable_transitions 746,0 : lsp 746,":s;#FFFFFF`{p:7:"+$chapter_time+"{n}"+$chapter_title+"}",35,940
 		spt alpha,746,0,7000 : aspt alpha,746,0,100
@@ -24835,7 +24870,7 @@ return
 		aspt ypos,748,-100,200 ;remove if still here
 		sptwait ypos,748
 		_csp 748
-		if %bgm_chapter_display == 0 mov %bgm_title_delay,0 : return
+		if %cfg_bgm_display == 0 mov %bgm_title_delay,0 : return
 		border_pad_push 3
 		lsp 748,":s;#FFFFFF`{p:7:♪"+$BGM_Title+"}",18,-100
 		border_pad_pop
@@ -24858,6 +24893,15 @@ return
 getparam %Me_Channel,%Me_Number,%Rel_vol_me
 ;Real ME channels are 3+ (whether params use 1+)
 add %Me_Channel,2
+;Original Edited ;Config - saving original volume parameter for config preview - W_CUSTOM
+if %Me_Channel = 3 mov %cfg_sfx_vol_original_1,%Rel_vol_me
+if %Me_Channel = 4 mov %cfg_sfx_vol_original_1,%Rel_vol_me
+if %Me_Channel = 5 mov %cfg_sfx_vol_original_1,%Rel_vol_me
+if %Me_Channel = 6 mov %cfg_sfx_vol_original_1,%Rel_vol_me
+if %Me_Channel = 7 mov %cfg_sfx_vol_original_1,%Rel_vol_me
+if %Me_Channel = 8 mov %cfg_sfx_vol_original_1,%Rel_vol_me
+if %Me_Channel = 9 mov %cfg_sfx_vol_original_1,%Rel_vol_me
+;End Custom
 ;Save for settings
 if %Me_Channel = 3 mov %me_current_vol_1,%Rel_vol_me : mov %me_enable_1,1 : mov %me_num_1,%Me_Number
 if %Me_Channel = 4 mov %me_current_vol_2,%Rel_vol_me : mov %me_enable_2,1 : mov %me_num_2,%Me_Number
@@ -25167,13 +25211,13 @@ return
 
 *effect_vol
 
-vol_me 1,%me_current_vol_1
-vol_me 2,%me_current_vol_2
-vol_me 3,%me_current_vol_3
-vol_me 4,%me_current_vol_4
-vol_me 5,%me_current_vol_5
-vol_me 6,%me_current_vol_6
-vol_me 7,%me_current_vol_7
+vol_me 1,%cfg_sfx_vol_original_1
+vol_me 2,%cfg_sfx_vol_original_2
+vol_me 3,%cfg_sfx_vol_original_3
+vol_me 4,%cfg_sfx_vol_original_4
+vol_me 5,%cfg_sfx_vol_original_5
+vol_me 6,%cfg_sfx_vol_original_6
+vol_me 7,%cfg_sfx_vol_original_7
 
 chvol 10,%sfx_vol
 chvol 11,%sfx_vol
@@ -27758,7 +27802,7 @@ return
 ;Saves the dialogues into LogState
 *text_tagsave
 	if %no_log_gen == 0 jumpf 
-		gosub *get_name
+		gosub *get_name 1
 		if %unjumpable == 1 && $tmp5 != "" setlog 1,"","{p:0:【}"+$tmp5+"{p:0:】}{n}","",0 : return
 		if %unjumpable == 1 && $tmp5 == "" setlog 1,"","","",0 : return
 		if $tmp5 != "" setlog 1,"","{p:0:【}"+$tmp5+"{p:0:】}{n}" : return
@@ -27771,6 +27815,10 @@ return
 
 ;Returns the speaker's name
 *get_name
+getparam %is_log_param
+
+if %msgwnd_type = 4 && %is_log_param != 1 vsp 749,1 : aspt alpha,749,255,%msgwnd4_fade ;W_TEMP
+if %is_log_param == 1 vsp 749,0 ;W_TEMP
 
 if $cur_character = "non" mov $tmp5,""  : jumpf
 if $cur_character = "ama" mov $tmp5,name_ama  : jumpf
@@ -27846,6 +27894,8 @@ if $cur_character = "sku" mov $tmp5,name_sku  : jumpf
 mov $tmp5,"" : jumpf
 
 ~
+
+if %msgwnd_type = 4 && %is_log_param != 1 mov $tmp5,"{f:5:"+$tmp5+"}" ;W_TEMP
 
 return
 
@@ -28690,8 +28740,6 @@ lsp backlogupbtn,":a/2,0,3;graphics\system\wnd\uoncur.png",1827,210
 lsp backlogdownbtn,":a/2,0,3;graphics\system\wnd\uoffcur.png",1827,839
 lsph 314,":a;graphics\menu\logview\sep.png",0,0
 
-;getmousepos %mouse_pos_x,%mouse_pos_y
-
 scrollable 320,1,0,0,1785,1080 ;900 causes a line bug, explore it
 scrollable_cfg firstmargin,320,150
 scrollable_cfg lastmargin,320,150
@@ -28719,6 +28767,8 @@ spbtn 307,2
 spbtn 308,3
 spbtn 306,4
 
+spbtn 313,313 ;Original Edited - scrollbar cursor button
+
 bgmvol %Rel_vol_bgm*30/100
 chvol 3,%sfx_vol*%me_current_vol_1*30/10000
 chvol 4,%sfx_vol*%me_current_vol_2*30/10000
@@ -28742,30 +28792,48 @@ print 1
 	getmclick
 	getzxc
 
+	btndown 1 ;Original Edited
+
 	btnwait2 %BtnRes
 
-	if %BtnRes = 1 jumpf                   ;Exit by clicking the button
-	if %BtnRes = -1  jumpf                 ;Exit by right-clicking
-	if %BtnRes = -10 jumpf                 ;Exit by ESC
-	;if %BtnRes = 0   jumpf                ;Exit by left-clicking
-	if %BtnRes = -81 jumpf 
+	isdown %cfg_mouse_click
+
+	if %cfg_mouse_click = 0 if %BtnRes = 	1 	goto *end_log_button_loop                ;Exit by clicking the button
+	if %cfg_mouse_click = 0 if %BtnRes =   -1  	goto *end_log_button_loop                ;Exit by right-clicking
+	if %cfg_mouse_click = 0 if %BtnRes =  -10 	goto *end_log_button_loop                ;Exit by ESC
+	if %cfg_mouse_click = 0 if %BtnRes =  -81 	goto *end_log_button_loop 				 ;?
 	
-	if %BtnRes = -12 			scrollable_scroll 320,-10	;Page up
-	if %BtnRes = -13 			scrollable_scroll 320,10	;Page down	
-	if %BtnRes = backlogupbtn	scrollable_scroll 320,-1	;button up
-	if %BtnRes = backlogdownbtn	scrollable_scroll 320,1		;button down
-	if %BtnRes = 2 gosub *log_chapter_prev
-	if %BtnRes = 3 gosub *log_chapter_next
-	if %BtnRes = 4 gosub *log_hint
-	if %BtnRes = -80  lv_play 320,%dlg_vol
-	if %BtnRes = -11  lv_play 320,%dlg_vol
-	if %BtnRes = 0    lv_play 320,%dlg_vol
-	if %BtnRes = -70  goto *log_jump_request
-	if %BtnRes = -51  goto *log_jump_request
+	if %cfg_mouse_click = 0 if %BtnRes =  -12 				scrollable_scroll 320,-10 : spbtn 313,313	;Page up with scroll
+	if %cfg_mouse_click = 0 if %BtnRes =  -13 				scrollable_scroll 320,10 : spbtn 313,313	;Page down with scroll
+	if %cfg_mouse_click = 0 if %BtnRes =  backlogupbtn		scrollable_scroll 320,-1 : spbtn 313,313	;Button up pressed
+	if %cfg_mouse_click = 0 if %BtnRes =  backlogdownbtn	scrollable_scroll 320,1	: spbtn 313,313	;Button down pressed
+	if %cfg_mouse_click = 0 if %BtnRes =    2 				gosub *log_chapter_prev		;?
+	if %cfg_mouse_click = 0 if %BtnRes =    3 				gosub *log_chapter_next		;?
+	if %cfg_mouse_click = 0 if %BtnRes =    4 				gosub *log_hint				;?
+	if %cfg_mouse_click = 0 if %BtnRes =  -80  				lv_play 320,%dlg_vol		;?
+	if %cfg_mouse_click = 0 if %BtnRes =  -11  				lv_play 320,%dlg_vol		;?
+	if %cfg_mouse_click = 0 if %BtnRes =    0  				lv_play 320,%dlg_vol		;?
+	if %cfg_mouse_click = 0 if %BtnRes =  -70 				goto *log_jump_request		;?
+	if %cfg_mouse_click = 0 if %BtnRes =  -51 				goto *log_jump_request		;?
+
+	;Original Edited - LOG SCROLLBAR SCROLLING - W_CUSTOM
+	;height: 570 - usable circa 529 - init pos of cursor: 255
+	if %BtnRes != 313 goto *skip_log_cursor
+		for %for_index3=0 to 2
+			isdown %cfg_mouse_click ;Checks if mouse is still pressed
+			if %cfg_mouse_click = 0 mov %for_index3,0 : spbtn 313,313 : break ;Else ends the cycle
+			getmousepos %cfg_temp_var,%cfg_mouse_y
+			getspsize 320,%cfg_temp_var,%test_var,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
+			mov %cfg_temp_var,(%cfg_mouse_y-255)*(%test_var-1080-0)/(785-255)+0
+				aspt scroll_y,320,%cfg_temp_var
+			mov %for_index3,0 ;Infinite Cycle
+		next
+	*skip_log_cursor
+	;End Custom
 
 	goto *log_button_loop
 
-~
+*end_log_button_loop
 
 gosub *menu_rain_unpause
 gosub *log_clean_section
@@ -32070,6 +32138,16 @@ return
 	mov %cur_wndmode,off
 	msgwnd_non
 return
+ 
+*textoff2 ;W_TEMP
+	textoff
+	if %msgwnd_type = 4 aspt alpha,749,0,%msgwnd4_fade : vsp 749,0
+return
+
+*texton2 ;W_TEMP
+	texton
+	if %msgwnd_type = 4 vsp 749,1 : aspt alpha,749,255,%msgwnd4_fade
+return
 
 *set_name_window_base
 	textoff ;testfix for https://forum.umineko-project.org/viewtopic.php?f=4&t=6&start=50#p154
@@ -32082,20 +32160,25 @@ return
 	borderstyle 5,#000000 : shadedistance 0,0
 	borderstyle 5,#000000,1 : shadedistance 0,0,#000000,1
 	if %msgwnd_type == 3 shadedistance 2,2 : shadedistance 2,2,#000000,1
+	if %msgwnd_type == 4 shadedistance 2,2 : shadedistance 2,2,#000000,1 ;W_CUSTOM
 	gosub *set_window_options ; locale specfic
 return
 
 *set_dynamic_window_base
-	if %msgwnd_type = 0 setwindowd msgwnd
-	if %msgwnd_type = 1 setwindowd msgwnd2
-	if %msgwnd_type = 2 setwindowd msgwnd3
-	if %msgwnd_type = 3 setwindowd msgwnd4
+	if %msgwnd_type = 0 setwindowd msgwnd0 : jumpf
+	if %msgwnd_type = 1 setwindowd msgwnd1 : jumpf
+	if %msgwnd_type = 2 setwindowd msgwnd2 : jumpf
+	if %msgwnd_type = 3 setwindowd msgwnd3 : jumpf
+	if %msgwnd_type = 4 setwindowd msgwnd4 : jumpf
+	~
 	setwindowd_dimensions 167,725,1586,306
 	setwindowd_padding text_main_pad_t,text_main_pad_r,text_main_pad_b,text_main_pad_l
 	setwindowd_name_padding text_name_pad_t,text_name_pad_r,text_name_pad_b,text_name_pad_l
 	setwindowd_main_region 240,14,1408,274,77
 	setwindowd_non_region 0,235,112,38,60
 	setwindowd_name_region 0,11,224,118,60,170,170,74
+	if %msgwnd_type = 4 lsp 749,":a;graphics/system/wnd/msgwnd4_bg.png",0,0 ;W_TEMP
+	if %msgwnd_type != 4 _csp 749 ;W_TEMP
 return
 
 *set_window_simple
@@ -32115,6 +32198,7 @@ return
 		setwindow4 %setwindow_x/2,%setwindow_y,text_main_size,1920-%setwindow_x,1,text_main_spacing,%textspeed,0,0,0,0,1,":c;graphics\colour\black.png",0,0,120
 		borderstyle 5,#000000 : shadedistance 0,0
 		if %msgwnd_type = 3 shadedistance 2,2
+		if %msgwnd_type = 4 shadedistance 2,2 ;W_CUSTOM
 		gosub *set_window_options ; locale specfic
 	~
 	mov %setwindow_x,0
@@ -32169,10 +32253,11 @@ return
 
 *update_msgwnd
 	jskip_s
-		if %msgwnd_type = 0 setwindowd msgwnd
-		if %msgwnd_type = 1 setwindowd msgwnd2
-		if %msgwnd_type = 2 setwindowd msgwnd3
-		if %msgwnd_type = 3 setwindowd msgwnd4
+		if %msgwnd_type = 0 setwindowd msgwnd0
+		if %msgwnd_type = 1 setwindowd msgwnd1
+		if %msgwnd_type = 2 setwindowd msgwnd2
+		if %msgwnd_type = 3 setwindowd msgwnd3
+		if %msgwnd_type = 4 setwindowd msgwnd4
 	~
 
 *update_msgwnd_direct
@@ -32860,6 +32945,10 @@ return
 		lsp %lsp_slot,":s;#FFFFFF`{a:c:{p:55:{w:350:{fit}"+$lsp_text1+"}}}",%lsp_x,%lsp_y
 		return
 	~
+	if $lsp_type != "config_option_large" jumpf
+		lsp %lsp_slot,":s;#FFFFFF`{a:c:{p:55:{w:550:{fit}"+$lsp_text1+"}}}",%lsp_x,%lsp_y
+		return
+	~
 
 return
 
@@ -32994,6 +33083,9 @@ return
 		;2 - Bg Path
 		;3 - Original String Value
 
+		;DEBUG
+		;debug_str $?slot_cache[%for_index1][0]
+
 		;Strats BGs reload
 		;Checks if it is a type of background, is so after reloading it it jumps forward skipping the sprite reload
 		if $?slot_cache[%for_index1][0] == "" jumpf
@@ -33055,6 +33147,9 @@ return
 
 		;Ends BGs reload
 
+		;DEBUG
+		debug_str $?slot_cache[%for_index1][0]
+
 		;Sprites reload
 		mov %reloading_status,1
 		lss %for_index1+750,$string_temp3,$string_temp2
@@ -33087,44 +33182,61 @@ reset
 	if $autom_no_cur == "true" mov %autom_no_cur,on
 
 	operate_config u_read,$UMINEKOEND,"complete_episode"
-	if $UMINEKOEND == "1" mov %UMINEKOEND,20 : mov %UMINEKOEND_FLG,20 : gosub *do_unlock
-	if $UMINEKOEND == "2" mov %UMINEKOEND,30 : mov %UMINEKOEND_FLG,30 : gosub *do_unlock
-	if $UMINEKOEND == "3" mov %UMINEKOEND,40 : mov %UMINEKOEND_FLG,40 : gosub *do_unlock
-	if $UMINEKOEND == "4" mov %UMINEKOEND,50 : mov %UMINEKOEND_FLG,50 : gosub *do_unlock
-	if $UMINEKOEND == "5" mov %UMINEKOEND,60 : mov %UMINEKOEND_FLG,60 : gosub *do_unlock
-	if $UMINEKOEND == "6" mov %UMINEKOEND,70 : mov %UMINEKOEND_FLG,70 : gosub *do_unlock
-	if $UMINEKOEND == "7" mov %UMINEKOEND,80 : mov %UMINEKOEND_FLG,80 : gosub *do_unlock
-	if $UMINEKOEND == "8" mov %UMINEKOEND,90 : mov %UMINEKOEND_FLG,90 : gosub *do_unlock
+	if $UMINEKOEND == "undef" jumpf
+		if $UMINEKOEND == "1" mov %UMINEKOEND,20 : mov %UMINEKOEND_FLG,20 : gosub *do_unlock
+		if $UMINEKOEND == "2" mov %UMINEKOEND,30 : mov %UMINEKOEND_FLG,30 : gosub *do_unlock
+		if $UMINEKOEND == "3" mov %UMINEKOEND,40 : mov %UMINEKOEND_FLG,40 : gosub *do_unlock
+		if $UMINEKOEND == "4" mov %UMINEKOEND,50 : mov %UMINEKOEND_FLG,50 : gosub *do_unlock
+		if $UMINEKOEND == "5" mov %UMINEKOEND,60 : mov %UMINEKOEND_FLG,60 : gosub *do_unlock
+		if $UMINEKOEND == "6" mov %UMINEKOEND,70 : mov %UMINEKOEND_FLG,70 : gosub *do_unlock
+		if $UMINEKOEND == "7" mov %UMINEKOEND,80 : mov %UMINEKOEND_FLG,80 : gosub *do_unlock
+		if $UMINEKOEND == "8" mov %UMINEKOEND,90 : mov %UMINEKOEND_FLG,90 : gosub *do_unlock
+	~
 
 	operate_config u_read,$CHIRU_MODE,"force_game"
-	if $CHIRU_MODE == "rondo" && %CHIRU_MODE != 0 goto *switch_game_q
-	if $CHIRU_MODE == "chiru" && %CHIRU_MODE != 1 && %UMINEKO_END >= 50 goto *switch_game_q
+	if $CHIRU_MODE == "undef" jumpf
+		if $CHIRU_MODE == "rondo" && %CHIRU_MODE != 0 goto *switch_game_q
+		if $CHIRU_MODE == "chiru" && %CHIRU_MODE != 1 && %UMINEKO_END >= 50 goto *switch_game_q
+		if $CHIRU_MODE == "extra" && %CHIRU_MODE != 2 goto *switch_game_q
+	~
 
 	operate_config u_read,$firstsetting,"first_launch"
-	if $firstsetting == "passed" mov %firstsetting,1
-	if $firstsetting == "force" mov %firstsetting,0
+	if $firstsetting == "undef" jumpf
+		if $firstsetting == "passed" mov %firstsetting,1
+		if $firstsetting == "force" mov %firstsetting,0
+	~
 
 	operate_config u_read,$bgm_title_language,"bgm_title_language"
-	if $bgm_title_language == "English" mov %bgm_title_language,1
-	if $bgm_title_language == "Russian" mov %bgm_title_language,2
-	if $bgm_title_language == "Japanese" mov %bgm_title_language,3
-	if $bgm_title_language == "Romaji" mov %bgm_title_language,4
+	if $bgm_title_language == "undef" jumpf
+		if $bgm_title_language == "English" mov %bgm_title_language,1
+		if $bgm_title_language == "Russian" mov %bgm_title_language,2
+		if $bgm_title_language == "Japanese" mov %bgm_title_language,3
+		if $bgm_title_language == "Romaji" mov %bgm_title_language,4
+	~
 
 	operate_config u_read,$title_skip,"skip_title"
-	if $title_skip == "all" mov %title_skip,1
-	if $title_skip == "force" mov %title_skip,0
+	if $title_skip == "undef" jumpf
+		if $title_skip == "all" mov %title_skip,1
+		if $title_skip == "force" mov %title_skip,0
+	~
 
 	operate_config u_read,$video_res,"video_resolution"
-	if $video_res == "720p" mov %video_res,1
-	if $video_res == "1080p" mov %video_res,0
+	if $video_res == "undef" jumpf
+		if $video_res == "720p" mov %video_res,1
+		if $video_res == "1080p" mov %video_res,0
+	~
 
 	operate_config u_read,$interface_kb_dual,"control_interface"
-	if $interface_kb_dual == "kb" mov %interface_kb_dual,0
-	if $interface_kb_dual == "pad" mov %interface_kb_dual,1
+	if $interface_kb_dual == "undef" jumpf
+		if $interface_kb_dual == "kb" mov %interface_kb_dual,0
+		if $interface_kb_dual == "pad" mov %interface_kb_dual,1
+	~
 
 	operate_config u_read,$enable_cache,"object_caching"
-	if $enable_cache == "true" mov %enable_cache,1
-	if $enable_cache == "false" mov %enable_cache,0
+	if $enable_cache == "undef" jumpf
+		if $enable_cache == "true" mov %enable_cache,1
+		if $enable_cache == "false" mov %enable_cache,0
+	~
 
 	operate_config u_read,$bgm_vol,"bgm_volume"
 	if $bgm_vol != "undef" atoi %bgm_vol,$bgm_vol
@@ -33147,61 +33259,159 @@ reset
 	if %textspeed < 0 || %textspeed > 10 mov %textspeed,5 
 	text_speed %textspeed
 
+	;Original Edited - from N/B/L/T to Names - W_CUSTOM
 	operate_config u_read,$msgwnd_type,"textbox_type"
-	if $msgwnd_type == "N" mov %msgwnd_type,2
-	if $msgwnd_type == "B" mov %msgwnd_type,1
-	if $msgwnd_type == "L" mov %msgwnd_type,0
-	if $msgwnd_type == "T" mov %msgwnd_type,3
+	if $msgwnd_type == "undef" jumpf
+		if $msgwnd_type == "Black" mov %msgwnd_type,0
+		if $msgwnd_type == "Butterfly" mov %msgwnd_type,1
+		if $msgwnd_type == "Classic" mov %msgwnd_type,2
+		if $msgwnd_type == "Transparent" mov %msgwnd_type,3
+		if $msgwnd_type == "UmiGold" mov %msgwnd_type,4
+	~
+	;End Custom
 
 	;Config - ;Dynamic Sprites - Off-Save Custom Config Options - W_CUSTOM
+	operate_config u_read,$cfg_chapter_display,"show_chapter_title"
+	if $cfg_chapter_display == "undef" jumpf
+		if $cfg_chapter_display == "true" mov %cfg_chapter_display,1
+		if $cfg_chapter_display == "false"  mov %cfg_chapter_display,0
+	~
+
+	operate_config u_read,$cfg_bgm_display,"show_bgm_title"
+	if $cfg_bgm_display == "undef" jumpf
+		if $cfg_bgm_display == "true" mov %cfg_bgm_display,1
+		if $cfg_bgm_display == "false"  mov %cfg_bgm_display,0
+	~
+
+	operate_config u_read,$cfg_voice_language,"voice_language"
+	if $cfg_voice_language == "undef" jumpf
+		if $cfg_voice_language == "japanese" mov %cfg_voice_language,1
+		if $cfg_voice_language == "english"  mov %cfg_voice_language,2
+	~
+
+	operate_config u_read,$cfg_rm_sex_content_index,"remove_sexualized_content"
+	if $cfg_rm_sex_content_index == "undef" jumpf
+		if $cfg_rm_sex_content_index == "keep_original" mov %cfg_rm_sex_content_index,0
+		if $cfg_rm_sex_content_index == "remove_text"   mov %cfg_rm_sex_content_index,1
+		if $cfg_rm_sex_content_index == "remove_images" mov %cfg_rm_sex_content_index,2
+		if $cfg_rm_sex_content_index == "remove_all"	mov %cfg_rm_sex_content_index,3
+	~
+	;Initialize Remove Sexualized Content Setting
+		if %cfg_rm_sex_content_index = 0 mov %cfg_rm_sex_text_content,0 : mov %cfg_rm_sex_graphic_content,0 : jumpf
+		if %cfg_rm_sex_content_index = 1 mov %cfg_rm_sex_text_content,1 : mov %cfg_rm_sex_graphic_content,0 : jumpf
+		if %cfg_rm_sex_content_index = 2 mov %cfg_rm_sex_text_content,0 : mov %cfg_rm_sex_graphic_content,1 : jumpf
+		if %cfg_rm_sex_content_index = 3 mov %cfg_rm_sex_text_content,1 : mov %cfg_rm_sex_graphic_content,1 : jumpf
+	~
+
+	operate_config u_read,$cfg_menu_anim,"enable_menu_animations"
+	if $cfg_menu_anim == "undef" jumpf
+		if $cfg_menu_anim == "true" mov %cfg_menu_anim,1
+		if $cfg_menu_anim == "false"  mov %cfg_menu_anim,0
+	~
+
+	operate_config u_read,$cfg_lower_music_on_d,"lower_music_on_d"
+	if $cfg_lower_music_on_d == "undef" jumpf
+		if $cfg_lower_music_on_d == "true" mov %cfg_lower_music_on_d,1
+		if $cfg_lower_music_on_d == "false"  mov %cfg_lower_music_on_d,0
+	~
+
+	operate_config u_read,$cfg_book_mode,"book_mode"
+	if $cfg_book_mode == "undef" jumpf
+		if $cfg_book_mode == "true" mov %cfg_book_mode,1
+		if $cfg_book_mode == "false"  mov %cfg_book_mode,0
+	~
+
+	operate_config u_read,$cfg_bg_movement,"background_movement"
+	if $cfg_bg_movement == "undef" jumpf
+		if $cfg_bg_movement == "true" mov %cfg_bg_movement,1
+		if $cfg_bg_movement == "false"  mov %cfg_bg_movement,0
+	~
+
 	operate_config u_read,$sprite_folder_name,"sprite_folder_name"
-	if $sprite_folder_name == "sprites" mov $sprite_folder_name,"sprites"
-	if $sprite_folder_name == "sprites2" mov $sprite_folder_name,"sprites2"
-	if $sprite_folder_name == "sprites3" mov $sprite_folder_name,"sprites3"
+	if $sprite_folder_name == "undef" jumpf
+		if $sprite_folder_name == "sprites"  mov %cfg_sprite_type_index,3
+		if $sprite_folder_name == "sprites2" mov %cfg_sprite_type_index,1
+		if $sprite_folder_name == "sprites3" mov %cfg_sprite_type_index,2
+	~
+	;Initialize Sprite Type Setting
+		if %cfg_sprite_type_index = 1 mov $sprite_folder_name,"sprites2" : jumpf
+		if %cfg_sprite_type_index = 2 mov $sprite_folder_name,"sprites3" : jumpf
+		if %cfg_sprite_type_index = 3 mov $sprite_folder_name,"sprites" : jumpf
+	~
 
 	operate_config u_read,$bg_folder_name,"bg_folder_name"
-	if $bg_folder_name == "backgrounds" mov $bg_folder_name,"backgrounds"
-	if $bg_folder_name == "backgrounds2" mov $bg_folder_name,"backgrounds2"
+	if $bg_folder_name == "undef" jumpf
+		if $bg_folder_name == "backgrounds" mov %cfg_bg_type_index,2
+		if $bg_folder_name == "backgrounds2" mov %cfg_bg_type_index,1
+	~
+	;Initialize Background Type Setting
+		if %cfg_bg_type_index = 1 mov $bg_folder_name,"backgrounds2" : jumpf
+		if %cfg_bg_type_index = 2 mov $bg_folder_name,"backgrounds" : jumpf
+	~
 	;End Custom
 
 	operate_config u_read,$animated_lips,"lipsync"
-	if $animated_lips == "true" mov %animated_lips,1
-	if $animated_lips == "false" mov %animated_lips,0
+	if $animated_lips == "undef" jumpf
+		if $animated_lips == "true" mov %animated_lips,1
+		if $animated_lips == "false" mov %animated_lips,0
+	~
 
-	operate_config u_read,$bgm_chapter_display,"display_titles"
-	if $bgm_chapter_display == "true" mov %bgm_chapter_display,1
-	if $bgm_chapter_display == "false" mov %bgm_chapter_display,0
+	;Original Edited - this option doesn't exists like this anymore - W_CUSTOM
+	;operate_config u_read,$bgm_chapter_display,"display_titles"
+	;if $bgm_chapter_display == "true" mov %bgm_chapter_display,1
+	;if $bgm_chapter_display == "false" mov %bgm_chapter_display,0
+	;End Custom
 
 	operate_config u_read,$op_ed_song_subtitles,"subtitles"
-	if $op_ed_song_subtitles == "None" mov %op_ed_song_subtitles,1
-	if $op_ed_song_subtitles == "Translation" mov %op_ed_song_subtitles,2
-	if $op_ed_song_subtitles == "Romaji" mov %op_ed_song_subtitles,3
-	if $op_ed_song_subtitles == "Both" mov %op_ed_song_subtitles,4
+	if $op_ed_song_subtitles == "undef" jumpf
+		if $op_ed_song_subtitles == "None" mov %op_ed_song_subtitles,1
+		if $op_ed_song_subtitles == "Translation" mov %op_ed_song_subtitles,2
+		if $op_ed_song_subtitles == "Romaji" mov %op_ed_song_subtitles,3
+		if $op_ed_song_subtitles == "Both" mov %op_ed_song_subtitles,4
+	~
 
     operate_config u_read,$skip_unread,"skip_unread_dialogues"
-    if $skip_unread == "false" mov %skip_unread,1 ;off
-    if $skip_unread == "true" mov %skip_unread,0 ;on
-    if %skip_unread == 1 skip_unread 0
-    if %skip_unread == 0 skip_unread 1
+	if $skip_unread == "undef" jumpf
+    	if $skip_unread == "false" mov %skip_unread,1 ;off
+    	if $skip_unread == "true" mov %skip_unread,0 ;on
+	~
+	;Initialize Skip Unread Setting
+	    if %skip_unread == 1 skip_unread 0 : jumpf
+    	if %skip_unread == 0 skip_unread 1 : jumpf
+	~
 
 	operate_config u_read,$hide_textbox,"wheel_down_hides_textbox"
-	if $hide_textbox == "false" mov %hide_textbox,0
-	if $hide_textbox == "true" mov %hide_textbox,1
+	if $hide_textbox == "undef" jumpf
+		if $hide_textbox == "false" mov %hide_textbox,0
+		if $hide_textbox == "true" mov %hide_textbox,1
+	~
 
-	operate_config u_read,$hide_textbox,"steam_conventions"
-	if $hide_textbox == "true" d_condition 0,1 : d_condition 1,1
-	if $hide_textbox != "true" d_condition 0,0 : d_condition 0,0
+	;Original Edited - added the modification to the value of cfg_steam_conventions - W_CUSTOM
+	operate_config u_read,$cfg_steam_conventions,"steam_conventions"
+	if $cfg_steam_conventions == "undef" jumpf
+		if $cfg_steam_conventions == "true"  mov %cfg_steam_conventions,1
+		if $cfg_steam_conventions == "false" mov %cfg_steam_conventions,0
+	~
+	;Initialize Steam Conventions Setting
+		if %cfg_steam_conventions = 0 d_condition 0,1 : d_condition 1,1 : jumpf
+		if %cfg_steam_conventions = 1 d_condition 0,0 : d_condition 0,0 : jumpf
+	~
 
-	mov %legacy_op,off
+	;End Custom
+
+	mov %legacy_op,off ;TODO Convert in an option for displaying only old opening
 	operate_config u_read,$legacy_op,"legacy_op"
-	if $legacy_op == "true" mov %legacy_op,on
-	if %legacy_op == on fileexist %legacy_op,"legacy\720p\op.mp4"
-	if %legacy_op == on fileexist %legacy_op,"legacy\1080p\op.mp4"
-	if %legacy_op == on fileexist %legacy_op,"legacy\bgm\op.ogg"
+	if $cfg_steam_conventions == "undef" jumpf
+		if $legacy_op == "true" mov %legacy_op,on
+		if %legacy_op == on fileexist %legacy_op,"legacy\720p\op.mp4"
+		if %legacy_op == on fileexist %legacy_op,"legacy\1080p\op.mp4"
+		if %legacy_op == on fileexist %legacy_op,"legacy\bgm\op.ogg"
+	~
 
 	mov %sskip_turbo,1
 	operate_config u_read,$sskip_turbo,"sskip_turbo"
 	if $sskip_turbo == "false" mov %sskip_turbo,0
+
 return
 
 ;================================

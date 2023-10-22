@@ -245,7 +245,7 @@ numalias interface_kb_dual,8064
 numalias op_ed_song_subtitles,8065
 numalias bgm_title_language,8066
 numalias rumble_strength,8067
-numalias bgm_chapter_display,8068
+;numalias bgm_chapter_display,8068 - doesn't exist 
 numalias window_size,8069
 numalias full_window_auto,8070
 numalias firstsetting,8071
@@ -255,8 +255,6 @@ numalias last_locale_gamehash,8074
 numalias did_unlock,8082
 numalias did_loghint,8083
 ;numalias CHIRU_MODE,8084		;Defined above
-numalias skip_unread,8085
-numalias hide_textbox,8086
 numalias no_cache_atm,8087
 numalias font_preference,8088
 numalias current_renderer,8089
@@ -1412,6 +1410,19 @@ defsub config_write_num
 defsub b_title_subroutine
 defsub clear_config_options
 defsub settings_menu_anim
+defsub settings_chapter_display
+defsub settings_bgm_display
+defsub settings_skip_unread
+defsub settings_sexualized_content
+defsub settings_lower_music_on_d
+defsub settings_voice_language
+defsub settings_steam_conventions
+defsub settings_sprite_type
+defsub settings_bg_type
+defsub settings_book_mode
+defsub settings_bg_movement
+defsub textoff2
+defsub texton2
 ;End Custom
 
 ;====================================================   Custom Vars - W_CUSTOM
@@ -1439,7 +1450,7 @@ numalias block_unlocking,9519
 numalias test_var, 9520
 
 numalias UNLOCK_PROGRESS,2902 ;Global Variable = Saved
-numalias UMINEKOEND_EXTRA, 2903 ;Global Variable = Saved
+numalias UMINEKOEND_EXTRA,2903 ;Global Variable = Saved
 
 ;Params for dynamic backgrounds
 numalias lbg_type,9521
@@ -1473,12 +1484,42 @@ numalias cfg_current_page,9550
 numalias cfg_temp1,9551
 numalias cfg_temp2,9552
 numalias cfg_height,9553
-numalias cfg_menu_anim,9554 ;0 = off - 1 = on
+numalias cfg_menu_anim,2904 ;Global Variable = Saved ;0 = off - 1 = on
 numalias cfg_mouse_x,9555
 numalias cfg_temp_var,9556
 numalias cfg_mouse_click,9557
 numalias cfg_txt_speed_cursor_x,9558
 numalias cfg_automode_speed_cursor_x,9559
+numalias cfg_rumble_strength_cursor_x,9560
+numalias cfg_rm_sex_text_content,9561
+numalias cfg_rm_sex_graphic_content,9561
+numalias cfg_chapter_display,8068	;Global Variable = Saved
+numalias cfg_bgm_display,2905		;Global Variable = Saved
+numalias cfg_bgm_volume_cursor_x,9564
+numalias cfg_se_volume_cursor_x,9565
+numalias cfg_voice_volume_cursor_x,9566
+numalias cfg_sfx_vol_original_1,9567
+numalias cfg_sfx_vol_original_2,9568
+numalias cfg_sfx_vol_original_3,9569
+numalias cfg_sfx_vol_original_4,9570
+numalias cfg_sfx_vol_original_5,9571
+numalias cfg_sfx_vol_original_6,9572
+numalias cfg_sfx_vol_original_7,9573
+numalias cfg_lower_music_on_d,2906	;Global Variable = Saved
+numalias cfg_voice_language,2907	;Global Variable = Saved
+numalias cfg_steam_conventions,2908	;Global Variable = Saved
+numalias cfg_sprite_type_index,2909	;Global Variable = Saved
+numalias cfg_bg_type_index,2910		;Global Variable = Saved
+numalias cfg_book_mode,2911			;Global Variable = Saved
+numalias cfg_bg_movement,2912		;Global Variable = Saved
+numalias cfg_rm_sex_content_index,2913	;Global Variable = Saved
+numalias skip_unread,8085	;Global Variable = Saved
+numalias hide_textbox,8086	;Global Variable = Saved
+
+numalias cfg_mouse_y,9574
+numalias is_log_param,9575 ;W_TEMP
+numalias msgwnd4_fade,9576
+
 
 ;Discord - W_CUSTOM
 
@@ -1591,6 +1632,7 @@ preset_define 52,10,90,#FFFFFF,0,0,0,1,10,#000000,0,0,0,#000000,2 	; Config Titl
 preset_define 53,10,43,#181818,0,0,0,0,0,#000000,0,0,0,#000000,0 	; Config Section
 preset_define 54,1,47,#FFFFFF,0,0,0,1,10,#2C1611,0,0,0,#000000,2 	; Config Option Name
 preset_define 55,1,47,#FFFFFF,0,0,0,1,10,#2C1611,0,0,0,#000000,2 	; Config Option
+preset_define 56,1,20,#181818,0,0,0,1,1,#000000,0,0,0,#000000,1 	; Slider Index
 
 preset_define 83,10,35,#000000,0,0,0,0,0,#000000,0,1,2,#000000,0,58 ;'Episode' text - shadow
 preset_define 84,10,27,#000000,0,0,0,0,0,#000000,0,1,2,#000000,2,58 ; number of the episode - shadow
@@ -1698,7 +1740,7 @@ mov %no_log_gen,on
 mov %autom_no_cur,off
 
 if %title_skip = 0 gosub *verify
-gosub *read_forced_cfg
+gosub *read_forced_cfg ;Code for initializing the true value of settings is also inside here
 
 gosub *character_def
 
@@ -1719,13 +1761,9 @@ mov ?voice_s[6],0
 voice_vol
 
 ;Initialization - Global Declarations -W_CUSTOM
-mov $sprite_folder_name,"sprites"
-mov $bg_folder_name,"backgrounds"
 mov %block_unlocking,0 ;Animations
-mov %cfg_current_page,1
-
-	;DEBUG ;TODO remove
-	mov %cfg_menu_anim,1
+mov %cfg_current_page,1 ;Saves the current config page
+mov %msgwnd4_fade,550
 
 ;Sprite cache - Initializing slot cache - W_CUSTOM
 mov %0,9700

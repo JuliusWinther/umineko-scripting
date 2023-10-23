@@ -27865,8 +27865,7 @@ if $cur_character = "rud" mov $tmp5,name_rud  : jumpf
 if $cur_character = "s00" mov $tmp5,name_s00  : jumpf
 if $cur_character = "s41" mov $tmp5,name_s41  : jumpf
 if $cur_character = "s45" mov $tmp5,name_s45  : jumpf
-if $cur_character = "s55" mov $tmp5,name_s55  : jumpf
-if $cur_character = "s56" mov $tmp5,name_s56  : jumpf
+if $cur_character = "s56" mov $tmp5,name_s56  : jumpf ;???
 if $cur_character = "sak" mov $tmp5,name_sak  : jumpf
 if $cur_character = "sha" mov $tmp5,name_sha  : jumpf
 if $cur_character = "wal" mov $tmp5,name_wal  : jumpf
@@ -27890,6 +27889,9 @@ if $cur_character = "cor" mov $tmp5,name_cor  : jumpf
 ;Saku sprites - New Sprites - W_CUSTOM
 if $cur_character = "pie" mov $tmp5,name_pie  : jumpf
 if $cur_character = "sku" mov $tmp5,name_sku  : jumpf
+if $cur_character = "s55" mov $tmp5,name_s55  : jumpf
+if $cur_character = "bbt" mov $tmp5,name_bbt  : jumpf
+if $cur_character = "whm" mov $tmp5,name_bbt  : jumpf
 ;End Custom
 
 mov $tmp5,"" : jumpf
@@ -32330,6 +32332,9 @@ if $cur_character = "non" gosub *msgwnd_non : jumpf
 ;Saku sprites - New Sprites - W_CUSTOM
 if $cur_character = "pie" gosub *msgwnd_pie : jumpf
 if $cur_character = "sku" gosub *msgwnd_sku : jumpf
+if $cur_character = "s55" gosub *msgwnd_s55 : jumpf
+if $cur_character = "bbt" gosub *msgwnd_bbt : jumpf
+if $cur_character = "pro" gosub *msgwnd_pro : jumpf
 ;End Custom
 
 ~
@@ -32854,6 +32859,30 @@ return
 mov $cur_character,"sku"
 jnskip_s return ~
 if %vv_sku = 0 mov %vv_sku,1
+gosub *get_name
+if %cur_wndmode == off d_name $tmp5
+return
+
+*msgwnd_s55
+mov $cur_character,"s55"
+jnskip_s return ~
+if %vv_s55 = 0 mov %vv_s55,1
+gosub *get_name
+if %cur_wndmode == off d_name $tmp5
+return
+
+*msgwnd_bbt
+mov $cur_character,"bbt"
+jnskip_s return ~
+if %vv_bbt = 0 mov %vv_bbt,1
+gosub *get_name
+if %cur_wndmode == off d_name $tmp5
+return
+
+*msgwnd_sku
+mov $cur_character,"whm"
+jnskip_s return ~
+if %vv_whm = 0 mov %vv_whm,1
 gosub *get_name
 if %cur_wndmode == off d_name $tmp5
 return

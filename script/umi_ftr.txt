@@ -24867,22 +24867,22 @@ return
 return
 
 *bgmtitle
-		enable_transitions 748,0
-		aspt ypos,748,-100,200 ;remove if still here
-		sptwait ypos,748
-		_csp 748
+		enable_transitions 744,0
+		aspt ypos,744,-100,200 ;remove if still here
+		sptwait ypos,744
+		_csp 744
 		if %cfg_bgm_display == 0 mov %bgm_title_delay,0 : return
 		border_pad_push 3
-		lsp 748,":s;#FFFFFF`{p:7:♪"+$BGM_Title+"}",18,-100
+		lsp 744,":s;#FFFFFF`{p:7:♪"+$BGM_Title+"}",18,-100
 		border_pad_pop
-		spt ypos,748,0,%bgm_title_delay
+		spt ypos,744,0,%bgm_title_delay
 		mov %bgm_title_delay,0
-		aspt ypos,748,12,200
-		spt ypos,748,0,6000
-		aspt ypos,748,-100,200
+		aspt ypos,744,12,200
+		spt ypos,744,0,6000
+		aspt ypos,744,-100,200
 		;make invisible in case of quakes?
-		spt alpha,748,0,7100
-		aspt alpha,748,0,1
+		spt alpha,744,0,7100
+		aspt alpha,744,0,1
 return
 
 ;****************************Aim***********************************
@@ -25359,7 +25359,7 @@ if %snow_sprite > 0 snow %snow_sprite : jumpf
 ~
 
 ;Load BGM title
-if %bgm_current_id != 0 _csp 748 : gosub *BGM_List : gosub *bgmtitle
+if %bgm_current_id != 0 _csp 744 : gosub *BGM_List : gosub *bgmtitle
 _csp 746 ;no chapter titles
 
 ;So that we save after loading
@@ -32879,7 +32879,7 @@ gosub *get_name
 if %cur_wndmode == off d_name $tmp5
 return
 
-*msgwnd_sku
+*msgwnd_whm
 mov $cur_character,"whm"
 jnskip_s return ~
 if %vv_whm = 0 mov %vv_whm,1
@@ -32979,7 +32979,16 @@ return
 		lsp %lsp_slot,":s;#FFFFFF`{a:c:{p:55:{w:550:{fit}"+$lsp_text1+"}}}",%lsp_x,%lsp_y
 		return
 	~
+	if $lsp_type != "slider_index" jumpf
+		lsp %lsp_slot,":s;#181818`{a:c:{p:56:{w:50:{fit}"+$temp_var+"}}}",%lsp_x,%lsp_y
+		return
+	~
 
+return
+
+*write_slider_text
+	getparam %lsp_slot,%lsp_x,%lsp_y,$lsp_text1
+	lsp %lsp_slot,":s;#181818`{a:c:{p:56:{w:50:{fit}"+$lsp_text1+"}}}",%lsp_x,%lsp_y
 return
 
 *csp_text

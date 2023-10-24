@@ -391,20 +391,21 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 aspt xpos,203,1049+36-23 : mov %cfg_txt_speed_cursor_x,1049+36-23 : mov %textspeed2,0 : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,203,1049+36+(56*10)-18 : mov %cfg_txt_speed_cursor_x,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
-				if %cfg_temp_var <= 0 aspt xpos,203,1049+36-23 : mov %textspeed2,0 : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,203,1049+36+(56*1)-22 : mov %textspeed2,1 : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,203,1049+36+(56*2)-22 : mov %textspeed2,2 : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,203,1049+36+(56*3)-22 : mov %textspeed2,3 : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,203,1049+36+(56*4)-22 : mov %textspeed2,4 : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,203,1049+36+(56*5)-22 : mov %textspeed2,5 : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,203,1049+36+(56*6)-22 : mov %textspeed2,6 : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,203,1049+36+(56*7)-22 : mov %textspeed2,7 : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,203,1049+36+(56*8)-22 : mov %textspeed2,8 : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,203,1049+36+(56*9)-22 : mov %textspeed2,9 : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,203,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
+			if %cfg_mouse_x < 1049+36-23 aspt xpos,203,1049+36-23 : mov %textspeed2,0 : jumpf
+			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,203,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
+				if %cfg_temp_var <= 0 aspt xpos,203,1049+36-23 : write_slider_text 200,1049+36+(56*0)-22-8,187+117-20+3,"0" : mov %textspeed2,0 : jumpf
+				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,203,1049+36+(56*1)-22 : write_slider_text 200,1049+36+(56*1)-22-8,187+117-20+3,"1" : mov %textspeed2,1 : jumpf
+				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,203,1049+36+(56*2)-22 : write_slider_text 200,1049+36+(56*2)-22-8,187+117-20+3,"2" : mov %textspeed2,2 : jumpf
+				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,203,1049+36+(56*3)-22 : write_slider_text 200,1049+36+(56*3)-22-8,187+117-20+3,"3" : mov %textspeed2,3 : jumpf
+				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,203,1049+36+(56*4)-22 : write_slider_text 200,1049+36+(56*4)-22-8,187+117-20+3,"4" : mov %textspeed2,4 : jumpf
+				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,203,1049+36+(56*5)-22 : write_slider_text 200,1049+36+(56*5)-22-8,187+117-20+3,"5" : mov %textspeed2,5 : jumpf
+				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,203,1049+36+(56*6)-22 : write_slider_text 200,1049+36+(56*6)-22-8,187+117-20+3,"6" : mov %textspeed2,6 : jumpf
+				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,203,1049+36+(56*7)-22 : write_slider_text 200,1049+36+(56*7)-22-8,187+117-20+3,"7" : mov %textspeed2,7 : jumpf
+				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,203,1049+36+(56*8)-22 : write_slider_text 200,1049+36+(56*8)-22-8,187+117-20+3,"8" : mov %textspeed2,8 : jumpf
+				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,203,1049+36+(56*9)-22 : write_slider_text 200,1049+36+(56*9)-22-8,187+117-20+3,"9" : mov %textspeed2,9 : jumpf
+				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,203,1049+36+(56*10)-18  : write_slider_text 200,1049+36+(56*10)-22-8,187+117-20+3,"10" : mov %textspeed2,10 : jumpf
 			~
+			itoa $temp_var,%textspeed2
 			mov %for_index3,0 ;Infinite Cycle
 		next
 		gosub *settings_textspeed
@@ -414,19 +415,19 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 		if %cfg_mouse_click = 1 jumpf
 		getmousepos %cfg_mouse_x,%cfg_temp_var
 		mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-		if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 aspt xpos,203,1049+36-23 : mov %cfg_txt_speed_cursor_x,1049+36-23 : mov %textspeed2,0 : jumpf
-		if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 aspt xpos,203,1049+36+(56*10)-18 : mov %cfg_txt_speed_cursor_x,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
-			if %cfg_temp_var <= 0 aspt xpos,203,1049+36-23 : mov %textspeed2,0 : jumpf
-			if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,203,1049+36+(56*1)-22 : mov %textspeed2,1 : jumpf
-			if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,203,1049+36+(56*2)-22 : mov %textspeed2,2 : jumpf
-			if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,203,1049+36+(56*3)-22 : mov %textspeed2,3 : jumpf
-			if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,203,1049+36+(56*4)-22 : mov %textspeed2,4 : jumpf
-			if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,203,1049+36+(56*5)-22 : mov %textspeed2,5 : jumpf
-			if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,203,1049+36+(56*6)-22 : mov %textspeed2,6 : jumpf
-			if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,203,1049+36+(56*7)-22 : mov %textspeed2,7 : jumpf
-			if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,203,1049+36+(56*8)-22 : mov %textspeed2,8 : jumpf
-			if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,203,1049+36+(56*9)-22 : mov %textspeed2,9 : jumpf
-			if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,203,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
+		if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %textspeed2,0 : jumpf
+		if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %textspeed2,10 : jumpf
+			if %cfg_temp_var <= 0 mov %textspeed2,0 : jumpf
+			if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %textspeed2,1 : jumpf
+			if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %textspeed2,2 : jumpf
+			if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %textspeed2,3 : jumpf
+			if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %textspeed2,4 : jumpf
+			if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %textspeed2,5 : jumpf
+			if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %textspeed2,6 : jumpf
+			if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %textspeed2,7 : jumpf
+			if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %textspeed2,8 : jumpf
+			if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %textspeed2,9 : jumpf
+			if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %textspeed2,10 : jumpf
 		~
 		gosub *settings_textspeed
 	*skip_text_speed
@@ -440,8 +441,8 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 aspt xpos,205,1049+36-23 : mov %cfg_automode_speed_cursor_x,1049+36-23 : mov %automodespeed,-116 : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,205,1049+36+(56*10)-18 : mov %cfg_automode_speed_cursor_x,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
+			if %cfg_mouse_x < 1049+36-23 aspt xpos,205,1049+36-23 : mov %automodespeed,-116 : jumpf
+			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,205,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
 				if %cfg_temp_var <= 0 aspt xpos,205,1049+36-23 : mov %automodespeed,-116 : jumpf
 				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,205,1049+36+(56*1)-22 : mov %automodespeed,-90 : jumpf
 				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,205,1049+36+(56*2)-22 : mov %automodespeed,-70 : jumpf
@@ -463,19 +464,19 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 1 jumpf
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 aspt xpos,205,1049+36-23 aspt xpos,205,1049+36-23 : mov %cfg_automode_speed_cursor_x,1049+36-23 : mov %automodespeed,-116 : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 aspt xpos,205,1049+36+(56*10)-18 aspt xpos,205,1049+36+(56*10)-18 : mov %cfg_automode_speed_cursor_x,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
+			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %automodespeed,-116 : jumpf
+			if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 aspt xpos,205,1049+36+(56*10)-18 aspt xpos,205,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
 				if %cfg_temp_var <= 0 aspt xpos,205,1049+36-23 : mov %automodespeed,-116 : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,205,1049+36+(56*1)-22 : mov %automodespeed,-90 : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,205,1049+36+(56*2)-22 : mov %automodespeed,-70 : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,205,1049+36+(56*3)-22 : mov %automodespeed,-55 : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,205,1049+36+(56*4)-22 : mov %automodespeed,-43 : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,205,1049+36+(56*5)-22 : mov %automodespeed,-33 : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,205,1049+36+(56*6)-22 : mov %automodespeed,-26 : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,205,1049+36+(56*7)-22 : mov %automodespeed,20 : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,205,1049+36+(56*8)-22 : mov %automodespeed,-16 : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,205,1049+36+(56*9)-22 : mov %automodespeed,-12 : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,205,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
+				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %automodespeed,-90 : jumpf
+				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %automodespeed,-70 : jumpf
+				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %automodespeed,-55 : jumpf
+				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %automodespeed,-43 : jumpf
+				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %automodespeed,-33 : jumpf
+				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %automodespeed,-26 : jumpf
+				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %automodespeed,20 : jumpf
+				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %automodespeed,-16 : jumpf
+				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %automodespeed,-12 : jumpf
+				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %automodespeed,-9 : jumpf
 			~
 		gosub *settings_automode_speed2
 	*skip_automode_speed
@@ -488,8 +489,8 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 aspt xpos,207,1049+36-23 : mov %cfg_rumble_strength_cursor_x,1049+36-23 : mov %rumble_strength,0 : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,207,1049+36+(56*10)-18 : mov %cfg_rumble_strength_cursor_x,1049+36+(56*10)-18 : mov %rumble_strength,50 : jumpf
+			if %cfg_mouse_x < 1049+36-23 aspt xpos,207,1049+36-23 : mov %rumble_strength,0 : jumpf
+			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,207,1049+36+(56*10)-18 : mov %rumble_strength,50 : jumpf
 				if %cfg_temp_var <= 0 aspt xpos,207,1049+36-23 : mov %rumble_strength,0 : jumpf
 				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,207,1049+36+(56*1)-22 : mov %rumble_strength,4 : jumpf
 				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,207,1049+36+(56*2)-22 : mov %rumble_strength,8 : jumpf
@@ -512,19 +513,19 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 1 jumpf
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 aspt xpos,207,1049+36-23 aspt xpos,207,1049+36-23 : mov %cfg_rumble_strength_cursor_x,1049+36-23 : mov %rumble_strength,0 : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 aspt xpos,207,1049+36+(56*10)-18 aspt xpos,207,1049+36+(56*10)-18 : mov %cfg_rumble_strength_cursor_x,1049+36+(56*10)-18 : mov %rumble_strength,50 : jumpf
-				if %cfg_temp_var <= 0 aspt xpos,207,1049+36-23 : mov %rumble_strength,0 : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,207,1049+36+(56*1)-22 : mov %rumble_strength,4 : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,207,1049+36+(56*2)-22 : mov %rumble_strength,8 : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,207,1049+36+(56*3)-22 : mov %rumble_strength,12 : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,207,1049+36+(56*4)-22 : mov %rumble_strength,16 : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,207,1049+36+(56*5)-22 : mov %rumble_strength,20 : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,207,1049+36+(56*6)-22 : mov %rumble_strength,26 : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,207,1049+36+(56*7)-22 : mov %rumble_strength,32 : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,207,1049+36+(56*8)-22 : mov %rumble_strength,38 : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,207,1049+36+(56*9)-22 : mov %rumble_strength,44 : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,207,1049+36+(56*10)-18 : mov %rumble_strength,50 : jumpf
+			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %rumble_strength,0 : jumpf
+			if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %rumble_strength,50 : jumpf
+				if %cfg_temp_var <= 0 mov %rumble_strength,0 : jumpf
+				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %rumble_strength,4 : jumpf
+				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %rumble_strength,8 : jumpf
+				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %rumble_strength,12 : jumpf
+				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %rumble_strength,16 : jumpf
+				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %rumble_strength,20 : jumpf
+				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %rumble_strength,26 : jumpf
+				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %rumble_strength,32 : jumpf
+				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %rumble_strength,38 : jumpf
+				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %rumble_strength,44 : jumpf
+				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %rumble_strength,50 : jumpf
 			~
 		rumble 63,500
 		gosub *settings_rumble_strength
@@ -578,8 +579,8 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 aspt xpos,203,1049+36-23 : mov %cfg_bgm_volume_cursor_x,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,203,1049+36+(56*10)-18 : mov %cfg_bgm_volume_cursor_x,1049+36+(56*10)-18 : mov %bgm_vol,100 : vol_bgm %bgm_current_vol  : jumpf
+			if %cfg_mouse_x < 1049+36-23 aspt xpos,203,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
+			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,203,1049+36+(56*10)-18 : mov %bgm_vol,100 : vol_bgm %bgm_current_vol  : jumpf
 				if %cfg_temp_var <= 0 aspt xpos,203,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
 				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,203,1049+36+(56*1)-22 : mov %bgm_vol,10 : vol_bgm %bgm_current_vol  : jumpf
 				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,203,1049+36+(56*2)-22 : mov %bgm_vol,20 : vol_bgm %bgm_current_vol  : jumpf
@@ -601,19 +602,19 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			if %cfg_mouse_click = 1 jumpf
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 aspt xpos,203,1049+36-23 : mov %cfg_bgm_volume_cursor_x,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 aspt xpos,203,1049+36+(56*10)-18 : mov %cfg_bgm_volume_cursor_x,1049+36+(56*10)-18 : mov %bgm_vol,100 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var <= 0 aspt xpos,203,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,203,1049+36+(56*1)-22 : mov %bgm_vol,10 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,203,1049+36+(56*2)-22 : mov %bgm_vol,20 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,203,1049+36+(56*3)-22 : mov %bgm_vol,30 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,203,1049+36+(56*4)-22 : mov %bgm_vol,40 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,203,1049+36+(56*5)-22 : mov %bgm_vol,50 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,203,1049+36+(56*6)-22 : mov %bgm_vol,60 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,203,1049+36+(56*7)-22 : mov %bgm_vol,70 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,203,1049+36+(56*8)-22 : mov %bgm_vol,80 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,203,1049+36+(56*9)-22 : mov %bgm_vol,90 : vol_bgm %bgm_current_vol : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,203,1049+36+(56*10)-18 : mov %bgm_vol,100 : vol_bgm %bgm_current_vol : jumpf
+			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 aspt xpos,203,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
+			if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %bgm_vol,100 : vol_bgm %bgm_current_vol  : jumpf
+				if %cfg_temp_var <= 0 mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
+				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %bgm_vol,10 : vol_bgm %bgm_current_vol  : jumpf
+				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %bgm_vol,20 : vol_bgm %bgm_current_vol  : jumpf
+				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %bgm_vol,30 : vol_bgm %bgm_current_vol  : jumpf
+				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %bgm_vol,40 : vol_bgm %bgm_current_vol  : jumpf
+				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %bgm_vol,50 : vol_bgm %bgm_current_vol  : jumpf
+				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %bgm_vol,60 : vol_bgm %bgm_current_vol  : jumpf
+				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %bgm_vol,70 : vol_bgm %bgm_current_vol  : jumpf
+				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %bgm_vol,80 : vol_bgm %bgm_current_vol  : jumpf
+				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %bgm_vol,90 : vol_bgm %bgm_current_vol : jumpf
+				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %bgm_vol,100 : vol_bgm %bgm_current_vol : jumpf
 			~
 		gosub *settings_bgm_vol
 	*skip_bgm_volume
@@ -634,8 +635,8 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			notif %sfx_vol = 0 if %cfg_mouse_x < 1049+36-23 aspt xpos,205,1049+36-23 : mov %cfg_se_volume_cursor_x,1049+36-23 : mov %sfx_vol,0 : effect_vol : jumpf
-			notif %sfx_vol = 100 if %cfg_mouse_x > 1049+36+564-18 aspt xpos,205,1049+36+564-18 : mov %cfg_se_volume_cursor_x,1049+36+564-18 : mov %sfx_vol,100 : effect_vol : jumpf
+			notif %sfx_vol = 0 if %cfg_mouse_x < 1049+36-23 aspt xpos,205,1049+36-23 : mov %sfx_vol,0 : effect_vol : jumpf
+			notif %sfx_vol = 100 if %cfg_mouse_x > 1049+36+564-18 aspt xpos,205,1049+36+564-18 : mov %sfx_vol,100 : effect_vol : jumpf
 				notif %sfx_vol = 0 if %cfg_temp_var <= 0 aspt xpos,205,1049+36-23 : mov %sfx_vol,0 : effect_vol : jumpf
 				notif %sfx_vol = 10 if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,205,1049+36+(56*1)-22 : mov %sfx_vol,10 : effect_vol : jumpf
 				notif %sfx_vol = 20 if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,205,1049+36+(56*2)-22 : mov %sfx_vol,20 : effect_vol : jumpf
@@ -657,19 +658,19 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			if %cfg_mouse_click = 1 jumpf
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			notif %sfx_vol = 0 if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 aspt xpos,205,1049+36-23 : mov %cfg_se_volume_cursor_x,1049+36-23 : mov %sfx_vol,0 : effect_vol : jumpf
-			notif %sfx_vol = 100 if %cfg_mouse_x > 1049+36+564-18 && %cfg_mouse_x < 1030+36+600 aspt xpos,205,1049+36+564-18 : mov %cfg_se_volume_cursor_x,1049+36+564-18 : mov %sfx_vol,100 : effect_vol : jumpf
-				notif %sfx_vol = 0 if %cfg_temp_var <= 0 aspt xpos,205,1049+36-23 : mov %sfx_vol,0 : effect_vol : jumpf
-				notif %sfx_vol = 10 if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,205,1049+36+(56*1)-22 : mov %sfx_vol,10 : effect_vol : jumpf
-				notif %sfx_vol = 20 if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,205,1049+36+(56*2)-22 : mov %sfx_vol,20 : effect_vol : jumpf
-				notif %sfx_vol = 30 if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,205,1049+36+(56*3)-22 : mov %sfx_vol,30 : effect_vol : jumpf
-				notif %sfx_vol = 40 if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,205,1049+36+(56*4)-22 : mov %sfx_vol,40 : effect_vol : jumpf
-				notif %sfx_vol = 50 if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,205,1049+36+(56*5)-22 : mov %sfx_vol,50 : effect_vol : jumpf
-				notif %sfx_vol = 60 if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,205,1049+36+(56*6)-22 : mov %sfx_vol,60 : effect_vol : jumpf
-				notif %sfx_vol = 70 if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,205,1049+36+(56*7)-22 : mov %sfx_vol,70 : effect_vol : jumpf
-				notif %sfx_vol = 80 if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,205,1049+36+(56*8)-22 : mov %sfx_vol,80 : effect_vol : jumpf
-				notif %sfx_vol = 90 if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,205,1049+36+(56*9)-22 : mov %sfx_vol,90 : effect_vol : jumpf
-				notif %sfx_vol = 100 if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,205,1049+36+(56*10)-18 : mov %sfx_vol,100 : effect_vol : jumpf
+			notif %sfx_vol = 0 if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %sfx_vol,0 : effect_vol : jumpf
+			notif %sfx_vol = 100 if %cfg_mouse_x > 1049+36+564-18 && %cfg_mouse_x < 1030+36+600 mov %sfx_vol,100 : effect_vol : jumpf
+				notif %sfx_vol = 0 if %cfg_temp_var <= 0 mov %sfx_vol,0 : effect_vol : jumpf
+				notif %sfx_vol = 10 if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %sfx_vol,10 : effect_vol : jumpf
+				notif %sfx_vol = 20 if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %sfx_vol,20 : effect_vol : jumpf
+				notif %sfx_vol = 30 if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %sfx_vol,30 : effect_vol : jumpf
+				notif %sfx_vol = 40 if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %sfx_vol,40 : effect_vol : jumpf
+				notif %sfx_vol = 50 if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %sfx_vol,50 : effect_vol : jumpf
+				notif %sfx_vol = 60 if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %sfx_vol,60 : effect_vol : jumpf
+				notif %sfx_vol = 70 if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %sfx_vol,70 : effect_vol : jumpf
+				notif %sfx_vol = 80 if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %sfx_vol,80 : effect_vol : jumpf
+				notif %sfx_vol = 90 if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %sfx_vol,90 : effect_vol : jumpf
+				notif %sfx_vol = 100 if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %sfx_vol,100 : effect_vol : jumpf
 			~
 		gosub *settings_sfx_vol
 	*skip_se_volume
@@ -683,8 +684,8 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 aspt xpos,207,1049+36-23 : mov %cfg_voice_volume_cursor_x,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
-			if %cfg_mouse_x > 1049+36+564-18 aspt xpos,207,1049+36+564-18 : mov %cfg_voice_volume_cursor_x,1049+36+564-18 : mov %dlg_vol,100 : voice_vol : jumpf
+			if %cfg_mouse_x < 1049+36-23 aspt xpos,207,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
+			if %cfg_mouse_x > 1049+36+564-18 aspt xpos,207,1049+36+564-18 : mov %dlg_vol,100 : voice_vol : jumpf
 				if %cfg_temp_var <= 0 aspt xpos,207,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
 				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,207,1049+36+(56*1)-22 : mov %dlg_vol,10 : voice_vol : jumpf
 				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,207,1049+36+(56*2)-22 : mov %dlg_vol,20 : voice_vol : jumpf
@@ -706,19 +707,19 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			if %cfg_mouse_click = 1 jumpf
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 aspt xpos,207,1049+36-23 : mov %cfg_voice_volume_cursor_x,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
-			if %cfg_mouse_x > 1049+36+564-18 && %cfg_mouse_x < 1030+36+600 aspt xpos,207,1049+36+564-18 : mov %cfg_voice_volume_cursor_x,1049+36+564-18 : mov %dlg_vol,100 : voice_vol : jumpf
+			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %dlg_vol,0 : voice_vol : jumpf
+			if %cfg_mouse_x > 1049+36+564-18 && %cfg_mouse_x < 1030+36+600 mov %dlg_vol,100 : voice_vol : jumpf
 				if %cfg_temp_var <= 0 aspt xpos,207,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,207,1049+36+(56*1)-22 : mov %dlg_vol,10 : voice_vol : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,207,1049+36+(56*2)-22 : mov %dlg_vol,20 : voice_vol : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,207,1049+36+(56*3)-22 : mov %dlg_vol,30 : voice_vol : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,207,1049+36+(56*4)-22 : mov %dlg_vol,40 : voice_vol : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,207,1049+36+(56*5)-22 : mov %dlg_vol,50 : voice_vol : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,207,1049+36+(56*6)-22 : mov %dlg_vol,60 : voice_vol : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,207,1049+36+(56*7)-22 : mov %dlg_vol,70 : voice_vol : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,207,1049+36+(56*8)-22 : mov %dlg_vol,80 : voice_vol : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,207,1049+36+(56*9)-22 : mov %dlg_vol,90 : voice_vol : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,207,1049+36+(56*10)-18 : mov %dlg_vol,100 : voice_vol : jumpf
+				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %dlg_vol,10 : voice_vol : jumpf
+				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %dlg_vol,20 : voice_vol : jumpf
+				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %dlg_vol,30 : voice_vol : jumpf
+				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %dlg_vol,40 : voice_vol : jumpf
+				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %dlg_vol,50 : voice_vol : jumpf
+				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %dlg_vol,60 : voice_vol : jumpf
+				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %dlg_vol,70 : voice_vol : jumpf
+				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %dlg_vol,80 : voice_vol : jumpf
+				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %dlg_vol,90 : voice_vol : jumpf
+				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %dlg_vol,100 : voice_vol : jumpf
 			~
 		gosub *settings_voice_vol
 	*skip_voice_volume
@@ -998,6 +999,8 @@ return
 		~
 
 	lsp 203,cfg_slider_cursor,%cfg_txt_speed_cursor_x,187+117-20 ;1048+36-22 starting x pos
+	itoa $temp_var,%textspeed2
+	write_special_text 200,"slider_index",%cfg_txt_speed_cursor_x-8,187+117-20+3,%textspeed2
 
 	gosub *update_textspeed
 return
@@ -1024,6 +1027,7 @@ return
 		~
 
 	lsp 205,cfg_slider_cursor,%cfg_automode_speed_cursor_x,187+117-20+106  ;1048+36-22 starting x pos
+
 return
 
 *settings_rumble_strength

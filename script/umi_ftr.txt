@@ -24867,22 +24867,22 @@ return
 return
 
 *bgmtitle
-		enable_transitions 744,0
-		aspt ypos,744,-100,200 ;remove if still here
-		sptwait ypos,744
-		_csp 744
+		enable_transitions 748,0
+		aspt ypos,748,-100,200 ;remove if still here
+		sptwait ypos,748
+		_csp 748
 		if %cfg_bgm_display == 0 mov %bgm_title_delay,0 : return
 		border_pad_push 3
-		lsp 744,":s;#FFFFFF`{p:7:♪"+$BGM_Title+"}",18,-100
+		lsp 748,":s;#FFFFFF`{p:7:♪"+$BGM_Title+"}",18,-100
 		border_pad_pop
-		spt ypos,744,0,%bgm_title_delay
+		spt ypos,748,0,%bgm_title_delay
 		mov %bgm_title_delay,0
-		aspt ypos,744,12,200
-		spt ypos,744,0,6000
-		aspt ypos,744,-100,200
+		aspt ypos,748,12,200
+		spt ypos,748,0,6000
+		aspt ypos,748,-100,200
 		;make invisible in case of quakes?
-		spt alpha,744,0,7100
-		aspt alpha,744,0,1
+		spt alpha,748,0,7100
+		aspt alpha,748,0,1
 return
 
 ;****************************Aim***********************************
@@ -25359,7 +25359,7 @@ if %snow_sprite > 0 snow %snow_sprite : jumpf
 ~
 
 ;Load BGM title
-if %bgm_current_id != 0 _csp 744 : gosub *BGM_List : gosub *bgmtitle
+if %bgm_current_id != 0 _csp 748 : gosub *BGM_List : gosub *bgmtitle
 _csp 746 ;no chapter titles
 
 ;So that we save after loading
@@ -32180,7 +32180,7 @@ return
 	setwindowd_main_region 240,14,1408,274,77
 	setwindowd_non_region 0,235,112,38,60
 	setwindowd_name_region 0,11,224,118,60,170,170,74
-	if %msgwnd_type = 4 lsp %msgwnd4_bg_slot,msgwnd4_bg,0,0 ;W_TEMP
+	if %msgwnd_type = 4 lsph %msgwnd4_bg_slot,msgwnd4_bg,0,0 : aspt alpha,%msgwnd4_bg_slot,0;W_TEMP
 	if %msgwnd_type != 4 _csp %msgwnd4_bg_slot ;W_TEMP
 return
 

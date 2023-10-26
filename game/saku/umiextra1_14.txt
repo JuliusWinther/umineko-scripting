@@ -1,9 +1,17 @@
-;*umiextra1_2
+*umiextra1_2
 log_reset
 ;new_extra_episode 14
 ;START
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 2
+
+msgwnd_non
 *e14_1
 d `How long have I been here?`[\]
 
@@ -16,13 +24,41 @@ d `Things seem to have changed since I woke up.`[\]
 d `Because I was neither in the warm futon, nor the basket filled with stuffed animals.`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 42
+
 seplay 11,1030,100
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:local_saku",s0_3,"sakutaro_rogo"
 
+flush 48
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 2
+
 meplay 11,5,100
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro01"
+
+flush 45
 
 *e14_4
 d `It was dark, and I found myself standing at the base of a rocky mountain.`[\]
@@ -37,7 +73,7 @@ d `There were trees, but they were completely withered, not a single leaf on the
 
 
 *e14_7
-d `...Who am I?`[@]`...   Where am I?`[\]
+d `...Who am I?`[@]`...Where am I?`[\]
 
 
 msgwnd_wal
@@ -51,7 +87,7 @@ d `Thanks to that voice I remembered everything.`[\]
 
 
 *e14_10
-d `That's exactly right.`[@]` I am Sakutaro, a stuffed lion.`[\]
+d `That's exactly right.`[@]`I am Sakutaro, a stuffed lion.`[\]
 
 
 *e14_11
@@ -63,10 +99,19 @@ d `Where's Maria?`[\]
 
 
 *e14_13
-d `Remembering things one by one, I arrived at my last memory...`[@]` and figured out where I was.`[\]
+d `Remembering things one by one, I arrived at my last memory...`[@]`and figured out where I was.`[\]
 
 
-lss s0_9,"wal","a11_warai1"
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 2
+
+lss s0_8,"wal","a11_warai1"
+aspt2_mem "xpos",s0_8,-549
+flush 80
 
 msgwnd_wal
 *e14_14
@@ -75,7 +120,7 @@ d [lv 0*"30"*"wal_01280"]`{qt}This place is Mount Purgatory.`[@][lv 0*"30"*"wal_
 
 msgwnd_non
 *e14_15
-d `This person is... {f:5:Virgilia}.`[@]` One of the witches who gave me a soul.`[\]
+d `This person is... {f:5:Virgilia}.`[@]`One of the witches who gave me a soul.`[\]
 
 
 msgwnd_sak
@@ -83,7 +128,9 @@ msgwnd_sak
 d [lv 0*"33"*"sak_00180"]`{qt}Witch-san.`[@][lv 0*"33"*"sak_00190"]` I'd like to go back to Maria.`[@][lv 0*"33"*"sak_00200"]` If I don't come back, Maria is sure to cry.`[@][lv 0*"33"*"sak_00210"]` How can I go home?{qt}`[\]
 
 
-lss s0_9,"wal","a11_majime1"
+lss s0_8,"wal","a11_majime1"
+aspt2_mem "xpos",s0_8,-549
+flush 80
 
 msgwnd_wal
 *e14_17
@@ -95,7 +142,9 @@ msgwnd_sak
 d [lv 0*"33"*"sak_00220"]`{qt}If I endure this, will I be able to come back to Maria..?{qt}`[\]
 
 
-lss s0_9,"wal","a11_fuman1"
+lss s0_8,"wal","a11_fuman1"
+aspt2_mem "xpos",s0_8,-549
+flush 80
 
 msgwnd_wal
 *e14_19
@@ -107,7 +156,14 @@ msgwnd_sak
 d [lv 0*"33"*"sak_00230"]`{qt}Uryuu.`[@][lv 0*"33"*"sak_00240"]` I'll do whatever it takes to come back to Maria.{qt}`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro06"
+
+flush 5
 
 msgwnd_non
 *e14_21
@@ -122,13 +178,31 @@ d `If that was the only path that led back to Maria, I had no reason not to foll
 d `Clenching my fists, as well as my cotton, I began to ascend Mount Purgatory.`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 10
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro05"
+
+flush 9
 
 bgmplay 49,70,0
 
-lss s0_9,"wal","a11_majime1"
+lss s0_10,"wal","a11_majime1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
-lss s0_9,"wal","a11_majime1"
+lss s0_10,"wal","a11_majime1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_wal
 *e14_24
@@ -164,6 +238,13 @@ msgwnd_non
 d `[lv 0*"98"*"oni_00030"]`{qt}You decided that Maria will be helpless without you.`[@]``[|][lv 0*"98"*"oni_00040"]` Awfully conceited for a stuffed animal, no?`[@]``[|][lv 0*"98"*"oni_00050"]` That is your sin of Pride.`[@]``[|][lv 0*"98"*"oni_00060"]` Thus, you shall carry this stone around until I say that you've done enough.{qt}`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 6
+
 *e14_30
 d `At first, I thought that around an hour would be enough for them to attain forgiveness for this.`[\]
 
@@ -184,7 +265,14 @@ d `I am currently dead.`[\]
 d `Since I want something as farfetched as being revived, there's no way I'd be easily forgiven.`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro05"
+
+flush 5
 
 msgwnd_sak
 *e14_35
@@ -205,10 +293,24 @@ d `But, for Maria's sake, I had to come back home as fast as I could.`[\]
 
 
 *e14_39
-d `I took the large stone, and started going around the first rank of the mountain over and over,`[@]` together with the crowd of the dead.`[\]
+d `I took the large stone, and started going around the first rank of the mountain over and over,`[@]`together with the crowd of the dead.`[\]
 
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 6
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro06"
+
+flush 2
 
 *e14_40
 d `...I... must come back to Maria, right?`[\]
@@ -227,14 +329,35 @@ msgwnd_sak
 d [lv 0*"33"*"sak_00300"]`{qt}...But that... was what made Demon-san mad, wasn't it?`[@][lv 0*"33"*"sak_00310"]`...   I have to try harder...{qt}`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro06"
+
+flush 10
 
 msgwnd_non
 *e14_44
-d `Day by day, without any rest,`[@]` I carried the stone around in circles.`[\]
+d `Day by day, without any rest,`[@]`I carried the stone around in circles.`[\]
 
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 2
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro05"
+
+flush 5
 
 seplay 11,60,100
 
@@ -256,7 +379,9 @@ msgwnd_non
 d `[lv 0*"98"*"oni_00090"]`{qt}Indeed.{qt}`[\]
 
 
-lss s0_9,"wal","a11_warai1"
+lss s0_8,"wal","a11_warai1"
+aspt2_mem "xpos",s0_8,-549
+flush 80
 
 msgwnd_wal
 *e14_48
@@ -273,7 +398,7 @@ d `It took me two whole years.`[\]
 
 
 *e14_51
-d `I was so dusty that even if I dived deep into water, it wouldn't wash away.`[@]`...   Rather than a yellow lion, I became a brown bear.`[\]
+d `I was so dusty that even if I dived deep into water, it wouldn't wash away.`[@]`...Rather than a yellow lion, I became a brown bear.`[\]
 
 
 msgwnd_sak
@@ -281,9 +406,25 @@ msgwnd_sak
 d [lv 0*"33"*"sak_00340"]`{qt}Maria won't hate me for just being a little dirty.`[@][lv 0*"33"*"sak_00350"]` I'm coming. Let's ascend.{qt}`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 46
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro02"
 
-lss s0_9,"wal","a11_fuman1"
+flush 8
+
+lss s0_10,"wal","a11_fuman1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_wal
 *e14_53
@@ -310,7 +451,7 @@ d `...That could well be true.`[\]
 
 
 *e14_57
-d `When Maria watched TV with her kind Mama, I was always sitting on Maria's lap.`[@]` She only talked to Mama, so I can't say I never felt envy during those times.`[\]
+d `When Maria watched TV with her kind Mama, I was always sitting on Maria's lap.`[@]`She only talked to Mama, so I can't say I never felt envy during those times.`[\]
 
 
 msgwnd_sak
@@ -330,9 +471,23 @@ d [lv 0*"33"*"sak_00390"]`{qt}...Ah.{qt}`[\]
 
 seplay 11,20,100
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 1
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 22
+
 msgwnd_non
 *e14_61
-d `The eyes that Maria always praised for being so cute...`[@]` were torn off in an instant.`[\]
+d `The eyes that Maria always praised for being so cute...`[@]`were torn off in an instant.`[\]
 
 
 *e14_62
@@ -340,18 +495,46 @@ d `Cotton almost started spilling out of the holes.`[\]
 
 
 *e14_63
-d `Cotton is precious.`[@]` It's thanks to cotton that I am fluffy, and that Maria is happy with me.`[\]
+d `Cotton is precious.`[@]`It's thanks to cotton that I am fluffy, and that Maria is happy with me.`[\]
 
 
 *e14_64
-d `Holding it back with both of my hands,`[@]`...   I unsteadily crawled on the surface of the mountain, challenging the new trial.`[\]
+d `Holding it back with both of my hands,`[@]`...I unsteadily crawled on the surface of the mountain, challenging the new trial.`[\]
 
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro02"
 
-lbg "c:backgrounds",s0_3,"sakutaro07"
+flush 2
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro07"
+
+flush 2
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+lbg "c:backgrounds",s0_3,"sakutaro07"
+
+flush 2
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 2
 
 *e14_65
 d `The trial of the second rank took two whole years as well.`[\]
@@ -367,18 +550,25 @@ seplay 11,60,100
 d `[lv 0*"98"*"oni_00160"]`{qt}Well done.`[@]``[|][lv 0*"98"*"oni_00170"]` Your sin of Envy is purified.`[@]``[|][lv 0*"98"*"oni_00180"]` Come, let us restore your eyes.{qt}`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro02"
+
+flush 6
 
 *e14_67
 d `The demon sewed the black fabric of my eyes back on.`[\]
 
 
 *e14_68
-d `...It wasn't done very well.`[@]` My face ended up changing somehow.`[\]
+d `...It wasn't done very well.`[@]`My face ended up changing somehow.`[\]
 
 
 *e14_69
-d `And, because I spent so long crawling around,`[@]` the white fabric of my belly became completely black and worn out as well.`[\]
+d `And, because I spent so long crawling around,`[@]`the white fabric of my belly became completely black and worn out as well.`[\]
 
 
 *e14_70
@@ -386,12 +576,21 @@ d `But, I will persevere.`[\]
 
 
 *e14_71
-d `I will definitely come back to Maria.`[@]` Uryuu.`[\]
+d `I will definitely come back to Maria.`[@]`Uryuu.`[\]
 
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro04"
 
-lss s0_9,"wal","a11_defo1"
+lss s0_8,"wal","a11_defo1"
+aspt2_mem "xpos",s0_8,-549
+flush 80
+
+flush 23
 
 msgwnd_wal
 *e14_72
@@ -409,9 +608,25 @@ msgwnd_non
 d `[lv 0*"98"*"oni_00190"]`{qt}You, a stuffed animal, have resented Maria's and Rosa's relationship.`[@]``[|][lv 0*"98"*"oni_00200"]` Until that sin is purified, you may not ascend.{qt}`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 22
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro03"
 
-lss s0_9,"wal","a11_warai1"
+lss s0_10,"wal","a11_warai1"
+aspt2_mem "xpos",s0_10,550
+flush 80
+
+flush 24
 
 msgwnd_wal
 *e14_74
@@ -433,10 +648,24 @@ d `[lv 0*"98"*"oni_00210"]`{qt}You spent a lot of time with Maria in leisure, st
 d `This trial also took a long time...`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 2
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro04"
 
+flush 3
+
 *e14_77
-d `At the third rank, in the middle of terribly heavy smoke,`[@]` I was forced to constantly pray, while choking violently.`[\]
+d `At the third rank, in the middle of terribly heavy smoke,`[@]`I was forced to constantly pray, while choking violently.`[\]
 
 
 *e14_78
@@ -447,7 +676,14 @@ d `By the end, the smell of smoke would no longer come out.`[\]
 d `...That was sad, because Maria hated the stench of tobacco smoke.`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro03"
+
+flush 4
 
 *e14_80
 d `At the fourth rank, I was made to run around the mountain.`[\]
@@ -470,10 +706,24 @@ d `My fabric kept getting caught on rocks and cotton kept getting torn out.`[\]
 
 
 *e14_83
-d `Only after I purified this sin....`[@]` did I notice that my right leg had been torn to pieces.`[\]
+d `Only after I purified this sin....`[@]`did I notice that my right leg had been torn to pieces.`[\]
 
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 2
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro07"
+
+flush 4
 
 msgwnd_wal
 *e14_84
@@ -490,7 +740,14 @@ msgwnd_non
 d `[lv 0*"98"*"oni_00230"]`{qt}It seems you're starting to understand.`[@]``[|][lv 0*"98"*"oni_00240"]` Here, you will bow to the ground and repent.{qt}`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro08"
+
+flush 4
 
 msgwnd_wal
 *e14_87
@@ -511,14 +768,28 @@ d `[lv 0*"98"*"oni_00250"]`{qt}I see that you understand.`[@]``[|][lv 0*"98"*"on
 d `This trial seemed easy compared to all the previous ones.`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 22
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro07"
+
+flush 2
 
 *e14_91
 d `However, it was already nighttime on Mount Purgatory.`[\]
 
 
 *e14_92
-d `The wind blew, it rained and snowed.`[@]` Sometimes boiled sulfur came raining down.`[\]
+d `The wind blew, it rained and snowed.`[@]`Sometimes boiled sulfur came raining down.`[\]
 
 
 *e14_93
@@ -526,22 +797,36 @@ d `Spending several years to repent for all my sins, I became more and more worn
 
 
 *e14_94
-d `The wind and the rain caused me to become completely black,`[@]` and I looked more like a dusty mop than a stuffed animal.`[\]
+d `The wind and the rain caused me to become completely black,`[@]`and I looked more like a dusty mop than a stuffed animal.`[\]
 
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 6
 
 *e14_95
 d `If you were to brush your cheek against me now, I would not feel soft at all.`[\]
 
 
 *e14_96
-d `I would feel like a dirty, wrung out mop.`[@]` One that's completely stiff and dry.`[\]
+d `I would feel like a dirty, wrung out mop.`[@]`One that's completely stiff and dry.`[\]
 
 
 *e14_97
-d `During the time I was being soaked by the rain and dried by the sun, both of my legs and my left arm were torn off,`[@]` my mane became black and damaged.`[@]`...   Even if nobody tells me about it, I know full well that I look nothing like a lion anymore.`[\]
+d `During the time I was being soaked by the rain and dried by the sun, both of my legs and my left arm were torn off,`[@]`my mane became black and damaged.`[@]`...Even if nobody tells me about it, I know full well that I look nothing like a lion anymore.`[\]
 
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro10"
+
+flush 4
 
 meplay 11,5,100
 
@@ -590,18 +875,29 @@ d `She will probably never fix me again.`[\]
 
 
 *e14_109
-d `I have purified all my sins, but...`[@]` I can no longer return to Maria as Sakutaro.`[\]
+d `I have purified all my sins, but...`[@]`I can no longer return to Maria as Sakutaro.`[\]
 
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro09"
 
-lss s0_9,"wal","a11_defo1"
+lss s0_8,"wal","a11_defo1"
+aspt2_mem "xpos",s0_8,-549
+flush 80
 
-lss s0_9,"wal","a11_warai2"
+flush 4
+
+lss s0_8,"wal","a11_warai2"
+aspt2_mem "xpos",s0_8,-549
+flush 80
 
 msgwnd_wal
 *e14_110
-d [lv 0*"30"*"wal_01500"]`{qt}Sakutaro, you did well.`[@][lv 0*"30"*"wal_01510"]` Instead of going to heaven, you can choose to have {f:5:Beatrice}'s magic revive you once again in the world of humans.{qt}`[\]
+d [lv 0*"30"*"wal_01500"]`{qt}Sakutaro, you did well.`[@][lv 0*"30"*"wal_01510"]` Instead of going to heaven, you can choose to have BEATRICE's magic revive you once again in the world of humans.{qt}`[\]
 
 
 msgwnd_sak
@@ -609,7 +905,9 @@ msgwnd_sak
 d [lv 0*"33"*"sak_00460"]`{qt}But I'm just a black lump of cotton now.`[@][lv 0*"33"*"sak_00470"]`...   Am I really Sakutaro anymore?`[@][lv 0*"33"*"sak_00480"]`...   Will Maria even recognise me?{qt}`[\]
 
 
-lss s0_9,"wal","a11_warai1"
+lss s0_8,"wal","a11_warai1"
+aspt2_mem "xpos",s0_8,-549
+flush 80
 
 msgwnd_wal
 *e14_112
@@ -621,7 +919,14 @@ msgwnd_sak
 d [lv 0*"33"*"sak_00490"]`{qt}...{qt}`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"sakutaro10"
+
+flush 5
 
 msgwnd_non
 *e14_114
@@ -637,12 +942,21 @@ d `I'm just a dirt-black piece of cotton.`[\]
 
 
 *e14_117
-d `Even if I were to come back to Maria,`[@]`...   there's no chance she'll know who I am.`[\]
+d `Even if I were to come back to Maria,`[@]`...there's no chance she'll know who I am.`[\]
 
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro09"
 
-lss s0_9,"wal","a11_defo1"
+lss s0_10,"wal","a11_defo1"
+aspt2_mem "xpos",s0_10,550
+flush 80
+
+flush 24
 
 msgwnd_wal
 *e14_118
@@ -654,7 +968,9 @@ msgwnd_sak
 d [lv 0*"33"*"sak_00500"]`{qt}Uryuu...`[@][lv 0*"33"*"sak_00510"]` I've decided.{qt}`[\]
 
 
-lss s0_9,"wal","a11_fuman1"
+lss s0_10,"wal","a11_fuman1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_wal
 *e14_120
@@ -666,52 +982,82 @@ msgwnd_sak
 d [lv 0*"33"*"sak_00520"]`{qt}It's not important whether she will recognise me.`[@][lv 0*"33"*"sak_00530"]` I want to be by her side.`[@][lv 0*"33"*"sak_00540"]`...   Even if she decides I'm just a dirty lump of cotton. That's fine.{qt}`[\]
 
 
-lss s0_9,"wal","a11_warai1"
+lss s0_10,"wal","a11_warai1"
+aspt2_mem "xpos",s0_10,550
+flush 80
 
 msgwnd_wal
 *e14_122
-d [lv 0*"30"*"wal_01580"]`{qt}Very well.`[@][lv 0*"30"*"wal_01590"]` Then, I shall entrust you to {f:5:Beatrice}'s magic.{qt}`[\]
+d [lv 0*"30"*"wal_01580"]`{qt}Very well.`[@][lv 0*"30"*"wal_01590"]` Then, I shall entrust you to BEATRICE's magic.{qt}`[\]
 
 
 msgwnd_sak
 *e14_123
-d [lv 0*"33"*"sak_00550"]`{qt}To {f:5:Beatrice}... of Rokkenjima..?{qt}`[\]
+d [lv 0*"33"*"sak_00550"]`{qt}To BEATRICE... of Rokkenjima..?{qt}`[\]
 
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro10"
 
+flush 5
+
 msgwnd_wal
 *e14_124
-d [lv 0*"30"*"wal_01600"]`{qt}No, not her.`[@][lv 0*"30"*"wal_01610"]` While you were doing your trials, a new person inherited the name of {f:5:Beatrice}.`[@][lv 0*"30"*"wal_01620"]` She will be the one to revive you.`[@][lv 0*"30"*"wal_01630"]`...   Through the miracle of Endless Magic.{qt}`[\]
+d [lv 0*"30"*"wal_01600"]`{qt}No, not her.`[@][lv 0*"30"*"wal_01610"]` While you were doing your trials, a new person inherited the name of BEATRICE.`[@][lv 0*"30"*"wal_01620"]` She will be the one to revive you.`[@][lv 0*"30"*"wal_01630"]`...   Through the miracle of Endless Magic.{qt}`[\]
 
 
 seplay 11,22,100
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 2
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 42
 
 msgwnd_non
 *e14_125
 d `Sakutaro slowly woke up.`[\]
 
 
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
 lbg "c:backgrounds",s0_3,"kaw_r3b"
+
+flush 46
 
 bgmplay 12,70,0
 
 *e14_126
-d `It smelt dusty.`[@]`...   A futon shop, maybe?`[\]
+d `It smelt dusty.`[@]`...A futon shop, maybe?`[\]
 
 
 *e14_127
-d `This was neither Maria's room, nor {f:5:Beatrice}'s mansion.`[\]
+d `This was neither Maria's room, nor BEATRICE's mansion.`[\]
 
 
 *e14_128
-d `Sakutaro heard someone's voice.`[@]` He heard someone descending a wooden staircase.`[\]
+d `Sakutaro heard someone's voice.`[@]`He heard someone descending a wooden staircase.`[\]
 
 
 seplay 11,14,100
 
 *e14_129
-d `Who's there?`[@]` Will they recognise me as Sakutaro?`[\]
+d `Who's there?`[@]`Will they recognise me as Sakutaro?`[\]
 
 
 *e14_130
@@ -722,9 +1068,22 @@ d `And... will they take me back to Maria?`[\]
 d `I was mixed in with a bunch of other stuffed animals and continued to slumber...`[\]
 
 
-lss s0_9,"enj","a11_defo1"
+lss s0_8,"enj","a11_defo1"
+aspt2_mem "xpos",s0_8,-549
+flush 80
+
+flush 3
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+
+flush 46
+
+
 
 
 ;END
-;*umiextra1_2_end
-;goto *end_game
+*umiextra1_2_end
+goto *end_game

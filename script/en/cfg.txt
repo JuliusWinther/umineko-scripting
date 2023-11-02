@@ -30,6 +30,11 @@
 
 	border_pad_push 4
 
+	mov %game_lang_changed,0
+	mov %display_mode_changed,0
+	mov %wnd_size_changed,0
+	mov %renderer_changed,0
+
 	;lsp 2,":c;graphics\colour\black.png",0,0
 	;print 10,300
 	;_csp 2
@@ -46,7 +51,7 @@
 	mov %cfg_height,45
 
 	;Config Title
-	write_special_text 105,"config_title",960,45,"Configuration"
+	write_special_text 105,"config_title",960,45,title_config_txt
 	;Config BG
 	lsp 451,cfg_menu_bg,0,0
 	;lsp2 config_main_lsp2,config_main,3840,540,100,100,0 ;Needs to be placed at the virtual center
@@ -55,7 +60,7 @@
 	lsp 440,cfg_menu_wnd,0,%cfg_height
 
 	
-	*rewrite
+	*cfg_rewrite
 
 		;Distance between focus and separator is 4px, height of the whole thing is 100px
 		lsp 321,cfg_focus,111,187+42+%cfg_height
@@ -79,60 +84,60 @@
 	lsp 332,cfg_section_btn,155+(316*2)+10,85+%cfg_height
 	lsp 333,cfg_section_btn,155+(316*3)+10,85+%cfg_height
 	lsp 334,cfg_section_btn,155+(316*4)+10,85+%cfg_height
-	write_special_text gen_txt_1,"config_section",155+10-40,84+%cfg_height,"SYSTEM"
-	write_special_text gen_txt_2,"config_section",(155+316+10)-40,84+%cfg_height,"GAME"
-	write_special_text gen_txt_3,"config_section",(155+(316*2)+10)-40,84+%cfg_height,"SOUND"
-	write_special_text gen_txt_4,"config_section",(155+(316*3)+10)-40,84+%cfg_height,"LANGUAGE"
-	write_special_text gen_txt_5,"config_section",(155+(316*4)+10)-40,84+%cfg_height,"GRAPHICS"
+	write_special_text gen_txt_1,"config_section",155+10-40,84+%cfg_height,cfg_section_1
+	write_special_text gen_txt_2,"config_section",(155+316+10)-40,84+%cfg_height,cfg_section_2
+	write_special_text gen_txt_3,"config_section",(155+(316*2)+10)-40,84+%cfg_height,cfg_section_3
+	write_special_text gen_txt_4,"config_section",(155+(316*3)+10)-40,84+%cfg_height,cfg_section_4
+	write_special_text gen_txt_5,"config_section",(155+(316*4)+10)-40,84+%cfg_height,cfg_section_5
 
 	if %cfg_current_page != 1 jumpf ;System
 		lsp 330,cfg_section_btn_selected,155+10,85+%cfg_height
-		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,"Display Settings"
-		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,"Game Renderer"
-		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,"Input Mode"
-		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,"Menu Animations"
-		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,"Proactive Caching"
-		write_special_text 306,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*5+%cfg_height,"Mouse-Wheel Hides Textbox"
+		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,cfg_option_1_1
+		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,cfg_option_1_2
+		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,cfg_option_1_3
+		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,cfg_option_1_4
+		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,cfg_option_1_5
+		write_special_text 306,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*5+%cfg_height,cfg_option_1_6
 	~
 	if %cfg_current_page != 2 jumpf ;Game
 		lsp 331,cfg_section_btn_selected,155+316+10,85+%cfg_height
-		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,"Text Display Speed"
-		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,"Automode Speed"
-		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,"Gamepad Rumble Strength"
-		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,"Show Music and Chapter Name"
-		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,"Prevent Skipping Unread Text"
-		write_special_text 306,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*5+%cfg_height,"Sexualized Content"
+		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,cfg_option_2_1
+		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,cfg_option_2_2
+		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,cfg_option_2_3
+		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,cfg_option_2_4
+		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,cfg_option_2_5
+		write_special_text 306,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*5+%cfg_height,cfg_option_2_6
 	~
 	if %cfg_current_page != 3 jumpf ;Sound
 		lsp 332,cfg_section_btn_selected,155+(316*2)+10,85+%cfg_height
-		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,"Music Volume"
-		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,"Sound Effect Volume"
-		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,"Voice Volume"
-		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,"Mute Specific Characters"
-		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,"Lower Music Volume during Dialogue"
-		write_special_text 306,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*5+%cfg_height,"Lip Synchronization"
+		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,cfg_option_3_1
+		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,cfg_option_3_2
+		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,cfg_option_3_3
+		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,cfg_option_3_4
+		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,cfg_option_3_5
+		write_special_text 306,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*5+%cfg_height,cfg_option_3_6
 	~
 	if %cfg_current_page != 4 jumpf ;Language
 		lsp 333,cfg_section_btn_selected,155+(316*3)+10,85+%cfg_height
-		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,"Game Language"
-		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,"Voice Language"
-		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,"Music Titles"
-		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,"Song Subtitles"
-		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,"Steam Conventions"
+		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,cfg_option_4_1
+		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,cfg_option_4_2
+		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,cfg_option_4_3
+		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,cfg_option_4_4
+		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,cfg_option_4_5
 		_csp 306
 	~
 	if %cfg_current_page != 5 jumpf ;Graphics
 		lsp 334,cfg_section_btn_selected,155+(316*4)+10,85+%cfg_height
-		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,"Sprite Type"
-		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,"Textbox Type"
-		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,"Background Type"
-		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,"Book Mode"
-		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,"Background Movement"
+		write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,cfg_option_5_1
+		write_special_text 302,"config_option_name",%cfg_temp1,187+62+%cfg_temp2+%cfg_height,Tcfg_option_5_2
+		write_special_text 303,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*2+%cfg_height,cfg_option_5_3
+		write_special_text 304,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*3+%cfg_height,cfg_option_5_4
+		write_special_text 305,"config_option_name",%cfg_temp1,187+62+%cfg_temp2*4+%cfg_height,cfg_option_5_5
 		_csp 306
 	~
 
-    lsp 103,set_exit,0,0
-	lsp 104,set_reset,0,0
+    lsp 103,set_cfg_exit,0,0
+	lsp 104,set_restore,0,0
 	
 	align_buttons_l 104
 	align_buttons_r 103
@@ -163,9 +168,8 @@
 		if %cfg_current_page != 3 jumpf
 			gosub *settings_bgm_vol
 			gosub *settings_sfx_vol
-			gosub *settings_voice_vol		
-			;if %CHIRU_MODE = 0 gosub *settings_voice_vol_chars
-			;if %CHIRU_MODE = 1 gosub *settings_voice_vol_chars_chiru
+			gosub *settings_voice_vol																																
+			lsp 211,cfg_sub_btn,1584-205,187+58+(%cfg_temp2*3)+%cfg_height : write_special_text gen_txt_6,"submenu_btn_title",1584-205,187+58+(%cfg_temp2*3)+%cfg_height,cfg_submenu_btn_txt
 			gosub *settings_lower_music_on_d
 			gosub *settings_lips
 		~
@@ -232,16 +236,27 @@
 
 	btnwait %BtnRes
 
-	if %BtnRes = 330 mov %cfg_current_page,1 : gosub *clear_config_options : goto *rewrite
-	if %BtnRes = 331 mov %cfg_current_page,2 : gosub *clear_config_options : goto *rewrite
-	if %BtnRes = 332 mov %cfg_current_page,3 : gosub *clear_config_options : goto *rewrite
-	if %BtnRes = 333 mov %cfg_current_page,4 : gosub *clear_config_options : goto *rewrite
-	if %BtnRes = 334 mov %cfg_current_page,5 : gosub *clear_config_options : goto *rewrite
+	isdown %cfg_mouse_click
 
-	if %BtnRes = -1 goto *settings_end ;Exit by right-clicking
-	if %BtnRes = -10 goto *settings_end ;Exit by ESC
-	if %BtnRes = 103 goto *settings_end 
-	if %BtnRes = 104 gosub *settings_full_reset
+	if %BtnRes = 330 mov %cfg_current_page,1 : gosub *clear_config_options : goto *cfg_rewrite
+	if %BtnRes = 331 mov %cfg_current_page,2 : gosub *clear_config_options : goto *cfg_rewrite
+	if %BtnRes = 332 mov %cfg_current_page,3 : gosub *clear_config_options : goto *cfg_rewrite
+	if %BtnRes = 333 mov %cfg_current_page,4 : gosub *clear_config_options : goto *cfg_rewrite
+	if %BtnRes = 334 mov %cfg_current_page,5 : gosub *clear_config_options : goto *cfg_rewrite
+
+	if %BtnRes != -1 jumpf ;Exit by right-clicking
+		if %game_lang_changed != 0 || %display_mode_changed != 0 || %wnd_size_changed != 0 || %renderer_changed != 0 goto *settings_exit_confirm : jumpf
+		goto *settings_end 
+	~
+	if %BtnRes != -10 jumpf ;Exit by ESC
+		if %game_lang_changed != 0 || %display_mode_changed != 0 || %wnd_size_changed != 0 || %renderer_changed != 0 goto *settings_exit_confirm : jumpf
+		goto *settings_end 
+	~
+	if %BtnRes != 103 jumpf ;Exit button pressed
+		if %game_lang_changed != 0 || %display_mode_changed != 0 || %wnd_size_changed != 0 || %renderer_changed != 0 goto *settings_exit_confirm : jumpf
+		goto *settings_end 
+	~
+	if %BtnRes = 104 gosub *settings_full_reset : goto *cfg_rewrite
 	if %BtnRes = 0  goto *settings_loop
 
 if %cfg_current_page != 1 goto *skip_config_page_1 ;System
@@ -259,13 +274,14 @@ if %cfg_current_page != 1 goto *skip_config_page_1 ;System
 		if %cfg_mouse_click = 0 if %full_window_auto = 2 mov %full_window_auto,0 : goto *settings_window_mode2
 		*settings_window_mode2
 			if %full_window_auto != 0 jumpf
+				inc %display_mode_changed
 				operate_config unset,"fullscreen"
 				operate_config unset,"window"
 				operate_config write,"noval","scale"
 				operate_config save
-				;lsp 373,set_restarted_apply,0,910
 			~
 			if %full_window_auto != 1 jumpf
+				mov %display_mode_changed,0
 				operate_config unset,"fullscreen"
 				operate_config write,"noval","window"
 				operate_config write,"noval","scale"
@@ -273,6 +289,7 @@ if %cfg_current_page != 1 goto *skip_config_page_1 ;System
 				menu_window
 			~
 			if %full_window_auto != 2 jumpf
+				mov %display_mode_changed,0
 				operate_config unset,"window"
 				operate_config write,"noval","fullscreen"
 				operate_config write,"noval","scale"
@@ -287,25 +304,27 @@ if %cfg_current_page != 1 goto *skip_config_page_1 ;System
 	;WINDOW RESOLUTION SELECTOR
 	if %BtnRes != 205 jumpf ;<
 		isdown %cfg_mouse_click
-		if %cfg_mouse_click = 0 if $window_size = "1280" mov $window_size,"2560" : goto *settings_window_resolution2
-		if %cfg_mouse_click = 0 if $window_size = "1366" mov $window_size,"1280" : goto *settings_window_resolution2
-		if %cfg_mouse_click = 0 if $window_size = "1440" mov $window_size,"1366" : goto *settings_window_resolution2
-		if %cfg_mouse_click = 0 if $window_size = "1600" mov $window_size,"1440" : goto *settings_window_resolution2
-		if %cfg_mouse_click = 0 if $window_size = "1920" mov $window_size,"1600" : goto *settings_window_resolution2
-		if %cfg_mouse_click = 0 if $window_size = "2560" mov $window_size,"1920" : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 dec %wnd_size_changed
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_1280 mov $window_size,cfg_wnd_size_2560 : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_1366 mov $window_size,cfg_wnd_size_1280 : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_1440 mov $window_size,cfg_wnd_size_1366 : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_1600 mov $window_size,cfg_wnd_size_1440 : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_1920 mov $window_size,cfg_wnd_size_1600 : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_2560 mov $window_size,cfg_wnd_size_1920 : goto *settings_window_resolution2
 		;For Custom
-		if %cfg_mouse_click = 0 mov $window_size,"1920" : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 mov $window_size,cfg_wnd_size_1920 : goto *settings_window_resolution2
 	~
 	if %BtnRes != 206 jumpf ;>
 		isdown %cfg_mouse_click
-		if %cfg_mouse_click = 0 if $window_size = "2560" mov $window_size,"1280" : goto *settings_window_resolution2
-		if %cfg_mouse_click = 0 if $window_size = "1920" mov $window_size,"2560" : goto *settings_window_resolution2
-		if %cfg_mouse_click = 0 if $window_size = "1600" mov $window_size,"1920" : goto *settings_window_resolution2
-		if %cfg_mouse_click = 0 if $window_size = "1440" mov $window_size,"1600" : goto *settings_window_resolution2
-		if %cfg_mouse_click = 0 if $window_size = "1366" mov $window_size,"1440" : goto *settings_window_resolution2
-		if %cfg_mouse_click = 0 if $window_size = "1280" mov $window_size,"1366" : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 inc %wnd_size_changed
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_2560 mov $window_size,cfg_wnd_size_1280 : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_1920 mov $window_size,cfg_wnd_size_2560 : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_1600 mov $window_size,cfg_wnd_size_1920 : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_1440 mov $window_size,cfg_wnd_size_1600 : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_1366 mov $window_size,cfg_wnd_size_1440 : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 if $window_size = cfg_wnd_size_1280 mov $window_size,cfg_wnd_size_1366 : goto *settings_window_resolution2
 		;For Custom
-		if %cfg_mouse_click = 0 mov $window_size,"1920" : goto *settings_window_resolution2
+		if %cfg_mouse_click = 0 mov $window_size,cfg_wnd_size_1920 : goto *settings_window_resolution2
 
 		*settings_window_resolution2
 			operate_config write,$window_size,"window-width"
@@ -318,12 +337,14 @@ if %cfg_current_page != 1 goto *skip_config_page_1 ;System
 	;RENDERER SELECTOR
 	if %BtnRes != 207 jumpf ;left
 		isdown %cfg_mouse_click
+		if %cfg_mouse_click = 0 dec %renderer_changed
 		if %cfg_mouse_click = 0 if %Free9 <= 0 getrenderernum %Free9
 		if %cfg_mouse_click = 0 dec %Free9
 		if %cfg_mouse_click = 0 goto *settings_render2
 	~
 	if %BtnRes != 208 jumpf ;right
 		isdown %cfg_mouse_click
+		if %cfg_mouse_click = 0 inc %renderer_changed
 		if %cfg_mouse_click = 0 getrenderernum %Free6
 		if %cfg_mouse_click = 0 dec %Free6
 		if %cfg_mouse_click = 0 if %Free9 < 0 mov %Free9,0
@@ -391,19 +412,19 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 aspt xpos,203,1049+36-23 : mov %textspeed2,0 : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,203,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
-				if %cfg_temp_var <= 0 aspt xpos,203,1049+36-23 : write_slider_text 200,1049+36+(56*0)-22-8,187+117-20+3,"0" : mov %textspeed2,0 : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,203,1049+36+(56*1)-22 : write_slider_text 200,1049+36+(56*1)-22-8,187+117-20+3,"1" : mov %textspeed2,1 : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,203,1049+36+(56*2)-22 : write_slider_text 200,1049+36+(56*2)-22-8,187+117-20+3,"2" : mov %textspeed2,2 : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,203,1049+36+(56*3)-22 : write_slider_text 200,1049+36+(56*3)-22-8,187+117-20+3,"3" : mov %textspeed2,3 : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,203,1049+36+(56*4)-22 : write_slider_text 200,1049+36+(56*4)-22-8,187+117-20+3,"4" : mov %textspeed2,4 : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,203,1049+36+(56*5)-22 : write_slider_text 200,1049+36+(56*5)-22-8,187+117-20+3,"5" : mov %textspeed2,5 : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,203,1049+36+(56*6)-22 : write_slider_text 200,1049+36+(56*6)-22-8,187+117-20+3,"6" : mov %textspeed2,6 : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,203,1049+36+(56*7)-22 : write_slider_text 200,1049+36+(56*7)-22-8,187+117-20+3,"7" : mov %textspeed2,7 : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,203,1049+36+(56*8)-22 : write_slider_text 200,1049+36+(56*8)-22-8,187+117-20+3,"8" : mov %textspeed2,8 : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,203,1049+36+(56*9)-22 : write_slider_text 200,1049+36+(56*9)-22-8,187+117-20+3,"9" : mov %textspeed2,9 : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,203,1049+36+(56*10)-18  : write_slider_text 200,1049+36+(56*10)-22-8,187+117-20+3,"10" : mov %textspeed2,10 : jumpf
+			notif %automodespeed = 0 if %cfg_mouse_x < 1049+36-23 aspt xpos,203,1049+36-23 : mov %textspeed2,0 : jumpf
+			notif %automodespeed = 10 if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,203,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
+				notif %automodespeed = 0  if %cfg_temp_var <= 0 aspt xpos,203,1049+36-23 : write_slider_text 200,1049+36+(56*0)-22-8,187+117-20+3,"0" : mov %textspeed2,0 : jumpf
+				notif %automodespeed = 1  if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,203,1049+36+(56*1)-22 : write_slider_text 200,1049+36+(56*1)-22-8,187+117-20+3,"1" : mov %textspeed2,1 : jumpf
+				notif %automodespeed = 2  if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,203,1049+36+(56*2)-22 : write_slider_text 200,1049+36+(56*2)-22-8,187+117-20+3,"2" : mov %textspeed2,2 : jumpf
+				notif %automodespeed = 3  if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,203,1049+36+(56*3)-22 : write_slider_text 200,1049+36+(56*3)-22-8,187+117-20+3,"3" : mov %textspeed2,3 : jumpf
+				notif %automodespeed = 4  if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,203,1049+36+(56*4)-22 : write_slider_text 200,1049+36+(56*4)-22-8,187+117-20+3,"4" : mov %textspeed2,4 : jumpf
+				notif %automodespeed = 5  if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,203,1049+36+(56*5)-22 : write_slider_text 200,1049+36+(56*5)-22-8,187+117-20+3,"5" : mov %textspeed2,5 : jumpf
+				notif %automodespeed = 6  if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,203,1049+36+(56*6)-22 : write_slider_text 200,1049+36+(56*6)-22-8,187+117-20+3,"6" : mov %textspeed2,6 : jumpf
+				notif %automodespeed = 7  if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,203,1049+36+(56*7)-22 : write_slider_text 200,1049+36+(56*7)-22-8,187+117-20+3,"7" : mov %textspeed2,7 : jumpf
+				notif %automodespeed = 8  if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,203,1049+36+(56*8)-22 : write_slider_text 200,1049+36+(56*8)-22-8,187+117-20+3,"8" : mov %textspeed2,8 : jumpf
+				notif %automodespeed = 9  if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,203,1049+36+(56*9)-22 : write_slider_text 200,1049+36+(56*9)-22-8,187+117-20+3,"9" : mov %textspeed2,9 : jumpf
+				notif %automodespeed = 10 if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,203,1049+36+(56*10)-18  : write_slider_text 200,1049+36+(56*10)-22-8,187+117-20+3,"10" : mov %textspeed2,10 : jumpf
 			~
 			itoa $temp_var,%textspeed2
 			mov %for_index3,0 ;Infinite Cycle
@@ -415,19 +436,19 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 		if %cfg_mouse_click = 1 jumpf
 		getmousepos %cfg_mouse_x,%cfg_temp_var
 		mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-		if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %textspeed2,0 : jumpf
-		if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %textspeed2,10 : jumpf
-			if %cfg_temp_var <= 0 mov %textspeed2,0 : jumpf
-			if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %textspeed2,1 : jumpf
-			if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %textspeed2,2 : jumpf
-			if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %textspeed2,3 : jumpf
-			if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %textspeed2,4 : jumpf
-			if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %textspeed2,5 : jumpf
-			if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %textspeed2,6 : jumpf
-			if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %textspeed2,7 : jumpf
-			if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %textspeed2,8 : jumpf
-			if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %textspeed2,9 : jumpf
-			if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %textspeed2,10 : jumpf
+		notif %automodespeed = 0 if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %textspeed2,0 : jumpf
+		notif %automodespeed = 10 if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %textspeed2,10 : jumpf
+			notif %automodespeed = 0  if %cfg_temp_var <= 0 mov %textspeed2,0 : jumpf
+			notif %automodespeed = 1  if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %textspeed2,1 : jumpf
+			notif %automodespeed = 2  if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %textspeed2,2 : jumpf
+			notif %automodespeed = 3  if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %textspeed2,3 : jumpf
+			notif %automodespeed = 4  if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %textspeed2,4 : jumpf
+			notif %automodespeed = 5  if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %textspeed2,5 : jumpf
+			notif %automodespeed = 6  if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %textspeed2,6 : jumpf
+			notif %automodespeed = 7  if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %textspeed2,7 : jumpf
+			notif %automodespeed = 8  if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %textspeed2,8 : jumpf
+			notif %automodespeed = 9  if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %textspeed2,9 : jumpf
+			notif %automodespeed = 10 if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %textspeed2,10 : jumpf
 		~
 		gosub *settings_textspeed
 	*skip_text_speed
@@ -441,19 +462,19 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 aspt xpos,205,1049+36-23 : mov %automodespeed,-116 : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,205,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
-				if %cfg_temp_var <= 0 aspt xpos,205,1049+36-23 : mov %automodespeed,-116 : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,205,1049+36+(56*1)-22 : mov %automodespeed,-90 : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,205,1049+36+(56*2)-22 : mov %automodespeed,-70 : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,205,1049+36+(56*3)-22 : mov %automodespeed,-55 : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,205,1049+36+(56*4)-22 : mov %automodespeed,-43 : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,205,1049+36+(56*5)-22 : mov %automodespeed,-33 : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,205,1049+36+(56*6)-22 : mov %automodespeed,-26 : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,205,1049+36+(56*7)-22 : mov %automodespeed,20 : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,205,1049+36+(56*8)-22 : mov %automodespeed,-16 : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,205,1049+36+(56*9)-22 : mov %automodespeed,-12 : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,205,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
+			notif %automodespeed = -116 if %cfg_mouse_x < 1049+36-23 aspt xpos,205,1049+36-23 : mov %automodespeed,-116 : jumpf
+			notif %automodespeed = -9 if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,205,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
+				notif %automodespeed = -116 if %cfg_temp_var <= 0 aspt xpos,205,1049+36-23 : mov %automodespeed,-116 : jumpf
+				notif %automodespeed = -90  if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,205,1049+36+(56*1)-22 : mov %automodespeed,-90 : jumpf
+				notif %automodespeed = -70  if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,205,1049+36+(56*2)-22 : mov %automodespeed,-70 : jumpf
+				notif %automodespeed = -55  if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,205,1049+36+(56*3)-22 : mov %automodespeed,-55 : jumpf
+				notif %automodespeed = -43  if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,205,1049+36+(56*4)-22 : mov %automodespeed,-43 : jumpf
+				notif %automodespeed = -33  if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,205,1049+36+(56*5)-22 : mov %automodespeed,-33 : jumpf
+				notif %automodespeed = -26  if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,205,1049+36+(56*6)-22 : mov %automodespeed,-26 : jumpf
+				notif %automodespeed = -20  if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,205,1049+36+(56*7)-22 : mov %automodespeed,-20 : jumpf
+				notif %automodespeed = -16  if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,205,1049+36+(56*8)-22 : mov %automodespeed,-16 : jumpf
+				notif %automodespeed = -12  if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,205,1049+36+(56*9)-22 : mov %automodespeed,-12 : jumpf
+				notif %automodespeed = -9   if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,205,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
 			~
 			mov %for_index3,0 ;Infinite Cycle
 		next
@@ -464,19 +485,19 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 1 jumpf
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %automodespeed,-116 : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 aspt xpos,205,1049+36+(56*10)-18 aspt xpos,205,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
-				if %cfg_temp_var <= 0 aspt xpos,205,1049+36-23 : mov %automodespeed,-116 : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %automodespeed,-90 : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %automodespeed,-70 : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %automodespeed,-55 : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %automodespeed,-43 : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %automodespeed,-33 : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %automodespeed,-26 : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %automodespeed,20 : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %automodespeed,-16 : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %automodespeed,-12 : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %automodespeed,-9 : jumpf
+			notif %automodespeed = -116 if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %automodespeed,-116 : jumpf
+			notif %automodespeed = -9 if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 aspt xpos,205,1049+36+(56*10)-18 aspt xpos,205,1049+36+(56*10)-18 : mov %automodespeed,-9 : jumpf
+				notif %automodespeed = -116 if %cfg_temp_var <= 0 aspt xpos,205,1049+36-23 : mov %automodespeed,-116 : jumpf
+				notif %automodespeed = -90  if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %automodespeed,-90 : jumpf
+				notif %automodespeed = -70  if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %automodespeed,-70 : jumpf
+				notif %automodespeed = -55  if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %automodespeed,-55 : jumpf
+				notif %automodespeed = -43  if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %automodespeed,-43 : jumpf
+				notif %automodespeed = -33  if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %automodespeed,-33 : jumpf
+				notif %automodespeed = -26  if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %automodespeed,-26 : jumpf
+				notif %automodespeed = -20  if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %automodespeed,-20 : jumpf
+				notif %automodespeed = -16  if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %automodespeed,-16 : jumpf
+				notif %automodespeed = -12  if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %automodespeed,-12 : jumpf
+				notif %automodespeed = -9   if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %automodespeed,-9 : jumpf
 			~
 		gosub *settings_automode_speed2
 	*skip_automode_speed
@@ -489,19 +510,19 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 aspt xpos,207,1049+36-23 : mov %rumble_strength,0 : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,207,1049+36+(56*10)-18 : mov %rumble_strength,50 : jumpf
-				if %cfg_temp_var <= 0 aspt xpos,207,1049+36-23 : mov %rumble_strength,0 : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,207,1049+36+(56*1)-22 : mov %rumble_strength,4 : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,207,1049+36+(56*2)-22 : mov %rumble_strength,8 : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,207,1049+36+(56*3)-22 : mov %rumble_strength,12 : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,207,1049+36+(56*4)-22 : mov %rumble_strength,16 : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,207,1049+36+(56*5)-22 : mov %rumble_strength,20 : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,207,1049+36+(56*6)-22 : mov %rumble_strength,26 : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,207,1049+36+(56*7)-22 : mov %rumble_strength,32 : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,207,1049+36+(56*8)-22 : mov %rumble_strength,38 : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,207,1049+36+(56*9)-22 : mov %rumble_strength,44 : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,207,1049+36+(56*10)-18 : mov %rumble_strength,50 : jumpf
+			notif %rumble_strength = 0 if %cfg_mouse_x < 1049+36-23 aspt xpos,207,1049+36-23 : mov %rumble_strength,0 : jumpf
+			notif %rumble_strength = 50 if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,207,1049+36+(56*10)-18 : mov %rumble_strength,50 : jumpf
+				notif %rumble_strength = 0  if %cfg_temp_var <= 0 aspt xpos,207,1049+36-23 : mov %rumble_strength,0 : jumpf
+				notif %rumble_strength = 4  if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,207,1049+36+(56*1)-22 : mov %rumble_strength,4 : jumpf
+				notif %rumble_strength = 8  if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,207,1049+36+(56*2)-22 : mov %rumble_strength,8 : jumpf
+				notif %rumble_strength = 12 if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,207,1049+36+(56*3)-22 : mov %rumble_strength,12 : jumpf
+				notif %rumble_strength = 16 if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,207,1049+36+(56*4)-22 : mov %rumble_strength,16 : jumpf
+				notif %rumble_strength = 20 if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,207,1049+36+(56*5)-22 : mov %rumble_strength,20 : jumpf
+				notif %rumble_strength = 26 if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,207,1049+36+(56*6)-22 : mov %rumble_strength,26 : jumpf
+				notif %rumble_strength = 32 if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,207,1049+36+(56*7)-22 : mov %rumble_strength,32 : jumpf
+				notif %rumble_strength = 38 if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,207,1049+36+(56*8)-22 : mov %rumble_strength,38 : jumpf
+				notif %rumble_strength = 44 if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,207,1049+36+(56*9)-22 : mov %rumble_strength,44 : jumpf
+				notif %rumble_strength = 50 if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,207,1049+36+(56*10)-18 : mov %rumble_strength,50 : jumpf
 			~
 			mov %for_index3,0 ;Infinite Cycle
 		next
@@ -513,19 +534,19 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 1 jumpf
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %rumble_strength,0 : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %rumble_strength,50 : jumpf
-				if %cfg_temp_var <= 0 mov %rumble_strength,0 : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %rumble_strength,4 : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %rumble_strength,8 : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %rumble_strength,12 : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %rumble_strength,16 : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %rumble_strength,20 : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %rumble_strength,26 : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %rumble_strength,32 : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %rumble_strength,38 : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %rumble_strength,44 : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %rumble_strength,50 : jumpf
+			notif %rumble_strength = 0 if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %rumble_strength,0 : jumpf
+			notif %rumble_strength = 50 if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %rumble_strength,50 : jumpf
+				notif %rumble_strength = 0  if %cfg_temp_var <= 0 mov %rumble_strength,0 : jumpf
+				notif %rumble_strength = 4  if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %rumble_strength,4 : jumpf
+				notif %rumble_strength = 8  if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %rumble_strength,8 : jumpf
+				notif %rumble_strength = 12 if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %rumble_strength,12 : jumpf
+				notif %rumble_strength = 16 if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %rumble_strength,16 : jumpf
+				notif %rumble_strength = 20 if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %rumble_strength,20 : jumpf
+				notif %rumble_strength = 26 if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %rumble_strength,26 : jumpf
+				notif %rumble_strength = 32 if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %rumble_strength,32 : jumpf
+				notif %rumble_strength = 38 if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %rumble_strength,38 : jumpf
+				notif %rumble_strength = 44 if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %rumble_strength,44 : jumpf
+				notif %rumble_strength = 50 if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %rumble_strength,50 : jumpf
 			~
 		rumble 63,500
 		gosub *settings_rumble_strength
@@ -579,19 +600,19 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 aspt xpos,203,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,203,1049+36+(56*10)-18 : mov %bgm_vol,100 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var <= 0 aspt xpos,203,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,203,1049+36+(56*1)-22 : mov %bgm_vol,10 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,203,1049+36+(56*2)-22 : mov %bgm_vol,20 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,203,1049+36+(56*3)-22 : mov %bgm_vol,30 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,203,1049+36+(56*4)-22 : mov %bgm_vol,40 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,203,1049+36+(56*5)-22 : mov %bgm_vol,50 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,203,1049+36+(56*6)-22 : mov %bgm_vol,60 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,203,1049+36+(56*7)-22 : mov %bgm_vol,70 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,203,1049+36+(56*8)-22 : mov %bgm_vol,80 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,203,1049+36+(56*9)-22 : mov %bgm_vol,90 : vol_bgm %bgm_current_vol : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,203,1049+36+(56*10)-18 : mov %bgm_vol,100 : vol_bgm %bgm_current_vol : jumpf
+			notif %bgm_vol = 0 if %cfg_mouse_x < 1049+36-23 aspt xpos,203,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
+			notif %bgm_vol = 100 if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,203,1049+36+(56*10)-18 : mov %bgm_vol,100 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 0   if %cfg_temp_var <= 0 aspt xpos,203,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 10  if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,203,1049+36+(56*1)-22 : mov %bgm_vol,10 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 20  if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,203,1049+36+(56*2)-22 : mov %bgm_vol,20 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 30  if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,203,1049+36+(56*3)-22 : mov %bgm_vol,30 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 40  if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,203,1049+36+(56*4)-22 : mov %bgm_vol,40 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 50  if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,203,1049+36+(56*5)-22 : mov %bgm_vol,50 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 60  if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,203,1049+36+(56*6)-22 : mov %bgm_vol,60 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 70  if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,203,1049+36+(56*7)-22 : mov %bgm_vol,70 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 80  if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,203,1049+36+(56*8)-22 : mov %bgm_vol,80 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 90  if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,203,1049+36+(56*9)-22 : mov %bgm_vol,90 : vol_bgm %bgm_current_vol : jumpf
+				notif %bgm_vol = 100 if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,203,1049+36+(56*10)-18 : mov %bgm_vol,100 : vol_bgm %bgm_current_vol : jumpf
 			~
 			mov %for_index3,0 ;Infinite Cycle
 		next
@@ -602,19 +623,19 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			if %cfg_mouse_click = 1 jumpf
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 aspt xpos,203,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
-			if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %bgm_vol,100 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var <= 0 mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %bgm_vol,10 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %bgm_vol,20 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %bgm_vol,30 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %bgm_vol,40 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %bgm_vol,50 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %bgm_vol,60 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %bgm_vol,70 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %bgm_vol,80 : vol_bgm %bgm_current_vol  : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %bgm_vol,90 : vol_bgm %bgm_current_vol : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %bgm_vol,100 : vol_bgm %bgm_current_vol : jumpf
+			notif %bgm_vol = 0 if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 aspt xpos,203,1049+36-23 : mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
+			notif %bgm_vol = 100 if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %bgm_vol,100 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 0   if %cfg_temp_var <= 0 mov %bgm_vol,0 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 10  if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %bgm_vol,10 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 20  if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %bgm_vol,20 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 30  if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %bgm_vol,30 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 40  if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %bgm_vol,40 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 50  if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %bgm_vol,50 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 60  if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %bgm_vol,60 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 70  if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %bgm_vol,70 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 80  if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %bgm_vol,80 : vol_bgm %bgm_current_vol  : jumpf
+				notif %bgm_vol = 90  if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %bgm_vol,90 : vol_bgm %bgm_current_vol : jumpf
+				notif %bgm_vol = 100 if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %bgm_vol,100 : vol_bgm %bgm_current_vol : jumpf
 			~
 		gosub *settings_bgm_vol
 	*skip_bgm_volume
@@ -636,7 +657,7 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
 			notif %sfx_vol = 0 if %cfg_mouse_x < 1049+36-23 aspt xpos,205,1049+36-23 : mov %sfx_vol,0 : effect_vol : jumpf
-			notif %sfx_vol = 100 if %cfg_mouse_x > 1049+36+564-18 aspt xpos,205,1049+36+564-18 : mov %sfx_vol,100 : effect_vol : jumpf
+			notif %sfx_vol = 100 if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,205,1049+36+(56*10)-18 : mov %sfx_vol,100 : effect_vol : jumpf
 				notif %sfx_vol = 0 if %cfg_temp_var <= 0 aspt xpos,205,1049+36-23 : mov %sfx_vol,0 : effect_vol : jumpf
 				notif %sfx_vol = 10 if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,205,1049+36+(56*1)-22 : mov %sfx_vol,10 : effect_vol : jumpf
 				notif %sfx_vol = 20 if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,205,1049+36+(56*2)-22 : mov %sfx_vol,20 : effect_vol : jumpf
@@ -659,7 +680,7 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
 			notif %sfx_vol = 0 if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %sfx_vol,0 : effect_vol : jumpf
-			notif %sfx_vol = 100 if %cfg_mouse_x > 1049+36+564-18 && %cfg_mouse_x < 1030+36+600 mov %sfx_vol,100 : effect_vol : jumpf
+			notif %sfx_vol = 100 if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %sfx_vol,100 : effect_vol : jumpf
 				notif %sfx_vol = 0 if %cfg_temp_var <= 0 mov %sfx_vol,0 : effect_vol : jumpf
 				notif %sfx_vol = 10 if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %sfx_vol,10 : effect_vol : jumpf
 				notif %sfx_vol = 20 if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %sfx_vol,20 : effect_vol : jumpf
@@ -684,19 +705,19 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 aspt xpos,207,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
-			if %cfg_mouse_x > 1049+36+564-18 aspt xpos,207,1049+36+564-18 : mov %dlg_vol,100 : voice_vol : jumpf
-				if %cfg_temp_var <= 0 aspt xpos,207,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,207,1049+36+(56*1)-22 : mov %dlg_vol,10 : voice_vol : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,207,1049+36+(56*2)-22 : mov %dlg_vol,20 : voice_vol : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,207,1049+36+(56*3)-22 : mov %dlg_vol,30 : voice_vol : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,207,1049+36+(56*4)-22 : mov %dlg_vol,40 : voice_vol : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,207,1049+36+(56*5)-22 : mov %dlg_vol,50 : voice_vol : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,207,1049+36+(56*6)-22 : mov %dlg_vol,60 : voice_vol : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,207,1049+36+(56*7)-22 : mov %dlg_vol,70 : voice_vol : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,207,1049+36+(56*8)-22 : mov %dlg_vol,80 : voice_vol : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,207,1049+36+(56*9)-22 : mov %dlg_vol,90 : voice_vol : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,207,1049+36+(56*10)-18 : mov %dlg_vol,100 : voice_vol : jumpf
+			notif %dlg_vol = 0 if %cfg_mouse_x < 1049+36-23 aspt xpos,207,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
+			notif %dlg_vol = 100 if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,207,1049+36+(56*10)-18: mov %dlg_vol,100 : voice_vol : jumpf
+				notif %dlg_vol = 0   if %cfg_temp_var <= 0 aspt xpos,207,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
+				notif %dlg_vol = 10  if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 aspt xpos,207,1049+36+(56*1)-22 : mov %dlg_vol,10 : voice_vol : jumpf
+				notif %dlg_vol = 20  if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 aspt xpos,207,1049+36+(56*2)-22 : mov %dlg_vol,20 : voice_vol : jumpf
+				notif %dlg_vol = 30  if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 aspt xpos,207,1049+36+(56*3)-22 : mov %dlg_vol,30 : voice_vol : jumpf
+				notif %dlg_vol = 40  if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 aspt xpos,207,1049+36+(56*4)-22 : mov %dlg_vol,40 : voice_vol : jumpf
+				notif %dlg_vol = 50  if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 aspt xpos,207,1049+36+(56*5)-22 : mov %dlg_vol,50 : voice_vol : jumpf
+				notif %dlg_vol = 60  if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 aspt xpos,207,1049+36+(56*6)-22 : mov %dlg_vol,60 : voice_vol : jumpf
+				notif %dlg_vol = 70  if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 aspt xpos,207,1049+36+(56*7)-22 : mov %dlg_vol,70 : voice_vol : jumpf
+				notif %dlg_vol = 80  if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 aspt xpos,207,1049+36+(56*8)-22 : mov %dlg_vol,80 : voice_vol : jumpf
+				notif %dlg_vol = 90  if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 aspt xpos,207,1049+36+(56*9)-22 : mov %dlg_vol,90 : voice_vol : jumpf
+				notif %dlg_vol = 100 if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 aspt xpos,207,1049+36+(56*10)-18 : mov %dlg_vol,100 : voice_vol : jumpf
 			~
 			mov %for_index3,0 ;Infinite Cycle
 		next
@@ -707,27 +728,36 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 			if %cfg_mouse_click = 1 jumpf
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %dlg_vol,0 : voice_vol : jumpf
-			if %cfg_mouse_x > 1049+36+564-18 && %cfg_mouse_x < 1030+36+600 mov %dlg_vol,100 : voice_vol : jumpf
-				if %cfg_temp_var <= 0 aspt xpos,207,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
-				if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %dlg_vol,10 : voice_vol : jumpf
-				if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %dlg_vol,20 : voice_vol : jumpf
-				if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %dlg_vol,30 : voice_vol : jumpf
-				if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %dlg_vol,40 : voice_vol : jumpf
-				if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %dlg_vol,50 : voice_vol : jumpf
-				if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %dlg_vol,60 : voice_vol : jumpf
-				if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %dlg_vol,70 : voice_vol : jumpf
-				if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %dlg_vol,80 : voice_vol : jumpf
-				if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %dlg_vol,90 : voice_vol : jumpf
-				if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %dlg_vol,100 : voice_vol : jumpf
+			notif %dlg_vol = 0 if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %dlg_vol,0 : voice_vol : jumpf
+			notif %dlg_vol = 100 if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %dlg_vol,100 : voice_vol : jumpf
+				notif %dlg_vol = 0   if %cfg_temp_var <= 0 aspt xpos,207,1049+36-23 : mov %dlg_vol,0 : voice_vol : jumpf
+				notif %dlg_vol = 10  if %cfg_temp_var > 56*0 && %cfg_temp_var <= 56*1 mov %dlg_vol,10 : voice_vol : jumpf
+				notif %dlg_vol = 20  if %cfg_temp_var > 56*1 && %cfg_temp_var <= 56*2 mov %dlg_vol,20 : voice_vol : jumpf
+				notif %dlg_vol = 30  if %cfg_temp_var > 56*2 && %cfg_temp_var <= 56*3 mov %dlg_vol,30 : voice_vol : jumpf
+				notif %dlg_vol = 40  if %cfg_temp_var > 56*3 && %cfg_temp_var <= 56*4 mov %dlg_vol,40 : voice_vol : jumpf
+				notif %dlg_vol = 50  if %cfg_temp_var > 56*4 && %cfg_temp_var <= 56*5 mov %dlg_vol,50 : voice_vol : jumpf
+				notif %dlg_vol = 60  if %cfg_temp_var > 56*5 && %cfg_temp_var <= 56*6 mov %dlg_vol,60 : voice_vol : jumpf
+				notif %dlg_vol = 70  if %cfg_temp_var > 56*6 && %cfg_temp_var <= 56*7 mov %dlg_vol,70 : voice_vol : jumpf
+				notif %dlg_vol = 80  if %cfg_temp_var > 56*7 && %cfg_temp_var <= 56*8 mov %dlg_vol,80 : voice_vol : jumpf
+				notif %dlg_vol = 90  if %cfg_temp_var > 56*8 && %cfg_temp_var <= 56*9 mov %dlg_vol,90 : voice_vol : jumpf
+				notif %dlg_vol = 100 if %cfg_temp_var > 56*9 && %cfg_temp_var <= 56*10 mov %dlg_vol,100 : voice_vol : jumpf
 			~
 		gosub *settings_voice_vol
 	*skip_voice_volume
 	;END
 
 
-	;LOWER MUSIC DURING DIALOGUES
+	;DISABLE SPECIFIC CHAT VOICES
 	if %BtnRes != 211 jumpf
+		isdown %cfg_mouse_click 
+		if %cfg_mouse_click = 1 lsp 211,cfg_sub_btn_pressed,1584-205,187+58+(%cfg_temp2*3)+%cfg_height : cell 211,2
+		if %cfg_mouse_click = 0 lsp 211,cfg_sub_btn,1584-205,187+58+(%cfg_temp2*3)+%cfg_height : goto *settings_voices_submenu
+	~
+	;END
+
+
+	;LOWER MUSIC DURING DIALOGUES
+	if %BtnRes != 212 jumpf
 		isdown %cfg_mouse_click 
 		if %cfg_mouse_click = 0 if %cfg_lower_music_on_d = 0 mov %cfg_lower_music_on_d,1 : gosub *settings_lower_music_on_d : jumpf
 		if %cfg_mouse_click = 0 if %cfg_lower_music_on_d = 1 mov %cfg_lower_music_on_d,0 : gosub *settings_lower_music_on_d : jumpf
@@ -736,7 +766,7 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 
 
 	;LIP SYNC
-	if %BtnRes != 212 jumpf
+	if %BtnRes != 213 jumpf
 		isdown %cfg_mouse_click 
 		if %cfg_mouse_click = 0 if %animated_lips = 0 mov %animated_lips,1 : gosub *settings_lips : jumpf
 		if %cfg_mouse_click = 0 if %animated_lips = 1 mov %animated_lips,0
@@ -756,12 +786,14 @@ if %cfg_current_page != 4 goto *skip_config_page_4 ;Language
 	;GAME LANGUAGE
 	if %BtnRes != 203 jumpf ;left
 		isdown %cfg_mouse_click
+		if %cfg_mouse_click = 0 dec %game_lang_changed
 		if %cfg_mouse_click = 0 if %Free5 <= 0 getscriptnum %Free5
 		if %cfg_mouse_click = 0 dec %Free5
 		if %cfg_mouse_click = 0 goto *settings_game_language2
 	~
 	if %BtnRes != 204 jumpf ;right
 		isdown %cfg_mouse_click
+		if %cfg_mouse_click = 0 inc %game_lang_changed
 		if %cfg_mouse_click = 0 if %Free5 >= %Free2 mov %Free5,-1
 		if %cfg_mouse_click = 0 inc %Free5
 		if %cfg_mouse_click = 0 goto *settings_game_language2
@@ -898,49 +930,25 @@ if %cfg_current_page != 5 goto *skip_config_page_5 ;Graphics
 
 goto *settings_loop ;END SETTINGS LOOP =========================================================================
 
-*settings_end
-	for %tmp = 100 to config_main_lsp2 : _csp %tmp : _csp2 %tmp next
-	seplay 9,1005,100 : wait 50
-	border_pad_pop
-	dwavestop 0
-	gosub *apply_msgwnd_settings
-return
-
-*clear_config_options
-	_csp 203
-	_csp 204
-	_csp 205
-	_csp 206
-	_csp 207
-	_csp 208 : _csp 209 ;THese are lsph, can't be buttons
-	_csp 210
-	_csp 211
-	_csp 212
-	_csp 213
-	_csp 214
-	_csp 215
-	_csp 311 : _csp 312 : _csp 313 : _csp 314
-return
-
 ;SETTINGS SUBS =================================================================================================
 
 *settings_window_mode
-	if %full_window_auto = 1 write_special_text 311,"config_option",900,187+64+%cfg_height,"Windowed" : jumpf
-	if %full_window_auto = 2 write_special_text 311,"config_option",900,187+64+%cfg_height,"Fullscreen" : jumpf
-	if %full_window_auto = 0 write_special_text 311,"config_option",900,187+64+%cfg_height,"Auto" : jumpf 
+	if %full_window_auto = 1 write_special_text 311,"config_option",900,187+64+%cfg_height,display_mode_windowed : jumpf
+	if %full_window_auto = 2 write_special_text 311,"config_option",900,187+64+%cfg_height,display_mode_fullscreen : jumpf
+	if %full_window_auto = 0 write_special_text 311,"config_option",900,187+64+%cfg_height,display_mode_auto : jumpf 
 	~
 	lsp 203,":a/2,0,3;graphics\menu_en\config\config_left.png",900,187+60+%cfg_height
 	lsp 204,":a/2,0,3;graphics\menu_en\config\config_right.png",1207,187+60+%cfg_height
 return
 
 *settings_window_resolution
-	if $window_size = "1280" write_special_text 312,"config_option",1317,187+64+%cfg_height,"1280x720" : jumpf
-	if $window_size = "1366" write_special_text 312,"config_option",1317,187+64+%cfg_height,"1366x768" : jumpf
-	if $window_size = "1440" write_special_text 312,"config_option",1317,187+64+%cfg_height,"1440х810" : jumpf
-	if $window_size = "1600" write_special_text 312,"config_option",1317,187+64+%cfg_height,"1600x900" : jumpf
-	if $window_size = "1920" write_special_text 312,"config_option",1317,187+64+%cfg_height,"1920x1080" : jumpf
-	if $window_size = "2560" write_special_text 312,"config_option",1317,187+64+%cfg_height,"2560x1440" : jumpf
-	write_special_text 312,"config_option",1317,187+64+%cfg_height,"Custom"
+	if $window_size = cfg_wnd_size_1280 write_special_text 312,"config_option",1317,187+64+%cfg_height,cfg_wnd_size_1280+"x"+cfg_wnd_size_720 : jumpf
+	if $window_size = cfg_wnd_size_1366 write_special_text 312,"config_option",1317,187+64+%cfg_height,cfg_wnd_size_1366+"x"+cfg_wnd_size_768 : jumpf
+	if $window_size = cfg_wnd_size_1440 write_special_text 312,"config_option",1317,187+64+%cfg_height,cfg_wnd_size_1440+"х"+cfg_wnd_size_810 : jumpf
+	if $window_size = cfg_wnd_size_1600 write_special_text 312,"config_option",1317,187+64+%cfg_height,cfg_wnd_size_1600+"x"+cfg_wnd_size_900 : jumpf
+	if $window_size = cfg_wnd_size_1920 write_special_text 312,"config_option",1317,187+64+%cfg_height,cfg_wnd_size_1920+"x"+cfg_wnd_size_1080 : jumpf
+	if $window_size = cfg_wnd_size_2560 write_special_text 312,"config_option",1317,187+64+%cfg_height,cfg_wnd_size_2560+"x"+cfg_wnd_size_1440 : jumpf
+	write_special_text 312,"config_option",1317,187+64+%cfg_height,cfg_wnd_size_custom
 	~
 	lsp 205,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_height
 	lsp 206,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_height
@@ -999,8 +1007,8 @@ return
 		~
 
 	lsp 203,cfg_slider_cursor,%cfg_txt_speed_cursor_x,187+117-20 ;1048+36-22 starting x pos
-	itoa $temp_var,%textspeed2
-	write_special_text 200,"slider_index",%cfg_txt_speed_cursor_x-8,187+117-20+3,%textspeed2
+	;itoa $temp_var,%textspeed2
+	;write_special_text 200,"slider_index",%cfg_txt_speed_cursor_x-8,187+117-20+3,%textspeed2
 
 	gosub *update_textspeed
 return
@@ -1068,10 +1076,10 @@ return
 return
 
 *settings_sexualized_content
-	if %cfg_rm_sex_content_index = 0 write_special_text 311,"config_option_large",1317-200,187+64+(%cfg_temp2*5)+%cfg_height,"Keep Original" : mov %cfg_rm_sex_text_content,0 : mov %cfg_rm_sex_graphic_content,0 : jumpf
-	if %cfg_rm_sex_content_index = 1 write_special_text 311,"config_option_large",1317-200,187+64+(%cfg_temp2*5)+%cfg_height,"Remove from Text" : mov %cfg_rm_sex_text_content,1 : mov %cfg_rm_sex_graphic_content,0 : jumpf
-	if %cfg_rm_sex_content_index = 2 write_special_text 311,"config_option_large",1317-200,187+64+(%cfg_temp2*5)+%cfg_height,"Remove from Images" : mov %cfg_rm_sex_text_content,0 : mov %cfg_rm_sex_graphic_content,1 : jumpf
-	if %cfg_rm_sex_content_index = 3 write_special_text 311,"config_option_large",1317-200,187+64+(%cfg_temp2*5)+%cfg_height,"Remove all" : mov %cfg_rm_sex_text_content,1 : mov %cfg_rm_sex_graphic_content,1 : jumpf
+	if %cfg_rm_sex_content_index = 0 write_special_text 311,"config_option_large",1317-200,187+64+(%cfg_temp2*5)+%cfg_height,cfg_sex_original : mov %cfg_rm_sex_text_content,0 : mov %cfg_rm_sex_graphic_content,0 : jumpf
+	if %cfg_rm_sex_content_index = 1 write_special_text 311,"config_option_large",1317-200,187+64+(%cfg_temp2*5)+%cfg_height,cfg_sex_no_text : mov %cfg_rm_sex_text_content,1 : mov %cfg_rm_sex_graphic_content,0 : jumpf
+	if %cfg_rm_sex_content_index = 2 write_special_text 311,"config_option_large",1317-200,187+64+(%cfg_temp2*5)+%cfg_height,cfg_sex_no_img : mov %cfg_rm_sex_text_content,0 : mov %cfg_rm_sex_graphic_content,1 : jumpf
+	if %cfg_rm_sex_content_index = 3 write_special_text 311,"config_option_large",1317-200,187+64+(%cfg_temp2*5)+%cfg_height,cfg_sex_remove_all : mov %cfg_rm_sex_text_content,1 : mov %cfg_rm_sex_graphic_content,1 : jumpf
 	~
 	lsp 214,":a/2,0,3;graphics\menu_en\config\config_left.png",1317-200,187+60+(%cfg_temp2*5)+%cfg_height
 	lsp 215,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+(%cfg_temp2*5)+%cfg_height
@@ -1135,13 +1143,13 @@ return
 return
 
 *settings_lower_music_on_d
-	if %cfg_lower_music_on_d = 0 lsp 211,cfg_switch_btn,1465,187+53+(%cfg_temp2*4)+%cfg_height : return
-	if %cfg_lower_music_on_d = 1 lsp 211,cfg_switch_btn_selected,1465,187+53+(%cfg_temp2*4)+%cfg_height : return
+	if %cfg_lower_music_on_d = 0 lsp 212,cfg_switch_btn,1465,187+53+(%cfg_temp2*4)+%cfg_height : return
+	if %cfg_lower_music_on_d = 1 lsp 212,cfg_switch_btn_selected,1465,187+53+(%cfg_temp2*4)+%cfg_height : return
 return
 
 *settings_lips
-	if %animated_lips = 0 lsp 212,cfg_switch_btn,1465,187+53+(%cfg_temp2*5)+%cfg_height : return
-	if %animated_lips = 1 lsp 212,cfg_switch_btn_selected,1465,187+53+(%cfg_temp2*5)+%cfg_height : return
+	if %animated_lips = 0 lsp 213,cfg_switch_btn,1465,187+53+(%cfg_temp2*5)+%cfg_height : return
+	if %animated_lips = 1 lsp 213,cfg_switch_btn_selected,1465,187+53+(%cfg_temp2*5)+%cfg_height : return
 return
 
 *settings_game_language
@@ -1159,28 +1167,28 @@ return
 return
 
 *settings_voice_language
-	if %cfg_voice_language = 1 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,"Japanese" : jumpf
-	if %cfg_voice_language = 2 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,"English" : jumpf
+	if %cfg_voice_language = 1 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_japanese : jumpf
+	if %cfg_voice_language = 2 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_english : jumpf
 	~
 	lsp 205,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_temp2+%cfg_height
 	lsp 206,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_temp2+%cfg_height
 return
 
 *settings_bgm_title_language
-	if %bgm_title_language = 1 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,"English" : jumpf
-	if %bgm_title_language = 2 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,"Russian" : jumpf
-	if %bgm_title_language = 3 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,"Japanese" : jumpf
-	if %bgm_title_language = 4 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,"Romaji" : jumpf
+	if %bgm_title_language = 1 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_english : jumpf
+	if %bgm_title_language = 2 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_russian : jumpf
+	if %bgm_title_language = 3 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_japanese : jumpf
+	if %bgm_title_language = 4 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_romaji : jumpf
 	~
 	lsp 207,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+(%cfg_temp2*2)+%cfg_height
 	lsp 208,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+(%cfg_temp2*2)+%cfg_height
 return
 
 *settings_op_ed_song_subtitles 
-	if %op_ed_song_subtitles = 1 write_special_text 314,"config_option",1317,187+64+(%cfg_temp2*3)+%cfg_height,"None" : jumpf
-	if %op_ed_song_subtitles = 2 write_special_text 314,"config_option",1317,187+64+(%cfg_temp2*3)+%cfg_height,"Translation" : jumpf
-	if %op_ed_song_subtitles = 3 write_special_text 314,"config_option",1317,187+64+(%cfg_temp2*3)+%cfg_height,"Romaji" : jumpf
-	if %op_ed_song_subtitles = 4 write_special_text 314,"config_option",1317,187+64+(%cfg_temp2*3)+%cfg_height,"Both" : jumpf
+	if %op_ed_song_subtitles = 1 write_special_text 314,"config_option",1317,187+64+(%cfg_temp2*3)+%cfg_height,cfg_none : jumpf
+	if %op_ed_song_subtitles = 2 write_special_text 314,"config_option",1317,187+64+(%cfg_temp2*3)+%cfg_height,cfg_trans : jumpf
+	if %op_ed_song_subtitles = 3 write_special_text 314,"config_option",1317,187+64+(%cfg_temp2*3)+%cfg_height,cfg_romaji : jumpf
+	if %op_ed_song_subtitles = 4 write_special_text 314,"config_option",1317,187+64+(%cfg_temp2*3)+%cfg_height,cfg_both : jumpf
 	~
 	lsp 211,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+(%cfg_temp2*3)+%cfg_height
 	lsp 212,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+(%cfg_temp2*3)+%cfg_height
@@ -1192,9 +1200,9 @@ return
 return
 
 *settings_sprite_type
-	if %cfg_sprite_type_index = 1 write_special_text 311,"config_option",1317,187+64+%cfg_height,"Original": mov $sprite_folder_name,"sprites2" : jumpf
-	if %cfg_sprite_type_index = 2 write_special_text 311,"config_option",1317,187+64+%cfg_height,"Pachinko" : mov $sprite_folder_name,"sprites3" : jumpf
-	if %cfg_sprite_type_index = 3 write_special_text 311,"config_option",1317,187+64+%cfg_height,"PS3" : mov $sprite_folder_name,"sprites" : jumpf
+	if %cfg_sprite_type_index = 1 write_special_text 311,"config_option",1317,187+64+%cfg_height,cfg_sprites_original: mov $sprite_folder_name,"sprites2" : jumpf
+	if %cfg_sprite_type_index = 2 write_special_text 311,"config_option",1317,187+64+%cfg_height,cfg_sprites_pachinko : mov $sprite_folder_name,"sprites3" : jumpf
+	if %cfg_sprite_type_index = 3 write_special_text 311,"config_option",1317,187+64+%cfg_height,cfg_sprites_ps3 : mov $sprite_folder_name,"sprites" : jumpf
 	~
 	lsp 203,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_height
 	lsp 204,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_height
@@ -1203,19 +1211,19 @@ return
 return
 
 *settings_textbox
-	if %msgwnd_type = 0 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,"Black" : jumpf
-	if %msgwnd_type = 1 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,"Butterfly" : jumpf
-	if %msgwnd_type = 2 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,"Classic" : jumpf
-	if %msgwnd_type = 3 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,"Transparent" : jumpf
-	if %msgwnd_type = 4 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,"UmiGold" : jumpf
+	if %msgwnd_type = 0 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_txtbox_black : jumpf
+	if %msgwnd_type = 1 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_txtbox_butterfly : jumpf
+	if %msgwnd_type = 2 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_txtbox_classic : jumpf
+	if %msgwnd_type = 3 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_txtbox_transp : jumpf
+	if %msgwnd_type = 4 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_txtbox_umigold : jumpf
 	~
 	lsp 205,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_temp2+%cfg_height
 	lsp 206,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_temp2+%cfg_height
 return
 
 *settings_bg_type
-	if %cfg_bg_type_index = 1 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,"Original" : mov $bg_folder_name,"backgrounds2" : jumpf
-	if %cfg_bg_type_index = 2 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,"PS3" : mov $bg_folder_name,"backgrounds" : jumpf
+	if %cfg_bg_type_index = 1 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_sprites_original : mov $bg_folder_name,"backgrounds2" : jumpf
+	if %cfg_bg_type_index = 2 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_sprites_ps3 : mov $bg_folder_name,"backgrounds" : jumpf
 	~
 	lsp 207,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+(%cfg_temp2*2)+%cfg_height
 	lsp 208,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+(%cfg_temp2*2)+%cfg_height
@@ -1234,3 +1242,701 @@ return
 return
 
 ;SETTINGS SUBS END =============================================================================================
+
+;SETTINGS DISABLE VOICES SUB-MENU ==============================================================================
+
+*settings_voices_submenu
+	_csp 330 : _csp 331 : _csp 332 : _csp 333 : _csp 334 ;Remove sections
+	_csp 321 : _csp 322 : _csp 323 : _csp 324 : _csp 325 : _csp 326 ;Remove focus lines
+	_csp 103 ;Remove exit btn
+	_csp 104 ;Remove restore btn
+
+	;cfg_rewrite section btns
+	lsp 371,cfg_section_btn,155+10,85+%cfg_height
+	lsp 372,cfg_section_btn,155+316+10,85+%cfg_height
+	lsp 373,cfg_section_btn,155+(316*2)+10,85+%cfg_height
+	lsp 374,cfg_section_btn,155+(316*3)+10,85+%cfg_height
+	lsp 375,cfg_section_btn,155+(316*4)+10,85+%cfg_height
+
+	gosub *clear_config_options
+	gosub *settings_voice_vol_chars
+	write_special_text 301,"config_option_name",%cfg_temp1,187+62+%cfg_height,cfg_mute_voices_desc
+
+*settings_voices_submenu_loop
+
+	btndef ""
+
+	if %cfg_current_page != 1 spbtn 371,330 
+	if %cfg_current_page != 2 spbtn 372,331
+	if %cfg_current_page != 3 spbtn 373,332
+	if %cfg_current_page != 4 spbtn 374,333 
+	if %cfg_current_page != 5 spbtn 375,334 
+
+	;Voice vol chars button
+	spbtn 320,100
+	spbtn 321,101
+	spbtn 322,102
+	spbtn 323,103
+	spbtn 324,104
+	spbtn 325,105
+	spbtn 326,106
+	spbtn 327,107
+	spbtn 328,108
+	spbtn 329,109
+	spbtn 330,110	
+	spbtn 331,111	
+	spbtn 332,112	
+	spbtn 333,113	
+	spbtn 334,114	
+	spbtn 335,115
+	spbtn 336,116
+	spbtn 337,117
+	spbtn 338,118
+	spbtn 339,119
+	spbtn 340,120
+	spbtn 341,121
+	spbtn 342,122
+	spbtn 343,123
+	spbtn 344,124
+	spbtn 345,125
+	spbtn 346,126
+	spbtn 347,127
+	spbtn 348,128
+	spbtn 349,129
+	spbtn 350,130
+	spbtn 351,131
+	spbtn 352,132
+	spbtn 353,133
+	spbtn 354,134
+	spbtn 355,135
+	spbtn 356,136
+	spbtn 357,137
+	spbtn 358,138
+	spbtn 359,139
+	spbtn 360,140
+	spbtn 361,141
+	spbtn 362,142
+	spbtn 363,143
+	spbtn 364,144
+	spbtn 365,145
+	spbtn 366,146
+	spbtn 367,147
+	spbtn 368,148
+	spbtn 369,149
+	spbtn 370,150
+	;end
+
+	btndown 0
+
+	btnwait %BtnRes
+
+	mov %vv_inc,0
+	mov %Free1,135+19
+	mov %x,%Free1
+	mov %y,520-47
+	mov %y2,17 ;first row has 17
+	mov %x2,0 ;start sprite
+	mov %x3,0 ;end sprite
+	mov %y3,0 ;row sprite count
+
+	if %BtnRes = -1 gosub *clear_config_submenu : goto *cfg_rewrite ;Exit by right-clicking
+	if %BtnRes != -10 jumpf ;Exit by ESC
+		if %game_lang_changed != 0 || %display_mode_changed != 0 || %wnd_size_changed != 0 || %renderer_changed != 0 goto *settings_exit_confirm : jumpf
+		goto *settings_end 
+	~
+	if %BtnRes = 0  goto *settings_voices_submenu_loop
+
+	if %BtnRes = 330 mov %cfg_current_page,1 : gosub *clear_config_submenu : goto *cfg_rewrite
+	if %BtnRes = 331 mov %cfg_current_page,2 : gosub *clear_config_submenu : goto *cfg_rewrite
+	if %BtnRes = 332 mov %cfg_current_page,3 : gosub *clear_config_submenu : goto *cfg_rewrite
+	if %BtnRes = 333 mov %cfg_current_page,4 : gosub *clear_config_submenu : goto *cfg_rewrite
+	if %BtnRes = 334 mov %cfg_current_page,5 : gosub *clear_config_submenu : goto *cfg_rewrite
+
+	if %BtnRes != 100 jumpf
+		if %vv_cla = 1 mov %vv_cla,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_cla = 2 mov %vv_cla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\02\50800292.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 101 jumpf
+		if %vv_nat = 1 mov %vv_nat,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_nat = 2 mov %vv_nat,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\03\50900927.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 102 jumpf
+		if %vv_jes = 1 mov %vv_jes,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_jes = 2 mov %vv_jes,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\04\50200034.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 103 jumpf
+		if %vv_eva = 1 mov %vv_eva,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_eva = 2 mov %vv_eva,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\05\51000334.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 104 jumpf
+		if %vv_hid = 1 mov %vv_hid,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_hid = 2 mov %vv_hid,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\06\51100191.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 105 jumpf
+		if %vv_geo = 1 mov %vv_geo,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_geo = 2 mov %vv_geo,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\07\50300029.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 106 jumpf
+		if %vv_rud = 1 mov %vv_rud,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_rud = 2 mov %vv_rud,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\08\51200233.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 107 jumpf
+		if %vv_kir = 1 mov %vv_kir,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_kir = 2 mov %vv_kir,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\09\51300152.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 108 jumpf
+		if %vv_but = 1 mov %vv_but,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_but = 2 mov %vv_but,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\10\40100556.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 109 jumpf
+		if %vv_ros = 1 mov %vv_ros,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_ros = 2 mov %vv_ros,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\12\51400112.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 110 jumpf
+		if %vv_mar = 1 mov %vv_mar,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_mar = 2 mov %vv_mar,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\13\50400034.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 111 jumpf
+		if %vv_kin = 1 mov %vv_kin,2:mov %vv_ki2,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_kin = 2 mov %vv_kin,1:mov %vv_ki2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\01\51500238.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 112 jumpf
+		if %vv_nan = 1 mov %vv_nan,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_nan = 2 mov %vv_nan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\19\51900077.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 113 jumpf
+		if %vv_gen = 1 mov %vv_gen,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_gen = 2 mov %vv_gen,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\14\51600110.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 114 jumpf
+		if %vv_kum = 1 mov %vv_kum,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_kum = 2 mov %vv_kum,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\18\51800076.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 115 jumpf
+		if %vv_goh = 1 mov %vv_goh,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_goh = 2 mov %vv_goh,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\17\51700095.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 116 jumpf
+		if %vv_sha = 1 mov %vv_sha,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_sha = 2 mov %vv_sha,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\15\50500065.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 117 jumpf
+		if %vv_kan = 1 mov %vv_kan,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_kan = 2 mov %vv_kan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\16\50600081.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 118 jumpf
+		if %vv_bea = 1 mov %vv_bea,2:mov %vv_be2,2:mov %vv_be3,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_bea = 2 mov %vv_bea,1:mov %vv_be2,1:mov %vv_be3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\27\20700021.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 119 jumpf
+		if %vv_ber = 1 mov %vv_ber,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_ber = 2 mov %vv_ber,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\28\92100252.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 120 jumpf
+		if %vv_eri = 1 mov %vv_eri,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_eri = 2 mov %vv_eri,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\46\54500010.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 121 jumpf
+		if %vv_lam = 1 mov %vv_lam,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_lam = 2 mov %vv_lam,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\29\52200497.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 122 jumpf
+		if %vv_enj = 1 mov %vv_enj,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_enj = 2 mov %vv_enj,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\11\42001574.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 123 jumpf
+		if %vv_wal = 1 mov %vv_wal,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_wal = 2 mov %vv_wal,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\30\53200236.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 124 jumpf
+		if %vv_ev2 = 1 mov %vv_ev2,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_ev2 = 2 mov %vv_ev2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\34\33300003.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 125 jumpf
+		if %vv_ron = 1 mov %vv_ron,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_ron = 2 mov %vv_ron,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\31\53100157.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 126 jumpf
+		if %vv_rg1 = 1 mov %vv_rg1,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg1 = 2 mov %vv_rg1,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\38\32300041.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 127 jumpf
+		if %vv_rg2 = 1 mov %vv_rg2,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg2 = 2 mov %vv_rg2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\39\32400048.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 128 jumpf
+		if %vv_rg3 = 1 mov %vv_rg3,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg3 = 2 mov %vv_rg3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\40\42500001.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 129 jumpf
+		if %vv_rg4 = 1 mov %vv_rg4,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg4 = 2 mov %vv_rg4,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\41\32600026.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 130 jumpf
+		if %vv_rg5 = 1 mov %vv_rg5,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg5 = 2 mov %vv_rg5,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\42\42700385.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 131 jumpf
+		if %vv_rg6 = 1 mov %vv_rg6,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg6 = 2 mov %vv_rg6,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\43\42800016.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 132 jumpf
+		if %vv_rg7 = 1 mov %vv_rg7,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg7 = 2 mov %vv_rg7,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\44\42900001.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 133 jumpf
+		if %vv_sak = 1 mov %vv_sak,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_sak = 2 mov %vv_sak,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\33\44200009.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 134 jumpf
+		if %vv_gap = 1 mov %vv_gap,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_gap = 2 mov %vv_gap,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\32\53700161.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 135 jumpf
+		if %vv_s00 = 1 mov %vv_s00,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_s00 = 2 mov %vv_s00,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\37\43600001.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 136 jumpf
+		if %vv_s41 = 1 mov %vv_s41,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_s41 = 2 mov %vv_s41,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\36\43500001.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 137 jumpf
+		if %vv_s45 = 1 mov %vv_s45,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_s45 = 2 mov %vv_s45,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\35\43400001.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 138 jumpf
+		if %vv_dla = 1 mov %vv_dla,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_dla = 2 mov %vv_dla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\47\54600002.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 139 jumpf
+		if %vv_cor = 1 mov %vv_cor,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_cor = 2 mov %vv_cor,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\49\54700056.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 140 jumpf
+		if %vv_ger = 1 mov %vv_ger,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_ger = 2 mov %vv_ger,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\48\54800049.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 141 jumpf
+		if %vv_zep = 1 mov %vv_zep,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_zep = 2 mov %vv_zep,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\51\65100042.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 142 jumpf
+		if %vv_fur = 1 mov %vv_fur,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_fur = 2 mov %vv_fur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\52\65200038.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 143 jumpf
+		if %vv_ama = 1 mov %vv_ama,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_ama = 2 mov %vv_ama,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\20\43000047.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 144 jumpf
+		if %vv_bu3 = 1 mov %vv_bu3,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_bu3 = 2 mov %vv_bu3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\56\64900002.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 145 jumpf
+		if %vv_fea = 1 mov %vv_fea,2:mov %vv_fe2,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_fea = 2 mov %vv_fea,1:mov %vv_fe2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\50\65000057.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 146 jumpf
+		if %vv_wil = 1 mov %vv_wil,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_wil = 2 mov %vv_wil,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\54\75400183.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 147 jumpf
+		if %vv_rio = 1 mov %vv_rio,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_rio = 2 mov %vv_rio,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\53\75300002.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 148 jumpf
+		if %vv_cur = 1 mov %vv_cur,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_cur = 2 mov %vv_cur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\55\75500003.ogg":gosub *settings_voice_vol_chars:jumpf
+		gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 149 jumpf
+		if %vv_goa = 1 mov %vv_goa,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_goa = 2 mov %vv_goa,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\45\yagim2001.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 150 jumpf
+		if %vv_99 = 1 mov %vv_99,2:mov %vv_0,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_99 = 2 mov %vv_99,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\99\anaf1001.ogg":mov %vv_0,1:gosub *settings_voice_vol_chars:jumpf
+		gosub *settings_voice_vol_chars:jumpf
+	~
+
+goto *settings_voices_submenu_loop
+*settings_voices_submenu_loop_end
+
+return
+
+*settings_voice_vol_chars
+	mov %vv_inc,0
+	mov %Free1,135+19
+	mov %x,%Free1
+	mov %y,520-47
+	mov %y2,17 ;first row has 17
+	mov %x2,0 ;start sprite
+	mov %x3,0 ;end sprite
+	mov %y3,0 ;row sprite count
+
+	if %vv_cla = 1 lsp 320,":c/1,0,3;graphics\chars\chars_kla0.png",%x,%y : mov %vv_inc,320
+	if %vv_cla = 2 lsp 320,":c/1,0,3;graphics\chars\chars_kla0.png",%x,%y,90 : mov %vv_inc,320
+	gosub *settings_chars_refresh
+	if %vv_nat = 1 lsp 321,":c/1,0,3;graphics\chars\chars_nat0.png",%x,%y : mov %vv_inc,321
+	if %vv_nat = 2 lsp 321,":c/1,0,3;graphics\chars\chars_nat0.png",%x,%y,90 : mov %vv_inc,321
+	gosub *settings_chars_refresh
+	if %vv_jes = 1 lsp 322,":c/1,0,3;graphics\chars\chars_jes0.png",%x,%y : mov %vv_inc,322
+	if %vv_jes = 2 lsp 322,":c/1,0,3;graphics\chars\chars_jes0.png",%x,%y,90 : mov %vv_inc,322
+	gosub *settings_chars_refresh
+	if %vv_eva = 1 lsp 323,":c/1,0,3;graphics\chars\chars_eva0.png",%x,%y : mov %vv_inc,323
+	if %vv_eva = 2 lsp 323,":c/1,0,3;graphics\chars\chars_eva0.png",%x,%y,90 : mov %vv_inc,323
+	gosub *settings_chars_refresh
+	if %vv_hid = 1 lsp 324,":c/1,0,3;graphics\chars\chars_hid0.png",%x,%y : mov %vv_inc,324
+	if %vv_hid = 2 lsp 324,":c/1,0,3;graphics\chars\chars_hid0.png",%x,%y,90 : mov %vv_inc,324
+	gosub *settings_chars_refresh
+	if %vv_geo = 1 lsp 325,":c/1,0,3;graphics\chars\chars_geo0.png",%x,%y : mov %vv_inc,325
+	if %vv_geo = 2 lsp 325,":c/1,0,3;graphics\chars\chars_geo0.png",%x,%y,90 : mov %vv_inc,325
+	gosub *settings_chars_refresh
+	if %vv_rud = 1 lsp 326,":c/1,0,3;graphics\chars\chars_rud0.png",%x,%y : mov %vv_inc,326
+	if %vv_rud = 2 lsp 326,":c/1,0,3;graphics\chars\chars_rud0.png",%x,%y,90 : mov %vv_inc,326
+	gosub *settings_chars_refresh
+	if %vv_kir = 1 lsp 327,":c/1,0,3;graphics\chars\chars_kir0.png",%x,%y : mov %vv_inc,327
+	if %vv_kir = 2 lsp 327,":c/1,0,3;graphics\chars\chars_kir0.png",%x,%y,90 : mov %vv_inc,327
+	gosub *settings_chars_refresh
+	if %vv_but = 1 lsp 328,":c/1,0,3;graphics\chars\chars_but0.png",%x,%y : mov %vv_inc,328
+	if %vv_but = 2 lsp 328,":c/1,0,3;graphics\chars\chars_but0.png",%x,%y,90 : mov %vv_inc,328
+	gosub *settings_chars_refresh
+	if %vv_ros = 1 lsp 329,":c/1,0,3;graphics\chars\chars_ros0.png",%x,%y : mov %vv_inc,329
+	if %vv_ros = 2 lsp 329,":c/1,0,3;graphics\chars\chars_ros0.png",%x,%y,90 : mov %vv_inc,329
+	gosub *settings_chars_refresh
+	if %vv_mar = 1 lsp 330,":c/1,0,3;graphics\chars\chars_mar0.png",%x,%y : mov %vv_inc,330
+	if %vv_mar = 2 lsp 330,":c/1,0,3;graphics\chars\chars_mar0.png",%x,%y,90 : mov %vv_inc,330
+	gosub *settings_chars_refresh
+	if %vv_kin = 1 lsp 331,":c/1,0,3;graphics\chars\chars_kin0.png",%x,%y : mov %vv_inc,331
+	if %vv_kin = 2 lsp 331,":c/1,0,3;graphics\chars\chars_kin0.png",%x,%y,90 : mov %vv_inc,331
+	gosub *settings_chars_refresh
+	if %vv_nan = 1 lsp 332,":c/1,0,3;graphics\chars\chars_nan0.png",%x,%y : mov %vv_inc,332
+	if %vv_nan = 2 lsp 332,":c/1,0,3;graphics\chars\chars_nan0.png",%x,%y,90 : mov %vv_inc,332
+	gosub *settings_chars_refresh
+	if %vv_gen = 1 lsp 333,":c/1,0,3;graphics\chars\chars_gen0.png",%x,%y : mov %vv_inc,333
+	if %vv_gen = 2 lsp 333,":c/1,0,3;graphics\chars\chars_gen0.png",%x,%y,90 : mov %vv_inc,333
+	gosub *settings_chars_refresh
+	if %vv_kum = 1 lsp 334,":c/1,0,3;graphics\chars\chars_kum0.png",%x,%y : mov %vv_inc,334
+	if %vv_kum = 2 lsp 334,":c/1,0,3;graphics\chars\chars_kum0.png",%x,%y,90 : mov %vv_inc,334
+	gosub *settings_chars_refresh
+	if %vv_goh = 1 lsp 335,":c/1,0,3;graphics\chars\chars_goh0.png",%x,%y : mov %vv_inc,335
+	if %vv_goh = 2 lsp 335,":c/1,0,3;graphics\chars\chars_goh0.png",%x,%y,90 : mov %vv_inc,335
+	gosub *settings_chars_refresh
+	if %vv_sha = 1 lsp 336,":c/1,0,3;graphics\chars\chars_sha0.png",%x,%y : mov %vv_inc,336
+	if %vv_sha = 2 lsp 336,":c/1,0,3;graphics\chars\chars_sha0.png",%x,%y,90 : mov %vv_inc,336
+	gosub *settings_chars_refresh
+	if %vv_kan = 1 lsp 337,":c/1,0,3;graphics\chars\chars_kan0.png",%x,%y : mov %vv_inc,337
+	if %vv_kan = 2 lsp 337,":c/1,0,3;graphics\chars\chars_kan0.png",%x,%y,90 : mov %vv_inc,337
+	gosub *settings_chars_refresh
+	if %vv_bea = 1 lsp 338,":c/1,0,3;graphics\chars\chars_bea0.png",%x,%y : mov %vv_inc,338
+	if %vv_bea = 2 lsp 338,":c/1,0,3;graphics\chars\chars_bea0.png",%x,%y,90 : mov %vv_inc,338
+	gosub *settings_chars_refresh
+	if %vv_ber = 1 lsp 339,":c/1,0,3;graphics\chars\chars_ber0.png",%x,%y : mov %vv_inc,339
+	if %vv_ber = 2 lsp 339,":c/1,0,3;graphics\chars\chars_ber0.png",%x,%y,90 : mov %vv_inc,339
+	gosub *settings_chars_refresh
+	if %vv_eri = 1 lsp 340,":c/1,0,3;graphics\chars\chiru\chars_eri0.png",%x,%y : mov %vv_inc,340
+	if %vv_eri = 2 lsp 340,":c/1,0,3;graphics\chars\chiru\chars_eri0.png",%x,%y,90 : mov %vv_inc,340
+	gosub *settings_chars_refresh
+	if %vv_lam = 1 lsp 341,":c/1,0,3;graphics\chars\chars_lam0.png",%x,%y : mov %vv_inc,341
+	if %vv_lam = 2 lsp 341,":c/1,0,3;graphics\chars\chars_lam0.png",%x,%y,90 : mov %vv_inc,341
+	gosub *settings_chars_refresh
+	if %vv_enj = 1 lsp 342,":c/1,0,3;graphics\chars\chars_enj0.png",%x,%y : mov %vv_inc,342
+	if %vv_enj = 2 lsp 342,":c/1,0,3;graphics\chars\chars_enj0.png",%x,%y,90 : mov %vv_inc,342
+	gosub *settings_chars_refresh
+	if %vv_wal = 1 lsp 343,":c/1,0,3;graphics\chars\chars_wal0.png",%x,%y : mov %vv_inc,343
+	if %vv_wal = 2 lsp 343,":c/1,0,3;graphics\chars\chars_wal0.png",%x,%y,90 : mov %vv_inc,343
+	gosub *settings_chars_refresh
+	if %vv_ev2 = 1 lsp 344,":c/1,0,3;graphics\chars\chars_evb0.png",%x,%y : mov %vv_inc,344
+	if %vv_ev2 = 2 lsp 344,":c/1,0,3;graphics\chars\chars_evb0.png",%x,%y,90 : mov %vv_inc,344
+	gosub *settings_chars_refresh
+	if %vv_ron = 1 lsp 345,":c/1,0,3;graphics\chars\chars_ron0.png",%x,%y : mov %vv_inc,345
+	if %vv_ron = 2 lsp 345,":c/1,0,3;graphics\chars\chars_ron0.png",%x,%y,90 : mov %vv_inc,345
+	gosub *settings_chars_refresh
+	if %vv_rg1 = 1 lsp 346,":c/1,0,3;graphics\chars\chars_rgk0.png",%x,%y : mov %vv_inc,346
+	if %vv_rg1 = 2 lsp 346,":c/1,0,3;graphics\chars\chars_rgk0.png",%x,%y,90 : mov %vv_inc,346
+	gosub *settings_chars_refresh
+	if %vv_rg2 = 1 lsp 347,":c/1,0,3;graphics\chars\chars_rgk1.png",%x,%y : mov %vv_inc,347
+	if %vv_rg2 = 2 lsp 347,":c/1,0,3;graphics\chars\chars_rgk1.png",%x,%y,90 : mov %vv_inc,347
+	gosub *settings_chars_refresh
+	if %vv_rg3 = 1 lsp 348,":c/1,0,3;graphics\chars\chars_rgk2.png",%x,%y : mov %vv_inc,348
+	if %vv_rg3 = 2 lsp 348,":c/1,0,3;graphics\chars\chars_rgk2.png",%x,%y,90 : mov %vv_inc,348
+	gosub *settings_chars_refresh
+	if %vv_rg4 = 1 lsp 349,":c/1,0,3;graphics\chars\chars_rgk3.png",%x,%y : mov %vv_inc,349
+	if %vv_rg4 = 2 lsp 349,":c/1,0,3;graphics\chars\chars_rgk3.png",%x,%y,90 : mov %vv_inc,349
+	gosub *settings_chars_refresh
+	if %vv_rg5 = 1 lsp 350,":c/1,0,3;graphics\chars\chars_rgk4.png",%x,%y : mov %vv_inc,350
+	if %vv_rg5 = 2 lsp 350,":c/1,0,3;graphics\chars\chars_rgk4.png",%x,%y,90 : mov %vv_inc,350
+	gosub *settings_chars_refresh
+	if %vv_rg6 = 1 lsp 351,":c/1,0,3;graphics\chars\chars_rgk5.png",%x,%y : mov %vv_inc,351
+	if %vv_rg6 = 2 lsp 351,":c/1,0,3;graphics\chars\chars_rgk5.png",%x,%y,90 : mov %vv_inc,351
+	gosub *settings_chars_refresh
+	if %vv_rg7 = 1 lsp 352,":c/1,0,3;graphics\chars\chars_rgk6.png",%x,%y : mov %vv_inc,352
+	if %vv_rg7 = 2 lsp 352,":c/1,0,3;graphics\chars\chars_rgk6.png",%x,%y,90 : mov %vv_inc,352
+	gosub *settings_chars_refresh	
+	if %vv_sak = 1 lsp 353,":c/1,0,3;graphics\chars\chars_sak0.png",%x,%y : mov %vv_inc,353
+	if %vv_sak = 2 lsp 353,":c/1,0,3;graphics\chars\chars_sak0.png",%x,%y,90 : mov %vv_inc,353
+	gosub *settings_chars_refresh
+	if %vv_gap = 1 lsp 354,":c/1,0,3;graphics\chars\chars_gap0.png",%x,%y : mov %vv_inc,354
+	if %vv_gap = 2 lsp 354,":c/1,0,3;graphics\chars\chars_gap0.png",%x,%y,90 : mov %vv_inc,354
+	gosub *settings_chars_refresh
+	if %vv_s00 = 1 lsp 355,":c/1,0,3;graphics\chars\chars_sie0.png",%x,%y : mov %vv_inc,355
+	if %vv_s00 = 2 lsp 355,":c/1,0,3;graphics\chars\chars_sie0.png",%x,%y,90 : mov %vv_inc,355
+	gosub *settings_chars_refresh
+	if %vv_s41 = 1 lsp 356,":c/1,0,3;graphics\chars\chars_sie1.png",%x,%y : mov %vv_inc,356
+	if %vv_s41 = 2 lsp 356,":c/1,0,3;graphics\chars\chars_sie1.png",%x,%y,90 : mov %vv_inc,356
+	gosub *settings_chars_refresh
+	if %vv_s45 = 1 lsp 357,":c/1,0,3;graphics\chars\chars_sie2.png",%x,%y : mov %vv_inc,357
+	if %vv_s45 = 2 lsp 357,":c/1,0,3;graphics\chars\chars_sie2.png",%x,%y,90 : mov %vv_inc,357
+	gosub *settings_chars_refresh
+	if %vv_dla = 1 lsp 358,":c/1,0,3;graphics\chars\chiru\chars_dla1.png",%x,%y : mov %vv_inc,358
+	if %vv_dla = 2 lsp 358,":c/1,0,3;graphics\chars\chiru\chars_dla1.png",%x,%y,90 : mov %vv_inc,358
+	gosub *settings_chars_refresh
+	if %vv_cor = 1 lsp 359,":c/1,0,3;graphics\chars\chiru\chars_cor0.png",%x,%y : mov %vv_inc,359
+	if %vv_cor = 2 lsp 359,":c/1,0,3;graphics\chars\chiru\chars_cor0.png",%x,%y,90 : mov %vv_inc,359
+	gosub *settings_chars_refresh
+	if %vv_ger = 1 lsp 360,":c/1,0,3;graphics\chars\chiru\chars_gur0.png",%x,%y : mov %vv_inc,360
+	if %vv_ger = 2 lsp 360,":c/1,0,3;graphics\chars\chiru\chars_gur0.png",%x,%y,90 : mov %vv_inc,360
+	gosub *settings_chars_refresh
+	if %vv_zep = 1 lsp 361,":c/1,0,3;graphics\chars\chiru\chars_zep0.png",%x,%y : mov %vv_inc,361
+	if %vv_zep = 2 lsp 361,":c/1,0,3;graphics\chars\chiru\chars_zep0.png",%x,%y,90 : mov %vv_inc,361
+	gosub *settings_chars_refresh
+	if %vv_fur = 1 lsp 362,":c/1,0,3;graphics\chars\chiru\chars_ful0.png",%x,%y : mov %vv_inc,362
+	if %vv_fur = 2 lsp 362,":c/1,0,3;graphics\chars\chiru\chars_ful0.png",%x,%y,90 : mov %vv_inc,362
+	gosub *settings_chars_refresh
+	if %vv_ama = 1 lsp 363,":c/1,0,3;graphics\chars\chars_ama0.png",%x,%y : mov %vv_inc,363
+	if %vv_ama = 2 lsp 363,":c/1,0,3;graphics\chars\chars_ama0.png",%x,%y,90 : mov %vv_inc,363
+	gosub *settings_chars_refresh
+	if %vv_bu3 = 1 lsp 364,":c/1,0,3;graphics\chars\chiru\chars_fea0.png",%x,%y : mov %vv_inc,364
+	if %vv_bu3 = 2 lsp 364,":c/1,0,3;graphics\chars\chiru\chars_fea0.png",%x,%y,90 : mov %vv_inc,364
+	gosub *settings_chars_refresh
+	if %vv_fea = 1 lsp 365,":c/1,0,3;graphics\chars\chiru\chars_fea1.png",%x,%y : mov %vv_inc,365
+	if %vv_fea = 2 lsp 365,":c/1,0,3;graphics\chars\chiru\chars_fea1.png",%x,%y,90 : mov %vv_inc,365
+	gosub *settings_chars_refresh
+	if %vv_wil = 1 lsp 366,":c/1,0,3;graphics\chars\chiru\chars_wil0.png",%x,%y : mov %vv_inc,366
+	if %vv_wil = 2 lsp 366,":c/1,0,3;graphics\chars\chiru\chars_wil0.png",%x,%y,90 : mov %vv_inc,366
+	gosub *settings_chars_refresh
+	if %vv_rio = 1 lsp 367,":c/1,0,3;graphics\chars\chiru\chars_rio0.png",%x,%y : mov %vv_inc,367
+	if %vv_rio = 2 lsp 367,":c/1,0,3;graphics\chars\chiru\chars_rio0.png",%x,%y,90 : mov %vv_inc,367
+	gosub *settings_chars_refresh
+	if %vv_cur = 1 lsp 368,":c/1,0,3;graphics\chars\chiru\chars_cur0.png",%x,%y : mov %vv_inc,368
+	if %vv_cur = 2 lsp 368,":c/1,0,3;graphics\chars\chiru\chars_cur0.png",%x,%y,90 : mov %vv_inc,368
+	gosub *settings_chars_refresh
+	if %vv_goa = 1 lsp 369,":c/1,0,3;graphics\chars\chars_goa0.png",%x,%y : mov %vv_inc,369
+	if %vv_goa = 2 lsp 369,":c/1,0,3;graphics\chars\chars_goa0.png",%x,%y,90 : mov %vv_inc,369
+	gosub *settings_chars_refresh
+	if %vv_99 = 1 lsp 370,":c/1,0,3;graphics\chars\chars_99.png",%x,%y : mov %vv_inc,370
+	if %vv_99 = 2 lsp 370,":c/1,0,3;graphics\chars\chars_99.png",%x,%y,90 : mov %vv_inc,370
+	gosub *settings_chars_refresh
+	gosub *settings_chars_realign
+return
+
+*settings_chars_refresh
+	if %vv_inc == 0 return ;nothing added
+
+	if %x2 == 0 mov %x2,%vv_inc ;first sprite in a row
+	mov %x3,%vv_inc ;last sprite in a row
+	
+	add %x,95 ;cell width
+	inc %y3
+
+	if %x < %y2*95+%Free1 jumpf
+		;rondo has smaller second row
+		;if %CHIRU_MODE = 0 && %y2 == 17 dec %y2 : add %Free1,47
+		mov %x,%Free1
+		add %y,107 ;cell height
+		mov %x2,0
+		mov %x3,0
+		mov %y3,0
+	~
+
+	mov %vv_inc,0
+return
+
+*settings_chars_realign
+	;do not align first line or complete table
+	if %x2 == 0 || %y == 520 return
+	;the line is complete
+	if %x >= %y2*95+%Free1 return
+
+	;deltax = длина_ряда - (ширина_ячейки * (endSp - startSp)) / 2;
+
+	mul %y3,95
+	mov %x,%y2*95-%y3
+	div %x,2
+
+	~
+		if %x2 > %x3 return
+		msp %x2,%x,0
+		inc %x2
+		jumpb
+return
+
+;SETTINGS DISABLE VOICES SUB-MENU END ==========================================================================
+
+*clear_config_options
+	;Option Buttons
+	_csp 203
+	_csp 204
+	_csp 205
+	_csp 206
+	_csp 207
+	_csp 208 : _csp 209 ;These are lsph, can't be buttons
+	_csp 210
+	_csp 211
+	_csp 212
+	_csp 213
+	_csp 214
+	_csp 215
+	_csp 311 : _csp 312 : _csp 313 : _csp 314
+
+	_csp 301 : _csp 302 : _csp 303 : _csp 304 : _csp 305 : _csp 306 ;Option Names
+
+	csp_text gen_txt_6
+return
+
+*clear_config_submenu
+
+	_csp 320
+	_csp 321
+	_csp 322
+	_csp 323
+	_csp 324
+	_csp 325
+	_csp 326
+	_csp 327
+	_csp 328
+	_csp 329
+	_csp 371
+	_csp 372
+	_csp 373
+	_csp 374
+	_csp 375
+	_csp 335
+	_csp 336
+	_csp 337
+	_csp 338
+	_csp 339
+	_csp 340
+	_csp 341
+	_csp 342
+	_csp 343
+	_csp 344
+	_csp 345
+	_csp 346
+	_csp 347
+	_csp 348
+	_csp 349
+	_csp 350
+	_csp 351
+	_csp 352
+	_csp 353
+	_csp 354
+	_csp 355
+	_csp 356
+	_csp 357
+	_csp 358
+	_csp 359
+	_csp 360
+	_csp 361
+	_csp 362
+	_csp 363
+	_csp 364
+	_csp 365
+	_csp 366
+	_csp 367
+	_csp 368
+	_csp 369
+	_csp 370
+
+return 
+
+*settings_exit_confirm
+	_csp 330 : _csp 331 : _csp 332 : _csp 333 : _csp 334 ;Remove sections
+	_csp 321 : _csp 322 : _csp 323 : _csp 324 : _csp 325 : _csp 326 ;Remove focus lines
+	_csp 103 ;Remove exit btn
+	_csp 104 ;Remove restore btn
+	csp_text gen_txt_1 : csp_text gen_txt_2 : csp_text gen_txt_3 : csp_text gen_txt_4 : csp_text gen_txt_5 ;Remove section titles
+
+	gosub *clear_config_options
+	write_special_text 301,"cfg_exit_confirm",0,187+58+(%cfg_temp2*2)+%cfg_height,cfg_exit_confirm_desc
+
+	lsp 302,cfg_sub_btn,1584-705,187+58+(%cfg_temp2*3)+%cfg_height
+	write_special_text gen_txt_6,"submenu_btn_title",1584-705,187+58+(%cfg_temp2*3)+%cfg_height,cfg_ok
+
+*settings_exit_confirm_loop
+
+	btndef ""
+
+	spbtn 302,100
+
+	btndown 0
+
+	btnwait %BtnRes
+
+	if %BtnRes = -1 gosub *clear_config_options : gosub *clear_config_submenu : goto *cfg_rewrite ;Return to settings
+	if %BtnRes = -10 gosub *clear_config_options : gosub *clear_config_submenu : goto *cfg_rewrite ;Return to settings
+	if %BtnRes = 0  goto *settings_exit_confirm_loop
+
+	if %BtnRes = 100 goto *settings_end
+
+goto *settings_exit_confirm_loop
+*settings_exit_confirm_loop_end
+
+return
+
+*settings_end
+	for %tmp = 100 to config_main_lsp2 : _csp %tmp : _csp2 %tmp next
+	_csp 451
+	csp_text gen_txt_1 : csp_text gen_txt_2 : csp_text gen_txt_3 : csp_text gen_txt_4 : csp_text gen_txt_5 : csp_text gen_txt_6
+	gosub *clear_config_options
+	gosub *clear_config_submenu
+	seplay 9,1005,100 : wait 50
+	border_pad_pop
+	dwavestop 0
+	gosub *apply_msgwnd_settings
+return
+
+*settings_full_reset
+
+	;System
+	;Display settings - choosen on startup
+	;Renderer - choosen on startup
+	;Input Mode - choosen on startup
+	mov %cfg_menu_anim,1
+	mov %enable_cache,1
+	mov %hide_textbox,0
+
+	;Game
+	mov %textspeed,7 : mov %textspeed2,7
+	mov %automodespeed,-43
+	mov %rumble_strength,20
+	mov %cfg_chapter_display,0 : mov %cfg_bgm_display,1
+	mov %skip_unread,1
+	mov %cfg_rm_sex_content_index,0 ;Keep Original
+
+	;Sound
+	mov %bgm_vol,50
+	mov %sfx_vol,50
+	mov %dlg_vol,70 
+	;Mute specific characters - no init required
+	mov %cfg_lower_music_on_d,0
+	mov %animated_lips,1
+
+	;Language
+	;Language - choosen on startup
+	mov %cfg_voice_language,1 ;Japanese
+	mov %bgm_title_language,1 ;English
+	mov %op_ed_song_subtitles,2 ;Translation
+	mov %cfg_steam_conventions,0 ;TODO actually choose
+
+	;Graphics
+	mov %cfg_sprite_type_index,3
+	mov %msgwnd_type,0 ;Black
+	mov %cfg_bg_type_index,2
+	mov %cfg_book_mode,0
+	mov %cfg_bg_movement,0
+	
+	mov %old_wording,1 ;This shouldn't have any use, so better not touch it
+	mov %video_res,0
+	mov %sskip_turbo,0 ;Foundamental
+return

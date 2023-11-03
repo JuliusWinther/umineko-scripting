@@ -17850,7 +17850,7 @@ if %CHIRU_MODE != 2 jumpf
 
 		*start_sub_menu_btn_extra_extra_loop
 		btndef ""
-		
+
 		exbtn_d "P154,1C107-113C122-125C133-137C139-149C161C163C165" ;o: -60
 
 		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
@@ -29130,6 +29130,7 @@ print 1
 			isdown %cfg_mouse_click ;Checks if mouse is still pressed
 			if %cfg_mouse_click = 0 mov %for_index3,0 : spbtn 313,313 : break ;Else ends the cycle
 			getmousepos %cfg_temp_var,%cfg_mouse_y
+			mov %cfg_mouse_y,%cfg_mouse_y-26
 			getspsize 320,%cfg_temp_var,%test_var,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
 			mov %cfg_temp_var,(%cfg_mouse_y-255)*(%test_var-1080-0)/(785-255)+0
 				aspt scroll_y,320,%cfg_temp_var

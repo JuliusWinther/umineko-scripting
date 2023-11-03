@@ -1566,10 +1566,10 @@ numalias t_txt_config_lsp,%0 	: dec %0 ;101
 numalias t_bg_lsp,%0 			: dec %0 ;100
 numalias t_hane_lsp,%0 			: dec %0 ;99
 numalias t_logo_lsp,%0 			: dec %0 ;98
-numalias t_btn_start_lsp,%0 	: dec %0 ;97
+numalias t_btn_start_lsp,%0 	: dec %0 ;97 ;157
 numalias t_btn_web_lsp,%0 		: dec %0 ;96
 numalias t_btn_exit_lsp,%0 		: dec %0 ;95
-numalias t_btn_tea_lsp,%0 		: dec %0 ;94
+numalias t_btn_tea_lsp,%0 		: dec %0 ;94 ;154
 numalias t_btn_tips_lsp,%0 		: dec %0 ;93
 numalias t_btn_music_lsp,%0 	: dec %0 ;92
 numalias t_btn_ura_tea_lsp,%0 	: dec %0 ;91
@@ -3992,7 +3992,7 @@ return
 
 ;----------------------------------------
 ;Preliminary menu system before entering the right-click
-;r_menu 
+;r_menu ;r_click
 *rmenu_custom     ;Right-click the screen display
 	mov %r_for_title,0
 
@@ -17850,8 +17850,8 @@ if %CHIRU_MODE != 2 jumpf
 
 		*start_sub_menu_btn_extra_extra_loop
 		btndef ""
-
-		exbtn_d "P154,1C107-113C122-125C141-147C149C161C163C165C102-105P165P146,1" ;o: -60
+		
+		exbtn_d "P154,1C107-113C122-125C133-137C139-149C161C163C165" ;o: -60
 
 		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
 		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
@@ -33294,6 +33294,10 @@ return
 	~
 	if $lsp_type != "slider_index" jumpf
 		lsp %lsp_slot,":s;#181818`{a:c:{p:56:{w:50:{fit}"+$temp_var+"}}}",%lsp_x,%lsp_y
+		return
+	~
+	if $lsp_type != "in_story_choice" jumpf
+		lsp2 %lsp_slot,":s;#E1E1E1`{a:c:{p:57:{w:1671:{fit}"+$lsp_text1+"}}}",%lsp_x,%lsp_y
 		return
 	~
 

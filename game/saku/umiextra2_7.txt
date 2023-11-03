@@ -1,3 +1,51 @@
+;SELECTION MENU
+
+*vdl_selection
+
+jnskip_s
+    return
+~
+
+;Usable:
+;gen_txt_18
+;gen_txt_19
+;gen_txt_20
+;gen_txt_21
+;gen_txt_22
+;gen_txt_23
+;gen_txt_24
+
+lsp s0_30,extra_story_btn,375,501
+write_special_text gen_txt_18,"in_story_choice",590,560,"SCELTA{n}"
+
+flush 1
+textoff2
+
+*vdl_loop
+    btndef ""
+
+    spbtn s0_30,s0_30
+
+    btndown 0
+    btnwait %temp_var
+
+    if %temp_var = 0 goto *vdl_loop
+
+    if %temp_var = s0_30 vdl_clear_selection : goto *vdl_s55
+
+goto *vdl_loop
+*vdl_loop_end
+
+return
+
+*vdl_clear_selection
+    csp_slot s0_30
+    csp_text gen_txt_18
+return
+
+;END SELECTION MENU
+
+;STORY
 *umiextra2_7
 log_reset
 mov $name_chapter_r_click,r_click_extra2_7
@@ -27,6 +75,7 @@ msgwnd_but
 *e27_2
 d [lv 0*"10"*"bat_03960"]`{qt}Huh, really? Let me take a look...{qt}`[\]
 
+gosub *vdl_selection
 
 lbg "c:backgrounds",s0_3,"letter1"
 
@@ -407,6 +456,8 @@ wait_on_d 0
 
 d_continue
 wait_on_d -1
+
+*vdl_s55 ;W_TEMP
 
 lss s0_9,"s55","a11_warai3"
 

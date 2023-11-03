@@ -32451,10 +32451,10 @@ return
 	textoff
 	jskip_s jumpf ;If SuperSkip do not unload textbox
 	isskip %temp_var ;If Skip do not unload textbox
+	if %temp_var = 3 aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 ;If Skip instantly remvoe textbox
 	if %temp_var = 3 jumpf
 		if %msgwnd_type = 4 aspt alpha,%msgwnd4_bg_slot,0,%msgwnd4_fade : vsp %msgwnd4_bg_slot,0
 	~
-	if %temp_var = 3 aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 ;If Skip instantly remvoe textbox
 return
 
 *texton2 ;W_TEMP

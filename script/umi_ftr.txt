@@ -32450,7 +32450,6 @@ return
 *textoff2 ;W_TEMP
 	textoff
 	if %msgwnd_type != 4 jumpf
-		jskip_s jumpf ;If SuperSkip do not unload textbox
 		isskip %temp_var ;If Skip do not unload textbox
 		if %temp_var = 3 aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 : jumpf
 		aspt alpha,%msgwnd4_bg_slot,0,%msgwnd4_fade : vsp %msgwnd4_bg_slot,0
@@ -32460,7 +32459,6 @@ return
 *texton2 ;W_TEMP
 	texton
 	if %msgwnd_type != 4 jumpf
-		jskip_s jumpf ;If SuperSkip do not load textbox
 		isskip %temp_var ;If Skip do not load textbox
 		if %temp_var = 3 jumpf
 		vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade

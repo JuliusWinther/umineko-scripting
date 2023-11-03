@@ -32449,13 +32449,23 @@ return
  
 *textoff2 ;W_TEMP
 	textoff
-	if %msgwnd_type = 4 aspt alpha,%msgwnd4_bg_slot,0,%msgwnd4_fade : vsp %msgwnd4_bg_slot,0
+	jskip_s jumpf ;If SuperSkip do not unload textbox
+	isskip %temp_var ;If Skip do not unload textbox
+	if %temp_var = 3 jumpf
+		if %msgwnd_type = 4 aspt alpha,%msgwnd4_bg_slot,0,%msgwnd4_fade : vsp %msgwnd4_bg_slot,0
+	~
+	if %temp_var = 3 aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 ;If Skip instantly remvoe textbox
 return
 
 *texton2 ;W_TEMP
 	texton
-	if %msgwnd_type = 4 vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade
+	jskip_s jumpf ;If SuperSkip do not load textbox
+	isskip %temp_var ;If Skip do not load textbox
+	if %temp_var = 3 jumpf
+		if %msgwnd_type = 4 vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade
+	~
 return
+
 
 *set_name_window_base
 	textoff ;testfix for https://forum.umineko-project.org/viewtopic.php?f=4&t=6&start=50#p154

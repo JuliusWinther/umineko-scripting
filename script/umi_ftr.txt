@@ -32449,20 +32449,21 @@ return
  
 *textoff2 ;W_TEMP
 	textoff
-	jskip_s jumpf ;If SuperSkip do not unload textbox
-	isskip %temp_var ;If Skip do not unload textbox
-	if %temp_var = 3 aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 ;If Skip instantly remvoe textbox
-	if %temp_var = 3 jumpf
-		if %msgwnd_type = 4 aspt alpha,%msgwnd4_bg_slot,0,%msgwnd4_fade : vsp %msgwnd4_bg_slot,0
+	if %msgwnd_type != 4 jumpf
+		jskip_s jumpf ;If SuperSkip do not unload textbox
+		isskip %temp_var ;If Skip do not unload textbox
+		if %temp_var = 3 aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 : jumpf
+		aspt alpha,%msgwnd4_bg_slot,0,%msgwnd4_fade : vsp %msgwnd4_bg_slot,0
 	~
 return
 
 *texton2 ;W_TEMP
 	texton
-	jskip_s jumpf ;If SuperSkip do not load textbox
-	isskip %temp_var ;If Skip do not load textbox
-	if %temp_var = 3 jumpf
-		if %msgwnd_type = 4 vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade
+	if %msgwnd_type != 4 jumpf
+		jskip_s jumpf ;If SuperSkip do not load textbox
+		isskip %temp_var ;If Skip do not load textbox
+		if %temp_var = 3 jumpf
+		vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade
 	~
 return
 

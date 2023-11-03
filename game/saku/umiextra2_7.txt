@@ -1,6 +1,6 @@
 ;SELECTION MENU
 
-*vdl_selection
+*vdl_selection1
 
 jnskip_s
     return
@@ -15,8 +15,23 @@ jnskip_s
 ;gen_txt_23
 ;gen_txt_24
 
-lsp s0_30,extra_story_btn,375,501
-write_special_text gen_txt_18,"in_story_choice",590,560,"SCELTA{n}"
+lbg "c:backgrounds",s0_3,"letter1"
+seplay 11,52,100
+
+if ?vdl_choices[0] = 0 lss s0_10,"rg1","a12_hohoemi1" : aspt2_mem "xpos",s0_10,0 : lsp s0_30,extra_story_btn,375,230 : write_special_text gen_txt_18,"in_story_choice",375,240,"LUCIFER{n}"
+
+if ?vdl_choices[1] = 0 lss s0_9,"rg2","a12_hohoemi1" : aspt2_mem "xpos",s0_9,-250 : lsp s0_29,extra_story_btn,375,320 : write_special_text gen_txt_19,"in_story_choice",375,330,"SATAN{n}"
+
+if ?vdl_choices[2] = 0 lss s0_8,"rg3","a12_hohoemi1" : aspt2_mem "xpos",s0_8,250 : lsp s0_28,extra_story_btn,375,410 : write_special_text gen_txt_20,"in_story_choice",375,420,"LEVIATHAN{n}"
+
+if ?vdl_choices[3] = 0 lss s0_7,"rg4","a12_hohoemi1" : aspt2_mem "xpos",s0_7,-500 : lsp s0_27,extra_story_btn,375,500 : write_special_text gen_txt_21,"in_story_choice",375,510,"BELPHEGOR{n}"
+
+if ?vdl_choices[4] = 0 lss s0_6,"rg5","a12_hohoemi1" : aspt2_mem "xpos",s0_6,500 : lsp s0_26,extra_story_btn,375,590 : write_special_text gen_txt_22,"in_story_choice",375,600,"MAMMON{n}"
+
+if ?vdl_choices[5] = 0 lss s0_5,"rg6","a12_hohoemi1" : aspt2_mem "xpos",s0_5,-750 : lsp s0_25,extra_story_btn,375,680 : write_special_text gen_txt_23,"in_story_choice",375,690,"BELZEBUB{n}"
+
+if ?vdl_choices[6] = 0 lss s0_4,"rg7","a12_hohoemi1" : aspt2_mem "xpos",s0_4,750 : lsp s0_24,extra_story_btn,375,770 : write_special_text gen_txt_24,"in_story_choice",375,780,"ASMODEUS{n}"
+
 
 flush 1
 textoff2
@@ -25,13 +40,32 @@ textoff2
     btndef ""
 
     spbtn s0_30,s0_30
+    spbtn s0_29,s0_29
+    spbtn s0_28,s0_28
+    spbtn s0_27,s0_27
+    spbtn s0_26,s0_26
+    spbtn s0_25,s0_25
+    spbtn s0_24,s0_24
 
     btndown 0
     btnwait %temp_var
 
     if %temp_var = 0 goto *vdl_loop
 
-    if %temp_var = s0_30 vdl_clear_selection : goto *vdl_s55
+    if %temp_var = s0_30 vdl_clear_selection : mov ?vdl_choices[0],1 : goto *vdl_rg1
+
+    if %temp_var = s0_29 vdl_clear_selection : mov ?vdl_choices[1],1 : goto *vdl_rg2
+
+    if %temp_var = s0_28 vdl_clear_selection : mov ?vdl_choices[2],1 : goto *vdl_rg3
+
+    if %temp_var = s0_27 vdl_clear_selection : mov ?vdl_choices[3],1 : goto *vdl_rg4
+
+    if %temp_var = s0_26 vdl_clear_selection : mov ?vdl_choices[4],1 : goto *vdl_rg5
+
+    if %temp_var = s0_25 vdl_clear_selection : mov ?vdl_choices[5],1 : goto *vdl_rg6
+
+    if %temp_var = s0_24 vdl_clear_selection : mov ?vdl_choices[6],1 : goto *vdl_rg7
+
 
 goto *vdl_loop
 *vdl_loop_end
@@ -56,40 +90,98 @@ mov $name_chapter_r_click_l3,r_click_extra2_7_l3
 new_extra_episode 27
 ;START
 
+textoff2
 bgmplay 144,70,0
-
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
+flush 22
 
-seplay 11,52,100
-
-lss s0_9,"ron","a11_akuwarai1"
-
-lss s0_9,"ron","a11_warai2"
+lss s0_10,"ron","a11_akuwarai1"
+aspt2 breakup,s0_10,1000
+aspt2 alpha,s0_10,0
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,0,2000
+aspt2 alpha,s0_10,255
+sptwait2 breakup,s0_10
+lss s0_10,"ron","a11_warai2"
+flush 80
 
 msgwnd_ron
 *e27_1
 d [lv 0*"31"*"ron_01310"]`{qt}I apologise for the disturbance.`[@][lv 0*"31"*"ron_01320"]` Battler-sama, I have brought Valentine's Day letters.{qt}`[\]
 
-
 lss s0_9,"but","d11_warai2"
+aspt2_mem "xpos",s0_9,-550
+flush 80
 
 msgwnd_but
 *e27_2
 d [lv 0*"10"*"bat_03960"]`{qt}Huh, really? Let me take a look...{qt}`[\]
+textoff2
 
-gosub *vdl_selection
+csp_slot s0_9
+csp_slot s0_10
+csp_slot s0_3
+flush 22
 
-lbg "c:backgrounds",s0_3,"letter1"
+gosub *vdl_selection1
 
-seplay 11,52,100
 
-lbg "c:backgrounds",s0_3,"letter1"
 
+
+*vdl_rg1
+
+csp_slot s0_30
+csp_slot s0_29
+csp_slot s0_28
+csp_slot s0_27
+csp_slot s0_26
+csp_slot s0_25
+csp_slot s0_24
+csp_text gen_txt_18
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+csp_text gen_txt_23
+csp_text gen_txt_24
+flush 80
+
+lss s0_10,"rg1","a12_warai2"
+flush 80
+waits 400
+
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_5
+csp_slot s0_6
+csp_slot s0_7
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
-
 lbg "c:local_saku",s0_3,"b_rusi"
-
+aspt2_mem "ypos",s0_3,1000
 lss s0_9,"rg1","a12_hohoemi1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_10,250
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1000,2000
+sptwait2 breakup,s0_10
+waits 300
+
+aspt2_mem "ypos",s0_3,800,800,0
+sptwait2 ypos,s0_3
 
 msgwnd_rg1
 *e27_3

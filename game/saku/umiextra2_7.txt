@@ -15,26 +15,48 @@ jnskip_s
 ;gen_txt_23
 ;gen_txt_24
 
+if ?vdl_choices[0] = 1 && ?vdl_choices[1] = 1 && ?vdl_choices[2] = 1 && ?vdl_choices[3] = 1 && ?vdl_choices[4] = 1 && ?vdl_choices[5] = 1 && ?vdl_choices[6] = 1 goto *vdl_2
+
 lbg "c:backgrounds",s0_3,"letter1"
-seplay 11,52,100
 
-if ?vdl_choices[0] = 0 lss s0_10,"rg1","a12_hohoemi1" : aspt2_mem "xpos",s0_10,0 : lsp s0_30,extra_story_btn,375,230 : write_special_text gen_txt_18,"in_story_choice",375,240,"LUCIFER{n}"
+if ?vdl_choices[0] = 0 lss s0_10,"rg1","a12_hohoemi1" : aspt2_mem "xpos",s0_10,0
 
-if ?vdl_choices[1] = 0 lss s0_9,"rg2","a12_hohoemi1" : aspt2_mem "xpos",s0_9,-250 : lsp s0_29,extra_story_btn,375,320 : write_special_text gen_txt_19,"in_story_choice",375,330,"SATAN{n}"
+if ?vdl_choices[1] = 0 lss s0_9,"rg2","a12_akuwarai1" : aspt2_mem "xpos",s0_9,250
 
-if ?vdl_choices[2] = 0 lss s0_8,"rg3","a12_hohoemi1" : aspt2_mem "xpos",s0_8,250 : lsp s0_28,extra_story_btn,375,410 : write_special_text gen_txt_20,"in_story_choice",375,420,"LEVIATHAN{n}"
+if ?vdl_choices[2] = 0 lss s0_8,"rg3","a12_hohoemi1" : aspt2_mem "xpos",s0_8,-250
 
-if ?vdl_choices[3] = 0 lss s0_7,"rg4","a12_hohoemi1" : aspt2_mem "xpos",s0_7,-500 : lsp s0_27,extra_story_btn,375,500 : write_special_text gen_txt_21,"in_story_choice",375,510,"BELPHEGOR{n}"
+if ?vdl_choices[3] = 0 lss s0_7,"rg4","a12_defo1" : aspt2_mem "xpos",s0_7,-500
 
-if ?vdl_choices[4] = 0 lss s0_6,"rg5","a12_hohoemi1" : aspt2_mem "xpos",s0_6,500 : lsp s0_26,extra_story_btn,375,590 : write_special_text gen_txt_22,"in_story_choice",375,600,"MAMMON{n}"
+if ?vdl_choices[4] = 0 lss s0_6,"rg5","a12_akuwarai2" : aspt2_mem "xpos",s0_6,500
 
-if ?vdl_choices[5] = 0 lss s0_5,"rg6","a12_hohoemi1" : aspt2_mem "xpos",s0_5,-750 : lsp s0_25,extra_story_btn,375,680 : write_special_text gen_txt_23,"in_story_choice",375,690,"BELZEBUB{n}"
+if ?vdl_choices[5] = 0 lss s0_5,"rg6","a12_hohoemi1" : aspt2_mem "xpos",s0_5,-750
 
-if ?vdl_choices[6] = 0 lss s0_4,"rg7","a12_hohoemi1" : aspt2_mem "xpos",s0_4,750 : lsp s0_24,extra_story_btn,375,770 : write_special_text gen_txt_24,"in_story_choice",375,780,"ASMODEUS{n}"
+if ?vdl_choices[6] = 0 lss s0_4,"rg7","a12_akuwarai1" : aspt2_mem "xpos",s0_4,750
 
+flush 22
+wait 300
 
-flush 1
+if ?vdl_choices[0] = 0 lsp s0_30,extra_story_btn,375,230 : write_special_text gen_txt_18,"in_story_choice",375,240,"LUCIFER{n}"
+
+if ?vdl_choices[1] = 0 lsp s0_29,extra_story_btn,375,320 : write_special_text gen_txt_19,"in_story_choice",375,330,"LEVIATHAN{n}"
+
+if ?vdl_choices[2] = 0 lsp s0_28,extra_story_btn,375,410 : write_special_text gen_txt_20,"in_story_choice",375,420,"SATAN{n}"
+
+if ?vdl_choices[3] = 0 lsp s0_27,extra_story_btn,375,500 : write_special_text gen_txt_21,"in_story_choice",375,510,"BELPHEGOR{n}"
+
+if ?vdl_choices[4] = 0 lsp s0_26,extra_story_btn,375,590 : write_special_text gen_txt_22,"in_story_choice",375,600,"MAMMON{n}"
+
+if ?vdl_choices[5] = 0 lsp s0_25,extra_story_btn,375,680 : write_special_text gen_txt_23,"in_story_choice",375,690,"BEELZEBUB{n}"
+
+if ?vdl_choices[6] = 0 lsp s0_24,extra_story_btn,375,770 : write_special_text gen_txt_24,"in_story_choice",375,780,"ASMODEUS{n}"
+
+flush 22
 textoff2
+goto *vdl_loop
+
+
+
+
 
 *vdl_loop
     btndef ""
@@ -125,7 +147,91 @@ csp_slot s0_10
 csp_slot s0_3
 flush 22
 
+lbg "c:backgrounds",s0_3,"letter1"
+flush 22
+
+lss s0_10,"rg1","a12_hohoemi1" 
+aspt2_mem "xpos",s0_10,0
+
+lss s0_9,"rg2","a12_akuwarai1" 
+aspt2_mem "xpos",s0_9,250
+
+lss s0_8,"rg3","a12_hohoemi1" 
+aspt2_mem "xpos",s0_8,-250
+
+lss s0_7,"rg4","a12_defo1" 
+aspt2_mem "xpos",s0_7,-500
+
+lss s0_6,"rg5","a12_akuwarai2" 
+aspt2_mem "xpos",s0_6,500
+
+lss s0_5,"rg6","a12_hohoemi1" 
+aspt2_mem "xpos",s0_5,-750
+
+lss s0_4,"rg7","a12_akuwarai1" 
+aspt2_mem "xpos",s0_4,750
+
+aspt2 breakup,s0_4,1000
+aspt2 alpha,s0_4,0
+aspt2 breakupdir,s0_4,3
+
+aspt2 breakup,s0_10,1000
+aspt2 alpha,s0_10,0
+aspt2 breakupdir,s0_10,3
+
+aspt2 breakup,s0_9,1000
+aspt2 alpha,s0_9,0
+aspt2 breakupdir,s0_9,3
+
+aspt2 breakup,s0_8,1000
+aspt2 alpha,s0_8,0
+aspt2 breakupdir,s0_8,3
+
+aspt2 breakup,s0_7,1000
+aspt2 alpha,s0_7,0
+aspt2 breakupdir,s0_7,3
+
+aspt2 breakup,s0_6,1000
+aspt2 alpha,s0_6,0
+aspt2 breakupdir,s0_6,3
+
+aspt2 breakup,s0_5,1000
+aspt2 alpha,s0_5,0
+aspt2 breakupdir,s0_5,3
+flush 1
+
+seplay 11,52,90
+
+aspt2 breakup,s0_4,0,2000
+aspt2 alpha,s0_4,255
+
+aspt2 breakup,s0_10,0,2000
+aspt2 alpha,s0_10,255
+
+aspt2 breakup,s0_9,0,2000
+aspt2 alpha,s0_9,255
+
+aspt2 breakup,s0_8,0,2000
+aspt2 alpha,s0_8,255
+
+aspt2 breakup,s0_7,0,2000
+aspt2 alpha,s0_7,255
+
+aspt2 breakup,s0_6,0,2000
+aspt2 alpha,s0_6,255
+
+aspt2 breakup,s0_5,0,2000
+aspt2 alpha,s0_5,255
+sptwait2 breakup,s0_5
+
 gosub *vdl_selection1
+
+
+
+
+
+
+
 
 
 
@@ -146,7 +252,7 @@ csp_text gen_txt_21
 csp_text gen_txt_22
 csp_text gen_txt_23
 csp_text gen_txt_24
-flush 80
+flush 22
 
 lss s0_10,"rg1","a12_warai2"
 flush 80
@@ -163,11 +269,11 @@ csp_slot s0_10
 lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_rusi"
-aspt2_mem "ypos",s0_3,1000
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg1","a12_hohoemi1"
 aspt2 alpha,s0_9,200
 aspt2_mem "xpos",s0_9,550
-aspt2_mem "ypos",s0_10,250
+aspt2_mem "ypos",s0_9,-100
 
 flush 23
 waits 400
@@ -176,215 +282,751 @@ aspt2 alpha,s0_10,255
 aspt2 breakupdir,s0_10,3
 flush 1
 seplay 11,52,90
-aspt2 breakup,s0_10,1000,2000
+aspt2 breakup,s0_10,1200,2000
 sptwait2 breakup,s0_10
 waits 300
 
-aspt2_mem "ypos",s0_3,800,800,0
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1200,800,0
 sptwait2 ypos,s0_3
 
 msgwnd_rg1
 *e27_3
 d [lv 0*"38"*"rg1_00820"]`To His Majesty, the Territory Lord and the Master of the Game Board.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,800,1000,0
+sptwait2 ypos,s0_3
 
 *e27_4
 d [lv 0*"38"*"rg1_00830"]`On account of Valentine's Day, and as the representative of the Seven Sisters of Purgatory,`[@][lv 0*"38"*"rg1_00840"]` I hereby present an offering of chocolate as well as an oath of our eternal allegiance.`[\]
+textoff2
 
-
+aspt2_mem "ypos",s0_3,300,1000,0
+sptwait2 ypos,s0_3
 lss s0_9,"rg1","a12_warai1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+flush 80
 
 *e27_5
 d [lv 0*"38"*"rg1_00850"]`-- From the eldest of the Seven Sisters of Purgatory, Lucifer, with love and loyalty.`[\]
+textoff2
 
-
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 lss s0_9,"rg1","a12_defo1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+flush 80
 
 *e27_6
-d [lv 0*"38"*"rg1_00860"]`P.S.`[|][lv 0*"38"*"rg1_00870"]Given your order, I would be honored to become a chair, candle stand, cat, carpet, furniture or even slave for your sake.`[@][lv 0*"38"*"rg1_00880"]My Lord, please use this lowly piece of furniture however you wish.`[\]
+d [lv 0*"38"*"rg1_00860"]`P.S.`[|][lv 0*"38"*"rg1_00870"] `Given your order, I would be honored to become a chair, candle stand, cat, carpet, furniture or even slave for your sake.`[@][lv 0*"38"*"rg1_00880"] `My Lord, please use this lowly piece of furniture however you wish.`[\]
+textoff2
 
+csp_slot s0_3
+csp_slot s0_9
+flush 22
+
+gosub *vdl_selection1
 
 seplay 11,1010,100
 
 seplay 11,1010,100
 
+
+
+
+
+
+
+
+
+
+
+*vdl_rg2
+
+csp_slot s0_30
+csp_slot s0_29
+csp_slot s0_28
+csp_slot s0_27
+csp_slot s0_26
+csp_slot s0_25
+csp_slot s0_24
+csp_text gen_txt_18
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+csp_text gen_txt_23
+csp_text gen_txt_24
+flush 22
+
+csp_slot s0_9
+lss s0_11,"rg2","a12_warai1"
+aspt2_mem "xpos",s0_11,250
+flush 80
+waits 400
+
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_5
+csp_slot s0_6
+csp_slot s0_7
+csp_slot s0_8
+csp_slot s0_10
+csp_slot s0_11
+lbg "c:colour",s0_10,"white"
+seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_revi"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg2","a12_hohoemi1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+waits 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1200,1000,0
+sptwait2 ypos,s0_3
 
 msgwnd_rg2
 *e27_7
 d [lv 0*"39"*"rg2_00520"]`To the Territory Lord who probably already received a ton of chocolate from others.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,800,1000,0
+sptwait2 ypos,s0_3
 
 *e27_8
 d [lv 0*"39"*"rg2_00530"]`Although my chocolate may be only one of the many that you've received, I still poured all of my heart and effort into making it.`[\]
+textoff2
 
-
+aspt2_mem "ypos",s0_3,500,1000,0
+sptwait2 ypos,s0_3
 lss s0_9,"rg2","a12_warai1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_9
-d [lv 0*"39"*"rg2_00540"]`But even if my chocolate is just an insignificant part of a huge pile, that's fine.`[@][lv 0*"39"*"rg2_00550"]I just hope that among the countless loving eyes gazing at you, you won't forget the ruby-colored pair that would so easily fly into a jealous rage.`[@][lv 0*"39"*"rg2_00560"]` Ehehehehe.`[\]
+d [lv 0*"39"*"rg2_00540"]`But even if my chocolate is just an insignificant part of a huge pile, that's fine.`[@][lv 0*"39"*"rg2_00550"]` I just hope that among the countless loving eyes gazing at you, you won't forget the ruby-colored pair that would so easily fly into a jealous rage.`[@][lv 0*"39"*"rg2_00560"]` Ehehehehe.`[\]
+textoff2
 
-
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 lss s0_9,"rg2","a12_akuwarai2"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_10
 d [lv 0*"39"*"rg2_00570"]`-- From the second eldest of the Seven Sisters of Purgatory, Leviathan, with love and envy.`[\]
+textoff2
 
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
 
+gosub *vdl_selection1
+
+
+
+
+
+
+
+
+
+
+*vdl_rg3
+
+
+
+csp_slot s0_30
+csp_slot s0_29
+csp_slot s0_28
+csp_slot s0_27
+csp_slot s0_26
+csp_slot s0_25
+csp_slot s0_24
+csp_text gen_txt_18
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+csp_text gen_txt_23
+csp_text gen_txt_24
+flush 22
+
+csp_slot s0_8
+lss s0_11,"rg3","a12_warai1"
+aspt2_mem "xpos",s0_11,-250
+flush 80
+waits 400
+
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_5
+csp_slot s0_6
+csp_slot s0_7
+csp_slot s0_11
+csp_slot s0_9
+csp_slot s0_10
+lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
-
 lbg "c:local_saku",s0_3,"b_sata"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg3","a12_hohoemi1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+waits 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1100,800,0
+sptwait2 ypos,s0_3
+
+
 
 msgwnd_rg3
 *e27_11
 d [lv 0*"40"*"rg3_00860"]`To His Majesty, the Territory Lord and the Master of us Seven Sisters.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,700,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"rg3","a12_komaru3"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_12
-d [lv 0*"40"*"rg3_00870"]`My stupid sisters have undoubtedly included some shameless letters along with the chocolates they have sent you.`[@][lv 0*"40"*"rg3_00880"]However, they are not at fault.`[@][lv 0*"40"*"rg3_00890"]All the blame lies with me and my sorely lacking guidance.`[@][lv 0*"40"*"rg3_00900"]` My humblest apologies.`[\]
+d [lv 0*"40"*"rg3_00870"]`My stupid sisters have undoubtedly included some shameless letters along with the chocolates they have sent you.`[@][lv 0*"40"*"rg3_00880"]` However, they are not at fault.`[@][lv 0*"40"*"rg3_00890"]` All the blame lies with me and my sorely lacking guidance.`[@][lv 0*"40"*"rg3_00900"]` My humblest apologies.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,300,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"rg3","a12_defo1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_13
-d [lv 0*"40"*"rg3_00910"]`If anyone is to be reprimanded, it should be me...`[@][lv 0*"40"*"rg3_00920"]I am prepared to receive any and all criticism...`[\]
+d [lv 0*"40"*"rg3_00910"]`If anyone is to be reprimanded, it should be me...`[@][lv 0*"40"*"rg3_00920"]` I am prepared to receive any and all criticism...`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"rg3","a12_hohoemi1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_14
 d [lv 0*"40"*"rg3_00930"]`-- From the third eldest of the Seven Sisters of Purgatory, Satan, with love and apologies.`[\]
+textoff2
 
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
 
+gosub *vdl_selection1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_rg4
+
+
+csp_slot s0_30
+csp_slot s0_29
+csp_slot s0_28
+csp_slot s0_27
+csp_slot s0_26
+csp_slot s0_25
+csp_slot s0_24
+csp_text gen_txt_18
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+csp_text gen_txt_23
+csp_text gen_txt_24
+flush 22
+
+csp_slot s0_7
+lss s0_11,"rg4","a12_warai1"
+aspt2_mem "xpos",s0_11,-500
+flush 80
+waits 400
+
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_5
+csp_slot s0_6
+csp_slot s0_8
+csp_slot s0_11
+csp_slot s0_9
+csp_slot s0_10
+lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
-
 lbg "c:local_saku",s0_3,"b_berf"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg4","a12_warai1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+waits 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1200,800,0
+sptwait2 ypos,s0_3
+
 
 msgwnd_rg4
 *e27_15
 d [lv 0*"41"*"rg4_00490"]`To His Majesty, the Territory Lord and the Master of the Game Board.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,800,1000,0
+sptwait2 ypos,s0_3
 
 *e27_16
 d [lv 0*"41"*"rg4_00500"]`I have given chocolate to many, but all of it has been demonic chocolate designed to drive the helpless to sink further and further into sloth, year after year.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,500,800,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"rg4","a12_defo1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_17
-d [lv 0*"41"*"rg4_00510"]`Your Majesty, however, keeps tirelessly improving himself.`[@][lv 0*"41"*"rg4_00520"]Thus, the Valentine's chocolate I'm offering today is not hiding a trap of sloth but my heartfelt feelings.`[\]
+d [lv 0*"41"*"rg4_00510"]`Your Majesty, however, keeps tirelessly improving himself.`[@][lv 0*"41"*"rg4_00520"]` Thus, the Valentine's chocolate I'm offering today is not hiding a trap of sloth but my heartfelt feelings.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 *e27_18
 d [lv 0*"41"*"rg4_00530"]`-- From the fourth eldest of the Seven Sisters of Purgatory, Belphegor, with love and respect.`[\]
+textoff2
 
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
 
+gosub *vdl_selection1
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_rg5
+
+
+csp_slot s0_30
+csp_slot s0_29
+csp_slot s0_28
+csp_slot s0_27
+csp_slot s0_26
+csp_slot s0_25
+csp_slot s0_24
+csp_text gen_txt_18
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+csp_text gen_txt_23
+csp_text gen_txt_24
+flush 22
+
+csp_slot s0_6
+lss s0_11,"rg5","a12_warai3"
+aspt2_mem "xpos",s0_11,500
+flush 80
+waits 400
+
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_5
+csp_slot s0_7
+csp_slot s0_8
+csp_slot s0_11
+csp_slot s0_9
+csp_slot s0_10
+lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
-
 lbg "c:local_saku",s0_3,"b_mamo"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg5","a12_defo1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+waits 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1200,800,0
+sptwait2 ypos,s0_3
+
 
 msgwnd_rg5
 *e27_19
 d [lv 0*"42"*"rg5_00490"]`To our magnificent and stunning Territory Lord.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,800,1000,0
+sptwait2 ypos,s0_3
 
 *e27_20
-d [lv 0*"42"*"rg5_00500"]`As furniture, nothing pleases me more than working for Your Majesty and gradually gaining your trust.`[@][lv 0*"42"*"rg5_00510"]However, do you think it's above a furniture's station to wish for trust even greater than this?`[\]
+d [lv 0*"42"*"rg5_00500"]`As furniture, nothing pleases me more than working for Your Majesty and gradually gaining your trust.`[@][lv 0*"42"*"rg5_00510"]` However, do you think it's above a furniture's station to wish for trust even greater than this?`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,500,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"rg5","a12_fuman1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_21
-d [lv 0*"42"*"rg5_00520"]`I am Mammon of Greed.`[@][lv 0*"42"*"rg5_00530"]I am covetous furniture who wishes to be the only one reflected in your eyes.`[\]
+d [lv 0*"42"*"rg5_00520"]`I am Mammon of Greed.`[@][lv 0*"42"*"rg5_00530"]` I am covetous furniture who wishes to be the only one reflected in your eyes.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"rg5","a12_hohoemi1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_22
 d [lv 0*"42"*"rg5_00540"]`-- From the fifth eldest of the Seven Sisters of Purgatory, Mammon, with love`[|][lv 0*"42"*"rg5_00550"]` and even more love.`[\]
+textoff2
 
-
-lss s0_9,"rg5","a12_hohoemi1"
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
 
+gosub *vdl_selection1
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_rg6
+
+csp_slot s0_30
+csp_slot s0_29
+csp_slot s0_28
+csp_slot s0_27
+csp_slot s0_26
+csp_slot s0_25
+csp_slot s0_24
+csp_text gen_txt_18
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+csp_text gen_txt_23
+csp_text gen_txt_24
+flush 22
+
+csp_slot s0_5
+lss s0_11,"rg6","a12_warai1"
+aspt2_mem "xpos",s0_11,-750
+flush 80
+waits 400
+
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_6
+csp_slot s0_7
+csp_slot s0_8
+csp_slot s0_11
+csp_slot s0_9
+csp_slot s0_10
+lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
-
 lbg "c:local_saku",s0_3,"b_beru"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg6","a12_warai1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+waits 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1200,800,0
+sptwait2 ypos,s0_3
 
 msgwnd_rg6
 *e27_23
 d [lv 0*"43"*"rg6_00580"]`To His Majesty, the Territory Lord and the Master of the Game Board.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,600,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"rg6","a12_defo1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_24
 d [lv 0*"43"*"rg6_00590"]`I thought that Your Majesty deserved only the best chocolate, so I taste-tested countless varieties in search of the greatest chocolate delicacy.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,300,1000,0
+sptwait2 ypos,s0_3
 
 *e27_25
 d [lv 0*"43"*"rg6_00600"]`-- From the sixth eldest of the Seven Sisters of Purgatory, Beelzebub, with love and cocoa.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"rg6","a12_warai3"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_26
-d2 [lv 0*"43"*"rg6_00610"]`P.S.`[|][lv 0*"43"*"rg6_00620"]The greatest chocolate was truly amazing.`[@][lv 0*"43"*"rg6_00630"]` After tasting it, I just couldn't help myself.`[@][lv 0*"43"*"rg6_00640"]I ate the whole thing, so the chocolate I've sent here is the second most delicious variety.`[@][#][*][lv 0*"43"*"rg6_00650"]`...   Sorry about that.`[\]
+d2 [lv 0*"43"*"rg6_00610"]`P.S.`[|][lv 0*"43"*"rg6_00620"]` The greatest chocolate was truly amazing.`[@][lv 0*"43"*"rg6_00630"]` After tasting it, I just couldn't help myself.`[@][lv 0*"43"*"rg6_00640"]` I ate the whole thing, so the chocolate I've sent here is the second most delicious variety.`[@][#][*][lv 0*"43"*"rg6_00650"]`...Sorry about that.`[\]
 wait_on_d 0
-
+lss s0_9,"rg6","a12_naku1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 d_continue
 wait_on_d -1
+textoff2
 
-lss s0_9,"rg6","a12_naku1"
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
 
+gosub *vdl_selection1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_rg7
+
+csp_slot s0_30
+csp_slot s0_29
+csp_slot s0_28
+csp_slot s0_27
+csp_slot s0_26
+csp_slot s0_25
+csp_slot s0_24
+csp_text gen_txt_18
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+csp_text gen_txt_23
+csp_text gen_txt_24
+flush 22
+
+csp_slot s0_4
+lss s0_11,"rg7","a12_warai1"
+aspt2_mem "xpos",s0_11,750
+flush 80
+waits 400
+
+csp_slot s0_3
+csp_slot s0_5
+csp_slot s0_6
+csp_slot s0_7
+csp_slot s0_8
+csp_slot s0_11
+csp_slot s0_9
+csp_slot s0_10
+lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
-
 lbg "c:local_saku",s0_3,"b_asum"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg7","a12_akuwarai1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+waits 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1200,800,0
+sptwait2 ypos,s0_3
 
 msgwnd_rg7
 *e27_27
 d [lv 0*"44"*"rg7_00740"]`To His Majesty, the Territory Lord and the Master of the Game Board.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,800,1000,0
+sptwait2 ypos,s0_3
 
 *e27_28
-d2 [lv 0*"44"*"rg7_00750"]`I have melted my heart into this chocolate.`[@][#][*][lv 0*"44"*"rg7_00760"]In fact, had it been possible, I would have wanted to become Your Majesty's chocolate myself.`[\]
+d2 [lv 0*"44"*"rg7_00750"]`I have melted my heart into this chocolate.`[@][#][*][lv 0*"44"*"rg7_00760"]` In fact, had it been possible, I would have wanted to become Your Majesty's chocolate myself.`[\]
 wait_on_d 0
-
+lss s0_9,"rg7","a12_warai3"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 d_continue
 wait_on_d -1
+textoff2
 
-lss s0_9,"rg7","a12_warai3"
+aspt2_mem "ypos",s0_3,500,1000,0
+sptwait2 ypos,s0_3
+
 
 *e27_29
 d [lv 0*"44"*"rg7_00770"]`Because in that case, when Your Majesty would've eaten me, I could've entered your mouth and rolled around on your soft, warm tongue, filling your mouth with ample pleasure...`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 *e27_30
 d [lv 0*"44"*"rg7_00780"]`-- From the youngest of the Seven Sisters of Purgatory, Asmodeus, with love, passion and melancholy.`[\]
+textoff2
 
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
+seplay 11,1010,100
+flush 23
+
+gosub *vdl_selection1
+
+
+
+
+
+
+
+
+
+
+*vdl_2
 
 seplay 11,1010,100
 

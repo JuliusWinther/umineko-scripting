@@ -23927,11 +23927,11 @@ return
 
 
 ;****************************************************************************************************
-; ;Sprite Cache - aspt2_mem executes aspt2 while storing its values - used for sprite reloads - W_CUSTOM
+; ;Sprite Cache - spt_mem executes aspt2 while storing its values - used for sprite reloads - W_CUSTOM
 ;****************************************************************************************************
 
-*aspt2_mem
-getparam $aspt_prop,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3
+*spt_mem
+getparam $spt_mem_type,$aspt_prop,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3
 
 ;The subset of each slot_cache contains all position and aspect modifications
 ;REMEMBER- the first element contains the sprite/background path, it mustn't be overwritten
@@ -23944,8 +23944,93 @@ itoa $string_temp4,%aspt_val1
 itoa $string_temp5,%aspt_val2
 itoa $string_temp6,%aspt_val3
 
+if $spt_mem_type != "r" jumpf
+	if $aspt_prop == "xpos" spt xpos,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][1],"spt|xpos|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "ypos" spt ypos,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][2],"spt|ypos|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "alpha" spt alpha,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][3],"spt|alpha|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "darken_r" spt darken_r,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][4],"spt|darken_r|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "darken_g" spt darken_g,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][5],"spt|darken_g|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "darken_b" spt darken_b,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][6],"spt|darken_b|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "scalex" spt scalex,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][7],"spt|scalex|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "scaley" spt scaley,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][8],"spt|scaley|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "rot" spt rot,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][9],"spt|rot|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "blur" spt blur,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][10],"spt|blur|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "breakup" spt breakup,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][11],"spt|breakup|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "breakupdir" spt breakupdir,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][12],"spt|breakupdir|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakexmul" spt quakexmul,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][13],"spt|quakexmul|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakexamp" spt quakexamp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][14],"spt|quakexamp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakexcycle" spt quakexcycle,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][15],"spt|quakexcycle|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakeymul" spt quakeymul,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][16],"spt|quakeymul|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakeyamp" spt quakeyamp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][17],"spt|quakeyamp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakeycycle" spt quakeycycle,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][18],"spt|quakeycycle|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "warp_amp" spt warp_amp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][19],"spt|warp_amp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "warp_wave" spt warp_wave,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][20],"spt|warp_wave|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "warp_spd" spt warp_spd,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][21],"spt|warp_spd|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_h" spt scroll_h,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][22],"spt|scroll_h|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_w" spt scroll_w,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][23],"spt|scroll_w|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_y" spt scroll_y,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][24],"spt|scroll_y|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_x" spt scroll_x,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][25],"spt|scroll_x|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "flip" spt flip,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][26],"spt|flip|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+~
 
-;TODO Aggiungere la gestione di aspt e pos
+if $spt_mem_type != "r2" jumpf
+	if $aspt_prop == "xpos" spt2 xpos,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][1],"spt2|xpos|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "ypos" spt2 ypos,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][2],"spt2|ypos|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "alpha" spt2 alpha,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][3],"spt2|alpha|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "darken_r" spt2 darken_r,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][4],"spt2|darken_r|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "darken_g" spt2 darken_g,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][5],"spt2|darken_g|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "darken_b" spt2 darken_b,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][6],"spt2|darken_b|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "scalex" spt2 scalex,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][7],"spt2|scalex|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "scaley" spt2 scaley,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][8],"spt2|scaley|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "rot" spt2 rot,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][9],"spt2|rot|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "blur" spt2 blur,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][10],"spt2|blur|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "breakup" spt2 breakup,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][11],"spt2|breakup|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "breakupdir" spt2 breakupdir,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][12],"spt2|breakupdir|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakexmul" spt2 quakexmul,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][13],"spt2|quakexmul|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakexamp" spt2 quakexamp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][14],"spt2|quakexamp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakexcycle" spt2 quakexcycle,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][15],"spt2|quakexcycle|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakeymul" spt2 quakeymul,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][16],"spt2|quakeymul|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakeyamp" spt2 quakeyamp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][17],"spt2|quakeyamp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakeycycle" spt2 quakeycycle,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][18],"spt2|quakeycycle|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "warp_amp" spt2 warp_amp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][19],"spt2|warp_amp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "warp_wave" spt2 warp_wave,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][20],"spt2|warp_wave|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "warp_spd" spt2 warp_spd,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][21],"spt2|warp_spd|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_h" spt2 scroll_h,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][22],"spt2|scroll_h|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_w" spt2 scroll_w,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][23],"spt2|scroll_w|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_y" spt2 scroll_y,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][24],"spt2|scroll_y|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_x" spt2 scroll_x,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][25],"spt2|scroll_x|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "flip" spt2 flip,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][26],"spt2|flip|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+~
+
+if $spt_mem_type != "a" jumpf
+	if $aspt_prop == "xpos" aspt xpos,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][1],"aspt|xpos|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "ypos" aspt ypos,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][2],"aspt|ypos|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "alpha" aspt alpha,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][3],"aspt|alpha|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "darken_r" aspt darken_r,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][4],"aspt|darken_r|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "darken_g" aspt darken_g,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][5],"aspt|darken_g|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "darken_b" aspt darken_b,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][6],"aspt|darken_b|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "scalex" aspt scalex,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][7],"aspt|scalex|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "scaley" aspt scaley,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][8],"aspt|scaley|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "rot" aspt rot,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][9],"aspt|rot|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "blur" aspt blur,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][10],"aspt|blur|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "breakup" aspt breakup,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][11],"aspt|breakup|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "breakupdir" aspt breakupdir,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][12],"aspt|breakupdir|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakexmul" aspt quakexmul,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][13],"aspt|quakexmul|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakexamp" aspt quakexamp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][14],"aspt|quakexamp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakexcycle" aspt quakexcycle,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][15],"aspt|quakexcycle|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakeymul" aspt quakeymul,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][16],"aspt|quakeymul|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakeyamp" aspt quakeyamp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][17],"aspt|quakeyamp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "quakeycycle" aspt quakeycycle,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][18],"aspt|quakeycycle|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "warp_amp" aspt warp_amp,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][19],"aspt|warp_amp|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "warp_wave" aspt warp_wave,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][20],"aspt|warp_wave|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done 
+	if $aspt_prop == "warp_spd" aspt warp_spd,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][21],"aspt|warp_spd|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_h" aspt scroll_h,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][22],"aspt|scroll_h|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_w" aspt scroll_w,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][23],"aspt|scroll_w|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_y" aspt scroll_y,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][24],"aspt|scroll_y|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "scroll_x" aspt scroll_x,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][25],"aspt|scroll_x|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+	if $aspt_prop == "flip" aspt flip,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][26],"aspt|flip|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : goto *spt_mem_done
+~
+
 if $aspt_prop == "xpos" aspt2 xpos,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][1],"aspt2|xpos|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf
 if $aspt_prop == "ypos" aspt2 ypos,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][2],"aspt2|ypos|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
 if $aspt_prop == "alpha" aspt2 alpha,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][3],"aspt2|alpha|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
@@ -23973,6 +24058,8 @@ if $aspt_prop == "scroll_y" aspt2 scroll_y,%aspt_slot,%aspt_val1,%aspt_val2,%asp
 if $aspt_prop == "scroll_x" aspt2 scroll_x,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][25],"aspt2|scroll_x|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
 if $aspt_prop == "flip" aspt2 flip,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][26],"aspt2|flip|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
 ~
+
+*spt_mem_done
 
 return
 
@@ -28082,7 +28169,7 @@ return
 	ignore_cmd "click","break_glass3","break_glass4","show_coin_counter_real","show_coin_counter2_real","show_coin_counter3_real","cake","quiz","quiz2","all_presents_discarded","murder_story"
 	ignore_inl_cmd "wait","delay","text_fade_t","gstg","text_speed_t"
 	;Saku logs - ignore custom commands - W_CUSTOM
-	ignore_cmd "aspt2_mem", "lsl", "bg_d", "textoff2", "texton2"
+	ignore_cmd "spt_mem", "lsl", "bg_d", "textoff2", "texton2"
 	;End Custom
 return
 
@@ -33524,7 +33611,10 @@ return
 		for %for_index2=1 to 26
 			if $?slot_cache[%for_index1][%for_index2] != "" split $?slot_cache[%for_index1][%for_index2],"|",$string_temp1,$string_temp2,$string_temp3 : split $string_temp3,"\",%aspt_val1,%aspt_val2,%aspt_val3
 				;1-Pos Command / 2-Pos Property / 3-Property Value
-			if $string_temp1 == "aspt2" aspt2_mem $string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
+			if $string_temp1 == "aspt2" spt_mem "a2",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
+			if $string_temp1 == "aspt" spt_mem "a",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
+			if $string_temp1 == "spt2" spt_mem "r2",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
+			if $string_temp1 == "spt" spt_mem "r",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
 		next
 		mov %reloading_status,0
 

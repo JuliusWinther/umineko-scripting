@@ -29030,6 +29030,9 @@ return
 	if %skip_flg_bak == on skip_on
 	ignore_cmd "click","pam","rumble","skip_on","skip_off","waits","wait","wait2","waitvoice","ak","lv","waittimer","saveoff","trophy_open","texec3","seplay","textoff","async_cache_img","async_cache_snd","show_characters"
 	ignore_inl_cmd "wait","delay","text_fade_t","ak","text_speed_t","lv","vv"
+	;Saku - W_CUSTOM
+	ignore_cmd "textoff2","texton2"
+	;End Custom
 
 	E_A
 	lv_stop
@@ -29073,6 +29076,7 @@ return
 	if %cur_wndmode == on set_window_simple %log_sw_x,%log_sw_y
 	; So that we save after jumping
 	mov %TextCC12Flag,1
+	debug_str $log_ch_next ;W_TEMP
 	main_goto $log_ch_next
 return
 
@@ -32737,7 +32741,7 @@ if $cur_character = "pie" gosub *msgwnd_pie : jumpf
 if $cur_character = "sku" gosub *msgwnd_sku : jumpf
 if $cur_character = "s55" gosub *msgwnd_s55 : jumpf
 if $cur_character = "bbt" gosub *msgwnd_bbt : jumpf
-if $cur_character = "pro" gosub *msgwnd_pro : jumpf
+if $cur_character = "whm" gosub *msgwnd_whm : jumpf
 ;End Custom
 
 ~
@@ -32747,6 +32751,7 @@ borderstyle 5,#000000 : shadedistance 0,0
 borderstyle 5,#000000,1 : shadedistance 0,0,#000000,1
 
 if %msgwnd_type == 3 shadedistance 2,2 : shadedistance 2,2,#000000,1
+if %msgwnd_type == 4 shadedistance 2,2 : shadedistance 2,2,#000000,1
 
 ;d_name_refresh ;Original Edited ;Saku log - honestly don't what this is but it makes umi crash so delete - W_CUSTOM
 

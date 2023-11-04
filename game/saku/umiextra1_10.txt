@@ -18,23 +18,23 @@ flush 29
 
 lbg "c:backgrounds",s0_3,"sky_1a"
 flush 22
-waits 500
+waits 900
 csp_slot s0_3
 flush 22
 
 lbg "c:backgrounds",s0_3,"beach_1af"
 flush 22
-waits 500
+wait 700
 
 lbg "c:backgrounds",s0_3,"forest_s1a"
 flush 22
-waits 500
+wait 600
 lbg "c:colour",s0_3,"white"
 flush 22
 
 lbg "c:backgrounds",s0_3,"rose_1af"
 flush 22
-waits 500
+wait 500
 
 lss s0_10,"mar","a22_niyari1"
 aspt2_mem "xpos",s0_10,550
@@ -253,18 +253,14 @@ lss s0_10,"goh","a11_defo1"
 aspt2_mem "xpos",s0_10,550
 flush 24
 
-lss s0_10,"goh","a11_omakase2"
-aspt2_mem "xpos",s0_10,550
+lss s0_6,"goh","a11_omakase2"
+aspt2_mem "xpos",s0_6,550
 flush 80
 
 msgwnd_goh
 *e110_22
 d [lv 0*"17"*"goh_01130"]`{qt}Now, everyone.`[@][lv 0*"17"*"goh_01140"]` I will lead you to the guesthouse.`[@][lv 0*"17"*"goh_01150"]` Please come along, this way...{qt}`[\]
 textoff2
-
-csp_slot s0_10
-flush 80
-wait 100
 
 lss s0_9,"rud","a11_defo1"
 aspt2_mem "xpos",s0_9,0
@@ -278,7 +274,7 @@ textoff2
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
+csp_slot s0_6
 flush 24
 
 lbg "c:backgrounds",s0_3,"rose_1af"
@@ -1397,7 +1393,8 @@ set_name_window_non
 lbg "c:colour",s0_30,"white"
 seplay 11,27,100
 flush 1
-
+rain_load s0_11
+rain_params s0_11,100,500,0
 csp_slot s0_30
 flush 2
 
@@ -1410,11 +1407,14 @@ d `Their laughter was answered by a huge roaring thunder, which became the appla
 d `...Somehow, he and them seemed to have taken a liking to this forgery.`[\]
 textoff2
 
+csp_slot s0_11
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 flush 24
 
+rain_load s0_11
+rain_params s0_11,100,500,0
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_8,"bea","a11_defo1"
 aspt2_mem "xpos",s0_8,-549
@@ -1499,11 +1499,14 @@ msgwnd_bbt
 d [lv 0*"63"*"bbt_01100"]`{qt}Those merciless people will gather one after the other, and create forgeries like us.`[@][lv 0*"63"*"bbt_01110"]`...Do you understand?`[@][lv 0*"63"*"bbt_01120"]` Even if 'you' don't write anymore about us, we continue to live.{qt}`[\]
 textoff2
 
+csp_slot s0_11
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 flush 26
 
+rain_load s0_11
+rain_params s0_11,100,500,0
 lbg "c:backgrounds",s0_3,"rose_1ep"
 flush 26
 
@@ -1522,12 +1525,14 @@ flush 1
 csp_slot s0_30
 flush 2
 
+csp_slot s0_11
 csp_slot s0_3
 vol_bgm -1 1000
 flush 42
 
-meplay 1,12,100
-
+rain_load s0_11
+rain_params s0_11,100,500,0
+meplay 1,12,50
 lbg "c:backgrounds",s0_3,"rose_g1ar"
 flush 22
 
@@ -1558,9 +1563,12 @@ d `The roses weren't golden anymore.`[\]
 d `Suddenly, we had returned to the Ushiromiya rose garden with its many colors.`[\]
 textoff2
 
+csp_slot s0_11
 csp_slot s0_3
 flush 22
 
+rain_load s0_11
+rain_params s0_11,100,500,0
 lbg "c:backgrounds",s0_3,"rose_1ar"
 lss s0_8,"but","b11_nayamu1_chiru"
 aspt2_mem "xpos",s0_8,-549
@@ -1651,10 +1659,13 @@ textoff2
 csp_slot s0_10
 flush 80
 wait 500
+csp_slot s0_11
 csp_slot s0_3
 flush 22
 vol_bgm -1 500
 
+rain_load s0_11
+rain_params s0_11,100,500,0
 lbg "c:backgrounds",s0_3,"rose_g1ar"
 flush 22
 seplay 12,1010,100
@@ -1703,6 +1714,8 @@ d `Again a roaring thunder.`[@]` The pitch black sky blinked violently.`[\]
 d `Among the still falling rain, Battler once again spread his arms laughing and looked at the sky.`[\]
 textoff2
 
+csp_slot s0_11
+csp_slot s0_7
 csp_slot s0_3
 flush 22
 

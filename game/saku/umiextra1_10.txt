@@ -18,21 +18,23 @@ flush 29
 
 lbg "c:backgrounds",s0_3,"sky_1a"
 flush 22
-
+waits 200
 csp_slot s0_3
 flush 22
 
 lbg "c:backgrounds",s0_3,"beach_1af"
 flush 22
+waits 200
 
 lbg "c:backgrounds",s0_3,"forest_s1a"
 flush 22
-
+waits 200
 lbg "c:colour",s0_3,"white"
 flush 22
 
 lbg "c:backgrounds",s0_3,"rose_1af"
 flush 22
+waits 200
 
 lss s0_10,"mar","a22_niyari1"
 aspt2_mem "xpos",s0_10,550
@@ -94,7 +96,7 @@ flush 80
 
 msgwnd_rud
 *e110_7
-d2 [lv 0*"08"*"rud_00560"]`{qt}Can't you do anything else but complain?`[#][*]`Ouchouch!`[@][lv 0*"08"*"rud_00570"]` Not the ears, don't pull the ears!{qt}`[\]
+d2 [lv 0*"08"*"rud_00560"]`{qt}Can't you do anything else but complain?`[#][*]` Ouchouch!`[@][lv 0*"08"*"rud_00570"]` Not the ears, don't pull the ears!{qt}`[\]
 wait_on_d 0
 seplay 11,10,100
 lss s0_8,"rud","a11_odoroki1"
@@ -102,6 +104,7 @@ aspt2_mem "xpos",s0_8,-549
 flush 80
 d_continue
 wait_on_d -1
+textoff2
 
 csp_slot s0_8
 csp_slot s0_9
@@ -110,7 +113,7 @@ flush 80
 
 msgwnd_non
 *e110_8
-d `{qt}Ahahaha{qt}`[@]` {qt}Ufufufufu{qt}`[@]` {qt}Kyahahahahaha{qt}`[\]
+d `{qt}Ahahaha{qt},`[@]` {qt}Ufufufufu{qt},`[@]` {qt}Kyahahahahaha{qt}`[\]
 
 *e110_9
 d `The family members, coming for the family conference, strolled around the rose garden, bickering like always.`[\]
@@ -156,9 +159,13 @@ msgwnd_geo
 *e110_14
 d [lv 0*"07"*"geo_00580"]`{qt}Hahaha.`[@][lv 0*"07"*"geo_00590"]` Looks like you got bored in these 6 years without Battler, huh, Jessica?`[@][lv 0*"07"*"geo_00600"]` But the area here is not the only thing that seems huge.`[@][lv 0*"07"*"geo_00610"]` Battler, you've grown quite a lot as well!{qt}`[\]
 
+csp_slot s0_10
+flush 80
+wait 50
 lss s0_10,"mar","a22_defo1"
 aspt2_mem "xpos",s0_10,550
 flush 24
+wait 200
 
 lss s0_10,"mar","a11_fukigen2"
 aspt2_mem "xpos",s0_10,550
@@ -175,10 +182,12 @@ flush 80
 msgwnd_but
 *e110_16
 d [lv 0*"10"*"bat_05000"]`{qt}Don't worry.`[@][lv 0*"10"*"bat_05010"]` You'll start growing soon too.`[@][lv 0*"10"*"bat_05020"]` In a whole variety of ways! Ihihihihi!{qt}`[\]  ;harassment
+textoff2
 
 seplay 11,3,100
 csp_slot s0_10
 flush 80
+wait 100
 
 msgwnd_mar
 *e110_17
@@ -248,6 +257,11 @@ flush 80
 msgwnd_goh
 *e110_22
 d [lv 0*"17"*"goh_01130"]`{qt}Now, everyone.`[@][lv 0*"17"*"goh_01140"]` I will lead you to the guesthouse.`[@][lv 0*"17"*"goh_01150"]` Please come along, this way...{qt}`[\]
+textoff2
+
+csp_slot s0_10
+flush 80
+wait 100
 
 lss s0_9,"rud","a11_defo1"
 aspt2_mem "xpos",s0_9,0
@@ -294,6 +308,7 @@ d [lv 0*"10"*"bat_05070"]`{qt}Ah, sorry.`[@][lv 0*"10"*"bat_05080"]` Just go ahe
 lss s0_9,"mar","a22_defo1"
 aspt2_mem "xpos",s0_9,0
 flush 24
+waits 100
 
 lss s0_9,"mar","a11_odoroki1"
 aspt2_mem "xpos",s0_9,0
@@ -402,6 +417,9 @@ msgwnd_but
 *e110_44
 d [lv 0*"10"*"bat_05110"]`{qt}...Yeah.`[@][lv 0*"10"*"bat_05120"]` Later.{qt}`[\]
 
+csp_slot s0_10
+flush 80
+
 msgwnd_non
 *e110_45
 d `Maria spurted ahead hastily when she was called by Rosa, and George and Jessica followed her.`[\]
@@ -456,7 +474,7 @@ csp_slot s0_3
 flush 22
 
 seplay 11,22,100
-anim2 s0_17,"no83",1,1
+anim2 s0_17,"no83",1
 flush 1
 waitvideo
 

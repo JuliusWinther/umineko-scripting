@@ -55,6 +55,43 @@ textoff2
 goto *vdl_loop
 
 
+*vdl_selection2
+
+jnskip_s
+    return
+~
+
+if ?vdl_choices[7] = 1 && ?vdl_choices[8] = 1 && ?vdl_choices[9] = 1 && ?vdl_choices[10] = 1 goto *vdl_3
+
+lbg "c:backgrounds",s0_3,"moon_1a"
+
+if ?vdl_choices[10] = 0 lss s0_7,"s55","a11_hohoemi1" : aspt2_mem "xpos",s0_7,650
+
+if ?vdl_choices[9] = 0 lss s0_6,"s45","a11_defo2" : aspt2_mem "xpos",s0_6,250
+
+if ?vdl_choices[8] = 0 lss s0_5,"s41","a11_akuwarai1" : aspt2_mem "xpos",s0_5,-250
+
+if ?vdl_choices[7] = 0 lss s0_4,"s00","a11_defo1" : aspt2_mem "xpos",s0_4,-650
+
+flush 22
+wait 300
+
+
+
+if ?vdl_choices[7] = 0 lsp s0_23,extra_story_btn,375,320 : write_special_text gen_txt_19,"in_story_choice",375,330,"CHIESTER00{n}"
+
+if ?vdl_choices[8] = 0 lsp s0_22,extra_story_btn,375,410 : write_special_text gen_txt_20,"in_story_choice",375,420,"CHIESTER410{n}"
+
+if ?vdl_choices[9] = 0 lsp s0_21,extra_story_btn,375,500 : write_special_text gen_txt_21,"in_story_choice",375,510,"CHIESTER45{n}"
+
+if ?vdl_choices[10] = 0 lsp s0_20,extra_story_btn,375,590 : write_special_text gen_txt_22,"in_story_choice",375,600,"CHIESTER556{n}"
+
+
+flush 22
+textoff2
+goto *vdl_loop
+
+
 
 
 
@@ -68,6 +105,10 @@ goto *vdl_loop
     spbtn s0_26,s0_26
     spbtn s0_25,s0_25
     spbtn s0_24,s0_24
+    spbtn s0_23,s0_23
+    spbtn s0_22,s0_22
+    spbtn s0_21,s0_21
+    spbtn s0_20,s0_20
 
     btndown 0
     btnwait %temp_var
@@ -87,6 +128,16 @@ goto *vdl_loop
     if %temp_var = s0_25 vdl_clear_selection : mov ?vdl_choices[5],1 : goto *vdl_rg6
 
     if %temp_var = s0_24 vdl_clear_selection : mov ?vdl_choices[6],1 : goto *vdl_rg7
+
+    if %temp_var = s0_23 vdl_clear_selection : mov ?vdl_choices[7],1 : goto *vdl_s00
+
+    if %temp_var = s0_22 vdl_clear_selection : mov ?vdl_choices[8],1 : goto *vdl_s41
+
+    if %temp_var = s0_21 vdl_clear_selection : mov ?vdl_choices[9],1 : goto *vdl_s45
+
+    if %temp_var = s0_20 vdl_clear_selection : mov ?vdl_choices[10],1 : goto *vdl_s55
+
+
 
 
 goto *vdl_loop
@@ -1028,208 +1079,664 @@ gosub *vdl_selection1
 
 *vdl_2
 
-seplay 11,1010,100
+wait 300
+lss s0_10,"rg1","a12_warai2" 
+aspt2_mem "xpos",s0_10,0
 
-seplay 11,52,100
+lss s0_9,"rg2","a12_warai1" 
+aspt2_mem "xpos",s0_9,250
+
+lss s0_8,"rg3","a12_hohoemi1" 
+aspt2_mem "xpos",s0_8,-250
+
+lss s0_7,"rg4","a12_warai1" 
+aspt2_mem "xpos",s0_7,-500
+
+lss s0_6,"rg5","a12_warai3" 
+aspt2_mem "xpos",s0_6,500
+
+lss s0_5,"rg6","a12_warai1" 
+aspt2_mem "xpos",s0_5,-750
+
+lss s0_4,"rg7","a12_warai1" 
+aspt2_mem "xpos",s0_4,750
+
+aspt2 breakup,s0_4,0
+aspt2 alpha,s0_4,255
+aspt2 breakupdir,s0_4,3
+
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+
+aspt2 breakup,s0_9,0
+aspt2 alpha,s0_9,255
+aspt2 breakupdir,s0_9,3
+
+aspt2 breakup,s0_8,0
+aspt2 alpha,s0_8,255
+aspt2 breakupdir,s0_8,3
+
+aspt2 breakup,s0_7,0
+aspt2 alpha,s0_7,255
+aspt2 breakupdir,s0_7,3
+
+aspt2 breakup,s0_6,0
+aspt2 alpha,s0_6,255
+aspt2 breakupdir,s0_6,3
+
+aspt2 breakup,s0_5,0
+aspt2 alpha,s0_5,255
+aspt2 breakupdir,s0_5,3
+flush 2
+waits 300
+
+aspt2 breakup,s0_4,1000,2000
+aspt2 alpha,s0_4,0
+
+aspt2 breakup,s0_10,1000,2000
+aspt2 alpha,s0_10,0
+
+aspt2 breakup,s0_9,1000,2000
+aspt2 alpha,s0_9,0
+
+aspt2 breakup,s0_8,1000,2000
+aspt2 alpha,s0_8,0
+
+aspt2 breakup,s0_7,1000,2000
+aspt2 alpha,s0_7,0
+
+aspt2 breakup,s0_6,1000,2000
+aspt2 alpha,s0_6,0
+
+aspt2 breakup,s0_5,1000,2000
+aspt2 alpha,s0_5,0
+
+seplay 11,52,90
+sptwait2 breakup,s0_5
+
+wait 400
 
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
-lss s0_9,"ron","a11_warai2"
-
+lss s0_8,"ron","a11_warai2"
+aspt2_mem "xpos",s0_8,-350
 lss s0_9,"but","d11_warai1"
+aspt2_mem "xpos",s0_9,350
+flush 23
 
 msgwnd_but
 *e27_31
 d [lv 0*"10"*"bat_03970"]`{qt}Ihihi! This is making me feel bad!{qt}`[\]
 
-
-lss s0_9,"ron","a11_warai1"
+lss s0_8,"ron","a11_warai1"
+aspt2_mem "xpos",s0_8,-350
 
 msgwnd_ron
 *e27_32
 d [lv 0*"31"*"ron_01330"]`{qt}There's still a lot of letters left. Pukuku.{qt}`[\]
+textoff2
 
-
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+vol_bgm -1 500
+flush 30
+wait 500
 bgmplay 74,70,0
 
 lbg "c:backgrounds",s0_3,"moon_1a"
+flush 22
+lss s0_4,"s00","a11_defo1"
+aspt2_mem "xpos",s0_4,-650
 
-lss s0_9,"s00","a11_defo1"
+lss s0_5,"s41","a11_akuwarai1"
+aspt2_mem "xpos",s0_5,-250
 
-lss s0_9,"s41","a11_akuwarai1"
+lss s0_6,"s45","a11_defo2"
+aspt2_mem "xpos",s0_6,250
 
-lss s0_9,"s45","a11_defo2"
+lss s0_7,"s55","a11_hohoemi1"
+aspt2_mem "xpos",s0_7,650
 
-lss s0_9,"s55","a11_hohoemi1"
+aspt2 breakup,s0_7,1000
+aspt2 alpha,s0_7,0
+aspt2 breakupdir,s0_7,3
 
-seplay 11,52,100
+aspt2 breakup,s0_6,1000
+aspt2 alpha,s0_6,0
+aspt2 breakupdir,s0_6,3
 
-lbg "c:backgrounds",s0_3,"moon_1a"
+aspt2 breakup,s0_5,1000
+aspt2 alpha,s0_5,0
+aspt2 breakupdir,s0_5,3
 
-lss s0_9,"s00","a11_defo1"
+aspt2 breakup,s0_4,1000
+aspt2 alpha,s0_4,0
+aspt2 breakupdir,s0_4,3
+flush 1
 
-lss s0_9,"s41","a11_akuwarai1"
+seplay 11,52,90
 
-lss s0_9,"s45","a11_defo2"
+aspt2 breakup,s0_4,0,2000
+aspt2 alpha,s0_4,255
 
-lss s0_9,"s55","a11_hohoemi1"
+aspt2 breakup,s0_7,0,2000
+aspt2 alpha,s0_7,255
 
+aspt2 breakup,s0_6,0,2000
+aspt2 alpha,s0_6,255
+
+aspt2 breakup,s0_5,0,2000
+aspt2 alpha,s0_5,255
+sptwait2 breakup,s0_5
+
+gosub *vdl_selection2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_s00
+
+csp_slot s0_23
+csp_slot s0_22
+csp_slot s0_21
+csp_slot s0_20
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+flush 22
+
+csp_slot s0_4
 lss s0_9,"s00","a11_komaru1"
+aspt2_mem "xpos",s0_9,-650
+flush 80
+waits 400
 
+csp_slot s0_3
+csp_slot s0_5
+csp_slot s0_6
+csp_slot s0_7
+lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
-
 lbg "c:local_saku",s0_3,"b_s00"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"s00","a11_defo1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+waits 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1200,800,0
+sptwait2 ypos,s0_3
+
 
 msgwnd_s00
 *e27_33
-d [lv 0*"37"*"s00_00100"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"37"*"s00_00110"]From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
+d [lv 0*"37"*"s00_00100"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"37"*"s00_00110"]` From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,800,1000,0
+sptwait2 ypos,s0_3
 
 *e27_34
 d [lv 0*"37"*"s00_00120"]`The purpose of this letter is not only to celebrate Valentine's Day but also to express my deep respect and affection for Your Majesty.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,500,1000,0
+sptwait2 ypos,s0_3
 
 *e27_35
-d [lv 0*"37"*"s00_00130"]`The enclosed chocolate has passed the inspection of the Medical Team of the Imperial Guards.`[@][lv 0*"37"*"s00_00140"]Please, enjoy it at ease.`[\]
+d [lv 0*"37"*"s00_00130"]`The enclosed chocolate has passed the inspection of the Medical Team of the Imperial Guards.`[@][lv 0*"37"*"s00_00140"]` Please, enjoy it at ease.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 *e27_36
 d [lv 0*"37"*"s00_00150"]`-- Chiester00`[\]
+textoff2
 
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
 
+gosub *vdl_selection2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_s41
+
+csp_slot s0_23
+csp_slot s0_22
+csp_slot s0_21
+csp_slot s0_20
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+flush 22
+
+csp_slot s0_5
 lss s0_9,"s41","a11_defo1"
+aspt2_mem "xpos",s0_9,-250
+flush 80
+waits 400
 
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_6
+csp_slot s0_7
+lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
-
 lbg "c:local_saku",s0_3,"b_s41"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"s41","a11_defo1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+waits 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1200,800,0
+sptwait2 ypos,s0_3
+
 
 msgwnd_s41
 *e27_37
 d [lv 0*"36"*"s41_00010"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"36"*"s41_00020"]From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,600,1000,0
+sptwait2 ypos,s0_3
 
 *e27_38
 d [lv 0*"36"*"s41_00030"]`Chocolate roses given to friends on this day are like a shotgun.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,500,1000,0
+sptwait2 ypos,s0_3
 
 *e27_39
 d [lv 0*"36"*"s41_00040"]`Chocolate of true love, that guarantees a perfect strike, is like a sniper rifle.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,400,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"s41","a11_majime1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_40
 d [lv 0*"36"*"s41_00050"]`The chocolate I sent to you, which one do you think it is nyeh?`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"s41","a11_akuwarai2"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_41
 d [lv 0*"36"*"s41_00060"]`-- Chiester410, nyeh!`[\]
+textoff2
 
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
 
+gosub *vdl_selection2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_s45
+
+csp_slot s0_23
+csp_slot s0_22
+csp_slot s0_21
+csp_slot s0_20
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+flush 22
+
+csp_slot s0_6
 lss s0_9,"s45","a11_defo1"
+aspt2_mem "xpos",s0_9,250
+flush 80
+waits 400
 
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_5
+csp_slot s0_7
+lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
-
 lbg "c:local_saku",s0_3,"b_s45"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"s45","a11_defo1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+waits 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1200,800,0
+sptwait2 ypos,s0_3
+
+
 
 msgwnd_s45
 *e27_42
-d [lv 0*"35"*"s45_00070"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"35"*"s45_00080"]From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
+d [lv 0*"35"*"s45_00070"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"35"*"s45_00080"]` From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,800,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"s45","a11_komaru2"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_43
-d [lv 0*"35"*"s45_00090"]`Thank you very much for everything.`[@][lv 0*"35"*"s45_00100"]I actually wanted to send you handmade chocolate, but because of the chocolate terrorism incident last year, there was a ban on putting handmade chocolate in the mail this year...`[\]
+d [lv 0*"35"*"s45_00090"]`Thank you very much for everything.`[@][lv 0*"35"*"s45_00100"]` I actually wanted to send you handmade chocolate, but because of the chocolate terrorism incident last year, there was a ban on putting handmade chocolate in the mail this year...`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,500,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"s45","a11_komaru1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_44
-d [lv 0*"35"*"s45_00110"]`I put my heart into choosing the chocolate most suitable for Your Majesty's tastes.`[@][lv 0*"35"*"s45_00120"]It would be my honor if you found it satisfactory!`[\]
+d [lv 0*"35"*"s45_00110"]`I put my heart into choosing the chocolate most suitable for Your Majesty's tastes.`[@][lv 0*"35"*"s45_00120"]` It would be my honor if you found it satisfactory!`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 *e27_45
 d [lv 0*"35"*"s45_00130"]`-- Chiester45`[\]
+textoff2
 
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
 
+gosub *vdl_selection2
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_s55
+
+csp_slot s0_23
+csp_slot s0_22
+csp_slot s0_21
+csp_slot s0_20
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+csp_text gen_txt_22
+flush 22
+
+csp_slot s0_7
 lss s0_9,"s55","a11_hohoemi2"
+aspt2_mem "xpos",s0_9,650
+flush 80
+waits 400
 
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_6
+csp_slot s0_5
+lbg "c:colour",s0_10,"white"
 seplay 11,1010,100
-
 lbg "c:local_saku",s0_3,"b_s55"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"s55","a11_defo1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
+
+flush 23
+waits 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+waits 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1200,800,0
+sptwait2 ypos,s0_3
+
+
 
 msgwnd_s55
 *e27_46
-d [lv 0*"61"*"s55_00010"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"61"*"s55_00020"]From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
+d [lv 0*"61"*"s55_00010"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"61"*"s55_00020"]` From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,800,1000,0
+sptwait2 ypos,s0_3
 
 *e27_47
-d [lv 0*"61"*"s55_00030"]`I hope my feelings of gratitude and the enclosed chocolate reach you well.`[@][lv 0*"61"*"s55_00040"]As you have, please allow the Chiester Sister Imperial Guards to remain in your thoughts.`[\]
+d [lv 0*"61"*"s55_00030"]`I hope my feelings of gratitude and the enclosed chocolate reach you well.`[@][lv 0*"61"*"s55_00040"]` As you have, please allow the Chiester Sister Imperial Guards to remain in your thoughts.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,500,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"s55","a11_warai1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_48
-d2 [lv 0*"61"*"s55_00050"]`There are only girls in the Imperial Guards, so this custom is new to me.`[@][lv 0*"61"*"s55_00060"]Have I followed proper Valentine's Day etiquette with my letter?`[@][#][*][lv 0*"61"*"s55_00070"]If you find the time to let me know, thank you very much in advance.`[\]
+d2 [lv 0*"61"*"s55_00050"]`There are only girls in the Imperial Guards, so this custom is new to me.`[@][lv 0*"61"*"s55_00060"]` Have I followed proper Valentine's Day etiquette with my letter?`[@][#][*][lv 0*"61"*"s55_00070"]` If you find the time to let me know, thank you very much in advance.`[\]
 wait_on_d 0
-
+lss s0_9,"s55","a11_warai3"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 d_continue
 wait_on_d -1
+textoff2
 
-*vdl_s55 ;W_TEMP
-
-lss s0_9,"s55","a11_warai3"
+aspt2_mem "ypos",s0_3,100,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"s55","a11_warai2"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_49
 d [lv 0*"61"*"s55_00080"]`-- Chiester556`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"s55","a11_hohoemi1"
+aspt2 alpha,s0_9,200
+aspt2_mem "xpos",s0_9,550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_50
-d [lv 0*"61"*"s55_00090"]`P.S.`[|][lv 0*"61"*"s55_00100"]The fortune slip that I pulled at a shrine the other day said I was in for 'terrible luck'.`[@][lv 0*"61"*"s55_00110"]` I should take care on my next mission.`[\]
+d [lv 0*"61"*"s55_00090"]`P.S.`[|][lv 0*"61"*"s55_00100"]` The fortune slip that I pulled at a shrine the other day said I was in for 'terrible luck'.`[@][lv 0*"61"*"s55_00110"]` I should take care on my next mission.`[\]
+textoff2
 
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
+
+gosub *vdl_selection2
+
+
+
+
+
+
+
+*vdl_3
+
+wait 300
 
 lbg "c:backgrounds",s0_3,"moon_1a"
+lss s0_4,"s00","a11_defo1"
+aspt2_mem "xpos",s0_4,-650
+lss s0_5,"s41","a11_akuwarai1"
+aspt2_mem "xpos",s0_5,-250
+lss s0_6,"s45","a11_defo1"
+aspt2_mem "xpos",s0_6,250
+lss s0_7,"s55","a11_hohoemi1"
+aspt2_mem "xpos",s0_7,650
 
-lss s0_9,"s00","a11_defo1"
+flush 22
 
-lss s0_9,"s41","a11_akuwarai1"
+wait 500
 
-lss s0_9,"s45","a11_defo1"
+aspt2 breakup,s0_4,0
+aspt2 alpha,s0_4,255
+aspt2 breakupdir,s0_4,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_4,1000,2000
+sptwait2 breakup,s0_4
 
-lss s0_9,"s55","a11_hohoemi1"
+aspt2 breakup,s0_5,0
+aspt2 alpha,s0_5,255
+aspt2 breakupdir,s0_5,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_5,1000,2000
+sptwait2 breakup,s0_5
 
-seplay 11,52,100
+aspt2 breakup,s0_6,0
+aspt2 alpha,s0_6,255
+aspt2 breakupdir,s0_6,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_6,1000,2000
+sptwait2 breakup,s0_6
 
-seplay 11,52,100
+lss s0_7,"s55","a11_hohoemi2"
+aspt2_mem "xpos",s0_7,650
+flush 80
 
-seplay 11,52,100
+aspt2 breakup,s0_7,0
+aspt2 alpha,s0_7,255
+aspt2 breakupdir,s0_7,3
+flush 1
+seplay 11,52,90
+aspt2 breakup,s0_7,1000,2000
+sptwait2 breakup,s0_7
 
-lss s0_9,"s55","a11_hohoemi2"
-
-seplay 11,52,100
 
 seplay 11,57,100
 

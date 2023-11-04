@@ -93,6 +93,73 @@ goto *vdl_loop
 
 
 
+*vdl_selection3
+
+jnskip_s
+    return
+~
+
+if ?vdl_choices[11] = 1 && ?vdl_choices[12] = 1 && ?vdl_choices[13] = 1 goto *vdl_4
+
+lbg "c:backgrounds",s0_3,"cha_i1ap"
+
+if ?vdl_choices[11] = 0 lss s0_8,"dla","a11_majime1" : aspt2_mem "xpos",s0_8,-550
+
+if ?vdl_choices[12] = 0 lss s0_9,"cor","a11_majime1" 
+
+if ?vdl_choices[13] = 0 lss s0_10,"ger","a11_defo2" : aspt2_mem "xpos",s0_10,550
+
+
+flush 22
+wait 300
+
+
+
+if ?vdl_choices[11] = 0 lsp s0_19,extra_story_btn,375,320 : write_special_text gen_txt_19,"in_story_choice",375,330,"DLANOR{n}"
+
+if ?vdl_choices[12] = 0 lsp s0_18,extra_story_btn,375,410 : write_special_text gen_txt_20,"in_story_choice",375,420,"CORNELIA{n}"
+
+if ?vdl_choices[13] = 0 lsp s0_17,extra_story_btn,375,500 : write_special_text gen_txt_21,"in_story_choice",375,510,"GERTRUDE{n}"
+
+
+flush 22
+textoff2
+goto *vdl_loop
+
+
+*vdl_selection4
+
+jnskip_s
+    return
+~
+
+if ?vdl_choices[14] = 1 && ?vdl_choices[15] = 1 goto *vdl_5
+
+lbg "c:backgrounds",s0_3,"cha_i1ap"
+
+if ?vdl_choices[14] = 0 lss s0_5,"zep","a11_defo1" : aspt2_mem "xpos",s0_5,-350
+
+if ?vdl_choices[15] = 0 lss s0_6,"fur","a11_defo1" : aspt2_mem "xpos",s0_6,350
+
+
+flush 22
+wait 300
+
+
+
+
+
+if ?vdl_choices[14] = 0 lsp s0_16,extra_story_btn,375,410 : write_special_text gen_txt_20,"in_story_choice",375,420,"ZEPAR{n}"
+
+if ?vdl_choices[15] = 0 lsp s0_15,extra_story_btn,375,500 : write_special_text gen_txt_21,"in_story_choice",375,510,"FURFUR{n}"
+
+
+flush 22
+textoff2
+goto *vdl_loop
+
+
+
 
 
 *vdl_loop
@@ -109,6 +176,11 @@ goto *vdl_loop
     spbtn s0_22,s0_22
     spbtn s0_21,s0_21
     spbtn s0_20,s0_20
+    spbtn s0_19,s0_19
+    spbtn s0_18,s0_18
+    spbtn s0_17,s0_17
+    spbtn s0_16,s0_16
+    spbtn s0_15,s0_15
 
     btndown 0
     btnwait %temp_var
@@ -136,6 +208,16 @@ goto *vdl_loop
     if %temp_var = s0_21 vdl_clear_selection : mov ?vdl_choices[9],1 : goto *vdl_s45
 
     if %temp_var = s0_20 vdl_clear_selection : mov ?vdl_choices[10],1 : goto *vdl_s55
+
+    if %temp_var = s0_19 vdl_clear_selection : mov ?vdl_choices[11],1 : goto *vdl_dla
+
+    if %temp_var = s0_18 vdl_clear_selection : mov ?vdl_choices[12],1 : goto *vdl_cor
+
+    if %temp_var = s0_17 vdl_clear_selection : mov ?vdl_choices[13],1 : goto *vdl_ger
+
+    if %temp_var = s0_16 vdl_clear_selection : mov ?vdl_choices[14],1 : goto *vdl_zep
+
+    if %temp_var = s0_15 vdl_clear_selection : mov ?vdl_choices[15],1 : goto *vdl_fur
 
 
 
@@ -275,7 +357,7 @@ aspt2 breakup,s0_5,0,2000
 aspt2 alpha,s0_5,255
 sptwait2 breakup,s0_5
 
-gosub *vdl_selection1
+gosub *vdl_3
 
 
 
@@ -322,7 +404,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_rusi"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg1","a12_hohoemi1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -356,7 +438,7 @@ textoff2
 aspt2_mem "ypos",s0_3,300,1000,0
 sptwait2 ypos,s0_3
 lss s0_9,"rg1","a12_warai1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 flush 80
@@ -368,7 +450,7 @@ textoff2
 aspt2_mem "ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 lss s0_9,"rg1","a12_defo1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 flush 80
@@ -434,7 +516,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_revi"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg2","a12_hohoemi1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -468,7 +550,7 @@ textoff2
 aspt2_mem "ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 lss s0_9,"rg2","a12_warai1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -479,7 +561,7 @@ textoff2
 aspt2_mem "ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 lss s0_9,"rg2","a12_akuwarai2"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -542,7 +624,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_sata"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg3","a12_hohoemi1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -572,7 +654,7 @@ aspt2_mem "ypos",s0_3,700,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"rg3","a12_komaru3"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -584,7 +666,7 @@ aspt2_mem "ypos",s0_3,300,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"rg3","a12_defo1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -596,7 +678,7 @@ aspt2_mem "ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"rg3","a12_hohoemi1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -668,7 +750,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_berf"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg4","a12_warai1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -704,7 +786,7 @@ aspt2_mem "ypos",s0_3,500,800,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"rg4","a12_defo1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -776,7 +858,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_mamo"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg5","a12_defo1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -812,7 +894,7 @@ aspt2_mem "ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"rg5","a12_fuman1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -824,7 +906,7 @@ aspt2_mem "ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"rg5","a12_hohoemi1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -888,7 +970,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_beru"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg6","a12_warai1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -916,7 +998,7 @@ aspt2_mem "ypos",s0_3,600,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"rg6","a12_defo1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -935,7 +1017,7 @@ aspt2_mem "ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"rg6","a12_warai3"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -943,7 +1025,7 @@ aspt2_mem "ypos",s0_9,-100
 d2 [lv 0*"43"*"rg6_00610"]`P.S.`[|][lv 0*"43"*"rg6_00620"]` The greatest chocolate was truly amazing.`[@][lv 0*"43"*"rg6_00630"]` After tasting it, I just couldn't help myself.`[@][lv 0*"43"*"rg6_00640"]` I ate the whole thing, so the chocolate I've sent here is the second most delicious variety.`[@][#][*][lv 0*"43"*"rg6_00650"]`...Sorry about that.`[\]
 wait_on_d 0
 lss s0_9,"rg6","a12_naku1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 d_continue
@@ -1008,7 +1090,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_asum"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"rg7","a12_akuwarai1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1039,7 +1121,7 @@ sptwait2 ypos,s0_3
 d2 [lv 0*"44"*"rg7_00750"]`I have melted my heart into this chocolate.`[@][#][*][lv 0*"44"*"rg7_00760"]` In fact, had it been possible, I would have wanted to become Your Majesty's chocolate myself.`[\]
 wait_on_d 0
 lss s0_9,"rg7","a12_warai3"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 d_continue
@@ -1275,7 +1357,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_s00"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"s00","a11_defo1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1373,7 +1455,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_s41"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"s41","a11_defo1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1416,7 +1498,7 @@ aspt2_mem "ypos",s0_3,400,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"s41","a11_majime1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1428,7 +1510,7 @@ aspt2_mem "ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"s41","a11_akuwarai2"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1491,7 +1573,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_s45"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"s45","a11_defo1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1521,7 +1603,7 @@ aspt2_mem "ypos",s0_3,800,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"s45","a11_komaru2"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1533,7 +1615,7 @@ aspt2_mem "ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"s45","a11_komaru1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1594,7 +1676,7 @@ seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_s55"
 aspt2_mem "ypos",s0_3,1500
 lss s0_9,"s55","a11_defo1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1631,7 +1713,7 @@ aspt2_mem "ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"s55","a11_warai1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1639,7 +1721,7 @@ aspt2_mem "ypos",s0_9,-100
 d2 [lv 0*"61"*"s55_00050"]`There are only girls in the Imperial Guards, so this custom is new to me.`[@][lv 0*"61"*"s55_00060"]` Have I followed proper Valentine's Day etiquette with my letter?`[@][#][*][lv 0*"61"*"s55_00070"]` If you find the time to let me know, thank you very much in advance.`[\]
 wait_on_d 0
 lss s0_9,"s55","a11_warai3"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 d_continue
@@ -1650,7 +1732,7 @@ aspt2_mem "ypos",s0_3,100,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"s55","a11_warai2"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1662,7 +1744,7 @@ aspt2_mem "ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
 lss s0_9,"s55","a11_hohoemi1"
-aspt2 alpha,s0_9,200
+aspt2 alpha,s0_9,180
 aspt2_mem "xpos",s0_9,550
 aspt2_mem "ypos",s0_9,-100
 
@@ -1697,9 +1779,9 @@ aspt2_mem "xpos",s0_6,250
 lss s0_7,"s55","a11_hohoemi1"
 aspt2_mem "xpos",s0_7,650
 
-flush 22
+flush 6
 
-wait 500
+wait 200
 
 aspt2 breakup,s0_4,0
 aspt2 alpha,s0_4,255
@@ -1736,178 +1818,487 @@ flush 1
 seplay 11,52,90
 aspt2 breakup,s0_7,1000,2000
 sptwait2 breakup,s0_7
+wait 300
 
+csp_slot s0_3
+csp_slot s0_4
+csp_slot s0_5
+csp_slot s0_6
+csp_slot s0_7
+vol_bgm -1 1000
+flush 2
+wait 300
 
 seplay 11,57,100
-
+lbg "c:colour",s0_20,"white"
 lbg "c:backgrounds",s0_3,"cha_i1ap"
-
-lss s0_9,"dla","a11_majime1"
-
+lss s0_8,"dla","a11_majime1"
+aspt2_mem "xpos",s0_8,-550
 lss s0_9,"cor","a11_majime1"
+lss s0_10,"ger","a11_defo2"
+aspt2_mem "xpos",s0_10,550
+flush 1
 
-lss s0_9,"ger","a11_defo2"
-
+csp_slot s0_20
+flush 80
 bgmplay 120,70,0
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyampy
 
-lbg "c:backgrounds",s0_3,"cha_i1ap"
+gosub *vdl_selection3
 
-lss s0_9,"dla","a11_majime1"
 
-lss s0_9,"cor","a11_majime1"
 
-lss s0_9,"ger","a11_defo2"
 
-lss s0_9,"dla","a11_defo1"
 
+
+
+
+
+
+
+
+
+
+*vdl_dla
+
+csp_slot s0_19
+csp_slot s0_18
+csp_slot s0_17
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+flush 22
+
+csp_slot s0_8
+lss s0_12,"dla","a11_defo1"
+aspt2_mem "xpos",s0_12,-550
+flush 80
+lbg "c:colour",s0_11,"white"
 seplay 11,4,100
+flush 1
+csp_slot s0_11
+flush 2
 
+aspt2_mem "ypos",s0_12,100,400,0
 seplay 11,47,100
-
+sptwait2 ypos,s0_12
+wait 300
+aspt2_mem "ypos",s0_12,0,200,0
 seplay 11,47,100
+sptwait2 ypos,s0_12
+aspt2_mem "ypos",s0_12,100,200,0
+sptwait2 ypos,s0_12
+aspt2_mem "ypos",s0_12,0,200,0
+seplay 11,47,100
+sptwait2 ypos,s0_12
+aspt2_mem "ypos",s0_12,100,200,0
+sptwait2 ypos,s0_12
 
+wait 400
+
+csp_slot s0_3
+csp_slot s0_9
+csp_slot s0_10
+csp_slot s0_12
+lbg "c:colour",s0_10,"white"
+seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_dla"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"dla","a11_defo1"
+aspt2 alpha,s0_9,180
+aspt2_mem "xpos",s0_9,-550
+aspt2_mem "ypos",s0_9,-100
 
+flush 23
+wait 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
 seplay 11,3,100
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+wait 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,1100,800,0
+sptwait2 ypos,s0_3
 
 msgwnd_dla
 *e27_51
 d [lv 0*"47"*"dla_00110"]`In celebration of St. Valentine's Day and to express my gratitude, I'm sending this chocolate to YOU.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,800,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"dla","a11_komaru1"
+aspt2 alpha,s0_9,180
+aspt2_mem "xpos",s0_9,-550
+aspt2_mem "ypos",s0_9,-100
 
 *e27_52
-d2 [lv 0*"47"*"dla_00120"]`However, rather than sending chocolate on Valentine's Day, I would prefer to RECEIVE.`[@][lv 0*"47"*"dla_00130"]Chocolate is my LOVE.`[@][#][*][lv 0*"47"*"dla_00140"]` After all, I am a CHILD.`[@][lv 0*"47"*"dla_00150"]Though, hot chocolate is something I HATE.`[@][#][*][lv 0*"47"*"dla_00160"]` It's too easy to SPILL.`[@][#][*][lv 0*"47"*"dla_00170"]...And too difficult to wash OFF.`[\]
+d2 [lv 0*"47"*"dla_00120"]`However, rather than sending chocolate on Valentine's Day, I would prefer to RECEIVE.`[@][lv 0*"47"*"dla_00130"]` Chocolate is my LOVE.`[@][#][*][lv 0*"47"*"dla_00140"]` After all, I am a CHILD.`[@][lv 0*"47"*"dla_00150"]` Though, hot chocolate is something I HATE.`[@][#][*][lv 0*"47"*"dla_00160"]` It's too easy to SPILL.`[@][#][*][lv 0*"47"*"dla_00170"]` ...And too difficult to wash OFF.`[\]
 wait_on_d 0
-
+aspt2_mem "ypos",s0_9,0,500
 d_continue
 wait_on_d 1
-
+aspt2_mem "ypos",s0_9,100,500,0
+sptwait2 ypos,s0_9
+wait 300
+aspt2_mem "ypos",s0_9,0,200,0
+sptwait2 ypos,s0_9
+aspt2_mem "ypos",s0_9,100,200,0
+sptwait2 ypos,s0_9
+aspt2_mem "ypos",s0_9,0,200,0
+sptwait2 ypos,s0_9
+aspt2_mem "ypos",s0_9,100,200,0
+sptwait2 ypos,s0_9
 d_continue
 wait_on_d 2
-
+lss s0_9,"dla","a11_komaru1a"
+aspt2 alpha,s0_9,180
+aspt2_mem "xpos",s0_9,-550
+aspt2_mem "ypos",s0_9,100
 d_continue
 wait_on_d -1
+textoff2
 
-lss s0_9,"dla","a11_komaru1a"
+aspt2_mem "ypos",s0_3,400,1000,0
+sptwait2 ypos,s0_3
+
+
 
 *e27_53
-d [lv 0*"47"*"dla_00180"]`If Gertrude will see this letter, she's going to force me to REWRITE.`[@][lv 0*"47"*"dla_00190"]So, I'm sending it in secret, before Gertrude NOTICES.`[\]
+d [lv 0*"47"*"dla_00180"]`If Gertrude will see this letter, she's going to force me to REWRITE.`[@][lv 0*"47"*"dla_00190"]` So, I'm sending it in secret, before Gertrude NOTICES.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_9,400,600
+aspt2_mem "ypos",s0_3,-100,1000,0
+wait 400
+aspt2_mem "ypos",s0_9,2000,300
+sptwait2 ypos,s0_3
 
 *e27_54
 d [lv 0*"47"*"dla_00200"]`-- Dlanor A. Knox, Eiserne Jungfrau, Head INQUISITOR.`[\]
+textoff2
 
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
 
-lss s0_9,"cor","a11_defo1"
+gosub *vdl_selection3
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_cor
+
+
+csp_slot s0_19
+csp_slot s0_18
+csp_slot s0_17
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+flush 22
+
+csp_slot s0_9
+lss s0_12,"cor","a11_defo1"
+flush 80
+lbg "c:colour",s0_11,"white"
 seplay 11,4,100
+flush 1
+csp_slot s0_11
+flush 2
 
+wait 600
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_10
+csp_slot s0_12
+lbg "c:colour",s0_10,"white"
+seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_cor"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"cor","a11_defo1"
+aspt2 alpha,s0_9,180
+aspt2_mem "ypos",s0_9,0
 
-seplay 11,3,100
+flush 23
+wait 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 11,4,100
+seplay 12,3,100
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+wait 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,900,800,0
+sptwait2 ypos,s0_3
+
 
 msgwnd_cor
 *e27_55
 d [lv 0*"49"*"cor_01180"]`For your attention:`[@][lv 0*"49"*"cor_01190"]` Know that I would like to ask how this cold time of the year is treating you, and to let you know that huddling under a kotatsu is the most blissful experience while waiting for the spring!`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,600,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"cor","a11_majime1"
+aspt2 alpha,s0_9,180
+aspt2_mem "ypos",s0_9,0
 
 *e27_56
-d2 [lv 0*"49"*"cor_01200"]`Owing to the chocolate terrorism incident last year, a great number of sympathizers seeking to overthrow this event out of jealousy have since risen. A notice regarding this criminal activity has already been issued.`[@][#][*][lv 0*"49"*"cor_01210"]As defenders of the law, we must endeavor to engage in our duties with ever-growing enthusiasm!`[\]
+d2 [lv 0*"49"*"cor_01200"]`Owing to the chocolate terrorism incident last year, a great number of sympathizers seeking to overthrow this event out of jealousy have since risen. A notice regarding this criminal activity has already been issued.`[@][#][*][lv 0*"49"*"cor_01210"]` As defenders of the law, we must endeavor to engage in our duties with ever-growing enthusiasm!`[\]
 wait_on_d 0
-
+aspt2_mem "ypos",s0_9,-100,200,0
+sptwait2 ypos,s0_9
+aspt2_mem "ypos",s0_9,0,200,0
+sptwait2 ypos,s0_9
 d_continue
 wait_on_d -1
+textoff2
+
+aspt2_mem "ypos",s0_3,200,1000,0
+sptwait2 ypos,s0_3
 
 *e27_57
 d [lv 0*"49"*"cor_01220"]`-- Aide Cornelia`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 *e27_58
-d [lv 0*"49"*"cor_01230"]`For your attention: I beg to inform you of the following. Inquisitors are required to utilize court language even when writing letters.`[@][lv 0*"49"*"cor_01240"]Should any difficulties arise upon reading, I offer my sincerest apologies.`[\]
+d [lv 0*"49"*"cor_01230"]`For your attention: I beg to inform you of the following. Inquisitors are required to utilize court language even when writing letters.`[@][lv 0*"49"*"cor_01240"]` Should any difficulties arise upon reading, I offer my sincerest apologies.`[\]
+textoff2
 
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
 
-lss s0_9,"ger","a11_defo1"
+gosub *vdl_selection3
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_ger
+
+
+csp_slot s0_19
+csp_slot s0_18
+csp_slot s0_17
+csp_text gen_txt_19
+csp_text gen_txt_20
+csp_text gen_txt_21
+flush 22
+
+csp_slot s0_10
+lss s0_12,"ger","a11_defo1"
+aspt2_mem "xpos",s0_12,550
+flush 80
+lbg "c:colour",s0_11,"white"
 seplay 11,4,100
+flush 1
+csp_slot s0_11
+flush 2
 
+wait 600
+
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_12
+lbg "c:colour",s0_10,"white"
+seplay 11,1010,100
 lbg "c:local_saku",s0_3,"b_ger"
-
+aspt2_mem "ypos",s0_3,1500
 lss s0_9,"ger","a11_defo1"
+aspt2 alpha,s0_9,180
+aspt2_mem "xpos",s0_9,550
 
-seplay 11,3,100
+flush 23
+wait 400
+aspt2 breakup,s0_10,0
+aspt2 alpha,s0_10,255
+aspt2 breakupdir,s0_10,3
+flush 1
+seplay 12,3,100
+aspt2 breakup,s0_10,1200,2000
+sptwait2 breakup,s0_10
+wait 300
+
+csp_slot s0_10
+aspt2_mem "ypos",s0_3,800,800,0
+sptwait2 ypos,s0_3
 
 msgwnd_ger
 *e27_59
-d [lv 0*"48"*"ger_00440"]`For your attention:`[@][lv 0*"48"*"ger_00450"]` Lately, the cold weather has been ever increasing in its intensity. I hope that Your Majesty has been taking care to remain healthy.`[@][lv 0*"48"*"ger_00460"]I wish you a very happy Valentine's Day.`[@][lv 0*"48"*"ger_00470"]` In celebration, allow me to send you this chocolate expressing my most humble respect.`[\]
+d [lv 0*"48"*"ger_00440"]`For your attention:`[@][lv 0*"48"*"ger_00450"]` Lately, the cold weather has been ever increasing in its intensity. I hope that Your Majesty has been taking care to remain healthy.`[@][lv 0*"48"*"ger_00460"]` I wish you a very happy Valentine's Day.`[@][lv 0*"48"*"ger_00470"]` In celebration, allow me to send you this chocolate expressing my most humble respect.`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,300,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"ger","a11_defo2"
+aspt2 alpha,s0_9,180
+aspt2_mem "xpos",s0_9,550
 
 *e27_60
 d [lv 0*"48"*"ger_00480"]`-- Senior Aide Gertrude`[\]
+textoff2
 
+aspt2_mem "ypos",s0_3,-100,1000,0
+sptwait2 ypos,s0_3
 
 lss s0_9,"ger","a11_defo1"
+aspt2 alpha,s0_9,180
+aspt2_mem "xpos",s0_9,550
 
 *e27_61
-d [lv 0*"48"*"ger_00490"]`P.S.`[|][lv 0*"48"*"ger_00500"]I have recently obtained a cat. It's adorable.`[@][lv 0*"48"*"ger_00510"]I was wondering whether Your Majesty's preference lies with cats or dogs.`[\]
+d [lv 0*"48"*"ger_00490"]`P.S.`[|][lv 0*"48"*"ger_00500"]` I have recently obtained a cat. It's adorable.`[@][lv 0*"48"*"ger_00510"]` I was wondering whether Your Majesty's preference lies with cats or dogs.`[\]
+textoff2
 
-
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
+flush 23
+
+gosub *vdl_selection3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*vdl_4
+
+csp_slot s0_3
+flush 80
+vol_bgm -1 1000
+wait 1400
 
 lbg "c:backgrounds",s0_3,"cha_i1ap"
-
-lss s0_9,"dla","a11_majime1"
-
+lss s0_8,"dla","a11_majime1"
+aspt2_mem "xpos",s0_8,-500
 lss s0_9,"cor","a11_defo1"
+lss s0_10,"ger","a11_defo2"
+aspt2_mem "xpos",s0_10,500
+flush 22
+wait 300
 
-lss s0_9,"ger","a11_defo2"
-
-lss s0_9,"zep","a11_warai1"
-
-lss s0_9,"dla","a11_komaru1"
-
+lss s0_11,"zep","a11_warai1"
+aspt2_mem "xpos",s0_11,-700
+lss s0_8,"dla","a11_komaru1"
+aspt2_mem "xpos",s0_8,-500
 lss s0_9,"cor","a11_komaru2"
-
-lss s0_9,"ger","a11_odoroki1"
-
+lss s0_10,"ger","a11_odoroki1"
+aspt2_mem "xpos",s0_10,500
+flush 22
+wait 200
+aspt2_mem "xpos",s0_11,-550,500,0
+aspt2_mem "xpos",s0_8,-400,500,0
 seplay 11,47,100
+sptwait2 ypos,s0_9
+sptwait2 xpos,s0_11
 
-lss s0_9,"fur","a11_warai1"
-
+lss s0_12,"fur","a11_warai1"
+aspt2_mem "xpos",s0_12,700
 lss s0_9,"dla","a11_majime2a"
-
+aspt2_mem "xpos",s0_9,-400
 lss s0_9,"cor","a11_komaru1"
-
-lss s0_9,"ger","a11_komaru1"
-
+lss s0_10,"ger","a11_komaru1"
+aspt2_mem "xpos",s0_10,500
+flush 22
+wait 200
+aspt2_mem "xpos",s0_12,550,500,0
+aspt2_mem "xpos",s0_10,400,500,0
+sptwait2 ypos,s0_9
+sptwait2 xpos,s0_11
 seplay 11,47,100
+wait 500
 
+lbg "c:colour",s0_15,"white"
+csp_slot s0_8
+csp_slot s0_9
+csp_slot s0_10
+csp_slot s0_11
+csp_slot s0_12
 seplay 11,2,100
-
-seplay 11,37,100
-
-seplay 11,54,100
-
+seplay 12,37,100
+seplay 13,54,100
+flush 1
+csp_slot s0_15
 bgmplay 137,70,0
 
-lbg "c:backgrounds",s0_3,"cha_i1ap"
+lss s0_5,"zep","a11_defo1"
+aspt2_mem "xpos",s0_5,-350
+lss s0_6,"fur","a11_defo1"
+aspt2_mem "xpos",s0_6,350
+flush 2
 
-lss s0_9,"zep","a11_defo1"
+gosub *vdl_selection4
 
-lss s0_9,"fur","a11_defo1"
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 lss s0_9,"zep","a11_warai2"
 

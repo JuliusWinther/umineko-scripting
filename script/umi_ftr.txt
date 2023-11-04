@@ -304,7 +304,7 @@ return
 *credits_base
 	border_pad_push 0
 	E_A
-	textoff
+	textoff2
 
 	skip_off
 
@@ -492,7 +492,7 @@ goto *o_chiru_start
 if %omake_level >= 2 mov $omake_return,"omake"
 *o_chiru_end
 skip_off
-textoff
+textoff2
 csp -10
 flush2 10,5000
 fede 0,5000
@@ -4192,7 +4192,7 @@ return
 	blur 0
 	seplay 9,1005,100
 	print 1
-	texton
+	texton2
 	if %skip_flg_bak == on skip_on
 return ;Right-click exit the system
 
@@ -4206,7 +4206,7 @@ return ;Right-click exit the system
 	if %monoflg = 3 mono 3
 	blur 0
 	print 1
-	texton
+	texton2
 	if %skip_flg_bak == on skip_on
 return ;Right-click exit the system
 
@@ -13823,7 +13823,7 @@ return
 *turu_pettann
 
 skip_off
-textoff
+textoff2
 
 E_A
 
@@ -14159,7 +14159,7 @@ next
 drawclear
 drawend
 csp_grst
-textoff
+textoff2
 border_pad_pop
 set_name_window_non
 skip_on
@@ -14774,7 +14774,7 @@ E_B
 E_MA
 saveoff            ;Speedup the process by disabling game save
 rmode 0            ;Speedup the process by disabling right-click menu
-textoff
+textoff2
 setfps 60
 skip_off           ;Disable skip for main menus
 mov %skip_flg_bak,off
@@ -14866,6 +14866,8 @@ goto *boot_logo_skip_100
 clearlog 1
 mov $log_choices,""
 mov %log_is_generated_to_cvs,-1
+
+textoff2 ;W_TEMP
 
 ;Create session
 gosub *trophy_session_create
@@ -19334,7 +19336,7 @@ return
 
 *jump_sysdata_set1   ;Scenario Settings 1-1 System
 	btndef ""
-	textoff
+	textoff2
 
 	csp_rst
 	bg black,22
@@ -20898,7 +20900,7 @@ return
     rain_pause s0_11
     rain_pause s0_7
     
-    textoff
+    textoff2
     wait 167
     
     lsp s0_28,hana1,0,0,150
@@ -20928,7 +20930,7 @@ return
     rain_pause s0_11
     rain_pause s0_7
     
-    textoff
+    textoff2
     wait 167
     
     lbg "c:colour",s0_27,"black"
@@ -20964,7 +20966,7 @@ return
 	rain_pause s0_11
 	rain_pause s0_7
 
-	textoff
+	textoff2
 	wait 167
 
 	lsp s0_28,hana1,0,0,150
@@ -20996,7 +20998,7 @@ return
 	rain_pause s0_11
 	rain_pause s0_7
 
-	textoff
+	textoff2
 	wait 167
 
 	lbg "c:colour",s0_27,"black"
@@ -25583,7 +25585,7 @@ mov %TextCC12Flag,1
 
 textshow
 print 1
-texton
+texton2
 screenflip 1
 
 return
@@ -27971,7 +27973,7 @@ return
 	print 1
 
 	;texthide   ;Hide the text
-	textoff 	;We need to hide the textbox either
+	textoff2 	;We need to hide the textbox either
 
 	gosub *rmenu_custom
 
@@ -27986,7 +27988,7 @@ return
 	vsp TextCC1SpNum,0
 	vsp TextCC2SpNum,0
 	print 1
-	textoff
+	textoff2
 
 	blur 2000
 	flush 1 
@@ -27999,7 +28001,7 @@ return
 	print 1
 
 	;texthide   ;Hide the text
-	textoff 	;We need to hide the textbox either
+	textoff2 	;We need to hide the textbox either
 
 *text_cw_hide_again
 
@@ -28014,7 +28016,7 @@ return
 
 *text_cw_hide_end
 
-	texton
+	texton2
 return
 
 
@@ -28543,7 +28545,7 @@ return
 	vsp TextCC1SpNum,0
 	vsp TextCC2SpNum,0
 	print 1
-	textoff
+	textoff2
 	lsp 5,":c;graphics\colour\black.png",0,0
 	seplay 9,1062,100
 	flush 23 ;trapped
@@ -29108,7 +29110,7 @@ if %r_display == 3 jumpf
 	vsp TextCC1SpNum,0
 	vsp TextCC2SpNum,0
 	print 1
-	textoff
+	textoff2
 ~
 
 border_pad_push 7
@@ -29243,7 +29245,7 @@ chvol 8,%sfx_vol*%me_current_vol_6/100
 chvol 9,%sfx_vol*%me_current_vol_7/100
 blur 0 ;this is not a perfect place but only logs can be seen with a direct button press
 print 1
-texton
+texton2
 
 return
 
@@ -32554,7 +32556,7 @@ return
 
 
 *set_name_window_base
-	textoff ;testfix for https://forum.umineko-project.org/viewtopic.php?f=4&t=6&start=50#p154
+	textoff2 ;testfix for https://forum.umineko-project.org/viewtopic.php?f=4&t=6&start=50#p154
 	setwindowd_off
 	border_padding 0
 
@@ -32595,7 +32597,7 @@ return
 	mov %log_sw_x,%setwindow_x
 	mov %log_sw_y,%setwindow_y
 	jskip_s
-		textoff
+		textoff2
 		setwindowd_off
 
 		mov %setwindow_x,%setwindow_x*2
@@ -34704,7 +34706,7 @@ if %r_display = 2 goto *rmenu_main_tips
 
 *rmenu_main_char
 	border_pad_push 5
-	textoff
+	textoff2
 	monocro off
 
 	;in ep3 sometimes we show witch side by default
@@ -38106,7 +38108,7 @@ return
 ;======================
 *rmenu_main_tips
 	border_pad_push 5
-	textoff
+	textoff2
 	monocro off
 	
 *rmenu_main_tips_reload
@@ -39143,7 +39145,7 @@ return
 return
 
 *rmenu_sai_display_tips_new
-	textoff
+	textoff2
 	btndef ""
 	
 	if %r_display = 1 && %scenario_Number != 8 _csp r_tips_lsp : lsp r_grim_lsp,r_grim,480,850 : getspsize r_grim_lsp,%Free1,%Free2 : div %Free1,-4 : msp r_grim_lsp,%Free1,0
@@ -39628,7 +39630,7 @@ return
 
 *show_coin_counter23_real
 ; TODO: Tidy this function?
-textoff
+textoff2
 waits 167
 ; No idea what slots might be used, so clear all the ones the SNR requests??
 csp_slot s0_4
@@ -39647,7 +39649,7 @@ csp_slot s0_4
 csp_slot s0_27
 lbg "c:colour",s0_3,"white"
 flush 2
-textoff
+textoff2
 waits 167
 csp_slot s0_3
 lbg "c:colour",s0_3,"black"
@@ -39680,7 +39682,7 @@ if %total_coin_count != 17 jumpf
 if %eva_hint_counter != 0 jumpf
 trophy_open 28
 ~
-textoff
+textoff2
 waits 167
 csp_slot s0_3
 lbg "c:colour",s0_3,"black"

@@ -3,7 +3,7 @@
 *vdl_selection1
 
 jnskip_s
-    return
+return
 ~
 
 ;Usable:
@@ -51,13 +51,14 @@ if ?vdl_choices[5] = 0 lsp s0_25,extra_story_btn,375,680 : write_special_text ge
 if ?vdl_choices[6] = 0 lsp s0_24,extra_story_btn,375,770 : write_special_text gen_txt_24,"in_story_choice",375,780,"ASMODEUS{n}"
 
 flush 22
-textoff2goto *vdl_loop
+textoff2
+goto *vdl_loop
 
 
 *vdl_selection2
 
 jnskip_s
-    return
+return
 ~
 
 if ?vdl_choices[7] = 1 && ?vdl_choices[8] = 1 && ?vdl_choices[9] = 1 && ?vdl_choices[10] = 1 goto *vdl_3
@@ -87,14 +88,15 @@ if ?vdl_choices[10] = 0 lsp s0_20,extra_story_btn,375,590 : write_special_text g
 
 
 flush 22
-textoff2goto *vdl_loop
+textoff2
+goto *vdl_loop
 
 
 
 *vdl_selection3
 
 jnskip_s
-    return
+return
 ~
 
 if ?vdl_choices[11] = 1 && ?vdl_choices[12] = 1 && ?vdl_choices[13] = 1 goto *vdl_4
@@ -103,7 +105,7 @@ lbg "c:backgrounds",s0_3,"cha_i1ap"
 
 if ?vdl_choices[11] = 0 lss s0_8,dla,a11_majime1 : aspt2_mem xpos,s0_8,-550
 
-if ?vdl_choices[12] = 0 lss s0_9,"cor","a11_majime1" 
+if ?vdl_choices[12] = 0 lss s0_9,"cor","a11_majime1"
 
 if ?vdl_choices[13] = 0 lss s0_10,ger,a11_defo2 : aspt2_mem xpos,s0_10,550
 
@@ -121,13 +123,14 @@ if ?vdl_choices[13] = 0 lsp s0_17,extra_story_btn,375,500 : write_special_text g
 
 
 flush 22
-textoff2goto *vdl_loop
+textoff2
+goto *vdl_loop
 
 
 *vdl_selection4
 
 jnskip_s
-    return
+return
 ~
 
 if ?vdl_choices[14] = 1 && ?vdl_choices[15] = 1 goto *vdl_5
@@ -152,68 +155,69 @@ if ?vdl_choices[15] = 0 lsp s0_15,extra_story_btn,375,500 : write_special_text g
 
 
 flush 22
-textoff2goto *vdl_loop
+textoff2
+goto *vdl_loop
 
 
 
 
 
 *vdl_loop
-    btndef ""
+btndef ""
 
-    spbtn s0_30,s0_30
-    spbtn s0_29,s0_29
-    spbtn s0_28,s0_28
-    spbtn s0_27,s0_27
-    spbtn s0_26,s0_26
-    spbtn s0_25,s0_25
-    spbtn s0_24,s0_24
-    spbtn s0_23,s0_23
-    spbtn s0_22,s0_22
-    spbtn s0_21,s0_21
-    spbtn s0_20,s0_20
-    spbtn s0_19,s0_19
-    spbtn s0_18,s0_18
-    spbtn s0_17,s0_17
-    spbtn s0_16,s0_16
-    spbtn s0_15,s0_15
+spbtn s0_30,s0_30
+spbtn s0_29,s0_29
+spbtn s0_28,s0_28
+spbtn s0_27,s0_27
+spbtn s0_26,s0_26
+spbtn s0_25,s0_25
+spbtn s0_24,s0_24
+spbtn s0_23,s0_23
+spbtn s0_22,s0_22
+spbtn s0_21,s0_21
+spbtn s0_20,s0_20
+spbtn s0_19,s0_19
+spbtn s0_18,s0_18
+spbtn s0_17,s0_17
+spbtn s0_16,s0_16
+spbtn s0_15,s0_15
 
-    btndown 0
-    btnwait %temp_var
+btndown 0
+btnwait %temp_var
 
-    if %temp_var = 0 goto *vdl_loop
+if %temp_var = 0 goto *vdl_loop
 
-    if %temp_var = s0_30 vdl_clear_selection : mov ?vdl_choices[0],1 : goto *vdl_rg1
+if %temp_var = s0_30 vdl_clear_selection : mov ?vdl_choices[0],1 : goto *vdl_rg1
 
-    if %temp_var = s0_29 vdl_clear_selection : mov ?vdl_choices[1],1 : goto *vdl_rg2
+if %temp_var = s0_29 vdl_clear_selection : mov ?vdl_choices[1],1 : goto *vdl_rg2
 
-    if %temp_var = s0_28 vdl_clear_selection : mov ?vdl_choices[2],1 : goto *vdl_rg3
+if %temp_var = s0_28 vdl_clear_selection : mov ?vdl_choices[2],1 : goto *vdl_rg3
 
-    if %temp_var = s0_27 vdl_clear_selection : mov ?vdl_choices[3],1 : goto *vdl_rg4
+if %temp_var = s0_27 vdl_clear_selection : mov ?vdl_choices[3],1 : goto *vdl_rg4
 
-    if %temp_var = s0_26 vdl_clear_selection : mov ?vdl_choices[4],1 : goto *vdl_rg5
+if %temp_var = s0_26 vdl_clear_selection : mov ?vdl_choices[4],1 : goto *vdl_rg5
 
-    if %temp_var = s0_25 vdl_clear_selection : mov ?vdl_choices[5],1 : goto *vdl_rg6
+if %temp_var = s0_25 vdl_clear_selection : mov ?vdl_choices[5],1 : goto *vdl_rg6
 
-    if %temp_var = s0_24 vdl_clear_selection : mov ?vdl_choices[6],1 : goto *vdl_rg7
+if %temp_var = s0_24 vdl_clear_selection : mov ?vdl_choices[6],1 : goto *vdl_rg7
 
-    if %temp_var = s0_23 vdl_clear_selection : mov ?vdl_choices[7],1 : goto *vdl_s00
+if %temp_var = s0_23 vdl_clear_selection : mov ?vdl_choices[7],1 : goto *vdl_s00
 
-    if %temp_var = s0_22 vdl_clear_selection : mov ?vdl_choices[8],1 : goto *vdl_s41
+if %temp_var = s0_22 vdl_clear_selection : mov ?vdl_choices[8],1 : goto *vdl_s41
 
-    if %temp_var = s0_21 vdl_clear_selection : mov ?vdl_choices[9],1 : goto *vdl_s45
+if %temp_var = s0_21 vdl_clear_selection : mov ?vdl_choices[9],1 : goto *vdl_s45
 
-    if %temp_var = s0_20 vdl_clear_selection : mov ?vdl_choices[10],1 : goto *vdl_s55
+if %temp_var = s0_20 vdl_clear_selection : mov ?vdl_choices[10],1 : goto *vdl_s55
 
-    if %temp_var = s0_19 vdl_clear_selection : mov ?vdl_choices[11],1 : goto *vdl_dla
+if %temp_var = s0_19 vdl_clear_selection : mov ?vdl_choices[11],1 : goto *vdl_dla
 
-    if %temp_var = s0_18 vdl_clear_selection : mov ?vdl_choices[12],1 : goto *vdl_cor
+if %temp_var = s0_18 vdl_clear_selection : mov ?vdl_choices[12],1 : goto *vdl_cor
 
-    if %temp_var = s0_17 vdl_clear_selection : mov ?vdl_choices[13],1 : goto *vdl_ger
+if %temp_var = s0_17 vdl_clear_selection : mov ?vdl_choices[13],1 : goto *vdl_ger
 
-    if %temp_var = s0_16 vdl_clear_selection : mov ?vdl_choices[14],1 : goto *vdl_zep
+if %temp_var = s0_16 vdl_clear_selection : mov ?vdl_choices[14],1 : goto *vdl_zep
 
-    if %temp_var = s0_15 vdl_clear_selection : mov ?vdl_choices[15],1 : goto *vdl_fur
+if %temp_var = s0_15 vdl_clear_selection : mov ?vdl_choices[15],1 : goto *vdl_fur
 
 
 
@@ -221,13 +225,13 @@ textoff2goto *vdl_loop
 goto *vdl_loop
 *vdl_loop_end
 for %for_index1 = 0 to 16
-   mov ?vdl_choices[%for_index1],0
+mov ?vdl_choices[%for_index1],0
 next
 return
 
 *vdl_clear_selection
-    csp_slot s0_30
-    csp_text gen_txt_18
+csp_slot s0_30
+csp_text gen_txt_18
 return
 
 ;END SELECTION MENU
@@ -239,9 +243,11 @@ mov $name_chapter_r_click,r_click_extra2_7
 mov $name_chapter_r_click_l2,r_click_extra2_7_l2
 mov $name_chapter_r_click_l3,r_click_extra2_7_l3
 new_extra_episode 27
+textoff2
 ;START
 
-textoff2bgmplay 144,70,0
+textoff2
+bgmplay 144,70,0
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 flush 22
 
@@ -257,7 +263,6 @@ sptwait2 breakup,s0_10
 lss s0_10,"ron","a11_warai2"
 flush 80
 
-msgwnd_ron
 *e27_1
 d [lv 0*"31"*"ron_01310"]`{qt}I apologise for the disturbance.`[@][lv 0*"31"*"ron_01320"]` Battler-sama, I have brought Valentine's Day letters.{qt}`[\]
 
@@ -265,10 +270,9 @@ lss s0_9,"but","d11_warai2"
 spt_mem "a2","xpos",s0_9,-550
 flush 80
 
-msgwnd_but
 *e27_2
 d [lv 0*"10"*"bat_03960"]`{qt}Huh, really? Let me take a look...{qt}`[\]
-textoff2
+
 csp_slot s0_9
 csp_slot s0_10
 csp_slot s0_3
@@ -277,25 +281,25 @@ flush 22
 lbg "c:backgrounds",s0_3,"letter1"
 flush 22
 
-lss s0_10,"rg1","a12_hohoemi1" 
+lss s0_10,"rg1","a12_hohoemi1"
 spt_mem "a2","xpos",s0_10,0
 
-lss s0_9,"rg2","a12_akuwarai1" 
+lss s0_9,"rg2","a12_akuwarai1"
 spt_mem "a2","xpos",s0_9,250
 
-lss s0_8,"rg3","a12_hohoemi1" 
+lss s0_8,"rg3","a12_hohoemi1"
 spt_mem "a2","xpos",s0_8,-250
 
-lss s0_7,"rg4","a12_defo1" 
+lss s0_7,"rg4","a12_defo1"
 spt_mem "a2","xpos",s0_7,-500
 
-lss s0_6,"rg5","a12_akuwarai2" 
+lss s0_6,"rg5","a12_akuwarai2"
 spt_mem "a2","xpos",s0_6,500
 
-lss s0_5,"rg6","a12_hohoemi1" 
+lss s0_5,"rg6","a12_hohoemi1"
 spt_mem "a2","xpos",s0_5,-750
 
-lss s0_4,"rg7","a12_akuwarai1" 
+lss s0_4,"rg7","a12_akuwarai1"
 spt_mem "a2","xpos",s0_4,750
 
 spt_mem "a2","breakup",s0_4,1000
@@ -417,16 +421,15 @@ csp_slot s0_10
 spt_mem "a2","ypos",s0_3,1200,800,0
 sptwait2 ypos,s0_3
 
-msgwnd_rg1
 *e27_3
 d [lv 0*"38"*"rg1_00820"]`To His Majesty, the Territory Lord and the Master of the Game Board.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,800,1000,0
 sptwait2 ypos,s0_3
 
 *e27_4
 d [lv 0*"38"*"rg1_00830"]`On account of Valentine's Day, and as the representative of the Seven Sisters of Purgatory,`[@][lv 0*"38"*"rg1_00840"]` I hereby present an offering of chocolate as well as an oath of our eternal allegiance.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,300,1000,0
 sptwait2 ypos,s0_3
 lss s0_9,"rg1","a12_warai1"
@@ -437,7 +440,7 @@ flush 80
 
 *e27_5
 d [lv 0*"38"*"rg1_00850"]`-- From the eldest of the Seven Sisters of Purgatory, Lucifer, with love and loyalty.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 lss s0_9,"rg1","a12_defo1"
@@ -448,7 +451,7 @@ flush 80
 
 *e27_6
 d [lv 0*"38"*"rg1_00860"]`P.S.`[|][lv 0*"38"*"rg1_00870"] `Given your order, I would be honored to become a chair, candle stand, cat, carpet, furniture or even slave for your sake.`[@][lv 0*"38"*"rg1_00880"] `My Lord, please use this lowly piece of furniture however you wish.`[\]
-textoff2
+
 csp_slot s0_3
 csp_slot s0_9
 flush 22
@@ -525,16 +528,15 @@ csp_slot s0_10
 spt_mem "a2","ypos",s0_3,1200,1000,0
 sptwait2 ypos,s0_3
 
-msgwnd_rg2
 *e27_7
 d [lv 0*"39"*"rg2_00520"]`To the Territory Lord who probably already received a ton of chocolate from others.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,800,1000,0
 sptwait2 ypos,s0_3
 
 *e27_8
 d [lv 0*"39"*"rg2_00530"]`Although my chocolate may be only one of the many that you've received, I still poured all of my heart and effort into making it.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 lss s0_9,"rg2","a12_warai1"
@@ -544,7 +546,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_9
 d [lv 0*"39"*"rg2_00540"]`But even if my chocolate is just an insignificant part of a huge pile, that's fine.`[@][lv 0*"39"*"rg2_00550"]` I just hope that among the countless loving eyes gazing at you, you won't forget the ruby-colored pair that would so easily fly into a jealous rage.`[@][lv 0*"39"*"rg2_00560"]` Ehehehehe.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 lss s0_9,"rg2","a12_akuwarai2"
@@ -554,7 +556,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_10
 d [lv 0*"39"*"rg2_00570"]`-- From the second eldest of the Seven Sisters of Purgatory, Leviathan, with love and envy.`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -631,10 +633,9 @@ sptwait2 ypos,s0_3
 
 
 
-msgwnd_rg3
 *e27_11
 d [lv 0*"40"*"rg3_00860"]`To His Majesty, the Territory Lord and the Master of us Seven Sisters.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,700,1000,0
 sptwait2 ypos,s0_3
 
@@ -645,7 +646,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_12
 d [lv 0*"40"*"rg3_00870"]`My stupid sisters have undoubtedly included some shameless letters along with the chocolates they have sent you.`[@][lv 0*"40"*"rg3_00880"]` However, they are not at fault.`[@][lv 0*"40"*"rg3_00890"]` All the blame lies with me and my sorely lacking guidance.`[@][lv 0*"40"*"rg3_00900"]` My humblest apologies.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,300,1000,0
 sptwait2 ypos,s0_3
 
@@ -656,7 +657,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_13
 d [lv 0*"40"*"rg3_00910"]`If anyone is to be reprimanded, it should be me...`[@][lv 0*"40"*"rg3_00920"]` I am prepared to receive any and all criticism...`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
@@ -667,7 +668,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_14
 d [lv 0*"40"*"rg3_00930"]`-- From the third eldest of the Seven Sisters of Purgatory, Satan, with love and apologies.`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -752,16 +753,15 @@ spt_mem "a2","ypos",s0_3,1200,800,0
 sptwait2 ypos,s0_3
 
 
-msgwnd_rg4
 *e27_15
 d [lv 0*"41"*"rg4_00490"]`To His Majesty, the Territory Lord and the Master of the Game Board.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,800,1000,0
 sptwait2 ypos,s0_3
 
 *e27_16
 d [lv 0*"41"*"rg4_00500"]`I have given chocolate to many, but all of it has been demonic chocolate designed to drive the helpless to sink further and further into sloth, year after year.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,500,800,0
 sptwait2 ypos,s0_3
 
@@ -772,13 +772,13 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_17
 d [lv 0*"41"*"rg4_00510"]`Your Majesty, however, keeps tirelessly improving himself.`[@][lv 0*"41"*"rg4_00520"]` Thus, the Valentine's chocolate I'm offering today is not hiding a trap of sloth but my heartfelt feelings.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
 *e27_18
 d [lv 0*"41"*"rg4_00530"]`-- From the fourth eldest of the Seven Sisters of Purgatory, Belphegor, with love and respect.`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -856,16 +856,15 @@ spt_mem "a2","ypos",s0_3,1200,800,0
 sptwait2 ypos,s0_3
 
 
-msgwnd_rg5
 *e27_19
 d [lv 0*"42"*"rg5_00490"]`To our magnificent and stunning Territory Lord.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,800,1000,0
 sptwait2 ypos,s0_3
 
 *e27_20
 d [lv 0*"42"*"rg5_00500"]`As furniture, nothing pleases me more than working for Your Majesty and gradually gaining your trust.`[@][lv 0*"42"*"rg5_00510"]` However, do you think it's above a furniture's station to wish for trust even greater than this?`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 
@@ -876,7 +875,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_21
 d [lv 0*"42"*"rg5_00520"]`I am Mammon of Greed.`[@][lv 0*"42"*"rg5_00530"]` I am covetous furniture who wishes to be the only one reflected in your eyes.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
@@ -887,7 +886,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_22
 d [lv 0*"42"*"rg5_00540"]`-- From the fifth eldest of the Seven Sisters of Purgatory, Mammon, with love`[|][lv 0*"42"*"rg5_00550"]` and even more love.`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -963,10 +962,9 @@ csp_slot s0_10
 spt_mem "a2","ypos",s0_3,1200,800,0
 sptwait2 ypos,s0_3
 
-msgwnd_rg6
 *e27_23
 d [lv 0*"43"*"rg6_00580"]`To His Majesty, the Territory Lord and the Master of the Game Board.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,600,1000,0
 sptwait2 ypos,s0_3
 
@@ -977,13 +975,13 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_24
 d [lv 0*"43"*"rg6_00590"]`I thought that Your Majesty deserved only the best chocolate, so I taste-tested countless varieties in search of the greatest chocolate delicacy.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,300,1000,0
 sptwait2 ypos,s0_3
 
 *e27_25
 d [lv 0*"43"*"rg6_00600"]`-- From the sixth eldest of the Seven Sisters of Purgatory, Beelzebub, with love and cocoa.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
@@ -1001,7 +999,7 @@ spt_mem "a2","xpos",s0_9,550
 spt_mem "a2","ypos",s0_9,-100
 d_continue
 wait_on_d -1
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -1079,10 +1077,9 @@ csp_slot s0_10
 spt_mem "a2","ypos",s0_3,1200,800,0
 sptwait2 ypos,s0_3
 
-msgwnd_rg7
 *e27_27
 d [lv 0*"44"*"rg7_00740"]`To His Majesty, the Territory Lord and the Master of the Game Board.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,800,1000,0
 sptwait2 ypos,s0_3
 
@@ -1095,20 +1092,20 @@ spt_mem "a2","xpos",s0_9,550
 spt_mem "a2","ypos",s0_9,-100
 d_continue
 wait_on_d -1
-textoff2
+
 spt_mem "a2","ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 
 
 *e27_29
 d [lv 0*"44"*"rg7_00770"]`Because in that case, when Your Majesty would've eaten me, I could've entered your mouth and rolled around on your soft, warm tongue, filling your mouth with ample pleasure...`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
 *e27_30
 d [lv 0*"44"*"rg7_00780"]`-- From the youngest of the Seven Sisters of Purgatory, Asmodeus, with love, passion and melancholy.`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -1128,25 +1125,25 @@ gosub *vdl_selection1
 *vdl_2
 
 wait 300
-lss s0_10,"rg1","a12_warai2" 
+lss s0_10,"rg1","a12_warai2"
 spt_mem "a2","xpos",s0_10,0
 
-lss s0_9,"rg2","a12_warai1" 
+lss s0_9,"rg2","a12_warai1"
 spt_mem "a2","xpos",s0_9,250
 
-lss s0_8,"rg3","a12_hohoemi1" 
+lss s0_8,"rg3","a12_hohoemi1"
 spt_mem "a2","xpos",s0_8,-250
 
-lss s0_7,"rg4","a12_warai1" 
+lss s0_7,"rg4","a12_warai1"
 spt_mem "a2","xpos",s0_7,-500
 
-lss s0_6,"rg5","a12_warai3" 
+lss s0_6,"rg5","a12_warai3"
 spt_mem "a2","xpos",s0_6,500
 
-lss s0_5,"rg6","a12_warai1" 
+lss s0_5,"rg6","a12_warai1"
 spt_mem "a2","xpos",s0_5,-750
 
-lss s0_4,"rg7","a12_warai1" 
+lss s0_4,"rg7","a12_warai1"
 spt_mem "a2","xpos",s0_4,750
 
 spt_mem "a2","breakup",s0_4,0
@@ -1212,17 +1209,15 @@ lss s0_9,"but","d11_warai1"
 spt_mem "a2","xpos",s0_9,350
 flush 23
 
-msgwnd_but
 *e27_31
 d [lv 0*"10"*"bat_03970"]`{qt}Ihihi! This is making me feel bad!{qt}`[\]
 
 lss s0_8,"ron","a11_warai1"
 spt_mem "a2","xpos",s0_8,-350
 
-msgwnd_ron
 *e27_32
 d [lv 0*"31"*"ron_01330"]`{qt}There's still a lot of letters left. Pukuku.{qt}`[\]
-textoff2
+
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
@@ -1342,28 +1337,27 @@ spt_mem "a2","ypos",s0_3,1200,800,0
 sptwait2 ypos,s0_3
 
 
-msgwnd_s00
 *e27_33
 d [lv 0*"37"*"s00_00100"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"37"*"s00_00110"]` From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,800,1000,0
 sptwait2 ypos,s0_3
 
 *e27_34
 d [lv 0*"37"*"s00_00120"]`The purpose of this letter is not only to celebrate Valentine's Day but also to express my deep respect and affection for Your Majesty.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 
 *e27_35
 d [lv 0*"37"*"s00_00130"]`The enclosed chocolate has passed the inspection of the Medical Team of the Imperial Guards.`[@][lv 0*"37"*"s00_00140"]` Please, enjoy it at ease.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
 *e27_36
 d [lv 0*"37"*"s00_00150"]`-- Chiester00`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -1436,22 +1430,21 @@ spt_mem "a2","ypos",s0_3,1200,800,0
 sptwait2 ypos,s0_3
 
 
-msgwnd_s41
 *e27_37
 d [lv 0*"36"*"s41_00010"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"36"*"s41_00020"]From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,600,1000,0
 sptwait2 ypos,s0_3
 
 *e27_38
 d [lv 0*"36"*"s41_00030"]`Chocolate roses given to friends on this day are like a shotgun.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 
 *e27_39
 d [lv 0*"36"*"s41_00040"]`Chocolate of true love, that guarantees a perfect strike, is like a sniper rifle.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,400,1000,0
 sptwait2 ypos,s0_3
 
@@ -1462,7 +1455,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_40
 d [lv 0*"36"*"s41_00050"]`The chocolate I sent to you, which one do you think it is nyeh?`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
@@ -1473,7 +1466,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_41
 d [lv 0*"36"*"s41_00060"]`-- Chiester410, nyeh!`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -1550,10 +1543,9 @@ sptwait2 ypos,s0_3
 
 
 
-msgwnd_s45
 *e27_42
 d [lv 0*"35"*"s45_00070"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"35"*"s45_00080"]` From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,800,1000,0
 sptwait2 ypos,s0_3
 
@@ -1564,7 +1556,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_43
 d [lv 0*"35"*"s45_00090"]`Thank you very much for everything.`[@][lv 0*"35"*"s45_00100"]` I actually wanted to send you handmade chocolate, but because of the chocolate terrorism incident last year, there was a ban on putting handmade chocolate in the mail this year...`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 
@@ -1575,13 +1567,13 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_44
 d [lv 0*"35"*"s45_00110"]`I put my heart into choosing the chocolate most suitable for Your Majesty's tastes.`[@][lv 0*"35"*"s45_00120"]` It would be my honor if you found it satisfactory!`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
 *e27_45
 d [lv 0*"35"*"s45_00130"]`-- Chiester45`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -1649,16 +1641,15 @@ sptwait2 ypos,s0_3
 
 
 
-msgwnd_s55
 *e27_46
 d [lv 0*"61"*"s55_00010"]`To His Majesty, the Territory Lord of Fragment #1118460.`[@][lv 0*"61"*"s55_00020"]` From the 4096th Infantry of the Chiester Sisters Imperial Guards.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,800,1000,0
 sptwait2 ypos,s0_3
 
 *e27_47
 d [lv 0*"61"*"s55_00030"]`I hope my feelings of gratitude and the enclosed chocolate reach you well.`[@][lv 0*"61"*"s55_00040"]` As you have, please allow the Chiester Sister Imperial Guards to remain in your thoughts.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,500,1000,0
 sptwait2 ypos,s0_3
 
@@ -1676,7 +1667,7 @@ spt_mem "a2","xpos",s0_9,550
 spt_mem "a2","ypos",s0_9,-100
 d_continue
 wait_on_d -1
-textoff2
+
 spt_mem "a2","ypos",s0_3,100,1000,0
 sptwait2 ypos,s0_3
 
@@ -1687,7 +1678,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_49
 d [lv 0*"61"*"s55_00080"]`-- Chiester556`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
@@ -1698,7 +1689,7 @@ spt_mem "a2","ypos",s0_9,-100
 
 *e27_50
 d [lv 0*"61"*"s55_00090"]`P.S.`[|][lv 0*"61"*"s55_00100"]` The fortune slip that I pulled at a shrine the other day said I was in for 'terrible luck'.`[@][lv 0*"61"*"s55_00110"]` I should take care on my next mission.`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -1875,10 +1866,9 @@ csp_slot s0_10
 spt_mem "a2","ypos",s0_3,1100,800,0
 sptwait2 ypos,s0_3
 
-msgwnd_dla
 *e27_51
 d [lv 0*"47"*"dla_00110"]`In celebration of St. Valentine's Day and to express my gratitude, I'm sending this chocolate to YOU.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,800,1000,0
 sptwait2 ypos,s0_3
 
@@ -1912,7 +1902,7 @@ spt_mem "a2","xpos",s0_9,-550
 spt_mem "a2","ypos",s0_9,100
 d_continue
 wait_on_d -1
-textoff2
+
 spt_mem "a2","ypos",s0_3,400,1000,0
 sptwait2 ypos,s0_3
 
@@ -1920,7 +1910,7 @@ sptwait2 ypos,s0_3
 
 *e27_53
 d [lv 0*"47"*"dla_00180"]`If Gertrude will see this letter, she's going to force me to REWRITE.`[@][lv 0*"47"*"dla_00190"]` So, I'm sending it in secret, before Gertrude NOTICES.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_9,400,600
 spt_mem "a2","ypos",s0_3,-100,1000,0
 wait 400
@@ -1929,7 +1919,7 @@ sptwait2 ypos,s0_3
 
 *e27_54
 d [lv 0*"47"*"dla_00200"]`-- Dlanor A. Knox, Eiserne Jungfrau, Head INQUISITOR.`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -2001,10 +1991,9 @@ spt_mem "a2","ypos",s0_3,900,800,0
 sptwait2 ypos,s0_3
 
 
-msgwnd_cor
 *e27_55
 d [lv 0*"49"*"cor_01180"]`For your attention:`[@][lv 0*"49"*"cor_01190"]` Know that I would like to ask how this cold time of the year is treating you, and to let you know that huddling under a kotatsu is the most blissful experience while waiting for the spring!`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,600,1000,0
 sptwait2 ypos,s0_3
 
@@ -2021,19 +2010,19 @@ spt_mem "a2","ypos",s0_9,0,200,0
 sptwait2 ypos,s0_9
 d_continue
 wait_on_d -1
-textoff2
+
 spt_mem "a2","ypos",s0_3,200,1000,0
 sptwait2 ypos,s0_3
 
 *e27_57
 d [lv 0*"49"*"cor_01220"]`-- Aide Cornelia`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
 *e27_58
 d [lv 0*"49"*"cor_01230"]`For your attention: I beg to inform you of the following. Inquisitors are required to utilize court language even when writing letters.`[@][lv 0*"49"*"cor_01240"]` Should any difficulties arise upon reading, I offer my sincerest apologies.`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -2108,10 +2097,9 @@ csp_slot s0_10
 spt_mem "a2","ypos",s0_3,800,800,0
 sptwait2 ypos,s0_3
 
-msgwnd_ger
 *e27_59
 d [lv 0*"48"*"ger_00440"]`For your attention:`[@][lv 0*"48"*"ger_00450"]` Lately, the cold weather has been ever increasing in its intensity. I hope that Your Majesty has been taking care to remain healthy.`[@][lv 0*"48"*"ger_00460"]` I wish you a very happy Valentine's Day.`[@][lv 0*"48"*"ger_00470"]` In celebration, allow me to send you this chocolate expressing my most humble respect.`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,300,1000,0
 sptwait2 ypos,s0_3
 
@@ -2121,7 +2109,7 @@ spt_mem "a2","xpos",s0_9,550
 
 *e27_60
 d [lv 0*"48"*"ger_00480"]`-- Senior Aide Gertrude`[\]
-textoff2
+
 spt_mem "a2","ypos",s0_3,-100,1000,0
 sptwait2 ypos,s0_3
 
@@ -2131,7 +2119,7 @@ spt_mem "a2","xpos",s0_9,550
 
 *e27_61
 d [lv 0*"48"*"ger_00490"]`P.S.`[|][lv 0*"48"*"ger_00500"]` I have recently obtained a cat. It's adorable.`[@][lv 0*"48"*"ger_00510"]` I was wondering whether Your Majesty's preference lies with cats or dogs.`[\]
-textoff2
+
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 seplay 11,1010,100
@@ -2247,7 +2235,6 @@ lss s0_9,"zep","a11_warai6"
 
 seplay 11,3,100
 
-msgwnd_zep
 *e27_62
 d [lv 0*"51"*"zep_00880"]`Happy Valentine's Day!`[@][lv 0*"51"*"zep_00890"]` How are you liking it so far?!`[\]
 
@@ -2297,7 +2284,6 @@ lss s0_9,"fur","a11_warai6"
 
 seplay 11,3,100
 
-msgwnd_fur
 *e27_67
 d [lv 0*"52"*"fur_00770"]`Happy Valentine's Day!`[@][lv 0*"52"*"fur_00780"]` How have you been?`[\]
 
@@ -2340,26 +2326,22 @@ lss s0_9,"ron","a11_warai2"
 
 lss s0_9,"but","d11_nayamu2"
 
-msgwnd_but
 *e27_72
 d [lv 0*"10"*"bat_03980"]`{qt}Heh. I wonder what's in that chocolate.`[@][lv 0*"10"*"bat_03990"]` I'm too scared to eat it.{qt}`[\]
 
 
 lss s0_9,"ron","a11_warai1"
 
-msgwnd_ron
 *e27_73
 d [lv 0*"31"*"ron_01340"]`{qt}Oh, do not worry about that, my Lord.`[@][lv 0*"31"*"ron_01350"]` You're not going to be eating it.{qt}`[\]
 
 
 lss s0_9,"but","d11_oya1"
 
-msgwnd_but
 *e27_74
 d [lv 0*"10"*"bat_04000"]`{qt}Eh? I wasn't planning to, but... why?{qt}`[\]
 
 
-msgwnd_ron
 *e27_75
 d [lv 0*"31"*"ron_01360"]`{qt}Please look at this.{qt}`[\]
 
@@ -2376,7 +2358,6 @@ lss s0_9,"bea","a11_akuwarai3"
 
 seplay 11,37,100
 
-msgwnd_bea
 *e27_76
 d [lv 0*"27"*"bea_02940"]`<Happy Valentine's>!!!`[@][lv 0*"27"*"bea_02950"]` <And>...`[|][lv 0*"27"*"bea_02960"]` ohh, toooo baaaaaad!`[\]
 
@@ -2432,42 +2413,36 @@ lss s0_9,"but","d11_futeki1"
 
 bgmplay 60,70,0
 
-msgwnd_but
 *e27_81
 d [lv 0*"10"*"bat_04010"]`{qt}Heh. Just as you'd expect from her.{qt}`[\]
 
 
 lss s0_9,"ron","a11_warai1"
 
-msgwnd_ron
 *e27_82
 d [lv 0*"31"*"ron_01370"]`{qt}Still, please accept Milady's feelings.{qt}`[\]
 
 
 lss s0_9,"but","d11_defo3"
 
-msgwnd_but
 *e27_83
 d [lv 0*"10"*"bat_04020"]`{qt}...Alright, fine. There's nothing wrong with store-bought chocolate, anyway.{qt}`[\]
 
 
 lss s0_9,"ron","a11_warai2"
 
-msgwnd_ron
 *e27_84
 d [lv 0*"31"*"ron_01380"]`{qt}Thank you very much.`[@][lv 0*"31"*"ron_01390"]` At last, here's a letter and chocolate from Ange-sama.{qt}`[\]
 
 
 lss s0_9,"but","d11_oya2"
 
-msgwnd_but
 *e27_85
 d [lv 0*"10"*"bat_04030"]`{qt}Eh? Even Ange..?{qt}`[\]
 
 
 lbg "c:backgrounds",s0_3,"letter1"
 
-msgwnd_enj
 *e27_86
 d [lv 0*"11"*"enj_00320"]`To my brother.`[@][lv 0*"11"*"enj_00330"]I'm sure that even someone like you received a ton of Valentine's chocolate this year.`[@][lv 0*"11"*"enj_00340"]But they're just trying to get your attention, so don't act too happy about it!`[\]
 

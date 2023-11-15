@@ -51,9 +51,9 @@
 	mov %cfg_height,45
 
 	;Config Title
-	write_special_text 105,"config_title",960,45,title_config_txt
+	write_special_text 105,"config_title",0,15," " + title_config_txt + " {n}"
 	;Config BG
-	lsp 451,cfg_menu_bg,0,0
+	lsp 451,menu_bg,0,0
 	;lsp2 config_main_lsp2,config_main,3840,540,100,100,0 ;Needs to be placed at the virtual center
 
 	;Gray center window
@@ -78,6 +78,7 @@
 
 		if %cfg_current_page = 4 lsp 325,cfg_focus_last,111,187+42+((%cfg_temp2)*4)+%cfg_height : _csp 326
 		if %cfg_current_page = 5 lsp 325,cfg_focus_last,111,187+42+((%cfg_temp2)*4)+%cfg_height : _csp 326
+
 
 	lsp 330,cfg_section_btn,155+10,85+%cfg_height
 	lsp 331,cfg_section_btn,155+316+10,85+%cfg_height
@@ -1354,208 +1355,208 @@ return
 
 	if %BtnRes != 100 jumpf
 		if %vv_cla = 1 mov %vv_cla,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_cla = 2 mov %vv_cla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\02\50800292.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_cla = 2 mov %vv_cla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\02\50800292.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 101 jumpf
 		if %vv_nat = 1 mov %vv_nat,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_nat = 2 mov %vv_nat,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\03\50900927.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_nat = 2 mov %vv_nat,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\03\50900927.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 102 jumpf
 		if %vv_jes = 1 mov %vv_jes,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_jes = 2 mov %vv_jes,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\04\50200034.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_jes = 2 mov %vv_jes,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\04\50200034.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 103 jumpf
 		if %vv_eva = 1 mov %vv_eva,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_eva = 2 mov %vv_eva,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\05\51000334.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_eva = 2 mov %vv_eva,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\05\51000334.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 104 jumpf
 		if %vv_hid = 1 mov %vv_hid,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_hid = 2 mov %vv_hid,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\06\51100191.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_hid = 2 mov %vv_hid,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\06\51100191.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 105 jumpf
 		if %vv_geo = 1 mov %vv_geo,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_geo = 2 mov %vv_geo,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\07\50300029.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_geo = 2 mov %vv_geo,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\07\50300029.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 106 jumpf
 		if %vv_rud = 1 mov %vv_rud,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rud = 2 mov %vv_rud,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\08\51200233.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rud = 2 mov %vv_rud,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\08\51200233.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 107 jumpf
 		if %vv_kir = 1 mov %vv_kir,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_kir = 2 mov %vv_kir,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\09\51300152.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_kir = 2 mov %vv_kir,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\09\51300152.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 108 jumpf
 		if %vv_but = 1 mov %vv_but,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_but = 2 mov %vv_but,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\10\40100556.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_but = 2 mov %vv_but,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\10\40100556.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 109 jumpf
 		if %vv_ros = 1 mov %vv_ros,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ros = 2 mov %vv_ros,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\12\51400112.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ros = 2 mov %vv_ros,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\12\51400112.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 110 jumpf
 		if %vv_mar = 1 mov %vv_mar,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_mar = 2 mov %vv_mar,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\13\50400034.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_mar = 2 mov %vv_mar,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\13\50400034.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 111 jumpf
 		if %vv_kin = 1 mov %vv_kin,2:mov %vv_ki2,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_kin = 2 mov %vv_kin,1:mov %vv_ki2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\01\51500238.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_kin = 2 mov %vv_kin,1:mov %vv_ki2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\01\51500238.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 112 jumpf
 		if %vv_nan = 1 mov %vv_nan,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_nan = 2 mov %vv_nan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\19\51900077.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_nan = 2 mov %vv_nan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\19\51900077.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 113 jumpf
 		if %vv_gen = 1 mov %vv_gen,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_gen = 2 mov %vv_gen,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\14\51600110.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_gen = 2 mov %vv_gen,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\14\51600110.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 114 jumpf
 		if %vv_kum = 1 mov %vv_kum,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_kum = 2 mov %vv_kum,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\18\51800076.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_kum = 2 mov %vv_kum,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\18\51800076.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 115 jumpf
 		if %vv_goh = 1 mov %vv_goh,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_goh = 2 mov %vv_goh,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\17\51700095.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_goh = 2 mov %vv_goh,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\17\51700095.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 116 jumpf
 		if %vv_sha = 1 mov %vv_sha,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_sha = 2 mov %vv_sha,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\15\50500065.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_sha = 2 mov %vv_sha,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\15\50500065.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 117 jumpf
 		if %vv_kan = 1 mov %vv_kan,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_kan = 2 mov %vv_kan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\16\50600081.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_kan = 2 mov %vv_kan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\16\50600081.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 118 jumpf
 		if %vv_bea = 1 mov %vv_bea,2:mov %vv_be2,2:mov %vv_be3,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_bea = 2 mov %vv_bea,1:mov %vv_be2,1:mov %vv_be3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\27\20700021.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_bea = 2 mov %vv_bea,1:mov %vv_be2,1:mov %vv_be3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\27\20700021.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 119 jumpf
 		if %vv_ber = 1 mov %vv_ber,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ber = 2 mov %vv_ber,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\28\92100252.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ber = 2 mov %vv_ber,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\28\92100252.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 120 jumpf
 		if %vv_eri = 1 mov %vv_eri,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_eri = 2 mov %vv_eri,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\46\54500010.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_eri = 2 mov %vv_eri,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\46\54500010.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 121 jumpf
 		if %vv_lam = 1 mov %vv_lam,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_lam = 2 mov %vv_lam,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\29\52200497.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_lam = 2 mov %vv_lam,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\29\52200497.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 122 jumpf
 		if %vv_enj = 1 mov %vv_enj,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_enj = 2 mov %vv_enj,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\11\42001574.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_enj = 2 mov %vv_enj,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\11\42001574.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 123 jumpf
 		if %vv_wal = 1 mov %vv_wal,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_wal = 2 mov %vv_wal,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\30\53200236.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_wal = 2 mov %vv_wal,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\30\53200236.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 124 jumpf
 		if %vv_ev2 = 1 mov %vv_ev2,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ev2 = 2 mov %vv_ev2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\34\33300003.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ev2 = 2 mov %vv_ev2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\34\33300003.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 125 jumpf
 		if %vv_ron = 1 mov %vv_ron,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ron = 2 mov %vv_ron,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\31\53100157.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ron = 2 mov %vv_ron,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\31\53100157.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 126 jumpf
 		if %vv_rg1 = 1 mov %vv_rg1,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg1 = 2 mov %vv_rg1,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\38\32300041.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg1 = 2 mov %vv_rg1,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\38\32300041.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 127 jumpf
 		if %vv_rg2 = 1 mov %vv_rg2,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg2 = 2 mov %vv_rg2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\39\32400048.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg2 = 2 mov %vv_rg2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\39\32400048.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 128 jumpf
 		if %vv_rg3 = 1 mov %vv_rg3,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg3 = 2 mov %vv_rg3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\40\42500001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg3 = 2 mov %vv_rg3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\40\42500001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 129 jumpf
 		if %vv_rg4 = 1 mov %vv_rg4,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg4 = 2 mov %vv_rg4,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\41\32600026.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg4 = 2 mov %vv_rg4,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\41\32600026.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 130 jumpf
 		if %vv_rg5 = 1 mov %vv_rg5,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg5 = 2 mov %vv_rg5,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\42\42700385.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg5 = 2 mov %vv_rg5,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\42\42700385.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 131 jumpf
 		if %vv_rg6 = 1 mov %vv_rg6,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg6 = 2 mov %vv_rg6,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\43\42800016.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg6 = 2 mov %vv_rg6,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\43\42800016.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 132 jumpf
 		if %vv_rg7 = 1 mov %vv_rg7,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg7 = 2 mov %vv_rg7,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\44\42900001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg7 = 2 mov %vv_rg7,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\44\42900001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 133 jumpf
 		if %vv_sak = 1 mov %vv_sak,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_sak = 2 mov %vv_sak,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\33\44200009.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_sak = 2 mov %vv_sak,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\33\44200009.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 134 jumpf
 		if %vv_gap = 1 mov %vv_gap,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_gap = 2 mov %vv_gap,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\32\53700161.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_gap = 2 mov %vv_gap,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\32\53700161.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 135 jumpf
 		if %vv_s00 = 1 mov %vv_s00,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_s00 = 2 mov %vv_s00,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\37\43600001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_s00 = 2 mov %vv_s00,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\37\43600001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 136 jumpf
 		if %vv_s41 = 1 mov %vv_s41,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_s41 = 2 mov %vv_s41,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\36\43500001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_s41 = 2 mov %vv_s41,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\36\43500001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 137 jumpf
 		if %vv_s45 = 1 mov %vv_s45,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_s45 = 2 mov %vv_s45,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\35\43400001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_s45 = 2 mov %vv_s45,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\35\43400001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 138 jumpf
 		if %vv_dla = 1 mov %vv_dla,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_dla = 2 mov %vv_dla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\47\54600002.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_dla = 2 mov %vv_dla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\47\54600002.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 139 jumpf
 		if %vv_cor = 1 mov %vv_cor,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_cor = 2 mov %vv_cor,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\49\54700056.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_cor = 2 mov %vv_cor,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\49\54700056.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 140 jumpf
 		if %vv_ger = 1 mov %vv_ger,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ger = 2 mov %vv_ger,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\48\54800049.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ger = 2 mov %vv_ger,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\48\54800049.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 141 jumpf
 		if %vv_zep = 1 mov %vv_zep,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_zep = 2 mov %vv_zep,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\51\65100042.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_zep = 2 mov %vv_zep,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\51\65100042.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 142 jumpf
 		if %vv_fur = 1 mov %vv_fur,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_fur = 2 mov %vv_fur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\52\65200038.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_fur = 2 mov %vv_fur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\52\65200038.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 143 jumpf
 		if %vv_ama = 1 mov %vv_ama,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ama = 2 mov %vv_ama,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\20\43000047.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ama = 2 mov %vv_ama,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\20\43000047.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 144 jumpf
 		if %vv_bu3 = 1 mov %vv_bu3,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_bu3 = 2 mov %vv_bu3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\56\64900002.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_bu3 = 2 mov %vv_bu3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\56\64900002.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 145 jumpf
 		if %vv_fea = 1 mov %vv_fea,2:mov %vv_fe2,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_fea = 2 mov %vv_fea,1:mov %vv_fe2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\50\65000057.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_fea = 2 mov %vv_fea,1:mov %vv_fe2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\50\65000057.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 146 jumpf
 		if %vv_wil = 1 mov %vv_wil,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_wil = 2 mov %vv_wil,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\54\75400183.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_wil = 2 mov %vv_wil,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\54\75400183.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 147 jumpf
 		if %vv_rio = 1 mov %vv_rio,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rio = 2 mov %vv_rio,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\53\75300002.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rio = 2 mov %vv_rio,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\53\75300002.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 148 jumpf
 		if %vv_cur = 1 mov %vv_cur,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_cur = 2 mov %vv_cur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\55\75500003.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_cur = 2 mov %vv_cur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\55\75500003.ogg":gosub *settings_voice_vol_chars:jumpf
 		gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 149 jumpf
 		if %vv_goa = 1 mov %vv_goa,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_goa = 2 mov %vv_goa,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\45\yagim2001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_goa = 2 mov %vv_goa,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\45\yagim2001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 150 jumpf
 		if %vv_99 = 1 mov %vv_99,2:mov %vv_0,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_99 = 2 mov %vv_99,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\99\anaf1001.ogg":mov %vv_0,1:gosub *settings_voice_vol_chars:jumpf
+		if %vv_99 = 2 mov %vv_99,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\99\anaf1001.ogg":mov %vv_0,1:gosub *settings_voice_vol_chars:jumpf
 		gosub *settings_voice_vol_chars:jumpf
 	~
 

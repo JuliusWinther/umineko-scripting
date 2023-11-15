@@ -1,0 +1,154 @@
+*bgm_mode_ps3
+
+btndef ""
+
+csp_rst
+if %UMINEKOEND_MUSIC_FLG = 1 mov %UMINEKOEND_MUSIC_FLG,0 ;Remove the 'NEW' notification from the main menu
+
+bg black,10,500
+
+gosub *trophy_update_bgm ;Trophy for unlocking all Standard and Chiru BGMs
+gosub *load_saved_bgms
+
+bg $tmp10,0
+
+lsp 310,bgmmode_caption,20,0 ;для лого
+lsp 700,":c;graphics\colour\black.png",0,0,black_toukaritu
+lsp 316,":a;graphics\menu\SystemBtn\black_buttons.png",0,0
+lsp 315,set_exit,0,0
+lsp 314,":a;graphics\menu\logview\bar.png",1832,242
+lsp 313,":a;graphics\menu\logview\sel.png",1832,255
+lsp 312,":a/2,0,3;graphics\system\wnd\uoncur.png",1827,210
+lsp 311,":a/2,0,3;graphics\system\wnd\uoffcur.png",1827,839
+lsph2 317,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_grey.png",0,0,0,0,0
+lsph2 318,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_normal.png",0,0,0,0,0
+lsph2 319,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_hovered.png",0,0,0,0,0
+
+align_buttons_r 315
+
+tree_clear 2
+mov %Free3,-1
+
+;Unlock in MusicBox
+for %BGM_Id = 1 to 110
+	gosub *bgm_gen_box
+next
+
+mov %BGM_Id, 1000 : gosub *bgm_gen_box
+mov %BGM_Id, 1010 : gosub *bgm_gen_box
+mov %BGM_Id, 1011 : gosub *bgm_gen_box
+mov %BGM_Id, 1012 : gosub *bgm_gen_box
+
+;if %CHIRU_MODE != 1 jumpf
+for %BGM_Id = 111 to 195
+	if %BGM_Id != 178 && %BGM_Id != 182 && %BGM_Id != 189 gosub *bgm_gen_box
+next
+mov %BGM_Id, 240 : gosub *bgm_gen_box
+mov %BGM_Id, 241 : gosub *bgm_gen_box
+mov %BGM_Id, 1013 : gosub *bgm_gen_box
+mov %BGM_Id, 1014 : gosub *bgm_gen_box
+mov %BGM_Id, 1017 : gosub *bgm_gen_box
+mov %BGM_Id, 1018 : gosub *bgm_gen_box
+;~
+
+scrollable 320,2,135,0,1650,1080
+scrollable_cfg firstmargin,320,150
+scrollable_cfg lastmargin,320,150
+scrollable_cfg cols,320,2
+scrollable_cfg colgap,320,50
+scrollable_cfg elembg,320,317
+scrollable_cfg elemwidth,320,800
+scrollable_cfg elemheight,320,80
+scrollable_cfg textmarginwidth,320,55
+scrollable_cfg textmargintop,320,13
+scrollable_cfg scrollbar,320,313,255,785
+scrollable_display 320
+
+spbtn 315,4
+spbtn 311,5 ;up
+spbtn 312,6 ;down
+
+E_A
+
+print 80
+
+*bgm_button_loop
+
+getpage
+getcursor
+
+btnwait2 %BtnRes
+
+if %BtnRes = -1	  seplay 9,1005,100 : goto *bgm_end				;Exit by right-clicking
+if %BtnRes = 4	  seplay 9,1005,100 : goto *bgm_end				;Exit by clicking the exit button
+if %BtnRes = -10  seplay 9,1005,100 : goto *bgm_end             ;Exit by ESC
+if %BtnRes = -80  gosub *bgm_play_file
+if %BtnRes = -11  gosub *bgm_play_file
+if %BtnRes = 0    gosub *bgm_play_file
+
+if %BtnRes = -12 scrollable_scroll 320,-10	;Page up
+if %BtnRes = -13 scrollable_scroll 320,10	;Page down	
+if %BtnRes = 5 	 scrollable_scroll 320,1	;button up
+if %BtnRes = 6	 scrollable_scroll 320,-1	;button down
+
+if %BtnRes = -81 goto *bgm_end
+
+;print 1
+
+goto *bgm_button_loop
+
+goto *bgm_end
+
+;***********************************************
+
+*bgm_gen_box
+	gosub *BGM_List
+	tree_seta %Free1,2,"auto","text","{p:6:{a:c:{fit:"+$BGM_Title+"}}}"
+	tree_set 2,%Free1,"bgm",$BGM_Play
+	if ?bgm_list[%BGM_Id] == 1 tree_set 2,%Free1,"bg","318"
+	if ?bgm_list[%BGM_Id] == 0 tree_set 2,%Free1,"text","{p:6:{a:c:????}}" : tree_set 2,%Free1,"bgm",""
+return
+
+
+;***********************************************
+
+*bgm_play_file
+	scrollable_get_hovered_elem %Free2,320
+	tree_get $Free2,2,%Free2,"bgm"
+	; Exit if disabled
+	if $Free2 == "" return
+	if %Free3 != -1 && %Free3 == %Free2 return
+	
+	if $Free2 == "sound\bgm\op.ogg" || $Free2 == "legacy\bgm\op.ogg" jumpf
+	if $Free2 == "sound\bgm\tiruop.ogg" || $Free2 == "sound\bgm\ep5_op.ogg" || $Free2 == "sound\bgm\ep7_op.ogg" jumpf
+		; Set the background
+		if %Free3 != -1 tree_set 2,%Free3,"bg","318"
+		tree_set 2,%Free2,"bg","319"
+		mov %Free3,%Free2
+		; Play the bgm
+		vol_bgm 100
+		bgm $Free2
+		return
+	~
+
+	if %Free3 != -1 tree_set 2,%Free3,"bg","318"
+	mov %Free3,-1
+	scrollable_cfg mousectrl,320,0
+	stop
+	loopbgmstop
+	if $Free2 == "sound\bgm\op.ogg" || $Free2 == "legacy\bgm\op.ogg" pam 100,"op",1
+	if $Free2 == "sound\bgm\tiruop.ogg" pam 100,"op4",1
+	if $Free2 == "sound\bgm\ep5_op.ogg" pam 100,"op56",1
+	if $Free2 == "sound\bgm\ep7_op.ogg" pam 100,"op78",1
+	if %anim_mode == on flush 23 ;trapped
+	if %anim_mode == off flush 1
+	scrollable_cfg mousectrl,320,1
+return
+
+;***********************************************
+
+*bgm_end
+	seplay 9,1005,100
+	csp_rst
+return
+

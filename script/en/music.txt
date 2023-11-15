@@ -1,0 +1,189 @@
+*bgm_mode_ps3
+
+csp_rst
+if %UMINEKOEND_MUSIC_FLG = 1 mov %UMINEKOEND_MUSIC_FLG,0 ;Remove the 'NEW' notification from the main menu
+
+;gosub *trophy_update_bgm ;Trophy for unlocking all Standard and Chiru BGMs
+gosub *load_saved_bgms
+
+bg $tmp10,0 
+
+;Sprites from the upper to the lower
+
+	w_anim 308,"mbox_anim.mp4",0,1
+
+	write_special_text 309,"mbox_select_title",280,235,"Select a Song {n}"
+
+	write_special_text 310,"config_title",0,15," " + title_bgm_txt + " {n}"
+
+	lsp 311,":a/2,0,3;graphics\system\wnd\uoffcur.png",1827,839
+	lsp 312,":a/2,0,3;graphics\system\wnd\uoncur.png",1827,210
+	lsp 313,":a;graphics\menu\logview\sel.png",1832,255
+	lsp 314,":a;graphics\menu\logview\bar.png",1832,242
+
+	lsp 315,set_exit,0,0
+	align_buttons_r 315
+
+	lsp 316,mbox_bounds,0,0
+
+	lsph2 317,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_grey.png",0,0,0,0,0
+	lsph2 318,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_normal.png",0,0,0,0,0
+	lsph2 319,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_hovered.png",0,0,0,0,0
+	;320 Scrollable
+	lsp 322,mbox_wnd,0,0
+	lsp 330,menu_bg,0,0
+
+;End Sprites
+
+tree_clear 2
+mov %Free3,-1
+
+;Unlock in MusicBox
+for %BGM_Id = 1 to 110
+	gosub *bgm_gen_box
+next
+
+mov %BGM_Id, 1000 : gosub *bgm_gen_box
+mov %BGM_Id, 1010 : gosub *bgm_gen_box
+mov %BGM_Id, 1011 : gosub *bgm_gen_box
+mov %BGM_Id, 1012 : gosub *bgm_gen_box
+
+;if %CHIRU_MODE != 1 jumpf
+for %BGM_Id = 111 to 195
+	if %BGM_Id != 178 && %BGM_Id != 182 && %BGM_Id != 189 gosub *bgm_gen_box
+next
+mov %BGM_Id, 240 : gosub *bgm_gen_box
+mov %BGM_Id, 241 : gosub *bgm_gen_box
+mov %BGM_Id, 1013 : gosub *bgm_gen_box
+mov %BGM_Id, 1014 : gosub *bgm_gen_box
+mov %BGM_Id, 1017 : gosub *bgm_gen_box
+mov %BGM_Id, 1018 : gosub *bgm_gen_box
+;~
+
+;Arguments: sprite number (int), tree number (int), X position (int), Y position (int), width (int), height (int)
+scrollable 320,2,800,125,921,833
+scrollable_cfg firstmargin,320,50
+scrollable_cfg lastmargin,320,50;75
+scrollable_cfg cols,320,2
+scrollable_cfg colgap,320,15
+scrollable_cfg elembg,320,317
+scrollable_cfg elemwidth,320,445
+scrollable_cfg elemheight,320,55
+scrollable_cfg textmarginwidth,320,27
+scrollable_cfg textmargintop,320,11
+scrollable_cfg scrollbar,320,313,255,785
+scrollable_display 320
+
+E_A
+
+print 80
+
+pausevideo
+
+*bgm_button_loop
+
+btndef ""
+
+spbtn 311,5 ;Up
+spbtn 312,6 ;Down
+spbtn 315,4 ;Song Button
+spbtn 313,313 ;Scrollbar cursor
+
+getpage
+getcursor
+
+btndown 1
+
+btnwait2 %BtnRes
+
+isdown %cfg_mouse_click
+
+if %cfg_mouse_click = 0 if %BtnRes = -1	  seplay 9,1005,100 : goto *bgm_end				;Exit by right-clicking
+if %cfg_mouse_click = 0 if %BtnRes = 4	  seplay 9,1005,100 : goto *bgm_end				;Exit by clicking the exit button
+if %cfg_mouse_click = 0 if %BtnRes = -10  seplay 9,1005,100 : goto *bgm_end             ;Exit by ESC
+if %cfg_mouse_click = 0 if %BtnRes = -80  gosub *bgm_play_file : goto *bgm_button_loop
+if %cfg_mouse_click = 0 if %BtnRes = -11  gosub *bgm_play_file : goto *bgm_button_loop
+if %cfg_mouse_click = 0 if %BtnRes = 0    goto *bgm_button_loop;gosub *bgm_play_file
+
+if %cfg_mouse_click = 0 if %BtnRes = -12 scrollable_scroll 320,-10 : goto *bgm_button_loop  ;Page up with scroll
+if %cfg_mouse_click = 0 if %BtnRes = -13 scrollable_scroll 320,10  : goto *bgm_button_loop  ;Page down with scroll
+if %cfg_mouse_click = 0 if %BtnRes = 5 	 scrollable_scroll 320,1   : goto *bgm_button_loop	;Button up pressed
+if %cfg_mouse_click = 0 if %BtnRes = 6	 scrollable_scroll 320,-1  : goto *bgm_button_loop	;Button down pressed
+
+if %BtnRes = -81 goto *bgm_end
+
+;height: 570 - usable circa 529 - init pos of cursor: 255
+if %BtnRes != 313 goto *skip_bgm_cursor
+	for %for_index3=0 to 2
+		isdown %cfg_mouse_click ;Checks if mouse is still pressed
+		if %cfg_mouse_click = 0 mov %for_index3,0 : spbtn 313,313 : break ;Else ends the cycle - redeclating the button updates its position
+		getmousepos %cfg_temp_var,%cfg_mouse_y
+		mov %cfg_mouse_y,%cfg_mouse_y-26
+		getspsize 320,%cfg_temp_var,%test_var,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
+		mov %cfg_temp_var,(%cfg_mouse_y-255)*(%test_var-1080-0)/(785-255)+0
+			aspt scroll_y,320,%cfg_temp_var
+		mov %for_index3,0 ;Infinite Cycle
+	next
+*skip_bgm_cursor
+;End Custom
+
+goto *bgm_button_loop
+
+goto *bgm_end
+
+;***********************************************
+
+*bgm_gen_box
+	gosub *BGM_List
+	tree_seta %Free1,2,"auto","text","{p:6:{a:c:{fit:"+$BGM_Title+"}}}"
+	tree_set 2,%Free1,"bgm",$BGM_Play
+	if ?bgm_list[%BGM_Id] == 1 tree_set 2,%Free1,"bg","318"
+	if ?bgm_list[%BGM_Id] == 0 tree_set 2,%Free1,"text","{p:6:{a:c:????}}" : tree_set 2,%Free1,"bgm",""
+return
+
+
+;***********************************************
+
+*bgm_play_file
+	scrollable_get_hovered_elem %Free2,320
+	tree_get $Free2,2,%Free2,"bgm"
+	; Exit if disabled
+	if $Free2 == "" return
+	if %Free3 != -1 && %Free3 == %Free2 return
+	
+	resumevideo
+
+	if $Free2 == "sound\bgm\op.ogg" || $Free2 == "legacy\bgm\op.ogg" jumpf
+	if $Free2 == "sound\bgm\tiruop.ogg" || $Free2 == "sound\bgm\ep5_op.ogg" || $Free2 == "sound\bgm\ep7_op.ogg" jumpf
+		; Set the background
+		if %Free3 != -1 tree_set 2,%Free3,"bg","318"
+		tree_set 2,%Free2,"bg","319"
+		mov %Free3,%Free2
+		; Play the bgm
+		vol_bgm 100
+		bgm $Free2
+		return
+	~
+
+	if %Free3 != -1 tree_set 2,%Free3,"bg","318"
+	mov %Free3,-1
+	scrollable_cfg mousectrl,320,0
+	stop
+	loopbgmstop
+	if $Free2 == "sound\bgm\op.ogg" || $Free2 == "legacy\bgm\op.ogg" pam 100,"op",1
+	if $Free2 == "sound\bgm\tiruop.ogg" pam 100,"op4",1
+	if $Free2 == "sound\bgm\ep5_op.ogg" pam 100,"op56",1
+	if $Free2 == "sound\bgm\ep7_op.ogg" pam 100,"op78",1
+	if %anim_mode == on flush 23 ;trapped
+	if %anim_mode == off flush 1
+	scrollable_cfg mousectrl,320,1
+return
+
+;***********************************************
+
+*bgm_end
+	seplay 9,1005,100
+	csp_rst
+	resumevideo
+return
+

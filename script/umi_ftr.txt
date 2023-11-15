@@ -15216,7 +15216,7 @@ if %CHIRU_MODE != 2 jumpf
 	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_sub_extra_stories
 	lsph t_btn_tea_lsp,title_btn_2,1325,488 
 	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_sub_extra_flavor
-	
+
 	lsph t_config_lsp,title_btn_3,1325,552 : write_special_text gen_txt_17,"title_btn_txt",1325,552,title_config_txt
 	lsph t_cg_lsp,title_btn_4,1325,616 : write_special_text gen_txt_18,"title_btn_txt",1325,616,title_cg_txt
 	lsph t_btn_music_lsp,title_btn_5,1325,680 : write_special_text gen_txt_19,"title_btn_txt",1325,680,title_bgm_txt
@@ -17585,7 +17585,7 @@ if %CHIRU_MODE != 2 jumpf
 		write_special_text gen_txt_23,"ep_extra",1269,788+3,r_click_extra1_11+"{n}"
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788
 		write_special_text gen_txt_24,"ep",1581,788+3,load_btn_txt
-	
+
 		print 85
 
 		*start_sub_menu_btn_extra_stories_loop
@@ -24536,6 +24536,15 @@ return
 *load_voice
 getparam %lv_ch,$lv_f,$lv_v
 
+if %cfg_voice_language = 1 mov $voice_folder,"jp";JP
+if %cfg_voice_language = 2 mov $voice_folder,"en";EN
+
+;DEBUG
+fileexist %free2,"sound\voice\" + $voice_folder + "\" + $lv_f + "\" + $lv_v + ".ogg"
+if %free2 != 1 debug_str "Voice File: " + $voice_folder + "\" + $lv_f + "\" + $lv_v + ".ogg - not found" : return
+
+if %cfg_voice_language = 1 && $lv_f = "97" return
+
 if %no_log_gen == 1 jumpf 
 jnskip
 	if %lv_ch == 0 mov ?voice_s[0],0 : mov ?voice_s[1],0 : mov ?voice_s[2],0 : mov ?voice_s[3],0 : mov ?voice_s[4],0 : mov ?voice_s[5],0 : mov ?voice_s[6],0 : return
@@ -24544,7 +24553,7 @@ jnskip
 
 if %animated_lips != off tree_get $lv_t,3,$lv_f
 
-mov $lv_p,"sound\voice\" + $lv_f + "\" + $lv_v + ".ogg"
+mov $lv_p,"sound\voice\" + $voice_folder + "\" + $lv_f + "\" + $lv_v + ".ogg"
 if %no_log_gen == 1 && %lv_ch == 0 lv_setlog %lv_ch,$lv_p,1 : return
 if %no_log_gen == 1 lv_setlog %lv_ch,$lv_p,0 : return
 
@@ -24580,7 +24589,7 @@ if %lv_ch != 0 : jumpf
 if %enable_cache == 0 || %no_cache_atm == 1 return ; we do know that this may be invoked in menus, fix if it creates us issues
 lookahead exlv,2,$lv_tmp1a,$lv_tmp1b,$lv_tmp2a,$lv_tmp2b,$lv_tmp3a,$lv_tmp3b,$lv_tmp4a,$lv_tmp4b,$lv_tmp5a,$lv_tmp5b
 for %lv_f = lv_tmp1a to lv_tmp5a
-	if $%lv_f != "" mov %lv_p,%lv_f+5 : async_cache_snd 1,"sound\voice\" + $%lv_f + "\" + $%lv_p + ".ogg"
+	if $%lv_f != "" mov %lv_p,%lv_f+5 : async_cache_snd 1,"sound\voice\" + $voice_folder + "\" + $%lv_f + "\" + $%lv_p + ".ogg"
 next
 
 return
@@ -24895,6 +24904,19 @@ return
 ;plays masked video
 ;Example: anim bgsp,"no80",1
 ;anim_mode (1 - single_play / 0 - looped play)
+*w_anim ;Needed for videos outside the game ;W_CUSTOM
+getparam %anim_sprite,$anim_file,%anim_mode,%anim_alpha
+_csp %anim_sprite
+jskip
+	lsp %anim_sprite,"*10"
+	mov %vid_play,-%anim_sprite
+	video "video\masked\"+$anim_file,0,%anim_mode,%anim_alpha,0 : resettimer
+~
+mov %anim_alpha,0
+
+return
+;End Custom
+
 *anim
 getparam %anim_sprite,$anim_file,%anim_mode,%anim_alpha
 csp_slot %anim_sprite
@@ -27155,7 +27177,6 @@ return
 	tree_set 3,"58","ki2"
 	tree_set 3,"59","bea"
 	tree_set 3,"60","be3"
-	tree_set 3,"98","non" ;Saku
 	tree_set 3,"99","non"
 	tree_set 3,"00","non"
 
@@ -27168,6 +27189,9 @@ return
 	tree_set 3,"66","wel"
 	tree_set 3,"67","sku"
 	tree_set 3,"68","whm"
+
+	tree_set 3,"97","non" ;Narrator
+	tree_set 3,"98","non" ;General Saku
 	;End Custom
 
 return
@@ -27446,6 +27470,7 @@ return
 		if %%music_box_tmp == 1 mov ?bgm_list[%music_box_tmp-music_box_count],1
 	next
 
+	;TODO do this only on startup, not on the opening of the music box
 	operate_config u_read,$music_box_tmp,"bgm_unlock"
 	if $music_box_tmp == "8" goto *load_bgms_8
 	if $music_box_tmp == "7" goto *load_bgms_7
@@ -29159,17 +29184,6 @@ snaplog 320
 
 *log_button_setup
 
-btndef ""
-
-spbtn backlogupbtn,backlogupbtn
-spbtn backlogdownbtn,backlogdownbtn
-spbtn 309,1
-spbtn 307,2
-spbtn 308,3
-spbtn 306,4
-
-spbtn 313,313 ;Original Edited - scrollbar cursor button
-
 bgmvol %Rel_vol_bgm*30/100
 chvol 3,%sfx_vol*%me_current_vol_1*30/10000
 chvol 4,%sfx_vol*%me_current_vol_2*30/10000
@@ -29188,6 +29202,17 @@ print 1
 
 *log_button_loop
 
+	btndef ""
+
+	spbtn backlogupbtn,backlogupbtn
+	spbtn backlogdownbtn,backlogdownbtn
+	spbtn 309,1
+	spbtn 307,2
+	spbtn 308,3
+	spbtn 306,4
+
+	spbtn 313,313 ;Original Edited - scrollbar cursor button
+
 	getpage
 	getcursor
 	getmclick
@@ -29204,25 +29229,25 @@ print 1
 	if %cfg_mouse_click = 0 if %BtnRes =  -10 	goto *end_log_button_loop                ;Exit by ESC
 	if %cfg_mouse_click = 0 if %BtnRes =  -81 	goto *end_log_button_loop 				 ;?
 	
-	if %cfg_mouse_click = 0 if %BtnRes =  -12 				scrollable_scroll 320,-10 : spbtn 313,313	;Page up with scroll
-	if %cfg_mouse_click = 0 if %BtnRes =  -13 				scrollable_scroll 320,10 : spbtn 313,313	;Page down with scroll
-	if %cfg_mouse_click = 0 if %BtnRes =  backlogupbtn		scrollable_scroll 320,-1 : spbtn 313,313	;Button up pressed
-	if %cfg_mouse_click = 0 if %BtnRes =  backlogdownbtn	scrollable_scroll 320,1	: spbtn 313,313	;Button down pressed
-	if %cfg_mouse_click = 0 if %BtnRes =    2 				gosub *log_chapter_prev		;?
-	if %cfg_mouse_click = 0 if %BtnRes =    3 				gosub *log_chapter_next		;?
-	if %cfg_mouse_click = 0 if %BtnRes =    4 				gosub *log_hint				;?
-	if %cfg_mouse_click = 0 if %BtnRes =  -80  				lv_play 320,%dlg_vol		;?
-	if %cfg_mouse_click = 0 if %BtnRes =  -11  				lv_play 320,%dlg_vol		;?
-	if %cfg_mouse_click = 0 if %BtnRes =    0  				lv_play 320,%dlg_vol		;?
+	if %cfg_mouse_click = 0 if %BtnRes =  -12 				scrollable_scroll 320,-10	: goto *log_button_loop	;Page up with scroll
+	if %cfg_mouse_click = 0 if %BtnRes =  -13 				scrollable_scroll 320,10	: goto *log_button_loop	;Page down with scroll
+	if %cfg_mouse_click = 0 if %BtnRes =  backlogupbtn		scrollable_scroll 320,-1	: goto *log_button_loop	;Button up pressed
+	if %cfg_mouse_click = 0 if %BtnRes =  backlogdownbtn	scrollable_scroll 320,1		: goto *log_button_loop	;Button down pressed
+	if %cfg_mouse_click = 0 if %BtnRes =    2 				gosub *log_chapter_prev		: goto *log_button_loop ;?
+	if %cfg_mouse_click = 0 if %BtnRes =    3 				gosub *log_chapter_next		: goto *log_button_loop ;?
+	if %cfg_mouse_click = 0 if %BtnRes =    4 				gosub *log_hint				: goto *log_button_loop ;?
+	if %cfg_mouse_click = 0 if %BtnRes =  -80  				lv_play 320,%dlg_vol		: goto *log_button_loop ;?
+	if %cfg_mouse_click = 0 if %BtnRes =  -11  				lv_play 320,%dlg_vol		: goto *log_button_loop ;?
+	if %cfg_mouse_click = 0 if %BtnRes =    0  				goto *log_button_loop		;Original Edited - do not play bu do nothing
 	if %cfg_mouse_click = 0 if %BtnRes =  -70 				goto *log_jump_request		;?
 	if %cfg_mouse_click = 0 if %BtnRes =  -51 				goto *log_jump_request		;?
 
-	;Original Edited - LOG SCROLLBAR SCROLLING - W_CUSTOM
+	;Original Edited - LOG SCROLLBAR SCROLLING ;SCROLL - W_CUSTOM
 	;height: 570 - usable circa 529 - init pos of cursor: 255
 	if %BtnRes != 313 goto *skip_log_cursor
 		for %for_index3=0 to 2
 			isdown %cfg_mouse_click ;Checks if mouse is still pressed
-			if %cfg_mouse_click = 0 mov %for_index3,0 : spbtn 313,313 : break ;Else ends the cycle
+			if %cfg_mouse_click = 0 mov %for_index3,0 : spbtn 313,313 : break ;Else ends the cycle - redeclating the button updates its position
 			getmousepos %cfg_temp_var,%cfg_mouse_y
 			mov %cfg_mouse_y,%cfg_mouse_y-26
 			getspsize 320,%cfg_temp_var,%test_var,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
@@ -30983,161 +31008,10 @@ return
 ;End Custom
 
 ;***********************************************************************
-; Music Box
+; Music Box ;MusicBox
 ;***********************************************************************
-*bgm_mode_ps3
 
-btndef ""
-
-csp_rst
-if %UMINEKOEND_MUSIC_FLG = 1 mov %UMINEKOEND_MUSIC_FLG,0
-
-bg black,10,500
-
-gosub *trophy_update_bgm
-gosub *load_saved_bgms
-
-bg $tmp10,0
-
-lsp 310,bgmmode_caption,20,0 ;для лого
-lsp 700,":c;graphics\colour\black.png",0,0,black_toukaritu
-lsp 316,":a;graphics\menu\SystemBtn\black_buttons.png",0,0
-lsp 315,set_exit,0,0
-lsp 314,":a;graphics\menu\logview\bar.png",1832,242
-lsp 313,":a;graphics\menu\logview\sel.png",1832,255
-lsp 312,":a/2,0,3;graphics\system\wnd\uoncur.png",1827,210
-lsp 311,":a/2,0,3;graphics\system\wnd\uoffcur.png",1827,839
-lsph2 317,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_grey.png",0,0,0,0,0
-lsph2 318,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_normal.png",0,0,0,0,0
-lsph2 319,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_hovered.png",0,0,0,0,0
-
-align_buttons_r 315
-
-tree_clear 2
-mov %Free3,-1
-
-;Unlock in MusicBox
-for %BGM_Id = 1 to 110
-	gosub *bgm_gen_box
-next
-
-mov %BGM_Id, 1000 : gosub *bgm_gen_box
-mov %BGM_Id, 1010 : gosub *bgm_gen_box
-mov %BGM_Id, 1011 : gosub *bgm_gen_box
-mov %BGM_Id, 1012 : gosub *bgm_gen_box
-
-;if %CHIRU_MODE != 1 jumpf
-for %BGM_Id = 111 to 195
-	if %BGM_Id != 178 && %BGM_Id != 182 && %BGM_Id != 189 gosub *bgm_gen_box
-next
-mov %BGM_Id, 240 : gosub *bgm_gen_box
-mov %BGM_Id, 241 : gosub *bgm_gen_box
-mov %BGM_Id, 1013 : gosub *bgm_gen_box
-mov %BGM_Id, 1014 : gosub *bgm_gen_box
-mov %BGM_Id, 1017 : gosub *bgm_gen_box
-mov %BGM_Id, 1018 : gosub *bgm_gen_box
-;~
-
-scrollable 320,2,135,0,1650,1080
-scrollable_cfg firstmargin,320,150
-scrollable_cfg lastmargin,320,150
-scrollable_cfg cols,320,2
-scrollable_cfg colgap,320,50
-scrollable_cfg elembg,320,317
-scrollable_cfg elemwidth,320,800
-scrollable_cfg elemheight,320,80
-scrollable_cfg textmarginwidth,320,55
-scrollable_cfg textmargintop,320,13
-scrollable_cfg scrollbar,320,313,255,785
-scrollable_display 320
-
-spbtn 315,4
-spbtn 311,5 ;up
-spbtn 312,6 ;down
-
-E_A
-
-print 80
-
-*bgm_button_loop
-
-getpage
-getcursor
-
-btnwait2 %BtnRes
-
-if %BtnRes = -1	  seplay 9,1005,100 : goto *bgm_end				;Exit by right-clicking
-if %BtnRes = 4	  seplay 9,1005,100 : goto *bgm_end				;Exit by clicking the exit button
-if %BtnRes = -10  seplay 9,1005,100 : goto *bgm_end             ;Exit by ESC
-if %BtnRes = -80  gosub *bgm_play_file
-if %BtnRes = -11  gosub *bgm_play_file
-if %BtnRes = 0    gosub *bgm_play_file
-
-if %BtnRes = -12 scrollable_scroll 320,-10	;Page up
-if %BtnRes = -13 scrollable_scroll 320,10	;Page down	
-if %BtnRes = 5 	 scrollable_scroll 320,1	;button up
-if %BtnRes = 6	 scrollable_scroll 320,-1	;button down
-
-if %BtnRes = -81 goto *bgm_end
-
-;print 1
-
-goto *bgm_button_loop
-
-goto *bgm_end
-
-;***********************************************
-
-*bgm_gen_box
-	gosub *BGM_List
-	tree_seta %Free1,2,"auto","text","{p:6:{a:c:{fit:"+$BGM_Title+"}}}"
-	tree_set 2,%Free1,"bgm",$BGM_Play
-	if ?bgm_list[%BGM_Id] == 1 tree_set 2,%Free1,"bg","318"
-	if ?bgm_list[%BGM_Id] == 0 tree_set 2,%Free1,"text","{p:6:{a:c:????}}" : tree_set 2,%Free1,"bgm",""
-return
-
-
-;***********************************************
-
-*bgm_play_file
-	scrollable_get_hovered_elem %Free2,320
-	tree_get $Free2,2,%Free2,"bgm"
-	; Exit if disabled
-	if $Free2 == "" return
-	if %Free3 != -1 && %Free3 == %Free2 return
-	
-	if $Free2 == "sound\bgm\op.ogg" || $Free2 == "legacy\bgm\op.ogg" jumpf
-	if $Free2 == "sound\bgm\tiruop.ogg" || $Free2 == "sound\bgm\ep5_op.ogg" || $Free2 == "sound\bgm\ep7_op.ogg" jumpf
-		; Set the background
-		if %Free3 != -1 tree_set 2,%Free3,"bg","318"
-		tree_set 2,%Free2,"bg","319"
-		mov %Free3,%Free2
-		; Play the bgm
-		vol_bgm 100
-		bgm $Free2
-		return
-	~
-
-	if %Free3 != -1 tree_set 2,%Free3,"bg","318"
-	mov %Free3,-1
-	scrollable_cfg mousectrl,320,0
-	stop
-	loopbgmstop
-	if $Free2 == "sound\bgm\op.ogg" || $Free2 == "legacy\bgm\op.ogg" pam 100,"op",1
-	if $Free2 == "sound\bgm\tiruop.ogg" pam 100,"op4",1
-	if $Free2 == "sound\bgm\ep5_op.ogg" pam 100,"op56",1
-	if $Free2 == "sound\bgm\ep7_op.ogg" pam 100,"op78",1
-	if %anim_mode == on flush 23 ;trapped
-	if %anim_mode == off flush 1
-	scrollable_cfg mousectrl,320,1
-return
-
-;***********************************************
-
-*bgm_end
-	seplay 9,1005,100
-	csp_rst
-return
+#locale_import "music.txt"
 
 ;***********************************************************************
 ; Trophies
@@ -33370,7 +33244,7 @@ return
 		return
 	~
 	if $lsp_type != "config_title" jumpf
-		lsp2 %lsp_slot,":s;#FFFFFF`{p:52:"+$lsp_text1+"}",%lsp_x,%lsp_y
+		lsp %lsp_slot,":s;#FFFFFF`{a:c:{p:52:{w:1920:{fit}"+$lsp_text1+"}}}",%lsp_x,%lsp_y
 		return
 	~
 	if $lsp_type != "config_section" jumpf
@@ -33403,6 +33277,10 @@ return
 	~
 	if $lsp_type != "in_story_choice" jumpf
 		lsp %lsp_slot,":s;#E1E1E1`{a:c:{p:57:{w:1169:{fit}"+$lsp_text1+"}}}",%lsp_x,%lsp_y
+		return
+	~
+	if $lsp_type != "mbox_select_title" jumpf
+		lsp %lsp_slot,":s;#FFFFFF`{p:53:"+$lsp_text1+"}",%lsp_x,%lsp_y
 		return
 	~
 
@@ -34296,7 +34174,7 @@ if %Free1==0 mov $Free1,verify_updates : gosub *verify_err : jumpf
 	if %Free1==0 mov $Free1,verify_updates : gosub *verify_err : jumpf
 	fileexist %Free1,"sound\bgm\Treasure.png"
 	if %Free1==0 mov $Free1,verify_updates : gosub *verify_err : jumpf
-	fileexist %Free1,"sound\voice\27\50700008.ogg",%Free2
+	fileexist %Free1,"sound\voice\jp\27\50700008.ogg",%Free2
 	if %Free1==0 || %Free2!=36912 mov $Free1,verify_updates : gosub *verify_err : jumpf
 	fileexist %Free1,"sound\se\umise_072.ogg",%Free2
 	if %Free1==0 || %Free2!=60852 mov $Free1,verify_updates : gosub *verify_err : jumpf
@@ -34308,7 +34186,7 @@ if %Free1==0 mov $Free1,verify_updates : gosub *verify_err : jumpf
 	if %Free1==0 || %Free2!=3171336 mov $Free1,verify_updates : gosub *verify_err : jumpf
 	fileexist %Free1,"graphics\locale_en\end_4a.png",%Free2
 	if %Free1==0 || %Free2!=24299420 mov $Free1,verify_updates : gosub *verify_err : jumpf
-	fileexist %Free1,"sound\voice\01\51500238.ogg",%Free2
+	fileexist %Free1,"sound\voice\jp\01\51500238.ogg",%Free2
 	if %Free1==0 || %Free2!=21406 mov $Free1,verify_updates : gosub *verify_err : jumpf
 	fileexist %Free1,"game.hash"
 	if %Free1==0 mov $Free1,verify_updates : gosub *verify_err : jumpf
@@ -34382,32 +34260,32 @@ lsp 26,":s;#FFFFFF`{p:8:{f:5:Checked and voided!}}",25,500
 talsp 28,256
 chvol 0,%dlg_vol
 print 1
-dwave 0,"sound\voice\47\54600055.ogg" 
+dwave 0,"sound\voice\jp\47\54600055.ogg" 
 seplay 1,59,100
 waitvoice
 lsp 27,":s;#FFFFFF`{p:8:{f:5:{c:FF0000:Checked and voided!}}}",25,580
 print 1
-dwave 0,"sound\voice\47\54600056.ogg"
+dwave 0,"sound\voice\jp\47\54600056.ogg"
 seplay 2,59,100
 waitvoice
-dwave 0,"sound\voice\47\54600057.ogg" 
+dwave 0,"sound\voice\jp\47\54600057.ogg" 
 seplay 3,59,100
 waitvoice
-dwave 0,"sound\voice\47\64600257.ogg" 
+dwave 0,"sound\voice\jp\47\64600257.ogg" 
 seplay 4,59,100
 waitvoice
-dwave 0,"sound\voice\47\64600258.ogg" 
+dwave 0,"sound\voice\jp\47\64600258.ogg" 
 seplay 5,59,100
 waitvoice
-dwave 0,"sound\voice\47\64600259.ogg" 
+dwave 0,"sound\voice\jp\47\64600259.ogg" 
 seplay 2,66,100
 seplay 3,73,100
 waitvoice
-dwave 0,"sound\voice\47\64600260.ogg" 
+dwave 0,"sound\voice\jp\47\64600260.ogg" 
 seplay 1,74,100
 seplay 2,72,100
 waitvoice
-dwave 0,"sound\voice\47\64600261.ogg" 
+dwave 0,"sound\voice\jp\47\64600261.ogg" 
 seplay 1,1006,100
 seplay 2,57,100
 waitvoice

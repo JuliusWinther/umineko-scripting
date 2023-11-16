@@ -1,6 +1,9 @@
 *bgm_mode_ps3
 
 csp_rst
+
+border_pad_push 4
+
 if %UMINEKOEND_MUSIC_FLG = 1 mov %UMINEKOEND_MUSIC_FLG,0 ;Remove the 'NEW' notification from the main menu
 
 ;gosub *trophy_update_bgm ;Trophy for unlocking all Standard and Chiru BGMs
@@ -8,9 +11,9 @@ gosub *load_saved_bgms
 
 bg $tmp10,0 
 
-;Sprites from the upper to the lower
+mov %bgm_details,0 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,""
 
-	w_anim 308,"mbox_anim.mp4",0,1
+;Sprites from the upper to the lower
 
 	write_special_text 309,"mbox_select_title",280,235,"Select a Song {n}"
 
@@ -26,11 +29,19 @@ bg $tmp10,0
 
 	lsp 316,mbox_bounds,0,0
 
+	;BGM Buttons
 	lsph2 317,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_grey.png",0,0,0,0,0
 	lsph2 318,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_normal.png",0,0,0,0,0
 	lsph2 319,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_hovered.png",0,0,0,0,0
-	;320 Scrollable
-	lsp 322,mbox_wnd,0,0
+
+	;320 - Scrollable
+
+	;324 - YOUTUBE
+	;325 - SPOTIFY
+	;326 - CD
+
+	w_anim 328,"mbox_anim.mp4",0,1
+	lsp 329,mbox_wnd,0,0
 	lsp 330,menu_bg,0,0
 
 ;End Sprites
@@ -89,6 +100,10 @@ spbtn 312,6 ;Down
 spbtn 315,4 ;Song Button
 spbtn 313,313 ;Scrollbar cursor
 
+if $bgm_yt != "" spbtn 324,324 
+if $bgm_spotify != "" spbtn 325,325 
+if $bgm_cd != "" spbtn 326,326 
+
 getpage
 getcursor
 
@@ -111,6 +126,10 @@ if %cfg_mouse_click = 0 if %BtnRes = 5 	 scrollable_scroll 320,1   : goto *bgm_b
 if %cfg_mouse_click = 0 if %BtnRes = 6	 scrollable_scroll 320,-1  : goto *bgm_button_loop	;Button down pressed
 
 if %BtnRes = -81 goto *bgm_end
+
+if $bgm_yt != "" if %BtnRes = 324 menu_window : shell $bgm_yt
+if $bgm_spotify != "" if %BtnRes = 325 menu_window : shell $bgm_spotify
+if $bgm_cd != "" if %BtnRes = 326 menu_window : shell $bgm_cd
 
 ;height: 570 - usable circa 529 - init pos of cursor: 255
 if %BtnRes != 313 goto *skip_bgm_cursor
@@ -142,11 +161,249 @@ goto *bgm_end
 return
 
 
+*get_bgm_details
+getparam $temp_var
+
+if $temp_var == "" 					 	 : mov %bgm_details,0	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf				
+if $temp_var == "sound\bgm\umib_001.ogg" : mov %bgm_details,1	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_002.ogg" : mov %bgm_details,2	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_003.ogg" : mov %bgm_details,3	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_004.ogg" : mov %bgm_details,4	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_005.ogg" : mov %bgm_details,5	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_006.ogg" : mov %bgm_details,6	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_007.ogg" : mov %bgm_details,7	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_008.ogg" : mov %bgm_details,8	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_009.ogg" : mov %bgm_details,9	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_010.ogg" : mov %bgm_details,10 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_011.ogg" : mov %bgm_details,11   : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_012.ogg" : mov %bgm_details,12   : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_013.ogg" : mov %bgm_details,13 	 : mov $bgm_details,"Sumiisan" : mov $bgm_yt,"https://youtu.be/_3VyciUIhqU?si=iMjEXfGSSUlroZYs" : mov $bgm_spotify,"." : mov $bgm_cd,"." : jumpf
+if $temp_var == "sound\bgm\umib_014.ogg" : mov %bgm_details,14 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_015.ogg" : mov %bgm_details,15 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_016.ogg" : mov %bgm_details,16 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_017.ogg" : mov %bgm_details,17 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_018.ogg" : mov %bgm_details,18 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_019.ogg" : mov %bgm_details,19 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_020.ogg" : mov %bgm_details,20 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_021.ogg" : mov %bgm_details,21 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_022.ogg" : mov %bgm_details,22 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_023.ogg" : mov %bgm_details,23 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_024.ogg" : mov %bgm_details,24 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_025.ogg" : mov %bgm_details,25 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_026.ogg" : mov %bgm_details,26 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_027.ogg" : mov %bgm_details,27 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_028.ogg" : mov %bgm_details,28 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_029.ogg" : mov %bgm_details,29 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_030.ogg" : mov %bgm_details,30 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_031.ogg" : mov %bgm_details,31 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_032.ogg" : mov %bgm_details,32 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_033.ogg" : mov %bgm_details,33 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_034.ogg" : mov %bgm_details,34 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_035.ogg" : mov %bgm_details,35 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_036.ogg" : mov %bgm_details,36 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_037.ogg" : mov %bgm_details,37 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_038.ogg" : mov %bgm_details,38 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_039.ogg" : mov %bgm_details,39 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_040.ogg" : mov %bgm_details,40 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_041.ogg" : mov %bgm_details,41 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_042.ogg" : mov %bgm_details,42 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_043.ogg" : mov %bgm_details,43 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_044.ogg" : mov %bgm_details,44 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_045.ogg" : mov %bgm_details,45 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_046.ogg" : mov %bgm_details,46 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_047.ogg" : mov %bgm_details,47 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_048.ogg" : mov %bgm_details,48 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_049.ogg" : mov %bgm_details,49 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_050.ogg" : mov %bgm_details,50 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_051.ogg" : mov %bgm_details,51 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_052.ogg" : mov %bgm_details,52 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_053.ogg" : mov %bgm_details,53 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_054.ogg" : mov %bgm_details,54 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_055.ogg" : mov %bgm_details,55 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_056.ogg" : mov %bgm_details,56 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_057.ogg" : mov %bgm_details,57 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_058.ogg" : mov %bgm_details,58 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_059.ogg" : mov %bgm_details,59 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_060.ogg" : mov %bgm_details,60 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_061.ogg" : mov %bgm_details,61 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_062.ogg" : mov %bgm_details,62 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_063.ogg" : mov %bgm_details,63 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_064.ogg" : mov %bgm_details,64 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_065.ogg" : mov %bgm_details,65 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_066.ogg" : mov %bgm_details,66 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_067.ogg" : mov %bgm_details,67 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_068.ogg" : mov %bgm_details,68 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_069.ogg" : mov %bgm_details,69 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_070.ogg" : mov %bgm_details,70 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_071.ogg" : mov %bgm_details,71 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_072.ogg" : mov %bgm_details,72 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_073.ogg" : mov %bgm_details,73 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_074.ogg" : mov %bgm_details,74 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_075.ogg" : mov %bgm_details,75 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_076.ogg" : mov %bgm_details,76 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_077.ogg" : mov %bgm_details,77 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_078.ogg" : mov %bgm_details,78 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_079.ogg" : mov %bgm_details,79 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_080.ogg" : mov %bgm_details,80 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_081.ogg" : mov %bgm_details,81 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_082.ogg" : mov %bgm_details,82 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_083.ogg" : mov %bgm_details,83 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_084.ogg" : mov %bgm_details,84 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_085.ogg" : mov %bgm_details,85 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_086.ogg" : mov %bgm_details,86 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_087.ogg" : mov %bgm_details,87 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_088.ogg" : mov %bgm_details,88 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_089.ogg" : mov %bgm_details,89 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_090.ogg" : mov %bgm_details,90 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_091.ogg" : mov %bgm_details,91 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_092.ogg" : mov %bgm_details,92 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_093.ogg" : mov %bgm_details,93 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_095.ogg" : mov %bgm_details,95 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_096.ogg" : mov %bgm_details,96 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_097.ogg" : mov %bgm_details,97 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_098.ogg" : mov %bgm_details,98 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_099.ogg" : mov %bgm_details,99 	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_100.ogg" : mov %bgm_details,100	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_101.ogg" : mov %bgm_details,101	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_102.ogg" : mov %bgm_details,102	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_103.ogg" : mov %bgm_details,103	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_104.ogg" : mov %bgm_details,104	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_105.ogg" : mov %bgm_details,105	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_106.ogg" : mov %bgm_details,106	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_107.ogg" : mov %bgm_details,107	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_108.ogg" : mov %bgm_details,108	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_109.ogg" : mov %bgm_details,109	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_110.ogg" : mov %bgm_details,110	 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_111.ogg" : mov %bgm_details,111  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_112.ogg" : mov %bgm_details,112  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_113.ogg" : mov %bgm_details,113  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_114.ogg" : mov %bgm_details,114  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_115.ogg" : mov %bgm_details,115  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_116.ogg" : mov %bgm_details,116  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_117.ogg" : mov %bgm_details,117  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_118.ogg" : mov %bgm_details,118  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_119.ogg" : mov %bgm_details,119  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_120.ogg" : mov %bgm_details,120  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_121.ogg" : mov %bgm_details,121  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_122.ogg" : mov %bgm_details,122  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_123.ogg" : mov %bgm_details,123  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_124.ogg" : mov %bgm_details,124  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_125.ogg" : mov %bgm_details,125  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_126.ogg" : mov %bgm_details,126  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_127.ogg" : mov %bgm_details,127  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_128.ogg" : mov %bgm_details,128  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_129.ogg" : mov %bgm_details,129  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_130.ogg" : mov %bgm_details,130  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_131.ogg" : mov %bgm_details,131  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_132.ogg" : mov %bgm_details,132  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_133.ogg" : mov %bgm_details,133  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_134.ogg" : mov %bgm_details,134  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_135.ogg" : mov %bgm_details,135  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_136.ogg" : mov %bgm_details,136  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_137.ogg" : mov %bgm_details,137  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_138.ogg" : mov %bgm_details,138  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_139.ogg" : mov %bgm_details,139  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_140.ogg" : mov %bgm_details,140  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_141.ogg" : mov %bgm_details,141  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_142.ogg" : mov %bgm_details,142  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_143.ogg" : mov %bgm_details,143  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_144.ogg" : mov %bgm_details,144  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_145.ogg" : mov %bgm_details,145  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_146.ogg" : mov %bgm_details,146  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_147.ogg" : mov %bgm_details,147  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_148.ogg" : mov %bgm_details,148  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_149.ogg" : mov %bgm_details,149  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_150.ogg" : mov %bgm_details,150  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_151.ogg" : mov %bgm_details,151  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_152.ogg" : mov %bgm_details,152  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_153.ogg" : mov %bgm_details,153  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_154.ogg" : mov %bgm_details,154  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_155.ogg" : mov %bgm_details,155  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_156.ogg" : mov %bgm_details,156  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_157.ogg" : mov %bgm_details,157  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_158.ogg" : mov %bgm_details,158  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_159.ogg" : mov %bgm_details,159  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_160.ogg" : mov %bgm_details,160  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_161.ogg" : mov %bgm_details,161  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_162.ogg" : mov %bgm_details,162  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_163.ogg" : mov %bgm_details,163  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_164.ogg" : mov %bgm_details,164  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_165.ogg" : mov %bgm_details,165  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_166.ogg" : mov %bgm_details,166  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_167.ogg" : mov %bgm_details,167  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_168.ogg" : mov %bgm_details,168  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_169.ogg" : mov %bgm_details,169  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_170.ogg" : mov %bgm_details,170  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_171.ogg" : mov %bgm_details,171  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_172.ogg" : mov %bgm_details,172  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_173.ogg" : mov %bgm_details,173  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_174.ogg" : mov %bgm_details,174  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_175.ogg" : mov %bgm_details,175  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_176.ogg" : mov %bgm_details,176  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_177.ogg" : mov %bgm_details,177  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_179.ogg" : mov %bgm_details,179  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_180.ogg" : mov %bgm_details,180  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_181.ogg" : mov %bgm_details,181  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_183.ogg" : mov %bgm_details,183  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_184.ogg" : mov %bgm_details,184  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_185.ogg" : mov %bgm_details,185  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_186.ogg" : mov %bgm_details,186  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_187.ogg" : mov %bgm_details,187  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_188.ogg" : mov %bgm_details,188  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_190.ogg" : mov %bgm_details,190  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_191.ogg" : mov %bgm_details,191  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_192.ogg" : mov %bgm_details,192  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_193.ogg" : mov %bgm_details,193  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_194.ogg" : mov %bgm_details,194  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_195.ogg" : mov %bgm_details,195  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_240.ogg" : mov %bgm_details,240  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_241.ogg" : mov %bgm_details,241  : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_1000.ogg": mov %bgm_details,1000 :  mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\bgm_final.ogg": mov %bgm_details,1010 :  mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\bgm_final_chiru.ogg" : mov %bgm_details,1013 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+;Extra
+if $temp_var == "sound\bgm\umib_094.ogg" 				: mov %bgm_details,94 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\system0.ogg"	 				: mov %bgm_details,1011 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $legacy_op == off && %temp_var == "sound\bgm\op.ogg" : mov %bgm_details,1012 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $legacy_op == on  && %temp_var == "legacy\bgm\op.ogg": mov %bgm_details,1012 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\tiruop.ogg"					: mov %bgm_details,1014 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\ep5_op.ogg" 					: mov %bgm_details,1017 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\ep7_op.ogg"  				: mov %bgm_details,1018	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+;Saku BGM - W_CUSTOM	
+if $temp_var == "sound\bgm\umib_189.ogg" 	: mov %bgm_details,189 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_196.ogg" 	: mov %bgm_details,196 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_197.ogg" 	: mov %bgm_details,197 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_198.ogg" 	: mov %bgm_details,198 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_200.ogg" 	: mov %bgm_details,200 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_243.ogg" 	: mov %bgm_details,243 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_250.ogg" 	: mov %bgm_details,250 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_251.ogg" 	: mov %bgm_details,251 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_252.ogg" 	: mov %bgm_details,252 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_253.ogg" 	: mov %bgm_details,253 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_254.ogg" 	: mov %bgm_details,254 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_007b.ogg" 	: mov %bgm_details,2007	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\bgm_final2.ogg"	: mov %bgm_details,1020 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\cssaku_op.ogg" 	: mov %bgm_details,1021	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\og_cross_op.ogg"	: mov %bgm_details,1022 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\og_op.ogg" 		: mov %bgm_details,1023	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\og_x_op.ogg"  	: mov %bgm_details,1024	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\pcsaku_op.ogg" 	: mov %bgm_details,1025	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+;End Custom
+
+~
+
+mov %BGM_Id,%bgm_details : gosub *BGM_List ;Get Title
+mov $bgm_details,"" + bgm_desc_title + ": " + $BGM_Title + " {n}" + bgm_desc_author + ": " + $bgm_details + " {n}"
+
+return
+
 ;***********************************************
 
 *bgm_play_file
+
 	scrollable_get_hovered_elem %Free2,320
 	tree_get $Free2,2,%Free2,"bgm"
+
 	; Exit if disabled
 	if $Free2 == "" return
 	if %Free3 != -1 && %Free3 == %Free2 return
@@ -155,14 +412,28 @@ return
 
 	if $Free2 == "sound\bgm\op.ogg" || $Free2 == "legacy\bgm\op.ogg" jumpf
 	if $Free2 == "sound\bgm\tiruop.ogg" || $Free2 == "sound\bgm\ep5_op.ogg" || $Free2 == "sound\bgm\ep7_op.ogg" jumpf
+
 		; Set the background
 		if %Free3 != -1 tree_set 2,%Free3,"bg","318"
 		tree_set 2,%Free2,"bg","319"
 		mov %Free3,%Free2
+
+		;Get Song Details
+		gosub *get_bgm_details $Free2
+		aspt alpha,309,0,400 : aspt alpha,324,0,400 : aspt alpha,325,0,400 : aspt alpha,326,0,400
+		 _csp 309 :  _csp 324 :  _csp 325 :  _csp 326
+		write_special_text 309,"bgm_description",200,200,$bgm_details : aspt alpha,309,0
+		if $bgm_yt != "" lsp 324,bgm_yt_btn,182,330 : aspt alpha,324,0
+		if $bgm_spotify != "" lsp 325,bgm_spotify_btn,182+104,326 : aspt alpha,325,0
+		if $bgm_cd != "" && $bgm_spotify != "" lsp 326,bgm_cd_btn,182+93+104,326 : aspt alpha,326,0
+		if $bgm_cd != "" && $bgm_spotify == "" lsp 326,bgm_cd_btn,182+104,326 : aspt alpha,326,0
+		aspt alpha,309,255,900 : aspt alpha,324,255,900 : aspt alpha,325,255,900 : aspt alpha,326,255,900
+
 		; Play the bgm
 		vol_bgm 100
 		bgm $Free2
 		return
+
 	~
 
 	if %Free3 != -1 tree_set 2,%Free3,"bg","318"
@@ -177,6 +448,7 @@ return
 	if %anim_mode == on flush 23 ;trapped
 	if %anim_mode == off flush 1
 	scrollable_cfg mousectrl,320,1
+
 return
 
 ;***********************************************
@@ -184,6 +456,8 @@ return
 *bgm_end
 	seplay 9,1005,100
 	csp_rst
+	border_pad_pop
 	resumevideo
 return
 
+;***********************************************

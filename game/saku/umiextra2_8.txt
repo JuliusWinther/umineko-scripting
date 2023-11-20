@@ -7,7 +7,6 @@ new_extra_episode 28
 textoff2
 ;START
 
-
 seplay 11,1010,100
 lbg "c:local_saku",s0_3,"title_angel17"
 flush 24
@@ -19,7 +18,7 @@ flush 2
 set_window_simple 80,430
 msgwnd_non
 *e28_1
-d2 [#][*]`11am.`[#][*][@][#][*]` Ariake International Exhibition Hall.`[#][*][@][#][*]` East/Shi-44-a {qt}Angel of 17 Years{qt}`[#][*][\]
+d2 [#][*]`{a:c:11am.`[#][*][@][#][*]` Ariake International Exhibition Hall.`[#][*][@][#][*]` East/Shi-44-a {qt}Angel of 17 Years{qt}}`[#][*][\]
 
 wait_on_d 0
 meplay 1,51,100
@@ -64,11 +63,15 @@ d [lv 0*"98"*"jst_00010"]`{qt}Oh, you're still doing preparations.`[@][lv 0*"98"
 d [lv 0*"98"*"ipn_00030"]`{qt}Miss Kotobuki, please draw something for me!!`[@][lv 0*"98"*"ipn_00040"]` Kyaa, Miss Lia is here too!!`[@][lv 0*"98"*"ipn_00050"]` Can I please shake your hand?!`[@][lv 0*"98"*"ipn_00060"]` Kyaaakyaaaa!!{qt}`[\]
 textoff2
 
+wait 1000
 csp_slot s0_3
+vol_mix_fade 1000
+wait 1000
 flush 2
 
+set_window_simple 80,430
 *e28_7
-d2 `[#][*]`7pm.`[#][*][@][#][*]` Hotel Primavera.`[#][*][@][#][*]` 23rd floor, suite room.`[#][*][\]
+d2 `[#][*]`{a:c:7pm.`[#][*][@][#][*]` Hotel Primavera.`[#][*][@][#][*]` 23rd floor, suite room.}`[#][*][\]
 
 wait_on_d 0
 meplay 1,51,100
@@ -89,10 +92,14 @@ wait_on_d 5
 vol_mix_fade 1
 d_continue
 wait_on_d -1
+set_name_window_non
 textoff2
-seplay 11,88,100
+
 
 lbg "c:colour",s0_3,"white"
+seplay 11,88,100
+wait 300
+vol_mix_fade 1
 flush 2
 
 csp_slot s0_3
@@ -238,7 +245,6 @@ textoff2
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_10
-vol_bgm -1 1000
 flush 2
 wait 1000
 
@@ -246,6 +252,8 @@ msgwnd_non
 *e28_23
 d `And so Ange and {f:5:Virgilia} kept on enjoying their bourgeois conversation....`[\]
 textoff2
+vol_bgm -1 1000
+wait 1000
 
 lbg "c:backgrounds",s0_3,"hotel23"
 lss s0_8,"enj","a21_defo1"
@@ -373,13 +381,14 @@ textoff2
 
 seplay 11,89,100
 lbg "c:colour",s0_30,"white"
+vol_bgm -1 1000
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_10
 flush 2
 
 csp_slot s0_30
-lbg "c:backgrounds",s0_2,"mlib_1ap"
+lbg "c:backgrounds",s0_3,"mlib_1ap"
 seplay 11,56,100
 flush 99,1500,"whirl.dll/r"
 
@@ -389,46 +398,55 @@ d `{f:5:Virgilia} snapped her fingers, and their suite started changing slowly, 
 
 *e28_36
 d `The bed had also grown a canopy, worthy of a king, and next to it, with a *ding* and a *dong*, Kinzo and Genji appeared.`[\]
+textoff2
 
 bgmplay 7,70,0
-lbg "c:backgrounds",s0_3,"sub_r1bp"
+lbg "c:backgrounds",s0_2,"sub_r1bp"
 flush 1
-spt "a2","breakup",s0_2,0
-spt "a2","alpha",s0_2,255
-spt "a2","breakupdir",s0_2,3
+spt_mem "a2","breakup",s0_3,0
+spt_mem "a2","alpha",s0_3,255
+spt_mem "a2","breakupdir",s0_3,1
 flush 1
 seplay 11,52,90
-spt "a2","breakup",s0_2,1000,2000
-sptwait2 breakup,s0_2
+spt_mem "a2","breakup",s0_3,1000,2000
+sptwait2 breakup,s0_3
 
 lss s0_8,"gen","a21_kashikomari1"
 spt_mem "a2","xpos",s0_8,-369
-spt_mem "a2","ypos",s0_8,-8
+spt_mem "a2","ypos",s0_8,550
 spt_mem "a2","scalex",s0_8,150
 spt_mem "a2","scaley",s0_8,150
 flush 4
 
 lss s0_10,"kin","a11_fukigen1"
 spt_mem "a2","xpos",s0_10,370
-spt_mem "a2","ypos",s0_8,-8
-spt_mem "a2","scalex",s0_8,150
-spt_mem "a2","scaley",s0_8,150
+spt_mem "a2","ypos",s0_10,550
+spt_mem "a2","scalex",s0_10,150
+spt_mem "a2","scaley",s0_10,150
 flush 3
 
 msgwnd_kin
 *e28_37
 d [lv 0*"01"*"kin_00230"]`{qt}....Hmhm.`[@][lv 0*"01"*"kin_00240"]` Whose gameboard might we have landed upon now?{qt}`[\]
 
+lbg "c:backgrounds",s0_3,"sub_r1bp"
 lss s0_8,"gen","a11_defo1"
 spt_mem "a2","xpos",s0_8,-369
+spt_mem "a2","ypos",s0_8,550
+spt_mem "a2","scalex",s0_8,150
+spt_mem "a2","scaley",s0_8,150
 flush 80
 
 msgwnd_gen
 *e28_38
 d [lv 0*"14"*"gen_01040"]`{qt}Oh, my Lord.`[@][lv 0*"14"*"gen_01050"]` Might this be the beginning to Lady Beatrice's game again?{qt}`[\]
 
+csp_slot s0_2
 lss s0_10,"kin","a11_fumu1"
 spt_mem "a2","xpos",s0_10,370
+spt_mem "a2","ypos",s0_10,550
+spt_mem "a2","scalex",s0_10,150
+spt_mem "a2","scaley",s0_10,150
 flush 80
 
 msgwnd_kin
@@ -437,6 +455,9 @@ d2 [lv 0*"01"*"kin_00250"]`{qt}I don't know.`[@][lv 0*"01"*"kin_00260"]` No matt
 wait_on_d 0
 lss s0_10,"kin","a11_majime1"
 spt_mem "a2","xpos",s0_10,370
+spt_mem "a2","ypos",s0_10,550
+spt_mem "a2","scalex",s0_10,150
+spt_mem "a2","scaley",s0_10,150
 flush 80
 d_continue
 wait_on_d -1
@@ -445,6 +466,8 @@ textoff2
 seplay 11,3,100
 spt_mem "a2","xpos",s0_8,-450,400,0
 spt_mem "a2","xpos",s0_10,450,400,0
+spt_mem "a2","ypos",s0_8,280,400,0
+spt_mem "a2","ypos",s0_10,280,400,0
 spt_mem "a2","scalex",s0_8,100,800,0
 spt_mem "a2","scaley",s0_8,100,800,0
 spt_mem "a2","scalex",s0_10,100,800,0
@@ -452,6 +475,8 @@ spt_mem "a2","scaley",s0_10,100,800,0
 sptwait2 xpos,s0_8
 spt_mem "a2","xpos",s0_8,-369,400,0
 spt_mem "a2","xpos",s0_10,370,400,0
+spt_mem "a2","ypos",s0_8,0,400,0
+spt_mem "a2","ypos",s0_10,0,400,0
 sptwait2 ypos,s0_8
 
 msgwnd_non
@@ -472,7 +497,7 @@ flush 80
 
 msgwnd_kin
 *e28_42
-d2 [lv 0*"01"*"kin_00280"]`{qt}I don't know.`[@][#][*][lv 0*"01"*"kin_00290"]`Uhm, why is my hand suddenly on your shoulder?{qt}`[\]
+d2 [lv 0*"01"*"kin_00280"]`{qt}I don't know.`[@][#][*][lv 0*"01"*"kin_00290"]` Uhm, why is my hand suddenly on your shoulder?{qt}`[\]
 wait_on_d 0
 lss s0_10,"kin","a12_fukigen1"
 spt_mem "a2","xpos",s0_10,370
@@ -487,20 +512,21 @@ flush 80
 *e28_43
 d2 [lv 0*"01"*"kin_00300"]`{qt}Urgh.`[@][lv 0*"01"*"kin_00310"]` There are words, boiling up from the back of my throat.....`[@][#][*][lv 0*"01"*"kin_00320"]` Genji! My dearest friend!{qt}`[\]
 wait_on_d 0
+bgmplay 86,70,0
 lss s0_10,"kin","a12_warai1"
 spt_mem "a2","xpos",s0_10,370
 flush 80
 d_continue
 wait_on_d -1
 
-bgmplay 86,70,0
+
 lss s0_8,"gen","a11_majime1"
 spt_mem "a2","xpos",s0_8,-369
 flush 80
 
 msgwnd_gen
 *e28_44
-d2 [lv 0*"14"*"gen_01070"]`{qt}It is the same with me, the words are pushing themselves out.`[@][#][*][lv 0*"14"*"gen_01080"]`My master...`[@][lv 0*"14"*"gen_01090"]` I yearn for you so deeply...{qt}`[\]
+d2 [lv 0*"14"*"gen_01070"]`{qt}It is the same with me, the words are pushing themselves out.`[@][#][*][lv 0*"14"*"gen_01080"]` My master...`[@][lv 0*"14"*"gen_01090"]` I yearn for you so deeply...{qt}`[\]
 wait_on_d 0
 lss s0_8,"gen","a11_komaru1"
 spt_mem "a2","xpos",s0_8,-369
@@ -623,17 +649,17 @@ flush 1
 lbg "c:backgrounds",s0_3,"sub_r1bp"
 lss s0_8,"gen","a11_defo1"
 spt_mem "a2","xpos",s0_8,-369
-spt_mem "a2","ypos",s0_8,-8
+spt_mem "a2","ypos",s0_8,550
 spt_mem "a2","scalex",s0_8,150
 spt_mem "a2","scaley",s0_8,150
 
 lss s0_10,"kin","a11_fukigen1"
 spt_mem "a2","xpos",s0_10,370
-spt_mem "a2","ypos",s0_10,-8
+spt_mem "a2","ypos",s0_10,550
 spt_mem "a2","scalex",s0_10,150
 spt_mem "a2","scaley",s0_10,150
 
-flush 99,1500,"cascade.dll/r"
+flush 99,1500,"trvswave.dll/p"
 seplay 11,1021,100
 
 msgwnd_non
@@ -670,7 +696,7 @@ flush 8
 
 lss s0_10,"kin","a11_majime1"
 spt_mem "a2","xpos",s0_10,370
-spt_mem "a2","ypos",s0_10,-8
+spt_mem "a2","ypos",s0_10,550
 spt_mem "a2","scalex",s0_10,150
 spt_mem "a2","scaley",s0_10,150
 flush 80
@@ -681,7 +707,7 @@ d2 [lv 0*"01"*"kin_00400"]`{qt}Again, strange words are coming out!`[@][#][*][lv
 wait_on_d 0
 lss s0_10,"kin","a11_fumu1"
 spt_mem "a2","xpos",s0_10,370
-spt_mem "a2","ypos",s0_10,-8
+spt_mem "a2","ypos",s0_10,550
 spt_mem "a2","scalex",s0_10,150
 spt_mem "a2","scaley",s0_10,150
 flush 80
@@ -690,7 +716,7 @@ wait_on_d -1
 
 lss s0_8,"gen","a11_komaru1"
 spt_mem "a2","xpos",s0_8,-369
-spt_mem "a2","ypos",s0_8,-8
+spt_mem "a2","ypos",s0_8,550
 spt_mem "a2","scalex",s0_8,150
 spt_mem "a2","scaley",s0_8,150
 flush 80
@@ -701,7 +727,7 @@ d [lv 0*"14"*"gen_01170"]`{qt}....It brings back memories, doesn't it.`[@][lv 0*
 
 lss s0_10,"kin","a11_ikari1"
 spt_mem "a2","xpos",s0_10,370
-spt_mem "a2","ypos",s0_10,-8
+spt_mem "a2","ypos",s0_10,550
 spt_mem "a2","scalex",s0_10,150
 spt_mem "a2","scaley",s0_10,150
 flush 80
@@ -712,7 +738,7 @@ d2 [lv 0*"01"*"kin_00430"]`{qt}(Argh, I can't fight it!)`[@][#][*][lv 0*"01"*"ki
 wait_on_d 0
 lss s0_10,"kin","a11_defo1"
 spt_mem "a2","xpos",s0_10,370
-spt_mem "a2","ypos",s0_10,-8
+spt_mem "a2","ypos",s0_10,550
 spt_mem "a2","scalex",s0_10,150
 spt_mem "a2","scaley",s0_10,150
 flush 80
@@ -721,7 +747,7 @@ wait_on_d -1
 
 lss s0_8,"gen","a21_shian1"
 spt_mem "a2","xpos",s0_8,-369
-spt_mem "a2","ypos",s0_8,-8
+spt_mem "a2","ypos",s0_8,550
 spt_mem "a2","scalex",s0_8,150
 spt_mem "a2","scaley",s0_8,150
 flush 80
@@ -732,7 +758,7 @@ d [lv 0*"14"*"gen_01190"]`{qt}.......................{qt}`[\]
 
 lss s0_10,"kin","a11_fukigen1"
 spt_mem "a2","xpos",s0_10,370
-spt_mem "a2","ypos",s0_10,-8
+spt_mem "a2","ypos",s0_10,550
 spt_mem "a2","scalex",s0_10,150
 spt_mem "a2","scaley",s0_10,150
 flush 80
@@ -743,7 +769,7 @@ d [lv 0*"01"*"kin_00470"]`{qt}Genji?{qt}`[\]
 
 lss s0_8,"gen","a11_defo1"
 spt_mem "a2","xpos",s0_8,-369
-spt_mem "a2","ypos",s0_8,-8
+spt_mem "a2","ypos",s0_8,550
 spt_mem "a2","scalex",s0_8,150
 spt_mem "a2","scaley",s0_8,150
 flush 80
@@ -754,7 +780,7 @@ d [lv 0*"14"*"gen_01200"]`{qt}The old way, huh,`[|][lv 0*"14"*"gen_01210"]` Kin-
 
 lss s0_10,"kin","a11_majime1"
 spt_mem "a2","xpos",s0_10,370
-spt_mem "a2","ypos",s0_10,-8
+spt_mem "a2","ypos",s0_10,550
 spt_mem "a2","scalex",s0_10,150
 spt_mem "a2","scaley",s0_10,150
 flush 80
@@ -765,7 +791,7 @@ d [lv 0*"01"*"kin_00480"]`{qt}Aaaah, Genji, it is so nostalgic to hear you talk 
 
 lss s0_8,"gen","a11_odoroki1"
 spt_mem "a2","xpos",s0_8,-369
-spt_mem "a2","ypos",s0_8,-8
+spt_mem "a2","ypos",s0_8,550
 spt_mem "a2","scalex",s0_8,150
 spt_mem "a2","scaley",s0_8,150
 flush 80
@@ -787,7 +813,7 @@ d `Suddenly, Genji grabbed Kinzo by his collar.`[\]
 
 lss s0_10,"kin","a11_ikari1"
 spt_mem "a2","xpos",s0_10,370
-spt_mem "a2","ypos",s0_10,-8
+spt_mem "a2","ypos",s0_10,550
 spt_mem "a2","scalex",s0_10,150
 spt_mem "a2","scaley",s0_10,150
 flush 80
@@ -901,20 +927,20 @@ flush 2
 lbg "c:backgrounds",s0_3,"sub_r1bp"
 lss s0_10,"kin","a11_ikari1"
 spt_mem "a2","xpos",s0_10,370
-spt_mem "a2","ypos",s0_10,-8
+spt_mem "a2","ypos",s0_10,550
 spt_mem "a2","scalex",s0_10,150
 spt_mem "a2","scaley",s0_10,150
 
 lss s0_8,"gen","a11_odoroki1"
 spt_mem "a2","xpos",s0_8,-369
-spt_mem "a2","ypos",s0_8,-8
+spt_mem "a2","ypos",s0_8,550
 spt_mem "a2","scalex",s0_8,150
 spt_mem "a2","scaley",s0_8,150
 seplay 11,56,100
 flush 99,1500,"whirl.dll/r"
 seplay 11,22,100
 
-anim2 s0_17,"no83",1,1
+anim2 s0_17,"no83",1
 flush 1
 csp_slot s0_8
 csp_slot s0_10
@@ -926,20 +952,20 @@ spt_mem "a2","xpos",s0_8,-369
 lss s0_10,"goh","a11_omakase2"
 spt_mem "a2","xpos",s0_10,370
 
-spt "a2","breakup",s0_8,1000
-spt "a2","alpha",s0_8,0
-spt "a2","breakupdir",s0_8,3
+spt_mem "a2","breakup",s0_8,1000
+spt_mem "a2","alpha",s0_8,0
+spt_mem "a2","breakupdir",s0_8,3
 
-spt "a2","breakup",s0_10,1000
-spt "a2","alpha",s0_10,0
-spt "a2","breakupdir",s0_10,3
+spt_mem "a2","breakup",s0_10,1000
+spt_mem "a2","alpha",s0_10,0
+spt_mem "a2","breakupdir",s0_10,3
 flush 1
 seplay 11,52,90
-spt "a2","breakup",s0_8,0,2000
-spt "a2","alpha",s0_8,255
+spt_mem "a2","breakup",s0_8,0,2000
+spt_mem "a2","alpha",s0_8,255
 
-spt "a2","breakup",s0_10,0,2000
-spt "a2","alpha",s0_10,255
+spt_mem "a2","breakup",s0_10,0,2000
+spt_mem "a2","alpha",s0_10,255
 sptwait2 breakup,s0_10
 
 msgwnd_non
@@ -2061,7 +2087,8 @@ d2 [lv 0*"11"*"enj_03830"]`{qt}Hi...huhuhuhuhuhu.`[@][#][*][lv 0*"11"*"enj_03840
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -2133,7 +2160,8 @@ d2 [lv 0*"30"*"wal_02080"]`{qt}Are you against that?!`[@][lv 0*"30"*"wal_02090"]
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -2226,9 +2254,11 @@ d2 [lv 0*"06"*"hid_00310"]`{qt}(My...my body's movin' on it's own!`[@][lv 0*"06"
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
-d_continuewait_on_d 2
+d_continue
+wait_on_d 2
 
 d_continue
 wait_on_d -1
@@ -2272,7 +2302,8 @@ d2 [lv 0*"54"*"wil_00270"]`{qt}Li, Lion...!!`[@][#][*][lv 0*"54"*"wil_00280"]` D
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -2352,7 +2383,8 @@ d2 [lv 0*"06"*"hid_00380"]`{qt}I tricked ya.`[@][#][*][lv 0*"06"*"hid_00390"]`.M
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -2414,7 +2446,8 @@ d2 [lv 0*"11"*"enj_03940"]`{qt}Ah, I see. Yes, why not, that's possible as well.
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -2480,9 +2513,11 @@ d2 [lv 0*"11"*"enj_03990"]`{qt}....That's really like you, {f:5:Virgilia}.`[@][#
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
-d_continuewait_on_d 2
+d_continue
+wait_on_d 2
 
 d_continue
 wait_on_d -1
@@ -2690,7 +2725,8 @@ d2 [lv 0*"11"*"enj_04060"]`{qt}Uaargh, bleh, bleh!!`[@][#][*][lv 0*"11"*"enj_040
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -2713,7 +2749,8 @@ d2 [lv 0*"30"*"wal_02280"]`{qt}Then how about the other way around?`[@][#][*][lv
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -2738,9 +2775,11 @@ d2 [lv 0*"11"*"enj_04090"]`{qt}Oh, right, Black Battler...!`[@][#][*][lv 0*"11"*
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
-d_continuewait_on_d 2
+d_continue
+wait_on_d 2
 
 d_continue
 wait_on_d -1
@@ -2865,7 +2904,8 @@ d2 [lv 0*"10"*"bat_08350"]`{qt}What's that even supposed to mean?!`[@][#][*][lv 
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -2903,7 +2943,8 @@ d2 [lv 0*"11"*"enj_04130"]`{qt}Hmm, hmmmm, sure, it's pretty good..`[@][#][*][lv
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -2972,7 +3013,8 @@ d2 [lv 0*"30"*"wal_02380"]`{qt}Why can't you understand the principles of this w
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -3287,7 +3329,8 @@ d2 [lv 0*"11"*"enj_04260"]`{qt}What the...who would we pair him up with?`[@][#][
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d -1
@@ -3357,9 +3400,11 @@ d2 [lv 0*"63"*"bbt_01210"]`{qt}How long are you planning on denying me....?`[@][
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
-d_continuewait_on_d 2
+d_continue
+wait_on_d 2
 
 d_continue
 wait_on_d -1
@@ -3392,9 +3437,11 @@ d2 [lv 0*"57"*"ba2_00010"]`{qt}Stop it....stop it, Battler....`[@][#][*][lv 0*"5
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
-d_continuewait_on_d 2
+d_continue
+wait_on_d 2
 
 d_continue
 wait_on_d -1
@@ -3502,9 +3549,11 @@ d2 [lv 0*"11"*"enj_04330"]`{qt}{f:5:Virgilia}!`[@][#][*][lv 0*"11"*"enj_04340"]`
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
-d_continuewait_on_d 2
+d_continue
+wait_on_d 2
 
 d_continue
 wait_on_d 3
@@ -3553,7 +3602,8 @@ d2 [lv 0*"30"*"wal_02520"]`{qt}Ange, your outlook on life is too narrow!!`[@][lv
 
 wait_on_d 0
 
-d_continuewait_on_d 1
+d_continue
+wait_on_d 1
 
 d_continue
 wait_on_d 2

@@ -1,3 +1,41 @@
+*chibi
+jnskip_s
+return
+~
+lbg "a:saku",s0_20,"new_evcg03_3"
+flush 80
+agpt quakexcycle,0
+agpt quakexamp,0
+agpt quakexamp,0,850,1
+gptwait quakexamp
+lbg "a:saku",s0_20,"new_evcg03_4"
+flush 80
+agpt quakexcycle,0
+agpt quakexamp,0
+agpt quakexamp,0,850,1
+gptwait quakexamp
+if %test_var = 3 d_continue goto *end_of_line_chibi
+if %test_var = 2 d_continue jumpf
+if %test_var = 0 goto *end_chibi
+*e11_253
+d2 `It looked like they were about to start a fight,`[#][*]` but a staff member passed by and they calmed down...`[#][*][\]
+wait_on_d 0
+if %test_var = 1 mov %test_var,2 
+goto *chibi
+d_continue
+~
+wait_on_d 1
+mov %test_var,3
+goto *chibi
+d_continue
+*end_of_line_chibi
+wait_on_d -1
+mov %test_var,0
+goto *end_chibi
+
+
+
+
 *umiextra2_8
 log_reset
 mov $name_chapter_r_click,r_click_extra2_8
@@ -1302,12 +1340,13 @@ spt_mem "a2","xpos",s0_10,370
 flush 80
 d_continue
 wait_on_d -1
+textoff2
 
-spt_mem "a2","ypos",s0_10,2000,1200,0
-sptwait2 ypos,s0_9
+spt_mem "a2","ypos",s0_10,2000,700,0
+sptwait2 ypos,s0_10
 seplay 11,13,100
-wait 100
-seplay 11,56,100
+wait 600
+seplay 12,56,100
 lbg "c:colour",s0_21,"black"
 aspt2 alpha,s0_21,150
 lbg "a:clock",s0_22,"hana1"
@@ -1414,15 +1453,20 @@ msgwnd_wal
 *e28_108
 d2 [lv 0*"30"*"wal_01980"]`{qt}Hohohohohoho.`[@][#][*][lv 0*"30"*"wal_01990"]` As long as there are at least two guys,`[|][lv 0*"30"*"wal_02000"]` we can make a pairing out of them. That's when our true worth shows, right?!{qt}`[\]
 wait_on_d 0
-lss s0_10,"wal","a12_akuwarai2"
-spt_mem "a2","xpos",s0_10,370
+lss s0_29,"wal","a12_akuwarai2"
+spt_mem "a2","xpos",s0_29,370
 flush 80
 d_continue
 wait_on_d -1
+textoff2
 
 seplay 11,89,100
-csp_slot s0_10
+csp_slot s0_29
+csp_slot s0_28
+csp_slot s0_22
+csp_slot s0_21
 csp_slot s0_8
+csp_slot s0_10
 lbg "c:colour",s0_30,"white"
 flush 80
 csp_slot s0_30
@@ -1831,6 +1875,7 @@ seplay 11,90,100
 lbg "c:colour",s0_30,"white"
 flush 1
 
+csp_slot s0_30
 lbg "c:backgrounds",s0_3,"sub_r1bp"
 color_mod2 s0_3,#ffffff
 lss s0_10,"wil","a23_defo1"
@@ -1941,10 +1986,10 @@ d `And while they did...their fingers went towards the latter's behind....`[\]
 seplay 11,9,100
 *e28_147
 d `*Pinch*...*pinchpinchpinchpinch*....`[\]
+textoff2
 
 csp_slot s0_30
 flush 22
-
 lss s0_10,"wil","a11_itai1"
 spt_mem "a2","xpos",s0_10,370
 flush 80
@@ -1959,7 +2004,7 @@ flush 80
 
 msgwnd_rio
 *e28_149
-d2 [lv 0*"53"*"rio_00140"]`{qt}Why are you struggling against it...?`[@][#][*][lv 0*"53"*"rio_00150"]` Please, just relax a little.`[@][#][*][lv 0*"53"*"rio_00160"]`Even if that means that your butt will become soft like jelly...{qt}`[\]
+d2 [lv 0*"53"*"rio_00140"]`{qt}Why are you struggling against it...?`[@][#][*][lv 0*"53"*"rio_00150"]` Please, just relax a little.`[@][#][*][lv 0*"53"*"rio_00160"]` Even if that means that your butt will become soft like jelly...{qt}`[\]
 wait_on_d 0
 lss s0_8,"rio","a11_defo2"
 spt_mem "a2","xpos",s0_8,-369
@@ -1992,7 +2037,7 @@ flush 80
 
 msgwnd_rio
 *e28_151
-d2 [lv 0*"53"*"rio_00170"]`{qt}Just stop resisting.`[@][#][*][lv 0*"53"*"rio_00180"]`With my fingers....I will take you to heaven.{qt}`[\]
+d2 [lv 0*"53"*"rio_00170"]`{qt}Just stop resisting.`[@][#][*][lv 0*"53"*"rio_00180"]` With my fingers....I will take you to heaven.{qt}`[\]
 wait_on_d 0
 lss s0_8,"rio","a11_warai1"
 spt_mem "a2","xpos",s0_8,-369
@@ -2224,7 +2269,7 @@ flush 80
 
 msgwnd_wal
 *e28_165
-d2 [lv 0*"30"*"wal_02120"]`{qt}Hohohoho.`[@][lv 0*"30"*"wal_02130"]` But we, Witches of Roses, like to see such unlucky scenarios.`[@][#][*][lv 0*"30"*"wal_02140"]`Now be obedient and provide us with a situation that will become a good offering for the Winter Comiket.{qt}`[\]
+d2 [lv 0*"30"*"wal_02120"]`{qt}Hohohoho.`[@][lv 0*"30"*"wal_02130"]` But we, Witches of Roses, like to see such unlucky scenarios.`[@][#][*][lv 0*"30"*"wal_02140"]`    Now be obedient and provide us with a situation that will become a good offering for the Winter Comiket.{qt}`[\]
 wait_on_d 0
 lss s0_29,"wal","a13_akuwarai2"
 spt_mem "a2","xpos",s0_29,370
@@ -2245,6 +2290,7 @@ spt_mem "a2","xpos",s0_28,-369
 flush 80
 d_continue
 wait_on_d -1
+textoff2
 
 vol_bgm -1 500
 seplay 11,56,100
@@ -2257,6 +2303,7 @@ flush 8
 msgwnd_non
 *e28_167
 d `Ange clapped her hands, and immediately Lion flew out from under Hideyoshi.`[@]` The latter started attacking Will, who was suddenly situated beneath him!`[\]
+textoff2
 
 seplay 11,90,100
 lbg "c:colour",s0_30,"white"
@@ -2355,8 +2402,8 @@ msgwnd_enj
 *e28_174
 d2 [lv 0*"11"*"enj_03970"]`{qt}So, Will attacks Hideyoshi to protect them, and that leads to Will x Lion?`[@][#][*][lv 0*"11"*"enj_03980"]` But then it's a double twist again and we're back to having no twist!{qt}`[\]
 wait_on_d 0
-lss s0_8,"enj","a21_ikari1"
-spt_mem "a2","xpos",s0_8,-369
+lss s0_28,"enj","a21_ikari1"
+spt_mem "a2","xpos",s0_28,-369
 flush 80
 d_continue
 wait_on_d -1
@@ -2444,7 +2491,7 @@ flush 80
 
 msgwnd_enj
 *e28_180
-d2 [lv 0*"11"*"enj_04040"]`{qt}Hmm....hmmm, how about that.`[@][#][*][lv 0*"11"*"enj_04050"]`Wait a second. My poor imagination can't seem to produce that scene in my brain...{qt}`[\]
+d2 [lv 0*"11"*"enj_04040"]`{qt}Hmm....hmmm, how about that.`[@][#][*][lv 0*"11"*"enj_04050"]` Wait a second. My poor imagination can't seem to produce that scene in my brain...{qt}`[\]
 wait_on_d 0
 lss s0_28,"enj","a21_ikari1"
 spt_mem "a2","xpos",s0_28,-369
@@ -2653,7 +2700,7 @@ d `{f:5:Virgilia} snapped her fingers loudly and gave birth to Ange's idea...`[\
 
 *e28_189
 d `On top of the bed, two Battlers took shape.`[@]` The Battler being pinned down was the Battler we all know pretty well.`[@]` The Battler pinning him down somehow had a nihilistic and wild aura about him.`[\]
-
+textoff2
 bgmplay 135,70,0
 
 lss s0_8,"but","b11_defo1"
@@ -2666,13 +2713,13 @@ seplay 11,52,90
 spt_mem "a2","breakup",s0_8,0,2000
 spt_mem "a2","alpha",s0_8,255
 wait 300
-lss s0_10,"bbat","a11_futekia2"
+lss s0_10,"bbt","a11_futekia2"
 spt_mem "a2","xpos",s0_10,370
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 spt_mem "a2","breakupdir",s0_10,3
 flush 1
-seplay 11,52,90
+seplay 12,52,90
 spt_mem "a2","breakup",s0_10,0,2000
 spt_mem "a2","alpha",s0_10,255
 sptwait2 breakup,s0_10
@@ -2689,7 +2736,7 @@ msgwnd_but
 *e28_191
 d [lv 0*"10"*"bat_08320"]`{qt}What is this now, I can't even move my body...!{qt}`[\]
 
-lss s0_10,"bbat","a11_nayamua3"
+lss s0_10,"bbt","a11_nayamua3"
 spt_mem "a2","xpos",s0_10,370
 flush 80
 
@@ -2705,7 +2752,7 @@ msgwnd_but
 *e28_193
 d [lv 0*"10"*"bat_08330"]`{qt}Sto....stop that nonsense, ah, aaaaah!!{qt}`[\]
 
-lss s0_10,"bbat","a11_futekia4"
+lss s0_10,"bbt","a11_futekia4"
 spt_mem "a2","xpos",s0_10,370
 flush 80
 
@@ -2721,7 +2768,7 @@ msgwnd_but
 *e28_195
 d [lv 0*"10"*"bat_08340"]`{qt}No, stoooop. No....no further...aaaaaAAAhhhAhh!!{qt}`[\]
 
-lss s0_10,"bbat","a11_niramua2s"
+lss s0_10,"bbt","a11_niramua2s"
 spt_mem "a2","xpos",s0_10,370
 flush 80
 
@@ -2747,6 +2794,7 @@ spt_mem "a2","xpos",s0_8,-369
 flush 80
 d_continue
 wait_on_d -1
+textoff2
 
 seplay 11,56,100
 lbg "c:colour",s0_21,"black"
@@ -2778,13 +2826,19 @@ spt_mem "a2","xpos",s0_28,-369
 flush 80
 d_continue
 wait_on_d 1
+seplay 11,10,100
 lss s0_28,"enj","a33_ikari1"
 spt_mem "a2","xpos",s0_28,-369
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
 flush 80
+gptwait quakeyamp
 d_continue
 wait_on_d -1
 
-seplay 11,10,100
+
 lss s0_29,"wal","a12_defo1"
 spt_mem "a2","xpos",s0_29,370
 flush 80
@@ -2849,16 +2903,17 @@ csp_slot s0_28
 csp_slot s0_22
 csp_slot s0_21
 flush 8
-
+wait 600
 seplay 11,89,100
 lbg "c:colour",s0_30,"white"
 csp_slot s0_8
 csp_slot s0_10
 flush 2
+csp_slot s0_30
 lbg "c:backgrounds",s0_3,"sub_r1bp"
 seplay 11,56,100
 flush 99,1500,"whirl.dll/r"
-seplay 11,52,100
+seplay 12,52,100
 
 lss s0_8,"cla","a11_defo1"
 spt_mem "a2","xpos",s0_8,-369
@@ -2885,7 +2940,7 @@ flush 80
 
 msgwnd_cla
 *e28_205
-d [lv 0*"02"*"kla_00990"]`{qt}Rudolf.`[@][lv 0*"02"*"kla_01000"]`You seem to forget your respect in front of your older brother!{qt}`[\]
+d [lv 0*"02"*"kla_00990"]`{qt}Rudolf.`[@][lv 0*"02"*"kla_01000"]` You seem to forget your respect in front of your older brother!{qt}`[\]
 
 lss s0_10,"rud","a11_majime2"
 spt_mem "a2","xpos",s0_10,370
@@ -2959,6 +3014,7 @@ csp_slot s0_8
 csp_slot s0_10
 flush 2
 
+csp_slot s0_30
 lbg "c:backgrounds",s0_3,"sub_r1bp"
 seplay 11,56,100
 flush 99,1500,"whirl.dll/r"
@@ -3038,6 +3094,7 @@ csp_slot s0_8
 csp_slot s0_10
 flush 2
 
+csp_slot s0_30
 lbg "c:backgrounds",s0_3,"sub_r1bp"
 seplay 11,56,100
 flush 99,1500,"whirl.dll/r"
@@ -3072,7 +3129,7 @@ msgwnd_ama
 *e28_214
 d [lv 0*"20"*"ama_00150"]`{qt}I told you I hate talking about the past, Okonogi, Sir.{qt}`[\]
 
-lss s0_8,"oko","a21_yoyuu1"
+lss s0_8,"oko","a21_yoou1"
 spt_mem "a2","xpos",s0_8,-369
 flush 80
 
@@ -3080,7 +3137,7 @@ msgwnd_oko
 *e28_215
 d2 [lv 0*"21"*"oko_00020"]`{qt}Is that so? Then I shall make you forget about the past.`[@][#][*][lv 0*"21"*"oko_00030"]` You're not going to say no to me, are you?`[@][lv 0*"21"*"oko_00040"]` It's an order...{qt}`[\]
 wait_on_d 0
-lss s0_8,"oko","a21_chouhatsu1"
+lss s0_8,"oko","a21_chohatsu1"
 spt_mem "a2","xpos",s0_8,-369
 flush 80
 d_continue
@@ -3103,7 +3160,7 @@ lbg "a:clock",s0_22,"hana1"
 aspt2 alpha,s0_22,150
 flush 28
 
-seplay 11,10,100
+seplay 12,10,100
 lss s0_28,"enj","a11_ikari1"
 spt_mem "a2","xpos",s0_28,-369
 flush 80
@@ -3181,12 +3238,12 @@ csp_slot s0_10
 flush 2
 csp_slot s0_30
 lbg "a:backgrounds",s0_3,"fea_r1fr"
-lbg "a:backgrounds",s0_2,"fea_r1f2_bg"
+lbg "a:backgrounds",s0_2,"fea_r1fr_bg"
 seplay 11,56,100
 flush 99,1500,"whirl.dll/r"
 bgmplay 190,70,0
 
-lss s0_8,"bbat","a11_futekia2"
+lss s0_8,"bbt","a11_futekia2"
 spt_mem "a2","xpos",s0_8,-369
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
@@ -3197,7 +3254,7 @@ spt_mem "a2","breakup",s0_8,0,2000
 spt_mem "a2","alpha",s0_8,255
 sptwait2 breakup,s0_8
 
-lss s0_8,"bbat","a11_nayamua4"
+lss s0_8,"bbt","a11_nayamua4"
 spt_mem "a2","xpos",s0_8,-369
 flush 80
 
@@ -3205,17 +3262,17 @@ msgwnd_bbt
 *e28_221
 d2 [lv 0*"63"*"bbt_01210"]`{qt}How long are you planning on denying me....?`[@][#][*][lv 0*"63"*"bbt_01220"]` You know it, don't you?`[@][#][*][lv 0*"63"*"bbt_01230"]` I am you and you are me.`[@][#][*][lv 0*"63"*"bbt_01240"]` Whatever you are desiring, I know about it all.....and I can grant you all of it...{qt}`[\]
 wait_on_d 0
-lss s0_8,"bbat","a11_nayamua5s"
+lss s0_8,"bbt","a11_nayamua5s"
 spt_mem "a2","xpos",s0_8,-369
 flush 80
 d_continue
 wait_on_d 1
-lss s0_8,"bbat","a11_majimea6"
+lss s0_8,"bbt","a11_majimea6"
 spt_mem "a2","xpos",s0_8,-369
 flush 80
 d_continue
 wait_on_d 2
-lss s0_8,"bbat","a11_futekia3"
+lss s0_8,"bbt","a11_futekia3"
 spt_mem "a2","xpos",s0_8,-369
 flush 80
 d_continue
@@ -3223,7 +3280,6 @@ wait_on_d -1
 
 lss s0_10,"bu3","b11_defo10"
 spt_mem "a2","xpos",s0_10,370
-flush 80
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 spt_mem "a2","breakupdir",s0_10,3
@@ -3551,11 +3607,12 @@ d `...Of course all yaoi.`[\]
 
 msgwnd_enj
 *e28_248
-d [lv 0*"11"*"enj_04530"][lv 0*"11"*"enj_04540"]` {qt}Now that I greeted my neighbors, I'd better start preparing everything.`[@][lv 0*"11"*"enj_04550"]`Oh, hello.`[@][lv 0*"11"*"enj_04560"]` It's a pleasure doing business with you today.{qt}`[\]
+d [lv 0*"11"*"enj_04530"][lv 0*"11"*"enj_04540"]` {qt}Now that I greeted my neighbors, I'd better start preparing everything.`[@][lv 0*"11"*"enj_04550"]` Oh, hello.`[@][lv 0*"11"*"enj_04560"]` It's a pleasure doing business with you today.{qt}`[\]
 
 msgwnd_non
 *e28_249
 d [lv 0*"30"*"wal_02610"]`{qt}Ohohohohoho, Hello.`[|][lv 0*"30"*"wal_02620"]` The pleasure is all mi....{qt}`[\]
+textoff2
 
 seplay 11,33,100
 seplay 12,34,100
@@ -3566,8 +3623,8 @@ agpt quakeyamp,30
 agpt quakeyamp,0,250,1
 rumble 63,250
 gptwait quakeyamp
-wait 700
-vol_mix_fade 100
+wait 1200
+vol_mix_fade 1000
 bgmplay 89,70,0
 
 msgwnd_enj
@@ -3599,27 +3656,11 @@ lbg "a:efe",s0_13,"mabuta2"
 seplay 11,3,100
 meplay 1,53,100
 flush 22
-mov %test_var,0
-;*unnamed
-lbg "a:saku",s0_20,"new_evcg03_3"
-wait 800
-lbg "a:saku",s0_20,"new_evcg03_4"
-wait 800
-if %test_var = 1 goto *unnamed
-
-*e28_253
-d2 [#][*]`It looked like they were about to start a fight, but a staff member passed by and they calmed down...`[\][#][*]
-wait_on_d 0
 mov %test_var,1 
-goto *unnamed
-d_continue
-wait_on_d 1
-mov %test_var,0
-d_continue
-wait_on_d -1
+gosub *chibi
 
-
-;clear chibi
+*end_chibi
+csp_slot s0_20
 vol_mix_fade 100
 csp_slot s0_13
 lbg "c:saku",s0_3,"new_evcg03_1"
@@ -3702,7 +3743,7 @@ gptwait quakeyamp
 
 msgwnd_non
 *e28_268
-d [lv 0*"98"*"merged_saku45"]`{e:150{qt}GAAAAAAAAAAAAAAAARGH!!!!{qt}}`[\]
+d [lv 0*"98"*"merged_saku45"]`{e:150:{qt}GAAAAAAAAAAAAAAAARGH!!!!{qt}}`[\]
 textoff2
 
 lbg "c:backgrounds",s0_3,"sky_1a"

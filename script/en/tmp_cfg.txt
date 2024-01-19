@@ -1176,10 +1176,10 @@ return
 return
 
 *settings_bgm_title_language
-	if %bgm_title_language = 1 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_english : jumpf
-	if %bgm_title_language = 2 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_russian : jumpf
-	if %bgm_title_language = 3 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_japanese : jumpf
-	if %bgm_title_language = 4 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_romaji : jumpf
+	if %bgm_title_language = 1 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_trad : gosub *traditional_bgm_order : jumpf
+	if %bgm_title_language = 2 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_trans : gosub *translated_bgm_order : jumpf
+	if %bgm_title_language = 3 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_japanese : gosub *japanese_bgm_order : jumpf
+	if %bgm_title_language = 4 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_romaji : gosub *romaji_bgm_order : jumpf
 	~
 	lsp 207,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+(%cfg_temp2*2)+%cfg_height
 	lsp 208,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+(%cfg_temp2*2)+%cfg_height

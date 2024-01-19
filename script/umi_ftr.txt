@@ -24924,7 +24924,7 @@ jskip
 	if $anim_file == "no64" mov %anim_file,0 : mov %8635,1
 	if $anim_file != "no64" mov %anim_file,1
 	if $anim_file != "no64" mov $anim_file,"video\masked\"+$anim_file+".m2v"
-	if $anim_file == "no64" && %video_res == 1 mov $anim_file,"video\720p\"+$anim_file+".mp4"
+	if $anim_file == "no64" && %video_res == 1 mov $anim_file,"video\1080p\"+$anim_file+".mp4" ;Original Edited - no more 720p videos - W_CUSTOM
 	if $anim_file == "no64" && %video_res == 0 mov $anim_file,"video\1080p\"+$anim_file+".mp4"
 	if %anim_alpha == 1 mov %anim_file,0 ;turn alpha off
 
@@ -24943,7 +24943,7 @@ jskip
 	if $anim_file == "no64" mov %anim_file,0 : mov %8635,1
 	if $anim_file != "no64" mov %anim_file,1
 	if $anim_file != "no64" mov $anim_file,"video\masked\"+$anim_file+".m2v"
-	if $anim_file == "no64" && %video_res == 1 mov $anim_file,"video\720p\"+$anim_file+".mp4"
+	if $anim_file == "no64" && %video_res == 1 mov $anim_file,"video\1080p\"+$anim_file+".mp4" ;Original Edited - no more 720p videos - W_CUSTOM
 	if $anim_file == "no64" && %video_res == 0 mov $anim_file,"video\1080p\"+$anim_file+".mp4"
 	if %anim_alpha == 1 mov %anim_file,0 ;turn alpha off
 
@@ -24968,7 +24968,7 @@ gosub *pam_audio
 mov $anim_sprite,"video"
 if %legacy_op = 1 && $anim_file = "op" mov $anim_sprite,"legacy"
 if $anim_file = "op_new" mov $anim_file,"op"
-if %video_res = 1 mov $anim_file,$anim_sprite+"\720p\"+$anim_file+".mp4"
+if %video_res = 1 mov $anim_file,$anim_sprite+"\1080p\"+$anim_file+".mp4" ;Original Edited - no more 720p videos - W_CUSTOM
 if %video_res = 0 mov $anim_file,$anim_sprite+"\1080p\"+$anim_file+".mp4"
 
 fileexist %track_id,$anim_file
@@ -25097,6 +25097,7 @@ return
 
 	;Get $BGM_Play and $BGM_Title
 	gosub *BGM_List
+	gosub *update_rpc
 	if $BGM_Play = "off" mov %bgm_current_id,0 : mov %bgm_title_delay,0 : jumpf
 		jskip_s
 		abgm_prop %Rel_vol_bgm,0,0,1 ;remove the previous props
@@ -26119,16 +26120,16 @@ return
 
 *BGM_List
 
-if %BGM_Id == 0	mov $BGM_Play,"off" : mov $BGM_Title,"" : return
-if %BGM_Id == 1	mov $BGM_Play,"sound\bgm\umib_001.ogg" : gosub *bgm_title_language : return
-if %BGM_Id == 2	mov $BGM_Play,"sound\bgm\umib_002.ogg" : gosub *bgm_title_language : return
-if %BGM_Id == 3	mov $BGM_Play,"sound\bgm\umib_003.ogg" : gosub *bgm_title_language : return
-if %BGM_Id == 4	mov $BGM_Play,"sound\bgm\umib_004.ogg" : gosub *bgm_title_language : return
-if %BGM_Id == 5	mov $BGM_Play,"sound\bgm\umib_005.ogg" : gosub *bgm_title_language : return
-if %BGM_Id == 6	mov $BGM_Play,"sound\bgm\umib_006.ogg" : gosub *bgm_title_language : return
-if %BGM_Id == 7	mov $BGM_Play,"sound\bgm\umib_007.ogg" : gosub *bgm_title_language : return
-if %BGM_Id == 8	mov $BGM_Play,"sound\bgm\umib_008.ogg" : gosub *bgm_title_language : return
-if %BGM_Id == 9	mov $BGM_Play,"sound\bgm\umib_009.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 0		mov $BGM_Play,"off" : mov $BGM_Title,"" : return
+if %BGM_Id == 1		mov $BGM_Play,"sound\bgm\umib_001.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 2		mov $BGM_Play,"sound\bgm\umib_002.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 3		mov $BGM_Play,"sound\bgm\umib_003.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 4		mov $BGM_Play,"sound\bgm\umib_004.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 5		mov $BGM_Play,"sound\bgm\umib_005.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 6		mov $BGM_Play,"sound\bgm\umib_006.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 7		mov $BGM_Play,"sound\bgm\umib_007.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 8		mov $BGM_Play,"sound\bgm\umib_008.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 9		mov $BGM_Play,"sound\bgm\umib_009.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 10	mov $BGM_Play,"sound\bgm\umib_010.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 11	mov $BGM_Play,"sound\bgm\umib_011.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 12 	mov $BGM_Play,"sound\bgm\umib_012.ogg" : gosub *bgm_title_language : return
@@ -26319,8 +26320,7 @@ if %BGM_Id == 1013  mov $BGM_Play,"sound\bgm\bgm_final_chiru.ogg" : gosub *bgm_t
 ;Extra
 if %BGM_Id == 94	mov $BGM_Play,"sound\bgm\umib_094.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 1011	mov $BGM_Play,"sound\bgm\system0.ogg" : gosub *bgm_title_language : return
-if %legacy_op == off && %BGM_Id == 1012	mov $BGM_Play,"sound\bgm\op.ogg" : gosub *bgm_title_language : return
-if %legacy_op == on  && %BGM_Id == 1012 mov $BGM_Play,"legacy\bgm\op.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 1012	mov $BGM_Play,"sound\bgm\op.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 1014	mov $BGM_Play,"sound\bgm\tiruop.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 1017  mov $BGM_Play,"sound\bgm\ep5_op.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 1018  mov $BGM_Play,"sound\bgm\ep7_op.ogg" : gosub *bgm_title_language : return
@@ -26337,12 +26337,12 @@ if %BGM_Id == 252	mov $BGM_Play,"sound\bgm\umib_252.ogg" : gosub *bgm_title_lang
 if %BGM_Id == 253	mov $BGM_Play,"sound\bgm\umib_253.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 254	mov $BGM_Play,"sound\bgm\umib_254.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 2007	mov $BGM_Play,"sound\bgm\umib_007b.ogg" : gosub *bgm_title_language : return
-if %BGM_Id == 1020	mov $BGM_Play,"sound\bgm\bgm_final2.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 1021	mov $BGM_Play,"sound\bgm\cssaku_op.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 1022	mov $BGM_Play,"sound\bgm\og_cross_op.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 1023	mov $BGM_Play,"sound\bgm\og_op.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 1024	mov $BGM_Play,"sound\bgm\og_x_op.ogg" : gosub *bgm_title_language : return
 if %BGM_Id == 1025	mov $BGM_Play,"sound\bgm\pcsaku_op.ogg" : gosub *bgm_title_language : return
+if %BGM_Id == 1026	mov $BGM_Play,"sound\bgm\goldennocturne_voc.ogg" : gosub *bgm_title_language : return
 ;End Custom
 
 
@@ -26553,8 +26553,7 @@ if %BGM_Id == 1013  mov $BGM_Title,"Bring The Fate(Ver chiru)" : return
 ;Extra
 if %BGM_Id == 94	mov $BGM_Title,"Tsurupettan" : return
 if %BGM_Id == 1011	mov $BGM_Title,"system0(Original Version)" : return
-if %legacy_op == off && %BGM_Id == 1012	mov $BGM_Title,"Igreja of Echoing Vows" : return
-if %legacy_op == on  && %BGM_Id == 1012	mov $BGM_Title,"When the Seagulls Cry" : return
+if %BGM_Id == 1012	mov $BGM_Title,"Igreja of Echoing Vows" : return
 if %BGM_Id == 1014	mov $BGM_Title,"Inanna’s Dream" : return
 if %BGM_Id == 1017  mov $BGM_Title,"The Witch of Occultics" : return
 if %BGM_Id == 1018  mov $BGM_Title,"The Pithos in the Fog" : return
@@ -26571,15 +26570,15 @@ if %BGM_Id == 252	mov $BGM_Title,"Promise (music box version)" : return
 if %BGM_Id == 253	mov $BGM_Title,"Last Stand" : return
 if %BGM_Id == 254	mov $BGM_Title,"Crystal of Happiness" : return
 if %BGM_Id == 2007	mov $BGM_Title,"Fragrant Cypress" : return
-if %BGM_Id == 1020	mov $BGM_Title,"Bring The Fate 2" : return
 if %BGM_Id == 1021	mov $BGM_Title,"The Catbox of Superposition" : return
 if %BGM_Id == 1022	mov $BGM_Title,"Golden ShowTime!" : return
-if %BGM_Id == 1023	mov $BGM_Title,"Golden Fantasia ~ Dyed with Golden Blood" : return
-if %BGM_Id == 1024	mov $BGM_Title,"Golden Fantasia X ~ Golden Miracle" : return
+if %BGM_Id == 1023	mov $BGM_Title,"Golden Fantasia 〜 Dyed with Golden Blood" : return
+if %BGM_Id == 1024	mov $BGM_Title,"Golden Fantasia X 〜 Golden Miracle" : return
 if %BGM_Id == 1025	mov $BGM_Title,"Silver Empireo" : return
+if %BGM_Id == 1026	mov $BGM_Title,"Golden Nocturne Vocal" : return
 ;End Custom
 ~
-;translatiob - uses if set language to russian
+;translation - uses if set language to russian
 if %bgm_title_language != 2 jumpf 
 gosub *bgm_locale_title
 ~
@@ -26784,8 +26783,7 @@ if %BGM_Id == 1013  mov $BGM_Title,"Bring The Fate(Ver chiru)" : return
 ;Extra
 if %BGM_Id == 94	mov $BGM_Title,"つるぺったん" : return
 if %BGM_Id == 1011	mov $BGM_Title,"システム零 (Original Version)" : return
-if %legacy_op == off && %BGM_Id == 1012	mov $BGM_Title,"誓響のイグレージャ" : return
-if %legacy_op == on  && %BGM_Id == 1012	mov $BGM_Title,"うみねこのなく頃に" : return
+if %BGM_Id == 1012	mov $BGM_Title,"誓響のイグレージャ" : return
 if %BGM_Id == 1014	mov $BGM_Title,"イナンナの見た夢" : return
 if %BGM_Id == 1017  mov $BGM_Title,"オカルティクスの魔女" : return
 if %BGM_Id == 1018  mov $BGM_Title,"霧のピトス" : return
@@ -26802,12 +26800,12 @@ if %BGM_Id == 252	mov $BGM_Title,"約束(オルゴール Ver)" : return
 if %BGM_Id == 253	mov $BGM_Title,"Last Stand" : return
 if %BGM_Id == 254	mov $BGM_Title,"幸せの結晶" : return
 if %BGM_Id == 2007	mov $BGM_Title,"fragrant cypress" : return
-if %BGM_Id == 1020	mov $BGM_Title,"Bring The Fate 2" : return
 if %BGM_Id == 1021	mov $BGM_Title,"重ね合わせの猫箱" : return
 if %BGM_Id == 1022	mov $BGM_Title,"Golden ShowTime!" : return
 if %BGM_Id == 1023	mov $BGM_Title,"黄金夢想曲 〜金色の血に染まる前に〜" : return
 if %BGM_Id == 1024	mov $BGM_Title,"黄金夢想曲Ｘ 〜黄金の奇跡を叶えるまで〜" : return
 if %BGM_Id == 1025	mov $BGM_Title,"白金のエンピレオ" : return
+if %BGM_Id == 1026	mov $BGM_Title,"金色の夜想曲 ～Golden Nocturne～" : return
 ;End Custom
 ~
 ;romanized
@@ -27011,8 +27009,7 @@ if %BGM_Id == 1013  mov $BGM_Title,"Bring The Fate(Ver chiru)" : return
 ;Extra
 if %BGM_Id == 94	mov $BGM_Title,"Tsurupettan" : return
 if %BGM_Id == 1011	mov $BGM_Title,"system0 (Original Version)" : return
-if %legacy_op == off && %BGM_Id == 1012	mov $BGM_Title,"Senkyou no Igreja" : return
-if %legacy_op == on  && %BGM_Id == 1012	mov $BGM_Title,"Umineko no Naku Koro ni" : return
+if %BGM_Id == 1012	mov $BGM_Title,"Senkyou no Igreja" : return
 if %BGM_Id == 1014	mov $BGM_Title,"Inanna no Mita Yume" : return
 if %BGM_Id == 1017  mov $BGM_Title,"Occultics no Majo" : return
 if %BGM_Id == 1018  mov $BGM_Title,"Kiri no Pithos" : return
@@ -27029,12 +27026,12 @@ if %BGM_Id == 252	mov $BGM_Title,"Yakusoku(Orugōru Ver)" : return
 if %BGM_Id == 253	mov $BGM_Title,"Last Stand" : return
 if %BGM_Id == 254	mov $BGM_Title,"Shiawase no kesshō" : return
 if %BGM_Id == 2007	mov $BGM_Title,"fragrant cypress" : return
-if %BGM_Id == 1020	mov $BGM_Title,"Bring The Fate 2" : return
 if %BGM_Id == 1021	mov $BGM_Title,"Kasane-awase no neko-bako" : return
 if %BGM_Id == 1022	mov $BGM_Title,"Golden ShowTime!" : return
 if %BGM_Id == 1023	mov $BGM_Title,"Ougon Musou Kyoku 〜Kin'iro no chi ni somaru mae ni〜" : return
 if %BGM_Id == 1024	mov $BGM_Title,"Ougon Musou Kyoku X 〜Ougon no Kiseki o Kanaeru Made〜" : return
 if %BGM_Id == 1025	mov $BGM_Title,"Shirogane no enpireo" : return
+if %BGM_Id == 1026	mov $BGM_Title,"Konjiki no Yasoukyoku 〜Golden Nocturne〜" : return
 ;End Custom
 
 ~
@@ -27464,22 +27461,12 @@ return
 return
 
 *load_saved_bgms
-	for %music_box_tmp = music_box_count+1 to music_box_count+1018
+	for %music_box_tmp = music_box_count+1 to music_box_count+2007
 		;Fixes a reckless numeration for some tracks overlapping with temp variables
 		if %%music_box_tmp != 1 && %%music_box_tmp != 0 mov %%music_box_tmp,0
 		if %%music_box_tmp == 1 mov ?bgm_list[%music_box_tmp-music_box_count],1
 	next
 
-	;TODO do this only on startup, not on the opening of the music box
-	operate_config u_read,$music_box_tmp,"bgm_unlock"
-	if $music_box_tmp == "8" goto *load_bgms_8
-	if $music_box_tmp == "7" goto *load_bgms_7
-	if $music_box_tmp == "6" goto *load_bgms_6
-	if $music_box_tmp == "5" goto *load_bgms_5
-	if $music_box_tmp == "4" goto *load_bgms_4
-	if $music_box_tmp == "3" goto *load_bgms_3
-	if $music_box_tmp == "2" goto *load_bgms_2
-	if $music_box_tmp == "1" goto *load_bgms_1
 return
 
 *load_bgms_8
@@ -29366,7 +29353,7 @@ return
 ; Main config function
 ;****************************
 
-#locale_import "cfg.txt"
+#locale_import "tmp_cfg.txt"
 
 ;***********************************************************************
 ; Picture Box
@@ -31011,7 +30998,7 @@ return
 ; Music Box ;MusicBox
 ;***********************************************************************
 
-#locale_import "music.txt"
+#locale_import "tmp_music.txt"
 
 ;***********************************************************************
 ; Trophies
@@ -32016,7 +32003,7 @@ return
 	itoa $savecountClick,%savecountClick
 	mov $Free1, "🖱️ " + $savecountClick
 	; turns out the music can be nothing
-	if $BGM_Title == "" mov $BGM_Title,"Jamming with Edward!"
+	if $BGM_Title == "" mov $BGM_Title,""
 	mov $Free2, "🎼 " + $BGM_Title
 	; can be split into two chunks if it checks chiru mode but tbh i cant really be bothered to figure out how to jump multiple tildes
 	; need to do a switch case for name_chapter_save to set the dateclock and the scenario name
@@ -33541,6 +33528,18 @@ reset
 		if $UMINEKOEND == "8" mov %UMINEKOEND,90 : mov %UMINEKOEND_FLG,90 : gosub *do_unlock
 	~
 
+	operate_config u_read,$music_box_tmp,"bgm_unlock"
+	if $music_box_tmp == "undef" jumpf
+		if $music_box_tmp == "8" gosub *load_bgms_8
+		if $music_box_tmp == "7" gosub *load_bgms_7
+		if $music_box_tmp == "6" gosub *load_bgms_6
+		if $music_box_tmp == "5" gosub *load_bgms_5
+		if $music_box_tmp == "4" gosub *load_bgms_4
+		if $music_box_tmp == "3" gosub *load_bgms_3
+		if $music_box_tmp == "2" gosub *load_bgms_2
+		if $music_box_tmp == "1" gosub *load_bgms_1
+	~
+
 	operate_config u_read,$CHIRU_MODE,"force_game"
 	if $CHIRU_MODE == "undef" jumpf
 		if $CHIRU_MODE == "rondo" && %CHIRU_MODE != 0 goto *switch_game_q
@@ -33568,11 +33567,12 @@ reset
 		if $title_skip == "force" mov %title_skip,0
 	~
 
-	operate_config u_read,$video_res,"video_resolution"
-	if $video_res == "undef" jumpf
-		if $video_res == "720p" mov %video_res,1
-		if $video_res == "1080p" mov %video_res,0
-	~
+	;Original Edited - no more 720p videos - W_CUSTOM
+	;operate_config u_read,$video_res,"video_resolution"
+	;if $video_res == "undef" jumpf
+	;		if $video_res == "720p" mov %video_res,1
+	;	if $video_res == "1080p" mov %video_res,0
+	;~
 
 	operate_config u_read,$interface_kb_dual,"control_interface"
 	if $interface_kb_dual == "undef" jumpf
@@ -33751,7 +33751,7 @@ reset
 	operate_config u_read,$legacy_op,"legacy_op"
 	if $cfg_steam_conventions == "undef" jumpf
 		if $legacy_op == "true" mov %legacy_op,on
-		if %legacy_op == on fileexist %legacy_op,"legacy\720p\op.mp4"
+		if %legacy_op == on fileexist %legacy_op,"legacy\1080p\op.mp4" ;Original Edited - no more 720p videos - W_CUSTOM
 		if %legacy_op == on fileexist %legacy_op,"legacy\1080p\op.mp4"
 		if %legacy_op == on fileexist %legacy_op,"legacy\bgm\op.ogg"
 	~
@@ -34167,7 +34167,7 @@ if %Free1==0 mov $Free1,verify_sound : gosub *verify_err
 fileexist %Free1,"sprites\bea\1\bea_a11_akuwarai1.png"
 ;End Custom
 if %Free1==0 mov $Free1,verify_sprites : gosub *verify_err
-fileexist %Free1,"video\720p\no46.mp4"
+fileexist %Free1,"video\1080p\no46.mp4" ;Original Edited - no more 720p videos - W_CUSTOM
 if %Free1==0 mov $Free1,verify_video : gosub *verify_err
 
 fileexist %Free1,"graphics\locale\project_logo.png"
@@ -40501,6 +40501,819 @@ return
 		if %%Free1 == 0 break
 		if %Free1 == presents_discarded_17 trophy_open 29
 	next
+return
+
+*bgm_instrumental_order
+
+	mov %test_var,0
+	mov %temp_var,0
+	for %for_index1 = 0 to 219-%bgm_not_inst
+		*bgm_remove_special
+			if ?bgm_order[0][%for_index1+%temp_var] = 83      inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 160     inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 168     inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 240     inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 109     inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 2007    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 1023    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 1024    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 1022    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 104     inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 1012    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 1014    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 58      inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 132     inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 195     inc %temp_var 
+			if ?bgm_order[0][%for_index1+%temp_var] = 1025    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 186     inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 1000    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 161     inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 1011    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 1021    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 1018    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 1017    inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 241     inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 134     inc %temp_var
+			if ?bgm_order[0][%for_index1+%temp_var] = 94      inc %temp_var
+			inc %test_var
+		if %test_var < 4 : goto *bgm_remove_special
+		mov %test_var,0
+
+		mov ?bgm_order[1][%for_index1],?bgm_order[0][%for_index1+%temp_var]
+	next
+
+return
+
+*traditional_bgm_order
+
+mov ?bgm_order[0][0],95    	    ;"599 million ruins"
+mov ?bgm_order[0][1],166  	    ;"7-weights"
+mov ?bgm_order[0][2],124  	    ;"A Lonely Deep-Sea Fish"
+mov ?bgm_order[0][3],120  	    ;"ACI-L"
+mov ?bgm_order[0][4],83    	    ;"activepain"
+mov ?bgm_order[0][5],145  	    ;"ALIVE"
+mov ?bgm_order[0][6],250  	    ;"Answer (music box version)"
+mov ?bgm_order[0][7],48    	    ;"Answer short"
+mov ?bgm_order[0][8],47    	    ;"Answer"
+mov ?bgm_order[0][9],153  	    ;"Anti-Demon Sequentia"
+mov ?bgm_order[0][10],90    	;"apathy"
+mov ?bgm_order[0][11],14    	;"At Death’s Door"
+mov ?bgm_order[0][12],112  	    ;"Azure Jeer"
+mov ?bgm_order[0][13],169   	;"ballade-continuer"
+mov ?bgm_order[0][14],154   	;"battle field"
+mov ?bgm_order[0][15],18    	;"Beckoning"
+mov ?bgm_order[0][16],146  	    ;"birth of new witch(inst)"
+mov ?bgm_order[0][17],160  	    ;"birth of new witch(Short Ver)"
+mov ?bgm_order[0][18],188  	    ;"Bizarre Divertimento"
+mov ?bgm_order[0][19],55    	;"Black Liliana"
+mov ?bgm_order[0][20],140  	    ;"Blue Butterfly"
+mov ?bgm_order[0][21],168  	    ;"bore-ral"
+mov ?bgm_order[0][22],3    	    ;"BOUNCE"
+mov ?bgm_order[0][23],131  	    ;"Bread of Life"
+mov ?bgm_order[0][24],1010  	;"Bring The Fate"
+mov ?bgm_order[0][25],1013  	;"Bring The Fate(Ver chiru)"
+mov ?bgm_order[0][26],196  	    ;"Busy Devils"
+mov ?bgm_order[0][27],23    	;"butterfly"
+mov ?bgm_order[0][28],43    	;"cage"
+mov ?bgm_order[0][29],32    	;"Closed My Heart"
+mov ?bgm_order[0][30],240  	    ;"Cocoon of White Dreams -Ricordando il passato-"
+mov ?bgm_order[0][31],29    	;"Core"
+mov ?bgm_order[0][32],254  	    ;"Crystal of Happiness"
+mov ?bgm_order[0][33],74    	;"Dance of the Moon Rabbits"
+mov ?bgm_order[0][34],68    	;"Dancing Pipe"
+mov ?bgm_order[0][35],39    	;"dead angle"
+mov ?bgm_order[0][36],99    	;"death(from stupefaction)"
+mov ?bgm_order[0][37],106  	    ;"dir"
+mov ?bgm_order[0][38],109  	    ;"Discode"
+mov ?bgm_order[0][39],127  	    ;"discolor"
+mov ?bgm_order[0][40],62    	;"Distant"
+mov ?bgm_order[0][41],105  	    ;"dive to emergency"
+mov ?bgm_order[0][42],2    	    ;"Door of Summer"
+mov ?bgm_order[0][43],69    	;"Dread of the grave -More fear-"
+mov ?bgm_order[0][44],189  	    ;"Dread of the grave -More fear-(remake)"
+mov ?bgm_order[0][45],84    	;"Dread of the grave -rhythm ver-"
+mov ?bgm_order[0][46],53    	;"Dread of the grave"
+mov ?bgm_order[0][47],108  	    ;"dreamenddischarger"
+mov ?bgm_order[0][48],190  	    ;"en-counse"
+mov ?bgm_order[0][49],57    	;"End of a Daydream"
+mov ?bgm_order[0][50],107       ;"Endless Nine"
+mov ?bgm_order[0][51],148       ;"Engage of marionette"
+mov ?bgm_order[0][52],136       ;"Eternal Chains"
+mov ?bgm_order[0][53],85    	;"Eternity"
+mov ?bgm_order[0][54],88    	;"F Style"
+mov ?bgm_order[0][55],135       ;"Fake Gray Smile"
+mov ?bgm_order[0][56],167       ;"fall"
+mov ?bgm_order[0][57],64    	;"far"
+mov ?bgm_order[0][58],173  	    ;"far(flat)"
+mov ?bgm_order[0][59],129  	    ;"Final Answer"
+mov ?bgm_order[0][60],46    	;"Final Curtain VerC"
+mov ?bgm_order[0][61],193  	    ;"Flying"
+mov ?bgm_order[0][62],16    	;"Fortitude"
+mov ?bgm_order[0][63],2007  	;"Fragrant Cypress"
+mov ?bgm_order[0][64],111  	    ;"Future"
+mov ?bgm_order[0][65],181  	    ;"goddess-gardena"
+mov ?bgm_order[0][66],1023  	;"Golden Fantasia - Dyed with Golden Blood"
+mov ?bgm_order[0][67],1024  	;"Golden Fantasia X - Golden Miracle"
+mov ?bgm_order[0][68],172  	    ;"Golden Nocturne(inst)"
+mov ?bgm_order[0][68],1026  	;"Golden Nocturne Vocal"
+mov ?bgm_order[0][70],1022  	;"Golden ShowTime!"
+mov ?bgm_order[0][71],44    	;"Golden Sneer"
+mov ?bgm_order[0][72],24    	;"goldenslaughterer"
+mov ?bgm_order[0][73],72    	;"happiness of marionette bonus"
+mov ?bgm_order[0][74],73    	;"happiness of marionette"
+mov ?bgm_order[0][75],104  	    ;"Happy Maria!"
+mov ?bgm_order[0][76],96    	;"Happy Maria!(Instrumental)"
+mov ?bgm_order[0][77],67    	;"haze"
+mov ?bgm_order[0][78],15    	;"Hell’s Halls"
+mov ?bgm_order[0][79],123       ;"hello your dream"
+mov ?bgm_order[0][80],8         ;"hope"
+mov ?bgm_order[0][81],6         ;"Hour of Darkness"
+mov ?bgm_order[0][82],1012  	;“Igreja of Echoing Vows"
+mov ?bgm_order[0][83],1014  	;"Inanna’s Dream"
+mov ?bgm_order[0][84],159       ;"Infant Queen Bee"
+mov ?bgm_order[0][85],138       ;"Instant"
+mov ?bgm_order[0][86],119       ;"JUSTICE"
+mov ?bgm_order[0][87],163       ;"l&d-circulation"
+mov ?bgm_order[0][88],253       ;"Last Stand"
+mov ?bgm_order[0][89],243       ;"Last World"
+mov ?bgm_order[0][90],194       ;"lastendconductor"
+mov ?bgm_order[0][91],162       ;"le4-octobre"
+mov ?bgm_order[0][92],157       ;"liberatedliberator"
+mov ?bgm_order[0][93],171       ;"lie-alaia"
+mov ?bgm_order[0][94],149       ;"Life"
+mov ?bgm_order[0][95],130       ;"light"
+mov ?bgm_order[0][96],87    	;"Like the gale"
+mov ?bgm_order[0][97],191  	    ;"lixAxil"
+mov ?bgm_order[0][98],139  	    ;"Look Back"
+mov ?bgm_order[0][99],150  	    ;"Loreley"
+mov ?bgm_order[0][100],137  	    ;"Love Examination"
+mov ?bgm_order[0][101],49    	;"Melody inst.ver"
+mov ?bgm_order[0][102],58    	;"Melody"
+mov ?bgm_order[0][103],75    	;"Melting away"
+mov ?bgm_order[0][104],34    	;"mind"
+mov ?bgm_order[0][105],30    	;"Minute darkness"
+mov ?bgm_order[0][106],77    	;"miragecoordinator"
+mov ?bgm_order[0][107],89    	;"Monochrome Clock"
+mov ?bgm_order[0][108],51    	;"moon"
+mov ?bgm_order[0][109],12    	;"Moonlit Night"
+mov ?bgm_order[0][110],100  	;"mortal stampede"
+mov ?bgm_order[0][111],66    	;"mother"
+mov ?bgm_order[0][112],141  	;"my dear"
+mov ?bgm_order[0][113],91    	;"Mystic Forest"
+mov ?bgm_order[0][114],31    	;"nighteyes"
+mov ?bgm_order[0][115],7    	;"Novelette"
+mov ?bgm_order[0][116],115  	;"one"
+mov ?bgm_order[0][117],98    	;"open fire"
+mov ?bgm_order[0][118],70    	;"Organ Short #200 Million in C Minor"
+mov ?bgm_order[0][119],40    	;"Organ Short #600 Million in C Minor"
+mov ?bgm_order[0][120],59    	;"Over the sky"
+mov ?bgm_order[0][121],86    	;"over"
+mov ?bgm_order[0][122],81    	;"Paradise Lost"
+mov ?bgm_order[0][123],93    	;"Parallel"
+mov ?bgm_order[0][124],22    	;"Pass"
+mov ?bgm_order[0][125],126  	;"Patchwork Chimera"
+mov ?bgm_order[0][126],36    	;"play"
+mov ?bgm_order[0][127],21    	;"praise"
+mov ?bgm_order[0][128],121  	;"Predator"
+mov ?bgm_order[0][129],41    	;"Prison STRIP"
+mov ?bgm_order[0][130],78    	;"prison"
+mov ?bgm_order[0][131],252  	;"Promise (music box version)"
+mov ?bgm_order[0][132],132  	;"Promise"
+mov ?bgm_order[0][133],122  	;"Proud-dust"
+mov ?bgm_order[0][134],63    	;"psy-chorus"
+mov ?bgm_order[0][135],176  	;"Puppet Show"
+mov ?bgm_order[0][136],103  	;"Purgatory Catastrophe Rhapsodie"
+mov ?bgm_order[0][137],165  	;"rain"
+mov ?bgm_order[0][138],155  	;"Rebirth"
+mov ?bgm_order[0][139],50    	;"Red Dread"
+mov ?bgm_order[0][140],65    	;"red shoes FAKE"
+mov ?bgm_order[0][141],164  	;"reflection-call"
+mov ?bgm_order[0][142],33    	;"Requiem"
+mov ?bgm_order[0][143],56    	;"Rest"
+mov ?bgm_order[0][144],128  	;"resurrectedreplayer"
+mov ?bgm_order[0][145],195  	;"Revelations"
+mov ?bgm_order[0][146],192  	;"Revelations(inst)"
+mov ?bgm_order[0][147],102  	;"Revolt"
+mov ?bgm_order[0][148],71    	;"rhythm-changer"
+mov ?bgm_order[0][149],4    	;"Ride on"
+mov ?bgm_order[0][150],183  	;"ridicule"
+mov ?bgm_order[0][151],143  	;"rog-limitation"
+mov ?bgm_order[0][152],13    	;"Rose"
+mov ?bgm_order[0][153],147  	;"ruriair"
+mov ?bgm_order[0][154],177  	;"s/he-end"
+mov ?bgm_order[0][155],28    	;"Scar in the Score"
+mov ?bgm_order[0][156],45    	;"Scorpion Guts"
+mov ?bgm_order[0][157],5    	;"sea"
+mov ?bgm_order[0][158],1025  	;"Silver Empireo"
+mov ?bgm_order[0][159],114  	;"Smileless Soirée"
+mov ?bgm_order[0][160],142  	;"Something’s Up & Going Down"
+mov ?bgm_order[0][161],179  	;"Song without a name full-inst"
+mov ?bgm_order[0][162],170  	;"Song without a name ver.2007 inst"
+mov ?bgm_order[0][163],186  	;"Song without a name ver.sakura ED-size"
+mov ?bgm_order[0][164],76    	;"soul of soul"
+mov ?bgm_order[0][165],116  	;"Spiral"
+mov ?bgm_order[0][166],10    	;"steady pace"
+mov ?bgm_order[0][167],42    	;"String Quartet #1 in G Major — I.Allegro"
+mov ?bgm_order[0][168],117  	;"String Trio #600 Million in F-Sharp Minor"
+mov ?bgm_order[0][169],187  	;"Stuffed Animal"
+mov ?bgm_order[0][170],20    	;"stupefaction"
+mov ?bgm_order[0][171],1000  	;"SuiSui☆SWEETS(^-^)"
+mov ?bgm_order[0][172],60    	;"sunny spot"
+mov ?bgm_order[0][173],97    	;"Surrounding"
+mov ?bgm_order[0][174],27    	;"suspicion"
+mov ?bgm_order[0][175],19    	;"Suspicious Scent"
+mov ?bgm_order[0][176],161  	;"SUSPICIOUSSCENT"
+mov ?bgm_order[0][177],37    	;"system0"
+mov ?bgm_order[0][178],1011  	;"system0(Original Version)"
+mov ?bgm_order[0][179],198  	;"Tears of the Lillies -En liljas t@u229.rar-"
+mov ?bgm_order[0][180],175  	;"terminal entrance"
+mov ?bgm_order[0][181],158  	;"Thanks for all people"
+mov ?bgm_order[0][182],79    	;"Thanks for being born"
+mov ?bgm_order[0][183],200  	;"Thanks"
+mov ?bgm_order[0][184],61    	;"The Candles Dance"
+mov ?bgm_order[0][185],1021  	;"The Catbox of Superposition"
+mov ?bgm_order[0][186],180  	;"The End Of The World"
+mov ?bgm_order[0][187],185  	;"the executioner"
+mov ?bgm_order[0][188],152  	;"The first and The last"
+mov ?bgm_order[0][189],125  	;"The Girls’ Witch Hunt"
+mov ?bgm_order[0][190],113  	;"The Great Detective Knows"
+mov ?bgm_order[0][191],1018  	;"The Pithos in the Fog"
+mov ?bgm_order[0][192],151  	;"The Sin"
+mov ?bgm_order[0][193],92    	;"The Tale of Sakutarou’s Tenacity"
+mov ?bgm_order[0][194],156  	;"The Way"
+mov ?bgm_order[0][195],1017  	;"The Witch of Occultics"
+mov ?bgm_order[0][196],26    	;"The Witch of the Painting"
+mov ?bgm_order[0][197],1    	;"Thunberg Lily"
+mov ?bgm_order[0][198],133  	;"Tomorrow"
+mov ?bgm_order[0][199],197  	;"Tomorrow's Dream (inst)"
+mov ?bgm_order[0][200],118  	;"Totenblume"
+mov ?bgm_order[0][201],11    	;"Towering cloud in summer"
+mov ?bgm_order[0][202],174  	;"Toybox"
+mov ?bgm_order[0][203],94    	;"Tsurupettan"
+mov ?bgm_order[0][204],110  	;"twirl"  
+mov ?bgm_order[0][205],101  	;"Victima propiciatoria"
+mov ?bgm_order[0][206],38    	;"Voiceless"
+mov ?bgm_order[0][207],144  	;"Waltz Op.34"
+mov ?bgm_order[0][208],241  	;"When the Seagulls Cry"
+mov ?bgm_order[0][209],52    	;"where"
+mov ?bgm_order[0][210],9    	;"White Shadow"
+mov ?bgm_order[0][211],82       ;"wingless"
+mov ?bgm_order[0][212],251  	;"Wings (music box version)"
+mov ?bgm_order[0][213],80    	;"Wings"
+mov ?bgm_order[0][214],134  	;"WINGS(Ver hope)"
+mov ?bgm_order[0][215],17    	;"witch in gold(cembalo)"
+mov ?bgm_order[0][216],54    	;"Worldend dominator"
+mov ?bgm_order[0][217],35    	;"Worldend"
+mov ?bgm_order[0][218],25    	;"Worldend(bp)"
+mov ?bgm_order[0][219],184  	;"Yomotsu Hirasaka Corruption"
+
+gosub *bgm_instrumental_order
+
+mov ?bgm_order[2][0],83      ;Activepain
+mov ?bgm_order[2][1],160     ;birth of new witch(Short Ver)
+mov ?bgm_order[2][2],168     ;bore-ral
+mov ?bgm_order[2][3],240     ;Coocon of White Dreams -Ricordando il passato-
+mov ?bgm_order[2][4],109     ;Discode
+mov ?bgm_order[2][5],104     ;Happy Maria!
+mov ?bgm_order[2][6],1012    ;Igreja of Echoing Vows
+mov ?bgm_order[2][7],1014    ;Inanna’s Dream
+mov ?bgm_order[2][8],58    	 ;"Melody"
+mov ?bgm_order[2][9],132     ;Promise
+mov ?bgm_order[2][10],195    ;Revelations Vocal
+mov ?bgm_order[2][11],186    ;Song without a name ver.sakura ED-size
+mov ?bgm_order[2][12],1000   ;SuiSui☆SWEETS(^-^)
+mov ?bgm_order[2][13],161    ;SUSPICIOUSSCENT
+mov ?bgm_order[2][14],1018   ;The Pithos in the Fog
+mov ?bgm_order[2][15],1017   ;The Witch of Occultics
+mov ?bgm_order[2][16],241    ;When the Seagulls Cry
+mov ?bgm_order[2][17],134    ;Wings(ver hope)
+
+
+mov ?bgm_order[3][0],2007    ;Fragrant Cypress
+mov ?bgm_order[3][1],1023    ;Golden Fantasia - Dyed with Golden Blood
+mov ?bgm_order[3][2],1024    ;Golden Fantasia X - Golden Miracle
+mov ?bgm_order[3][3],1026    ;Golden Nocturne Vocal
+mov ?bgm_order[3][4],1022    ;Golden ShowTime!
+mov ?bgm_order[3][5],1025    ;Silver Empireo
+mov ?bgm_order[3][6],1011    ;system0(Original Version)
+mov ?bgm_order[3][7],1021    ;The Catbox of Superposition
+mov ?bgm_order[3][8],94    	 ;Tsurupettan
+
+return
+
+*japanese_bgm_order
+
+mov ?bgm_order[0][0],95    	    ;"599 million ruins"
+mov ?bgm_order[0][1],166  	    ;"7-weights"
+mov ?bgm_order[0][2],124  	    ;"A Lonely Deep-Sea Fish"
+mov ?bgm_order[0][3],120  	    ;"ACI-L"
+mov ?bgm_order[0][4],83    	    ;"activepain"
+mov ?bgm_order[0][5],145  	    ;"ALIVE"
+mov ?bgm_order[0][6],250  	    ;"Answer (music box version)"
+mov ?bgm_order[0][7],48    	    ;"Answer short"
+mov ?bgm_order[0][8],47    	    ;"Answer"
+mov ?bgm_order[0][9],153  	    ;"Anti-Demon Sequentia"
+mov ?bgm_order[0][10],90    	;"apathy"
+mov ?bgm_order[0][11],14    	;"At Death’s Door"
+mov ?bgm_order[0][12],112  	    ;"Azure Jeer"
+mov ?bgm_order[0][13],169   	;"ballade-continuer"
+mov ?bgm_order[0][14],154   	;"battle field"
+mov ?bgm_order[0][15],18    	;"Beckoning"
+mov ?bgm_order[0][16],146  	    ;"birth of new witch(inst)"
+mov ?bgm_order[0][17],160  	    ;"birth of new witch(Short Ver)"
+mov ?bgm_order[0][18],188  	    ;"Bizarre Divertimento"
+mov ?bgm_order[0][19],55    	;"Black Liliana"
+mov ?bgm_order[0][20],140  	    ;"Blue Butterfly"
+mov ?bgm_order[0][21],168  	    ;"bore-ral"
+mov ?bgm_order[0][22],3    	    ;"BOUNCE"
+mov ?bgm_order[0][23],131  	    ;"Bread of Life"
+mov ?bgm_order[0][24],1010  	;"Bring The Fate"
+mov ?bgm_order[0][25],1013  	;"Bring The Fate(Ver chiru)"
+mov ?bgm_order[0][26],196  	    ;"Busy Devils"
+mov ?bgm_order[0][27],23    	;"butterfly"
+mov ?bgm_order[0][28],43    	;"cage"
+mov ?bgm_order[0][29],32    	;"Closed My Heart"
+mov ?bgm_order[0][30],240  	    ;"Cocoon of White Dreams -Ricordando il passato-"
+mov ?bgm_order[0][31],29    	;"Core"
+mov ?bgm_order[0][32],254  	    ;"Crystal of Happiness"
+mov ?bgm_order[0][33],74    	;"Dance of the Moon Rabbits"
+mov ?bgm_order[0][34],68    	;"Dancing Pipe"
+mov ?bgm_order[0][35],39    	;"dead angle"
+mov ?bgm_order[0][36],99    	;"death(from stupefaction)"
+mov ?bgm_order[0][37],106  	    ;"dir"
+mov ?bgm_order[0][38],109  	    ;"Discode"
+mov ?bgm_order[0][39],127  	    ;"discolor"
+mov ?bgm_order[0][40],62    	;"Distant"
+mov ?bgm_order[0][41],105  	    ;"dive to emergency"
+mov ?bgm_order[0][42],2    	    ;"Door of Summer"
+mov ?bgm_order[0][43],69    	;"Dread of the grave -More fear-"
+mov ?bgm_order[0][44],189  	    ;"Dread of the grave -More fear-(remake)"
+mov ?bgm_order[0][45],84    	;"Dread of the grave -rhythm ver-"
+mov ?bgm_order[0][46],53    	;"Dread of the grave"
+mov ?bgm_order[0][47],108  	    ;"dreamenddischarger"
+mov ?bgm_order[0][48],190  	    ;"en-counse"
+mov ?bgm_order[0][49],57    	;"End of a Daydream"
+mov ?bgm_order[0][50],107       ;"Endless Nine"
+mov ?bgm_order[0][51],148       ;"Engage of marionette"
+mov ?bgm_order[0][52],136       ;"Eternal Chains"
+mov ?bgm_order[0][53],85    	;"Eternity"
+mov ?bgm_order[0][54],88    	;"F Style"
+mov ?bgm_order[0][55],135       ;"Fake Gray Smile"
+mov ?bgm_order[0][56],167       ;"fall"
+mov ?bgm_order[0][57],64    	;"far"
+mov ?bgm_order[0][58],173  	    ;"far(flat)"
+mov ?bgm_order[0][59],129  	    ;"Final Answer"
+mov ?bgm_order[0][60],46    	;"Final Curtain VerC"
+mov ?bgm_order[0][61],193  	    ;"Flying"
+mov ?bgm_order[0][62],16    	;"Fortitude"
+mov ?bgm_order[0][63],2007  	;"Fragrant Cypress"
+mov ?bgm_order[0][64],111  	    ;"Future"
+mov ?bgm_order[0][65],181  	    ;"goddess-gardena"
+mov ?bgm_order[0][66],1023  	;"Golden Fantasia - Dyed with Golden Blood"
+mov ?bgm_order[0][67],1024  	;"Golden Fantasia X - Golden Miracle"
+mov ?bgm_order[0][68],172  	    ;"Golden Nocturne(inst)"
+mov ?bgm_order[0][69],1026  	;"Golden Nocturne Vocal"
+mov ?bgm_order[0][70],1022  	;"Golden ShowTime!"
+mov ?bgm_order[0][71],44    	;"Golden Sneer"
+mov ?bgm_order[0][72],24    	;"goldenslaughterer"
+mov ?bgm_order[0][73],72    	;"happiness of marionette bonus"
+mov ?bgm_order[0][74],73    	;"happiness of marionette"
+mov ?bgm_order[0][75],104  	    ;"Happy Maria!"
+mov ?bgm_order[0][76],96    	;"Happy Maria!(Instrumental)"
+mov ?bgm_order[0][77],67    	;"haze"
+mov ?bgm_order[0][78],15    	;"Hell’s Halls"
+mov ?bgm_order[0][79],123       ;"hello your dream"
+mov ?bgm_order[0][80],8         ;"hope"
+mov ?bgm_order[0][81],6         ;"Hour of Darkness"
+mov ?bgm_order[0][82],1012  	;“Igreja of Echoing Vows"
+mov ?bgm_order[0][83],1014  	;"Inanna’s Dream"
+mov ?bgm_order[0][84],159       ;"Infant Queen Bee"
+mov ?bgm_order[0][85],138       ;"Instant"
+mov ?bgm_order[0][86],119       ;"JUSTICE"
+mov ?bgm_order[0][87],163       ;"l&d-circulation"
+mov ?bgm_order[0][88],253       ;"Last Stand"
+mov ?bgm_order[0][89],243       ;"Last World"
+mov ?bgm_order[0][90],194       ;"lastendconductor"
+mov ?bgm_order[0][91],162       ;"le4-octobre"
+mov ?bgm_order[0][92],157       ;"liberatedliberator"
+mov ?bgm_order[0][93],171       ;"lie-alaia"
+mov ?bgm_order[0][94],149       ;"Life"
+mov ?bgm_order[0][95],130       ;"light"
+mov ?bgm_order[0][96],87    	;"Like the gale"
+mov ?bgm_order[0][97],191  	    ;"lixAxil"
+mov ?bgm_order[0][98],139  	    ;"Look Back"
+mov ?bgm_order[0][99],150  	    ;"Loreley"
+mov ?bgm_order[0][100],137  	;"Love Examination"
+mov ?bgm_order[0][101],49    	;"Melody inst.ver"
+mov ?bgm_order[0][102],58    	;"Melody"
+mov ?bgm_order[0][103],75    	;"Melting away"
+mov ?bgm_order[0][104],34    	;"mind"
+mov ?bgm_order[0][105],30    	;"Minute darkness"
+mov ?bgm_order[0][106],77    	;"miragecoordinator"
+mov ?bgm_order[0][107],89    	;"Monochrome Clock"
+mov ?bgm_order[0][108],51    	;"moon"
+mov ?bgm_order[0][109],12    	;"Moonlit Night"
+mov ?bgm_order[0][110],100  	;"mortal stampede"
+mov ?bgm_order[0][111],66    	;"mother"
+mov ?bgm_order[0][112],141  	;"my dear"
+mov ?bgm_order[0][113],91    	;"Mystic Forest"
+mov ?bgm_order[0][114],31    	;"nighteyes"
+mov ?bgm_order[0][115],7    	;"Novelette"
+mov ?bgm_order[0][116],115  	;"one"
+mov ?bgm_order[0][117],98    	;"open fire"
+mov ?bgm_order[0][118],70    	;"Organ Short #200 Million in C Minor"
+mov ?bgm_order[0][119],40    	;"Organ Short #600 Million in C Minor"
+mov ?bgm_order[0][120],59    	;"Over the sky"
+mov ?bgm_order[0][121],86    	;"over"
+mov ?bgm_order[0][122],81    	;"Paradise Lost"
+mov ?bgm_order[0][123],93    	;"Parallel"
+mov ?bgm_order[0][124],22    	;"Pass"
+mov ?bgm_order[0][125],126  	;"Patchwork Chimera"
+mov ?bgm_order[0][126],36    	;"play"
+mov ?bgm_order[0][127],21    	;"praise"
+mov ?bgm_order[0][128],121  	;"Predator"
+mov ?bgm_order[0][129],41    	;"Prison STRIP"
+mov ?bgm_order[0][130],78    	;"prison"
+mov ?bgm_order[0][131],252  	;"Promise (music box version)"
+mov ?bgm_order[0][132],132  	;"Promise"
+mov ?bgm_order[0][133],122  	;"Proud-dust"
+mov ?bgm_order[0][134],63    	;"psy-chorus"
+mov ?bgm_order[0][135],176  	;"Puppet Show"
+mov ?bgm_order[0][136],103  	;"Purgatory Catastrophe Rhapsodie"
+mov ?bgm_order[0][137],165  	;"rain"
+mov ?bgm_order[0][138],155  	;"Rebirth"
+mov ?bgm_order[0][139],50    	;"Red Dread"
+mov ?bgm_order[0][140],65    	;"red shoes FAKE"
+mov ?bgm_order[0][141],164  	;"reflection-call"
+mov ?bgm_order[0][142],33    	;"Requiem"
+mov ?bgm_order[0][143],56    	;"Rest"
+mov ?bgm_order[0][144],128  	;"resurrectedreplayer"
+mov ?bgm_order[0][145],195  	;"Revelations"
+mov ?bgm_order[0][146],192  	;"Revelations(inst)"
+mov ?bgm_order[0][147],102  	;"Revolt"
+mov ?bgm_order[0][148],71    	;"rhythm-changer"
+mov ?bgm_order[0][149],4    	;"Ride on"
+mov ?bgm_order[0][150],183  	;"ridicule"
+mov ?bgm_order[0][151],143  	;"rog-limitation"
+mov ?bgm_order[0][152],13    	;"Rose"
+mov ?bgm_order[0][153],147  	;"ruriair"
+mov ?bgm_order[0][154],177  	;"s/he-end"
+mov ?bgm_order[0][155],28    	;"Scar in the Score"
+mov ?bgm_order[0][156],45    	;"Scorpion Guts"
+mov ?bgm_order[0][157],5    	;"sea"
+mov ?bgm_order[0][158],1025  	;"Silver Empireo"
+mov ?bgm_order[0][159],114  	;"Smileless Soirée"
+mov ?bgm_order[0][160],142  	;"Something’s Up & Going Down"
+mov ?bgm_order[0][161],179  	;"Song without a name full-inst"
+mov ?bgm_order[0][162],170  	;"Song without a name ver.2007 inst"
+mov ?bgm_order[0][163],186  	;"Song without a name ver.sakura ED-size"
+mov ?bgm_order[0][164],76    	;"soul of soul"
+mov ?bgm_order[0][165],116  	;"Spiral"
+mov ?bgm_order[0][166],10    	;"steady pace"
+mov ?bgm_order[0][167],42    	;"String Quartet #1 in G Major — I.Allegro"
+mov ?bgm_order[0][168],117  	;"String Trio #600 Million in F-Sharp Minor"
+mov ?bgm_order[0][169],187  	;"Stuffed Animal"
+mov ?bgm_order[0][170],20    	;"stupefaction"
+mov ?bgm_order[0][171],1000  	;"SuiSui☆SWEETS(^-^)"
+mov ?bgm_order[0][172],60    	;"sunny spot"
+mov ?bgm_order[0][173],97    	;"Surrounding"
+mov ?bgm_order[0][174],27    	;"suspicion"
+mov ?bgm_order[0][175],19    	;"Suspicious Scent"
+mov ?bgm_order[0][176],161  	;"SUSPICIOUSSCENT"
+mov ?bgm_order[0][177],37    	;"system0"
+mov ?bgm_order[0][178],1011  	;"system0(Original Version)"
+mov ?bgm_order[0][179],198  	;"Tears of the Lillies -En liljas t@u229.rar-"
+mov ?bgm_order[0][180],175  	;"terminal entrance"
+mov ?bgm_order[0][181],158  	;"Thanks for all people"
+mov ?bgm_order[0][182],79    	;"Thanks for being born"
+mov ?bgm_order[0][183],200  	;"Thanks"
+mov ?bgm_order[0][184],61    	;"The Candles Dance"
+mov ?bgm_order[0][185],1021  	;"The Catbox of Superposition"
+mov ?bgm_order[0][186],180  	;"The End Of The World"
+mov ?bgm_order[0][187],185  	;"the executioner"
+mov ?bgm_order[0][188],152  	;"The first and The last"
+mov ?bgm_order[0][189],125  	;"The Girls’ Witch Hunt"
+mov ?bgm_order[0][190],113  	;"The Great Detective Knows"
+mov ?bgm_order[0][191],1018  	;"The Pithos in the Fog"
+mov ?bgm_order[0][192],151  	;"The Sin"
+mov ?bgm_order[0][193],92    	;"The Tale of Sakutarou’s Tenacity"
+mov ?bgm_order[0][194],156  	;"The Way"
+mov ?bgm_order[0][195],1017  	;"The Witch of Occultics"
+mov ?bgm_order[0][196],26    	;"The Witch of the Painting"
+mov ?bgm_order[0][197],1    	;"Thunberg Lily"
+mov ?bgm_order[0][198],133  	;"Tomorrow"
+mov ?bgm_order[0][199],197  	;"Tomorrow's Dream (inst)"
+mov ?bgm_order[0][200],118  	;"Totenblume"
+mov ?bgm_order[0][201],11    	;"Towering cloud in summer"
+mov ?bgm_order[0][202],174  	;"Toybox"
+mov ?bgm_order[0][203],94    	;"Tsurupettan"
+mov ?bgm_order[0][204],110  	;"twirl"  
+mov ?bgm_order[0][205],101  	;"Victima propiciatoria"
+mov ?bgm_order[0][206],38    	;"Voiceless"
+mov ?bgm_order[0][207],144  	;"Waltz Op.34"
+mov ?bgm_order[0][208],241  	;"When the Seagulls Cry"
+mov ?bgm_order[0][209],52    	;"where"
+mov ?bgm_order[0][210],9    	;"White Shadow"
+mov ?bgm_order[0][211],82       ;"wingless"
+mov ?bgm_order[0][212],251  	;"Wings (music box version)"
+mov ?bgm_order[0][213],80    	;"Wings"
+mov ?bgm_order[0][214],134  	;"WINGS(Ver hope)"
+mov ?bgm_order[0][215],17    	;"witch in gold(cembalo)"
+mov ?bgm_order[0][216],54    	;"Worldend dominator"
+mov ?bgm_order[0][217],35    	;"Worldend"
+mov ?bgm_order[0][218],25    	;"Worldend(bp)"
+mov ?bgm_order[0][219],184  	;"Yomotsu Hirasaka Corruption"
+
+gosub *bgm_instrumental_order
+
+mov ?bgm_order[2][0],83      ;Activepain
+mov ?bgm_order[2][1],160     ;birth of new witch(Short Ver)
+mov ?bgm_order[2][2],168     ;bore-ral
+mov ?bgm_order[2][3],240     ;Coocon of White Dreams -Ricordando il passato-
+mov ?bgm_order[2][4],109     ;Discode
+mov ?bgm_order[2][5],104     ;Happy Maria!
+mov ?bgm_order[2][6],1012    ;Igreja of Echoing Vows
+mov ?bgm_order[2][7],1014    ;Inanna’s Dream
+mov ?bgm_order[2][8],58    	 ;"Melody"
+mov ?bgm_order[2][9],132     ;Promise
+mov ?bgm_order[2][10],195    ;Revelations Vocal
+mov ?bgm_order[2][11],186    ;Song without a name ver.sakura ED-size
+mov ?bgm_order[2][12],1000   ;SuiSui☆SWEETS(^-^)
+mov ?bgm_order[2][13],161    ;SUSPICIOUSSCENT
+mov ?bgm_order[2][14],1018   ;The Pithos in the Fog
+mov ?bgm_order[2][15],1017   ;The Witch of Occultics
+mov ?bgm_order[2][16],241    ;When the Seagulls Cry
+mov ?bgm_order[2][17],134    ;Wings(ver hope)
+
+
+mov ?bgm_order[3][0],2007    ;Fragrant Cypress
+mov ?bgm_order[3][1],1023    ;Golden Fantasia - Dyed with Golden Blood
+mov ?bgm_order[3][2],1024    ;Golden Fantasia X - Golden Miracle
+mov ?bgm_order[3][3],1026    ;Golden Nocturne Vocal
+mov ?bgm_order[3][4],1022    ;Golden ShowTime!
+mov ?bgm_order[3][5],1025    ;Silver Empireo
+mov ?bgm_order[3][6],1011    ;system0(Original Version)
+mov ?bgm_order[3][7],1021    ;The Catbox of Superposition
+mov ?bgm_order[3][8],94    	 ;Tsurupettan
+
+
+return
+
+*romaji_bgm_order
+
+mov ?bgm_order[0][0],95    	    ;"599 million ruins"
+mov ?bgm_order[0][1],166  	    ;"7-weights"
+mov ?bgm_order[0][2],124  	    ;"A Lonely Deep-Sea Fish"
+mov ?bgm_order[0][3],120  	    ;"ACI-L"
+mov ?bgm_order[0][4],83    	    ;"activepain"
+mov ?bgm_order[0][5],145  	    ;"ALIVE"
+mov ?bgm_order[0][6],250  	    ;"Answer (music box version)"
+mov ?bgm_order[0][7],48    	    ;"Answer short"
+mov ?bgm_order[0][8],47    	    ;"Answer"
+mov ?bgm_order[0][9],153  	    ;"Anti-Demon Sequentia"
+mov ?bgm_order[0][10],90    	;"apathy"
+mov ?bgm_order[0][11],14    	;"At Death’s Door"
+mov ?bgm_order[0][12],112  	    ;"Azure Jeer"
+mov ?bgm_order[0][13],169   	;"ballade-continuer"
+mov ?bgm_order[0][14],154   	;"battle field"
+mov ?bgm_order[0][15],18    	;"Beckoning"
+mov ?bgm_order[0][16],146  	    ;"birth of new witch(inst)"
+mov ?bgm_order[0][17],160  	    ;"birth of new witch(Short Ver)"
+mov ?bgm_order[0][18],188  	    ;"Bizarre Divertimento"
+mov ?bgm_order[0][19],55    	;"Black Liliana"
+mov ?bgm_order[0][20],140  	    ;"Blue Butterfly"
+mov ?bgm_order[0][21],168  	    ;"bore-ral"
+mov ?bgm_order[0][22],3    	    ;"BOUNCE"
+mov ?bgm_order[0][23],131  	    ;"Bread of Life"
+mov ?bgm_order[0][24],1010  	;"Bring The Fate"
+mov ?bgm_order[0][25],1013  	;"Bring The Fate(Ver chiru)"
+mov ?bgm_order[0][26],196  	    ;"Busy Devils"
+mov ?bgm_order[0][27],23    	;"butterfly"
+mov ?bgm_order[0][28],43    	;"cage"
+mov ?bgm_order[0][29],32    	;"Closed My Heart"
+mov ?bgm_order[0][30],240  	    ;"Cocoon of White Dreams -Ricordando il passato-"
+mov ?bgm_order[0][31],29    	;"Core"
+mov ?bgm_order[0][32],254  	    ;"Crystal of Happiness"
+mov ?bgm_order[0][33],74    	;"Dance of the Moon Rabbits"
+mov ?bgm_order[0][34],68    	;"Dancing Pipe"
+mov ?bgm_order[0][35],39    	;"dead angle"
+mov ?bgm_order[0][36],99    	;"death(from stupefaction)"
+mov ?bgm_order[0][37],106  	    ;"dir"
+mov ?bgm_order[0][38],109  	    ;"Discode"
+mov ?bgm_order[0][39],127  	    ;"discolor"
+mov ?bgm_order[0][40],62    	;"Distant"
+mov ?bgm_order[0][41],105  	    ;"dive to emergency"
+mov ?bgm_order[0][42],2    	    ;"Door of Summer"
+mov ?bgm_order[0][43],69    	;"Dread of the grave -More fear-"
+mov ?bgm_order[0][44],189  	    ;"Dread of the grave -More fear-(remake)"
+mov ?bgm_order[0][45],84    	;"Dread of the grave -rhythm ver-"
+mov ?bgm_order[0][46],53    	;"Dread of the grave"
+mov ?bgm_order[0][47],108  	    ;"dreamenddischarger"
+mov ?bgm_order[0][48],190  	    ;"en-counse"
+mov ?bgm_order[0][49],57    	;"End of a Daydream"
+mov ?bgm_order[0][50],107       ;"Endless Nine"
+mov ?bgm_order[0][51],148       ;"Engage of marionette"
+mov ?bgm_order[0][52],136       ;"Eternal Chains"
+mov ?bgm_order[0][53],85    	;"Eternity"
+mov ?bgm_order[0][54],88    	;"F Style"
+mov ?bgm_order[0][55],135       ;"Fake Gray Smile"
+mov ?bgm_order[0][56],167       ;"fall"
+mov ?bgm_order[0][57],64    	;"far"
+mov ?bgm_order[0][58],173  	    ;"far(flat)"
+mov ?bgm_order[0][59],129  	    ;"Final Answer"
+mov ?bgm_order[0][60],46    	;"Final Curtain VerC"
+mov ?bgm_order[0][61],193  	    ;"Flying"
+mov ?bgm_order[0][62],16    	;"Fortitude"
+mov ?bgm_order[0][63],2007  	;"Fragrant Cypress"
+mov ?bgm_order[0][64],111  	    ;"Future"
+mov ?bgm_order[0][65],181  	    ;"goddess-gardena"
+mov ?bgm_order[0][66],1023  	;"Golden Fantasia - Dyed with Golden Blood"
+mov ?bgm_order[0][67],1024  	;"Golden Fantasia X - Golden Miracle"
+mov ?bgm_order[0][68],172  	    ;"Golden Nocturne(inst)"
+mov ?bgm_order[0][69],1026  	;"Golden Nocturne Vocal"
+mov ?bgm_order[0][70],1022  	;"Golden ShowTime!"
+mov ?bgm_order[0][71],44    	;"Golden Sneer"
+mov ?bgm_order[0][72],24    	;"goldenslaughterer"
+mov ?bgm_order[0][73],72    	;"happiness of marionette bonus"
+mov ?bgm_order[0][74],73    	;"happiness of marionette"
+mov ?bgm_order[0][75],104  	    ;"Happy Maria!"
+mov ?bgm_order[0][76],96    	;"Happy Maria!(Instrumental)"
+mov ?bgm_order[0][77],67    	;"haze"
+mov ?bgm_order[0][78],15    	;"Hell’s Halls"
+mov ?bgm_order[0][79],123       ;"hello your dream"
+mov ?bgm_order[0][80],8         ;"hope"
+mov ?bgm_order[0][81],6         ;"Hour of Darkness"
+mov ?bgm_order[0][82],1012  	;“Igreja of Echoing Vows"
+mov ?bgm_order[0][83],1014  	;"Inanna’s Dream"
+mov ?bgm_order[0][84],159       ;"Infant Queen Bee"
+mov ?bgm_order[0][85],138       ;"Instant"
+mov ?bgm_order[0][86],119       ;"JUSTICE"
+mov ?bgm_order[0][87],163       ;"l&d-circulation"
+mov ?bgm_order[0][88],253       ;"Last Stand"
+mov ?bgm_order[0][89],243       ;"Last World"
+mov ?bgm_order[0][90],194       ;"lastendconductor"
+mov ?bgm_order[0][91],162       ;"le4-octobre"
+mov ?bgm_order[0][92],157       ;"liberatedliberator"
+mov ?bgm_order[0][93],171       ;"lie-alaia"
+mov ?bgm_order[0][94],149       ;"Life"
+mov ?bgm_order[0][95],130       ;"light"
+mov ?bgm_order[0][96],87    	;"Like the gale"
+mov ?bgm_order[0][97],191  	    ;"lixAxil"
+mov ?bgm_order[0][98],139  	    ;"Look Back"
+mov ?bgm_order[0][99],150  	    ;"Loreley"
+mov ?bgm_order[0][100],137  	    ;"Love Examination"
+mov ?bgm_order[0][101],49    	;"Melody inst.ver"
+mov ?bgm_order[0][102],58    	;"Melody"
+mov ?bgm_order[0][103],75    	;"Melting away"
+mov ?bgm_order[0][104],34    	;"mind"
+mov ?bgm_order[0][105],30    	;"Minute darkness"
+mov ?bgm_order[0][106],77    	;"miragecoordinator"
+mov ?bgm_order[0][107],89    	;"Monochrome Clock"
+mov ?bgm_order[0][108],51    	;"moon"
+mov ?bgm_order[0][109],12    	;"Moonlit Night"
+mov ?bgm_order[0][110],100  	;"mortal stampede"
+mov ?bgm_order[0][111],66    	;"mother"
+mov ?bgm_order[0][112],141  	;"my dear"
+mov ?bgm_order[0][113],91    	;"Mystic Forest"
+mov ?bgm_order[0][114],31    	;"nighteyes"
+mov ?bgm_order[0][115],7    	;"Novelette"
+mov ?bgm_order[0][116],115  	;"one"
+mov ?bgm_order[0][117],98    	;"open fire"
+mov ?bgm_order[0][118],70    	;"Organ Short #200 Million in C Minor"
+mov ?bgm_order[0][119],40    	;"Organ Short #600 Million in C Minor"
+mov ?bgm_order[0][120],59    	;"Over the sky"
+mov ?bgm_order[0][121],86    	;"over"
+mov ?bgm_order[0][122],81    	;"Paradise Lost"
+mov ?bgm_order[0][123],93    	;"Parallel"
+mov ?bgm_order[0][124],22    	;"Pass"
+mov ?bgm_order[0][125],126  	;"Patchwork Chimera"
+mov ?bgm_order[0][126],36    	;"play"
+mov ?bgm_order[0][127],21    	;"praise"
+mov ?bgm_order[0][128],121  	;"Predator"
+mov ?bgm_order[0][129],41    	;"Prison STRIP"
+mov ?bgm_order[0][130],78    	;"prison"
+mov ?bgm_order[0][131],252  	;"Promise (music box version)"
+mov ?bgm_order[0][132],132  	;"Promise"
+mov ?bgm_order[0][133],122  	;"Proud-dust"
+mov ?bgm_order[0][134],63    	;"psy-chorus"
+mov ?bgm_order[0][135],176  	;"Puppet Show"
+mov ?bgm_order[0][136],103  	;"Purgatory Catastrophe Rhapsodie"
+mov ?bgm_order[0][137],165  	;"rain"
+mov ?bgm_order[0][138],155  	;"Rebirth"
+mov ?bgm_order[0][139],50    	;"Red Dread"
+mov ?bgm_order[0][140],65    	;"red shoes FAKE"
+mov ?bgm_order[0][141],164  	;"reflection-call"
+mov ?bgm_order[0][142],33    	;"Requiem"
+mov ?bgm_order[0][143],56    	;"Rest"
+mov ?bgm_order[0][144],128  	;"resurrectedreplayer"
+mov ?bgm_order[0][145],195  	;"Revelations"
+mov ?bgm_order[0][146],192  	;"Revelations(inst)"
+mov ?bgm_order[0][147],102  	;"Revolt"
+mov ?bgm_order[0][148],71    	;"rhythm-changer"
+mov ?bgm_order[0][149],4    	;"Ride on"
+mov ?bgm_order[0][150],183  	;"ridicule"
+mov ?bgm_order[0][151],143  	;"rog-limitation"
+mov ?bgm_order[0][152],13    	;"Rose"
+mov ?bgm_order[0][153],147  	;"ruriair"
+mov ?bgm_order[0][154],177  	;"s/he-end"
+mov ?bgm_order[0][155],28    	;"Scar in the Score"
+mov ?bgm_order[0][156],45    	;"Scorpion Guts"
+mov ?bgm_order[0][157],5    	;"sea"
+mov ?bgm_order[0][158],1025  	;"Silver Empireo"
+mov ?bgm_order[0][159],114  	;"Smileless Soirée"
+mov ?bgm_order[0][160],142  	;"Something’s Up & Going Down"
+mov ?bgm_order[0][161],179  	;"Song without a name full-inst"
+mov ?bgm_order[0][162],170  	;"Song without a name ver.2007 inst"
+mov ?bgm_order[0][163],186  	;"Song without a name ver.sakura ED-size"
+mov ?bgm_order[0][164],76    	;"soul of soul"
+mov ?bgm_order[0][165],116  	;"Spiral"
+mov ?bgm_order[0][166],10    	;"steady pace"
+mov ?bgm_order[0][167],42    	;"String Quartet #1 in G Major — I.Allegro"
+mov ?bgm_order[0][168],117  	;"String Trio #600 Million in F-Sharp Minor"
+mov ?bgm_order[0][169],187  	;"Stuffed Animal"
+mov ?bgm_order[0][170],20    	;"stupefaction"
+mov ?bgm_order[0][171],1000  	;"SuiSui☆SWEETS(^-^)"
+mov ?bgm_order[0][172],60    	;"sunny spot"
+mov ?bgm_order[0][173],97    	;"Surrounding"
+mov ?bgm_order[0][174],27    	;"suspicion"
+mov ?bgm_order[0][175],19    	;"Suspicious Scent"
+mov ?bgm_order[0][176],161  	;"SUSPICIOUSSCENT"
+mov ?bgm_order[0][177],37    	;"system0"
+mov ?bgm_order[0][178],1011  	;"system0(Original Version)"
+mov ?bgm_order[0][179],198  	;"Tears of the Lillies -En liljas t@u229.rar-"
+mov ?bgm_order[0][180],175  	;"terminal entrance"
+mov ?bgm_order[0][181],158  	;"Thanks for all people"
+mov ?bgm_order[0][182],79    	;"Thanks for being born"
+mov ?bgm_order[0][183],200  	;"Thanks"
+mov ?bgm_order[0][184],61    	;"The Candles Dance"
+mov ?bgm_order[0][185],1021  	;"The Catbox of Superposition"
+mov ?bgm_order[0][186],180  	;"The End Of The World"
+mov ?bgm_order[0][187],185  	;"the executioner"
+mov ?bgm_order[0][188],152  	;"The first and The last"
+mov ?bgm_order[0][189],125  	;"The Girls’ Witch Hunt"
+mov ?bgm_order[0][190],113  	;"The Great Detective Knows"
+mov ?bgm_order[0][191],1018  	;"The Pithos in the Fog"
+mov ?bgm_order[0][192],151  	;"The Sin"
+mov ?bgm_order[0][193],92    	;"The Tale of Sakutarou’s Tenacity"
+mov ?bgm_order[0][194],156  	;"The Way"
+mov ?bgm_order[0][195],1017  	;"The Witch of Occultics"
+mov ?bgm_order[0][196],26    	;"The Witch of the Painting"
+mov ?bgm_order[0][197],1    	;"Thunberg Lily"
+mov ?bgm_order[0][198],133  	;"Tomorrow"
+mov ?bgm_order[0][199],197  	;"Tomorrow's Dream (inst)"
+mov ?bgm_order[0][200],118  	;"Totenblume"
+mov ?bgm_order[0][201],11    	;"Towering cloud in summer"
+mov ?bgm_order[0][202],174  	;"Toybox"
+mov ?bgm_order[0][203],94    	;"Tsurupettan"
+mov ?bgm_order[0][204],110  	;"twirl"  
+mov ?bgm_order[0][205],101  	;"Victima propiciatoria"
+mov ?bgm_order[0][206],38    	;"Voiceless"
+mov ?bgm_order[0][207],144  	;"Waltz Op.34"
+mov ?bgm_order[0][208],241  	;"When the Seagulls Cry"
+mov ?bgm_order[0][209],52    	;"where"
+mov ?bgm_order[0][210],9    	;"White Shadow"
+mov ?bgm_order[0][211],82       ;"wingless"
+mov ?bgm_order[0][212],251  	;"Wings (music box version)"
+mov ?bgm_order[0][213],80    	;"Wings"
+mov ?bgm_order[0][214],134  	;"WINGS(Ver hope)"
+mov ?bgm_order[0][215],17    	;"witch in gold(cembalo)"
+mov ?bgm_order[0][216],54    	;"Worldend dominator"
+mov ?bgm_order[0][217],35    	;"Worldend"
+mov ?bgm_order[0][218],25    	;"Worldend(bp)"
+mov ?bgm_order[0][219],184  	;"Yomotsu Hirasaka Corruption"
+
+gosub *bgm_instrumental_order
+
+mov ?bgm_order[2][0],83      ;Activepain
+mov ?bgm_order[2][1],160     ;birth of new witch(Short Ver)
+mov ?bgm_order[2][2],168     ;bore-ral
+mov ?bgm_order[2][3],240     ;Coocon of White Dreams -Ricordando il passato-
+mov ?bgm_order[2][4],109     ;Discode
+mov ?bgm_order[2][5],104     ;Happy Maria!
+mov ?bgm_order[2][6],1012    ;Igreja of Echoing Vows
+mov ?bgm_order[2][7],1014    ;Inanna’s Dream
+mov ?bgm_order[2][8],58    	 ;"Melody"
+mov ?bgm_order[2][9],132     ;Promise
+mov ?bgm_order[2][10],195    ;Revelations Vocal
+mov ?bgm_order[2][11],186    ;Song without a name ver.sakura ED-size
+mov ?bgm_order[2][12],1000   ;SuiSui☆SWEETS(^-^)
+mov ?bgm_order[2][13],161    ;SUSPICIOUSSCENT
+mov ?bgm_order[2][14],1018   ;The Pithos in the Fog
+mov ?bgm_order[2][15],1017   ;The Witch of Occultics
+mov ?bgm_order[2][16],241    ;When the Seagulls Cry
+mov ?bgm_order[2][17],134    ;Wings(ver hope)
+
+
+mov ?bgm_order[3][0],2007    ;Fragrant Cypress
+mov ?bgm_order[3][1],1023    ;Golden Fantasia - Dyed with Golden Blood
+mov ?bgm_order[3][2],1024    ;Golden Fantasia X - Golden Miracle
+mov ?bgm_order[3][3],1026    ;Golden Nocturne Vocal
+mov ?bgm_order[3][4],1022    ;Golden ShowTime!
+mov ?bgm_order[3][5],1025    ;Silver Empireo
+mov ?bgm_order[3][6],1011    ;system0(Original Version)
+mov ?bgm_order[3][7],1021    ;The Catbox of Superposition
+mov ?bgm_order[3][8],94    	 ;Tsurupettan
+
 return
 
 #locale_import "code.txt"

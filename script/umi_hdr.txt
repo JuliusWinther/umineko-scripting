@@ -1438,9 +1438,19 @@ defsub vdl_selection
 defsub vdl_clear_selection
 defsub w_anim
 defsub get_bgm_details
+<<<<<<< Updated upstream
 defsub chibi ;w_temp
 defsub end_chibi ;w_temp
 defsub end_of_line_chibi ;w_temp
+=======
+defsub mbox_change_page
+defsub mbox_change_box_type
+defsub traditional_bgm_order
+defsub translated_bgm_order
+defsub japanese_bgm_order
+defsub romaji_bgm_order
+defsub bgm_instrumental_order
+>>>>>>> Stashed changes
 ;End Custom
 
 ;====================================================   Custom Vars - W_CUSTOM
@@ -1555,6 +1565,10 @@ numalias bgm_details,9586
 numalias bgm_yt,9587
 numalias bgm_spotify,9588
 numalias bgm_cd,9589
+numalias mbox_page,9590
+numalias bgm_box_type,9591
+numalias bgm_order,9592 : dim ?bgm_order[4][250]
+numalias bgm_not_inst,9593
 
 
 ;Discord - W_CUSTOM
@@ -1670,7 +1684,7 @@ preset_define 54,1,47,#FFFFFF,0,0,0,1,10,#2C1611,0,0,0,#000000,2 	; Config Optio
 preset_define 55,1,47,#FFFFFF,0,0,0,1,10,#2C1611,0,0,0,#000000,2 	; Config Option
 preset_define 56,1,17,#2C1611,0,0,0,1,1,#2C1611,0,0,0,#000000,1 		; Slider Index 
 preset_define 57,10,43,#E1E1E1,0,0,0,1,1,#181818,0,0,0,#000000,0 	; Submenu BTN Title
-preset_define 58,10,35,#181818,0,0,0,0,0,#000000,0,0,0,#000000,0 	; BGM Description
+preset_define 58,10,33,#181818,0,0,0,0,0,#000000,0,0,0,#000000,0 	; BGM Description
 
 preset_define 83,10,35,#000000,0,0,0,0,0,#000000,0,1,2,#000000,0 	;'Episode' text - shadow
 preset_define 84,10,27,#000000,0,0,0,0,0,#000000,0,1,2,#110C0C,2 	; number of the episode - shadow
@@ -1716,7 +1730,7 @@ setlayer 10,33,"video.dll"
 ;62 grim
 ;63 r_cha_text
 numalias cg_list,64 : dim ?cg_list[4][60]	;cg open list for rondo (59)/chiru (77)
-numalias bgm_list,65 : dim ?bgm_list[1018]	;unified bgm open list ;TODO add saku
+numalias bgm_list,65 : dim ?bgm_list[2007]	;unified bgm open list ;TODO add saku
 numalias voice_s,66 : dim ?voice_s[7]		;voice states
 ;124 slots, 6 subslots with values {enabled,layer_id,objects,speed,wind,paused,orbs}
 numalias rain_s,67 : dim ?rain_s[123][6]	;rain states
@@ -1799,8 +1813,10 @@ mov ?voice_s[6],0
 voice_vol
 
 ;Initialization - Global Declarations -W_CUSTOM
+
 mov %block_unlocking,0 ;Animations
 mov %cfg_current_page,1 ;Saves the current config page
+mov %mbox_page,1
 mov %msgwnd4_fade,500
 mov %msgwnd4_bg_slot,749
 
@@ -1831,6 +1847,12 @@ jnskip_s
 jskip_s
 	debug_str "SuperSkip: DISABLED"
 ~
+
+if %bgm_title_language = 1 gosub *traditional_bgm_order
+if %bgm_title_language = 2 gosub *translated_bgm_order
+if %bgm_title_language = 3 gosub *japanese_bgm_order
+if %bgm_title_language = 4 gosub *romaji_bgm_order
+mov %bgm_not_inst,27
 
 ;End Custom
 

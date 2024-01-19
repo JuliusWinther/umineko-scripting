@@ -15,21 +15,29 @@ mov %bgm_details,0 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" 
 
 ;Sprites from the upper to the lower
 
-	write_special_text 309,"mbox_select_title",280,235,"Select a Song {n}"
+	lsp 304,set_exit,0,0
+	align_buttons_r 304
 
-	write_special_text 310,"config_title",0,15," " + title_bgm_txt + " {n}"
+	lsp 305,mbox_obscure,0,0 : aspt alpha,305,0
+
+	lsp 306,":a/2,0,3;graphics\menu_en\config\config_left.png",190,35;440,35
+	lsp 307,":a/2,0,3;graphics\menu_en\config\config_right.png",1690,35;1440,35
+
+	write_special_text 308,"mbox_select_title",280,235,"Select a Song {n}"
+
+	write_special_text 309,"config_title",0,15," " + title_bgm_txt + " {n}"
+
+	lsp 310,mbox_bounds,0,0
 
 	lsp 311,":a/2,0,3;graphics\system\wnd\uoffcur.png",1827,839
 	lsp 312,":a/2,0,3;graphics\system\wnd\uoncur.png",1827,210
 	lsp 313,":a;graphics\menu\logview\sel.png",1832,255
 	lsp 314,":a;graphics\menu\logview\bar.png",1832,242
 
-	lsp 315,set_exit,0,0
-	align_buttons_r 315
-
-	lsp 316,mbox_bounds,0,0
 
 	;BGM Buttons
+	lsph2 315,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_extra.png",0,0,0,0,0
+	lsph2 316,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_voice.png",0,0,0,0,0
 	lsph2 317,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_grey.png",0,0,0,0,0
 	lsph2 318,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_normal.png",0,0,0,0,0
 	lsph2 319,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_hovered.png",0,0,0,0,0
@@ -46,30 +54,7 @@ mov %bgm_details,0 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" 
 
 ;End Sprites
 
-tree_clear 2
-mov %Free3,-1
-
-;Unlock in MusicBox
-for %BGM_Id = 1 to 110
-	gosub *bgm_gen_box
-next
-
-mov %BGM_Id, 1000 : gosub *bgm_gen_box
-mov %BGM_Id, 1010 : gosub *bgm_gen_box
-mov %BGM_Id, 1011 : gosub *bgm_gen_box
-mov %BGM_Id, 1012 : gosub *bgm_gen_box
-
-;if %CHIRU_MODE != 1 jumpf
-for %BGM_Id = 111 to 195
-	if %BGM_Id != 178 && %BGM_Id != 182 && %BGM_Id != 189 gosub *bgm_gen_box
-next
-mov %BGM_Id, 240 : gosub *bgm_gen_box
-mov %BGM_Id, 241 : gosub *bgm_gen_box
-mov %BGM_Id, 1013 : gosub *bgm_gen_box
-mov %BGM_Id, 1014 : gosub *bgm_gen_box
-mov %BGM_Id, 1017 : gosub *bgm_gen_box
-mov %BGM_Id, 1018 : gosub *bgm_gen_box
-;~
+gosub *mbox_change_page
 
 ;Arguments: sprite number (int), tree number (int), X position (int), Y position (int), width (int), height (int)
 scrollable 320,2,800,125,921,833
@@ -81,7 +66,7 @@ scrollable_cfg elembg,320,317
 scrollable_cfg elemwidth,320,445
 scrollable_cfg elemheight,320,55
 scrollable_cfg textmarginwidth,320,27
-scrollable_cfg textmargintop,320,11
+scrollable_cfg textmargintop,320,13
 scrollable_cfg scrollbar,320,313,255,785
 scrollable_display 320
 
@@ -97,12 +82,15 @@ btndef ""
 
 spbtn 311,5 ;Up
 spbtn 312,6 ;Down
-spbtn 315,4 ;Song Button
+spbtn 304,4 ;Exit Button
 spbtn 313,313 ;Scrollbar cursor
 
 if $bgm_yt != "" spbtn 324,324 
 if $bgm_spotify != "" spbtn 325,325 
 if $bgm_cd != "" spbtn 326,326 
+
+spbtn 306,306 
+spbtn 307,307 
 
 getpage
 getcursor
@@ -131,6 +119,19 @@ if $bgm_yt != "" if %BtnRes = 324 menu_window : shell $bgm_yt
 if $bgm_spotify != "" if %BtnRes = 325 menu_window : shell $bgm_spotify
 if $bgm_cd != "" if %BtnRes = 326 menu_window : shell $bgm_cd
 
+if %BtnRes != 306 jumpf ;left
+	isdown %cfg_mouse_click
+	if %cfg_mouse_click = 0 if %mbox_page <= 1 mov %mbox_page,5
+	if %cfg_mouse_click = 0 aspt alpha,309,0,300 : aspt alpha,305,255,300 : sptwait alpha,305
+	if %cfg_mouse_click = 0 dec %mbox_page : gosub *mbox_change_page
+~
+if %BtnRes != 307 jumpf ;right
+	isdown %cfg_mouse_click
+	if %cfg_mouse_click = 0 if %mbox_page >= 4 mov %mbox_page,0
+	if %cfg_mouse_click = 0 aspt alpha,309,0,300 : aspt alpha,305,255,300 : sptwait alpha,305
+	if %cfg_mouse_click = 0 inc %mbox_page : gosub *mbox_change_page
+~
+
 ;height: 570 - usable circa 529 - init pos of cursor: 255
 if %BtnRes != 313 goto *skip_bgm_cursor
 	for %for_index3=0 to 2
@@ -153,13 +154,125 @@ goto *bgm_end
 ;***********************************************
 
 *bgm_gen_box
+	getparam %bgm_box_type
 	gosub *BGM_List
 	tree_seta %Free1,2,"auto","text","{p:6:{a:c:{fit:"+$BGM_Title+"}}}"
 	tree_set 2,%Free1,"bgm",$BGM_Play
-	if ?bgm_list[%BGM_Id] == 1 tree_set 2,%Free1,"bg","318"
-	if ?bgm_list[%BGM_Id] == 0 tree_set 2,%Free1,"text","{p:6:{a:c:????}}" : tree_set 2,%Free1,"bgm",""
+	;tree_set 2,%Free1,"bg","318" 
+	
+	if %bgm_box_type = 1 tree_set 2,%Free1,"bg","318"
+	if %bgm_box_type = 2 tree_set 2,%Free1,"bg","316"
+	if %bgm_box_type = 3 tree_set 2,%Free1,"bg","315"
+
+	;if ?bgm_list[%BGM_Id] == 1 tree_set 2,%Free1,"bg","318"
+	;if ?bgm_list[%BGM_Id] == 0 tree_set 2,%Free1,"text","{p:6:{a:c:????}}" : tree_set 2,%Free1,"bgm",""
 return
 
+*mbox_change_page
+
+	_csp 320
+	tree_clear 2
+	mov %Free3,-1
+
+	if %mbox_page != 1 jumpf
+
+		write_special_text 309,"config_title",0,15," " + title_bgm_txt + " {n}"
+		aspt alpha,309,255,300
+
+		for %for_index1 = 0 to 219
+
+			mov %bgm_box_type,1
+			mov %BGM_Id,?bgm_order[0][%for_index1] 
+
+			gosub *mbox_change_box_type
+			
+			gosub *bgm_gen_box %bgm_box_type
+		next
+
+	~
+
+	if %mbox_page != 2 jumpf 
+		mov %bgm_box_type,1
+		write_special_text 309,"config_title",0,15," " + title_bgm_instrumental_txt + " " + title_bgm_txt + " {n}"
+
+		for %for_index1 = 0 to 219-%bgm_not_inst
+			mov %BGM_Id,?bgm_order[1][%for_index1] : gosub *bgm_gen_box %bgm_box_type
+		next
+
+	~
+
+	if %mbox_page != 3 jumpf 
+		mov %bgm_box_type,2
+		write_special_text 309,"config_title",0,15," " + title_bgm_vocal_txt + " " + title_bgm_txt + " {n}"
+
+		for %for_index1 = 0 to 17
+			mov %BGM_Id,?bgm_order[2][%for_index1] : gosub *bgm_gen_box %bgm_box_type
+		next
+
+	~
+
+	if %mbox_page != 4 jumpf 
+		mov %bgm_box_type,3
+		write_special_text 309,"config_title",0,15," " + title_bgm_extra_txt + " " + title_bgm_txt + " {n}"
+
+		for %for_index1 = 0 to 8
+			mov %BGM_Id,?bgm_order[3][%for_index1] : gosub *bgm_gen_box %bgm_box_type
+		next
+
+	~
+
+	;Arguments: sprite number (int), tree number (int), X position (int), Y position (int), width (int), height (int)
+	scrollable 320,2,800,125,921,833
+	scrollable_cfg firstmargin,320,50
+	scrollable_cfg lastmargin,320,50;75
+	scrollable_cfg cols,320,2
+	scrollable_cfg colgap,320,15
+	scrollable_cfg elembg,320,317
+	scrollable_cfg elemwidth,320,445
+	scrollable_cfg elemheight,320,55
+	scrollable_cfg textmarginwidth,320,27
+	scrollable_cfg textmargintop,320,13
+	scrollable_cfg scrollbar,320,313,255,785
+	scrollable_display 320
+
+	aspt alpha,305,0,400
+
+return
+
+*mbox_change_box_type
+
+	mov %bgm_box_type,1
+
+	if  %BGM_Id = 83   mov %bgm_box_type,2 
+	if  %BGM_Id = 134   mov %bgm_box_type,2 
+	if  %BGM_Id = 160   mov %bgm_box_type,2  
+	if  %BGM_Id = 168   mov %bgm_box_type,2  
+	if  %BGM_Id = 240   mov %bgm_box_type,2  
+	if  %BGM_Id = 109   mov %bgm_box_type,2  
+	if  %BGM_Id = 104   mov %bgm_box_type,2  
+	if  %BGM_Id = 1012  mov %bgm_box_type,2  
+	if  %BGM_Id = 1014  mov %bgm_box_type,2  
+	if  %BGM_Id = 58    mov %bgm_box_type,2  
+	if  %BGM_Id = 132   mov %bgm_box_type,2  
+	if  %BGM_Id = 186   mov %bgm_box_type,2  
+	if  %BGM_Id = 1000 	mov %bgm_box_type,2  
+	if  %BGM_Id = 161  	mov %bgm_box_type,2  
+	if  %BGM_Id = 1018 	mov %bgm_box_type,2  
+	if  %BGM_Id = 1017 	mov %bgm_box_type,2  
+	if  %BGM_Id = 241  	mov %bgm_box_type,2  
+	if  %BGM_Id = 195   mov %bgm_box_type,2 
+
+	if  %BGM_Id = 2007 	mov %bgm_box_type,3
+	if  %BGM_Id = 1023 	mov %bgm_box_type,3
+	if  %BGM_Id = 1024 	mov %bgm_box_type,3
+	if  %BGM_Id = 1026 	mov %bgm_box_type,3
+	if  %BGM_Id = 1022 	mov %bgm_box_type,3
+	if  %BGM_Id = 1025 	mov %bgm_box_type,3
+	if  %BGM_Id = 1011 	mov %bgm_box_type,3
+	if  %BGM_Id = 1021 	mov %bgm_box_type,3
+	if  %BGM_Id = 94 	mov %bgm_box_type,3
+
+return
 
 *get_bgm_details
 getparam $temp_var
@@ -362,13 +475,12 @@ if $temp_var == "sound\bgm\umib_1000.ogg": mov %bgm_details,1000 :  mov $bgm_det
 if $temp_var == "sound\bgm\bgm_final.ogg": mov %bgm_details,1010 :  mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 if $temp_var == "sound\bgm\bgm_final_chiru.ogg" : mov %bgm_details,1013 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 ;Extra
-if $temp_var == "sound\bgm\umib_094.ogg" 				: mov %bgm_details,94 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
-if $temp_var == "sound\bgm\system0.ogg"	 				: mov %bgm_details,1011 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
-if $legacy_op == off && %temp_var == "sound\bgm\op.ogg" : mov %bgm_details,1012 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
-if $legacy_op == on  && %temp_var == "legacy\bgm\op.ogg": mov %bgm_details,1012 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
-if $temp_var == "sound\bgm\tiruop.ogg"					: mov %bgm_details,1014 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
-if $temp_var == "sound\bgm\ep5_op.ogg" 					: mov %bgm_details,1017 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
-if $temp_var == "sound\bgm\ep7_op.ogg"  				: mov %bgm_details,1018	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\umib_094.ogg"	: mov %bgm_details,94 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\system0.ogg"		: mov %bgm_details,1011 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\op.ogg" 			: mov %bgm_details,1012 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\tiruop.ogg"		: mov %bgm_details,1014 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\ep5_op.ogg" 		: mov %bgm_details,1017 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\ep7_op.ogg"  	: mov %bgm_details,1018	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 ;Saku BGM - W_CUSTOM	
 if $temp_var == "sound\bgm\umib_189.ogg" 	: mov %bgm_details,189 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 if $temp_var == "sound\bgm\umib_196.ogg" 	: mov %bgm_details,196 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
@@ -382,25 +494,24 @@ if $temp_var == "sound\bgm\umib_252.ogg" 	: mov %bgm_details,252 	: mov $bgm_det
 if $temp_var == "sound\bgm\umib_253.ogg" 	: mov %bgm_details,253 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 if $temp_var == "sound\bgm\umib_254.ogg" 	: mov %bgm_details,254 	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 if $temp_var == "sound\bgm\umib_007b.ogg" 	: mov %bgm_details,2007	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
-if $temp_var == "sound\bgm\bgm_final2.ogg"	: mov %bgm_details,1020 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 if $temp_var == "sound\bgm\cssaku_op.ogg" 	: mov %bgm_details,1021	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 if $temp_var == "sound\bgm\og_cross_op.ogg"	: mov %bgm_details,1022 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 if $temp_var == "sound\bgm\og_op.ogg" 		: mov %bgm_details,1023	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 if $temp_var == "sound\bgm\og_x_op.ogg"  	: mov %bgm_details,1024	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
 if $temp_var == "sound\bgm\pcsaku_op.ogg" 	: mov %bgm_details,1025	: mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" : mov $bgm_cd,"" : jumpf
+if $temp_var == "sound\bgm\goldennocturne_voc.ogg" 	: mov %bgm_details,1026	: mov $bgm_details,"Luck Ganriki - Vocal: Rekka Katakiri" : mov $bgm_yt,"https://youtu.be/ObOlZbrZgOE?si=YhmkxyGvxGFdUV7r" : mov $bgm_spotify,"" : mov $bgm_cd,"https://vgmdb.net/album/16619" : jumpf
 ;End Custom
 
 ~
 
 mov %BGM_Id,%bgm_details : gosub *BGM_List ;Get Title
-mov $bgm_details,"" + bgm_desc_title + ": " + $BGM_Title + " {n}" + bgm_desc_author + ": " + $bgm_details + " {n}"
+mov $bgm_details,"{w:500:{fit}" + bgm_desc_title + ": " + $BGM_Title + "} {n}{w:500:{fit}" + bgm_desc_author + ": " + $bgm_details + " }{n}"
 
 return
 
 ;***********************************************
 
 *bgm_play_file
-
 	scrollable_get_hovered_elem %Free2,320
 	tree_get $Free2,2,%Free2,"bgm"
 
@@ -410,44 +521,31 @@ return
 	
 	resumevideo
 
-	if $Free2 == "sound\bgm\op.ogg" || $Free2 == "legacy\bgm\op.ogg" jumpf
-	if $Free2 == "sound\bgm\tiruop.ogg" || $Free2 == "sound\bgm\ep5_op.ogg" || $Free2 == "sound\bgm\ep7_op.ogg" jumpf
+		gosub *mbox_change_box_type
 
 		; Set the background
-		if %Free3 != -1 tree_set 2,%Free3,"bg","318"
+		if %Free3 != -1 if %bgm_box_type = 1 tree_set 2,%Free3,"bg","318"
+		if %Free3 != -1 if %bgm_box_type = 2 tree_set 2,%Free3,"bg","316"
+		if %Free3 != -1 if %bgm_box_type = 3 tree_set 2,%Free3,"bg","315"
 		tree_set 2,%Free2,"bg","319"
 		mov %Free3,%Free2
 
 		;Get Song Details
 		gosub *get_bgm_details $Free2
-		aspt alpha,309,0,400 : aspt alpha,324,0,400 : aspt alpha,325,0,400 : aspt alpha,326,0,400
-		 _csp 309 :  _csp 324 :  _csp 325 :  _csp 326
-		write_special_text 309,"bgm_description",200,200,$bgm_details : aspt alpha,309,0
+		aspt alpha,308,0,400 : aspt alpha,324,0,400 : aspt alpha,325,0,400 : aspt alpha,326,0,400
+		 _csp 308 :  _csp 324 :  _csp 325 :  _csp 326
+		write_special_text 308,"bgm_description",200-10,200,$bgm_details : aspt alpha,308,0
 		if $bgm_yt != "" lsp 324,bgm_yt_btn,182,330 : aspt alpha,324,0
 		if $bgm_spotify != "" lsp 325,bgm_spotify_btn,182+104,326 : aspt alpha,325,0
 		if $bgm_cd != "" && $bgm_spotify != "" lsp 326,bgm_cd_btn,182+93+104,326 : aspt alpha,326,0
 		if $bgm_cd != "" && $bgm_spotify == "" lsp 326,bgm_cd_btn,182+104,326 : aspt alpha,326,0
-		aspt alpha,309,255,900 : aspt alpha,324,255,900 : aspt alpha,325,255,900 : aspt alpha,326,255,900
+		aspt alpha,308,255,900 : aspt alpha,324,255,900 : aspt alpha,325,255,900 : aspt alpha,326,255,900
 
 		; Play the bgm
 		vol_bgm 100
 		bgm $Free2
 		return
 
-	~
-
-	if %Free3 != -1 tree_set 2,%Free3,"bg","318"
-	mov %Free3,-1
-	scrollable_cfg mousectrl,320,0
-	stop
-	loopbgmstop
-	if $Free2 == "sound\bgm\op.ogg" || $Free2 == "legacy\bgm\op.ogg" pam 100,"op",1
-	if $Free2 == "sound\bgm\tiruop.ogg" pam 100,"op4",1
-	if $Free2 == "sound\bgm\ep5_op.ogg" pam 100,"op56",1
-	if $Free2 == "sound\bgm\ep7_op.ogg" pam 100,"op78",1
-	if %anim_mode == on flush 23 ;trapped
-	if %anim_mode == off flush 1
-	scrollable_cfg mousectrl,320,1
 
 return
 

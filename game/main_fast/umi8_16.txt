@@ -1,0 +1,23 @@
+*umi8_16
+;縁寿の選択
+log_reset
+mov $name_chapter_r_click,r_click_chapters_8_16
+mov $name_chapter_save, "8_16"
+new_chapter date_scenario_8_16,scenario_8_16
+extoff
+waits 167
+csp_slot s0_9
+lbg "c:colour",s0_3,"white"
+flush 2
+mov %chosen_ending,0
+csp -10
+quiz2
+flush 2
+*get_response_0x72c4c3
+get_response_quiz2
+textoff
+gosub *chiru_ending
+goto *umi8_end
+ch_done flag_scenario_8_16
+*umi8_end
+goto *end_game

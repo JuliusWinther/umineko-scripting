@@ -1567,6 +1567,8 @@ numalias bgm_box_type,9591
 numalias bgm_order,9592 : dim ?bgm_order[4][250]
 numalias bgm_not_inst,9593
 
+numalias char_moving_side,9594
+numalias char_performing_action,9595
 
 ;Discord - W_CUSTOM
 
@@ -1783,7 +1785,8 @@ csp_rst
 rain_style 0
 if %CHIRU_MODE == 2 setvoicewaitmul "1" : lips_lims "0.2","0.6" ;saku voices are quieter
 if %CHIRU_MODE == 1 setvoicewaitmul "1"   : lips_lims "0.2","0.6" ;chiru voices are quieter
-if %CHIRU_MODE == 0 setvoicewaitmul "0.4" : lips_lims "0.3","0.7" ;compensate for no waits in rondo
+if %CHIRU_MODE == 0 && %cfg_voice_language == 1 setvoicewaitmul "0.4" : lips_lims "0.3","0.7" ;compensate for no waits in rondo
+if %CHIRU_MODE == 0 && %cfg_voice_language == 2 setvoicewaitmul "1" : lips_lims "0.2","0.6" ;compensate for no waits in rondo
 
 mov %no_log_gen,on
 mov %autom_no_cur,off
@@ -1850,6 +1853,10 @@ if %bgm_title_language = 2 gosub *translated_bgm_order
 if %bgm_title_language = 3 gosub *japanese_bgm_order
 if %bgm_title_language = 4 gosub *romaji_bgm_order
 mov %bgm_not_inst,27
+
+mov %char_performing_action,0
+;Char Menu ;TODO Some char menu open in different pages, fix ;W_CUSTOM
+mov %char_moving_side,1
 
 ;End Custom
 

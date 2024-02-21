@@ -1303,6 +1303,7 @@ numalias ma5_rg_6_btn_lsp,%0 : inc %0
 mov %0,%tmp11
 
 ;ma5 превышает диапазон от tmp11 до tmp10
+;ma5 supera l'intervallo da tmp11 a tmp1
 if %CHIRU_MODE = 1 add %0,16
 
 numalias r_cha_txt_lsp,%0 : inc %0 ;Character text
@@ -1340,12 +1341,12 @@ dim ?r[8][50][15] ;Original Edited - From if %CHIRU_MODE == 0 dim ?r[30][15] - W
 ;if %CHIRU_MODE == 1 dim ?r[8][50][15]
 ;Character state elements
 mov %1,6 					 			;Variables for states (1 ~ 5)
-numalias tati_x,%1			: inc %1	;Big sprite x coordinate
-numalias itiran_x,%1		: inc %1	;Icon sprite x coordinate
-numalias itiran_y,%1		: inc %1	;Icon sprite y coordinate
-numalias condition,%1		: inc %1	;State of the character
-numalias condition_end,%1 	: inc %1	;State of the character, following fraction part
-numalias r_ishou,%1 		: inc %1	;Character clothes (1 ~ ...)
+numalias tati_x,%1			: inc %1	;6- Big sprite x coordinate
+numalias itiran_x,%1		: inc %1	;7- Icon sprite x coordinate
+numalias itiran_y,%1		: inc %1	;8- Icon sprite y coordinate
+numalias condition,%1		: inc %1	;9- State of the character
+numalias condition_end,%1 	: inc %1	;10- State of the character, following fraction part
+numalias r_ishou,%1 		: inc %1	;11- Character clothes (1 ~ ...)
 
 ;----------------------------------
 ;Right-click related system variables
@@ -1914,31 +1915,33 @@ mov $?r[1][ber][2],":c/1,0,3;graphics\chars\chars_ber_d.png"
 ;Enter the coordinates of the display list
 ;numalias itiran_x,%tmp11 : inc %tmp11	 ;List icon position, the X coordinate
 ;numalias itiran_y,%tmp11 : inc %tmp11	 ;List icon position, the Y coordinate
-mov ?r[1][kin][itiran_x],200 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][kin][itiran_y],190 ;x+130
-mov ?r[1][kla][itiran_x],330 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][kla][itiran_y],190
-mov ?r[1][nat][itiran_x],460 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][nat][itiran_y],190
-mov ?r[1][jes][itiran_x],590 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][jes][itiran_y],190
+;W_CUSTOM - ;Char Menu - Ep1 Customized Char btn Positions
 
-mov ?r[1][eva][itiran_x],330 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][eva][itiran_y],340
-mov ?r[1][hid][itiran_x],460 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][hid][itiran_y],340
-mov ?r[1][geo][itiran_x],590 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][geo][itiran_y],340
+mov ?r[1][kin][itiran_x],200-100-0  : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][kin][itiran_y],190 ;x+130
+mov ?r[1][kla][itiran_x],330-130-12 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][kla][itiran_y],190
+mov ?r[1][nat][itiran_x],460-160-24 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][nat][itiran_y],190
+mov ?r[1][jes][itiran_x],590-190-36 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][jes][itiran_y],190
 
-mov ?r[1][rud][itiran_x],330 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][rud][itiran_y],490
-mov ?r[1][kir][itiran_x],460 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][kir][itiran_y],490
-mov ?r[1][but][itiran_x],590 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][but][itiran_y],490
+mov ?r[1][eva][itiran_x],330-130-12 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][eva][itiran_y],340-60
+mov ?r[1][hid][itiran_x],460-160-24 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][hid][itiran_y],340-60
+mov ?r[1][geo][itiran_x],590-190-36 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][geo][itiran_y],340-60
 
-mov ?r[1][nan][itiran_x],200 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][nan][itiran_y],640
-mov ?r[1][ros][itiran_x],330 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][ros][itiran_y],640
-mov ?r[1][mar][itiran_x],590 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][mar][itiran_y],640
+mov ?r[1][rud][itiran_x],330-130-12 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][rud][itiran_y],490-120
+mov ?r[1][kir][itiran_x],460-160-24 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][kir][itiran_y],490-120
+mov ?r[1][but][itiran_x],590-190-36 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][but][itiran_y],490-120
 
-mov ?r[1][gen][itiran_x],200 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][gen][itiran_y],790
-mov ?r[1][sha][itiran_x],330 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][sha][itiran_y],790
-mov ?r[1][kan][itiran_x],460 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][kan][itiran_y],790
-mov ?r[1][goh][itiran_x],590 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][goh][itiran_y],790
-mov ?r[1][kum][itiran_x],720 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][kum][itiran_y],790
+mov ?r[1][nan][itiran_x],200-100-0  : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][nan][itiran_y],640-180
+mov ?r[1][ros][itiran_x],330-130-12 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][ros][itiran_y],640-180
+mov ?r[1][mar][itiran_x],590-190-36 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][mar][itiran_y],640-180
 
-mov ?r[1][bea][itiran_x],200 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][bea][itiran_y],490
-mov ?r[1][ber][itiran_x],460 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][ber][itiran_y],490
+mov ?r[1][gen][itiran_x],200-100-0  : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][gen][itiran_y],790-240
+mov ?r[1][sha][itiran_x],330-130-12 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][sha][itiran_y],790-240
+mov ?r[1][kan][itiran_x],460-160-24 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][kan][itiran_y],790-240
+mov ?r[1][goh][itiran_x],590-190-36 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][goh][itiran_y],790-240
+mov ?r[1][kum][itiran_x],720-220-48 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][kum][itiran_y],790-240
+
+mov ?r[1][bea][itiran_x],200-100-0  : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][bea][itiran_y],490-120
+mov ?r[1][ber][itiran_x],460-160-24 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][ber][itiran_y],490-120
 
 return
 
@@ -2073,31 +2076,31 @@ mov $?r[2][lam][2],":c/1,0,3;graphics\chars\chars_lam_d.png"
 
 ;numalias itiran_x,%tmp11 : inc %tmp11
 ;numalias itiran_y,%tmp11 : inc %tmp11
-mov ?r[2][kin][itiran_x],200 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][kin][itiran_y],190 ;x+130
-mov ?r[2][kla][itiran_x],330 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][kla][itiran_y],190
-mov ?r[2][nat][itiran_x],460 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][nat][itiran_y],190
-mov ?r[2][jes][itiran_x],590 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][jes][itiran_y],190
+mov ?r[2][kin][itiran_x],200-100-0  : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][kin][itiran_y],190 ;x+130
+mov ?r[2][kla][itiran_x],330-130-12 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][kla][itiran_y],190
+mov ?r[2][nat][itiran_x],460-160-24 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][nat][itiran_y],190
+mov ?r[2][jes][itiran_x],590-190-36 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][jes][itiran_y],190
+ 
+mov ?r[2][eva][itiran_x],330-130-12 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][eva][itiran_y],340-60
+mov ?r[2][hid][itiran_x],460-160-24 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][hid][itiran_y],340-60
+mov ?r[2][geo][itiran_x],590-190-36 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][geo][itiran_y],340-60
+ 
+mov ?r[2][rud][itiran_x],330-130-12 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][rud][itiran_y],490-120
+mov ?r[2][kir][itiran_x],460-160-24 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][kir][itiran_y],490-120
+mov ?r[2][but][itiran_x],590-190-36 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][but][itiran_y],490-120
+ 
+mov ?r[2][nan][itiran_x],200-100-0  : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][nan][itiran_y],640-180
+mov ?r[2][ros][itiran_x],330-130-12 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][ros][itiran_y],640-180
+mov ?r[2][mar][itiran_x],590-190-36 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][mar][itiran_y],640-180
+ 
+mov ?r[2][gen][itiran_x],200-100-0  : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][gen][itiran_y],790-240
+mov ?r[2][sha][itiran_x],330-130-12 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][sha][itiran_y],790-240
+mov ?r[2][kan][itiran_x],460-160-24 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][kan][itiran_y],790-240
+mov ?r[2][goh][itiran_x],590-190-36 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][goh][itiran_y],790-240
+mov ?r[2][kum][itiran_x],720-220-48 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][kum][itiran_y],790-240
 
-mov ?r[2][eva][itiran_x],330 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][eva][itiran_y],340
-mov ?r[2][hid][itiran_x],460 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][hid][itiran_y],340
-mov ?r[2][geo][itiran_x],590 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][geo][itiran_y],340
-
-mov ?r[2][rud][itiran_x],330 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][rud][itiran_y],490
-mov ?r[2][kir][itiran_x],460 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][kir][itiran_y],490
-mov ?r[2][but][itiran_x],590 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][but][itiran_y],490
-
-mov ?r[2][nan][itiran_x],200 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][nan][itiran_y],640
-mov ?r[2][ros][itiran_x],330 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][ros][itiran_y],640
-mov ?r[2][mar][itiran_x],590 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][mar][itiran_y],640
-
-mov ?r[2][gen][itiran_x],200 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][gen][itiran_y],790
-mov ?r[2][sha][itiran_x],330 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][sha][itiran_y],790
-mov ?r[2][kan][itiran_x],460 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][kan][itiran_y],790
-mov ?r[2][goh][itiran_x],590 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][goh][itiran_y],790
-mov ?r[2][kum][itiran_x],720 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][kum][itiran_y],790
-
-;mov ?r[2][ber][itiran_x],106 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[2][ber][itiran_y],%tmp
-mov ?r[2][bea][itiran_x],200 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][bea][itiran_y],340
+;mov ?r[2][ber][itiran_x],460-160-24 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[2][ber][itiran_y],%tmp
+mov ?r[2][bea][itiran_x],200-100-0 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][bea][itiran_y],340-60
 
 return
 
@@ -4691,14 +4694,47 @@ goto *r_cha_display_end
 goto *r_cha_display_end
 	
 *r_cha_display_end
-gosub *r_cha_display_right_left
+	gosub *r_cha_display_right_left
+
+	;W_CUSTOM - ;Char Menu - Moving Side Animations
+	if %char_performing_action != 0 goto *skip_char_side_anim
+	if %char_moving_side != -1 && %char_moving_side != 1 jumpf
+	debug_str "TEST1"
+		aspt alpha,kin_btn_lsp,255,300
+		aspt alpha,kla_btn_lsp,255,300
+		aspt alpha,nat_btn_lsp,255,300
+		aspt alpha,jes_btn_lsp,255,300
+		aspt alpha,hid_btn_lsp,255,300
+		aspt alpha,eva_btn_lsp,255,300
+		aspt alpha,geo_btn_lsp,255,300
+		aspt alpha,rud_btn_lsp,255,300
+		aspt alpha,kir_btn_lsp,255,300
+		aspt alpha,but_btn_lsp,255,300
+		aspt alpha,ros_btn_lsp,255,300
+		aspt alpha,mar_btn_lsp,255,300
+		aspt alpha,nan_btn_lsp,255,300
+		aspt alpha,gen_btn_lsp,255,300
+		aspt alpha,kum_btn_lsp,255,300
+		aspt alpha,goh_btn_lsp,255,300
+		aspt alpha,sha_btn_lsp,255,300
+		aspt alpha,kan_btn_lsp,255,300
+		aspt alpha,bea_btn_lsp,255,300
+	~
+	if %char_moving_side != -2 && %char_moving_side != 2 jumpf
+		debug_str "TEST2"
+		aspt alpha,bea_btn_lsp,255,300
+		aspt alpha,ber_btn_lsp,255,300
+	~
+	*skip_char_side_anim
+
 return
 
+;W_CUSTOM ;Char Menu - Char click text effect (no edits)
 *r_cha_display_right_left
 	sptwait xpos,cha_lsp
 	sptwait alpha,cha_lsp
-	lsp cha_lsp,$r_cha_tati_path,1750,0,0
-	lsp r_cha_txt_lsp,$r_txt_path,930,170
+	lsp cha_lsp,$r_cha_tati_path,1750,25,0
+	lsp r_cha_txt_lsp,$r_txt_path,700,170 ;char desc txt
 	aspt scroll_h,r_cha_txt_lsp,728 ;scroll text
 	vsp 99,0 : vsp 98,0 : mov %r_display_arrow,0 ;disable the arrows
 	scroll_exceeds %r_display_arrow,r_cha_txt_lsp
@@ -18042,12 +18078,218 @@ goto *ura_tea_sub_menu_btn_100_loop_chiru
 
 ;------------------------------
 ;Sub-menu after pressing the Tips
-#locale_import "tmp_tips.txt"
+*tips_sub_menu
+	btndef ""
+
+	vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_special gen_txt_13,0
+	;vsp t_btn_tips_lsp,0
+	vsp t_btn_exit_lsp,0 : vsp_special gen_txt_14,0
+	vsp t_btn_music_lsp,0 : vsp_special gen_txt_15,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_special gen_txt_17,0
+	vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
+	vsp t_cg_lsp,0 : vsp_special gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_special gen_txt_20,0
+	vsp t_trophy_lsp,0
+
+	seplay 8,1001,100
+	print 1
+
+	wait 100
+
+	;Shift on the Tips button.
+	resettimer
+	msp t_btn_tips_lsp,0,-32,-100: msp gen_txt_16,0,-32,-100 : msp gen_txt_16+1,0,-32,-100 : print 1 : waittimer 50
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_16,0,-32,0 : msp gen_txt_16+1,0,-32,0 : print 1 : waittimer 100
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_16,0,-32,0 : msp gen_txt_16+1,0,-32,0 : print 1 : waittimer 150
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_16,0,-32,0 : msp gen_txt_16+1,0,-32,0 : print 1 : waittimer 200
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_16,0,-32,0 : msp gen_txt_16+1,0,-32,0 : print 1 : waittimer 250
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_16,0,-32,0 : msp gen_txt_16+1,0,-32,0 : print 1 : waittimer 300
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_16,0,-32,0 : msp gen_txt_16+1,0,-32,0 : print 1 : waittimer 300
+	msp t_btn_tips_lsp,0,-32,0	 : msp gen_txt_16,0,-32,0 : msp gen_txt_16+1,0,-32,0 : print 1 : waittimer 300
+	msp t_btn_tips_lsp,0,-32,50	 : msp gen_txt_16,0,-32,50 : msp gen_txt_16+1,0,-32,50 : print 1 : waittimer 350
+	msp t_btn_tips_lsp,0,-32,50	 : msp gen_txt_16,0,-32,50 : msp gen_txt_16+1,0,-32,50 :print 1		
+	seplay 9,1001,100
+	
+	if %CHIRU_MODE = 1 goto *tips_sub_menu_100_chiru
+
+	*tips_sub_menu_100
+
+	;Adjust the layer you want to display by a clear state
+	if %UMINEKOEND >= 20 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
+	if %UMINEKOEND >= 30 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+	if %UMINEKOEND >= 40 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
+	if %UMINEKOEND >= 50 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
+	;new
+	if %UMINEKOEND_TIPS_FLG = 1 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 2 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 3 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 4 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
+	
+	print 85 ;15,10
+
+	*tips_sub_menu_btn_100_loop
+		btndef ""
+
+		exbtn_d "P153,1C141-147C149C161C163C165C92-95P165P145,1" ;o: -60
+
+		exbtn t_btn_ep1_tips_lsp,t_btn_ep1_tips_lsp,""
+		exbtn t_btn_ep2_tips_lsp,t_btn_ep2_tips_lsp,""
+		exbtn t_btn_ep3_tips_lsp,t_btn_ep3_tips_lsp,""
+		exbtn t_btn_ep4_tips_lsp,t_btn_ep4_tips_lsp,""
+
+		btnwait2 %BtnRes
+		if %BtnRes = t_btn_ep1_tips_lsp csp_rst : mov %scenario_Number,1 : seplay 9,1001,100 : mov %r_display,1 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep2_tips_lsp csp_rst : mov %scenario_Number,2 : seplay 9,1001,100 : mov %r_display,1 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep3_tips_lsp csp_rst : mov %scenario_Number,3 : seplay 9,1001,100 : mov %r_display,1 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep4_tips_lsp csp_rst : mov %scenario_Number,4 : seplay 9,1001,100 : mov %r_display,1 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+goto *tips_sub_menu_btn_100_loop
+
+
+*tips_sub_menu_100_chiru
+
+	;Adjust the layer you want to display by a clear state
+	if %UMINEKOEND >= 60 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+	if %UMINEKOEND >= 70 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+	if %UMINEKOEND >= 80 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
+	if %UMINEKOEND >= 90 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt	,""
+	;new
+	if %UMINEKOEND_TIPS_FLG = 5 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 6 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 7 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
+	if %UMINEKOEND_TIPS_FLG = 8 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
+
+	print 85 ;15,10
+
+	*tips_sub_menu_btn_100_loop_chiru
+		btndef ""
+
+		exbtn_d "P153,1C141-147C149C161C163C165C82-85P165P145,1" ;o: -60
+
+		exbtn t_btn_ep1_tips_lsp,t_btn_ep1_tips_lsp,""
+		exbtn t_btn_ep2_tips_lsp,t_btn_ep2_tips_lsp,""
+		exbtn t_btn_ep3_tips_lsp,t_btn_ep3_tips_lsp,""
+		exbtn t_btn_ep4_tips_lsp,t_btn_ep4_tips_lsp,""
+		btnwait2 %BtnRes
+		if %BtnRes = t_btn_ep1_tips_lsp csp_rst : mov %scenario_Number,5 : seplay 9,1001,100 : mov %r_display,1 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep2_tips_lsp csp_rst : mov %scenario_Number,6 : seplay 9,1001,100 : mov %r_display,1 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep3_tips_lsp csp_rst : mov %scenario_Number,7 : seplay 9,1001,100 : mov %r_display,1 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep4_tips_lsp csp_rst : mov %,8 : seplay 9,1001,100 : mov %r_display,2 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+goto *tips_sub_menu_btn_100_loop_chiru
+
 ;------------------------------
 
 ;------------------------------
 ;Sub-menu after pressing the Tips
-#locale_import "tmp_char.txt"
+*char_sub_menu
+	btndef ""
+
+	vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
+	vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
+	vsp t_btn_tea_lsp,0 : vsp_special gen_txt_13,0
+	vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
+	vsp t_btn_exit_lsp,0 : vsp_special gen_txt_16,0
+	vsp t_btn_music_lsp,0 : vsp_special gen_txt_17,0
+	vsp t_btn_ura_tea_lsp,0 : vsp_special gen_txt_18,0
+	;vsp t_chars_lsp,0
+	vsp t_cg_lsp,0 : vsp_special gen_txt_19,0
+	vsp t_config_lsp,0 : vsp_special gen_txt_20,0
+	vsp t_trophy_lsp,0
+
+	seplay 8,1001,100
+	print 1
+
+	wait 100
+
+	;Shift on the Tips button.
+	resettimer
+	msp t_chars_lsp,0,-32,-100	 : msp gen_txt_15,0,-32,-100 : msp gen_txt_15+1,0,-32,-100  : print 1 : waittimer 50
+	msp t_chars_lsp,0,-32,0		 : msp gen_txt_15,0,-32,0 : msp gen_txt_15+1,0,-32,0  : print 1 : waittimer 100
+	msp t_chars_lsp,0,-32,0		 : msp gen_txt_15,0,-32,0 : msp gen_txt_15+1,0,-32,0  : print 1 : waittimer 150
+	msp t_chars_lsp,0,-32,0		 : msp gen_txt_15,0,-32,0 : msp gen_txt_15+1,0,-32,0  : print 1 : waittimer 200
+	msp t_chars_lsp,0,-32,0		 : msp gen_txt_15,0,-32,0 : msp gen_txt_15+1,0,-32,0  : print 1 : waittimer 250
+	msp t_chars_lsp,0,-32,0		 : msp gen_txt_15,0,-32,0 : msp gen_txt_15+1,0,-32,0  : print 1 : waittimer 300
+	msp t_chars_lsp,0,-32,50	 : msp gen_txt_15,0,-32,50 : msp gen_txt_15+1,0,-32,50  : print 1 : waittimer 350
+	msp t_chars_lsp,0,-32,50	 : msp gen_txt_15,0,-32,50 : msp gen_txt_15+1,0,-32,50  :print 1		
+	seplay 9,1001,100
+	
+	if %CHIRU_MODE = 1 goto *char_sub_menu_100_chiru
+
+	*char_sub_menu_100
+
+	;Adjust the layer you want to display by a clear state
+	if %UMINEKOEND >= 20 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
+	if %UMINEKOEND >= 30 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+	if %UMINEKOEND >= 40 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
+	if %UMINEKOEND >= 50 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
+	;new
+	if %UMINEKOEND_TIPS_CHA_FLG = 1 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep1_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 2 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep2_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 3 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep3_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 4 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep4_n_txt,""
+
+	print 85 ;15,10
+
+	*char_sub_menu_btn_100_loop
+		btndef ""
+
+		exbtn_d "P164,1C141-147C149C161C165C92-95P165P163,1" ;o: -60
+
+		exbtn t_btn_ep1_tips_lsp,t_btn_ep1_tips_lsp,""
+		exbtn t_btn_ep2_tips_lsp,t_btn_ep2_tips_lsp,""
+		exbtn t_btn_ep3_tips_lsp,t_btn_ep3_tips_lsp,""
+		exbtn t_btn_ep4_tips_lsp,t_btn_ep4_tips_lsp,""
+		btnwait2 %BtnRes
+		if %BtnRes = t_btn_ep1_tips_lsp csp_rst : mov %scenario_Number,1 : seplay 9,1001,100 : mov %r_display,0 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep2_tips_lsp csp_rst : mov %scenario_Number,2 : seplay 9,1001,100 : mov %r_display,0 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep3_tips_lsp csp_rst : mov %scenario_Number,3 : seplay 9,1001,100 : mov %r_display,0 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep4_tips_lsp csp_rst : mov %scenario_Number,4 : seplay 9,1001,100 : mov %r_display,0 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+goto *char_sub_menu_btn_100_loop
+
+*char_sub_menu_100_chiru
+
+	;Adjust the layer you want to display by a clear state
+	if %UMINEKOEND >= 60 lsp t_btn_ep1_tips_lsp,ep_btn_bg,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+	if %UMINEKOEND >= 70 lsp t_btn_ep2_tips_lsp,ep_btn_bg,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+	if %UMINEKOEND >= 80 lsp t_btn_ep3_tips_lsp,ep_btn_bg,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""	
+	if %UMINEKOEND >= 90 lsp t_btn_ep4_tips_lsp,ep_btn_bg,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""	
+	;new
+	if %UMINEKOEND_TIPS_CHA_FLG = 5 lsp t_btn_ep1_tips_lsp,ep_btn_bg_new,1562,488 : write_special_text gen_txt_1,"ep_w_n",1562+19,488,ep_txt,ep5_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 6 lsp t_btn_ep2_tips_lsp,ep_btn_bg_new,1562,548 : write_special_text gen_txt_2,"ep_w_n",1562+19,548,ep_txt,ep6_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 7 lsp t_btn_ep3_tips_lsp,ep_btn_bg_new,1562,608 : write_special_text gen_txt_3,"ep_w_n",1562+19,608,ep_txt,ep7_n_txt,""
+	if %UMINEKOEND_TIPS_CHA_FLG = 8 lsp t_btn_ep4_tips_lsp,ep_btn_bg_new,1562,668 : write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
+
+	print 85 ;15,10
+
+	*char_sub_menu_btn_100_loop_chiru
+		btndef ""
+
+		exbtn_d "P164,1C141-147C149C161C165C92-95P165P163,1" ;o: -60
+
+		exbtn t_btn_ep1_tips_lsp,t_btn_ep1_tips_lsp,""
+		exbtn t_btn_ep2_tips_lsp,t_btn_ep2_tips_lsp,""
+		exbtn t_btn_ep3_tips_lsp,t_btn_ep3_tips_lsp,""
+		exbtn t_btn_ep4_tips_lsp,t_btn_ep4_tips_lsp,""
+		btnwait2 %BtnRes
+		if %BtnRes = t_btn_ep1_tips_lsp csp_rst : mov %scenario_Number,5 : seplay 9,1001,100 : mov %r_display,0 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep2_tips_lsp csp_rst : mov %scenario_Number,6 : seplay 9,1001,100 : mov %r_display,0 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep3_tips_lsp csp_rst : mov %scenario_Number,7 : seplay 9,1001,100 : mov %r_display,0 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = t_btn_ep4_tips_lsp csp_rst : mov %scenario_Number,8 : seplay 9,1001,100 : mov %r_display,0 : mov %r_for_title,1 : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+goto *char_sub_menu_btn_100_loop_chiru
+
 ;------------------------------
 
 ;------------------------------
@@ -34382,8 +34624,8 @@ goto *quick_reload
 
 ;stopwatch "rmenu_main_new start"
 
-if %r_display = 0 goto *rmenu_main_char
-if %r_display = 1 goto *rmenu_main_tips
+if %r_display = 0 goto *rmenu_main_char ;reused variable, 0 if char display
+if %r_display = 1 goto *rmenu_main_tips ;reused variable, 1 or 2 if tips display
 if %r_display = 2 goto *rmenu_main_tips
 
 *rmenu_main_char
@@ -34395,15 +34637,28 @@ if %r_display = 2 goto *rmenu_main_tips
 	if %scenario_Number = 3 && %r_side = 0 gosub *rmenu_play_scene_ep3_decide
 
 *rmenu_main_new_reload
-	;basis lsp
-	lsp r_black_lsp,":a;graphics\menu\SystemBtn\black_buttons.png",0,0
-	lsp r_bg_lsp,":c;graphics\menu\chars\bg_chars.png",0,0
-	lsp 100,chars_caption,20,0
-	lsp r_txt_lsp,":a;graphics\menu\chars\chars_right.png",900,150
-	lsp r_exit_lsp,set_exit,0,0
-	lsph 99,":a/2,0,3;graphics\system\wnd\uoncur.png",1740 - 480,155 - 25
-	lsph 98,":a/2,0,3;graphics\system\wnd\uoffcur.png",1740 - 480,900 + 25
+	
+;W_CUSTOM - ;Char Menu - Redo the whole Menu
 
+	;Common Char UI elements
+	;lsp r_black_lsp,":a;graphics\menu\SystemBtn\black_buttons.png",0,0
+	;lsph 99,":a/2,0,3;graphics\system\wnd\uoncur.png",1740 - 480,155 - 25
+	;lsph 98,":a/2,0,3;graphics\system\wnd\uoffcur.png",1740 - 480,900 + 25
+
+	lsp r_bg_lsp,menu_bg,0,0
+	write_special_text 100,"config_title",0,15," " + "Characters" + " {n}"
+
+	lsph gen_txt_14,char_selection,0,0 ;search for vsp gen_txt_14
+
+	;Low Number = Lower Level
+	lsp gen_txt_4,char_left_overlay,0,0
+	lsp gen_txt_3,char_selection_bg_top,0,0
+	lsp r_hana_lsp,char_selection_bg_bottom,0,0
+	lsp r_txt_lsp,char_selection_box,0,0
+	lsp r_info_lsp,char_drawer,0,0 ;To make the effective drawer use a clone
+
+
+	lsp r_exit_lsp,set_exit,0,0
 	align_buttons_r r_exit_lsp
 
 	;jump in menu
@@ -34435,8 +34690,9 @@ if %r_display = 2 goto *rmenu_main_tips
 *rmenu_main_eps
 ;==========EP1===========
 *rmenu_main_eps_1
-	if %r_u_tea_flg = 0 lsp r_cha_back_lsp,":a;graphics\menu\chars\chars_left_line.png",100,150 : lsp r_hana_lsp,r_hana,1148,180
-	if %r_u_tea_flg = 1 lsp r_cha_back_lsp,":a;graphics\menu\chars\chars_left.png",100,150 : lsp r_hana_lsp,r_hana_witch,1148,180
+	;during the Ura of ep1 the only sheet available is that of witches
+	;if %r_u_tea_flg = 0 lsp r_cha_back_lsp,":a;graphics\menu\chars\chars_left_line.png",100,150 : lsp r_hana_lsp,r_hana,1148,180
+	;if %r_u_tea_flg = 1 lsp r_cha_back_lsp,":a;graphics\menu\chars\chars_left.png",100,150 : lsp r_hana_lsp,r_hana_witch,1148,180
 
 	gosub *bt_ep1_def
 
@@ -34448,6 +34704,12 @@ if %r_display = 2 goto *rmenu_main_tips
 		if ?r[1][%tmp][condition] >= ?r[1][%tmp][condition_end] mov ?r[1][%tmp][condition],?r[1][%tmp][condition_end]
 	next
 
+	;W_CUSTOM - ;Char Menu - ep1 Standard btn behavior
+
+	;if %r_for_title = 1 mov %temp_var,500
+	;if %r_for_title = 0 mov %temp_var,0
+
+	;if %r_for_title = 1 gosub *r_for_title_ep1
 	if %r_for_title = 1 && %r_side = 0 gosub *r_for_title_ep1
 	if %r_for_title = 1 && %r_side = 1 gosub *r_u_tea_flg_ep1
 	if %r_u_tea_flg = 1 gosub *r_u_tea_flg_ep1
@@ -34455,6 +34717,7 @@ if %r_display = 2 goto *rmenu_main_tips
 	if %r_tea_bea = 1 gosub *r_tea_bea_flg_ep1
 
 	gosub *rmenu_display_new
+
 goto *rmenu_button_reconfigure_new
 
 ;==========EP2===========
@@ -35076,35 +35339,40 @@ goto *rmenu_button_reconfigure_new
 goto *rmenu_button_reconfigure_new
 ;=====================
 *r_for_title_ep1
+;W_CUSTOM - ;Char Menu - Customized Positions
 	for %tmp = 1 to char_max
 		mov ?r[1][%tmp][condition],1
 	next
 	
-	mov ?r[1][bea][itiran_x],200 : mov ?r[1][bea][itiran_y],340
+	;Beatrice in the family tree
+	mov ?r[1][bea][itiran_x],200-100-0 : mov ?r[1][bea][itiran_y],340-60
+	
 	mov %r_display_cha,but
 return
 ;=====================
 *r_u_tea_flg_ep1
+;W_CUSTOM - ;Char Menu - Customized Positions
 	for %tmp = 1 to char_max
-		mov ?r[1][%tmp][condition],-1
+		mov ?r[1][%tmp][condition],-1 ;De-load family images
 	next
 	
 	;State set
 	mov ?r[1][bea][condition],1
 
-	;Modification of the display position
-	mov ?r[1][bea][itiran_x],441 : mov ?r[1][bea][itiran_y],490 ;position Ura_tea_chars
+	;Beatrice initially unlocked in the 1st Ura
+	mov ?r[1][bea][itiran_x],441-159 : mov ?r[1][bea][itiran_y],490-120 ;position Ura_tea_chars
 return
 ;=====================
 *r_ber_flg_ep1
-	;Display setting of Ber
+;W_CUSTOM - ;Char Menu - Customized Positions
+	;Moving Bea to place Bern 1st Ura
 	mov ?r[1][ber][condition],1
-	mov ?r[1][bea][itiran_x],353 : mov ?r[1][bea][itiran_y],490 ;position Ura_tea_chars
-	mov ?r[1][ber][itiran_x],511 : mov ?r[1][ber][itiran_y],490 ;position Ura_tea_chars
+	mov ?r[1][bea][itiran_x],353-153 : mov ?r[1][bea][itiran_y],490-120 ;position Ura_tea_chars
+	mov ?r[1][ber][itiran_x],511-153 : mov ?r[1][ber][itiran_y],490-120 ;position Ura_tea_chars
 return
 ;=====================
 *r_tea_bea_flg_ep1
-	mov ?r[1][bea][condition],1 : mov ?r[1][bea][itiran_x],200 : mov ?r[1][bea][itiran_y],340 ;position tea_chars
+	mov ?r[1][bea][condition],1 : mov ?r[1][bea][itiran_x],200-100-0 : mov ?r[1][bea][itiran_y],340-60 ;position tea_chars
 return
 ;=====================
 *r_for_title_ep2
@@ -35480,10 +35748,12 @@ return
 	;textoff
 	;btndef ""
 	
-	if %r_side_change = 3 lsp 2,":c;graphics\colour\black.png",0,0 : print 1
+	;Display black when changing side
+	;W_CUSTOM - Original Edited - Commented
+	;if %r_side_change = 3 lsp 2,":c;graphics\colour\black.png",0,0 : print 1
 	
 	;rondo
-	if %scenario_Number = 1 gosub *rmenu_sai_display_n_ep1 : align_buttons_l r_people_lsp,r_witches_lsp,r_exec_lsp,r_resu_lsp,r_change_lsp
+	if %scenario_Number = 1 gosub *rmenu_sai_display_n_ep1 ;W_CUSTOM - ;Char Menu - Commented : align_buttons_l r_people_lsp,r_witches_lsp,r_exec_lsp,r_resu_lsp,r_change_lsp
 	if %scenario_Number = 2 && %r_side = 0 gosub *rmenu_sai_display_n_ep2 : align_buttons_l r_people_lsp,r_witches_lsp,r_exec_lsp,r_resu_lsp,r_change_lsp
 	if %scenario_Number = 2 && %r_side = 1 gosub *rmenu_sai_display_n_ep2_2 : align_buttons_l r_people_lsp,r_witches_lsp,r_change_lsp
 	if %scenario_Number = 3 && %r_side = 0 gosub *rmenu_sai_display_n_ep3 : align_buttons_l r_people_lsp,r_witches_lsp,r_exec_lsp,r_resu_lsp,r_change_lsp
@@ -35518,15 +35788,16 @@ return
 return
 ;============================
 *rmenu_sai_display_n_ep1
+;W_CUSTOM - ;Char Menu - ep1 New Buttons
 	;If the title screen, put a live button
 	notif %r_for_title = 1 jumpf
 		;Switching condition of the character has been selected by
-		if %r_u_tea_flg = 1 lsp r_people_lsp,r_people,0,0
-		if %r_u_tea_flg = 0 lsp r_people_lsp,r_people_select,0,0
-		if %r_u_tea_flg = 0 lsp r_witches_lsp,r_witches,0,0
-		if %r_u_tea_flg = 1 lsp r_witches_lsp,r_witches_select,0,0
-		lsp r_exec_lsp,r_exec,0,0
-		lsp r_resu_lsp,r_resu,0,0
+		if %r_u_tea_flg = 1 lsp r_people_lsp,char_previous_btn,70,660
+		if %r_u_tea_flg = 0 lsp r_people_lsp,char_previous_btn_clicked,70,660
+		if %r_u_tea_flg = 0 lsp r_witches_lsp,char_next_btn,316,660
+		if %r_u_tea_flg = 1 lsp r_witches_lsp,char_next_btn_clicked,316,660
+		lsp r_exec_lsp,char_action_btn,120,743
+		lsp r_resu_lsp,char_action_btn,120,807
 	~
 return
 	
@@ -36062,17 +36333,19 @@ return
 	goto *rmenu_custom_btlp_new
 
 *rmenu_custom_btlp_new
+
 	;stopwatch "rmenu_custom_btlp_new"
 	btnwait2 %BtnRes
 
 	;убираем потерю ракурса от персонажа при нажатии в любое пустое место. Если нужно, то добавляем перед goto строчку mov %r_display_cha,0
+	;Rimuoviamo la perdita dell'angolo di visuale del personaggio quando si preme in qualsiasi punto vuoto. Se necessario, aggiungiamo prima della riga goto il movimento %r_display_cha,0
 	if %BtnRes = 0 goto *rmenu_button_reconfigure_new
 	if %BtnRes = r_exit_lsp goto *rmenu_go_out
 	if %BtnRes = -1 goto *rmenu_go_out
 	if %BtnRes = -10 goto *rmenu_go_out
 	if %BtnRes=99 spt scroll_y,%r_display_arrow,-70,166,1 : sptwait scroll_y,%r_display_arrow	;button up
 	if %BtnRes=98 spt scroll_y,%r_display_arrow,70,166,1 : sptwait scroll_y,%r_display_arrow	;button down
-	
+
 	;rondo
 	if %scenario_Number = 1 goto *rmenu_custom_btlp_ep1
 	if %scenario_Number = 2 && %r_side = 0 goto *rmenu_custom_btlp_ep2
@@ -36093,31 +36366,33 @@ return
 	if %scenario_Number = 8 && %r_display_side = 0 goto *rmenu_custom_btlp_ep8
 	if %scenario_Number = 8 && %r_display_side = 1 goto *rmenu_custom_btlp_ep8_2
 	
+
 	
 	*rmenu_custom_btlp_ep1
 		gosub *btlp_ep2
+		;W_CUSTOM - ;Char Menu - ep1 Char btns behavior
 		;If the character icon is pressed, you jump to each character
 		if %BtnRes = r_witches_lsp || %BtnRes = r_people_lsp goto *rmenu_main_new_reload
-		if %BtnRes = kin_btn_lsp notif %r_display_cha = kin : mov %r_display_cha,kin : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,1
-		if %BtnRes = kla_btn_lsp notif %r_display_cha = kla : mov %r_display_cha,kla : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0      
-		if %BtnRes = nat_btn_lsp notif %r_display_cha = nat : mov %r_display_cha,nat : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
-		if %BtnRes = jes_btn_lsp notif %r_display_cha = jes : mov %r_display_cha,jes : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0      
-		if %BtnRes = hid_btn_lsp notif %r_display_cha = hid : mov %r_display_cha,hid : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0   
-		if %BtnRes = eva_btn_lsp notif %r_display_cha = eva : mov %r_display_cha,eva : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0   
-		if %BtnRes = geo_btn_lsp notif %r_display_cha = geo : mov %r_display_cha,geo : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0     
-		if %BtnRes = rud_btn_lsp notif %r_display_cha = rud : mov %r_display_cha,rud : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0      
-		if %BtnRes = kir_btn_lsp notif %r_display_cha = kir : mov %r_display_cha,kir : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0      
-		if %BtnRes = but_btn_lsp notif %r_display_cha = but : mov %r_display_cha,but : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0       
-		if %BtnRes = ros_btn_lsp notif %r_display_cha = ros : mov %r_display_cha,ros : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
-		if %BtnRes = mar_btn_lsp notif %r_display_cha = mar : mov %r_display_cha,mar : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
-		if %BtnRes = nan_btn_lsp notif %r_display_cha = nan : mov %r_display_cha,nan : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0     
-		if %BtnRes = gen_btn_lsp notif %r_display_cha = gen : mov %r_display_cha,gen : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
-		if %BtnRes = kum_btn_lsp notif %r_display_cha = kum : mov %r_display_cha,kum : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
-		if %BtnRes = goh_btn_lsp notif %r_display_cha = goh : mov %r_display_cha,goh : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
-		if %BtnRes = sha_btn_lsp notif %r_display_cha = sha : mov %r_display_cha,sha : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0     
-		if %BtnRes = kan_btn_lsp notif %r_display_cha = kan : mov %r_display_cha,kan : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 
-		if %BtnRes = bea_btn_lsp notif %r_display_cha = bea : mov %r_display_cha,bea : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
-		if %BtnRes = ber_btn_lsp notif %r_display_cha = ber : mov %r_display_cha,ber : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 
+		if %BtnRes = kin_btn_lsp notif %r_display_cha = kin : mov %r_display_cha,kin : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,1 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][kin][itiran_x]+2,?r[1][kin][itiran_y]+2
+		if %BtnRes = kla_btn_lsp notif %r_display_cha = kla : mov %r_display_cha,kla : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][kla][itiran_x]+2,?r[1][kla][itiran_y]+2      
+		if %BtnRes = nat_btn_lsp notif %r_display_cha = nat : mov %r_display_cha,nat : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][nat][itiran_x]+2,?r[1][nat][itiran_y]+2    
+		if %BtnRes = jes_btn_lsp notif %r_display_cha = jes : mov %r_display_cha,jes : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][jes][itiran_x]+2,?r[1][jes][itiran_y]+2      
+		if %BtnRes = hid_btn_lsp notif %r_display_cha = hid : mov %r_display_cha,hid : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][hid][itiran_x]+2,?r[1][hid][itiran_y]+2   
+		if %BtnRes = eva_btn_lsp notif %r_display_cha = eva : mov %r_display_cha,eva : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][eva][itiran_x]+2,?r[1][eva][itiran_y]+2   
+		if %BtnRes = geo_btn_lsp notif %r_display_cha = geo : mov %r_display_cha,geo : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][geo][itiran_x]+2,?r[1][geo][itiran_y]+2     
+		if %BtnRes = rud_btn_lsp notif %r_display_cha = rud : mov %r_display_cha,rud : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][rud][itiran_x]+2,?r[1][rud][itiran_y]+2      
+		if %BtnRes = kir_btn_lsp notif %r_display_cha = kir : mov %r_display_cha,kir : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][kir][itiran_x]+2,?r[1][kir][itiran_y]+2      
+		if %BtnRes = but_btn_lsp notif %r_display_cha = but : mov %r_display_cha,but : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][but][itiran_x]+2,?r[1][but][itiran_y]+2       
+		if %BtnRes = ros_btn_lsp notif %r_display_cha = ros : mov %r_display_cha,ros : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][ros][itiran_x]+2,?r[1][ros][itiran_y]+2    
+		if %BtnRes = mar_btn_lsp notif %r_display_cha = mar : mov %r_display_cha,mar : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][mar][itiran_x]+2,?r[1][mar][itiran_y]+2    
+		if %BtnRes = nan_btn_lsp notif %r_display_cha = nan : mov %r_display_cha,nan : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][nan][itiran_x]+2,?r[1][nan][itiran_y]+2     
+		if %BtnRes = gen_btn_lsp notif %r_display_cha = gen : mov %r_display_cha,gen : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][gen][itiran_x]+2,?r[1][gen][itiran_y]+2    
+		if %BtnRes = kum_btn_lsp notif %r_display_cha = kum : mov %r_display_cha,kum : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][kum][itiran_x]+2,?r[1][kum][itiran_y]+2    
+		if %BtnRes = goh_btn_lsp notif %r_display_cha = goh : mov %r_display_cha,goh : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][goh][itiran_x]+2,?r[1][goh][itiran_y]+2    
+		if %BtnRes = sha_btn_lsp notif %r_display_cha = sha : mov %r_display_cha,sha : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][sha][itiran_x]+2,?r[1][sha][itiran_y]+2     
+		if %BtnRes = kan_btn_lsp notif %r_display_cha = kan : mov %r_display_cha,kan : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][kan][itiran_x]+2,?r[1][kan][itiran_y]+2 
+		if %BtnRes = bea_btn_lsp notif %r_display_cha = bea : mov %r_display_cha,bea : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][bea][itiran_x]+2,?r[1][bea][itiran_y]+2    
+		if %BtnRes = ber_btn_lsp notif %r_display_cha = ber : mov %r_display_cha,ber : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][ber][itiran_x]+2,?r[1][ber][itiran_y]+2 
 	goto *rmenu_button_reconfigure_end
 	
 	*rmenu_custom_btlp_ep2
@@ -36581,17 +36856,21 @@ goto *r_cha_button_end
 ;----EP1----
 *r_cha_button_ep1
 
+;W_CUSTOM - ;Char Menu - ep1 LSP
+
 	if %UMINEKOEND_TIPS_CHA_FLG <= 1 mov %UMINEKOEND_TIPS_CHA_FLG,0
 
 	;(Changing the display by a condition) of the character display icon
 	mov %tmp,kin_btn_lsp
 	for %tmp2 = 1 to char_max
 		if ?r[1][%tmp2][condition] = -1 jumpf ;Condition is completely hidden -1
-			lsp %tmp,$?r[1][%tmp2][?r[1][%tmp2][condition]],?r[1][%tmp2][itiran_x],?r[1][%tmp2][itiran_y]
+			;don't know why with lsph works, but let's leave this like this
+			if %char_performing_action == 0 lsph %tmp,$?r[1][%tmp2][?r[1][%tmp2][condition]],?r[1][%tmp2][itiran_x],?r[1][%tmp2][itiran_y]
+			if %char_performing_action != 0 lsph %tmp,$?r[1][%tmp2][?r[1][%tmp2][condition]],?r[1][%tmp2][itiran_x],?r[1][%tmp2][itiran_y]
 		~
 		inc %tmp
 	next
-	
+
 	;If no flag is set, do not show the character
 	if %r_for_title = 0 && %r_u_tea_flg = 0 if %r_tea_bea = 0 _csp bea_btn_lsp : _csp ber_btn_lsp
 	if %r_u_tea_flg = 0 _csp ber_btn_lsp
@@ -36769,7 +37048,7 @@ goto *r_cha_button_end
 
 ;end *r_cha_button
 *r_cha_button_end
-	
+
 	;Display the character you are currently viewing
 	gosub *r_cha_display
 
@@ -37227,12 +37506,13 @@ return
 *btlp_ep2
 	notif %BtnRes = r_exec_lsp jumpf
 
+		mov %char_performing_action,1
+
 		;Предотвращает лишнее нажатие кнопки убить
-		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 3 return
-		if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 2 return
-		if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 1 return
-		
-		
+		;Previene la pressione eccessiva del pulsante 'uccidi'
+		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 3 lsp r_exec_lsp,char_action_btn_disabled,120,743 : return
+		if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn_disabled,120,743 : return
+		if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn_disabled,120,743 : return
 		
 		if %r_display_cha = 0 goto *rmenu_custom_btlp_50_ep2
 		if ?r[%scenario_Number][%r_display_cha][condition] >= ?r[%scenario_Number][%r_display_cha][condition_end]  goto *rmenu_custom_btlp_50_ep2
@@ -37259,7 +37539,10 @@ return
 	~
 	
 	notif %BtnRes = r_resu_lsp jumpf
-		if ?r[%scenario_Number][%r_display_cha][condition] = 1 return
+
+		mov %char_performing_action,1
+
+		if ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_resu_lsp,char_action_btn_disabled,120,807 : return
 		if %r_display_cha = 0 goto *rmenu_custom_btlp_150_ep2
 		if ?r[%scenario_Number][%r_display_cha][condition] <= 1 goto *rmenu_custom_btlp_200_ep2
 			mov %tmp,?r[%scenario_Number][%r_display_cha][condition] : dec %tmp : mov ?r[%scenario_Number][%r_display_cha][condition],%tmp
@@ -37280,11 +37563,43 @@ return
 		*rmenu_custom_btlp_200_ep2
 
 		gosub *r_cha_button_new
-		print 22
+		;print 22 ;W_CUSTOM ;Original Edited - Commented, too slow
+		print 1
 	~
 	
+;W_CUSTOM - ;Char Menu - Change Side btns Behavior
 *btlp_eps_change_stor
 	notif %BtnRes = r_witches_lsp jumpf
+		
+		debug_str "TEST3"
+
+		mov %char_performing_action,0
+		if %char_moving_side < 2 mov %char_moving_side,2
+		if %char_moving_side > 2 mov %char_moving_side,-2
+
+		;Remove all
+		aspt alpha,kin_btn_lsp,0,300
+		aspt alpha,kla_btn_lsp,0,300
+		aspt alpha,nat_btn_lsp,0,300
+		aspt alpha,jes_btn_lsp,0,300
+		aspt alpha,hid_btn_lsp,0,300
+		aspt alpha,eva_btn_lsp,0,300
+		aspt alpha,geo_btn_lsp,0,300
+		aspt alpha,rud_btn_lsp,0,300
+		aspt alpha,kir_btn_lsp,0,300
+		aspt alpha,but_btn_lsp,0,300
+		aspt alpha,ros_btn_lsp,0,300
+		aspt alpha,mar_btn_lsp,0,300
+		aspt alpha,nan_btn_lsp,0,300
+		aspt alpha,gen_btn_lsp,0,300
+		aspt alpha,kum_btn_lsp,0,300
+		aspt alpha,goh_btn_lsp,0,300
+		aspt alpha,sha_btn_lsp,0,300
+		aspt alpha,kan_btn_lsp,0,300
+
+		aspt alpha,bea_btn_lsp,0,300
+		aspt alpha,ber_btn_lsp,0,300
+
 		if %scenario_Number = 1 mov %r_u_tea_flg,1
 		if %scenario_Number = 1 mov %r_ber_flg,1
 		if %scenario_Number = 1 mov %r_display_cha,bea
@@ -37292,28 +37607,62 @@ return
 		mov %r_side,1
 		mov %r_display_side,1
 		mov %r_display,0
-		lsp 2,":c;graphics\colour\black.png",0,0
+		;lsp 2,":c;graphics\colour\black.png",0,0
 		seplay 9,1010,100
-		print 10,500
+		;print 10,500
 		mov %r_side_change,3
-		gosub *r_image_cleanup
+		;gosub *r_image_cleanup
 		mov %cha_text_page,1
 	~
 	
 	notif %BtnRes = r_ange_lsp jumpf
+
+		mov %char_performing_action,0
+		if %char_moving_side < 3 mov %char_moving_side,3
+		if %char_moving_side > 3 mov %char_moving_side,-3
+
 		if %scenario_Number = 4 mov %r_display_cha,enj_enj
 		mov %r_side,2
 		mov %r_display_side,2
 		mov %r_display,0
-		lsp 2,":c;graphics\colour\black.png",0,0
+		;lsp 2,":c;graphics\colour\black.png",0,0
 		seplay 9,1010,100
-		print 10,500
+		;print 10,500
 		mov %r_side_change,3
-		gosub *r_image_cleanup
+		;gosub *r_image_cleanup
 		mov %cha_text_page,1
 	~
 	
 	notif %BtnRes = r_people_lsp jumpf
+
+		debug_str "TEST4"
+
+		mov %char_performing_action,0
+		if %char_moving_side < 1 mov %char_moving_side,1
+		if %char_moving_side > 1 mov %char_moving_side,-1
+
+		aspt alpha,kin_btn_lsp,0,300
+		aspt alpha,kla_btn_lsp,0,300
+		aspt alpha,nat_btn_lsp,0,300
+		aspt alpha,jes_btn_lsp,0,300
+		aspt alpha,hid_btn_lsp,0,300
+		aspt alpha,eva_btn_lsp,0,300
+		aspt alpha,geo_btn_lsp,0,300
+		aspt alpha,rud_btn_lsp,0,300
+		aspt alpha,kir_btn_lsp,0,300
+		aspt alpha,but_btn_lsp,0,300
+		aspt alpha,ros_btn_lsp,0,300
+		aspt alpha,mar_btn_lsp,0,300
+		aspt alpha,nan_btn_lsp,0,300
+		aspt alpha,gen_btn_lsp,0,300
+		aspt alpha,kum_btn_lsp,0,300
+		aspt alpha,goh_btn_lsp,0,300
+		aspt alpha,sha_btn_lsp,0,300
+		aspt alpha,kan_btn_lsp,0,300
+
+		aspt alpha,bea_btn_lsp,0,300
+		aspt alpha,ber_btn_lsp,0,300
+
 		if %scenario_Number = 1 mov %r_u_tea_flg,0
 		if %scenario_Number = 1 mov %r_ber_flg,0
 		if %scenario_Number = 1 mov %r_display_cha,kin
@@ -37321,11 +37670,11 @@ return
 		mov %r_side,0
 		mov %r_display_side,0
 		mov %r_display,0
-		lsp 2,":c;graphics\colour\black.png",0,0
+		;lsp 2,":c;graphics\colour\black.png",0,0
 		seplay 9,1010,100
-		print 10,500
+		;print 10,500
 		mov %r_side_change,3
-		gosub *r_image_cleanup
+		;gosub *r_image_cleanup
 		mov %cha_text_page,1
 	~
 

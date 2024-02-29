@@ -4699,7 +4699,6 @@ goto *r_cha_display_end
 	;W_CUSTOM - ;Char Menu - Moving Side Animations
 	if %char_performing_action != 0 goto *skip_char_side_anim
 	if %char_moving_side != -1 && %char_moving_side != 1 jumpf
-	debug_str "TEST1"
 		aspt alpha,kin_btn_lsp,255,300
 		aspt alpha,kla_btn_lsp,255,300
 		aspt alpha,nat_btn_lsp,255,300
@@ -4721,11 +4720,31 @@ goto *r_cha_display_end
 		aspt alpha,bea_btn_lsp,255,300
 	~
 	if %char_moving_side != -2 && %char_moving_side != 2 jumpf
-		debug_str "TEST2"
 		aspt alpha,bea_btn_lsp,255,300
 		aspt alpha,ber_btn_lsp,255,300
 	~
+		aspt alpha,gen_txt_14,255,300;char selector
 	*skip_char_side_anim
+
+	if %char_is_selected == 0 aspt xpos,r_info_lsp,0,500 : mov %char_is_selected,1 ;W_CUSTOM ;Char Menu - needed for drawer animation
+	;W_CUSTOM - ;Char Menu - Select char
+	vsp gen_txt_14,1 : amsp gen_txt_14,?r[%scenario_Number][%r_display_cha][itiran_x],?r[%scenario_Number][%r_display_cha][itiran_y];+2
+
+    ;W_CUSTOM - ;Char Menu - Action disabling
+        ;execute btn disabling
+	if %r_for_title = 0 jumpf
+        if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 3 lsp r_exec_lsp,char_action_btn_disabled,120,743
+        if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn_disabled,120,743
+        if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn_disabled,120,743
+
+		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn,120,743
+        if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn,120,743
+        if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 0 lsp r_exec_lsp,char_action_btn,120,743
+
+        ;resurrect btn disabling
+        if ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_resu_lsp,char_action_btn_disabled,120,807
+		if ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_resu_lsp,char_action_btn,120,807
+	~
 
 return
 
@@ -4733,14 +4752,18 @@ return
 *r_cha_display_right_left
 	sptwait xpos,cha_lsp
 	sptwait alpha,cha_lsp
-	lsp cha_lsp,$r_cha_tati_path,1750,25,0
-	lsp r_cha_txt_lsp,$r_txt_path,700,170 ;char desc txt
-	aspt scroll_h,r_cha_txt_lsp,728 ;scroll text
+	lsp cha_lsp,$r_cha_tati_path,1750,30,0;char bust y
+	write_special_text r_system_lsp,"char_desc",660,140,$r_txt_path ;char desc txt
+	aspt scroll_h,r_system_lsp,828 ;scroll text
 	vsp 99,0 : vsp 98,0 : mov %r_display_arrow,0 ;disable the arrows
-	scroll_exceeds %r_display_arrow,r_cha_txt_lsp
-	if %r_display_arrow = 1 vsp 99,1 : vsp 98,1 : mov %r_display_arrow,r_cha_txt_lsp
+	scroll_exceeds %r_display_arrow,r_system_lsp
+	if %r_display_arrow = 1 vsp 99,1 : vsp 98,1 : mov %r_display_arrow,r_system_lsp
 	aspt alpha,cha_lsp,255,500
-	spt xpos,cha_lsp,-500,500 ;1750->1250
+	spt xpos,cha_lsp,-480,500 ;1750->1250 ;char bust x
+	;Make text appear with anim on drawer opening
+	;vsp r_system_lsp,1
+	if %char_is_selected == 0 aspt xpos,r_system_lsp,660,500 ;: aspt alpha,r_system_lsp,255,800
+	;if %char_is_selected == 1 aspt alpha,r_system_lsp,255
 return
 
 ;*******************************************************
@@ -4761,205 +4784,205 @@ return
 ;------------------------------
 *r_cha_kin
 ;State, change the comment by progression
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kin_EP1_1_kin.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kin_m_EP1_1_kin_m.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kin_d_EP1_1_kin_d.png"
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kin_EP1_1_kin.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kin_m_EP1_1_kin_m.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kin_d_EP1_1_kin_d.png"
 ;(Show text sentence according to the state)
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_kin_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_kin_2
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_txt_path,chars_1_kin_3
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_kin_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_kin_2
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_txt_path,chars_1_kin_3
 return
 ;------------------------------
 *r_cha_kla
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kla_EP1_1_kla.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kla_d_EP1_1_kla_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kla_EP1_1_kla.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_kla_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_kla_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kla_EP1_1_kla.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kla_d_EP1_1_kla_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kla_EP1_1_kla.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_kla_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_kla_2
 return
 ;------------------------------
 *r_cha_nat
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nat_EP1_1_nat.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nat_d_EP1_1_nat_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nat_EP1_1_nat.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_nat_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_nat_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nat_EP1_1_nat.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nat_d_EP1_1_nat_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nat_EP1_1_nat.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_nat_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_nat_2
 return
 ;------------------------------
 *r_cha_jes
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_jes_EP1_1_jes.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_jes_d_EP1_1_jes_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_jes_EP1_1_jes.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_jes_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_jes_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_jes_EP1_1_jes.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_jes_d_EP1_1_jes_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_jes_EP1_1_jes.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_jes_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_jes_2
 return
 ;------------------------------
 *r_cha_eva
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_eva_EP1_1_eva.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_eva_d_EP1_1_eva_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_eva_EP1_1_eva.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_eva_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_eva_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_eva_EP1_1_eva.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_eva_d_EP1_1_eva_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_eva_EP1_1_eva.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_eva_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_eva_2
 return
 ;------------------------------
 *r_cha_hid
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_hid_EP1_1_hid.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_hid_d_EP1_1_hid_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_hid_EP1_1_hid.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_hid_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_hid_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_hid_EP1_1_hid.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_hid_d_EP1_1_hid_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_hid_EP1_1_hid.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_hid_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_hid_2
 return
 ;------------------------------
 *r_cha_geo
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_geo_EP1_1_geo.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_geo_d_EP1_1_geo_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_geo_EP1_1_geo.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_geo_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_geo_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_geo_EP1_1_geo.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_geo_d_EP1_1_geo_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_geo_EP1_1_geo.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_geo_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_geo_2
 return
 ;------------------------------
 *r_cha_rud
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_rud_EP1_1_rud.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_rud_d_EP1_1_rud_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_rud_EP1_1_rud.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_rud_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_rud_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_rud_EP1_1_rud.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_rud_d_EP1_1_rud_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_rud_EP1_1_rud.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_rud_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_rud_2
 return
 ;------------------------------
 *r_cha_kir
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kir_EP1_1_kir.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kir_d_EP1_1_kir_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kir_EP1_1_kir.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_kir_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_kir_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kir_EP1_1_kir.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kir_d_EP1_1_kir_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kir_EP1_1_kir.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_kir_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_kir_2
 return
 ;------------------------------
 *r_cha_but
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_but_EP1_1_but.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_but_d_EP1_1_but_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_but_EP1_1_but.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_but_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_but_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_but_EP1_1_but.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_but_d_EP1_1_but_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_but_EP1_1_but.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_but_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_but_2
 return
 ;------------------------------
 *r_cha_gen
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_gen_EP1_1_gen.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_gen_d_EP1_1_gen_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_gen_EP1_1_gen.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_gen_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_gen_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_gen_EP1_1_gen.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_gen_d_EP1_1_gen_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_gen_EP1_1_gen.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_gen_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_gen_2
 return
 ;------------------------------
 *r_cha_ros
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ros_EP1_1_ros.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ros_d_EP1_1_ros_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ros_EP1_1_ros.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_ros_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_ros_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ros_EP1_1_ros.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ros_d_EP1_1_ros_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ros_EP1_1_ros.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_ros_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_ros_2
 return
 ;------------------------------
 *r_cha_mar
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_mar_EP1_1_mar.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_mar_d_EP1_1_mar_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_mar_EP1_1_mar.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_mar_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_mar_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_mar_EP1_1_mar.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_mar_d_EP1_1_mar_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_mar_EP1_1_mar.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_mar_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_mar_2
 return
 ;------------------------------
 *r_cha_nan
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nan_EP1_1_nan.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nan_d_EP1_1_nan_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nan_EP1_1_nan.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_nan_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_nan_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nan_EP1_1_nan.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nan_d_EP1_1_nan_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_nan_EP1_1_nan.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_nan_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_nan_2
 return
 ;------------------------------
 *r_cha_sha
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_sha_EP1_1_sha.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_sha_d_EP1_1_sha_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_sha_EP1_1_sha.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_sha_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_sha_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_sha_EP1_1_sha.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_sha_d_EP1_1_sha_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_sha_EP1_1_sha.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_sha_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_sha_2
 return
 ;------------------------------
 *r_cha_kan
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kan_EP1_1_kan.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kan_d_EP1_1_kan_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kan_EP1_1_kan.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_kan_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_kan_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kan_EP1_1_kan.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kan_d_EP1_1_kan_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kan_EP1_1_kan.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_kan_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_kan_2
 return
 ;------------------------------
 *r_cha_goh
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_goh_EP1_1_goh.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_goh_d_EP1_1_goh_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_goh_EP1_1_goh.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_goh_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_goh_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_goh_EP1_1_goh.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_goh_d_EP1_1_goh_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_goh_EP1_1_goh.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_goh_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_goh_2
 return
 ;------------------------------
 *r_cha_kum
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kum_EP1_1_kum.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kum_d_EP1_1_kum_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kum_EP1_1_kum.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_kum_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_kum_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kum_EP1_1_kum.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kum_d_EP1_1_kum_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_kum_EP1_1_kum.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_kum_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_kum_2
 return
 ;------------------------------
 *r_cha_bea
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_bea_EP1_1_bea.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_bea_d_EP1_1_bea_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_bea_d_EP1_1_bea_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_bea_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_bea_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_bea_EP1_1_bea.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_bea_d_EP1_1_bea_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_bea_d_EP1_1_bea_d.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_bea_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_bea_2
 return
 ;------------------------------
 *r_cha_ber
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 return
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ber_EP1_1_ber.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ber_d_EP1_1_ber_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ber_d_EP1_1_ber_d.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
-	if ?r[%scenario_Number][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_ber_1
-	if ?r[%scenario_Number][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_ber_2
+	if ?r[1][%r_display_cha][condition] = 0 return
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ber_EP1_1_ber.png"
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ber_d_EP1_1_ber_d.png"
+	if ?r[1][%r_display_cha][condition] = 3 mov $r_cha_tati_path,":a;graphics\big_chars\ep1_1_ber_d_EP1_1_ber_d.png"
+	if ?r[1][%r_display_cha][condition] = 0 mov $r_txt_path,":a;graphics\menu\chars\chars_right.png"
+	if ?r[1][%r_display_cha][condition] = 1 mov $r_txt_path,chars_1_ber_1
+	if ?r[1][%r_display_cha][condition] = 2 mov $r_txt_path,chars_1_ber_2
 return
 ;------------------------------
 ;-----EP2------
@@ -28222,7 +28245,7 @@ return
 	;Saku logs - ignore custom commands - W_CUSTOM
 	ignore_cmd "spt_mem", "lsl", "bg_d", "textoff2", "texton2"
 	;End Custom
-return
+return 
 
 *log_generate
 	if %no_log_gen == 1 vsp TextCC3SpNum,0 : mov %skip_icon,off : return
@@ -33310,6 +33333,18 @@ return
 		lsp %lsp_slot,":s;#181818`{p:58:"+$lsp_text1+"}",%lsp_x,%lsp_y
 		return
 	~
+	if $lsp_type != "char_desc" jumpf
+		split $lsp_text1,"|",$char_desc_title,$char_desc_jpn,$char_desc_desc
+		if $char_desc_desc == "" mov $char_desc_desc,$char_desc_jpn : lsp %lsp_slot,":s;#FFFFFF`{p:3:{n}"+$char_desc_title+" {n}"+$char_desc_desc+"}",%lsp_x,%lsp_y : return
+	    lsp %lsp_slot,":s;#FFFFFF`{p:3:{interline:-20:{n}"+$char_desc_title+" {p:4:"+$char_desc_jpn+"} }{interline:-10:{n}}{interline:-5:"+$char_desc_desc+"}}",%lsp_x,%lsp_y
+		if %char_is_selected == 0 aspt xpos,%lsp_slot,-1000
+		;aspt alpha,%lsp_slot,0
+		return
+	~
+	if $lsp_type != "select_char" jumpf
+		lsp %lsp_slot,":s;#DDDDDD`{a:c:{p:43:{w:1920:{fit}"+$lsp_text1+"}}}",%lsp_x,%lsp_y
+		return
+	~
 
 return
 
@@ -34642,21 +34677,22 @@ if %r_display = 2 goto *rmenu_main_tips
 
 	;Common Char UI elements
 	;lsp r_black_lsp,":a;graphics\menu\SystemBtn\black_buttons.png",0,0
-	;lsph 99,":a/2,0,3;graphics\system\wnd\uoncur.png",1740 - 480,155 - 25
-	;lsph 98,":a/2,0,3;graphics\system\wnd\uoffcur.png",1740 - 480,900 + 25
-
-	lsp r_bg_lsp,menu_bg,0,0
+	lsp r_used_lsp,menu_bg,0,0
+	write_special_text r_bg_lsp,"select_char",0,500,"Select a Character"
 	write_special_text 100,"config_title",0,15," " + "Characters" + " {n}"
 
 	lsph gen_txt_14,char_selection,0,0 ;search for vsp gen_txt_14
 
 	;Low Number = Lower Level
 	lsp gen_txt_4,char_left_overlay,0,0
-	lsp gen_txt_3,char_selection_bg_top,0,0
-	lsp r_hana_lsp,char_selection_bg_bottom,0,0
+	;lsp gen_txt_3,char_selection_bg_top,0,0
+	lsp r_hana_lsp,char_selection_bg,0,0
 	lsp r_txt_lsp,char_selection_box,0,0
-	lsp r_info_lsp,char_drawer,0,0 ;To make the effective drawer use a clone
+	if %char_is_selected = 0 lsp r_info_lsp,char_drawer,-1000,0 
+	if %char_is_selected = 1 lsp r_info_lsp,char_drawer,0,0
 
+	lsph 99,":a/2,0,3;graphics\system\wnd\uoncur.png",1370,105 - 25
+	lsph 98,":a/2,0,3;graphics\system\wnd\uoffcur.png",1370,967 + 25
 
 	lsp r_exit_lsp,set_exit,0,0
 	align_buttons_r r_exit_lsp
@@ -34706,10 +34742,6 @@ if %r_display = 2 goto *rmenu_main_tips
 
 	;W_CUSTOM - ;Char Menu - ep1 Standard btn behavior
 
-	;if %r_for_title = 1 mov %temp_var,500
-	;if %r_for_title = 0 mov %temp_var,0
-
-	;if %r_for_title = 1 gosub *r_for_title_ep1
 	if %r_for_title = 1 && %r_side = 0 gosub *r_for_title_ep1
 	if %r_for_title = 1 && %r_side = 1 gosub *r_u_tea_flg_ep1
 	if %r_u_tea_flg = 1 gosub *r_u_tea_flg_ep1
@@ -35798,6 +35830,7 @@ return
 		if %r_u_tea_flg = 1 lsp r_witches_lsp,char_next_btn_clicked,316,660
 		lsp r_exec_lsp,char_action_btn,120,743
 		lsp r_resu_lsp,char_action_btn,120,807
+		lsp r_blog_lsp,char_outfit_btn_disabled,369,743
 	~
 return
 	
@@ -36197,7 +36230,6 @@ return
 	if %r_display_side = 1 spbtn r_people_lsp,r_people_lsp spbtn r_ange_lsp,r_ange_lsp
 	if %r_display_side = 2 spbtn r_people_lsp,r_people_lsp spbtn r_witches_lsp,r_witches_lsp
 	
-	
 	;rondo
 	if %scenario_Number = 1 goto *rmenu_button_reconfigure_ep1
 	if %scenario_Number = 2 && %r_side = 0 goto *rmenu_button_reconfigure_ep2
@@ -36373,26 +36405,26 @@ return
 		;W_CUSTOM - ;Char Menu - ep1 Char btns behavior
 		;If the character icon is pressed, you jump to each character
 		if %BtnRes = r_witches_lsp || %BtnRes = r_people_lsp goto *rmenu_main_new_reload
-		if %BtnRes = kin_btn_lsp notif %r_display_cha = kin : mov %r_display_cha,kin : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,1 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][kin][itiran_x]+2,?r[1][kin][itiran_y]+2
-		if %BtnRes = kla_btn_lsp notif %r_display_cha = kla : mov %r_display_cha,kla : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][kla][itiran_x]+2,?r[1][kla][itiran_y]+2      
-		if %BtnRes = nat_btn_lsp notif %r_display_cha = nat : mov %r_display_cha,nat : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][nat][itiran_x]+2,?r[1][nat][itiran_y]+2    
-		if %BtnRes = jes_btn_lsp notif %r_display_cha = jes : mov %r_display_cha,jes : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][jes][itiran_x]+2,?r[1][jes][itiran_y]+2      
-		if %BtnRes = hid_btn_lsp notif %r_display_cha = hid : mov %r_display_cha,hid : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][hid][itiran_x]+2,?r[1][hid][itiran_y]+2   
-		if %BtnRes = eva_btn_lsp notif %r_display_cha = eva : mov %r_display_cha,eva : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][eva][itiran_x]+2,?r[1][eva][itiran_y]+2   
-		if %BtnRes = geo_btn_lsp notif %r_display_cha = geo : mov %r_display_cha,geo : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][geo][itiran_x]+2,?r[1][geo][itiran_y]+2     
-		if %BtnRes = rud_btn_lsp notif %r_display_cha = rud : mov %r_display_cha,rud : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][rud][itiran_x]+2,?r[1][rud][itiran_y]+2      
-		if %BtnRes = kir_btn_lsp notif %r_display_cha = kir : mov %r_display_cha,kir : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][kir][itiran_x]+2,?r[1][kir][itiran_y]+2      
-		if %BtnRes = but_btn_lsp notif %r_display_cha = but : mov %r_display_cha,but : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][but][itiran_x]+2,?r[1][but][itiran_y]+2       
-		if %BtnRes = ros_btn_lsp notif %r_display_cha = ros : mov %r_display_cha,ros : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][ros][itiran_x]+2,?r[1][ros][itiran_y]+2    
-		if %BtnRes = mar_btn_lsp notif %r_display_cha = mar : mov %r_display_cha,mar : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][mar][itiran_x]+2,?r[1][mar][itiran_y]+2    
-		if %BtnRes = nan_btn_lsp notif %r_display_cha = nan : mov %r_display_cha,nan : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][nan][itiran_x]+2,?r[1][nan][itiran_y]+2     
-		if %BtnRes = gen_btn_lsp notif %r_display_cha = gen : mov %r_display_cha,gen : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][gen][itiran_x]+2,?r[1][gen][itiran_y]+2    
-		if %BtnRes = kum_btn_lsp notif %r_display_cha = kum : mov %r_display_cha,kum : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][kum][itiran_x]+2,?r[1][kum][itiran_y]+2    
-		if %BtnRes = goh_btn_lsp notif %r_display_cha = goh : mov %r_display_cha,goh : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][goh][itiran_x]+2,?r[1][goh][itiran_y]+2    
-		if %BtnRes = sha_btn_lsp notif %r_display_cha = sha : mov %r_display_cha,sha : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][sha][itiran_x]+2,?r[1][sha][itiran_y]+2     
-		if %BtnRes = kan_btn_lsp notif %r_display_cha = kan : mov %r_display_cha,kan : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][kan][itiran_x]+2,?r[1][kan][itiran_y]+2 
-		if %BtnRes = bea_btn_lsp notif %r_display_cha = bea : mov %r_display_cha,bea : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][bea][itiran_x]+2,?r[1][bea][itiran_y]+2    
-		if %BtnRes = ber_btn_lsp notif %r_display_cha = ber : mov %r_display_cha,ber : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 : vsp gen_txt_14,1 : amsp gen_txt_14,?r[1][ber][itiran_x]+2,?r[1][ber][itiran_y]+2 
+		if %BtnRes = kin_btn_lsp notif %r_display_cha = kin : mov %r_display_cha,kin : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,1
+		if %BtnRes = kla_btn_lsp notif %r_display_cha = kla : mov %r_display_cha,kla : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0      
+		if %BtnRes = nat_btn_lsp notif %r_display_cha = nat : mov %r_display_cha,nat : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
+		if %BtnRes = jes_btn_lsp notif %r_display_cha = jes : mov %r_display_cha,jes : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0      
+		if %BtnRes = hid_btn_lsp notif %r_display_cha = hid : mov %r_display_cha,hid : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0   
+		if %BtnRes = eva_btn_lsp notif %r_display_cha = eva : mov %r_display_cha,eva : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0   
+		if %BtnRes = geo_btn_lsp notif %r_display_cha = geo : mov %r_display_cha,geo : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0     
+		if %BtnRes = rud_btn_lsp notif %r_display_cha = rud : mov %r_display_cha,rud : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0      
+		if %BtnRes = kir_btn_lsp notif %r_display_cha = kir : mov %r_display_cha,kir : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0      
+		if %BtnRes = but_btn_lsp notif %r_display_cha = but : mov %r_display_cha,but : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0       
+		if %BtnRes = ros_btn_lsp notif %r_display_cha = ros : mov %r_display_cha,ros : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
+		if %BtnRes = mar_btn_lsp notif %r_display_cha = mar : mov %r_display_cha,mar : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
+		if %BtnRes = nan_btn_lsp notif %r_display_cha = nan : mov %r_display_cha,nan : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0     
+		if %BtnRes = gen_btn_lsp notif %r_display_cha = gen : mov %r_display_cha,gen : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
+		if %BtnRes = kum_btn_lsp notif %r_display_cha = kum : mov %r_display_cha,kum : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
+		if %BtnRes = goh_btn_lsp notif %r_display_cha = goh : mov %r_display_cha,goh : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
+		if %BtnRes = sha_btn_lsp notif %r_display_cha = sha : mov %r_display_cha,sha : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0     
+		if %BtnRes = kan_btn_lsp notif %r_display_cha = kan : mov %r_display_cha,kan : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 
+		if %BtnRes = bea_btn_lsp notif %r_display_cha = bea : mov %r_display_cha,bea : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0    
+		if %BtnRes = ber_btn_lsp notif %r_display_cha = ber : mov %r_display_cha,ber : gosub *r_cha_display : seplay 9,1001,100 : print 1 : mov %mchar_state,0 
 	goto *rmenu_button_reconfigure_end
 	
 	*rmenu_custom_btlp_ep2
@@ -36826,6 +36858,7 @@ return
 
 *rmenu_go_out
 	border_pad_pop
+	mov %char_is_selected,0 ;W_CUSTOM ;Char Menu - needed for drawer animation
 	gosub *menu_rain_unpause
 	goto *r_exit
 return
@@ -36864,9 +36897,10 @@ goto *r_cha_button_end
 	mov %tmp,kin_btn_lsp
 	for %tmp2 = 1 to char_max
 		if ?r[1][%tmp2][condition] = -1 jumpf ;Condition is completely hidden -1
+			;need for "black ?" when now char is known
+			if ?r[1][%tmp2][condition] = 0 lsp %tmp,$?r[1][%tmp2][?r[1][%tmp2][condition]],?r[1][%tmp2][itiran_x],?r[1][%tmp2][itiran_y] jumpf
 			;don't know why with lsph works, but let's leave this like this
-			if %char_performing_action == 0 lsph %tmp,$?r[1][%tmp2][?r[1][%tmp2][condition]],?r[1][%tmp2][itiran_x],?r[1][%tmp2][itiran_y]
-			if %char_performing_action != 0 lsph %tmp,$?r[1][%tmp2][?r[1][%tmp2][condition]],?r[1][%tmp2][itiran_x],?r[1][%tmp2][itiran_y]
+			lsph %tmp,$?r[1][%tmp2][?r[1][%tmp2][condition]],?r[1][%tmp2][itiran_x],?r[1][%tmp2][itiran_y]
 		~
 		inc %tmp
 	next
@@ -37504,15 +37538,34 @@ if %r_for_title = 1 jumpf
 return
 
 *btlp_ep2
+
+	;W_CUSTOM - ;Char Menu - Disabling action buttons when needed
+	if %BtnRes != r_exec_lsp jumpf
+		;execute btn disabling
+		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn_disabled,120,743
+		if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn_disabled,120,743
+		if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 0 lsp r_exec_lsp,char_action_btn_disabled,120,743
+		;enable resurrect
+		lsp r_resu_lsp,char_action_btn,120,807
+	~
+
+	if %BtnRes != r_resu_lsp jumpf
+		;resurrect btn disabling
+		if ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_resu_lsp,char_action_btn_disabled,120,807
+		;enable execute
+		lsp r_exec_lsp,char_action_btn,120,743
+	~
+	;End Custom
+
 	notif %BtnRes = r_exec_lsp jumpf
 
 		mov %char_performing_action,1
 
 		;Предотвращает лишнее нажатие кнопки убить
 		;Previene la pressione eccessiva del pulsante 'uccidi'
-		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 3 lsp r_exec_lsp,char_action_btn_disabled,120,743 : return
-		if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn_disabled,120,743 : return
-		if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn_disabled,120,743 : return
+		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 3 return
+		if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 2 return
+		if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 1 return
 		
 		if %r_display_cha = 0 goto *rmenu_custom_btlp_50_ep2
 		if ?r[%scenario_Number][%r_display_cha][condition] >= ?r[%scenario_Number][%r_display_cha][condition_end]  goto *rmenu_custom_btlp_50_ep2
@@ -37535,14 +37588,14 @@ return
 		*rmenu_custom_btlp_100_ep2
 
 		gosub *r_cha_button_new
-		print 1
+		;print 1
 	~
 	
 	notif %BtnRes = r_resu_lsp jumpf
 
 		mov %char_performing_action,1
 
-		if ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_resu_lsp,char_action_btn_disabled,120,807 : return
+		if ?r[%scenario_Number][%r_display_cha][condition] = 1 return
 		if %r_display_cha = 0 goto *rmenu_custom_btlp_150_ep2
 		if ?r[%scenario_Number][%r_display_cha][condition] <= 1 goto *rmenu_custom_btlp_200_ep2
 			mov %tmp,?r[%scenario_Number][%r_display_cha][condition] : dec %tmp : mov ?r[%scenario_Number][%r_display_cha][condition],%tmp
@@ -37564,14 +37617,12 @@ return
 
 		gosub *r_cha_button_new
 		;print 22 ;W_CUSTOM ;Original Edited - Commented, too slow
-		print 1
+		;print 1
 	~
 	
 ;W_CUSTOM - ;Char Menu - Change Side btns Behavior
 *btlp_eps_change_stor
 	notif %BtnRes = r_witches_lsp jumpf
-		
-		debug_str "TEST3"
 
 		mov %char_performing_action,0
 		if %char_moving_side < 2 mov %char_moving_side,2
@@ -37599,6 +37650,8 @@ return
 
 		aspt alpha,bea_btn_lsp,0,300
 		aspt alpha,ber_btn_lsp,0,300
+
+		aspt alpha,gen_txt_14,0,300;char selector
 
 		if %scenario_Number = 1 mov %r_u_tea_flg,1
 		if %scenario_Number = 1 mov %r_ber_flg,1
@@ -37635,8 +37688,6 @@ return
 	
 	notif %BtnRes = r_people_lsp jumpf
 
-		debug_str "TEST4"
-
 		mov %char_performing_action,0
 		if %char_moving_side < 1 mov %char_moving_side,1
 		if %char_moving_side > 1 mov %char_moving_side,-1
@@ -37662,6 +37713,8 @@ return
 
 		aspt alpha,bea_btn_lsp,0,300
 		aspt alpha,ber_btn_lsp,0,300
+
+		aspt alpha,gen_txt_14,0,300;char selector
 
 		if %scenario_Number = 1 mov %r_u_tea_flg,0
 		if %scenario_Number = 1 mov %r_ber_flg,0

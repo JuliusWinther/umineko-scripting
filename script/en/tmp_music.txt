@@ -20,8 +20,8 @@ mov %bgm_details,0 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" 
 
 	lsp 305,mbox_obscure,0,0 : aspt alpha,305,0
 
-	lsp 306,":a/2,0,3;graphics\menu_en\config\config_left.png",190,35;440,35
-	lsp 307,":a/2,0,3;graphics\menu_en\config\config_right.png",1690,35;1440,35
+	lsp 306,left_arrow,190,35;440,35
+	lsp 307,right_arrow,1690,35;1440,35
 
 	write_special_text 308,"mbox_select_title",280,235,"Select a Song {n}"
 
@@ -29,18 +29,17 @@ mov %bgm_details,0 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" 
 
 	lsp 310,mbox_bounds,0,0
 
-	lsp 311,":a/2,0,3;graphics\system\wnd\uoffcur.png",1827,839
-	lsp 312,":a/2,0,3;graphics\system\wnd\uoncur.png",1827,210
-	lsp 313,":a;graphics\menu\logview\sel.png",1832,255
-	lsp 314,":a;graphics\menu\logview\bar.png",1832,242
-
+	lsp 311,move_down,1827,839
+	lsp 312,move_up,1827,210
+	lsp 313,dragbar,1832,255
+	lsp 314,dragbar_cursor,1832,242
 
 	;BGM Buttons
-	lsph2 315,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_extra.png",0,0,0,0,0
-	lsph2 316,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_voice.png",0,0,0,0,0
-	lsph2 317,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_grey.png",0,0,0,0,0
-	lsph2 318,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_normal.png",0,0,0,0,0
-	lsph2 319,":a/2,0,3;graphics\menu\bgmmode\bgmmode_plate_hovered.png",0,0,0,0,0
+	lsph2 315,":a/2,0,3;graphics\menu\bgm\bgmmode_plate_extra.png",0,0,0,0,0
+	lsph2 316,":a/2,0,3;graphics\menu\bgm\bgmmode_plate_voice.png",0,0,0,0,0
+	lsph2 317,":a/2,0,3;graphics\menu\bgm\bgmmode_plate_grey.png",0,0,0,0,0
+	lsph2 318,":a/2,0,3;graphics\menu\bgm\bgmmode_plate_normal.png",0,0,0,0,0
+	lsph2 319,":a/2,0,3;graphics\menu\bgm\bgmmode_plate_hovered.png",0,0,0,0,0
 
 	;320 - Scrollable
 
@@ -535,10 +534,10 @@ return
 		aspt alpha,308,0,400 : aspt alpha,324,0,400 : aspt alpha,325,0,400 : aspt alpha,326,0,400
 		 _csp 308 :  _csp 324 :  _csp 325 :  _csp 326
 		write_special_text 308,"bgm_description",200-10,200,$bgm_details : aspt alpha,308,0
-		if $bgm_yt != "" lsp 324,bgm_yt_btn,182,330 : aspt alpha,324,0
-		if $bgm_spotify != "" lsp 325,bgm_spotify_btn,182+104,326 : aspt alpha,325,0
-		if $bgm_cd != "" && $bgm_spotify != "" lsp 326,bgm_cd_btn,182+93+104,326 : aspt alpha,326,0
-		if $bgm_cd != "" && $bgm_spotify == "" lsp 326,bgm_cd_btn,182+104,326 : aspt alpha,326,0
+		if $bgm_yt != "" lsp 324,mbox_yt_btn,182,330 : aspt alpha,324,0
+		if $bgm_spotify != "" lsp 325,mbox_spotify_btn,182+104,326 : aspt alpha,325,0
+		if $bgm_cd != "" && $bgm_spotify != "" lsp 326,mbox_cd_btn,182+93+104,326 : aspt alpha,326,0
+		if $bgm_cd != "" && $bgm_spotify == "" lsp 326,mbox_cd_btn,182+104,326 : aspt alpha,326,0
 		aspt alpha,308,255,900 : aspt alpha,324,255,900 : aspt alpha,325,255,900 : aspt alpha,326,255,900
 
 		; Play the bgm

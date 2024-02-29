@@ -938,8 +938,8 @@ goto *settings_loop ;END SETTINGS LOOP =========================================
 	if %full_window_auto = 2 write_special_text 311,"config_option",900,187+64+%cfg_height,display_mode_fullscreen : jumpf
 	if %full_window_auto = 0 write_special_text 311,"config_option",900,187+64+%cfg_height,display_mode_auto : jumpf 
 	~
-	lsp 203,":a/2,0,3;graphics\menu_en\config\config_left.png",900,187+60+%cfg_height
-	lsp 204,":a/2,0,3;graphics\menu_en\config\config_right.png",1207,187+60+%cfg_height
+	lsp 203,left_arrow,900,187+60+%cfg_height
+	lsp 204,right_arrow,1207,187+60+%cfg_height
 return
 
 *settings_window_resolution
@@ -951,8 +951,8 @@ return
 	if $window_size = cfg_wnd_size_2560 write_special_text 312,"config_option",1317,187+64+%cfg_height,cfg_wnd_size_2560+"x"+cfg_wnd_size_1440 : jumpf
 	write_special_text 312,"config_option",1317,187+64+%cfg_height,cfg_wnd_size_custom
 	~
-	lsp 205,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_height
-	lsp 206,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_height
+	lsp 205,left_arrow,1317,187+60+%cfg_height
+	lsp 206,right_arrow,1624,187+60+%cfg_height
 return
 
 *settings_render
@@ -963,8 +963,8 @@ return
 	if $Free7 == "ANGLE3" mov $Free7,"ANGLE 3" : jumpf
 	~
 	write_special_text 313,"config_option",1317,187+64+%cfg_temp2+%cfg_height,$Free7
-	lsp 207,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_temp2+%cfg_height
-	lsp 208,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_temp2+%cfg_height
+	lsp 207,left_arrow,1317,187+60+%cfg_temp2+%cfg_height
+	lsp 208,right_arrow,1624,187+60+%cfg_temp2+%cfg_height
 return
 
 *settings_interface_kb_dual
@@ -1082,8 +1082,8 @@ return
 	if %cfg_rm_sex_content_index = 2 write_special_text 311,"config_option_large",1317-200,187+64+(%cfg_temp2*5)+%cfg_height,cfg_sex_no_img : mov %cfg_rm_sex_text_content,0 : mov %cfg_rm_sex_graphic_content,1 : jumpf
 	if %cfg_rm_sex_content_index = 3 write_special_text 311,"config_option_large",1317-200,187+64+(%cfg_temp2*5)+%cfg_height,cfg_sex_remove_all : mov %cfg_rm_sex_text_content,1 : mov %cfg_rm_sex_graphic_content,1 : jumpf
 	~
-	lsp 214,":a/2,0,3;graphics\menu_en\config\config_left.png",1317-200,187+60+(%cfg_temp2*5)+%cfg_height
-	lsp 215,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+(%cfg_temp2*5)+%cfg_height
+	lsp 214,left_arrow,1317-200,187+60+(%cfg_temp2*5)+%cfg_height
+	lsp 215,right_arrow,1624,187+60+(%cfg_temp2*5)+%cfg_height
 return
 
 *settings_bgm_vol
@@ -1163,16 +1163,16 @@ return
 	if $Free3 == "it" mov $Free3,"Italiano" : jumpf
 	~
 	write_special_text 311,"config_option",1317,187+64+%cfg_height,$Free3
-	lsp 203,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_height
-	lsp 204,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_height
+	lsp 203,left_arrow,1317,187+60+%cfg_height
+	lsp 204,right_arrow,1624,187+60+%cfg_height
 return
 
 *settings_voice_language
 	if %cfg_voice_language = 1 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_japanese : jumpf
 	if %cfg_voice_language = 2 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_english : jumpf
 	~
-	lsp 205,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_temp2+%cfg_height
-	lsp 206,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_temp2+%cfg_height
+	lsp 205,left_arrow,1317,187+60+%cfg_temp2+%cfg_height
+	lsp 206,right_arrow,1624,187+60+%cfg_temp2+%cfg_height
 return
 
 *settings_bgm_title_language
@@ -1181,8 +1181,8 @@ return
 	if %bgm_title_language = 3 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_japanese : gosub *japanese_bgm_order : jumpf
 	if %bgm_title_language = 4 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_romaji : gosub *romaji_bgm_order : jumpf
 	~
-	lsp 207,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+(%cfg_temp2*2)+%cfg_height
-	lsp 208,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+(%cfg_temp2*2)+%cfg_height
+	lsp 207,left_arrow,1317,187+60+(%cfg_temp2*2)+%cfg_height
+	lsp 208,right_arrow,1624,187+60+(%cfg_temp2*2)+%cfg_height
 return
 
 *settings_op_ed_song_subtitles 
@@ -1191,8 +1191,8 @@ return
 	if %op_ed_song_subtitles = 3 write_special_text 314,"config_option",1317,187+64+(%cfg_temp2*3)+%cfg_height,cfg_romaji : jumpf
 	if %op_ed_song_subtitles = 4 write_special_text 314,"config_option",1317,187+64+(%cfg_temp2*3)+%cfg_height,cfg_both : jumpf
 	~
-	lsp 211,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+(%cfg_temp2*3)+%cfg_height
-	lsp 212,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+(%cfg_temp2*3)+%cfg_height
+	lsp 211,left_arrow,1317,187+60+(%cfg_temp2*3)+%cfg_height
+	lsp 212,right_arrow,1624,187+60+(%cfg_temp2*3)+%cfg_height
 return
 
 *settings_steam_conventions
@@ -1201,12 +1201,12 @@ return
 return
 
 *settings_sprite_type
-	if %cfg_sprite_type_index = 1 write_special_text 311,"config_option",1317,187+64+%cfg_height,cfg_sprites_original: mov $sprite_folder_name,"sprites2" : jumpf
-	if %cfg_sprite_type_index = 2 write_special_text 311,"config_option",1317,187+64+%cfg_height,cfg_sprites_pachinko : mov $sprite_folder_name,"sprites3" : jumpf
-	if %cfg_sprite_type_index = 3 write_special_text 311,"config_option",1317,187+64+%cfg_height,cfg_sprites_ps3 : mov $sprite_folder_name,"sprites" : jumpf
+	if %cfg_sprite_type_index = 1 write_special_text 311,"config_option",1317,187+64+%cfg_height,cfg_sprites_original: mov $sprite_folder_name,"original" : jumpf
+	if %cfg_sprite_type_index = 2 write_special_text 311,"config_option",1317,187+64+%cfg_height,cfg_sprites_pachinko : mov $sprite_folder_name,"pachinko" : jumpf
+	if %cfg_sprite_type_index = 3 write_special_text 311,"config_option",1317,187+64+%cfg_height,cfg_sprites_ps3 : mov $sprite_folder_name,"ps3" : jumpf
 	~
-	lsp 203,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_height
-	lsp 204,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_height
+	lsp 203,left_arrow,1317,187+60+%cfg_height
+	lsp 204,right_arrow,1624,187+60+%cfg_height
 	;config_write_str "sprite_folder_name",$sprite_folder_name
 	gosub *reload_slots
 return
@@ -1218,16 +1218,16 @@ return
 	if %msgwnd_type = 3 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_txtbox_transp : jumpf
 	if %msgwnd_type = 4 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_txtbox_umigold : jumpf
 	~
-	lsp 205,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+%cfg_temp2+%cfg_height
-	lsp 206,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+%cfg_temp2+%cfg_height
+	lsp 205,left_arrow,1317,187+60+%cfg_temp2+%cfg_height
+	lsp 206,right_arrow,1624,187+60+%cfg_temp2+%cfg_height
 return
 
 *settings_bg_type
-	if %cfg_bg_type_index = 1 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_sprites_original : mov $bg_folder_name,"backgrounds2" : jumpf
-	if %cfg_bg_type_index = 2 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_sprites_ps3 : mov $bg_folder_name,"backgrounds" : jumpf
+	if %cfg_bg_type_index = 1 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_sprites_original : mov $bg_folder_name,"original" : jumpf
+	if %cfg_bg_type_index = 2 write_special_text 313,"config_option",1317,187+64+(%cfg_temp2*2)+%cfg_height,cfg_sprites_ps3 : mov $bg_folder_name,"ps3" : jumpf
 	~
-	lsp 207,":a/2,0,3;graphics\menu_en\config\config_left.png",1317,187+60+(%cfg_temp2*2)+%cfg_height
-	lsp 208,":a/2,0,3;graphics\menu_en\config\config_right.png",1624,187+60+(%cfg_temp2*2)+%cfg_height
+	lsp 207,left_arrow,1317,187+60+(%cfg_temp2*2)+%cfg_height
+	lsp 208,right_arrow,1624,187+60+(%cfg_temp2*2)+%cfg_height
 	;config_write_str "bg_folder_name",$bg_folder_name
 	gosub *reload_slots
 return
@@ -1575,158 +1575,158 @@ return
 	mov %x3,0 ;end sprite
 	mov %y3,0 ;row sprite count
 
-	if %vv_cla = 1 lsp 320,":c/1,0,3;graphics\chars\chars_kla0.png",%x,%y : mov %vv_inc,320
-	if %vv_cla = 2 lsp 320,":c/1,0,3;graphics\chars\chars_kla0.png",%x,%y,90 : mov %vv_inc,320
+	if %vv_cla = 1 lsp 320,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kla0.png",%x,%y : mov %vv_inc,320
+	if %vv_cla = 2 lsp 320,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kla0.png",%x,%y,90 : mov %vv_inc,320
 	gosub *settings_chars_refresh
-	if %vv_nat = 1 lsp 321,":c/1,0,3;graphics\chars\chars_nat0.png",%x,%y : mov %vv_inc,321
-	if %vv_nat = 2 lsp 321,":c/1,0,3;graphics\chars\chars_nat0.png",%x,%y,90 : mov %vv_inc,321
+	if %vv_nat = 1 lsp 321,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nat0.png",%x,%y : mov %vv_inc,321
+	if %vv_nat = 2 lsp 321,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nat0.png",%x,%y,90 : mov %vv_inc,321
 	gosub *settings_chars_refresh
-	if %vv_jes = 1 lsp 322,":c/1,0,3;graphics\chars\chars_jes0.png",%x,%y : mov %vv_inc,322
-	if %vv_jes = 2 lsp 322,":c/1,0,3;graphics\chars\chars_jes0.png",%x,%y,90 : mov %vv_inc,322
+	if %vv_jes = 1 lsp 322,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_jes0.png",%x,%y : mov %vv_inc,322
+	if %vv_jes = 2 lsp 322,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_jes0.png",%x,%y,90 : mov %vv_inc,322
 	gosub *settings_chars_refresh
-	if %vv_eva = 1 lsp 323,":c/1,0,3;graphics\chars\chars_eva0.png",%x,%y : mov %vv_inc,323
-	if %vv_eva = 2 lsp 323,":c/1,0,3;graphics\chars\chars_eva0.png",%x,%y,90 : mov %vv_inc,323
+	if %vv_eva = 1 lsp 323,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eva0.png",%x,%y : mov %vv_inc,323
+	if %vv_eva = 2 lsp 323,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eva0.png",%x,%y,90 : mov %vv_inc,323
 	gosub *settings_chars_refresh
-	if %vv_hid = 1 lsp 324,":c/1,0,3;graphics\chars\chars_hid0.png",%x,%y : mov %vv_inc,324
-	if %vv_hid = 2 lsp 324,":c/1,0,3;graphics\chars\chars_hid0.png",%x,%y,90 : mov %vv_inc,324
+	if %vv_hid = 1 lsp 324,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_hid0.png",%x,%y : mov %vv_inc,324
+	if %vv_hid = 2 lsp 324,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_hid0.png",%x,%y,90 : mov %vv_inc,324
 	gosub *settings_chars_refresh
-	if %vv_geo = 1 lsp 325,":c/1,0,3;graphics\chars\chars_geo0.png",%x,%y : mov %vv_inc,325
-	if %vv_geo = 2 lsp 325,":c/1,0,3;graphics\chars\chars_geo0.png",%x,%y,90 : mov %vv_inc,325
+	if %vv_geo = 1 lsp 325,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_geo0.png",%x,%y : mov %vv_inc,325
+	if %vv_geo = 2 lsp 325,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_geo0.png",%x,%y,90 : mov %vv_inc,325
 	gosub *settings_chars_refresh
-	if %vv_rud = 1 lsp 326,":c/1,0,3;graphics\chars\chars_rud0.png",%x,%y : mov %vv_inc,326
-	if %vv_rud = 2 lsp 326,":c/1,0,3;graphics\chars\chars_rud0.png",%x,%y,90 : mov %vv_inc,326
+	if %vv_rud = 1 lsp 326,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rud0.png",%x,%y : mov %vv_inc,326
+	if %vv_rud = 2 lsp 326,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rud0.png",%x,%y,90 : mov %vv_inc,326
 	gosub *settings_chars_refresh
-	if %vv_kir = 1 lsp 327,":c/1,0,3;graphics\chars\chars_kir0.png",%x,%y : mov %vv_inc,327
-	if %vv_kir = 2 lsp 327,":c/1,0,3;graphics\chars\chars_kir0.png",%x,%y,90 : mov %vv_inc,327
+	if %vv_kir = 1 lsp 327,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kir0.png",%x,%y : mov %vv_inc,327
+	if %vv_kir = 2 lsp 327,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kir0.png",%x,%y,90 : mov %vv_inc,327
 	gosub *settings_chars_refresh
-	if %vv_but = 1 lsp 328,":c/1,0,3;graphics\chars\chars_but0.png",%x,%y : mov %vv_inc,328
-	if %vv_but = 2 lsp 328,":c/1,0,3;graphics\chars\chars_but0.png",%x,%y,90 : mov %vv_inc,328
+	if %vv_but = 1 lsp 328,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_but0.png",%x,%y : mov %vv_inc,328
+	if %vv_but = 2 lsp 328,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_but0.png",%x,%y,90 : mov %vv_inc,328
 	gosub *settings_chars_refresh
-	if %vv_ros = 1 lsp 329,":c/1,0,3;graphics\chars\chars_ros0.png",%x,%y : mov %vv_inc,329
-	if %vv_ros = 2 lsp 329,":c/1,0,3;graphics\chars\chars_ros0.png",%x,%y,90 : mov %vv_inc,329
+	if %vv_ros = 1 lsp 329,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ros0.png",%x,%y : mov %vv_inc,329
+	if %vv_ros = 2 lsp 329,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ros0.png",%x,%y,90 : mov %vv_inc,329
 	gosub *settings_chars_refresh
-	if %vv_mar = 1 lsp 330,":c/1,0,3;graphics\chars\chars_mar0.png",%x,%y : mov %vv_inc,330
-	if %vv_mar = 2 lsp 330,":c/1,0,3;graphics\chars\chars_mar0.png",%x,%y,90 : mov %vv_inc,330
+	if %vv_mar = 1 lsp 330,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mar0.png",%x,%y : mov %vv_inc,330
+	if %vv_mar = 2 lsp 330,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mar0.png",%x,%y,90 : mov %vv_inc,330
 	gosub *settings_chars_refresh
-	if %vv_kin = 1 lsp 331,":c/1,0,3;graphics\chars\chars_kin0.png",%x,%y : mov %vv_inc,331
-	if %vv_kin = 2 lsp 331,":c/1,0,3;graphics\chars\chars_kin0.png",%x,%y,90 : mov %vv_inc,331
+	if %vv_kin = 1 lsp 331,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kin0.png",%x,%y : mov %vv_inc,331
+	if %vv_kin = 2 lsp 331,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kin0.png",%x,%y,90 : mov %vv_inc,331
 	gosub *settings_chars_refresh
-	if %vv_nan = 1 lsp 332,":c/1,0,3;graphics\chars\chars_nan0.png",%x,%y : mov %vv_inc,332
-	if %vv_nan = 2 lsp 332,":c/1,0,3;graphics\chars\chars_nan0.png",%x,%y,90 : mov %vv_inc,332
+	if %vv_nan = 1 lsp 332,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nan0.png",%x,%y : mov %vv_inc,332
+	if %vv_nan = 2 lsp 332,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nan0.png",%x,%y,90 : mov %vv_inc,332
 	gosub *settings_chars_refresh
-	if %vv_gen = 1 lsp 333,":c/1,0,3;graphics\chars\chars_gen0.png",%x,%y : mov %vv_inc,333
-	if %vv_gen = 2 lsp 333,":c/1,0,3;graphics\chars\chars_gen0.png",%x,%y,90 : mov %vv_inc,333
+	if %vv_gen = 1 lsp 333,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gen0.png",%x,%y : mov %vv_inc,333
+	if %vv_gen = 2 lsp 333,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gen0.png",%x,%y,90 : mov %vv_inc,333
 	gosub *settings_chars_refresh
-	if %vv_kum = 1 lsp 334,":c/1,0,3;graphics\chars\chars_kum0.png",%x,%y : mov %vv_inc,334
-	if %vv_kum = 2 lsp 334,":c/1,0,3;graphics\chars\chars_kum0.png",%x,%y,90 : mov %vv_inc,334
+	if %vv_kum = 1 lsp 334,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kum0.png",%x,%y : mov %vv_inc,334
+	if %vv_kum = 2 lsp 334,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kum0.png",%x,%y,90 : mov %vv_inc,334
 	gosub *settings_chars_refresh
-	if %vv_goh = 1 lsp 335,":c/1,0,3;graphics\chars\chars_goh0.png",%x,%y : mov %vv_inc,335
-	if %vv_goh = 2 lsp 335,":c/1,0,3;graphics\chars\chars_goh0.png",%x,%y,90 : mov %vv_inc,335
+	if %vv_goh = 1 lsp 335,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goh0.png",%x,%y : mov %vv_inc,335
+	if %vv_goh = 2 lsp 335,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goh0.png",%x,%y,90 : mov %vv_inc,335
 	gosub *settings_chars_refresh
-	if %vv_sha = 1 lsp 336,":c/1,0,3;graphics\chars\chars_sha0.png",%x,%y : mov %vv_inc,336
-	if %vv_sha = 2 lsp 336,":c/1,0,3;graphics\chars\chars_sha0.png",%x,%y,90 : mov %vv_inc,336
+	if %vv_sha = 1 lsp 336,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sha0.png",%x,%y : mov %vv_inc,336
+	if %vv_sha = 2 lsp 336,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sha0.png",%x,%y,90 : mov %vv_inc,336
 	gosub *settings_chars_refresh
-	if %vv_kan = 1 lsp 337,":c/1,0,3;graphics\chars\chars_kan0.png",%x,%y : mov %vv_inc,337
-	if %vv_kan = 2 lsp 337,":c/1,0,3;graphics\chars\chars_kan0.png",%x,%y,90 : mov %vv_inc,337
+	if %vv_kan = 1 lsp 337,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kan0.png",%x,%y : mov %vv_inc,337
+	if %vv_kan = 2 lsp 337,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kan0.png",%x,%y,90 : mov %vv_inc,337
 	gosub *settings_chars_refresh
-	if %vv_bea = 1 lsp 338,":c/1,0,3;graphics\chars\chars_bea0.png",%x,%y : mov %vv_inc,338
-	if %vv_bea = 2 lsp 338,":c/1,0,3;graphics\chars\chars_bea0.png",%x,%y,90 : mov %vv_inc,338
+	if %vv_bea = 1 lsp 338,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_bea0.png",%x,%y : mov %vv_inc,338
+	if %vv_bea = 2 lsp 338,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_bea0.png",%x,%y,90 : mov %vv_inc,338
 	gosub *settings_chars_refresh
-	if %vv_ber = 1 lsp 339,":c/1,0,3;graphics\chars\chars_ber0.png",%x,%y : mov %vv_inc,339
-	if %vv_ber = 2 lsp 339,":c/1,0,3;graphics\chars\chars_ber0.png",%x,%y,90 : mov %vv_inc,339
+	if %vv_ber = 1 lsp 339,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ber0.png",%x,%y : mov %vv_inc,339
+	if %vv_ber = 2 lsp 339,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ber0.png",%x,%y,90 : mov %vv_inc,339
 	gosub *settings_chars_refresh
-	if %vv_eri = 1 lsp 340,":c/1,0,3;graphics\chars\chiru\chars_eri0.png",%x,%y : mov %vv_inc,340
-	if %vv_eri = 2 lsp 340,":c/1,0,3;graphics\chars\chiru\chars_eri0.png",%x,%y,90 : mov %vv_inc,340
+	if %vv_eri = 1 lsp 340,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_eri0.png",%x,%y : mov %vv_inc,340
+	if %vv_eri = 2 lsp 340,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_eri0.png",%x,%y,90 : mov %vv_inc,340
 	gosub *settings_chars_refresh
-	if %vv_lam = 1 lsp 341,":c/1,0,3;graphics\chars\chars_lam0.png",%x,%y : mov %vv_inc,341
-	if %vv_lam = 2 lsp 341,":c/1,0,3;graphics\chars\chars_lam0.png",%x,%y,90 : mov %vv_inc,341
+	if %vv_lam = 1 lsp 341,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_lam0.png",%x,%y : mov %vv_inc,341
+	if %vv_lam = 2 lsp 341,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_lam0.png",%x,%y,90 : mov %vv_inc,341
 	gosub *settings_chars_refresh
-	if %vv_enj = 1 lsp 342,":c/1,0,3;graphics\chars\chars_enj0.png",%x,%y : mov %vv_inc,342
-	if %vv_enj = 2 lsp 342,":c/1,0,3;graphics\chars\chars_enj0.png",%x,%y,90 : mov %vv_inc,342
+	if %vv_enj = 1 lsp 342,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_enj0.png",%x,%y : mov %vv_inc,342
+	if %vv_enj = 2 lsp 342,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_enj0.png",%x,%y,90 : mov %vv_inc,342
 	gosub *settings_chars_refresh
-	if %vv_wal = 1 lsp 343,":c/1,0,3;graphics\chars\chars_wal0.png",%x,%y : mov %vv_inc,343
-	if %vv_wal = 2 lsp 343,":c/1,0,3;graphics\chars\chars_wal0.png",%x,%y,90 : mov %vv_inc,343
+	if %vv_wal = 1 lsp 343,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wal0.png",%x,%y : mov %vv_inc,343
+	if %vv_wal = 2 lsp 343,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wal0.png",%x,%y,90 : mov %vv_inc,343
 	gosub *settings_chars_refresh
-	if %vv_ev2 = 1 lsp 344,":c/1,0,3;graphics\chars\chars_evb0.png",%x,%y : mov %vv_inc,344
-	if %vv_ev2 = 2 lsp 344,":c/1,0,3;graphics\chars\chars_evb0.png",%x,%y,90 : mov %vv_inc,344
+	if %vv_ev2 = 1 lsp 344,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_evb0.png",%x,%y : mov %vv_inc,344
+	if %vv_ev2 = 2 lsp 344,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_evb0.png",%x,%y,90 : mov %vv_inc,344
 	gosub *settings_chars_refresh
-	if %vv_ron = 1 lsp 345,":c/1,0,3;graphics\chars\chars_ron0.png",%x,%y : mov %vv_inc,345
-	if %vv_ron = 2 lsp 345,":c/1,0,3;graphics\chars\chars_ron0.png",%x,%y,90 : mov %vv_inc,345
+	if %vv_ron = 1 lsp 345,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ron0.png",%x,%y : mov %vv_inc,345
+	if %vv_ron = 2 lsp 345,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ron0.png",%x,%y,90 : mov %vv_inc,345
 	gosub *settings_chars_refresh
-	if %vv_rg1 = 1 lsp 346,":c/1,0,3;graphics\chars\chars_rgk0.png",%x,%y : mov %vv_inc,346
-	if %vv_rg1 = 2 lsp 346,":c/1,0,3;graphics\chars\chars_rgk0.png",%x,%y,90 : mov %vv_inc,346
+	if %vv_rg1 = 1 lsp 346,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk0.png",%x,%y : mov %vv_inc,346
+	if %vv_rg1 = 2 lsp 346,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk0.png",%x,%y,90 : mov %vv_inc,346
 	gosub *settings_chars_refresh
-	if %vv_rg2 = 1 lsp 347,":c/1,0,3;graphics\chars\chars_rgk1.png",%x,%y : mov %vv_inc,347
-	if %vv_rg2 = 2 lsp 347,":c/1,0,3;graphics\chars\chars_rgk1.png",%x,%y,90 : mov %vv_inc,347
+	if %vv_rg2 = 1 lsp 347,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk1.png",%x,%y : mov %vv_inc,347
+	if %vv_rg2 = 2 lsp 347,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk1.png",%x,%y,90 : mov %vv_inc,347
 	gosub *settings_chars_refresh
-	if %vv_rg3 = 1 lsp 348,":c/1,0,3;graphics\chars\chars_rgk2.png",%x,%y : mov %vv_inc,348
-	if %vv_rg3 = 2 lsp 348,":c/1,0,3;graphics\chars\chars_rgk2.png",%x,%y,90 : mov %vv_inc,348
+	if %vv_rg3 = 1 lsp 348,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk2.png",%x,%y : mov %vv_inc,348
+	if %vv_rg3 = 2 lsp 348,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk2.png",%x,%y,90 : mov %vv_inc,348
 	gosub *settings_chars_refresh
-	if %vv_rg4 = 1 lsp 349,":c/1,0,3;graphics\chars\chars_rgk3.png",%x,%y : mov %vv_inc,349
-	if %vv_rg4 = 2 lsp 349,":c/1,0,3;graphics\chars\chars_rgk3.png",%x,%y,90 : mov %vv_inc,349
+	if %vv_rg4 = 1 lsp 349,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk3.png",%x,%y : mov %vv_inc,349
+	if %vv_rg4 = 2 lsp 349,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk3.png",%x,%y,90 : mov %vv_inc,349
 	gosub *settings_chars_refresh
-	if %vv_rg5 = 1 lsp 350,":c/1,0,3;graphics\chars\chars_rgk4.png",%x,%y : mov %vv_inc,350
-	if %vv_rg5 = 2 lsp 350,":c/1,0,3;graphics\chars\chars_rgk4.png",%x,%y,90 : mov %vv_inc,350
+	if %vv_rg5 = 1 lsp 350,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk4.png",%x,%y : mov %vv_inc,350
+	if %vv_rg5 = 2 lsp 350,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk4.png",%x,%y,90 : mov %vv_inc,350
 	gosub *settings_chars_refresh
-	if %vv_rg6 = 1 lsp 351,":c/1,0,3;graphics\chars\chars_rgk5.png",%x,%y : mov %vv_inc,351
-	if %vv_rg6 = 2 lsp 351,":c/1,0,3;graphics\chars\chars_rgk5.png",%x,%y,90 : mov %vv_inc,351
+	if %vv_rg6 = 1 lsp 351,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk5.png",%x,%y : mov %vv_inc,351
+	if %vv_rg6 = 2 lsp 351,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk5.png",%x,%y,90 : mov %vv_inc,351
 	gosub *settings_chars_refresh
-	if %vv_rg7 = 1 lsp 352,":c/1,0,3;graphics\chars\chars_rgk6.png",%x,%y : mov %vv_inc,352
-	if %vv_rg7 = 2 lsp 352,":c/1,0,3;graphics\chars\chars_rgk6.png",%x,%y,90 : mov %vv_inc,352
+	if %vv_rg7 = 1 lsp 352,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk6.png",%x,%y : mov %vv_inc,352
+	if %vv_rg7 = 2 lsp 352,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk6.png",%x,%y,90 : mov %vv_inc,352
 	gosub *settings_chars_refresh	
-	if %vv_sak = 1 lsp 353,":c/1,0,3;graphics\chars\chars_sak0.png",%x,%y : mov %vv_inc,353
-	if %vv_sak = 2 lsp 353,":c/1,0,3;graphics\chars\chars_sak0.png",%x,%y,90 : mov %vv_inc,353
+	if %vv_sak = 1 lsp 353,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sak0.png",%x,%y : mov %vv_inc,353
+	if %vv_sak = 2 lsp 353,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sak0.png",%x,%y,90 : mov %vv_inc,353
 	gosub *settings_chars_refresh
-	if %vv_gap = 1 lsp 354,":c/1,0,3;graphics\chars\chars_gap0.png",%x,%y : mov %vv_inc,354
-	if %vv_gap = 2 lsp 354,":c/1,0,3;graphics\chars\chars_gap0.png",%x,%y,90 : mov %vv_inc,354
+	if %vv_gap = 1 lsp 354,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gap0.png",%x,%y : mov %vv_inc,354
+	if %vv_gap = 2 lsp 354,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gap0.png",%x,%y,90 : mov %vv_inc,354
 	gosub *settings_chars_refresh
-	if %vv_s00 = 1 lsp 355,":c/1,0,3;graphics\chars\chars_sie0.png",%x,%y : mov %vv_inc,355
-	if %vv_s00 = 2 lsp 355,":c/1,0,3;graphics\chars\chars_sie0.png",%x,%y,90 : mov %vv_inc,355
+	if %vv_s00 = 1 lsp 355,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie0.png",%x,%y : mov %vv_inc,355
+	if %vv_s00 = 2 lsp 355,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie0.png",%x,%y,90 : mov %vv_inc,355
 	gosub *settings_chars_refresh
-	if %vv_s41 = 1 lsp 356,":c/1,0,3;graphics\chars\chars_sie1.png",%x,%y : mov %vv_inc,356
-	if %vv_s41 = 2 lsp 356,":c/1,0,3;graphics\chars\chars_sie1.png",%x,%y,90 : mov %vv_inc,356
+	if %vv_s41 = 1 lsp 356,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie1.png",%x,%y : mov %vv_inc,356
+	if %vv_s41 = 2 lsp 356,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie1.png",%x,%y,90 : mov %vv_inc,356
 	gosub *settings_chars_refresh
-	if %vv_s45 = 1 lsp 357,":c/1,0,3;graphics\chars\chars_sie2.png",%x,%y : mov %vv_inc,357
-	if %vv_s45 = 2 lsp 357,":c/1,0,3;graphics\chars\chars_sie2.png",%x,%y,90 : mov %vv_inc,357
+	if %vv_s45 = 1 lsp 357,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie2.png",%x,%y : mov %vv_inc,357
+	if %vv_s45 = 2 lsp 357,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie2.png",%x,%y,90 : mov %vv_inc,357
 	gosub *settings_chars_refresh
-	if %vv_dla = 1 lsp 358,":c/1,0,3;graphics\chars\chiru\chars_dla1.png",%x,%y : mov %vv_inc,358
-	if %vv_dla = 2 lsp 358,":c/1,0,3;graphics\chars\chiru\chars_dla1.png",%x,%y,90 : mov %vv_inc,358
+	if %vv_dla = 1 lsp 358,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_dla1.png",%x,%y : mov %vv_inc,358
+	if %vv_dla = 2 lsp 358,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_dla1.png",%x,%y,90 : mov %vv_inc,358
 	gosub *settings_chars_refresh
-	if %vv_cor = 1 lsp 359,":c/1,0,3;graphics\chars\chiru\chars_cor0.png",%x,%y : mov %vv_inc,359
-	if %vv_cor = 2 lsp 359,":c/1,0,3;graphics\chars\chiru\chars_cor0.png",%x,%y,90 : mov %vv_inc,359
+	if %vv_cor = 1 lsp 359,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_cor0.png",%x,%y : mov %vv_inc,359
+	if %vv_cor = 2 lsp 359,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_cor0.png",%x,%y,90 : mov %vv_inc,359
 	gosub *settings_chars_refresh
-	if %vv_ger = 1 lsp 360,":c/1,0,3;graphics\chars\chiru\chars_gur0.png",%x,%y : mov %vv_inc,360
-	if %vv_ger = 2 lsp 360,":c/1,0,3;graphics\chars\chiru\chars_gur0.png",%x,%y,90 : mov %vv_inc,360
+	if %vv_ger = 1 lsp 360,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_gur0.png",%x,%y : mov %vv_inc,360
+	if %vv_ger = 2 lsp 360,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_gur0.png",%x,%y,90 : mov %vv_inc,360
 	gosub *settings_chars_refresh
-	if %vv_zep = 1 lsp 361,":c/1,0,3;graphics\chars\chiru\chars_zep0.png",%x,%y : mov %vv_inc,361
-	if %vv_zep = 2 lsp 361,":c/1,0,3;graphics\chars\chiru\chars_zep0.png",%x,%y,90 : mov %vv_inc,361
+	if %vv_zep = 1 lsp 361,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_zep0.png",%x,%y : mov %vv_inc,361
+	if %vv_zep = 2 lsp 361,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_zep0.png",%x,%y,90 : mov %vv_inc,361
 	gosub *settings_chars_refresh
-	if %vv_fur = 1 lsp 362,":c/1,0,3;graphics\chars\chiru\chars_ful0.png",%x,%y : mov %vv_inc,362
-	if %vv_fur = 2 lsp 362,":c/1,0,3;graphics\chars\chiru\chars_ful0.png",%x,%y,90 : mov %vv_inc,362
+	if %vv_fur = 1 lsp 362,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_ful0.png",%x,%y : mov %vv_inc,362
+	if %vv_fur = 2 lsp 362,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_ful0.png",%x,%y,90 : mov %vv_inc,362
 	gosub *settings_chars_refresh
-	if %vv_ama = 1 lsp 363,":c/1,0,3;graphics\chars\chars_ama0.png",%x,%y : mov %vv_inc,363
-	if %vv_ama = 2 lsp 363,":c/1,0,3;graphics\chars\chars_ama0.png",%x,%y,90 : mov %vv_inc,363
+	if %vv_ama = 1 lsp 363,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ama0.png",%x,%y : mov %vv_inc,363
+	if %vv_ama = 2 lsp 363,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ama0.png",%x,%y,90 : mov %vv_inc,363
 	gosub *settings_chars_refresh
-	if %vv_bu3 = 1 lsp 364,":c/1,0,3;graphics\chars\chiru\chars_fea0.png",%x,%y : mov %vv_inc,364
-	if %vv_bu3 = 2 lsp 364,":c/1,0,3;graphics\chars\chiru\chars_fea0.png",%x,%y,90 : mov %vv_inc,364
+	if %vv_bu3 = 1 lsp 364,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_fea0.png",%x,%y : mov %vv_inc,364
+	if %vv_bu3 = 2 lsp 364,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_fea0.png",%x,%y,90 : mov %vv_inc,364
 	gosub *settings_chars_refresh
-	if %vv_fea = 1 lsp 365,":c/1,0,3;graphics\chars\chiru\chars_fea1.png",%x,%y : mov %vv_inc,365
-	if %vv_fea = 2 lsp 365,":c/1,0,3;graphics\chars\chiru\chars_fea1.png",%x,%y,90 : mov %vv_inc,365
+	if %vv_fea = 1 lsp 365,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_fea1.png",%x,%y : mov %vv_inc,365
+	if %vv_fea = 2 lsp 365,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_fea1.png",%x,%y,90 : mov %vv_inc,365
 	gosub *settings_chars_refresh
-	if %vv_wil = 1 lsp 366,":c/1,0,3;graphics\chars\chiru\chars_wil0.png",%x,%y : mov %vv_inc,366
-	if %vv_wil = 2 lsp 366,":c/1,0,3;graphics\chars\chiru\chars_wil0.png",%x,%y,90 : mov %vv_inc,366
+	if %vv_wil = 1 lsp 366,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_wil0.png",%x,%y : mov %vv_inc,366
+	if %vv_wil = 2 lsp 366,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_wil0.png",%x,%y,90 : mov %vv_inc,366
 	gosub *settings_chars_refresh
-	if %vv_rio = 1 lsp 367,":c/1,0,3;graphics\chars\chiru\chars_rio0.png",%x,%y : mov %vv_inc,367
-	if %vv_rio = 2 lsp 367,":c/1,0,3;graphics\chars\chiru\chars_rio0.png",%x,%y,90 : mov %vv_inc,367
+	if %vv_rio = 1 lsp 367,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_rio0.png",%x,%y : mov %vv_inc,367
+	if %vv_rio = 2 lsp 367,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_rio0.png",%x,%y,90 : mov %vv_inc,367
 	gosub *settings_chars_refresh
-	if %vv_cur = 1 lsp 368,":c/1,0,3;graphics\chars\chiru\chars_cur0.png",%x,%y : mov %vv_inc,368
-	if %vv_cur = 2 lsp 368,":c/1,0,3;graphics\chars\chiru\chars_cur0.png",%x,%y,90 : mov %vv_inc,368
+	if %vv_cur = 1 lsp 368,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_cur0.png",%x,%y : mov %vv_inc,368
+	if %vv_cur = 2 lsp 368,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chiru\chars_cur0.png",%x,%y,90 : mov %vv_inc,368
 	gosub *settings_chars_refresh
-	if %vv_goa = 1 lsp 369,":c/1,0,3;graphics\chars\chars_goa0.png",%x,%y : mov %vv_inc,369
-	if %vv_goa = 2 lsp 369,":c/1,0,3;graphics\chars\chars_goa0.png",%x,%y,90 : mov %vv_inc,369
+	if %vv_goa = 1 lsp 369,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goa0.png",%x,%y : mov %vv_inc,369
+	if %vv_goa = 2 lsp 369,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goa0.png",%x,%y,90 : mov %vv_inc,369
 	gosub *settings_chars_refresh
-	if %vv_99 = 1 lsp 370,":c/1,0,3;graphics\chars\chars_99.png",%x,%y : mov %vv_inc,370
-	if %vv_99 = 2 lsp 370,":c/1,0,3;graphics\chars\chars_99.png",%x,%y,90 : mov %vv_inc,370
+	if %vv_99 = 1 lsp 370,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_99.png",%x,%y : mov %vv_inc,370
+	if %vv_99 = 2 lsp 370,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_99.png",%x,%y,90 : mov %vv_inc,370
 	gosub *settings_chars_refresh
 	gosub *settings_chars_realign
 return

@@ -34679,7 +34679,7 @@ if %r_display = 2 goto *rmenu_main_tips
 	write_special_text r_bg_lsp,"select_char",0,500,"Select a Character"
 	write_special_text 100,"config_title",0,15," " + "Characters" + " {n}"
 
-	lsph gen_txt_14,char_selection,0,0 ;search for vsp gen_txt_14
+	lsph gen_txt_14,char_selector,0,0 ;search for vsp gen_txt_14
 
 	;Low Number = Lower Level
 	lsp gen_txt_4,char_left_overlay,0,0
@@ -40641,7 +40641,7 @@ return
 	mov %Free1,2
 		for %tmp2 = 1 to 18
 			if %BtnRes != %tmp jumpf
-				lsp %tmp-50,":a;graphics\portraits\"+$sprite_folder_name+"\chars_select.png",?r[%scenario_Number][%tmp2][itiran_x],?r[%scenario_Number][%tmp2][itiran_y]				
+				lsp %tmp-50,char_selector,?r[%scenario_Number][%tmp2][itiran_x],?r[%scenario_Number][%tmp2][itiran_y]				
 				;debug_var %tmp,"selecting value"
 				add %tmp4,%Free1
 				;debug_var %tmp4,"current value"

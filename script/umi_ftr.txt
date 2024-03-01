@@ -4734,17 +4734,18 @@ goto *r_cha_display_end
     ;W_CUSTOM - ;Char Menu - Action disabling
         ;execute btn disabling
 	if %r_for_title = 0 jumpf
-        if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 3 lsp r_exec_lsp,char_action_btn_disabled,120,743
-        if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn_disabled,120,743
-        if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn_disabled,120,743
+        if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 3 lsp r_exec_lsp,char_action_btn_disabled,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+        if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn_disabled,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+        if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn_disabled,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
 
-		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn,120,743
-        if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn,120,743
-        if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 0 lsp r_exec_lsp,char_action_btn,120,743
+		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"enabled"
+        if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"enabled"
+        if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 0 lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"enabled"
 
         ;resurrect btn disabling
-        if ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_resu_lsp,char_action_btn_disabled,120,807
-		if ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_resu_lsp,char_action_btn,120,807
+        if ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_resu_lsp,char_action_btn_disabled,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"disabled"
+		if ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_resu_lsp,char_action_btn,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"enabled"
+
 	~
 
 return
@@ -27490,6 +27491,8 @@ if %Se_Number = 92 mov $Se_Play,"sound\se\umise_092.ogg" : return
 if %Se_Number = 93 mov $Se_Play,"sound\se\umise_093.ogg" : return
 if %Se_Number = 94 mov $Se_Play,"sound\se\umise_094.ogg" : return
 if %Se_Number = 95 mov $Se_Play,"sound\se\umise_095.ogg" : return
+
+if %Se_Number = 1103 mov $Se_Play,"sound\se\umise_1103.ogg" : return
 ;End Custom
 
 error "SE not found"
@@ -33343,6 +33346,21 @@ return
 		lsp %lsp_slot,":s;#DDDDDD`{a:c:{p:43:{w:1920:{fit}"+$lsp_text1+"}}}",%lsp_x,%lsp_y
 		return
 	~
+	if $lsp_type != "char_page_next" jumpf
+		if $lsp_text2 != "disabled" lsp %lsp_slot,":s;#FFFFFF`{w:175:{fit:{a:c:{p:59:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
+		if $lsp_text2 == "disabled" lsp %lsp_slot,":s;#7F7F7F`{w:175:{fit:{a:c:{p:59:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
+		return
+	~
+	if $lsp_type != "char_page_previous" jumpf
+		if $lsp_text2 != "disabled" lsp %lsp_slot,":s;#FFFFFF`{w:175:{fit:{a:c:{p:59:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
+		if $lsp_text2 == "disabled" lsp %lsp_slot,":s;#7F7F7F`{w:175:{fit:{a:c:{p:59:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
+		return
+	~
+	if $lsp_type != "char_action" jumpf
+		if $lsp_text2 != "disabled" lsp %lsp_slot,":s;#FFFFFF`{w:239:{fit:{a:c:{p:60:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
+		if $lsp_text2 == "disabled" lsp %lsp_slot,":s;#7F7F7F`{w:239:{fit:{a:c:{p:60:"+$lsp_text1+"}{n}}}}",%lsp_x,%lsp_y
+		return
+	~
 
 return
 
@@ -33611,9 +33629,9 @@ reset
 
 	operate_config u_read,$CHIRU_MODE,"force_game"
 	if $CHIRU_MODE == "undef" jumpf
-		if $CHIRU_MODE == "rondo" && %CHIRU_MODE != 0 goto *switch_game_q
-		if $CHIRU_MODE == "chiru" && %CHIRU_MODE != 1 && %UMINEKO_END >= 50 goto *switch_game_q
-		if $CHIRU_MODE == "extra" && %CHIRU_MODE != 2 goto *switch_game_q
+		if $CHIRU_MODE == "rondo" && %CHIRU_MODE != 0 mov %CHIRU_MODE,0 : goto *switch_game_q
+		if $CHIRU_MODE == "chiru" && %CHIRU_MODE != 1 && %UMINEKO_END >= 50 mov %CHIRU_MODE,1 : goto *switch_game_q
+		if $CHIRU_MODE == "extra" && %CHIRU_MODE != 2 mov %CHIRU_MODE,2 : goto *switch_game_q
 	~
 
 	operate_config u_read,$firstsetting,"first_launch"
@@ -34676,8 +34694,8 @@ if %r_display = 2 goto *rmenu_main_tips
 	;Common Char UI elements
 	;lsp r_black_lsp,":a;graphics\menu\SystemBtn\black_buttons.png",0,0
 	lsp r_used_lsp,menu_bg,0,0
-	write_special_text r_bg_lsp,"select_char",0,500,"Select a Character"
-	write_special_text 100,"config_title",0,15," " + "Characters" + " {n}"
+	write_special_text r_bg_lsp,"select_char",0,500,char_select_request_label
+	write_special_text 100,"config_title",0,15," " + title_char_txt + " {n}"
 
 	lsph gen_txt_14,char_selector,0,0 ;search for vsp gen_txt_14
 
@@ -35822,12 +35840,12 @@ return
 	;If the title screen, put a live button
 	notif %r_for_title = 1 jumpf
 		;Switching condition of the character has been selected by
-		if %r_u_tea_flg = 1 lsp r_people_lsp,char_previous_btn,70,660
-		if %r_u_tea_flg = 0 lsp r_people_lsp,char_previous_btn_clicked,70,660
-		if %r_u_tea_flg = 0 lsp r_witches_lsp,char_next_btn,316,660
-		if %r_u_tea_flg = 1 lsp r_witches_lsp,char_next_btn_clicked,316,660
-		lsp r_exec_lsp,char_action_btn,120,743
-		lsp r_resu_lsp,char_action_btn,120,807
+		if %r_u_tea_flg = 1 lsp r_people_lsp,char_previous_btn,70,660 : write_special_text gen_txt_15,"char_page_previous",114,657,char_prev_text,"enabled"
+		if %r_u_tea_flg = 0 lsp r_people_lsp,char_previous_btn_clicked,70,660 : write_special_text gen_txt_15,"char_page_previous",114,657,char_prev_text,"disabled"
+		if %r_u_tea_flg = 0 lsp r_witches_lsp,char_next_btn,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"enabled"
+		if %r_u_tea_flg = 1 lsp r_witches_lsp,char_next_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
+		lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+		lsp r_resu_lsp,char_action_btn,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"disabled"
 		lsp r_blog_lsp,char_outfit_btn_disabled,369,743
 	~
 return
@@ -37537,22 +37555,22 @@ return
 
 *btlp_ep2
 
-	;W_CUSTOM - ;Char Menu - Disabling action buttons when needed
-	if %BtnRes != r_exec_lsp jumpf
-		;execute btn disabling
-		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn_disabled,120,743
-		if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn_disabled,120,743
-		if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 0 lsp r_exec_lsp,char_action_btn_disabled,120,743
-		;enable resurrect
-		lsp r_resu_lsp,char_action_btn,120,807
-	~
+	;W_CUSTOM - Disabling action buttons when needed - apparently not needed anymore
+	;if %BtnRes != r_exec_lsp jumpf
+	;	;execute btn disabling
+	;	if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn_disabled,120,743
+	;	if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn_disabled,120,743
+	;	if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 0 lsp r_exec_lsp,char_action_btn_disabled,120,743
+	;	;enable resurrect
+	;	lsp r_resu_lsp,char_action_btn,120,807
+	;~
 
-	if %BtnRes != r_resu_lsp jumpf
-		;resurrect btn disabling
-		if ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_resu_lsp,char_action_btn_disabled,120,807
-		;enable execute
-		lsp r_exec_lsp,char_action_btn,120,743
-	~
+	;if %BtnRes != r_resu_lsp jumpf
+	;	;resurrect btn disabling
+	;	if ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_resu_lsp,char_action_btn_disabled,120,807
+	;	;enable execute
+	;	lsp r_exec_lsp,char_action_btn,120,743
+	;~
 	;End Custom
 
 	notif %BtnRes = r_exec_lsp jumpf

@@ -2948,37 +2948,38 @@ msgwnd_dla
 d2 [lv 0*"47"*"dla_00020"]`{qt}They are UNNECESSARY.`[@][#][*][lv 0*"47"*"dla_00030"]` Do not treat me like a CHILD.`[@][#][*][lv 0*"47"*"dla_00040"]` Take them AWAY.`[@][#][*][lv 0*"47"*"dla_00050"]` This impudence is punishable by <DEATH>!{qt}`[#][*][\]
 wait_on_d 0
 seplay 11,12,100
-agpt quakexcycle,27
-agpt quakexamp,10
-agpt quakexamp,0,150,1
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
 rumble 23,150
-gptwait quakexamp
+gptwait quakeyamp
 d_continue
 wait_on_d 1
 seplay 12,6,100
-agpt quakexcycle,27
-agpt quakexamp,10
-agpt quakexamp,0,150,1
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
 rumble 23,150
-gptwait quakexamp
+gptwait quakeyamp
 d_continue
 wait_on_d 2
-seplay 11,7,100
-agpt quakexcycle,27
-agpt quakexamp,10
-agpt quakexamp,0,150,1
+seplay 11,7,70
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
 rumble 23,150
-gptwait quakexamp
-seplay 12,20,100
+gptwait quakeyamp
+seplay 12,20,70
 csp_slot s0_8
 flush 80
-lss s0_9,"dla","am11_ikari1"
-spt_mem "a2","xpos",s0_9,0
+wait 100
+lss s0_11,"dla","am11_ikari1"
+spt_mem "a2","xpos",s0_11,0
 flush 80
 d_continue
 wait_on_d 3
-seplay 11,72,100
-seplay 12,12,100
+seplay 11,72,70
+seplay 12,12,70
 agpt quakexcycle,27
 agpt quakexamp,10
 agpt quakexamp,0,150,1
@@ -2986,7 +2987,10 @@ rumble 23,150
 gptwait quakexamp
 d_continue
 wait_on_d -1
+textoff2
 
+csp_slot s0_11
+csp_slot s0_10
 lbg "c:backgrounds",s0_3,"ke5"
 flush 26
 
@@ -3007,7 +3011,7 @@ lbg "c:colour",s0_30,"white"
 flush 1
 seplay 11,2,100
 csp_slot s0_30
-flush 1
+flush 22
 lss s0_9,"dla","bm21_akuwarai1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -3017,7 +3021,8 @@ msgwnd_dla
 d2 [lv 0*"47"*"dla_00060"]`{qt}Stamping AGAIN?`[@][#][*][lv 0*"47"*"dla_00070"]` I don't want to do THAT. Upon each of these documents, I wish <DEATH>.`[#][*][@][#][*][lv 0*"47"*"dla_00080"]` <DEATHDEATHDEATH>..!{qt}`[#][*][\]
 wait_on_d 0
 seplay 11,1103,100
-csp_slot s0_8
+csp_slot s0_9
+flush 22
 d_continue
 wait_on_d 1
 seplay 11,12,100
@@ -3059,19 +3064,19 @@ agpt quakeycycle,10
 agpt quakeyamp,3
 agpt quakeyamp,0,100,1
 rumble 23,60
-wait 50
+wait 150
 seplay 12,12,100
 agpt quakexcycle,10
 agpt quakexamp,3
 agpt quakexamp,0,100,1
 rumble 23,60
-wait 50
+wait 150
 seplay 11,13,100
 agpt quakeycycle,10
 agpt quakeyamp,3
 agpt quakeyamp,0,100,1
 rumble 23,60
-wait 50
+wait 150
 seplay 12,12,100
 agpt quakexcycle,10
 agpt quakexamp,3
@@ -3086,6 +3091,7 @@ d `Every hair on Dlanor's body was standing on end.`[\]
 d `Despite being in the management, Dlanor had a phobia of stamps.`[@]` This was a torture, inflicted in order for her to get over it and start stamping things.`[\]
 textoff2
 
+csp_slot s0_9
 csp_slot s0_3
 flush 22
 
@@ -3107,6 +3113,7 @@ d `Who knows if she had forgotten the passion that motivated her.`[\]
 d `And who knows whether that... `[|]`made her an adult...`[\]
 textoff2
 
+csp_slot s0_10
 lbg "c:backgrounds",s0_3,"ke_s2"
 flush 23
 
@@ -3131,7 +3138,7 @@ seplay 12,2,100
 lbg "c:colour",s0_30,"white"
 flush 1
 csp_slot s0_30
-flush 1
+flush 22
 lss s0_9,"dla","am11_majime2"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -3144,7 +3151,7 @@ spt_mem "a2","xpos",s0_9,0
 
 lss s0_8,"ger","a11_defo1"
 spt_mem "a2","xpos",s0_8,300
-flush 80
+flush 22
 
 msgwnd_non
 *e29_520

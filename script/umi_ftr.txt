@@ -15354,13 +15354,13 @@ if %title_skip = 1 goto *b_title_skip_100
 	csp_text gen_txt_1 : csp_text gen_txt_2 : csp_text gen_txt_3 : csp_text gen_txt_4 : csp_text gen_txt_5
 	csp_text gen_txt_6 : csp_text gen_txt_7 : csp_text gen_txt_8 : csp_text gen_txt_9 : csp_text gen_txt_10
 	if %CHIRU_MODE != 2 jumpf
-	*clear_extra_sub
-		csp_text gen_txt_1 : csp_text gen_txt_2 : csp_text gen_txt_3 : csp_text gen_txt_4 : csp_text gen_txt_5 : csp_text gen_txt_6
-		csp_text gen_txt_7 : csp_text gen_txt_8 : csp_text gen_txt_9 : csp_text gen_txt_10 : csp_text gen_txt_23 : csp_text gen_txt_24
+		;*clear_extra_sub
+			csp_text gen_txt_1 : csp_text gen_txt_2 : csp_text gen_txt_3 : csp_text gen_txt_4 : csp_text gen_txt_5 : csp_text gen_txt_6
+			csp_text gen_txt_7 : csp_text gen_txt_8 : csp_text gen_txt_9 : csp_text gen_txt_10 : csp_text gen_txt_23 : csp_text gen_txt_24
 
-		_csp t_btn_ep1_lock_lsp : _csp t_btn_ep2_lock_lsp : _csp t_btn_ep3_lock_lsp
-		_csp t_btn_ep4_lock_lsp : _csp t_btn_ep1_unlock_lsp : _csp t_btn_ep2_unlock_lsp
-	return
+			_csp t_btn_ep1_lock_lsp : _csp t_btn_ep2_lock_lsp : _csp t_btn_ep3_lock_lsp
+			_csp t_btn_ep4_lock_lsp : _csp t_btn_ep1_unlock_lsp : _csp t_btn_ep2_unlock_lsp
+		;return
 	~
 	;End Custom
     ;Clear the standing images
@@ -18432,7 +18432,7 @@ return
 	if %vv_lam = 0 mov %vv_lam,1
 *do_unlock_chars1
 	if %vv_nan = 0 mov %vv_nan,1
-	if %vv_0 = 0 || %vv_99 = 0 || %vv_98 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_98,1 : mov %vv_inc,0 ;Original Edited ;Saku voice - %vv_98 - W_CUSTOM
+	if %vv_0 = 0 || %vv_99 = 0 || %vv_98 = 0 || %vv_97 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_98,1 : mov %vv_97,1 : mov %vv_inc,0 ;Original Edited ;Saku voice - %vv_98, %vv_97(english narrator) - W_CUSTOM
 	if %vv_kin = 0 || %vv_ki2 = 0 mov %vv_kin,1 : mov %vv_ki2,1
 	if %vv_gen = 0 mov %vv_gen,1
 	if %vv_but = 0 mov %vv_but,1
@@ -24601,7 +24601,7 @@ if %cfg_voice_language = 2 mov $voice_folder,"en";EN
 fileexist %free2,"sound\voice\" + $voice_folder + "\" + $lv_f + "\" + $lv_v + ".ogg"
 if %free2 != 1 debug_str "Voice File: " + $voice_folder + "\" + $lv_f + "\" + $lv_v + ".ogg - not found" : return
 
-if %cfg_voice_language = 1 && $lv_f = "97" return
+if %cfg_voice_language = 1 && $lv_f = "97" return ;Disabled narrator for those language that don't have it
 
 if %no_log_gen == 1 jumpf 
 jnskip
@@ -27495,7 +27495,7 @@ if %Se_Number = 93 mov $Se_Play,"sound\se\umise_093.ogg" : return
 if %Se_Number = 94 mov $Se_Play,"sound\se\umise_094.ogg" : return
 if %Se_Number = 95 mov $Se_Play,"sound\se\umise_095.ogg" : return
 
-;W_CUSTOM - Custom SE
+;W_CUSTOM - Custom SE - to add more they also need to be added to tree_set 4
 if %Se_Number = 1103 mov $Se_Play,"sound\se\umise_1103.ogg" : return
 ;End Custom
 
@@ -28166,7 +28166,6 @@ if $cur_character = "rud" mov $tmp5,name_rud  : jumpf
 if $cur_character = "s00" mov $tmp5,name_s00  : jumpf
 if $cur_character = "s41" mov $tmp5,name_s41  : jumpf
 if $cur_character = "s45" mov $tmp5,name_s45  : jumpf
-if $cur_character = "s56" mov $tmp5,name_s56  : jumpf ;???
 if $cur_character = "sak" mov $tmp5,name_sak  : jumpf
 if $cur_character = "sha" mov $tmp5,name_sha  : jumpf
 if $cur_character = "wal" mov $tmp5,name_wal  : jumpf
@@ -28190,7 +28189,7 @@ if $cur_character = "cor" mov $tmp5,name_cor  : jumpf
 ;Saku sprites - New Sprites - W_CUSTOM
 if $cur_character = "pie" mov $tmp5,name_pie  : jumpf
 if $cur_character = "sku" mov $tmp5,name_sku  : jumpf
-if $cur_character = "s55" mov $tmp5,name_s55  : jumpf
+if $cur_character = "s556" mov $tmp5,name_s556 : jumpf
 if $cur_character = "bbt" mov $tmp5,name_bbt  : jumpf
 if $cur_character = "whm" mov $tmp5,name_whm  : jumpf
 ;End Custom
@@ -32598,6 +32597,8 @@ return
 
 *update_msgwnd_direct
 
+if %msgwnd_type = 4 && %is_log_param != 1 mov $tmp5,"{f:5:"+$tmp5+"}" ;W_TEMP
+
 if $cur_character = "ama" gosub *msgwnd_ama : jumpf
 if $cur_character = "bea" gosub *msgwnd_bea : jumpf
 if $cur_character = "ber" gosub *msgwnd_ber : jumpf
@@ -32665,7 +32666,7 @@ if $cur_character = "non" gosub *msgwnd_non : jumpf
 ;Saku sprites - New Sprites - W_CUSTOM
 if $cur_character = "pie" gosub *msgwnd_pie : jumpf
 if $cur_character = "sku" gosub *msgwnd_sku : jumpf
-if $cur_character = "s55" gosub *msgwnd_s55 : jumpf
+if $cur_character = "s55" gosub *msgwnd_s56 : jumpf
 if $cur_character = "bbt" gosub *msgwnd_bbt : jumpf
 if $cur_character = "whm" gosub *msgwnd_whm : jumpf
 ;End Custom
@@ -32679,7 +32680,7 @@ borderstyle 5,#000000,1 : shadedistance 0,0,#000000,1
 if %msgwnd_type == 3 shadedistance 2,2 : shadedistance 2,2,#000000,1
 if %msgwnd_type == 4 shadedistance 2,2 : shadedistance 2,2,#000000,1
 
-;d_name_refresh ;Original Edited ;Saku log - honestly don't what this is but it makes umi crash so delete - W_CUSTOM
+;d_name_refresh ;Original Edited ;Saku log - honestly don't what this is but it makes umi crash so delete - ;W_CUSTOM
 
 return
 
@@ -33197,10 +33198,10 @@ gosub *get_name
 if %cur_wndmode == off d_name $tmp5
 return
 
-*msgwnd_s55
-mov $cur_character,"s55"
+*msgwnd_s556
+mov $cur_character,"s556"
 jnskip_s return ~
-if %vv_s55 = 0 mov %vv_s55,1
+if %vv_s556 = 0 mov %vv_s556,1
 gosub *get_name
 if %cur_wndmode == off d_name $tmp5
 return
@@ -33225,7 +33226,7 @@ return
 *msgwnd_non
 mov $cur_character,"non"
 jnskip_s return ~
-if %vv_0 = 0 || %vv_99 = 0 || %vv_98 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_98,1 : mov %vv_inc,0  ;Original Edited ;Saku voice - %vv_98 - W_CUSTOM
+if %vv_0 = 0 || %vv_99 = 0 || %vv_98 = 0 || %vv_97 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_98,1 : mov %vv_97,1 : mov %vv_inc,0 ;Original Edited ;Saku voice - %vv_98 , %vv_97(english narrator) - W_CUSTOM
 gosub *get_name
 if %cur_wndmode == off d_name ""
 return

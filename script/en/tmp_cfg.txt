@@ -358,7 +358,7 @@ if %cfg_current_page != 1 goto *skip_config_page_1 ;System
 			operate_config write,$Free7,"prefer-renderer"
 			operate_config unset,"root"
 			operate_config save
-			lsp 373,set_restarted_apply,0,910
+			;lsp 373,set_restarted_apply,0,910
 			gosub *settings_render
 	~
 	;END
@@ -805,7 +805,7 @@ if %cfg_current_page != 4 goto *skip_config_page_4 ;Language
 			operate_config write,$Free4,"game-script"
 			operate_config unset,"root"
 			operate_config save 
-			lsp 373,set_restarted_apply,0,910
+			;lsp 373,set_restarted_apply,0,910
 		gosub *settings_game_language
 	~
 	;END
@@ -1168,8 +1168,8 @@ return
 return
 
 *settings_voice_language
-	if %cfg_voice_language = 1 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_japanese : jumpf
-	if %cfg_voice_language = 2 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_english : jumpf
+	if %cfg_voice_language = 1 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_japanese : mov $voice_folder,"jp" : jumpf
+	if %cfg_voice_language = 2 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_english : mov $voice_folder,"en" : jumpf
 	~
 	lsp 205,left_arrow,1317,187+60+%cfg_temp2+%cfg_height
 	lsp 206,right_arrow,1624,187+60+%cfg_temp2+%cfg_height
@@ -1218,6 +1218,8 @@ return
 	if %msgwnd_type = 3 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_txtbox_transp : jumpf
 	if %msgwnd_type = 4 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_txtbox_umigold : jumpf
 	~
+	;mov $test_var,"*msgwnd_"+$cur_character : gosub $test_var
+	d_name_refresh
 	lsp 205,left_arrow,1317,187+60+%cfg_temp2+%cfg_height
 	lsp 206,right_arrow,1624,187+60+%cfg_temp2+%cfg_height
 return
@@ -1274,57 +1276,62 @@ return
 	if %cfg_current_page != 5 spbtn 375,334 
 
 	;Voice vol chars button
-	spbtn 320,100
-	spbtn 321,101
-	spbtn 322,102
-	spbtn 323,103
-	spbtn 324,104
-	spbtn 325,105
-	spbtn 326,106
-	spbtn 327,107
-	spbtn 328,108
-	spbtn 329,109
-	spbtn 330,110	
-	spbtn 331,111	
-	spbtn 332,112	
-	spbtn 333,113	
-	spbtn 334,114	
-	spbtn 335,115
-	spbtn 336,116
-	spbtn 337,117
-	spbtn 338,118
-	spbtn 339,119
-	spbtn 340,120
-	spbtn 341,121
-	spbtn 342,122
-	spbtn 343,123
-	spbtn 344,124
-	spbtn 345,125
-	spbtn 346,126
-	spbtn 347,127
-	spbtn 348,128
-	spbtn 349,129
-	spbtn 350,130
-	spbtn 351,131
-	spbtn 352,132
-	spbtn 353,133
-	spbtn 354,134
-	spbtn 355,135
-	spbtn 356,136
-	spbtn 357,137
-	spbtn 358,138
-	spbtn 359,139
-	spbtn 360,140
-	spbtn 361,141
-	spbtn 362,142
-	spbtn 363,143
-	spbtn 364,144
-	spbtn 365,145
-	spbtn 366,146
-	spbtn 367,147
-	spbtn 368,148
-	spbtn 369,149
-	spbtn 370,150
+	spbtn 315,100
+	spbtn 316,101
+	spbtn 317,102
+	spbtn 318,103
+	spbtn 319,104
+	spbtn 320,105
+	spbtn 321,106
+	spbtn 322,107
+	spbtn 323,108
+	spbtn 324,109
+	spbtn 325,110	
+	spbtn 326,111	
+	spbtn 327,112	
+	spbtn 328,113	
+	spbtn 329,114	
+	spbtn 330,115
+	spbtn 331,116
+	spbtn 332,117
+	spbtn 333,118
+	spbtn 334,119
+	spbtn 335,120
+	spbtn 336,121
+	spbtn 337,122
+	spbtn 338,123
+	spbtn 339,124
+	spbtn 340,125
+	spbtn 341,126
+	spbtn 342,127
+	spbtn 343,128
+	spbtn 344,129
+	spbtn 345,130
+	spbtn 346,131
+	spbtn 347,132
+	spbtn 348,133
+	spbtn 349,134
+	spbtn 350,135
+	spbtn 351,136
+	spbtn 352,137
+	spbtn 353,138
+	spbtn 354,139
+	spbtn 355,140
+	spbtn 356,141
+	spbtn 357,142
+	spbtn 358,143
+	spbtn 359,144
+	spbtn 360,145
+	spbtn 361,146
+	spbtn 362,147
+	spbtn 363,148
+	spbtn 364,149
+	spbtn 365,150
+	spbtn 366,151
+	spbtn 367,152
+	spbtn 368,153
+	spbtn 369,154
+	spbtn 370,155
 	;end
 
 	btndown 0
@@ -1355,208 +1362,228 @@ return
 
 	if %BtnRes != 100 jumpf
 		if %vv_cla = 1 mov %vv_cla,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_cla = 2 mov %vv_cla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\02\50800292.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_cla = 2 mov %vv_cla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\02\50800292.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 101 jumpf
 		if %vv_nat = 1 mov %vv_nat,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_nat = 2 mov %vv_nat,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\03\50900927.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_nat = 2 mov %vv_nat,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\03\50900927.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 102 jumpf
 		if %vv_jes = 1 mov %vv_jes,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_jes = 2 mov %vv_jes,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\04\50200034.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_jes = 2 mov %vv_jes,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\04\50200034.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 103 jumpf
 		if %vv_eva = 1 mov %vv_eva,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_eva = 2 mov %vv_eva,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\05\51000334.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_eva = 2 mov %vv_eva,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\05\51000334.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 104 jumpf
 		if %vv_hid = 1 mov %vv_hid,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_hid = 2 mov %vv_hid,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\06\51100191.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_hid = 2 mov %vv_hid,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\06\51100191.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 105 jumpf
 		if %vv_geo = 1 mov %vv_geo,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_geo = 2 mov %vv_geo,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\07\50300029.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_geo = 2 mov %vv_geo,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\07\50300029.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 106 jumpf
 		if %vv_rud = 1 mov %vv_rud,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rud = 2 mov %vv_rud,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\08\51200233.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rud = 2 mov %vv_rud,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\08\51200233.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 107 jumpf
 		if %vv_kir = 1 mov %vv_kir,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_kir = 2 mov %vv_kir,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\09\51300152.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_kir = 2 mov %vv_kir,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\09\51300152.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 108 jumpf
 		if %vv_but = 1 mov %vv_but,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_but = 2 mov %vv_but,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\10\40100556.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_but = 2 mov %vv_but,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\10\40100556.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 109 jumpf
 		if %vv_ros = 1 mov %vv_ros,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ros = 2 mov %vv_ros,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\12\51400112.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ros = 2 mov %vv_ros,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\12\51400112.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 110 jumpf
 		if %vv_mar = 1 mov %vv_mar,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_mar = 2 mov %vv_mar,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\13\50400034.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_mar = 2 mov %vv_mar,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\13\50400034.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 111 jumpf
 		if %vv_kin = 1 mov %vv_kin,2:mov %vv_ki2,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_kin = 2 mov %vv_kin,1:mov %vv_ki2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\01\51500238.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_kin = 2 mov %vv_kin,1:mov %vv_ki2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\01\51500238.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 112 jumpf
 		if %vv_nan = 1 mov %vv_nan,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_nan = 2 mov %vv_nan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\19\51900077.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_nan = 2 mov %vv_nan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\19\51900077.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 113 jumpf
 		if %vv_gen = 1 mov %vv_gen,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_gen = 2 mov %vv_gen,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\14\51600110.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_gen = 2 mov %vv_gen,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\14\51600110.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 114 jumpf
 		if %vv_kum = 1 mov %vv_kum,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_kum = 2 mov %vv_kum,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\18\51800076.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_kum = 2 mov %vv_kum,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\18\51800076.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 115 jumpf
 		if %vv_goh = 1 mov %vv_goh,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_goh = 2 mov %vv_goh,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\17\51700095.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_goh = 2 mov %vv_goh,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\17\51700095.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 116 jumpf
 		if %vv_sha = 1 mov %vv_sha,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_sha = 2 mov %vv_sha,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\15\50500065.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_sha = 2 mov %vv_sha,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\15\50500065.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 117 jumpf
 		if %vv_kan = 1 mov %vv_kan,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_kan = 2 mov %vv_kan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\16\50600081.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_kan = 2 mov %vv_kan,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\16\50600081.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 118 jumpf
 		if %vv_bea = 1 mov %vv_bea,2:mov %vv_be2,2:mov %vv_be3,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_bea = 2 mov %vv_bea,1:mov %vv_be2,1:mov %vv_be3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\27\20700021.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_bea = 2 mov %vv_bea,1:mov %vv_be2,1:mov %vv_be3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\27\20700021.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 119 jumpf
 		if %vv_ber = 1 mov %vv_ber,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ber = 2 mov %vv_ber,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\28\92100252.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ber = 2 mov %vv_ber,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\28\92100252.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 120 jumpf
 		if %vv_eri = 1 mov %vv_eri,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_eri = 2 mov %vv_eri,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\46\54500010.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_eri = 2 mov %vv_eri,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\46\54500010.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 121 jumpf
 		if %vv_lam = 1 mov %vv_lam,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_lam = 2 mov %vv_lam,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\29\52200497.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_lam = 2 mov %vv_lam,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\29\52200497.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 122 jumpf
 		if %vv_enj = 1 mov %vv_enj,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_enj = 2 mov %vv_enj,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\11\42001574.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_enj = 2 mov %vv_enj,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\11\42001574.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 123 jumpf
 		if %vv_wal = 1 mov %vv_wal,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_wal = 2 mov %vv_wal,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\30\53200236.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_wal = 2 mov %vv_wal,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\30\53200236.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 124 jumpf
 		if %vv_ev2 = 1 mov %vv_ev2,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ev2 = 2 mov %vv_ev2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\34\33300003.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ev2 = 2 mov %vv_ev2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\34\33300003.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 125 jumpf
 		if %vv_ron = 1 mov %vv_ron,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ron = 2 mov %vv_ron,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\31\53100157.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ron = 2 mov %vv_ron,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\31\53100157.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 126 jumpf
 		if %vv_rg1 = 1 mov %vv_rg1,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg1 = 2 mov %vv_rg1,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\38\32300041.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg1 = 2 mov %vv_rg1,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\38\32300041.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 127 jumpf
 		if %vv_rg2 = 1 mov %vv_rg2,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg2 = 2 mov %vv_rg2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\39\32400048.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg2 = 2 mov %vv_rg2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\39\32400048.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 128 jumpf
 		if %vv_rg3 = 1 mov %vv_rg3,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg3 = 2 mov %vv_rg3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\40\42500001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg3 = 2 mov %vv_rg3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\40\42500001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 129 jumpf
 		if %vv_rg4 = 1 mov %vv_rg4,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg4 = 2 mov %vv_rg4,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\41\32600026.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg4 = 2 mov %vv_rg4,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\41\32600026.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 130 jumpf
 		if %vv_rg5 = 1 mov %vv_rg5,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg5 = 2 mov %vv_rg5,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\42\42700385.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg5 = 2 mov %vv_rg5,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\42\42700385.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 131 jumpf
 		if %vv_rg6 = 1 mov %vv_rg6,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg6 = 2 mov %vv_rg6,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\43\42800016.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg6 = 2 mov %vv_rg6,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\43\42800016.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 132 jumpf
 		if %vv_rg7 = 1 mov %vv_rg7,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rg7 = 2 mov %vv_rg7,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\44\42900001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rg7 = 2 mov %vv_rg7,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\44\42900001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 133 jumpf
 		if %vv_sak = 1 mov %vv_sak,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_sak = 2 mov %vv_sak,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\33\44200009.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_sak = 2 mov %vv_sak,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\33\44200009.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 134 jumpf
 		if %vv_gap = 1 mov %vv_gap,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_gap = 2 mov %vv_gap,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\32\53700161.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_gap = 2 mov %vv_gap,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\32\53700161.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 135 jumpf
 		if %vv_s00 = 1 mov %vv_s00,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_s00 = 2 mov %vv_s00,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\37\43600001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_s00 = 2 mov %vv_s00,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\37\43600001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 136 jumpf
 		if %vv_s41 = 1 mov %vv_s41,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_s41 = 2 mov %vv_s41,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\36\43500001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_s41 = 2 mov %vv_s41,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\36\43500001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 137 jumpf
 		if %vv_s45 = 1 mov %vv_s45,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_s45 = 2 mov %vv_s45,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\35\43400001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_s45 = 2 mov %vv_s45,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\35\43400001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 138 jumpf
 		if %vv_dla = 1 mov %vv_dla,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_dla = 2 mov %vv_dla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\47\54600002.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_dla = 2 mov %vv_dla,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\47\54600002.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 139 jumpf
 		if %vv_cor = 1 mov %vv_cor,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_cor = 2 mov %vv_cor,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\49\54700056.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_cor = 2 mov %vv_cor,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\49\54700056.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 140 jumpf
 		if %vv_ger = 1 mov %vv_ger,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ger = 2 mov %vv_ger,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\48\54800049.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ger = 2 mov %vv_ger,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\48\54800049.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 141 jumpf
 		if %vv_zep = 1 mov %vv_zep,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_zep = 2 mov %vv_zep,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\51\65100042.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_zep = 2 mov %vv_zep,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\51\65100042.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 142 jumpf
 		if %vv_fur = 1 mov %vv_fur,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_fur = 2 mov %vv_fur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\52\65200038.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_fur = 2 mov %vv_fur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\52\65200038.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 143 jumpf
 		if %vv_ama = 1 mov %vv_ama,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_ama = 2 mov %vv_ama,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\20\43000047.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_ama = 2 mov %vv_ama,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\20\43000047.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 144 jumpf
 		if %vv_bu3 = 1 mov %vv_bu3,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_bu3 = 2 mov %vv_bu3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\56\64900002.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_bu3 = 2 mov %vv_bu3,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\56\64900002.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 145 jumpf
 		if %vv_fea = 1 mov %vv_fea,2:mov %vv_fe2,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_fea = 2 mov %vv_fea,1:mov %vv_fe2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\50\65000057.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_fea = 2 mov %vv_fea,1:mov %vv_fe2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\50\65000057.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 146 jumpf
 		if %vv_wil = 1 mov %vv_wil,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_wil = 2 mov %vv_wil,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\54\75400183.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_wil = 2 mov %vv_wil,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\54\75400183.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 147 jumpf
 		if %vv_rio = 1 mov %vv_rio,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_rio = 2 mov %vv_rio,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\53\75300002.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_rio = 2 mov %vv_rio,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\53\75300002.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 148 jumpf
 		if %vv_cur = 1 mov %vv_cur,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_cur = 2 mov %vv_cur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\55\75500003.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_cur = 2 mov %vv_cur,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\55\75500003.ogg":gosub *settings_voice_vol_chars:jumpf
 		gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 149 jumpf
 		if %vv_goa = 1 mov %vv_goa,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_goa = 2 mov %vv_goa,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\45\yagim2001.ogg":gosub *settings_voice_vol_chars:jumpf
+		if %vv_goa = 2 mov %vv_goa,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\45\yagim2001.ogg":gosub *settings_voice_vol_chars:jumpf
 	~
 	if %BtnRes != 150 jumpf
-		if %vv_99 = 1 mov %vv_99,2:mov %vv_0,2:gosub *settings_voice_vol_chars:jumpf
-		if %vv_99 = 2 mov %vv_99,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\jp\99\anaf1001.ogg":mov %vv_0,1:gosub *settings_voice_vol_chars:jumpf
+		if %vv_kas = 1 mov %vv_kas,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_kas = 2 mov %vv_kas,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\22\44300054.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 151 jumpf
+		if %vv_oko = 1 mov %vv_oko,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_oko = 2 mov %vv_oko,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\21\44100146.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 152 jumpf
+		if %vv_ku2 = 1 mov %vv_ku2,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_ku2 = 2 mov %vv_ku2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\26\44000020.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 153 jumpf
+		if %vv_pro = 1 mov %vv_pro,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_pro = 2 mov %vv_pro,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\23\44400089.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 154 jumpf
+		if %vv_na2 = 1 mov %vv_na2,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_na2 = 2 mov %vv_na2,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\25\43900007.ogg":gosub *settings_voice_vol_chars:jumpf
+	~
+	if %BtnRes != 155 jumpf
+		if %vv_99 = 1 mov %vv_99,2:mov %vv_0,2:mov %vv_98,2:mov %vv_97,2:gosub *settings_voice_vol_chars:jumpf
+		if %vv_99 = 2 mov %vv_99,1:chvol 0,%dlg_vol:dwave 0,"sound\voice\"+$voice_folder+"\99\anaf1001.ogg":mov %vv_0,1:mov %vv_98,2:mov %vv_97,1:gosub *settings_voice_vol_chars:jumpf
 		gosub *settings_voice_vol_chars:jumpf
 	~
 
@@ -1575,159 +1602,178 @@ return
 	mov %x3,0 ;end sprite
 	mov %y3,0 ;row sprite count
 
-	if %vv_cla = 1 lsp 320,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kla0.png",%x,%y : mov %vv_inc,320
-	if %vv_cla = 2 lsp 320,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kla0.png",%x,%y,90 : mov %vv_inc,320
-	gosub *settings_chars_refresh
-	if %vv_nat = 1 lsp 321,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nat0.png",%x,%y : mov %vv_inc,321
-	if %vv_nat = 2 lsp 321,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nat0.png",%x,%y,90 : mov %vv_inc,321
-	gosub *settings_chars_refresh
-	if %vv_jes = 1 lsp 322,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_jes0.png",%x,%y : mov %vv_inc,322
-	if %vv_jes = 2 lsp 322,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_jes0.png",%x,%y,90 : mov %vv_inc,322
-	gosub *settings_chars_refresh
-	if %vv_eva = 1 lsp 323,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eva0.png",%x,%y : mov %vv_inc,323
-	if %vv_eva = 2 lsp 323,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eva0.png",%x,%y,90 : mov %vv_inc,323
-	gosub *settings_chars_refresh
-	if %vv_hid = 1 lsp 324,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_hid0.png",%x,%y : mov %vv_inc,324
-	if %vv_hid = 2 lsp 324,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_hid0.png",%x,%y,90 : mov %vv_inc,324
-	gosub *settings_chars_refresh
-	if %vv_geo = 1 lsp 325,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_geo0.png",%x,%y : mov %vv_inc,325
-	if %vv_geo = 2 lsp 325,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_geo0.png",%x,%y,90 : mov %vv_inc,325
-	gosub *settings_chars_refresh
-	if %vv_rud = 1 lsp 326,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rud0.png",%x,%y : mov %vv_inc,326
-	if %vv_rud = 2 lsp 326,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rud0.png",%x,%y,90 : mov %vv_inc,326
-	gosub *settings_chars_refresh
-	if %vv_kir = 1 lsp 327,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kir0.png",%x,%y : mov %vv_inc,327
-	if %vv_kir = 2 lsp 327,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kir0.png",%x,%y,90 : mov %vv_inc,327
-	gosub *settings_chars_refresh
-	if %vv_but = 1 lsp 328,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_but0.png",%x,%y : mov %vv_inc,328
-	if %vv_but = 2 lsp 328,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_but0.png",%x,%y,90 : mov %vv_inc,328
-	gosub *settings_chars_refresh
-	if %vv_ros = 1 lsp 329,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ros0.png",%x,%y : mov %vv_inc,329
-	if %vv_ros = 2 lsp 329,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ros0.png",%x,%y,90 : mov %vv_inc,329
-	gosub *settings_chars_refresh
-	if %vv_mar = 1 lsp 330,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mar0.png",%x,%y : mov %vv_inc,330
-	if %vv_mar = 2 lsp 330,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mar0.png",%x,%y,90 : mov %vv_inc,330
-	gosub *settings_chars_refresh
-	if %vv_kin = 1 lsp 331,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kin0.png",%x,%y : mov %vv_inc,331
-	if %vv_kin = 2 lsp 331,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kin0.png",%x,%y,90 : mov %vv_inc,331
-	gosub *settings_chars_refresh
-	if %vv_nan = 1 lsp 332,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nan0.png",%x,%y : mov %vv_inc,332
-	if %vv_nan = 2 lsp 332,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nan0.png",%x,%y,90 : mov %vv_inc,332
-	gosub *settings_chars_refresh
-	if %vv_gen = 1 lsp 333,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gen0.png",%x,%y : mov %vv_inc,333
-	if %vv_gen = 2 lsp 333,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gen0.png",%x,%y,90 : mov %vv_inc,333
-	gosub *settings_chars_refresh
-	if %vv_kum = 1 lsp 334,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kum0.png",%x,%y : mov %vv_inc,334
-	if %vv_kum = 2 lsp 334,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kum0.png",%x,%y,90 : mov %vv_inc,334
-	gosub *settings_chars_refresh
-	if %vv_goh = 1 lsp 335,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goh0.png",%x,%y : mov %vv_inc,335
-	if %vv_goh = 2 lsp 335,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goh0.png",%x,%y,90 : mov %vv_inc,335
-	gosub *settings_chars_refresh
-	if %vv_sha = 1 lsp 336,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sha0.png",%x,%y : mov %vv_inc,336
-	if %vv_sha = 2 lsp 336,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sha0.png",%x,%y,90 : mov %vv_inc,336
-	gosub *settings_chars_refresh
-	if %vv_kan = 1 lsp 337,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kan0.png",%x,%y : mov %vv_inc,337
-	if %vv_kan = 2 lsp 337,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kan0.png",%x,%y,90 : mov %vv_inc,337
-	gosub *settings_chars_refresh
-	if %vv_bea = 1 lsp 338,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_bea0.png",%x,%y : mov %vv_inc,338
-	if %vv_bea = 2 lsp 338,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_bea0.png",%x,%y,90 : mov %vv_inc,338
-	gosub *settings_chars_refresh
-	if %vv_ber = 1 lsp 339,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ber0.png",%x,%y : mov %vv_inc,339
-	if %vv_ber = 2 lsp 339,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ber0.png",%x,%y,90 : mov %vv_inc,339
-	gosub *settings_chars_refresh
-	if %vv_eri = 1 lsp 340,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eri0.png",%x,%y : mov %vv_inc,340
-	if %vv_eri = 2 lsp 340,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eri0.png",%x,%y,90 : mov %vv_inc,340
-	gosub *settings_chars_refresh
-	if %vv_lam = 1 lsp 341,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_lam0.png",%x,%y : mov %vv_inc,341
-	if %vv_lam = 2 lsp 341,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_lam0.png",%x,%y,90 : mov %vv_inc,341
-	gosub *settings_chars_refresh
-	if %vv_enj = 1 lsp 342,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_enj0.png",%x,%y : mov %vv_inc,342
-	if %vv_enj = 2 lsp 342,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_enj0.png",%x,%y,90 : mov %vv_inc,342
-	gosub *settings_chars_refresh
-	if %vv_wal = 1 lsp 343,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wal0.png",%x,%y : mov %vv_inc,343
-	if %vv_wal = 2 lsp 343,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wal0.png",%x,%y,90 : mov %vv_inc,343
-	gosub *settings_chars_refresh
-	if %vv_ev2 = 1 lsp 344,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_evb0.png",%x,%y : mov %vv_inc,344
-	if %vv_ev2 = 2 lsp 344,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_evb0.png",%x,%y,90 : mov %vv_inc,344
-	gosub *settings_chars_refresh
-	if %vv_ron = 1 lsp 345,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ron0.png",%x,%y : mov %vv_inc,345
-	if %vv_ron = 2 lsp 345,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ron0.png",%x,%y,90 : mov %vv_inc,345
-	gosub *settings_chars_refresh
-	if %vv_rg1 = 1 lsp 346,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk0.png",%x,%y : mov %vv_inc,346
-	if %vv_rg1 = 2 lsp 346,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk0.png",%x,%y,90 : mov %vv_inc,346
-	gosub *settings_chars_refresh
-	if %vv_rg2 = 1 lsp 347,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk1.png",%x,%y : mov %vv_inc,347
-	if %vv_rg2 = 2 lsp 347,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk1.png",%x,%y,90 : mov %vv_inc,347
-	gosub *settings_chars_refresh
-	if %vv_rg3 = 1 lsp 348,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk2.png",%x,%y : mov %vv_inc,348
-	if %vv_rg3 = 2 lsp 348,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk2.png",%x,%y,90 : mov %vv_inc,348
-	gosub *settings_chars_refresh
-	if %vv_rg4 = 1 lsp 349,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk3.png",%x,%y : mov %vv_inc,349
-	if %vv_rg4 = 2 lsp 349,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk3.png",%x,%y,90 : mov %vv_inc,349
-	gosub *settings_chars_refresh
-	if %vv_rg5 = 1 lsp 350,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk4.png",%x,%y : mov %vv_inc,350
-	if %vv_rg5 = 2 lsp 350,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk4.png",%x,%y,90 : mov %vv_inc,350
-	gosub *settings_chars_refresh
-	if %vv_rg6 = 1 lsp 351,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk5.png",%x,%y : mov %vv_inc,351
-	if %vv_rg6 = 2 lsp 351,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk5.png",%x,%y,90 : mov %vv_inc,351
-	gosub *settings_chars_refresh
-	if %vv_rg7 = 1 lsp 352,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk6.png",%x,%y : mov %vv_inc,352
-	if %vv_rg7 = 2 lsp 352,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk6.png",%x,%y,90 : mov %vv_inc,352
-	gosub *settings_chars_refresh	
-	if %vv_sak = 1 lsp 353,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sak0.png",%x,%y : mov %vv_inc,353
-	if %vv_sak = 2 lsp 353,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sak0.png",%x,%y,90 : mov %vv_inc,353
-	gosub *settings_chars_refresh
-	if %vv_gap = 1 lsp 354,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gap0.png",%x,%y : mov %vv_inc,354
-	if %vv_gap = 2 lsp 354,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gap0.png",%x,%y,90 : mov %vv_inc,354
-	gosub *settings_chars_refresh
-	if %vv_s00 = 1 lsp 355,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie0.png",%x,%y : mov %vv_inc,355
-	if %vv_s00 = 2 lsp 355,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie0.png",%x,%y,90 : mov %vv_inc,355
-	gosub *settings_chars_refresh
-	if %vv_s41 = 1 lsp 356,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie1.png",%x,%y : mov %vv_inc,356
-	if %vv_s41 = 2 lsp 356,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie1.png",%x,%y,90 : mov %vv_inc,356
-	gosub *settings_chars_refresh
-	if %vv_s45 = 1 lsp 357,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie2.png",%x,%y : mov %vv_inc,357
-	if %vv_s45 = 2 lsp 357,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie2.png",%x,%y,90 : mov %vv_inc,357
-	gosub *settings_chars_refresh
-	if %vv_dla = 1 lsp 358,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_dla1.png",%x,%y : mov %vv_inc,358
-	if %vv_dla = 2 lsp 358,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_dla1.png",%x,%y,90 : mov %vv_inc,358
-	gosub *settings_chars_refresh
-	if %vv_cor = 1 lsp 359,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cor0.png",%x,%y : mov %vv_inc,359
-	if %vv_cor = 2 lsp 359,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cor0.png",%x,%y,90 : mov %vv_inc,359
-	gosub *settings_chars_refresh
-	if %vv_ger = 1 lsp 360,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gur0.png",%x,%y : mov %vv_inc,360
-	if %vv_ger = 2 lsp 360,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gur0.png",%x,%y,90 : mov %vv_inc,360
-	gosub *settings_chars_refresh
-	if %vv_zep = 1 lsp 361,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_zep0.png",%x,%y : mov %vv_inc,361
-	if %vv_zep = 2 lsp 361,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_zep0.png",%x,%y,90 : mov %vv_inc,361
-	gosub *settings_chars_refresh
-	if %vv_fur = 1 lsp 362,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ful0.png",%x,%y : mov %vv_inc,362
-	if %vv_fur = 2 lsp 362,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ful0.png",%x,%y,90 : mov %vv_inc,362
-	gosub *settings_chars_refresh
-	if %vv_ama = 1 lsp 363,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ama0.png",%x,%y : mov %vv_inc,363
-	if %vv_ama = 2 lsp 363,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ama0.png",%x,%y,90 : mov %vv_inc,363
-	gosub *settings_chars_refresh
-	if %vv_bu3 = 1 lsp 364,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea0.png",%x,%y : mov %vv_inc,364
-	if %vv_bu3 = 2 lsp 364,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea0.png",%x,%y,90 : mov %vv_inc,364
-	gosub *settings_chars_refresh
-	if %vv_fea = 1 lsp 365,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea1.png",%x,%y : mov %vv_inc,365
-	if %vv_fea = 2 lsp 365,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea1.png",%x,%y,90 : mov %vv_inc,365
-	gosub *settings_chars_refresh
-	if %vv_wil = 1 lsp 366,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wil0.png",%x,%y : mov %vv_inc,366
-	if %vv_wil = 2 lsp 366,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wil0.png",%x,%y,90 : mov %vv_inc,366
-	gosub *settings_chars_refresh
-	if %vv_rio = 1 lsp 367,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rio0.png",%x,%y : mov %vv_inc,367
-	if %vv_rio = 2 lsp 367,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rio0.png",%x,%y,90 : mov %vv_inc,367
-	gosub *settings_chars_refresh
-	if %vv_cur = 1 lsp 368,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cur0.png",%x,%y : mov %vv_inc,368
-	if %vv_cur = 2 lsp 368,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cur0.png",%x,%y,90 : mov %vv_inc,368
-	gosub *settings_chars_refresh
-	if %vv_goa = 1 lsp 369,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goa0.png",%x,%y : mov %vv_inc,369
-	if %vv_goa = 2 lsp 369,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goa0.png",%x,%y,90 : mov %vv_inc,369
-	gosub *settings_chars_refresh
-	if %vv_99 = 1 lsp 370,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_99.png",%x,%y : mov %vv_inc,370
-	if %vv_99 = 2 lsp 370,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_99.png",%x,%y,90 : mov %vv_inc,370
-	gosub *settings_chars_refresh
+	mov %test_var,315
+
+	if %vv_cla = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kla0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_cla = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kla0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_nat = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nat0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_nat = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nat0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_jes = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_jes0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_jes = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_jes0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_eva = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eva0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_eva = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eva0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_hid = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_hid0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_hid = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_hid0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_geo = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_geo0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_geo = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_geo0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_rud = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rud0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_rud = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rud0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_kir = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kir0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_kir = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kir0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_but = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_but0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_but = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_but0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_ros = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ros0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_ros = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ros0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_mar = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mar0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_mar = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mar0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_kin = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kin0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_kin = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kin0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_nan = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nan0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_nan = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nan0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_gen = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gen0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_gen = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gen0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_kum = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kum0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_kum = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kum0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_goh = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goh0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_goh = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goh0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_sha = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sha0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_sha = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sha0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_kan = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kan0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_kan = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kan0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_bea = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_bea0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_bea = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_bea0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_ber = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ber0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_ber = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ber0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_eri = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eri0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_eri = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eri0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_lam = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_lam0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_lam = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_lam0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_enj = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_enj0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_enj = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_enj0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_wal = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wal0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_wal = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wal0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_ev2 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_evb0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_ev2 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_evb0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_ron = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ron0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_ron = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ron0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_rg1 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_rg1 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_rg2 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk1.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_rg2 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk1.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_rg3 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk2.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_rg3 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk2.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_rg4 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk3.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_rg4 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk3.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_rg5 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk4.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_rg5 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk4.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_rg6 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk5.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_rg6 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk5.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_rg7 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk6.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_rg7 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk6.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_sak = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sak0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_sak = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sak0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_gap = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gap0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_gap = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gap0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_s00 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_s00 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_s41 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie1.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_s41 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie1.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_s45 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie2.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_s45 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie2.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_dla = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_dla1.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_dla = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_dla1.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_cor = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cor0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_cor = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cor0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_ger = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gur0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_ger = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gur0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_zep = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_zep0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_zep = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_zep0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_fur = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ful0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_fur = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ful0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_ama = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ama0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_ama = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ama0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_bu3 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_bu3 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_fea = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea1.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_fea = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea1.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_wil = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wil0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_wil = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wil0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_rio = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rio0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_rio = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rio0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_cur = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cur0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_cur = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cur0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_goa = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goa0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_goa = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goa0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+
+	if %vv_kas = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kas0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_kas = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kas0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_oko = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_oko0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_oko = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_oko0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_ku2 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sab0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_ku2 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sab0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_pro = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_pro0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_pro = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_pro0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+	if %vv_na2 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mas0.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_na2 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mas0.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
+
+	if %vv_99 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_99.png",%x,%y : mov %vv_inc,%test_var
+	if %vv_99 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_99.png",%x,%y,90 : mov %vv_inc,%test_var
+	gosub *settings_chars_refresh : inc %test_var
 	gosub *settings_chars_realign
 return
 
@@ -1797,6 +1843,11 @@ return
 
 *clear_config_submenu
 
+	_csp 315
+	_csp 316
+	_csp 317
+	_csp 318
+	_csp 319
 	_csp 320
 	_csp 321
 	_csp 322
@@ -1928,7 +1979,7 @@ return
 	mov %cfg_voice_language,1 ;Japanese
 	mov %bgm_title_language,1 ;English
 	mov %op_ed_song_subtitles,2 ;Translation
-	mov %cfg_steam_conventions,0 ;TODO actually choose
+	mov %cfg_steam_conventions,0 ;TODO actually choose the initial setting
 
 	;Graphics
 	mov %cfg_sprite_type_index,3

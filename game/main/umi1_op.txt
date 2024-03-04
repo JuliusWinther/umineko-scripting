@@ -1,4 +1,5 @@
 *umi1_op
+debug_str "Inizio"
 ;オープニング
 log_reset
 mov $name_chapter_r_click,r_click_chapters_1_op
@@ -7,7 +8,14 @@ mov $name_chapter_r_click_l3,r_click_chapters_1_op_l3
 mov $name_chapter_save, "1_op"
 skip_on
 new_episode 1
-new_chapter date_scenario_1_2,scenario_1_2
+wait 1000
+textoff
+waits 167
+lbg "c:colour",s0_3,"black"
+flush 2
+textoff
+waits 167
+debug_str "Prima degli sfondi"
 lbg "a:backgrounds",s0_1,"mlib_1a_bg"
 lbg "a:backgrounds",s0_3,"mlib_1a"
 ;aspt2 scalex,s0_1,80
@@ -19,12 +27,14 @@ lbg "a:backgrounds",s0_3,"mlib_1a"
 ;aspt2 ypos,s0_1,-114
 ;aspt2 ypos,s0_3,-114
 flush 8
+debug_str "Nanjo"
 lss s0_8,"nan","a1_defo1" ;1
 spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 bgmplay 13,71,0
-*d1
 msgwnd_nan
+debug_str "Dialogo"
+*d1
 d [lv 0*"19"*"11900001"]`「…………また。`[@][lv 0*"19"*"11900002"]`…お酒を嗜まれましたな？」`[\]
 lss s0_8,"nan","a1_fumu1" ;1
 spt_mem "a2","xpos",s0_8,-370

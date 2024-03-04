@@ -1449,9 +1449,26 @@ defsub translated_bgm_order
 defsub japanese_bgm_order
 defsub romaji_bgm_order
 defsub bgm_instrumental_order
+defsub empty_slot_cache
 ;End Custom
 
 ;====================================================   Custom Vars - W_CUSTOM
+
+;HARDCODED TEXT POSITIONS TO CHECK
+numalias trophy_text_x,537
+numalias trophy_text_y,680
+
+;Hardcoded offsets in menus and other places, which are currently not calculated
+numalias settings_base_off1,1478
+numalias settings_base_off2,1605
+numalias settings_base_off3,1010
+numalias settings_base_off4,1377
+numalias settings_base_off5,850
+numalias settings_base_off6,1213
+numalias settings_base_off7,1559
+numalias omake3_line_y,105
+;END
+
 numalias string_length,9500
 numalias string_temp1,9501
 numalias string_temp2,9502
@@ -1575,20 +1592,12 @@ numalias char_desc_jpn,9597
 numalias char_desc_desc,9598
 numalias char_is_selected,9599
 
-;HARDCODED TEXT POSITIONS TO CHECK
-numalias trophy_text_x,537
-numalias trophy_text_y,680
-
-;Hardcoded offsets in menus and other places, which are currently not calculated
-numalias settings_base_off1,1478
-numalias settings_base_off2,1605
-numalias settings_base_off3,1010
-numalias settings_base_off4,1377
-numalias settings_base_off5,850
-numalias settings_base_off6,1213
-numalias settings_base_off7,1559
-numalias omake3_line_y,105
-;END
+numalias temp_var2,9605
+numalias temp_var3,9606
+numalias temp_var4,9607
+numalias temp_var5,9608
+numalias for_index4,9609
+numalias for_index5,9610
 
 ;Discord - W_CUSTOM
 
@@ -1870,11 +1879,12 @@ jskip_s
 	debug_str "SuperSkip: DISABLED"
 ~
 
-if %bgm_title_language = 1 gosub *traditional_bgm_order
-if %bgm_title_language = 2 gosub *translated_bgm_order
-if %bgm_title_language = 3 gosub *japanese_bgm_order
-if %bgm_title_language = 4 gosub *romaji_bgm_order
 mov %bgm_not_inst,27
+if %bgm_title_language == 1 gosub *traditional_bgm_order
+if %bgm_title_language == 2 gosub *translated_bgm_order
+if %bgm_title_language == 3 gosub *japanese_bgm_order
+if %bgm_title_language == 4 gosub *romaji_bgm_order
+if %bgm_title_language < 1 || %bgm_title_language > 4 gosub *traditional_bgm_order
 
 mov %char_performing_action,0
 mov %char_is_selected,0

@@ -1219,7 +1219,6 @@ return
 	if %msgwnd_type = 4 write_special_text 312,"config_option",1317,187+64+%cfg_temp2+%cfg_height,cfg_txtbox_umigold : jumpf
 	~
 	;mov $test_var,"*msgwnd_"+$cur_character : gosub $test_var
-	d_name_refresh
 	lsp 205,left_arrow,1317,187+60+%cfg_temp2+%cfg_height
 	lsp 206,right_arrow,1624,187+60+%cfg_temp2+%cfg_height
 return
@@ -1602,178 +1601,178 @@ return
 	mov %x3,0 ;end sprite
 	mov %y3,0 ;row sprite count
 
-	mov %test_var,315
+	mov %temp_var5,315
 
-	if %vv_cla = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kla0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_cla = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kla0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_nat = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nat0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_nat = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nat0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_jes = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_jes0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_jes = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_jes0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_eva = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eva0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_eva = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eva0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_hid = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_hid0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_hid = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_hid0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_geo = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_geo0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_geo = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_geo0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_rud = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rud0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_rud = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rud0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_kir = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kir0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_kir = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kir0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_but = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_but0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_but = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_but0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_ros = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ros0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_ros = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ros0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_mar = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mar0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_mar = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mar0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_kin = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kin0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_kin = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kin0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_nan = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nan0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_nan = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nan0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_gen = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gen0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_gen = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gen0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_kum = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kum0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_kum = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kum0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_goh = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goh0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_goh = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goh0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_sha = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sha0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_sha = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sha0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_kan = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kan0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_kan = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kan0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_bea = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_bea0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_bea = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_bea0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_ber = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ber0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_ber = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ber0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_eri = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eri0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_eri = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eri0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_lam = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_lam0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_lam = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_lam0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_enj = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_enj0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_enj = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_enj0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_wal = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wal0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_wal = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wal0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_ev2 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_evb0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_ev2 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_evb0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_ron = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ron0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_ron = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ron0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_rg1 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_rg1 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_rg2 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk1.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_rg2 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk1.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_rg3 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk2.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_rg3 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk2.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_rg4 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk3.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_rg4 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk3.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_rg5 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk4.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_rg5 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk4.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_rg6 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk5.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_rg6 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk5.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_rg7 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk6.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_rg7 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk6.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_sak = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sak0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_sak = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sak0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_gap = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gap0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_gap = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gap0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_s00 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_s00 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_s41 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie1.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_s41 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie1.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_s45 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie2.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_s45 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie2.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_dla = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_dla1.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_dla = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_dla1.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_cor = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cor0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_cor = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cor0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_ger = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gur0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_ger = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gur0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_zep = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_zep0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_zep = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_zep0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_fur = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ful0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_fur = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ful0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_ama = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ama0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_ama = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ama0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_bu3 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_bu3 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_fea = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea1.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_fea = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea1.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_wil = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wil0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_wil = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wil0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_rio = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rio0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_rio = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rio0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_cur = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cur0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_cur = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cur0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_goa = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goa0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_goa = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goa0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
+	if %vv_cla = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kla0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_cla = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kla0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_nat = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nat0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_nat = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nat0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_jes = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_jes0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_jes = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_jes0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_eva = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eva0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_eva = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eva0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_hid = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_hid0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_hid = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_hid0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_geo = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_geo0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_geo = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_geo0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_rud = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rud0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_rud = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rud0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_kir = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kir0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_kir = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kir0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_but = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_but0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_but = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_but0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_ros = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ros0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_ros = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ros0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_mar = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mar0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_mar = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mar0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_kin = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kin0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_kin = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kin0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_nan = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nan0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_nan = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_nan0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_gen = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gen0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_gen = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gen0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_kum = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kum0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_kum = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kum0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_goh = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goh0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_goh = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goh0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_sha = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sha0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_sha = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sha0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_kan = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kan0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_kan = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kan0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_bea = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_bea0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_bea = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_bea0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_ber = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ber0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_ber = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ber0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_eri = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eri0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_eri = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_eri0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_lam = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_lam0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_lam = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_lam0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_enj = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_enj0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_enj = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_enj0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_wal = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wal0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_wal = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wal0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_ev2 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_evb0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_ev2 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_evb0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_ron = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ron0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_ron = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ron0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_rg1 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_rg1 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_rg2 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk1.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_rg2 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk1.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_rg3 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk2.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_rg3 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk2.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_rg4 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk3.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_rg4 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk3.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_rg5 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk4.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_rg5 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk4.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_rg6 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk5.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_rg6 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk5.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_rg7 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk6.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_rg7 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rgk6.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_sak = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sak0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_sak = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sak0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_gap = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gap0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_gap = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gap0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_s00 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_s00 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_s41 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie1.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_s41 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie1.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_s45 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie2.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_s45 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sie2.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_dla = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_dla1.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_dla = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_dla1.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_cor = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cor0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_cor = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cor0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_ger = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gur0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_ger = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_gur0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_zep = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_zep0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_zep = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_zep0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_fur = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ful0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_fur = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ful0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_ama = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ama0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_ama = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_ama0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_bu3 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_bu3 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_fea = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea1.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_fea = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_fea1.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_wil = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wil0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_wil = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_wil0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_rio = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rio0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_rio = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_rio0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_cur = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cur0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_cur = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_cur0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_goa = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goa0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_goa = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_goa0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
 
-	if %vv_kas = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kas0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_kas = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kas0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_oko = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_oko0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_oko = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_oko0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_ku2 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sab0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_ku2 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sab0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_pro = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_pro0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_pro = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_pro0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
-	if %vv_na2 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mas0.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_na2 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mas0.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
+	if %vv_kas = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kas0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_kas = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_kas0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_oko = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_oko0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_oko = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_oko0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_ku2 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sab0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_ku2 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_sab0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_pro = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_pro0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_pro = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_pro0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
+	if %vv_na2 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mas0.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_na2 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_mas0.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
 
-	if %vv_99 = 1 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_99.png",%x,%y : mov %vv_inc,%test_var
-	if %vv_99 = 2 lsp %test_var,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_99.png",%x,%y,90 : mov %vv_inc,%test_var
-	gosub *settings_chars_refresh : inc %test_var
+	if %vv_99 = 1 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_99.png",%x,%y : mov %vv_inc,%temp_var5
+	if %vv_99 = 2 lsp %temp_var5,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\mute\chars_99.png",%x,%y,90 : mov %vv_inc,%temp_var5
+	gosub *settings_chars_refresh : inc %temp_var5
 	gosub *settings_chars_realign
 return
 

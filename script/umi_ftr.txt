@@ -20836,6 +20836,7 @@ return
 ; As an additional feature it ensures that you have cursor icons ready.
 ;************************************************************************************
 *csp_rst
+	debug_str "csp_rst"
 	_csp -1
 	_csp2 -1
 	btndef ""
@@ -20894,6 +20895,7 @@ return
 ;Actual remove slot fn
 *csp_slot
 	getparam %cspParam
+
 	;Original Edited - ;Sprite Cache - Clear sprites cache - W_CUSTOM
 	;Using for_index3 instead of 1 or 2 beacause of conflicts when the functon is called by *reload_slots (infinite loop caused by editing the for_index)
 	if %reloading_status == 1 jumpf
@@ -24167,6 +24169,8 @@ return
 
 	csp_slot %lbg_slot
 	jskip_s gosub *open_cg ~
+	
+	debug_str "lbg " + $lbg_name
 
 	split $lbg_type,":",$paste_method,$lbg_type ;Must be outside search_bg function
 	search_bg $lbg_type,$lbg_name
@@ -24597,11 +24601,11 @@ getparam %lv_ch,$lv_f,$lv_v
 if %cfg_voice_language = 1 mov $voice_folder,"jp";JP
 if %cfg_voice_language = 2 mov $voice_folder,"en";EN
 
+if %cfg_voice_language == 1 || $voice_folder == "jp" if $lv_f = "97" return ;Disabled narrator for those language that don't have it
+
 ;DEBUG
 fileexist %free2,"sound\voice\" + $voice_folder + "\" + $lv_f + "\" + $lv_v + ".ogg"
 if %free2 != 1 debug_str "Voice File: " + $voice_folder + "\" + $lv_f + "\" + $lv_v + ".ogg - not found" : return
-
-if %cfg_voice_language = 1 && $lv_f = "97" return ;Disabled narrator for those language that don't have it
 
 if %no_log_gen == 1 jumpf 
 jnskip
@@ -24647,7 +24651,9 @@ if %lv_ch != 0 : jumpf
 if %enable_cache == 0 || %no_cache_atm == 1 return ; we do know that this may be invoked in menus, fix if it creates us issues
 lookahead exlv,2,$lv_tmp1a,$lv_tmp1b,$lv_tmp2a,$lv_tmp2b,$lv_tmp3a,$lv_tmp3b,$lv_tmp4a,$lv_tmp4b,$lv_tmp5a,$lv_tmp5b
 for %lv_f = lv_tmp1a to lv_tmp5a
-	if $%lv_f != "" mov %lv_p,%lv_f+5 : async_cache_snd 1,"sound\voice\" + $voice_folder + "\" + $%lv_f + "\" + $%lv_p + ".ogg"
+	if %cfg_voice_language == 1 || $voice_folder == "jp" if $%lv_f = "97" jumpf
+		if $%lv_f != "" mov %lv_p,%lv_f+5 : async_cache_snd 1,"sound\voice\" + $voice_folder + "\" + $%lv_f + "\" + $%lv_p + ".ogg"
+	~
 next
 
 return
@@ -26638,7 +26644,7 @@ if %BGM_Id == 1026	mov $BGM_Title,"Golden Nocturne Vocal" : return
 ~
 ;translation - uses if set language to russian
 if %bgm_title_language != 2 jumpf 
-gosub *bgm_locale_title
+	gosub *bgm_locale_title
 ~
 ;jp
 if %bgm_title_language != 3 jumpf
@@ -27236,7 +27242,7 @@ return
 	tree_set 3,"00","non"
 
 	;Saku sprites - New Sprites - W_CUSTOM
-	tree_set 3,"61","s55"
+	tree_set 3,"61","s556"
 	tree_set 3,"62","kan"
 	tree_set 3,"63","bbt"
 	tree_set 3,"64","fla"
@@ -28367,7 +28373,7 @@ return
 		if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra2_9","*umiextra2_9_end" : goto *log_none
 		past_label %TextCC12Flag,"*umiextra2_8"
 		if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra2_8","*umiextra2_8_end" : goto *log_none
-		;past_label %TextCC12Flag,"*umiextra2_7"
+		;past_label %TextCC12Flag,"*umiextra2_7" ;disable log for valentines day
 		;if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra2_7","*umiextra2_7_end" : goto *log_none
 		past_label %TextCC12Flag,"*umiextra2_6"
 		if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra2_6","*umiextra2_6_end" : goto *log_none
@@ -29054,7 +29060,7 @@ return
 		if %extra_scenario_Number == 210 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_10"
 		if %extra_scenario_Number == 29 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_9"
 		if %extra_scenario_Number == 28 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_8"
-		;if %extra_scenario_Number == 27 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_7"
+		;if %extra_scenario_Number == 27 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_7" ;disables log for valentines day
 		if %extra_scenario_Number == 26 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_6"
 		if %extra_scenario_Number == 25 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_5"
 		if %extra_scenario_Number == 24 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_4"
@@ -29096,6 +29102,9 @@ return
 	blur 0
 	agpt quakexamp,0,0,0,1
 	agpt quakeyamp,0,0,0,1
+
+	;W_CUSTOM ;Sprite Cache - needed to reset current slots when jumping in log
+	gosub *empty_slot_cache
 
 	; _flags will call varset sskip for ep8. We must not sskip beyond the choice vector size of the chapter start label.
 	accept_choice_vector_size %log_src_cvs
@@ -29148,12 +29157,14 @@ return
 	if %me_enable_6 = 1 meplay 6,%me_num_6,%me_current_vol_6
 	if %me_enable_7 = 1 meplay 7,%me_num_7,%me_current_vol_7
 
+	mov %temp_var2,1
+
 	if %cur_wndmode == off gosub *update_msgwnd
 	if %cur_wndmode == on set_window_simple %log_sw_x,%log_sw_y
 	; So that we save after jumping
 	mov %TextCC12Flag,1
 	main_goto $log_ch_next
-return?
+return
 
 
 *ep8_varset_sskip
@@ -29300,8 +29311,8 @@ print 1
 			if %cfg_mouse_click = 0 mov %for_index3,0 : spbtn 313,313 : break ;Else ends the cycle - redeclating the button updates its position
 			getmousepos %cfg_temp_var,%cfg_mouse_y
 			mov %cfg_mouse_y,%cfg_mouse_y-26
-			getspsize 320,%cfg_temp_var,%test_var,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
-			mov %cfg_temp_var,(%cfg_mouse_y-255)*(%test_var-1080-0)/(785-255)+0
+			getspsize 320,%cfg_temp_var,%temp_var3,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
+			mov %cfg_temp_var,(%cfg_mouse_y-255)*(%temp_var3-1080-0)/(785-255)+0
 				aspt scroll_y,320,%cfg_temp_var
 			mov %for_index3,0 ;Infinite Cycle
 		next
@@ -32597,8 +32608,6 @@ return
 
 *update_msgwnd_direct
 
-if %msgwnd_type = 4 && %is_log_param != 1 mov $tmp5,"{f:5:"+$tmp5+"}" ;W_TEMP
-
 if $cur_character = "ama" gosub *msgwnd_ama : jumpf
 if $cur_character = "bea" gosub *msgwnd_bea : jumpf
 if $cur_character = "ber" gosub *msgwnd_ber : jumpf
@@ -32666,7 +32675,7 @@ if $cur_character = "non" gosub *msgwnd_non : jumpf
 ;Saku sprites - New Sprites - W_CUSTOM
 if $cur_character = "pie" gosub *msgwnd_pie : jumpf
 if $cur_character = "sku" gosub *msgwnd_sku : jumpf
-if $cur_character = "s55" gosub *msgwnd_s56 : jumpf
+if $cur_character = "s556" gosub *msgwnd_s556 : jumpf
 if $cur_character = "bbt" gosub *msgwnd_bbt : jumpf
 if $cur_character = "whm" gosub *msgwnd_whm : jumpf
 ;End Custom
@@ -32680,16 +32689,16 @@ borderstyle 5,#000000,1 : shadedistance 0,0,#000000,1
 if %msgwnd_type == 3 shadedistance 2,2 : shadedistance 2,2,#000000,1
 if %msgwnd_type == 4 shadedistance 2,2 : shadedistance 2,2,#000000,1
 
-;d_name_refresh ;Original Edited ;Saku log - honestly don't what this is but it makes umi crash so delete - ;W_CUSTOM
+if %temp_var2 != 1 mov %temp_var2,0 : d_name_refresh ;Original Edited ;Saku log - honestly don't what this is but it makes umi crash so delete - ;W_CUSTOM
+if %temp_var2 == 1 mov %temp_var2,0
 
 return
-
 
 *msgwnd_ama
 mov $cur_character,"ama"
 jnskip_s return ~
 if %vv_ama = 0 mov %vv_ama,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32697,7 +32706,7 @@ return
 mov $cur_character,"bea"
 jnskip_s return ~
 if %vv_bea = 0 || %vv_be2 = 0 || %vv_be3 = 0 mov %vv_bea,1 : mov %vv_be2,1 : mov %vv_be3,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32705,7 +32714,7 @@ return
 mov $cur_character,"ber"
 jnskip_s return ~
 if %vv_ber = 0 mov %vv_ber,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32713,7 +32722,7 @@ return
 mov $cur_character,"but"
 jnskip_s return ~
 if %vv_but = 0 mov %vv_but,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32721,7 +32730,7 @@ return
 mov $cur_character,"cla"
 jnskip_s return ~
 if %vv_cla = 0 mov %vv_cla,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32729,7 +32738,7 @@ return
 mov $cur_character,"enj"
 jnskip_s return ~
 if %vv_enj = 0 mov %vv_enj,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32737,7 +32746,7 @@ return
 mov $cur_character,"ev2"
 jnskip_s return ~
 if %vv_ev2 = 0 mov %vv_ev2,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32745,7 +32754,7 @@ return
 mov $cur_character,"eva"
 jnskip_s return ~
 if %vv_eva = 0 mov %vv_eva,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32753,7 +32762,7 @@ return
 mov $cur_character,"gap"
 jnskip_s return ~
 if %vv_gap = 0 mov %vv_gap,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32761,7 +32770,7 @@ return
 mov $cur_character,"gen"
 jnskip_s return ~
 if %vv_gen = 0 mov %vv_gen,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32769,7 +32778,7 @@ return
 mov $cur_character,"geo"
 jnskip_s return ~
 if %vv_geo = 0 mov %vv_geo,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32777,7 +32786,7 @@ return
 mov $cur_character,"goa"
 jnskip_s return ~
 if %vv_goa = 0 mov %vv_goa,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32785,7 +32794,7 @@ return
 mov $cur_character,"go2"
 jnskip_s return ~
 if %vv_goa = 0 mov %vv_goa,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32793,7 +32802,7 @@ return
 mov $cur_character,"goh"
 jnskip_s return ~
 if %vv_goh = 0 mov %vv_goh,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32801,7 +32810,7 @@ return
 mov $cur_character,"hid"
 jnskip_s return ~
 if %vv_hid = 0 mov %vv_hid,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32809,7 +32818,7 @@ return
 mov $cur_character,"jes"
 jnskip_s return ~
 if %vv_jes = 0 mov %vv_jes,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32817,7 +32826,7 @@ return
 mov $cur_character,"kan"
 jnskip_s return ~
 if %vv_kan = 0 mov %vv_kan,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32825,7 +32834,7 @@ return
 mov $cur_character,"kas"
 jnskip_s return ~
 if %vv_kas = 0 mov %vv_kas,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32833,7 +32842,7 @@ return
 mov $cur_character,"kaw"
 jnskip_s return ~
 if %vv_kaw = 0 mov %vv_kaw,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32841,7 +32850,7 @@ return
 mov $cur_character,"kin"
 jnskip_s return ~
 if %vv_kin = 0 || %vv_ki2 = 0 mov %vv_kin,1 : mov %vv_ki2,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32849,7 +32858,7 @@ return
 mov $cur_character,"kir"
 jnskip_s return ~
 if %vv_kir = 0 mov %vv_kir,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32857,7 +32866,7 @@ return
 mov $cur_character,"ku2"
 jnskip_s return ~
 if %vv_ku2 = 0 mov %vv_ku2,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32865,7 +32874,7 @@ return
 mov $cur_character,"kum"
 jnskip_s return ~
 if %vv_kum = 0 mov %vv_kum,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32873,7 +32882,7 @@ return
 mov $cur_character,"lam"
 jnskip_s return ~
 if %vv_lam = 0 mov %vv_lam,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32881,7 +32890,7 @@ return
 mov $cur_character,"mar"
 jnskip_s return ~
 if %vv_mar = 0 mov %vv_mar,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32889,7 +32898,7 @@ return
 mov $cur_character,"na2"
 jnskip_s return ~
 if %vv_na2 = 0 mov %vv_na2,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32897,7 +32906,7 @@ return
 mov $cur_character,"nan"
 jnskip_s return ~
 if %vv_nan = 0 mov %vv_nan,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32905,7 +32914,7 @@ return
 mov $cur_character,"nat"
 jnskip_s return ~
 if %vv_nat = 0 mov %vv_nat,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32913,7 +32922,7 @@ return
 mov $cur_character,"oko"
 jnskip_s return ~
 if %vv_oko = 0 mov %vv_oko,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32921,7 +32930,7 @@ return
 mov $cur_character,"pro"
 jnskip_s return ~
 if %vv_pro = 0 mov %vv_pro,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32929,7 +32938,7 @@ return
 mov $cur_character,"rg1"
 jnskip_s return ~
 if %vv_rg1 = 0 mov %vv_rg1,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32937,7 +32946,7 @@ return
 mov $cur_character,"rg2"
 jnskip_s return ~
 if %vv_rg2 = 0 mov %vv_rg2,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32945,7 +32954,7 @@ return
 mov $cur_character,"rg3"
 jnskip_s return ~
 if %vv_rg3 = 0 mov %vv_rg3,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32953,7 +32962,7 @@ return
 mov $cur_character,"rg4"
 jnskip_s return ~
 if %vv_rg4 = 0 mov %vv_rg4,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32961,7 +32970,7 @@ return
 mov $cur_character,"rg5"
 jnskip_s return ~
 if %vv_rg5 = 0 mov %vv_rg5,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32969,7 +32978,7 @@ return
 mov $cur_character,"rg6"
 jnskip_s return ~
 if %vv_rg6 = 0 mov %vv_rg6,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32977,7 +32986,7 @@ return
 mov $cur_character,"rg7"
 jnskip_s return ~
 if %vv_rg7 = 0 mov %vv_rg7,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32985,7 +32994,7 @@ return
 mov $cur_character,"ron"
 jnskip_s return ~
 if %vv_ron = 0 mov %vv_ron,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -32993,7 +33002,7 @@ return
 mov $cur_character,"ros"
 jnskip_s return ~
 if %vv_ros = 0 mov %vv_ros,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33001,7 +33010,7 @@ return
 mov $cur_character,"rud"
 jnskip_s return ~
 if %vv_rud = 0 mov %vv_rud,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33009,7 +33018,7 @@ return
 mov $cur_character,"s00"
 jnskip_s return ~
 if %vv_s00 = 0 mov %vv_s00,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33017,7 +33026,7 @@ return
 mov $cur_character,"s41"
 jnskip_s return ~
 if %vv_s41 = 0 mov %vv_s41,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33025,7 +33034,7 @@ return
 mov $cur_character,"s45"
 jnskip_s return ~
 if %vv_s45 = 0 mov %vv_s45,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33033,7 +33042,7 @@ return
 mov $cur_character,"sak"
 jnskip_s return ~
 if %vv_sak = 0 mov %vv_sak,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33041,7 +33050,7 @@ return
 mov $cur_character,"sha"
 jnskip_s return ~
 if %vv_sha = 0 mov %vv_sha,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33049,7 +33058,7 @@ return
 mov $cur_character,"wal"
 jnskip_s return ~
 if %vv_wal = 0 mov %vv_wal,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33057,7 +33066,7 @@ return
 mov $cur_character,"eri"
 jnskip_s return ~
 if %vv_eri = 0 mov %vv_eri,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33065,7 +33074,7 @@ return
 mov $cur_character,"dla"
 jnskip_s return ~
 if %vv_dla = 0 mov %vv_dla,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33073,7 +33082,7 @@ return
 mov $cur_character,"ger"
 jnskip_s return ~
 if %vv_ger = 0 mov %vv_ger,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33081,7 +33090,7 @@ return
 mov $cur_character,"cor"
 jnskip_s return ~
 if %vv_cor = 0 mov %vv_cor,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33089,7 +33098,7 @@ return
 mov $cur_character,"fea"
 jnskip_s return ~
 if %vv_fea = 0 || %vv_fe2 = 0 mov %vv_fea,1 : mov %vv_fe2,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33097,7 +33106,7 @@ return
 mov $cur_character,"zep"
 jnskip_s return ~
 if %vv_zep = 0 mov %vv_zep,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33105,7 +33114,7 @@ return
 mov $cur_character,"fur"
 jnskip_s return ~
 if %vv_fur = 0 mov %vv_fur,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33113,7 +33122,7 @@ return
 mov $cur_character,"rio"
 jnskip_s return ~
 if %vv_rio = 0 mov %vv_rio,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33121,7 +33130,7 @@ return
 mov $cur_character,"wil"
 jnskip_s return ~
 if %vv_wil = 0 mov %vv_wil,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33129,7 +33138,7 @@ return
 mov $cur_character,"cur"
 jnskip_s return ~
 if %vv_cur = 0 mov %vv_cur,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33137,7 +33146,7 @@ return
 mov $cur_character,"fe2"
 jnskip_s return ~
 if %vv_fea = 0 || %vv_fe2 = 0 mov %vv_fea,1 : mov %vv_fe2,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33145,7 +33154,7 @@ return
 mov $cur_character,"bu3"
 jnskip_s return ~
 if %vv_bu3 = 0 mov %vv_bu3,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33153,7 +33162,7 @@ return
 mov $cur_character,"be3"
 jnskip_s return ~
 if %vv_bea = 0 || %vv_be2 = 0 || %vv_be3 = 0 mov %vv_bea,1 : mov %vv_be2,1 : mov %vv_be3,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33161,7 +33170,7 @@ return
 mov $cur_character,"be4"
 jnskip_s return ~
 if %vv_bea = 0 || %vv_be2 = 0 || %vv_be3 = 0 mov %vv_bea,1 : mov %vv_be2,1 : mov %vv_be3,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33169,7 +33178,7 @@ return
 mov $cur_character,"en2"
 jnskip_s return ~
 if %vv_enj = 0 mov %vv_enj,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33177,7 +33186,7 @@ return
 mov $cur_character,"en3"
 jnskip_s return ~
 if %vv_enj = 0 mov %vv_enj,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33186,7 +33195,7 @@ return
 mov $cur_character,"pie"
 jnskip_s return ~
 if %vv_pie = 0 mov %vv_pie,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33194,7 +33203,7 @@ return
 mov $cur_character,"sku"
 jnskip_s return ~
 if %vv_sku = 0 mov %vv_sku,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33202,7 +33211,7 @@ return
 mov $cur_character,"s556"
 jnskip_s return ~
 if %vv_s556 = 0 mov %vv_s556,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33210,7 +33219,7 @@ return
 mov $cur_character,"bbt"
 jnskip_s return ~
 if %vv_bbt = 0 mov %vv_bbt,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 
@@ -33218,7 +33227,7 @@ return
 mov $cur_character,"whm"
 jnskip_s return ~
 if %vv_whm = 0 mov %vv_whm,1
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return
 ;End Custom
@@ -33227,7 +33236,7 @@ return
 mov $cur_character,"non"
 jnskip_s return ~
 if %vv_0 = 0 || %vv_99 = 0 || %vv_98 = 0 || %vv_97 = 0 mov %vv_0,1 : mov %vv_99,1 : mov %vv_98,1 : mov %vv_97,1 : mov %vv_inc,0 ;Original Edited ;Saku voice - %vv_98 , %vv_97(english narrator) - W_CUSTOM
-gosub *get_name
+gosub *get_name 0
 if %cur_wndmode == off d_name ""
 return
 
@@ -33591,6 +33600,21 @@ return
 
 
 	next
+
+return
+
+*empty_slot_cache
+
+for %for_index4=0 to 247
+	;DEBUG
+	;itoa $string_temp1,%0
+	;debug_str $string_temp1
+	for %for_index5=0 to 26
+		mov ?slot_cache[%for_index4][%for_index5],%0 : inc %0
+		mov $?slot_cache[%for_index4][%for_index5],""
+	next
+next
+
 
 return
 
@@ -40722,7 +40746,7 @@ return
 
 *bgm_instrumental_order
 
-	mov %test_var,0
+	mov %temp_var4,0
 	mov %temp_var,0
 	for %for_index1 = 0 to 219-%bgm_not_inst
 		*bgm_remove_special
@@ -40752,9 +40776,10 @@ return
 			if ?bgm_order[0][%for_index1+%temp_var] = 241     inc %temp_var
 			if ?bgm_order[0][%for_index1+%temp_var] = 134     inc %temp_var
 			if ?bgm_order[0][%for_index1+%temp_var] = 94      inc %temp_var
-			inc %test_var
-		if %test_var < 4 : goto *bgm_remove_special
-		mov %test_var,0
+			if ?bgm_order[0][%for_index1+%temp_var] = 1026    inc %temp_var
+			inc %temp_var4
+		if %temp_var4 < 4 : goto *bgm_remove_special
+		mov %temp_var4,0
 
 		mov ?bgm_order[1][%for_index1],?bgm_order[0][%for_index1+%temp_var]
 	next
@@ -40832,7 +40857,7 @@ mov ?bgm_order[0][65],181  	    ;"goddess-gardena"
 mov ?bgm_order[0][66],1023  	;"Golden Fantasia - Dyed with Golden Blood"
 mov ?bgm_order[0][67],1024  	;"Golden Fantasia X - Golden Miracle"
 mov ?bgm_order[0][68],172  	    ;"Golden Nocturne(inst)"
-mov ?bgm_order[0][68],1026  	;"Golden Nocturne Vocal"
+mov ?bgm_order[0][69],1026  	;"Golden Nocturne Vocal"
 mov ?bgm_order[0][70],1022  	;"Golden ShowTime!"
 mov ?bgm_order[0][71],44    	;"Golden Sneer"
 mov ?bgm_order[0][72],24    	;"goldenslaughterer"
@@ -40863,7 +40888,7 @@ mov ?bgm_order[0][96],87    	;"Like the gale"
 mov ?bgm_order[0][97],191  	    ;"lixAxil"
 mov ?bgm_order[0][98],139  	    ;"Look Back"
 mov ?bgm_order[0][99],150  	    ;"Loreley"
-mov ?bgm_order[0][100],137  	    ;"Love Examination"
+mov ?bgm_order[0][100],137  	;"Love Examination"
 mov ?bgm_order[0][101],49    	;"Melody inst.ver"
 mov ?bgm_order[0][102],58    	;"Melody"
 mov ?bgm_order[0][103],75    	;"Melting away"

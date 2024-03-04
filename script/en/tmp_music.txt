@@ -31,8 +31,8 @@ mov %bgm_details,0 : mov $bgm_details,"" : mov $bgm_yt,"" : mov $bgm_spotify,"" 
 
 	lsp 311,move_down,1827,839
 	lsp 312,move_up,1827,210
-	lsp 313,dragbar,1832,255
-	lsp 314,dragbar_cursor,1832,242
+	lsp 313,dragbar_cursor,1832,255
+	lsp 314,dragbar,1832,242
 
 	;BGM Buttons
 	lsph2 315,":a/2,0,3;graphics\menu\bgm\bgmmode_plate_extra.png",0,0,0,0,0
@@ -138,8 +138,8 @@ if %BtnRes != 313 goto *skip_bgm_cursor
 		if %cfg_mouse_click = 0 mov %for_index3,0 : spbtn 313,313 : break ;Else ends the cycle - redeclating the button updates its position
 		getmousepos %cfg_temp_var,%cfg_mouse_y
 		mov %cfg_mouse_y,%cfg_mouse_y-26
-		getspsize 320,%cfg_temp_var,%test_var,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
-		mov %cfg_temp_var,(%cfg_mouse_y-255)*(%test_var-1080-0)/(785-255)+0
+		getspsize 320,%cfg_temp_var,%temp_var3,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
+		mov %cfg_temp_var,(%cfg_mouse_y-255)*(%temp_var3-1080-0)/(785-255)+0
 			aspt scroll_y,320,%cfg_temp_var
 		mov %for_index3,0 ;Infinite Cycle
 	next
@@ -532,7 +532,7 @@ return
 		;Get Song Details
 		gosub *get_bgm_details $Free2
 		aspt alpha,308,0,400 : aspt alpha,324,0,400 : aspt alpha,325,0,400 : aspt alpha,326,0,400
-		 _csp 308 :  _csp 324 :  _csp 325 :  _csp 326
+		_csp 308 :  _csp 324 :  _csp 325 :  _csp 326
 		write_special_text 308,"bgm_description",200-10,200,$bgm_details : aspt alpha,308,0
 		if $bgm_yt != "" lsp 324,mbox_yt_btn,182,330 : aspt alpha,324,0
 		if $bgm_spotify != "" lsp 325,mbox_spotify_btn,182+104,326 : aspt alpha,325,0

@@ -28248,7 +28248,7 @@ return
 	ignore_cmd "click","break_glass3","break_glass4","show_coin_counter_real","show_coin_counter2_real","show_coin_counter3_real","cake","quiz","quiz2","all_presents_discarded","murder_story"
 	ignore_inl_cmd "wait","delay","text_fade_t","gstg","text_speed_t"
 	;Saku logs - ignore custom commands - W_CUSTOM
-	ignore_cmd "spt_mem", "lsl", "bg_d", "textoff2", "texton2"
+	ignore_cmd "spt_mem", "lsl", "bg_d", "textoff2", "texton_bgonly"
 	;End Custom
 return 
 
@@ -29111,7 +29111,7 @@ return
 	ignore_cmd "click","pam","rumble","skip_on","skip_off","waits","wait","wait2","waitvoice","ak","lv","waittimer","saveoff","trophy_open","texec3","seplay","textoff","async_cache_img","async_cache_snd","show_characters"
 	ignore_inl_cmd "wait","delay","text_fade_t","ak","text_speed_t","lv","vv"
 	;Saku - W_CUSTOM
-	ignore_cmd "textoff2","texton2"
+	ignore_cmd "textoff2", "texton_bgonly"
 	;End Custom
 
 	E_A
@@ -29128,7 +29128,9 @@ return
 	clearlog 1,%log_dst_cvs
 	mov %log_is_generated_to_cvs,%log_dst_cvs
 	; And now sskip, last param allows us not to load images until late.
+
 	sskip $log_ch_prev,$log_ch_current,$log_ch_next,%sskip_turbo
+	;destination variable, source, destination label, sskip
 
 	ignore_cmd_clear
 	ignore_inl_cmd_clear
@@ -32475,7 +32477,7 @@ return
 	jskip_s
 		isskip %temp_var4 ;If Skip do not unload textbox
 		;TODO Obscure if visible
-		if %temp_var4 = 3 jumpf ;aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 : jumpf
+		if %temp_var4 = 3 vsp %msgwnd4_bg_slot,0 : jumpf ;aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 : jumpf
 		aspt alpha,%msgwnd4_bg_slot,0,%msgwnd4_fade : vsp %msgwnd4_bg_slot,0
 	~
 return
@@ -32485,7 +32487,16 @@ return
 	if %msgwnd_type != 4 jumpf
 	jskip_s
 		isskip %temp_var4 ;If Skip do not load textbox
-		if %temp_var4 = 3 jumpf
+		if %temp_var4 = 3 vsp %msgwnd4_bg_slot,0 : jumpf 
+		vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade
+	~
+return
+
+*texton_bgonly
+	if %msgwnd_type != 4 jumpf
+	jskip_s
+		isskip %temp_var4 ;If Skip do not load textbox
+		if %temp_var4 = 3 vsp %msgwnd4_bg_slot,0 : jumpf 
 		vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade
 	~
 return
@@ -33866,9 +33877,10 @@ reset
 		if %legacy_op == on fileexist %legacy_op,"legacy\bgm\op.ogg"
 	~
 
+	mov %sskip_turbo,1
 	operate_config u_read,$sskip_turbo,"sskip_turbo"
-		if $sskip_turbo != "true" mov %sskip_turbo,0 : jumpf
-		if $sskip_turbo == "true" mov %sskip_turbo,1 : jumpf
+		if $sskip_turbo == "false" mov %sskip_turbo,0 : jumpf
+		;if $sskip_turbo == "true" mov %sskip_turbo,1 : jumpf
 	~
 
 return

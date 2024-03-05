@@ -20836,7 +20836,6 @@ return
 ; As an additional feature it ensures that you have cursor icons ready.
 ;************************************************************************************
 *csp_rst
-	debug_str "csp_rst"
 	_csp -1
 	_csp2 -1
 	btndef ""
@@ -24169,8 +24168,6 @@ return
 
 	csp_slot %lbg_slot
 	jskip_s gosub *open_cg ~
-	
-	debug_str "lbg " + $lbg_name
 
 	split $lbg_type,":",$paste_method,$lbg_type ;Must be outside search_bg function
 	search_bg $lbg_type,$lbg_name
@@ -24214,13 +24211,11 @@ return
 	mid $lbg_path,$lbg_path,3,%lbg_path-3
 
 	if $lbg_name == "" jumpf
-		
 		async_cache_img 1,$lbg_path
 		;debug_str "Caching lbg by name"
 	~
 
 	if $lbg_left == "" jumpf ;Is this really necessary?
-
 		async_cache_img 1,$lbg_path
 		;debug_str "Caching lbg by hotspot"
 	~
@@ -28639,7 +28634,7 @@ return
 *log_current_chap
 
 ;SAKU
-if &CHIRU_MODE != 2 goto *skip_log_current_chap_saku
+if %CHIRU_MODE != 2 goto *skip_log_current_chap_saku
 if %extra_scenario_Number != 211 jumpf
 past_log $log_ch_current,320,"*umiextra2_11"
 if $log_ch_current != "" gosub *log_near_chap : return
@@ -29157,9 +29152,7 @@ return
 	if %me_enable_6 = 1 meplay 6,%me_num_6,%me_current_vol_6
 	if %me_enable_7 = 1 meplay 7,%me_num_7,%me_current_vol_7
 
-	mov %temp_var2,1
-
-	if %cur_wndmode == off gosub *update_msgwnd
+	if %cur_wndmode == off mov %temp_var2,1 : gosub *update_msgwnd
 	if %cur_wndmode == on set_window_simple %log_sw_x,%log_sw_y
 	; So that we save after jumping
 	mov %TextCC12Flag,1
@@ -33581,7 +33574,7 @@ return
 		;Ends BGs reload
 
 		;DEBUG
-		debug_str $?slot_cache[%for_index1][0]
+		debug_str "Sprite Cache: " + $?slot_cache[%for_index1][0]
 
 		;Sprites reload
 		mov %reloading_status,1
@@ -33605,16 +33598,14 @@ return
 
 *empty_slot_cache
 
-for %for_index4=0 to 247
-	;DEBUG
-	;itoa $string_temp1,%0
-	;debug_str $string_temp1
-	for %for_index5=0 to 26
-		mov ?slot_cache[%for_index4][%for_index5],%0 : inc %0
-		mov $?slot_cache[%for_index4][%for_index5],""
+	for %for_index4=0 to 247
+		;DEBUG
+		;itoa $string_temp1,%0
+		;debug_str $string_temp1
+		for %for_index5=0 to 26
+			mov $?slot_cache[%for_index4][%for_index5],""
+		next
 	next
-next
-
 
 return
 
@@ -33872,9 +33863,10 @@ reset
 		if %legacy_op == on fileexist %legacy_op,"legacy\bgm\op.ogg"
 	~
 
-	mov %sskip_turbo,1
 	operate_config u_read,$sskip_turbo,"sskip_turbo"
-	if $sskip_turbo == "false" mov %sskip_turbo,0
+		if $sskip_turbo != "true" mov %sskip_turbo,0 : jumpf
+		if $sskip_turbo == "true" mov %sskip_turbo,1 : jumpf
+	~
 
 return
 

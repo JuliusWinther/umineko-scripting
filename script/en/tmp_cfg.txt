@@ -413,21 +413,20 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 			if %cfg_mouse_click = 0 mov %for_index3,0 : break ;Else ends the cycle
 			getmousepos %cfg_mouse_x,%cfg_temp_var
 			mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-			notif %automodespeed = 0 if %cfg_mouse_x < 1049+36-23 aspt xpos,203,1049+36-23 : mov %textspeed2,0 : jumpf
-			notif %automodespeed = 10 if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,203,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
-				notif %automodespeed = 0  if %cfg_temp_var <= 0+28 aspt xpos,203,1049+36-23 : mov %textspeed2,0 : jumpf
-				notif %automodespeed = 1  if %cfg_temp_var > 56*0+28 && %cfg_temp_var <= 56*1+28 aspt xpos,203,1049+36+(56*1)-22 : mov %textspeed2,1 : jumpf
-				notif %automodespeed = 2  if %cfg_temp_var > 56*1+28 && %cfg_temp_var <= 56*2+28 aspt xpos,203,1049+36+(56*2)-22 : mov %textspeed2,2 : jumpf
-				notif %automodespeed = 3  if %cfg_temp_var > 56*2+28 && %cfg_temp_var <= 56*3+28 aspt xpos,203,1049+36+(56*3)-22 : mov %textspeed2,3 : jumpf
-				notif %automodespeed = 4  if %cfg_temp_var > 56*3+28 && %cfg_temp_var <= 56*4+28 aspt xpos,203,1049+36+(56*4)-22 : mov %textspeed2,4 : jumpf
-				notif %automodespeed = 5  if %cfg_temp_var > 56*4+28 && %cfg_temp_var <= 56*5+28 aspt xpos,203,1049+36+(56*5)-22 : mov %textspeed2,5 : jumpf
-				notif %automodespeed = 6  if %cfg_temp_var > 56*5+28 && %cfg_temp_var <= 56*6+28 aspt xpos,203,1049+36+(56*6)-22 : mov %textspeed2,6 : jumpf
-				notif %automodespeed = 7  if %cfg_temp_var > 56*6+28 && %cfg_temp_var <= 56*7+28 aspt xpos,203,1049+36+(56*7)-22 : mov %textspeed2,7 : jumpf
-				notif %automodespeed = 8  if %cfg_temp_var > 56*7+28 && %cfg_temp_var <= 56*8+28 aspt xpos,203,1049+36+(56*8)-22 : mov %textspeed2,8 : jumpf
-				notif %automodespeed = 9  if %cfg_temp_var > 56*8+28 && %cfg_temp_var <= 56*9+28 aspt xpos,203,1049+36+(56*9)-22 : mov %textspeed2,9 : jumpf
-				notif %automodespeed = 10 if %cfg_temp_var > 56*9+28 && %cfg_temp_var <= 56*10 aspt xpos,203,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
+			notif %textspeed2 = 0 if %cfg_mouse_x < 1049+36-23 aspt xpos,203,1049+36-23 : mov %textspeed2,0 : jumpf
+			notif %textspeed2 = 10 if %cfg_mouse_x > 1049+36+(56*10)-18 aspt xpos,203,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
+				notif %textspeed2 = 0  if %cfg_temp_var <= 0+28 aspt xpos,203,1049+36-23 : mov %textspeed2,0 : jumpf
+				notif %textspeed2 = 1  if %cfg_temp_var > 56*0+28 && %cfg_temp_var <= 56*1+28 aspt xpos,203,1049+36+(56*1)-22 : mov %textspeed2,1 : jumpf
+				notif %textspeed2 = 2  if %cfg_temp_var > 56*1+28 && %cfg_temp_var <= 56*2+28 aspt xpos,203,1049+36+(56*2)-22 : mov %textspeed2,2 : jumpf
+				notif %textspeed2 = 3  if %cfg_temp_var > 56*2+28 && %cfg_temp_var <= 56*3+28 aspt xpos,203,1049+36+(56*3)-22 : mov %textspeed2,3 : jumpf
+				notif %textspeed2 = 4  if %cfg_temp_var > 56*3+28 && %cfg_temp_var <= 56*4+28 aspt xpos,203,1049+36+(56*4)-22 : mov %textspeed2,4 : jumpf
+				notif %textspeed2 = 5  if %cfg_temp_var > 56*4+28 && %cfg_temp_var <= 56*5+28 aspt xpos,203,1049+36+(56*5)-22 : mov %textspeed2,5 : jumpf
+				notif %textspeed2 = 6  if %cfg_temp_var > 56*5+28 && %cfg_temp_var <= 56*6+28 aspt xpos,203,1049+36+(56*6)-22 : mov %textspeed2,6 : jumpf
+				notif %textspeed2 = 7  if %cfg_temp_var > 56*6+28 && %cfg_temp_var <= 56*7+28 aspt xpos,203,1049+36+(56*7)-22 : mov %textspeed2,7 : jumpf
+				notif %textspeed2 = 8  if %cfg_temp_var > 56*7+28 && %cfg_temp_var <= 56*8+28 aspt xpos,203,1049+36+(56*8)-22 : mov %textspeed2,8 : jumpf
+				notif %textspeed2 = 9  if %cfg_temp_var > 56*8+28 && %cfg_temp_var <= 56*9+28 aspt xpos,203,1049+36+(56*9)-22 : mov %textspeed2,9 : jumpf
+				notif %textspeed2 = 10 if %cfg_temp_var > 56*9+28 && %cfg_temp_var <= 56*10 aspt xpos,203,1049+36+(56*10)-18 : mov %textspeed2,10 : jumpf
 			~
-			itoa $temp_var,%textspeed2
 			mov %for_index3,0 ;Infinite Cycle
 		next
 		gosub *settings_textspeed
@@ -437,19 +436,19 @@ if %cfg_current_page != 2 goto *skip_config_page_2 ;Game
 		if %cfg_mouse_click = 1 jumpf
 		getmousepos %cfg_mouse_x,%cfg_temp_var
 		mov %cfg_temp_var,%cfg_mouse_x-(1049+36)
-		notif %automodespeed = 0 if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %textspeed2,0 : jumpf
-		notif %automodespeed = 10 if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %textspeed2,10 : jumpf
-			notif %automodespeed = 0  if %cfg_temp_var <= 0+28 mov %textspeed2,0 : jumpf
-			notif %automodespeed = 1  if %cfg_temp_var > 56*0+28 && %cfg_temp_var <= 56*1+28 mov %textspeed2,1 : jumpf
-			notif %automodespeed = 2  if %cfg_temp_var > 56*1+28 && %cfg_temp_var <= 56*2+28 mov %textspeed2,2 : jumpf
-			notif %automodespeed = 3  if %cfg_temp_var > 56*2+28 && %cfg_temp_var <= 56*3+28 mov %textspeed2,3 : jumpf
-			notif %automodespeed = 4  if %cfg_temp_var > 56*3+28 && %cfg_temp_var <= 56*4+28 mov %textspeed2,4 : jumpf
-			notif %automodespeed = 5  if %cfg_temp_var > 56*4+28 && %cfg_temp_var <= 56*5+28 mov %textspeed2,5 : jumpf
-			notif %automodespeed = 6  if %cfg_temp_var > 56*5+28 && %cfg_temp_var <= 56*6+28 mov %textspeed2,6 : jumpf
-			notif %automodespeed = 7  if %cfg_temp_var > 56*6+28 && %cfg_temp_var <= 56*7+28 mov %textspeed2,7 : jumpf
-			notif %automodespeed = 8  if %cfg_temp_var > 56*7+28 && %cfg_temp_var <= 56*8+28 mov %textspeed2,8 : jumpf
-			notif %automodespeed = 9  if %cfg_temp_var > 56*8+28 && %cfg_temp_var <= 56*9+28 mov %textspeed2,9 : jumpf
-			notif %automodespeed = 10 if %cfg_temp_var > 56*9+28 && %cfg_temp_var <= 56*10 mov %textspeed2,10 : jumpf
+		notif %textspeed2 = 0 if %cfg_mouse_x < 1049+36-23 && %cfg_mouse_x > 1030+36 mov %textspeed2,0 : jumpf
+		notif %textspeed2 = 10 if %cfg_mouse_x > 1049+36+(56*10)-18 && %cfg_mouse_x < 1030+36+600 mov %textspeed2,10 : jumpf
+			notif %textspeed2 = 0  if %cfg_temp_var <= 0+28 mov %textspeed2,0 : jumpf
+			notif %textspeed2 = 1  if %cfg_temp_var > 56*0+28 && %cfg_temp_var <= 56*1+28 mov %textspeed2,1 : jumpf
+			notif %textspeed2 = 2  if %cfg_temp_var > 56*1+28 && %cfg_temp_var <= 56*2+28 mov %textspeed2,2 : jumpf
+			notif %textspeed2 = 3  if %cfg_temp_var > 56*2+28 && %cfg_temp_var <= 56*3+28 mov %textspeed2,3 : jumpf
+			notif %textspeed2 = 4  if %cfg_temp_var > 56*3+28 && %cfg_temp_var <= 56*4+28 mov %textspeed2,4 : jumpf
+			notif %textspeed2 = 5  if %cfg_temp_var > 56*4+28 && %cfg_temp_var <= 56*5+28 mov %textspeed2,5 : jumpf
+			notif %textspeed2 = 6  if %cfg_temp_var > 56*5+28 && %cfg_temp_var <= 56*6+28 mov %textspeed2,6 : jumpf
+			notif %textspeed2 = 7  if %cfg_temp_var > 56*6+28 && %cfg_temp_var <= 56*7+28 mov %textspeed2,7 : jumpf
+			notif %textspeed2 = 8  if %cfg_temp_var > 56*7+28 && %cfg_temp_var <= 56*8+28 mov %textspeed2,8 : jumpf
+			notif %textspeed2 = 9  if %cfg_temp_var > 56*8+28 && %cfg_temp_var <= 56*9+28 mov %textspeed2,9 : jumpf
+			notif %textspeed2 = 10 if %cfg_temp_var > 56*9+28 && %cfg_temp_var <= 56*10 mov %textspeed2,10 : jumpf
 		~
 		gosub *settings_textspeed
 	*skip_text_speed
@@ -993,7 +992,7 @@ return
 
 *settings_textspeed
 	lsp 204,cfg_slider,1030+36,187+117 ;width 600 - usable 564 - 1px = 0.18%
-;562
+
 		if %textspeed2 = 0 mov %cfg_txt_speed_cursor_x,1049+36+(56*0)-23 : jumpf
 		if %textspeed2 = 1 mov %cfg_txt_speed_cursor_x,1049+36+(56*1)-22 : jumpf
 		if %textspeed2 = 2 mov %cfg_txt_speed_cursor_x,1049+36+(56*2)-22 : jumpf

@@ -32472,8 +32472,10 @@ return
 *textoff2 ;W_TEMP
 	textoff
 	if %msgwnd_type != 4 jumpf
-		isskip %temp_var ;If Skip do not unload textbox
-		if %temp_var = 3 aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 : jumpf
+	jskip_s
+		isskip %temp_var4 ;If Skip do not unload textbox
+		;TODO Obscure if visible
+		if %temp_var4 = 3 jumpf ;aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 : jumpf
 		aspt alpha,%msgwnd4_bg_slot,0,%msgwnd4_fade : vsp %msgwnd4_bg_slot,0
 	~
 return
@@ -32481,8 +32483,9 @@ return
 *texton2 ;W_TEMP
 	texton
 	if %msgwnd_type != 4 jumpf
-		isskip %temp_var ;If Skip do not load textbox
-		if %temp_var = 3 jumpf
+	jskip_s
+		isskip %temp_var4 ;If Skip do not load textbox
+		if %temp_var4 = 3 jumpf
 		vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade
 	~
 return
@@ -32682,7 +32685,7 @@ borderstyle 5,#000000,1 : shadedistance 0,0,#000000,1
 if %msgwnd_type == 3 shadedistance 2,2 : shadedistance 2,2,#000000,1
 if %msgwnd_type == 4 shadedistance 2,2 : shadedistance 2,2,#000000,1
 
-if %temp_var2 != 1 mov %temp_var2,0 : d_name_refresh ;Original Edited ;Saku log - honestly don't what this is but it makes umi crash so delete - ;W_CUSTOM
+;if %temp_var2 != 1 mov %temp_var2,0 : d_name_refresh ;Original Edited ;Saku log - honestly don't what this is but it makes umi crash so delete - ;W_CUSTOM
 if %temp_var2 == 1 mov %temp_var2,0
 
 return

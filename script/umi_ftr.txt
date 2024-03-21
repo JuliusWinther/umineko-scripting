@@ -29128,7 +29128,6 @@ return
 	clearlog 1,%log_dst_cvs
 	mov %log_is_generated_to_cvs,%log_dst_cvs
 	; And now sskip, last param allows us not to load images until late.
-
 	sskip $log_ch_prev,$log_ch_current,$log_ch_next,%sskip_turbo
 	;destination variable, source, destination label, sskip
 
@@ -32287,6 +32286,7 @@ return
 return
 
 *script_state
+debug_str "script_state"
 jnskip
 	; Make it fade-out one day
 	dwavestop 0
@@ -32296,6 +32296,8 @@ jnskip
 	dwavestop 44
 	dwavestop 45
 	dwavestop 46
+
+	if %msgwnd_type == 4 _csp %msgwnd4_bg_slot ;W_TEMP
 
 	vsp TextCC4SpNum,0 : mov %autom_icon,off
 	if %skip_icon = off vsp TextCC3SpNum,1 : mov %skip_icon,on
@@ -32308,10 +32310,18 @@ jnauto
 	return
 ~
 
+if %msgwnd_type == 4 lsph %msgwnd4_bg_slot,msgwnd4_bg,0,0 : aspt alpha,%msgwnd4_bg_slot,0 ;W_TEMP
+
 if %autom_icon == 1 && %autom_no_cur = 1 && %TextCC12Flag = 0 vsp TextCC1SpNum,1 : print 1
 if %autom_icon == 1 && %autom_no_cur = 1 && %TextCC12Flag = 1 vsp TextCC2SpNum,1 : print 1
 if %skip_icon = on vsp TextCC3SpNum,0 : mov %skip_icon,off
 vsp TextCC4SpNum,0 : mov %autom_icon,off
+
+return
+
+*ctrl_state
+
+	debug_str "ctrl pressed"
 
 return
 
@@ -32473,34 +32483,33 @@ return
  
 *textoff2 ;W_TEMP
 	textoff
-	if %msgwnd_type != 4 jumpf
-	jskip_s
-		isskip %temp_var4 ;If Skip do not unload textbox
+	jskip
+		if %msgwnd_type != 4 jumpf
+		;isskip %temp_var4 ;If Skip do not unload textbox
 		;TODO Obscure if visible
-		if %temp_var4 = 3 vsp %msgwnd4_bg_slot,0 : jumpf ;aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 : jumpf
-		aspt alpha,%msgwnd4_bg_slot,0,%msgwnd4_fade : vsp %msgwnd4_bg_slot,0
+		;if %temp_var4 = 3 jumpf ;aspt alpha,%msgwnd4_bg_slot,0,0 : vsp %msgwnd4_bg_slot,0 : jumpf
+			aspt alpha,%msgwnd4_bg_slot,0,%msgwnd4_fade : vsp %msgwnd4_bg_slot,0 : return
 	~
 return
 
 *texton2 ;W_TEMP
 	texton
-	if %msgwnd_type != 4 jumpf
-	jskip_s
-		isskip %temp_var4 ;If Skip do not load textbox
-		if %temp_var4 = 3 vsp %msgwnd4_bg_slot,0 : jumpf 
-		vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade
+	jskip
+		if %msgwnd_type != 4 jumpf
+		;isskip %temp_var4 ;If Skip do not load textbox
+		;if %temp_var4 = 3 jumpf 
+			vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade : return
 	~
 return
 
 *texton_bgonly
-	if %msgwnd_type != 4 jumpf
-	jskip_s
-		isskip %temp_var4 ;If Skip do not load textbox
-		if %temp_var4 = 3 vsp %msgwnd4_bg_slot,0 : jumpf 
-		vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade
+	jskip
+		if %msgwnd_type != 4 jumpf
+			;isskip %temp_var4 ;If Skip do not load textbox
+			;if %temp_var4 = 3 jumpf 
+			vsp %msgwnd4_bg_slot,1 : aspt alpha,%msgwnd4_bg_slot,255,%msgwnd4_fade : return
 	~
 return
-
 
 *set_name_window_base
 	textoff2 ;testfix for https://forum.umineko-project.org/viewtopic.php?f=4&t=6&start=50#p154

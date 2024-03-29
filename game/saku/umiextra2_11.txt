@@ -279,7 +279,7 @@ textoff2
 
 csp_slot s0_3
 csp_slot s0_10
-vol_bgm -1 500
+vol_bgm -1,500
 vol_mix_fade 500
 flush 2
 
@@ -615,7 +615,7 @@ textoff2
 csp_slot s0_3
 csp_slot s0_9
 flush 22
-vol_bgm -1 700
+vol_bgm -1,700
 wait 700
 
 msgwnd_sha
@@ -790,7 +790,7 @@ msgwnd_sha
 d [lv 0*"15"*"sha_00220"]`{qt}R-right.`[@][lv 0*"15"*"sha_00230"]`...Um.`[@][lv 0*"15"*"sha_00240"]`...The tower was surrounded by a dense jungle.{qt}`[\]
 textoff2
 
-vol_bgm -1 500
+vol_bgm -1,500
 vol_mix_fade 500
 
 seplay 11,22,100
@@ -947,7 +947,14 @@ flush 23
 msgwnd_but
 *e211_108
 d [lv 0*"10"*"bat_04330"]`{qt}Hieeeeeeeeeeeeeeeeeeee!!!{qt}`[\]
+textoff2
 
+<<<<<<< Updated upstream
+=======
+anim2 s0_3,"no0003",1
+color_mod s0_3,#FF0000
+flush 1
+>>>>>>> Stashed changes
 seplay 11,65,100
 anim2 s0_3,"no0003",1
 flush 1
@@ -963,22 +970,35 @@ waitvideo
 csp_slot s0_3
 flush 22
 
+csp_slot s0_4
 lbg "c:backgrounds",s0_3,"forest_p2a"
 flush 22
 
 lss s0_10,"goa","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
 flush 26
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
 seplay 11,60,100
 
 lss s0_8,"goa","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
 flush 26
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
 seplay 11,61,100
 
 lss s0_9,"goa","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
 flush 26
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
 seplay 11,62,100
 
 msgwnd_non
@@ -992,19 +1012,20 @@ d `I say goats, but they weren't running on four legs.`[\]
 d `They were each wearing something like a black tailcoat and running on two legs like a person.`[\]
 
 seplay 11,66,100
-spt_mem "a2","xpos",s0_8,-950,400,0
-spt_mem "a2","xpos",s0_10,950,400,0
-spt_mem "a2","ypos",s0_8,550,400,0
-spt_mem "a2","ypos",s0_9,550,400,0
-spt_mem "a2","ypos",s0_10,550,400,0
-spt_mem "a2","scalex",s0_8,170,400,0
-spt_mem "a2","scaley",s0_8,170,400,0
-spt_mem "a2","scalex",s0_3,170,400,0
-spt_mem "a2","scaley",s0_3,170,400,0
-spt_mem "a2","scalex",s0_9,170,400,0
-spt_mem "a2","scaley",s0_9,170,400,0
-spt_mem "a2","scalex",s0_10,170,400,0
-spt_mem "a2","scaley",s0_10,170,400,0
+spt_mem "a2","xpos",s0_8,-950,300,0
+spt_mem "a2","xpos",s0_10,950,300,0
+spt_mem "a2","ypos",s0_8,750,300,0
+spt_mem "a2","ypos",s0_9,750,300,0
+spt_mem "a2","ypos",s0_10,750,300,0
+spt_mem "a2","ypos",s0_3,750,300,0
+spt_mem "a2","scalex",s0_8,170,300,0
+spt_mem "a2","scaley",s0_8,170,300,0
+spt_mem "a2","scalex",s0_3,170,300,0
+spt_mem "a2","scaley",s0_3,170,300,0
+spt_mem "a2","scalex",s0_9,170,300,0
+spt_mem "a2","scaley",s0_9,170,300,0
+spt_mem "a2","scalex",s0_10,170,300,0
+spt_mem "a2","scaley",s0_10,170,300,0
 sptwait2 scalex,s0_8
 
 *e211_112
@@ -1027,8 +1048,7 @@ flush 24
 
 msgwnd_sha
 *e211_114
-d [lv 0*"15"*"sha_00270"]`{qt}R-run!`[@][lv 0*"15"*"sha_00280"]` Battler-sama, Milady!!!{qt}`[\]
-
+d [lv 0*"15"*"sha_00270"]`{qt}L-Let's run!`[@][lv 0*"15"*"sha_00280"]` Battler-sama, Milady!!!{qt}`[\]
 
 lss s0_8,"but","b22_odoroki2"
 spt_mem "a2","xpos",s0_8,-549
@@ -1038,64 +1058,49 @@ msgwnd_but
 *e211_115
 d [lv 0*"10"*"bat_04340"]`{qt}Let's run away before that terrible fate can meet us!`[@][lv 0*"10"*"bat_04350"]` Go, Jessica, hurry up!{qt}`[\]
 
-
 msgwnd_jes
 *e211_116
 d2 [lv 0*"04"*"jes_02710"]`{qt}O-okay...`[@][#][*][lv 0*"04"*"jes_02720"]`... wah...!{qt}`[\]
 wait_on_d 0
-
+csp_slot s0_3
+csp_slot s0_8
+csp_slot s0_10
+flush 1
 d_continue
 wait_on_d -1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-flush 1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"well_1b"
-
 flush 25
 
 seplay 11,13,100
+meplay 1,28,60
 
-meplay 11,28,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 
 msgwnd_non
 *e211_117
 d `My foot snagged on the root of a suspicious-looking tropical plant.`[\]
 
-
 *e211_118
 d `I didn't even have time to scream before I toppled to the ground.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"forest_p1b"
-
 lss s0_8,"but","b11_aseru4"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"sha","a11_odoroki2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 flush 22
 
 lss s0_8,"but","b11_aseru3"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"sha","a11_odoroki1"
 spt_mem "a2","xpos",s0_10,550
@@ -1103,32 +1108,23 @@ flush 80
 
 *e211_119
 d [lv 0*"98"*"merged_saku48"]`{qt}J-jessica, you idiiiiiiiot!{qt}{n}{qt}Miladyyyyy!!!{qt}`[\]
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 24
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"forest_p2a"
 
 lss s0_10,"goa","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_8,"goa","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_9,"goa","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 flush 24
 
@@ -1137,10 +1133,8 @@ seplay 11,66,100
 *e211_120
 d `The huge herd of goats swarmed toward me, and were on the verge of swallowing me up.`[\]
 
-
 *e211_121
 d `Even if there weren't a whole herd of them, a single one of those huge bodies would probably be enough to crush me as flat as a pancake.`[\]
-
 
 *e211_122
 d `...I've never heard of a scriptwriter being killed by their own script before.`[\]
@@ -1148,92 +1142,65 @@ d `...I've never heard of a scriptwriter being killed by their own script before
 
 seplay 11,34,100
 
-csp_slot s0_3
+lbg "c:colour",s0_3,"white"
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 1
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:efe",s0_3,"bite"
-
 flush 25
 
 *e211_123
 d `Gyaaaaaaa!!!`[@]` ...Eh?`[\]
+textoff2
 
-
-vol_bgm -1 500
-
+vol_bgm -1,500
 vol_mix_fade 500
 
 seplay 11,56,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:efe",s0_3,"bite"
+color_mod2 s0_3,#ffffff
 flush 22
 
 *e211_124
 d `Suddenly, a miracle occured.`[\]
 
-
-seplay 11,55,100
+spt_mem "a2","breakup",s0_3,0
+spt_mem "a2","alpha",s0_3,255
+spt_mem "a2","breakupdir",s0_3,3
+flush 1
+seplay 11,55,90
+spt_mem "a2","breakup",s0_3,1000,2000
+sptwait2 breakup,s0_3
 
 *e211_125
 d `For some reason, the goats all simultaneously burst open... and transformed into an infinite number of soap bubbles.`[\]
+textoff2
 
-
-meplay 11,16,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+meplay 1,16,80
 
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
-
 flush 3
 
 *e211_126
 d `I was left standing in a fantastical storm of soap bubbles.`[\]
 
-
 *e211_127
 d `...With a *pop, pop, pop*, I was soon covered in a soapy film.`[\]
 
-
 *e211_128
 d `What... the hell...?`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"forest_p2a"
-
 flush 22
 
 lss s0_10,"sha","a11_komaru1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 24
 
 lss s0_10,"sha","a11_odoroki2"
@@ -1243,12 +1210,10 @@ flush 80
 msgwnd_sha
 *e211_129
 d [lv 0*"15"*"sha_00300"]`{qt}Milady!`[@][lv 0*"15"*"sha_00310"]` Are you okay...?{qt}`[\]
-
+textoff2
 
 lss s0_9,"jes","a11_komaru1starkohen"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 26
 
 lss s0_9,"jes","a11_atya3"
@@ -1258,11 +1223,7 @@ flush 80
 msgwnd_jes
 *e211_130
 d [lv 0*"04"*"jes_02730"]`{qt}...But the script had nothing like this in it...{qt}`[\]
-
-
-vol_bgm -1 500
-
-vol_mix_fade 500
+vol_mix_fade 300
 
 lss s0_10,"sha","a11_warai2"
 spt_mem "a2","xpos",s0_10,550
@@ -1272,44 +1233,31 @@ msgwnd_sha
 *e211_131
 d2 [lv 0*"15"*"sha_00320"]`{qt}*giggle*.`[@][#][*][lv 0*"15"*"sha_00330"]` You see, I took the liberty of making some amendments.{qt}`[\]
 wait_on_d 0
-
+bgmplay 110,70,0
 d_continue
 wait_on_d -1
-
-bgmplay 110,70,0
 
 msgwnd_non
 *e211_132
 d `In Shannon's hand, there was a red pen and the script that I dropped when I fell down.`[\]
 
-
 *e211_133
 d2 `Basically,`[@]` in a moment of quick-wittedness, she had amended the script so that`[#][*]` {qt}the goats turned into soap bubbles and disappeared{qt}.`[\]
 wait_on_d 0
-
+seplay 11,4,100
 d_continue
 wait_on_d -1
-
-seplay 11,4,100
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
 flush 23
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"forest_p1b"
-
 lss s0_9,"but","b11_warai2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 23
 
 lss s0_9,"but","b11_warai1"
@@ -1320,7 +1268,6 @@ msgwnd_but
 *e211_134
 d [lv 0*"10"*"bat_04370"]`{qt}Not bad, Shannon!{qt}`[\]
 
-
 lss s0_8,"sha","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -1328,34 +1275,23 @@ flush 80
 msgwnd_sha
 *e211_135
 d [lv 0*"15"*"sha_00340"]`{qt}I'm honored that I could be of service...{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 23
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"forest_p2a"
-
 flush 23
 
 lss s0_9,"jes","a11_odoroki1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 23
 
 msgwnd_jes
 *e211_136
 d [lv 0*"04"*"jes_02740"]`{qt}But... man, what the hell...`[@][lv 0*"04"*"jes_02750"]` We were supposed to be in the guesthouse, weren't we?`[@][lv 0*"04"*"jes_02760"]` But this is totally some kind of jungle, right?`[@][lv 0*"04"*"jes_02770"]` It's a tropical forest, it's a fantasy, right?!`[@][lv 0*"04"*"jes_02780"]` We've been sucked into the world of the script!{qt}`[\]
-
 
 lss s0_10,"sha","a11_odoroki1"
 spt_mem "a2","xpos",s0_10,550
@@ -1365,7 +1301,6 @@ msgwnd_sha
 *e211_137
 d [lv 0*"15"*"sha_00350"]`{qt}...Perhaps this is the magic of {f:5:Beatrice}-sama...{qt}`[\]
 
-
 lss s0_9,"jes","a11_atya2"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -1373,7 +1308,6 @@ flush 80
 msgwnd_jes
 *e211_138
 d [lv 0*"04"*"jes_02790"]`{qt}That dream... maybe it wasn't a dream?`[@][lv 0*"04"*"jes_02800"]`...The one about a suspicious pink witch who cast a weird spell on my script...{qt}`[\]
-
 
 lss s0_8,"but","b11_niramu3"
 spt_mem "a2","xpos",s0_8,-549
@@ -1383,7 +1317,6 @@ msgwnd_but
 *e211_139
 d [lv 0*"10"*"bat_04380"]`{qt}Jessica.`[@][lv 0*"10"*"bat_04390"]` Just for future reference. What's going to happen next in this story?{qt}`[\]
 
-
 lss s0_9,"jes","a11_atya3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -1391,145 +1324,107 @@ flush 80
 msgwnd_jes
 *e211_140
 d [lv 0*"04"*"jes_02810"]`{qt}Um, let's see... It's an adventure story full of twists and turns... and there's lots of, uh... I mixed in some apples and honey and let it simmer...{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"moon_1a"
-
 flush 26
 
 seplay 11,12,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 
 *e211_141
 d [lv 0*"04"*"jes_02820"]`{qt}Listen, I wrote a whole lot without sleeping for three days, okay!`[@][lv 0*"04"*"jes_02830"]` My head's all fuzzy, but I still made it by the deadline!`[@][lv 0*"04"*"jes_02840"]` That's why, um, um!!!{qt}`[\]
-
 
 msgwnd_sha
 *e211_142
 d [lv 0*"15"*"sha_00360"]`{qt}... In other words, you don't remember much of what happens in the story either, Milady...{qt}`[\]
 
-
 msgwnd_jes
 *e211_143
 d [lv 0*"04"*"jes_02850"]`{qt}S-sorry...{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 msgwnd_non
 *e211_144
 d `If we turned the pages of the script, its story would progress.`[\]
 
-
 *e211_145
 d `Anyway,...`[@]` we discussed various ways of escaping from this jungle... no, from this story... and tried them out.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
-
 flush 22
+seplay 13,1006,100
 
 *e211_146
 d `First, we tried physically destroying the script.`[\]
 
-
 *e211_147
 d `... It seemed that it was protected by magic or something, and no matter how much we stomped on it or kicked it, we couldn't even put a crease in it.`[\]
-
+textoff2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
-
 flush 22
 
 *e211_148
 d `Next, we tried writing {qt}The End{qt} at the bottom of the current page.`[\]
 
-
 *e211_149
-d2 `At that point, the letters disappeared by themselves, and a different message in red ink rose into view:`[@][#][*]`{qt}Unless it is performed to completion, the story will certainly not end.{qt}`[\]
+d2 `At that point, the letters disappeared by themselves, and a different message in red ink rose into view:`[@][#][*]`{p:1:Unless it is performed to completion, the story will certainly not end.}`[\]
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
-
-seplay 11,59,100
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 *e211_150
 d `We tried experimenting in a variety of ways, ...but it was all useless.`[\]
 
-
 *e211_151
 d `Escaping this place by ignoring the rest of story was impossible.`[\]
 
-
-vol_bgm -1 500
-
-vol_mix_fade 500
+vol_bgm -1,1
 
 msgwnd_lam
 *e211_152
 d [lv 0*"29"*"lam_01360"]`{qt}Isn't that obvious?`[@][lv 0*"29"*"lam_01370"]` It's a script of certainty with my magic of certainty cast on it, right?`[@][lv 0*"29"*"lam_01380"]` So it certainly can't end in the middle!{qt}`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"forest_p2a"
-
 flush 22
-
 seplay 11,57,100
-
+lbg "c:colour",s0_30,"white"
 flush 1
 
+csp_slot s0_30
 lss s0_9,"lam","a11_akuwarai1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 bgmplay 176,70,0
 
 lss s0_8,"jes","a11_odoroki1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 23
 
 msgwnd_jes
 *e211_153
 d [lv 0*"04"*"jes_02860"]`{qt}Ah, ...Ahhhhhh!!!`[@][lv 0*"04"*"jes_02870"]` You're that witch who showed up in my dream!!!{qt}`[\]
-
 
 lss s0_9,"lam","a11_akuwarai4"
 spt_mem "a2","xpos",s0_9,0
@@ -1539,19 +1434,21 @@ msgwnd_lam
 *e211_154
 d2 [lv 0*"29"*"lam_01390"]`{qt}Exactly~ So, how are you liking my magic?`[@][#][*][lv 0*"29"*"lam_01400"]` Ow! Battler, did you just hit me?!`[@][lv 0*"29"*"lam_01410"]` You hit me, the Witch of Certainty, {f:5:Lambdadelta}-chan-sama?!{qt}`[\]
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
 lss s0_10,"but","b11_nayamu3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
-
 seplay 11,12,100
-
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
 lss s0_9,"lam","a11_odoroki1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
+gptwait quakexamp
+d_continue
+wait_on_d -1
+textoff2
 
 lss s0_10,"but","b11_nayamu2_chiru"
 spt_mem "a2","xpos",s0_10,550
@@ -1561,7 +1458,6 @@ msgwnd_but
 *e211_155
 d [lv 0*"10"*"bat_04400"]`{qt}If this is all your fault, that makes things simple!`[@][lv 0*"10"*"bat_04410"]` Hurry up and end this crazy world!{qt}`[\]
 
-
 lss s0_9,"lam","a11_futeki3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -1569,11 +1465,16 @@ flush 80
 msgwnd_lam
 *e211_156
 d [lv 0*"29"*"lam_01420"]`{qt}I can't do that.`[@][lv 0*"29"*"lam_01430"]` At this point I'm just an observer.`[@][lv 0*"29"*"lam_01440"]` The one spinning this story is Jessica.`[@][lv 0*"29"*"lam_01450"]` So even I can't make the story end.{qt}`[\]
+textoff2
 
-
-seplay 11,37,100
-
-seplay 11,52,100
+spt_mem "a2","breakup",s0_9,0
+spt_mem "a2","alpha",s0_9,255
+spt_mem "a2","breakupdir",s0_9,3
+flush 1
+seplay 11,52,90
+seplay 12,37,100
+spt_mem "a2","breakup",s0_9,1000,2000
+sptwait2 breakup,s0_9
 
 lss s0_8,"jes","a11_ikari1"
 spt_mem "a2","xpos",s0_8,-549
@@ -1582,37 +1483,33 @@ flush 80
 msgwnd_jes
 *e211_157
 d [lv 0*"04"*"jes_02880"]`{qt}That's ridiculously irresponsible!{qt}`[\]
+textoff2
 
-
+csp_slot s0_10
+flush 80
 lss s0_9,"but","b22_odoroki2"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
 seplay 11,12,100
+gptwait quakexamp
 
 msgwnd_but
 *e211_158
 d [lv 0*"10"*"bat_04420"]`{qt}Who's the one who wrote this irresponsible script in the first place?!{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 24
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"forest_p1b"
-
 lss s0_10,"sha","a11_komaru1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 24
 
 lss s0_10,"sha","a11_odoroki1"
@@ -1623,7 +1520,6 @@ msgwnd_sha
 *e211_159
 d [lv 0*"15"*"sha_00370"]`{qt}A... anyway...`[@][lv 0*"15"*"sha_00380"]` What you're saying is that we have no choice but to perform the story all the way to the end, right?{qt}`[\]
 
-
 lss s0_8,"lam","a11_akuwarai2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -1632,25 +1528,23 @@ msgwnd_lam
 *e211_160
 d [lv 0*"29"*"lam_01460"]`{qt}You got it.`[@][lv 0*"29"*"lam_01470"]` Okay, good luck~!`[@][lv 0*"29"*"lam_01480"]` I'm off to get some popcorn.{qt}`[\]
 
-
 seplay 11,57,100
-
+lbg "c:colour",s0_30,"white"
 flush 1
 
+csp_slot s0_8
+csp_slot s0_30
 flush 22
 
 msgwnd_non
 *e211_161
 d `{f:5:Lambdadelta} disappeared.`[\]
 
-
 *e211_162
 d `...We had a pretty good idea of the situation now.`[\]
 
-
 *e211_163
 d `No way out.`[@]` No choice but to go forward.`[\]
-
 
 lss s0_10,"sha","a11_warai1"
 spt_mem "a2","xpos",s0_10,550
@@ -1660,96 +1554,69 @@ msgwnd_sha
 *e211_164
 d [lv 0*"15"*"sha_00390"]`{qt}But we do have a weapon...{qt}`[\]
 
-
 lss s0_8,"but","b11_niramu3"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
 msgwnd_but
 *e211_165
-d [lv 0*"10"*"bat_04430"]`{qt}We'll have to rely Jessica's red pen, huh...{qt}`[\]
-
+d [lv 0*"10"*"bat_04430"]`{qt}We'll have to rely on Jessica's red pen, huh...{qt}`[\]
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"pen"
-
+color_mod2 s0_3,#ffffff
 flush 22
 
 msgwnd_non
 *e211_166
 d `The story would develop as written in the script.`[\]
 
-
 *e211_167
 d `However, it seemed that by amending it right away with the red pen, we could alter the story one page at a time.`[\]
 
-
 *e211_168
 d `We had no choice but to continue otherwise.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
-
 flush 22
 
 *e211_169
 d `Even though we were afraid of what awaited us.`[\]
 
-
 *e211_170
 d `At any rate, I had written it while half-asleep, letting my pen be guided by my heart...`[\]
 
-
 *e211_171
 d `Even I couldn't fully remember how the story would develop.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"forest_p3b"
-
 lss s0_9,"jes","a11_komaru3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 seplay 11,12,100
-
 lss s0_9,"jes","a11_futeki2"
 spt_mem "a2","xpos",s0_9,0
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
 flush 80
+gptwait quakeyamp
 
 msgwnd_jes
 *e211_172
 d [lv 0*"04"*"jes_02890"]`{qt}Let's perform it, then!`[@][lv 0*"04"*"jes_02900"]` I'm the one who wrote it, so I'm sure it'll have a happy ending!{qt}`[\]
-
 
 lss s0_8,"but","b22_odoroki2"
 spt_mem "a2","xpos",s0_8,-549
@@ -1759,7 +1626,6 @@ msgwnd_but
 *e211_173
 d [lv 0*"10"*"bat_04440"]`{qt}...It's kinda worrying that the person who wrote it can't remember it.{qt}`[\]
 
-
 lss s0_10,"sha","a11_odoroki2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -1767,7 +1633,6 @@ flush 80
 msgwnd_sha
 *e211_174
 d [lv 0*"15"*"sha_00400"]`{qt}L-let's just do our best...{qt}`[\]
-
 
 lss s0_8,"but","b11_niramu3"
 spt_mem "a2","xpos",s0_8,-549
@@ -1777,137 +1642,104 @@ msgwnd_but
 *e211_175
 d [lv 0*"10"*"bat_04450"]`{qt}Alright?`[@][lv 0*"10"*"bat_04460"]`...Shannon.`[@][lv 0*"10"*"bat_04470"]` Go ahead with the next bit of narration, please.{qt}`[\]
 
-
 lss s0_10,"sha","a11_majime3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
 seplay 11,1010,100
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 23
 
 msgwnd_non
 *e211_176
 d `Shannon prepared herself for the worst, and turned the page.`[\]
 
+vol_bgm -1,300
 
 msgwnd_sha
 *e211_177
 d [lv 0*"15"*"sha_00410"]`{qt}Emerging from the dense jungle, they found themselves in a snowy country.{qt}`[\]
-
+textoff2
 
 seplay 11,52,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"sakutaro08"
+flush 99,1500,"whirl.dll/r"
 
 msgwnd_non
 *e211_178
 d `The jungle vanished without a trace, ...and we found ourselves surrounded by a vast snow field.`[\]
 
-
-meplay 11,16,100
+meplay 1,16,100
 
 *e211_179
 d `It was pristine, without a single footprint.`[\]
 
-
 *e211_180
 d `We could see glaciers in the distance, and an aurora glittered in the sky. It was a wondrous scene...`[\]
-
 
 msgwnd_but
 *e211_181
 d [lv 0*"10"*"bat_04480"]`{qt}...*whistle*.`[@][lv 0*"10"*"bat_04490"]`...This is some pretty awesome scenery...{qt}`[\]
 
-
 msgwnd_sha
 *e211_182
 d [lv 0*"15"*"sha_00420"]`{qt}Rather than just a snowy country,... it seems more like the North Pole, doesn't it...{qt}`[\]
+textoff2
 
-
-meplay 11,5,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+meplay 2,5,100
 
 lbg "c:backgrounds",s0_3,"sakutaro06"
-
 flush 22
 
 msgwnd_but
 *e211_183
 d [lv 0*"10"*"bat_04500"]`{qt}Wah!`[@][lv 0*"10"*"bat_04510"]` Brrrrr!`[@][lv 0*"10"*"bat_04520"]` Was it really necessary to reproduce the temperature?!{qt}`[\]
 
-
 *e211_184
 d [lv 0*"10"*"bat_04530"]`{qt}Cooooooooooooooooooolllllllddddddddd!!!{qt}`[\]
 
-
 *e211_185
 d [lv 0*"10"*"bat_04540"]`{qt}I'm the prince, aren't I?!`[@][lv 0*"10"*"bat_04550"]` Somebody bring me a warm coat!!`[@][lv 0*"10"*"bat_04560"]` Dammit, so what's happening in the script now?!{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 msgwnd_sha
 *e211_186
-d [lv 0*"15"*"sha_00430"]`{qt}L-let's see...`[@][lv 0*"15"*"sha_00440"]` The prince, who was on the verge of freezing to death,`[@][lv 0*"15"*"sha_00450"]`...was attacked by a yeti, and met a terrible fate...{qt}`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d [lv 0*"15"*"sha_00430"]`{qt}W-well...`[@][lv 0*"15"*"sha_00440"]` The prince, who was on the verge of freezing to death,`[@][lv 0*"15"*"sha_00450"]`...was attacked by a yeti, and met a terrible fate...{qt}`[\]
+textoff2
 
 lbg "c:backgrounds",s0_3,"sakutaro08"
-
 flush 26
 
 lss s0_9,"but","b22_odoroki2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 26
 
 seplay 11,13,100
-
-meplay 11,17,100
+meplay 12,17,100
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
 
 msgwnd_but
 *e211_187
 d2 [lv 0*"10"*"bat_04570"]`{qt}AGAIN?!?!`[@][#][*][lv 0*"10"*"bat_04580"]` Jessicaaaaaaaa! Do you have some kind of grudge against princes or something?!!{qt}`[\]
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
 lss s0_9,"but","b11_aseru3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
+d_continue
+wait_on_d -1
 
 lss s0_10,"jes","a11_atya3"
 spt_mem "a2","xpos",s0_10,550
@@ -1916,117 +1748,107 @@ flush 80
 msgwnd_jes
 *e211_188
 d [lv 0*"04"*"jes_02910"]`{qt}N-no, I, you see!`[@][lv 0*"04"*"jes_02920"]`...Saku was the one who pushed this awful job to me, so I was pissed off at her. And then I heard that she was gonna play the role of the prince,`[@][lv 0*"04"*"jes_02930"]` so, yeah, um, ...ihihi~!{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 1
 
 msgwnd_non
 *e211_189
 d2 [lv 0*"98"*"yuk_00010"]`{qt}Rrrrrooooooooaaaaaaaaaarrrrr!!!!{qt}`[#][*][\]
 wait_on_d 0
-
+vol_bgm -1 500
+vol_mix_fade 500
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+seplay 11,60,100
+seplay 12,2,100
+gptwait quakeyamp
 d_continue
 wait_on_d -1
-
-vol_bgm -1 500
-
-vol_mix_fade 500
-
-seplay 11,60,100
-
-seplay 11,2,100
+textoff2
 
 bgmplay 153,70,0
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"sakutaro06"
-
 flush 1
 
 msgwnd_but
 *e211_190
 d [lv 0*"10"*"bat_04590"]`{qt}Ugyaaaaa, it's the yetiiiii!!!{qt}`[\]
 
-
 seplay 11,20,100
-
-seplay 11,20,100
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+wait 200
+seplay 2,20,100
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
 
 msgwnd_non
 *e211_191
 d `*boom, boom*!!!`[@]` With a crash, the yeti swung an enormous club the size of a log!`[\]
 
-
 *e211_192
 d `Uwa, be carefuuuuuuuuul!!!`[\]
 
-
 *e211_193
 d `Wait, this is no time to stand around looking surprised! Gotta revise the script!`[\]
-
 
 seplay 11,59,100
 
 msgwnd_jes
 *e211_194
 d [lv 0*"04"*"jes_02940"]`{qt}Suddenly, the yeti mended its ways, and befriended the prince and his men!{qt}`[\]
-
+textoff2
 
 seplay 11,56,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 28
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"sakutaro08"
-
 lss s0_8,"but","b22_odoroki2"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
 
 msgwnd_non
 *e211_195
 d2 [lv 0*"98"*"yuk_00020"]`{qt}Roaaaaaaaaa...`[@][#][*][lv 0*"98"*"yuk_00030"]`...?!`[@][#][*][lv 0*"98"*"yuk_00040"]`...*cough*`[#][*]` *cough*!{qt}`[#][*][\]
 wait_on_d 0
-
+vol_bgm -1 500
+vol_mix_fade 500
+seplay 11,47,100
 d_continue
 wait_on_d 1
-
+bgmplay 92,70,0
 d_continue
 wait_on_d 2
-
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 23,150
+gptwait quakexamp
 d_continue
 wait_on_d 3
-
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 23,150
+gptwait quakexamp
 d_continue
 wait_on_d -1
-
-vol_bgm -1 500
-
-vol_mix_fade 500
-
-seplay 11,47,100
-
-bgmplay 92,70,0
 
 lss s0_10,"sha","a11_warai2"
 spt_mem "a2","xpos",s0_10,550
@@ -2036,7 +1858,6 @@ msgwnd_sha
 *e211_196
 d [lv 0*"15"*"sha_00460"]`{qt}Thank goodness...`[@][lv 0*"15"*"sha_00470"]` Wow, that was close...{qt}`[\]
 
-
 lss s0_8,"but","b11_komaru1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -2045,14 +1866,13 @@ msgwnd_but
 *e211_197
 d2 [lv 0*"10"*"bat_04600"]`{qt}But now this guy's being too friendly.`[@][lv 0*"10"*"bat_04610"]` Hey, my hair's gonna get messed up, so stop patting me on the head...`[@][#][*][lv 0*"10"*"bat_04620"]`...A banana?`[@][lv 0*"10"*"bat_04630"]` No thanks. Where did you even get that from, anyway!?{qt}`[\]
 wait_on_d 0
-
+seplay 11,48,100
 d_continue
 wait_on_d -1
 
-seplay 11,48,100
-
 seplay 11,3,100
-
+csp_slot s0_8
+flush 80
 lss s0_10,"sha","a11_warai1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -2061,7 +1881,6 @@ msgwnd_sha
 *e211_198
 d [lv 0*"15"*"sha_00480"]`{qt}Milady.`[@][lv 0*"15"*"sha_00490"]` Let's write a bit more and make Mr. Yeti our guide.{qt}`[\]
 
-
 lss s0_8,"jes","a11_futeki2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -2069,63 +1888,41 @@ flush 80
 msgwnd_jes
 *e211_199
 d [lv 0*"04"*"jes_02950"]`{qt}Good idea...`[@][lv 0*"04"*"jes_02960"]` If we don't hurry up and get out of here, we're gonna end up as popsicles...!{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
-
-vol_bgm -1 500
-
+vol_bgm -1,500
 vol_mix_fade 500
 
 msgwnd_non
 *e211_200
 d `And so...`[\]
 
-
 *e211_201
 d `The prince and his men, having befriended the yeti, were guided safely out of the snowy countryside...`[\]
-
+textoff2
 
 seplay 11,1010,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 24
 
 bgmplay 126,70,0
 
 *e211_202
 d `The next rough spot was a volcanic region covered with boiling magma...`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"honoo"
-
 flush 22
 
 lss s0_9,"but","b11_aseru3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 26
 
 seplay 11,13,100
@@ -2134,7 +1931,6 @@ msgwnd_but
 *e211_203
 d [lv 0*"10"*"bat_04640"]`{qt}W-what kind of a hellish scenario is this?!`[@][lv 0*"10"*"bat_04650"]` How were you planning to perform this at a culture festival?!{qt}`[\]
 
-
 lss s0_10,"jes","a11_atya2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -2142,208 +1938,162 @@ flush 80
 msgwnd_jes
 *e211_204
 d [lv 0*"04"*"jes_02970"]`{qt}I have no idea!`[@][lv 0*"04"*"jes_02980"]` I'm not in charge of the scenery!{qt}`[\]
-
+textoff
 
 seplay 11,1010,100
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 23
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"pen"
-
 flush 23
 
 msgwnd_sha
 *e211_205
 d [lv 0*"15"*"sha_00500"]`{qt}And in the volcanic region, a dragon with massive wings attacked them, breathing flames from its mouth...{qt}`[\]
-
+textoff2
 
 seplay 11,34,100
-
-seplay 11,2,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+seplay 12,2,100
 
 lbg "c:efe",s0_3,"bite"
-
 lss s0_9,"but","b11_komaru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"jes","a11_ikari1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 26
 
 msgwnd_non
 *e211_206
 d2 [lv 0*"98"*"merged_saku50"]`{qt}{qt}Ugyaaaaaaaaaaaaaaa!!!{qt}{qt}`[#][*][\]
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
 lss s0_9,"but","b11_sakebu2a"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 lss s0_10,"jes","a11_naku3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
+d_continue
+wait_on_d -1
+textoff2
 
+lbg "c:colour",s0_30,"white"
 flush 1
-
 seplay 11,66,100
 
+csp_slot s0_30
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
-flush 1
-
-seplay 11,2,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+seplay 12,2,100
 
 lbg "c:backgrounds",s0_3,"well_1an"
-
 flush 2
 
 msgwnd_sha
 *e211_207
 d [lv 0*"15"*"sha_00510"]`{qt}And in the cursed graveyard, they were attacked by a countless number of zombies...{qt}`[\]
 
-
 seplay 11,66,100
 
 lss s0_9,"but","b22_odoroki2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_8,"jes","a11_ikari1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 26
 
 msgwnd_non
 *e211_208
 d2 [lv 0*"98"*"merged_saku51"]`{qt}{qt}Ugyaaaaaaaaaaaaaaa!!!{qt}{qt}`[#][*][\]
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
 lss s0_9,"but","b11_naku1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_8,"jes","a11_naki1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
+d_continue
+wait_on_d -1
+textoff2
 
+lbg "c:colour",s0_30,"white"
 flush 1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-flush 1
-
 seplay 11,2,100
 
-csp_slot s0_3
+csp_slot s0_30
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"beach_2a"
-
+spt_mem "a2","ypos",s0_3,100
+spt_mem "a2","scalex",s0_3,350
+spt_mem "a2","scaley",s0_3,350
 flush 2
 
 msgwnd_sha
 *e211_209
 d [lv 0*"15"*"sha_00520"]`{qt}In the deserts of hell, a giant poisonous scorpion raised its tail high...{qt}`[\]
-
-
-seplay 11,20,100
+textoff2
 
 seplay 11,20,100
+wait 200
+seplay 12,20,100
 
+lbg "c:colour",s0_30,"white"
 flush 26
-
 seplay 11,20,100
-
-seplay 11,66,100
-
+seplay 12,66,100
+csp_slot s0_30
 lss s0_8,"but","b22_odoroki2"
 spt_mem "a2","xpos",s0_8,-369
-flush 80
 
 lss s0_10,"jes","a11_ikari1"
 spt_mem "a2","xpos",s0_10,370
-flush 80
-
 flush 26
 
 msgwnd_non
 *e211_210
 d2 [lv 0*"98"*"merged_saku52"]`{qt}{qt}Ugyaaaaaaaaaaaaaaa!!!{qt}{qt}`[#][*][\]
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
 lss s0_8,"but","b11_sakebu2a"
 spt_mem "a2","xpos",s0_8,-369
-flush 80
 
 lss s0_10,"jes","a11_naku3"
 spt_mem "a2","xpos",s0_10,370
 flush 80
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
+d_continue
+wait_on_d -1
+textoff2
 
+lbg "c:colour",s0_30,"white"
 flush 1
 
-csp_slot s0_3
+csp_slot s0_30
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
-flush 1
-
 seplay 11,2,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"y_oni1"
-
 flush 22
 
 msgwnd_sha
 *e211_211
 d [lv 0*"15"*"sha_00530"]`{qt}In the demons' swamp, hordes of bloodsucking leeches attacked, one after the other...{qt}`[\]
-
 
 seplay 11,45,100
 
@@ -2355,38 +2105,29 @@ msgwnd_but
 *e211_212
 d2 [lv 0*"10"*"bat_04690"]`{qt}Oh, come on already!!!{qt}`[#][*][\]
 wait_on_d 0
-
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 d_continue
 wait_on_d -1
-
-seplay 11,1010,100
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 24
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"sakutaro03"
-
 flush 24
 
 lss s0_8,"sha","a11_odoroki2"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 23
 
 msgwnd_sha
 *e211_213
 d [lv 0*"15"*"sha_00540"]`{qt}Milady, hurry!{qt}`[\]
-
 
 lss s0_9,"jes","a11_ikari1"
 spt_mem "a2","xpos",s0_9,0
@@ -2396,34 +2137,33 @@ msgwnd_jes
 *e211_214
 d2 [lv 0*"04"*"jes_03020"]`{qt}But the prince and his men were protected by a magical barrier, and remained unharmed...`[@][#][*][lv 0*"04"*"jes_03030"]` There... *huff*puff*!{qt}`[\]
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
+lbg "a:efe",s0_10,"barrier"
 seplay 11,57,100
-
-seplay 11,73,100
-
+seplay 12,73,100
 flush 1
-
-flush 22
-
+wait 200
+spt_mem "a2","breakup",s0_10,0
+spt_mem "a2","alpha",s0_10,255
+spt_mem "a2","breakupdir",s0_10,3
+flush 1
 seplay 11,55,100
+spt_mem "a2","breakup",s0_10,1000,2000
+sptwait2 breakup,s0_10
 
 lss s0_9,"jes","a11_ikari1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_8,"sha","a11_komaru1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
+vol_bgm -1,500
+d_continue
+wait_on_d -1
 
-meplay 11,5,100
+meplay 1,5,100
 
 lss s0_10,"but","b11_aseru2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 26
 
 lss s0_10,"but","b11_aseru4"
@@ -2433,94 +2173,65 @@ flush 80
 msgwnd_but
 *e211_215
 d [lv 0*"10"*"bat_04700"]`{qt}B-barely made it at the last second again...`[@][lv 0*"10"*"bat_04710"]` Geez, ...I'm wiped out...{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 5
 
 seplay 11,13,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 
 msgwnd_non
 *e211_216
 d `The prince and his men had suffered many hardships, and were now wiped out.`[\]
-
+textoff2
 
 seplay 11,1010,100
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 24
 
 seplay 11,21,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"forest_p3bn"
-
 flush 22
 
 *e211_217
 d `And now the stage had returned once again to the jungle...`[\]
 
-
 *e211_218
 d `When they managed to push their way through the dense thickets of tropical plants...`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"moon_1a"
-
 flush 22
-
 seplay 11,27,100
-
+lbg "c:colour",s0_30,"white"
 flush 1
-
+csp_slot s0_30
 flush 22
 
 msgwnd_but
 *e211_219
 d [lv 0*"10"*"bat_04720"]`{qt}The tower!`[@][lv 0*"10"*"bat_04730"]` We f-finally made it to the princess' tower!{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"forest_p2an"
-
 lss s0_10,"sha","a11_warai2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 24
 
 msgwnd_sha
 *e211_220
 d [lv 0*"15"*"sha_00550"]`{qt}T-then, I can finally play the princess...!{qt}`[\]
-
 
 lss s0_9,"jes","a11_atya2"
 spt_mem "a2","xpos",s0_9,0
@@ -2529,34 +2240,28 @@ flush 80
 msgwnd_jes
 *e211_221
 d [lv 0*"04"*"jes_03040"]`{qt}But before that, if I remember correctly, the strongest and most terrible sorcerer is going to appear, and he'll be the final enemy standing in our way...!{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
+csp_slot s0_9
+csp_slot s0_3
 flush 22
-
 bgmplay 159,70,0
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"moon_1a"
-
 flush 22
+spt_mem "a2","scalex",s0_3,300
+spt_mem "a2","scalex",s0_3,300
+spt_mem "a2","ypos",s0_3,1000,800,0
+spt_mem "a2","xpos",s0_3,-500
+sptwait2 ypos,s0_9
 
 msgwnd_non
 *e211_222
 d `At the summit of the tower, there was a human figure.`[\]
 
-
 *e211_223
 d `He was wearing a large, jet-black cloak, and his silhouette had an imposing presence.`[\]
-
 
 *e211_224
 d `This was surely the one who had kidnapped the princess and locked her in the tower, the strongest and most terrible sorcerer...`[\]

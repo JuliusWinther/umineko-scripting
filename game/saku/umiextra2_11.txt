@@ -949,12 +949,6 @@ msgwnd_but
 d [lv 0*"10"*"bat_04330"]`{qt}Hieeeeeeeeeeeeeeeeeeee!!!{qt}`[\]
 textoff2
 
-<<<<<<< Updated upstream
-=======
-anim2 s0_3,"no0003",1
-color_mod s0_3,#FF0000
-flush 1
->>>>>>> Stashed changes
 seplay 11,65,100
 anim2 s0_3,"no0003",1
 flush 1
@@ -1159,20 +1153,16 @@ vol_bgm -1,500
 vol_mix_fade 500
 
 seplay 11,56,100
-lbg "c:efe",s0_3,"bite"
 color_mod2 s0_3,#ffffff
 flush 22
 
 *e211_124
 d `Suddenly, a miracle occured.`[\]
+textoff2
 
-spt_mem "a2","breakup",s0_3,0
-spt_mem "a2","alpha",s0_3,255
-spt_mem "a2","breakupdir",s0_3,3
-flush 1
-seplay 11,55,90
-spt_mem "a2","breakup",s0_3,1000,2000
-sptwait2 breakup,s0_3
+csp_slot s0_3
+flush 99,2000,"breakup.dll/lrp"
+seplay 11,52,90
 
 *e211_125
 d `For some reason, the goats all simultaneously burst open... and transformed into an infinite number of soap bubbles.`[\]
@@ -2192,7 +2182,7 @@ msgwnd_non
 d `The prince and his men had suffered many hardships, and were now wiped out.`[\]
 textoff2
 
-seplay 11,1010,100
+seplay 11,1103,100
 
 csp_slot s0_3
 flush 24
@@ -2242,6 +2232,7 @@ msgwnd_jes
 d [lv 0*"04"*"jes_03040"]`{qt}But before that, if I remember correctly, the strongest and most terrible sorcerer is going to appear, and he'll be the final enemy standing in our way...!{qt}`[\]
 textoff2
 
+vol_mix_fade 100
 csp_slot s0_10
 csp_slot s0_9
 csp_slot s0_3
@@ -2249,12 +2240,14 @@ flush 22
 bgmplay 159,70,0
 
 lbg "c:backgrounds",s0_3,"moon_1a"
+spt_mem "a2","scalex",s0_3,200
+spt_mem "a2","scaley",s0_3,200
+spt_mem "a2","xpos",s0_3,650
+spt_mem "a2","ypos",s0_3,0
 flush 22
-spt_mem "a2","scalex",s0_3,300
-spt_mem "a2","scalex",s0_3,300
-spt_mem "a2","ypos",s0_3,1000,800,0
-spt_mem "a2","xpos",s0_3,-500
-sptwait2 ypos,s0_9
+wait 200
+spt_mem "a2","ypos",s0_3,1000,1000,0
+sptwait2 ypos,s0_3
 
 msgwnd_non
 *e211_222
@@ -2269,51 +2262,47 @@ d `This was surely the one who had kidnapped the princess and locked her in the 
 
 lss s0_10,"but","b11_majime2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 23
-
 seplay 11,60,100
-
 flush 1
-
+lbg "c:colour",s0_30,"white"
 lss s0_10,"but","b25_majime4"
 spt_mem "a2","xpos",s0_10,550
 flush 80
-
+csp_slot s0_30
 flush 80
 
 msgwnd_but
 *e211_225
 d [lv 0*"10"*"bat_04740"]`{qt}Go, Jessica!{qt}`[\]
 
-
 lss s0_8,"jes","a11_futeki2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
-
-seplay 11,4,100
+seplay 13,4,100
+agpt quakeycycle,13
+agpt quakeyamp,10
+agpt quakeyamp,0,100,1
+rumble 13,100
+gptwait quakeyamp
 
 msgwnd_jes
 *e211_226
 d [lv 0*"04"*"jes_03050"]`{qt}I've got the hang of this now!`[@][lv 0*"04"*"jes_03060"]` The great sorcerer leapt nimbly from the tower...!{qt}`[\]
-
+textoff2
 
 seplay 11,57,100
-
+lbg "c:colour",s0_30,"white"
 flush 1
-
+csp_slot s0_30
 flush 22
 
-seplay 11,57,100
-
-flush 1
-
-csp_slot s0_3
+seplay 12,57,100
+lbg "c:colour",s0_3,"white"
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
+flush 1
+csp_slot s0_3
 flush 22
 
 seplay 11,3,100
@@ -2321,44 +2310,37 @@ seplay 11,3,100
 msgwnd_non
 *e211_227
 d `As Jessica spoke, the sorcerer jumped off the tower, headed towards the prince and his men.`[\]
-
-
+textoff2
 seplay 11,57,100
-
+lbg "c:colour",s0_3,"white"
 flush 1
-
+csp_slot s0_3
 flush 22
 
 msgwnd_jes
 *e211_228
 d [lv 0*"04"*"jes_03070"]`{qt}And then, all of a sudden, he crashed into the ground and died!{qt}`[\]
-
-
-seplay 11,12,100
-
-seplay 11,36,100
+textoff2
 
 seplay 11,12,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+waits 50
+seplay 12,36,100
+seplay 13,12,100
 
 lbg "c:efe",s0_3,"blood_1ar"
-
 flush 1
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 
 msgwnd_non
 *e211_229
 d `And, just like written, he crashed into the ground for no reason and died...`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 seplay 11,37,100
@@ -2366,23 +2348,14 @@ seplay 11,37,100
 msgwnd_lam
 *e211_230
 d [lv 0*"29"*"lam_01490"]`{qt}Bwahahahahahaha!`[@][lv 0*"29"*"lam_01500"]` What the hell, what the hell, that's hilarious, ahyahyahyahya!{qt}`[\]
-
+textoff2
 
 vol_bgm -1 500
-
 vol_mix_fade 500
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"moon_1a"
-
 lss s0_9,"lam","a11_akuwarai1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 bgmplay 176,70,0
@@ -2390,7 +2363,6 @@ bgmplay 176,70,0
 msgwnd_non
 *e211_231
 d `{f:5:Lambdadelta} had appeared when we weren't looking, and was clutching her stomach and laughing uproariously.`[\]
-
 
 lss s0_9,"lam","a11_akuwarai4"
 spt_mem "a2","xpos",s0_9,0
@@ -2400,7 +2372,6 @@ msgwnd_lam
 *e211_232
 d [lv 0*"29"*"lam_01510"]`{qt}But that's the end of your trouble-filled journey, huh?`[@][lv 0*"29"*"lam_01520"]` Okay, time for the emotional finale!{qt}`[\]
 
-
 lss s0_10,"but","b11_defo1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -2409,11 +2380,9 @@ msgwnd_but
 *e211_233
 d [lv 0*"10"*"bat_04750"]`{qt}We don't need you to tell us that!`[@][lv 0*"10"*"bat_04760"]` Shannon, you're the princess now!`[@][lv 0*"10"*"bat_04770"]` Jessica, take care of the narration!{qt}`[\]
 
-
+csp_slot s0_9
 lss s0_8,"sha","a11_hajirai2"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 23
 
 lss s0_8,"sha","a11_hajirai2"
@@ -2424,7 +2393,8 @@ msgwnd_sha
 *e211_234
 d [lv 0*"15"*"sha_00560"]`{qt}Ba-Battler...{qt}`[\]
 
-
+csp_slot s0_10
+flush 80
 lss s0_9,"but","b11_futeki1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -2432,59 +2402,46 @@ flush 80
 msgwnd_but
 *e211_235
 d [lv 0*"10"*"bat_04780"]`{qt}...I'm the prince right now.{qt}`[\]
-
+textoff2
 
 lss s0_9,"but","b11_futeki4"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
+waits 500
 lss s0_8,"sha","a11_hajirai1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
-
+wait 1000
 seplay 11,3,100
 
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:colour",s0_3,"white"
-
-flush 2
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+flush 22
 
 lbg "c:backgrounds",s0_3,"forest_p3b"
-
 lss s0_10,"jes","a11_tereru1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_jes
 *e211_236
 d [lv 0*"04"*"jes_03080"]`{qt}To be honest, there was originally supposed to be a kiss here, but I figured it'd be lewd, so I cut it and just had them live happily ever after...`[@][lv 0*"04"*"jes_03090"]` All's well that ends well, right?{qt}`[\]
-
+textoff2
 
 seplay 11,57,100
-
+lbg "c:colour",s0_30,"white"
 flush 1
 
+csp_slot s0_30
 lss s0_8,"lam","a11_odoroki1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 msgwnd_lam
 *e211_237
 d [lv 0*"29"*"lam_01530"]`{qt}Ehhh, come on!`[@][lv 0*"29"*"lam_01540"]` I wanted to see Battler's and Shannon's kissing scene~`[@][lv 0*"29"*"lam_01550"]`...Oh, well, whatever~`[@][lv 0*"29"*"lam_01560"]` That funny punchline is coming up next anyway.{qt}`[\]
-
 
 lss s0_10,"jes","a11_komaru1starkohen"
 spt_mem "a2","xpos",s0_10,550
@@ -2493,61 +2450,36 @@ flush 80
 msgwnd_jes
 *e211_238
 d [lv 0*"04"*"jes_03100"]`{qt}What punchline?`[@][lv 0*"04"*"jes_03110"]` There was none.`[@][lv 0*"04"*"jes_03120"]` This is the ending already, you see...?{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
-
 vol_bgm -1 500
-
-vol_mix_fade 500
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+waits 1000
 lbg "c:backgrounds",s0_3,"pen"
-
 flush 22
 
-meplay 11,16,100
+meplay 1,16,100
 
 msgwnd_non
 *e211_239
 d `It was true. Jessica's script had ended there.`[\]
 
-
 *e211_240
 d `There was no punchline intended.`[@]` The prince rescued the princess, happy end.`[@]` ...As far as I remember it, anyway.`[\]
 
-
 *e211_241
 d `And yet, Lambadelta licked her lips, and gave them a cold smirk.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"forest_p3b"
-
 lss s0_8,"lam","a11_futeki2"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 lss s0_10,"but","b11_odoroki1"
@@ -2558,7 +2490,6 @@ msgwnd_but
 *e211_242
 d [lv 0*"10"*"bat_04790"]`{qt}...It's over, {f:5:Lambdadelta}!`[@][lv 0*"10"*"bat_04800"]` Let us go already!{qt}`[\]
 
-
 lss s0_8,"lam","a11_akuwarai3"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -2567,12 +2498,8 @@ msgwnd_lam
 *e211_243
 d [lv 0*"29"*"lam_01570"]`{qt}You know,`[@][lv 0*"29"*"lam_01580"]` I'd love to.`[@][lv 0*"29"*"lam_01590"]`...But`[|][lv 0*"29"*"lam_01600"]` the punchline is still waiting for you.{qt}`[\]
 
-
-vol_bgm -1 500
-
-vol_mix_fade 500
-
-bgmplay 171,70,0
+vol_mix_fade 100
+bgmplay 171,80,0
 
 lss s0_10,"but","b11_odoroki3"
 spt_mem "a2","xpos",s0_10,550
@@ -2582,42 +2509,37 @@ msgwnd_but
 *e211_244
 d [lv 0*"10"*"bat_04810"]`{qt}A punchline...?!{qt}`[\]
 
-
 lss s0_8,"lam","a11_futeki1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
 msgwnd_lam
 *e211_245
-d [lv 0*"29"*"lam_01610"]`{qt}Yes, that's correct.`[@][lv 0*"29"*"lam_01620"]` A pu-n-ch-line.`[@][lv 0*"29"*"lam_01630"]`...The whole reason I gave this script magic was because @{that part@} caught my interest.`[@][lv 0*"29"*"lam_01640"]` Hey, Bern, are you watching?!`[@][lv 0*"29"*"lam_01650"]` The good bit's about to start!{qt}`[\]
-
+d [lv 0*"29"*"lam_01610"]`{qt}Yes, that's correct.`[@][lv 0*"29"*"lam_01620"]` A pu-n-ch-line.`[@][lv 0*"29"*"lam_01630"]`...The whole reason I gave this script magic was because that part caught my interest.`[@][lv 0*"29"*"lam_01640"]` Hey, Bern, are you watching?!`[@][lv 0*"29"*"lam_01650"]` The good bit's about to start!{qt}`[\]
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"forest_p2ar"
-
 flush 22
-
-seplay 11,52,100
 
 lss s0_9,"ber","a21_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
+spt_mem "a2","breakup",s0_9,1000
+spt_mem "a2","alpha",s0_9,0
+spt_mem "a2","breakupdir",s0_9,3
+flush 1
+seplay 11,52,90
+spt_mem "a2","breakup",s0_9,0,2000
+spt_mem "a2","alpha",s0_9,255
+sptwait2 breakup,s0_9
 
 msgwnd_non
 *e211_246
 d `{f:5:Bernkastel}'s figure appeared floating in the air, still in the middle of a yawn.`[\]
-
 
 lss s0_9,"ber","a21_defo2"
 spt_mem "a2","xpos",s0_9,0
@@ -2627,7 +2549,6 @@ msgwnd_ber
 *e211_247
 d [lv 0*"28"*"ber_02420"]`{qt}Yeah, I've been watching it.`[@][lv 0*"28"*"ber_02430"]` Such a boring play.`[@][lv 0*"28"*"ber_02440"]`... So?`[@][lv 0*"28"*"ber_02450"]` Does this thing really have an entertaining ending...?{qt}`[\]
 
-
 lss s0_10,"lam","a11_akuwarai4"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -2635,7 +2556,6 @@ flush 80
 msgwnd_lam
 *e211_248
 d [lv 0*"29"*"lam_01660"]`{qt}Yes, certainly.`[@][lv 0*"29"*"lam_01670"]` I guarantee it.{qt}`[\]
-
 
 lss s0_9,"ber","a21_warai4"
 spt_mem "a2","xpos",s0_9,0
@@ -2645,7 +2565,6 @@ msgwnd_ber
 *e211_249
 d [lv 0*"28"*"ber_02460"]`{qt}...It's amusing enough...`[@][lv 0*"28"*"ber_02470"]` to blow away even my boredom?{qt}`[\]
 
-
 lss s0_10,"lam","a11_akuwarai3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -2653,7 +2572,6 @@ flush 80
 msgwnd_lam
 *e211_250
 d [lv 0*"29"*"lam_01680"]`{qt}*giggle, giggle, giggle*.`[@][lv 0*"29"*"lam_01690"]` Yes, Bern~`[@][lv 0*"29"*"lam_01700"]`...The stimulating climax is just about to start.`[\]
-
 
 lss s0_8,"jes","a11_komaru1starkohen"
 spt_mem "a2","xpos",s0_8,-549
@@ -2663,10 +2581,8 @@ msgwnd_jes
 *e211_251
 d [lv 0*"04"*"jes_03130"]`{qt}...Um.`[@][lv 0*"04"*"jes_03140"]` I'm sorry to interrupt you two, but...`[@][lv 0*"04"*"jes_03150"]` my script is over.`[@][lv 0*"04"*"jes_03160"]` There are no punchlines anywhere.`[@][lv 0*"04"*"jes_03170"]` Here, look.{qt}`[\]
 
-
 lss s0_10,"lam","a11_futeki2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_9,"ber","a21_akuwarai4"
 spt_mem "a2","xpos",s0_9,0
@@ -2676,192 +2592,157 @@ msgwnd_non
 *e211_252
 d [lv 0*"98"*"merged_saku53"]`{qt}{qt}*giggle, giggle, giggle, giggle*.{qt}{qt}`[\]
 
-
 lss s0_10,"lam","a11_akuwarai6"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_9,"ber","a21_akuwarai1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
-seplay 11,37,100
-
-seplay 11,37,100
+seplay 11,37,80
+seplay 12,37,80
 
 *e211_253
 d [lv 0*"98"*"merged_saku54"]`{qt}{qt}Ahahahahhahahahhahahahhahahhahahahahahhahahaha!!!{qt}{qt}`[\]
 
-
 *e211_254
 d `With an evil look in their eyes, the Witches of Certainty and Miracles convulsed with laughter.`[\]
-
+textoff2
 
 vol_bgm -1 500
-
 vol_mix_fade 500
-
 seplay 11,61,100
-
+lbg "c:colour",s0_30,"white"
 flush 1
 
-csp_slot s0_3
+csp_slot s0_30
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"sakutaro04"
-
 seplay 11,62,100
-
 flush 28
-
 seplay 11,60,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 
 *e211_255
 d `At that moment, the earth shuddered and cracked open.`[\]
 
-
 seplay 11,66,100
-
 bgmplay 152,70,0
 
 *e211_256
 d `...What the?! An earthquake?!`[\]
+textoff2
 
-
+seplay 12,65,100
+waits 300
+seplay 13,65,100
+waits 300
 seplay 11,65,100
-
-seplay 11,65,100
-
-seplay 11,65,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 
 *e211_257
 d `*rumble, rumble, rumble, rumble, rumble, rumble, rumble, rumble*!!!`[\]
-
+textoff2
 
 seplay 11,64,100
-
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 25
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro05"
-
 flush 25
+seplay 11,1010,100
 
 *e211_258
 d `The tower collapsed,... leaving in its place a gaping, crater-like hole.`[\]
 
-
 *e211_259
 d `...Where did that hole come from?!`[\]
 
-
-meplay 11,17,100
+meplay 1,17,100
 
 *e211_260
 d `When we looked into its depths,`[@]` ...all of us were struck speechless.`[\]
+textoff2
 
-
-vol_bgm -1 500
-
+vol_bgm -1 100
 seplay 11,56,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"fan2"
-
-seplay 11,34,100
-
+flush 99,1500,"whirl.dll/r"
+seplay 12,34,100
 bgmplay 153,70,0
 
 *e211_261
 d `A vast, howling whirlwind.`[\]
 
-
 *e211_262
 d `Coming from a... electric fan?`[\]
 
-
-meplay 11,5,100
+meplay 2,5,100
 
 msgwnd_but
 *e211_263
 d [lv 0*"10"*"bat_04820"]`{qt}What the hell is that?!?!{qt}`[\]
 
-
 *e211_264
 d [lv 0*"10"*"bat_04830"]`{qt}There's a huge electric fan spinning away at the bottom of the hole...?!{qt}`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
-
 flush 22
 
 msgwnd_non
 *e211_265
 d `The enormous fan was rotating at an incredible speed, and every time a crag crumbled away in the depths of the hole, it was smashed up and reduced to tiny pieces by the blades.`[\]
 
-
 *e211_266
 d `It was a huge, enormous,... killer electric fan!`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 msgwnd_sha
 *e211_267
 d [lv 0*"15"*"sha_00570"]`{qt}W-watch out!`[@][lv 0*"15"*"sha_00580"]` Kyaah!{qt}`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"sakutaro05"
-
 flush 28
 
 seplay 11,60,100
-
-seplay 11,61,100
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
+seplay 12,61,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 
 msgwnd_non
 *e211_268
 d `Cracks continued to open up in the earth, and everything began to collapse into the ever-widening hole, as if it were all being devoured by the fan!`[\]
-
 
 *e211_269
 d `If we didn't get out of there fast,... we'd end up falling into that hole too!`[\]
@@ -2869,14 +2750,11 @@ d `If we didn't get out of there fast,... we'd end up falling into that hole too
 
 lss s0_9,"but","b11_aseru3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 24
 
 msgwnd_but
 *e211_270
 d [lv 0*"10"*"bat_04840"]`{qt}Everything is crumbling away!`[@][lv 0*"10"*"bat_04850"]` Jessica, Shannon!`[@][lv 0*"10"*"bat_04860"]` Let's run for it, hurry!!!{qt}`[\]
-
 
 lss s0_8,"sha","a11_odoroki1"
 spt_mem "a2","xpos",s0_8,-549
@@ -2886,73 +2764,64 @@ msgwnd_sha
 *e211_271
 d [lv 0*"15"*"sha_00590"]`{qt}Battler-sama!`[@][lv 0*"15"*"sha_00600"]` Look out!!!{qt}`[\]
 
-
 lss s0_9,"but","b22_odoroki2"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
 seplay 11,12,100
+gptwait quakeyamp
 
 msgwnd_but
 *e211_272
 d2 [lv 0*"10"*"bat_04870"]`{qt}Uwah?!`[@][#][*][lv 0*"10"*"bat_04880"]` Aaaaaaaaaaaaahhhhhh!!!{qt}`[\]
 wait_on_d 0
 
-d_continue
-wait_on_d -1
-
+csp_slot s0_9
 seplay 11,27,100
-
+flush 22
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
+waits 500
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 25
+d_continue
+wait_on_d -1
 
 msgwnd_non
 *e211_273
 d `The earth opened wider, and Battler was swallowed up.`[\]
 
-
 seplay 11,13,100
 
 *e211_274
 d `Shannon just barely managed to grab hold of his arm,... but she too was dragged into the hole, leaving her dangling by one arm from the edge...`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"sakutaro05"
-
 flush 22
 
 msgwnd_jes
 *e211_275
 d [lv 0*"04"*"jes_03180"]`{qt}Battleeeer!!!`[@][lv 0*"04"*"jes_03190"]` Shannooooon!!!{qt}`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"fan2"
-
 flush 22
 
 msgwnd_but
 *e211_276
 d [lv 0*"10"*"bat_04890"]`{qt}...L, let go of my arm and climb up, Shannon!{qt}`[\]
 
-
 msgwnd_sha
 *e211_277
 d [lv 0*"15"*"sha_00610"]`{qt}N-no...!`[@][lv 0*"15"*"sha_00620"]` If I do that, you will...!{qt}`[\]
-
 
 seplay 11,20,100
 
@@ -2960,17 +2829,14 @@ msgwnd_non
 *e211_278
 d `One of Battler's shoes slipped off and tumbled into the abyss.`[\]
 
-
 seplay 11,79,100
 
 *e211_279
 d `It was sucked into the fan, torn to pieces, and scattered...`[\]
-
+textoff2
 
 lss s0_8,"but","b11_kuyasigaru1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 23
 
 lss s0_8,"but","b11_aseru3"
@@ -2981,7 +2847,6 @@ msgwnd_but
 *e211_280
 d [lv 0*"10"*"bat_04900"]`{qt}Let go of my hand...!`[@][lv 0*"10"*"bat_04910"]` At this rate, we're both going to die!!!{qt}`[\]
 
-
 lss s0_10,"sha","a11_odoroki1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -2989,26 +2854,16 @@ flush 80
 msgwnd_sha
 *e211_281
 d [lv 0*"15"*"sha_00630"]`{qt}...I can't obey that order!{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 26
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"sakutaro02"
-
 lss s0_9,"jes","a11_atya2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 26
 
 lss s0_9,"jes","a11_ikari1"
@@ -3018,34 +2873,23 @@ flush 80
 msgwnd_jes
 *e211_282
 d [lv 0*"04"*"jes_03200"]`{qt}Shannon, hold tight...!`[@][lv 0*"04"*"jes_03210"]` I'll pull you both up!`[@][lv 0*"04"*"jes_03220"]`...Aaaaahhh!!!{qt}`[\]
-
+textoff2
 
 seplay 11,27,100
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 100
 lbg "c:backgrounds",s0_3,"sakutaro05"
-
 flush 62
 
 msgwnd_non
 *e211_283
 d `Another huge fissure appeared in the earth, and Jessica found herself separated from the others.`[\]
 
-
 *e211_284
 d `The other two were in trouble, but she couldn't even go and help them...!`[\]
-
 
 lss s0_9,"jes","a11_ikari2starstar"
 spt_mem "a2","xpos",s0_9,0
@@ -3055,44 +2899,50 @@ msgwnd_jes
 *e211_285
 d2 [lv 0*"04"*"jes_03230"]`{qt}Battleeeeeer!`[#][*][@][lv 0*"04"*"jes_03240"]` Shannoooooon!`[#][*][@][lv 0*"04"*"jes_03250"]` Dammiiiiiiiiiiiiit!!!{qt}`[#][*][\]
 wait_on_d 0
-
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
 d_continue
 wait_on_d 1
-
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
 d_continue
 wait_on_d 2
-
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 d_continue
 wait_on_d -1
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sakutaro06"
-
 lss s0_10,"ber","a21_akuwarai1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 26
 
 seplay 11,37,100
-
-seplay 11,37,100
-
-seplay 11,37,100
+wait 5
+seplay 12,37,100
+wait 5
+seplay 13,37,100
 
 msgwnd_ber
 *e211_286
 d [lv 0*"28"*"ber_02500"]`{qt}Ahhahahahahahahaha, aaahhahhahahahahahahahahahaha!!!{qt}`[\]
 
-
 msgwnd_non
 *e211_287
 d `Looking down on Jessica, who was crying out in despair,... {f:5:Bernkastel} sneered.`[\]
-
 
 lss s0_10,"ber","a21_warai4"
 spt_mem "a2","xpos",s0_10,550
@@ -3102,11 +2952,8 @@ msgwnd_ber
 *e211_288
 d [lv 0*"28"*"ber_02510"]`{qt}Nice climax.`[@][lv 0*"28"*"ber_02520"]`...Since I get to see Battler and Shannon be turned into hamburger. Jessica will go the same way, right?`[@][lv 0*"28"*"ber_02530"]`...Not bad.`[@][lv 0*"28"*"ber_02540"]` It's a fine punchline, alright.{qt}`[\]
 
-
 lss s0_8,"lam","a11_futeki3"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 23
 
 lss s0_8,"lam","a11_akuwarai3"
@@ -3116,19 +2963,13 @@ flush 80
 msgwnd_lam
 *e211_289
 d [lv 0*"29"*"lam_01730"]`{qt}Right?`[@][lv 0*"29"*"lam_01740"]` *giggle, giggle*.`[@][lv 0*"29"*"lam_01750"]` I love you, Bern.`[@][lv 0*"29"*"lam_01760"]`...That's why I know exactly what kinds of stories you love the most.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"sakutaro02"
-
 lss s0_9,"jes","a11_ikari2starstar"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 25
 
 seplay 11,6,100
@@ -3136,7 +2977,6 @@ seplay 11,6,100
 msgwnd_jes
 *e211_290
 d [lv 0*"04"*"jes_03260"]`{qt}Screw you!`[@][lv 0*"04"*"jes_03270"]` How dare you turn my script into this nightmare!{qt}`[\]
-
 
 lss s0_10,"ber","a21_warai3"
 spt_mem "a2","xpos",s0_10,550
@@ -3146,7 +2986,6 @@ msgwnd_ber
 *e211_291
 d [lv 0*"28"*"ber_02550"]`{qt}Nightmare or not,`[@][lv 0*"28"*"ber_02560"]` you were the one who wrote this.{qt}`[\]
 
-
 lss s0_9,"jes","a11_ikari1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -3155,7 +2994,6 @@ msgwnd_jes
 *e211_292
 d [lv 0*"04"*"jes_03280"]`{qt}I didn't write anything like this at all!!!{qt}`[\]
 
-
 lss s0_8,"lam","a11_akuwarai4"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -3163,40 +3001,30 @@ flush 80
 msgwnd_lam
 *e211_293
 d [lv 0*"29"*"lam_01770"]`{qt}You wrote all that messed-up stuff earlier, though, didn't you?{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"pen"
-
+color_mod2 s0_3,#ffffff
 flush 22
 
 msgwnd_non
 *e211_294
 d `It was true, everything before now had been her work.`[\]
 
-
 *e211_295
 d `Which is why Jessica revised it.`[\]
-
 
 *e211_296
 d `But she hadn't written anything at all about this killer electric fan to begin with!`[\]
 
-
 *e211_297
 d `Jessica tried over and over to write about Battler and Shannon being saved,`[@]` but the letters just vanished, as if they had been written on a sandy beach and then washed away by the waves.`[\]
-
 
 seplay 11,6,100
 
@@ -3204,60 +3032,38 @@ msgwnd_jes
 *e211_298
 d2 [lv 0*"04"*"jes_03290"]`{qt}What's going on?!`[@][#][*][lv 0*"04"*"jes_03300"]` Why can I not revise this?!`[@][#][*][lv 0*"04"*"jes_03310"]` Dammiiiiiiit!!!{qt}`[\]
 wait_on_d 0
-
+seplay 11,7,100
 d_continue
 wait_on_d 1
-
+seplay 11,27,100
 d_continue
 wait_on_d -1
 
-seplay 11,7,100
-
-seplay 11,27,100
-
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 msgwnd_non
 *e211_299
 d `Shannon's grip on Battler was growing weaker by the moment...`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-flush 1
+textoff2
 
 seplay 11,59,100
-
+set_window_simple 80,430
 *e211_300
-d2 `The electric fan stopped!.`[@]` Doesn't work!`[@][#][*][\]
+d2 `{p:1:The electric fan stopped!}`[@]` Doesn't work!`[@][#][*]`{n}{p:1:The two were miraculously saved!}`[@]` Still doesn't work?`[@][#][*]`{n}{p:1:The story ended, and we were saved!}`[@]` ...Why is nothing working?!!`[\]
 wait_on_d 0
-
+seplay 11,59,100
+d_continue
+wait_on_d 1
+seplay 11,59,100
 d_continue
 wait_on_d -1
-
-seplay 11,59,100
-
-seplay 11,59,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
+set_name_window_non
 
 lbg "c:backgrounds",s0_3,"sakutaro02"
-
 lss s0_9,"jes","a11_ikari2starstar"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_9,"jes","a11_ikari1"
@@ -3268,7 +3074,6 @@ msgwnd_jes
 *e211_301
 d [lv 0*"04"*"jes_03320"]`{qt}Why?!`[@][lv 0*"04"*"jes_03330"]` After everything else I wrote in red before, why can't I write more?!{qt}`[\]
 
-
 lss s0_10,"lam","a11_akuwarai2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3276,7 +3081,6 @@ flush 80
 msgwnd_lam
 *e211_302
 d [lv 0*"29"*"lam_01780"]`{qt}Well, the story's already over, right?`[@][lv 0*"29"*"lam_01790"]` You can only make revisions within the actual story.{qt}`[\]
-
 
 lss s0_8,"ber","a21_warai3"
 spt_mem "a2","xpos",s0_8,-549
@@ -3286,10 +3090,8 @@ msgwnd_ber
 *e211_303
 d [lv 0*"28"*"ber_02570"]`{qt}It's impossible to revise anything outside of it.{qt}`[\]
 
-
 lss s0_10,"lam","a11_futeki2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_8,"ber","a21_akuwarai4"
 spt_mem "a2","xpos",s0_8,-549
@@ -3300,12 +3102,12 @@ seplay 11,37,100
 msgwnd_non
 *e211_304
 d [lv 0*"98"*"merged_saku55"]`{qt}{qt}*giggle, giggle, giggle, giggle, giggle*!{qt}{qt}`[\]
-
+textoff2
 
 lss s0_9,"jes","a11_ikari2starstar"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
+waits 200
 lss s0_9,"jes","a11_ikari1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -3313,7 +3115,6 @@ flush 80
 msgwnd_jes
 *e211_305
 d [lv 0*"04"*"jes_03340"]`{qt}Dammit all to hell!!!`[@][lv 0*"04"*"jes_03350"]` Are you saying this nightmare is the climax of the story?!`[@][lv 0*"04"*"jes_03360"]`...You damned witches!`[@][lv 0*"04"*"jes_03370"]` How dare you, how dare you screw up my script,... and make everyone suffer like this!?{qt}`[\]
-
 
 lss s0_10,"lam","a11_akuwarai3"
 spt_mem "a2","xpos",s0_10,550
@@ -3323,7 +3124,6 @@ msgwnd_lam
 *e211_306
 d [lv 0*"29"*"lam_01810"]`{qt}The one wrote this whole screwed-up script was you, wasn't it?{qt}`[\]
 
-
 lss s0_8,"ber","a21_warai4"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -3331,7 +3131,6 @@ flush 80
 msgwnd_ber
 *e211_307
 d [lv 0*"28"*"ber_02590"]`{qt}...Even this gruesome bad end, you know?`[@][lv 0*"28"*"ber_02600"]` *giggle, giggle*.{qt}`[\]
-
 
 lss s0_9,"jes","a11_ikari1"
 spt_mem "a2","xpos",s0_9,0
@@ -3341,7 +3140,8 @@ msgwnd_jes
 *e211_308
 d [lv 0*"04"*"jes_03380"]`{qt}No!`[@][lv 0*"04"*"jes_03390"]` I never wrote anything about everyone being swallowed up by a killer electric fan and dying!!!{qt}`[\]
 
-
+csp_slot s0_9
+flush 80
 lss s0_10,"lam","a11_akuwarai1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3349,7 +3149,6 @@ flush 80
 msgwnd_lam
 *e211_309
 d [lv 0*"29"*"lam_01820"]`{qt}Oh, really?{qt}`[\]
-
 
 lss s0_8,"ber","a21_defo2"
 spt_mem "a2","xpos",s0_8,-549
@@ -3368,7 +3167,6 @@ msgwnd_lam
 *e211_311
 d [lv 0*"29"*"lam_01830"]`{qt}This girl is pretty paper-ish.`[@][lv 0*"29"*"lam_01840"]` She probably doesn't get it.{qt}`[\]
 
-
 lss s0_8,"ber","a21_warai3"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -3376,51 +3174,43 @@ flush 80
 msgwnd_ber
 *e211_312
 d [lv 0*"28"*"ber_02630"]`{qt}Guess so.`[@][lv 0*"28"*"ber_02640"]`...*giggle, giggle, giggle*.{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 2
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"fan2"
-
 flush 22
 
-meplay 11,16,100
+meplay 3,16,100
 
 msgwnd_sha
 *e211_313
 d [lv 0*"15"*"sha_00640"]`{qt}...Battler-sama, I'm sorry...`[@][lv 0*"15"*"sha_00650"]`...My hand... is about to...{qt}`[\]
 
-
 msgwnd_but
 *e211_314
 d [lv 0*"10"*"bat_04920"]`{qt}...It's fine...`[@][lv 0*"10"*"bat_04930"]` Hurry up and let go of me...`[@][lv 0*"10"*"bat_04940"]` And then climb up, without looking back...!{qt}`[\]
-
 
 msgwnd_sha
 *e211_315
 d [lv 0*"15"*"sha_00660"]`{qt}I can't live by myself...!`[@][lv 0*"15"*"sha_00670"]`...If you're going to die,... I'm going with you!{qt}`[\]
 
-
 msgwnd_but
 *e211_316
 d [lv 0*"10"*"bat_04950"]`{qt}Don't be stupid, you have to live!{qt}`[\]
-
 
 msgwnd_sha
 *e211_317
 d2 [lv 0*"15"*"sha_00680"]`{qt}You're the prince who came to save me, aren't you?!`[@][lv 0*"15"*"sha_00690"]` I don't want to be alone anymore...!{qt}`[#][*][\]
 wait_on_d 0
-
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 d_continue
 wait_on_d -1
 
@@ -3428,98 +3218,74 @@ msgwnd_non
 *e211_318
 d `One by one,... Shannon's fingers, clutching the face of the cliff,... began to lose their grip...`[\]
 
-
 *e211_319
 d `...None of it... was any good...`[\]
-
+textoff2
 
 vol_bgm -1 500
-
 seplay 11,20,100
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 25
 
 msgwnd_sha
 *e211_320
 d [lv 0*"15"*"sha_00700"]`{qt}Aaahhhhhhhhhhhh!!!{qt}`[\]
 
-
 msgwnd_non
 *e211_321
 d `Shannon and Battler tumbled down to hell.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lss s0_10,"but","b11_kuyasigaru1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_9,"sha","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 *e211_322
 d `In the moment of free fall before they were sucked into the killer electric fan,... they hugged each other tightly.`[\]
 
-
 *e211_323
 d `So that at the very least, they would be able to meet their ends together.`[\]
-
+textoff2
 
 seplay 11,20,100
 
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
+lbg "c:colour",s0_30,"white"
 flush 26
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_30
 flush 26
 
 *e211_324
 d `The two steeled themselves, shutting their eyes tightly...`[\]
+textoff2
 
-
-vol_bgm -1 500
-
-vol_mix_fade 500
-
+wait 1000
+vol_bgm -1,1
+vol_mix_fade 1
 seplay 11,13,100
 
 *e211_325
 d2 `*thump*!`[#][*][\]
 wait_on_d 0
-
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
 d_continue
 wait_on_d -1
 
 *e211_326
 d [lv 0*"98"*"merged_saku49"]`{qt}...Eh?!{qt}{n}{qt}What?!{qt}`[\]
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"g2f_r1b"
-
+textoff2
+lbg "a:backgrounds",s0_2,"g2f_r1b_bg"
+lbg "a:backgrounds",s0_3,"g2f_r1b"
 flush 46
 
 bgmplay 43,70,0
@@ -3527,25 +3293,20 @@ bgmplay 43,70,0
 *e211_327
 d `They weren't in hell, nor were they in the middle of the killer electric fan's blades.`[\]
 
-
 *e211_328
 d `...They were on a bed in the guesthouse.`[\]
 
-
 *e211_329
 d `For a moment, they sat there holding each other tightly in amazement...`[\]
-
+textoff2
 
 lss s0_9,"sha","a11_odoroki1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 6
 
 msgwnd_sha
 *e211_330
 d [lv 0*"15"*"sha_00720"]`{qt}...Was that... a dream?{qt}`[\]
-
 
 lss s0_8,"but","b11_niramu3"
 spt_mem "a2","xpos",s0_8,-549
@@ -3554,160 +3315,107 @@ flush 80
 msgwnd_but
 *e211_331
 d [lv 0*"10"*"bat_04970"]`{qt}No.`[@][lv 0*"10"*"bat_04980"]`...It couldn't possibly be.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"g2f_r1a"
-
+lbg "a:backgrounds",s0_2,"g2f_r1a_bg"
+lbg "a:backgrounds",s0_3,"g2f_r1a"
 flush 22
 
 msgwnd_non
 *e211_332
 d `Their bodies were still covered with scratches from the cliff face they had been scraped against just a few moments earlier.`[\]
 
-
 *e211_333
 d `That great adventure in which they'd risked their lives really had happened.`[\]
-
 
 *e211_334
 d `...The fact that they'd returned to their own world...`[@]` ......meant that the story had safely reached its {qt}end{qt}.`[\]
 
-
 *e211_335
 d `It was clear that Jessica had managed to revise the story at the very end.`[\]
 
-
 *e211_336
 d `...But Jessica herself was nowhere to be seen.`[\]
+textoff2
 
-
+csp_slot s0_2
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 2
 
 vol_bgm -1 500
-
-vol_mix_fade 500
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 500
 lbg "c:backgrounds",s0_3,"mjes_1af"
-
 flush 22
 
 *e211_337
 d `In the meantime, Jessica...`[\]
-
 
 bgmplay 110,70,0
 
 *e211_338
 d `...was in front of the writing desk in her own room.`[\]
 
-
 *e211_339
 d `Lying on the desk were the script and the red pen.`[\]
-
 
 *e211_340
 d `Jessica had collapsed on top of them.`[\]
 
-
 lss s0_8,"lam","a11_akuwarai4"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"ber","a21_defo2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 *e211_341
 d `{f:5:Lambdadelta} and {f:5:Bernkastel} were standing on opposite sides of her.`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"pen"
-
 flush 22
 
 *e211_342
 d `At the very last moment, she had managed to revise one single line.`[\]
 
-
 *e211_343
 d `Because of that, the story had ended, and Battler and Shannon had been saved.`[\]
-
 
 *e211_344
 d `But... how?`[\]
 
-
 *e211_345
 d `Jessica hadn't written anything about that huge electric fan in the first place.`[\]
-
 
 *e211_346
 d `No matter how many times she'd tried to revise it, the change hadn't been accepted because the story was already over.`[\]
 
-
 *e211_347
 d `However, Jessica had certainly made a revision.`[\]
-
 
 *e211_348
 d `She had changed a single letter.`[\]
 
-
 *e211_349
 d `...In other words...`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mjes_1af"
-
 lss s0_8,"lam","a11_akuwarai1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"ber","a21_warai4"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 lss s0_10,"ber","a21_warai3"
@@ -3718,7 +3426,6 @@ msgwnd_ber
 *e211_350
 d [lv 0*"28"*"ber_02650"]`{qt}...*giggle, giggle*.`[@][lv 0*"28"*"ber_02660"]` Good for you.`[@][lv 0*"28"*"ber_02670"]` Now you won't be made a laughingstock.{qt}`[\]
 
-
 lss s0_9,"jes","a11_tereru1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -3727,15 +3434,12 @@ msgwnd_jes
 *e211_351
 d [lv 0*"04"*"jes_03400"]`{qt}Y-yeah...`[@][lv 0*"04"*"jes_03410"]` Thank you so very much.{qt}`[\]
 
-
 msgwnd_non
 *e211_352
 d `Jessica, who was still slumped over the desk, timidly raised her head.`[\]
 
-
 *e211_353
 d `Her face was bright red with embarrassment.`[\]
-
 
 lss s0_8,"lam","a11_akuwarai4"
 spt_mem "a2","xpos",s0_8,-549
@@ -3745,15 +3449,13 @@ msgwnd_lam
 *e211_354
 d [lv 0*"29"*"lam_01850"]`{qt}Because I'm so paper, I'm in no position to be saying this...`[@][lv 0*"29"*"lam_01860"]` but if you want to insert cool-looking English words... you should really make sure that you've spelled them right.{qt}`[\]
 
-
 lss s0_10,"ber","a21_defo2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
 msgwnd_ber
 *e211_355
-d [lv 0*"28"*"ber_02680"]`{qt}...By the way,`[@][lv 0*"28"*"ber_02690"]` the word {qt}FIN{qt} is actually French.{qt}`[\]
-
+d [lv 0*"28"*"ber_02680"]`{qt}...By the way,`[@][lv 0*"28"*"ber_02690"]` the word "FIN" is actually French.{qt}`[\]
 
 lss s0_9,"jes","a11_tereru2"
 spt_mem "a2","xpos",s0_9,0
@@ -3763,7 +3465,6 @@ msgwnd_jes
 *e211_356
 d [lv 0*"04"*"jes_03420"]`{qt}Y-yeah...`[@][lv 0*"04"*"jes_03430"]`...I thought something was off about it...{qt}`[\]
 
-
 lss s0_10,"ber","a21_warai4"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3772,7 +3473,6 @@ msgwnd_ber
 *e211_357
 d [lv 0*"28"*"ber_02700"]`{qt}You just miswrote it because you were sleepy, right?{qt}`[\]
 
-
 lss s0_9,"jes","a11_tereru1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -3780,35 +3480,26 @@ flush 80
 msgwnd_jes
 *e211_358
 d [lv 0*"04"*"jes_03440"]`{qt}...No, um,... ahahahahahahahahaha...{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
 msgwnd_non
 *e211_359
 d `She'd thought it would be cool to write <FIN> at the end of the story.`[\]
 
-
 *e211_360
 d `...But she was far too embarrassed to ever tell anyone... that she ended up writing <FAN> by mistake.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"mjes_1af"
 
 lss s0_10,"jes","a11_tereru1"
 spt_mem "a2","xpos",s0_10,370
-flush 80
-
 flush 22
 
 lss s0_8,"ber","a21_warai3"
@@ -3819,7 +3510,6 @@ msgwnd_ber
 *e211_361
 d [lv 0*"28"*"ber_02710"]`{qt}...What was that? I'll ask again. You just miswrote it because you were sleepy, right?{qt}`[\]
 
-
 lss s0_10,"jes","a11_tereru2"
 spt_mem "a2","xpos",s0_10,370
 flush 80
@@ -3827,33 +3517,20 @@ flush 80
 msgwnd_jes
 *e211_362
 d [lv 0*"04"*"jes_03450"]`{qt}O-of course...`[@][lv 0*"04"*"jes_03460"]` Ihi, ihihihihihi...{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 42
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"fin1"
-
 flush 8
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 1000
 lbg "c:backgrounds",s0_3,"fin2a"
-
-flush 51
-
+flush 8
+wait 2000
+break_glass3
 
 ;END
 *umiextra2_11_end

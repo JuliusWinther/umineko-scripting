@@ -1122,8 +1122,12 @@ numalias r_people_lsp,%0 : inc %0
 numalias r_witches_lsp,%0 : inc %0
 numalias r_ange_lsp,%0 : inc %0
 
+;%0 = 166
+
+*redeclare_portraits_numaliases
+
 ;The pages for the sprites have separate sections; use same sprite ranges
-mov %tmp10,%0
+mov %tmp10,%0 ;%tmp10 = 166
 if %CHIRU_MODE != 0 jumpf
 	numalias kin_btn_lsp,%0 : inc %0
 	numalias kla_btn_lsp,%0 : inc %0
@@ -1141,9 +1145,9 @@ if %CHIRU_MODE != 0 jumpf
 	numalias gen_btn_lsp,%0 : inc %0
 	numalias kum_btn_lsp,%0 : inc %0
 	numalias goh_btn_lsp,%0 : inc %0
-	numalias sha_btn_lsp,%0 : inc %0
-	numalias kan_btn_lsp,%0 : inc %0
-	numalias bea_btn_lsp,%0 : inc %0
+	numalias sha_btn_lsp,%0 : inc %0 ;183
+	numalias kan_btn_lsp,%0 : inc %0 ;184
+	numalias bea_btn_lsp,%0 : inc %0 ;185
 	numalias ber_btn_lsp,%0 : inc %0
 	numalias lam_btn_lsp,%0 : inc %0
 	numalias enj_btn_lsp,%0 : inc %0
@@ -1171,11 +1175,11 @@ if %CHIRU_MODE != 1 jumpf
 	numalias rio_btn_lsp,%0 : inc %0
 	numalias bea_btn_lsp,%0 : inc %0
 	numalias en2_btn_lsp,%0 : inc %0
-	numalias si_btn_lsp,%0 : inc %0
+	numalias si_btn_lsp,%0  : inc %0
 ~
-mov %tmp11,%0 ;Max possible value to continue later
+mov %tmp11,%0 ;Max possible value to continue later ;%tmp11 = 188
 
-mov %0,%tmp10
+mov %0,%tmp10 ;166
 numalias ma_bea_btn_lsp,%0 : inc %0
 numalias ma_ber_btn_lsp,%0 : inc %0
 numalias ma_lam_btn_lsp,%0 : inc %0
@@ -1193,7 +1197,7 @@ numalias ma_rg_4_btn_lsp,%0 : inc %0
 numalias ma_rg_5_btn_lsp,%0 : inc %0
 numalias ma_rg_6_btn_lsp,%0 : inc %0
 
-mov %0,%tmp10
+mov %0,%tmp10 ;166
 numalias ma3_bea_btn_lsp,%0 : inc %0
 numalias ma3_ber_btn_lsp,%0 : inc %0
 numalias ma3_lam_btn_lsp,%0 : inc %0
@@ -1203,7 +1207,7 @@ numalias ma3_wal_btn_lsp,%0 : inc %0
 numalias ma3_ron_btn_lsp,%0 : inc %0
 numalias ma3_ev2_btn_lsp,%0 : inc %0
 numalias ma3_enj_btn_lsp,%0 : inc %0
-;numalias ma3_s_btn_lsp,%0   : inc %0
+;numalias ma3_s_btn_lsp,%0  : inc %0
 numalias ma3_s_1_btn_lsp,%0 : inc %0
 numalias ma3_s_2_btn_lsp,%0 : inc %0
 numalias ma3_rg_1_btn_lsp,%0 : inc %0
@@ -1213,7 +1217,7 @@ numalias ma3_rg_4_btn_lsp,%0 : inc %0
 numalias ma3_rg_5_btn_lsp,%0 : inc %0
 numalias ma3_rg_6_btn_lsp,%0 : inc %0
 
-mov %0,%tmp10
+mov %0,%tmp10 ;166
 numalias ma4_lam_btn_lsp,%0 : inc %0
 numalias ma4_ber_btn_lsp,%0 : inc %0
 numalias ma4_bea_btn_lsp,%0 : inc %0
@@ -1238,7 +1242,7 @@ numalias ma4_rg_4_btn_lsp,%0 : inc %0
 numalias ma4_rg_5_btn_lsp,%0 : inc %0
 numalias ma4_rg_6_btn_lsp,%0 : inc %0
 
-mov %0,%tmp10
+mov %0,%tmp10 ;166
 numalias enj_eva_btn_lsp,%0 : inc %0
 numalias enj_oko_btn_lsp,%0 : inc %0
 numalias enj_kas_btn_lsp,%0 : inc %0
@@ -1260,7 +1264,7 @@ numalias enj_rg_5_btn_lsp,%0 : inc %0
 numalias enj_rg_6_btn_lsp,%0 : inc %0
 
 ;chiru
-mov %0,%tmp10
+mov %0,%tmp10 ;166
 numalias ma5_lam_btn_lsp,%0 : inc %0
 numalias ma5_ber_btn_lsp,%0 : inc %0
 numalias ma5_bea_btn_lsp,%0 : inc %0
@@ -1299,13 +1303,13 @@ numalias ma5_rg_2_btn_lsp,%0 : inc %0
 numalias ma5_rg_3_btn_lsp,%0 : inc %0
 numalias ma5_rg_4_btn_lsp,%0 : inc %0
 numalias ma5_rg_5_btn_lsp,%0 : inc %0
-numalias ma5_rg_6_btn_lsp,%0 : inc %0
+numalias ma5_rg_6_btn_lsp,%0 : inc %0 ;205
 
-mov %0,%tmp11
+mov %0,%tmp11 ;188
 
 ;ma5 превышает диапазон от tmp11 до tmp10
 ;ma5 supera l'intervallo da tmp11 a tmp1
-if %CHIRU_MODE = 1 add %0,16
+if %CHIRU_MODE = 1 add %0,16 ;204
 
 numalias r_cha_txt_lsp,%0 : inc %0 ;Character text
 numalias cha_lsp,%0 	  : inc %0 ;Character sprite
@@ -1333,6 +1337,10 @@ numalias r_system_lsp,%0 : inc %0 ;Go to the title screen
 numalias r_info_lsp,%0   : inc %0 ;Info text
 numalias r_bg_lsp,%0     : inc %0
 numalias r_used_lsp,%0			  ;Cleaner (last lsp from 100 to r_used_lsp)
+
+;return ;*redeclare_portraits_numaliases
+;Return from redeclaration
+if %char_reloading_numaliases = 1 mov %char_reloading_numaliases,0 : return
 
 ;Character state array initialization
 numalias r,61
@@ -2173,28 +2181,28 @@ mov $?r[2][ma_rg_6][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\char
 ;numalias itiran_x,%tmp11 : inc %tmp11
 ;numalias itiran_y,%tmp11 : inc %tmp11
 
-;448-24*2 px - 57*3 = 229 / 3 = 76,3 ;x = 82 - y = 168
-mov ?r[2][ma_bea][itiran_x],105 					: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_bea][itiran_y],191
-mov ?r[2][ma_ber][itiran_x],105+53+76+53-15	: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_ber][itiran_y],191
-mov ?r[2][ma_lam][itiran_x],105+53*2+76*2+53*2-24	: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_lam][itiran_y],191
+;448-24*2 px - 57*3 = 229 / 3 = 76,3 ;x = 82 - y = 168 [offest: 81]
+;Legend: (57wx64h)
+;First number is original or standard position (if original second number is -offest)
+mov ?r[2][ma_bea][itiran_x],200-100-0+4 	: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_bea][itiran_y],190
+mov ?r[2][ma_ber][itiran_x],224-28+81		: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_ber][itiran_y],190
+mov ?r[2][ma_lam][itiran_x],720-220-48-4	: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_lam][itiran_y],190
 
-mov ?r[2][ma_rg][itiran_x],105 						: mov %tmp,7 : add %tmp,r_top_y : mov ?r[2][ma_rg][itiran_y],415-75-30
-mov ?r[2][ma_rg_1][itiran_x],105 					: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_1][itiran_y],415+64-75-30 ;new rg
-mov ?r[2][ma_rg_2][itiran_x],105 					: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_2][itiran_y],415+64*2-75-30 ;new rg
-mov ?r[2][ma_rg_3][itiran_x],105 					: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_3][itiran_y],415+64*3-75-30 ;new rg
+mov ?r[2][ma_rg][itiran_x],200-100-0+4 				: mov %tmp,7 : add %tmp,r_top_y : mov ?r[2][ma_rg][itiran_y],415-75-30
+mov ?r[2][ma_rg_1][itiran_x],200-100-0+4 			: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_1][itiran_y],415+62-75-30 ;new rg
+mov ?r[2][ma_rg_2][itiran_x],200-100-0+4 			: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_2][itiran_y],415+62*2-75-30 ;new rg
+mov ?r[2][ma_rg_3][itiran_x],200-100-0+4 			: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_3][itiran_y],415+62*3-75-30 ;new rg
 mov ?r[2][ma_rg_4][itiran_x],220-59 				: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_4][itiran_y],415+32-75-30 ;new rg
-mov ?r[2][ma_rg_5][itiran_x],220-59 				: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_5][itiran_y],415+32+64-75-30 ;new rg
-mov ?r[2][ma_rg_6][itiran_x],220-59 				: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_6][itiran_y],415+32+64*2-75-30 ;new rg
+mov ?r[2][ma_rg_5][itiran_x],220-59 				: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_5][itiran_y],415+32+62-75-30 ;new rg
+mov ?r[2][ma_rg_6][itiran_x],220-59 				: mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][ma_rg_6][itiran_y],415+32+62*2-75-30 ;new rg
 
-mov ?r[2][ma_kin][itiran_x],105+53+76+53-15 			: mov %tmp,52 : add %tmp,r_top_y : mov ?r[2][ma_kin][itiran_y],415+32-75-30
-mov ?r[2][ma_but][itiran_x],105+53+76+53+53+27-7		: mov %tmp,52 : add %tmp,r_top_y : mov ?r[2][ma_but][itiran_y],415+32-75-30
-mov ?r[2][ma_mar][itiran_x],105+53*2+76*2+53*2-24 	: mov %tmp,52 : add %tmp,r_top_y : mov ?r[2][ma_mar][itiran_y],415+32-75-30
+mov ?r[2][ma_kin][itiran_x],224-28+81				: mov %tmp,52 : add %tmp,r_top_y : mov ?r[2][ma_kin][itiran_y],415+32-75-30
+mov ?r[2][ma_but][itiran_x],224-28+81+57*2-28			: mov %tmp,52 : add %tmp,r_top_y : mov ?r[2][ma_but][itiran_y],415+32-75-30
+mov ?r[2][ma_mar][itiran_x],720-220-48-4 			: mov %tmp,52 : add %tmp,r_top_y : mov ?r[2][ma_mar][itiran_y],415+32-75-30
 
-mov ?r[2][ma_gen][itiran_x],105+53+76+53-15 		 	: mov %tmp,96 : add %tmp,r_top_y : mov ?r[2][ma_gen][itiran_y],415+32+64*2-75-30
-
-mov ?r[2][ma_sha][itiran_x],105+53+76+53+53+27 -7	 	: mov %tmp,140 : add %tmp,r_top_y : mov ?r[2][ma_sha][itiran_y],415+32+64*2-75-30
-
-mov ?r[2][ma_kan][itiran_x],105+53*2+76*2+53*2-24 	: mov %tmp,184 : add %tmp,r_top_y : mov ?r[2][ma_kan][itiran_y],415+32+64*2-75-30
+mov ?r[2][ma_gen][itiran_x],224-28+81		 		: mov %tmp,96 : add %tmp,r_top_y : mov ?r[2][ma_gen][itiran_y],415+32+64*2-75-30
+mov ?r[2][ma_sha][itiran_x],224-28+81+57*2-28			: mov %tmp,140 : add %tmp,r_top_y : mov ?r[2][ma_sha][itiran_y],415+32+64*2-75-30
+mov ?r[2][ma_kan][itiran_x],720-220-48-4 			: mov %tmp,184 : add %tmp,r_top_y : mov ?r[2][ma_kan][itiran_y],415+32+64*2-75-30
 
 return
 
@@ -2418,26 +2426,27 @@ mov ?r[3][ma3_s_2][condition_end],1
 mov $?r[3][ma3_s_2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie2.png"
 
 
-mov ?r[3][ma3_wal][itiran_x],200 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_wal][itiran_y],190
-mov ?r[3][ma3_bea][itiran_x],330 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_bea][itiran_y],190
-mov ?r[3][ma3_ev2][itiran_x],460 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_ev2][itiran_y],190
-mov ?r[3][ma3_enj][itiran_x],720 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_enj][itiran_y],190
+mov ?r[3][ma3_wal][itiran_x],200-100-0+4  : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_wal][itiran_y],190
+mov ?r[3][ma3_bea][itiran_x],330-130-12+2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_bea][itiran_y],190
+mov ?r[3][ma3_ev2][itiran_x],460-160-24-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_ev2][itiran_y],190
+mov ?r[3][ma3_enj][itiran_x],720-220-48-4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_enj][itiran_y],190
 
-mov ?r[3][ma3_ron][itiran_x],460 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_ron][itiran_y],340
-mov ?r[3][ma3_s_2][itiran_x],590 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_s_2][itiran_y],340
-mov ?r[3][ma3_s_1][itiran_x],685 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_s_1][itiran_y],340
+mov ?r[3][ma3_ron][itiran_x],460-160-24-2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_ron][itiran_y],340-60+2
+mov ?r[3][ma3_s_2][itiran_x],460-160-24-2+35+57 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_s_2][itiran_y],340-60+2
+mov ?r[3][ma3_s_1][itiran_x],460-160-24-2+35+57*2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_s_1][itiran_y],340-60+2
 
-mov ?r[3][ma3_goa][itiran_x],220 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ma3_goa][itiran_y],520
-mov ?r[3][ma3_rg][itiran_x],365 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ma3_rg][itiran_y],520
-mov ?r[3][ma3_rg_1][itiran_x],460 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_1][itiran_y],520 ;new rg
-mov ?r[3][ma3_rg_2][itiran_x],555 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_2][itiran_y],520 ;new rg
-mov ?r[3][ma3_rg_3][itiran_x],650 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_3][itiran_y],520 ;new rg
-mov ?r[3][ma3_rg_4][itiran_x],365 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_4][itiran_y],627 ;new rg
-mov ?r[3][ma3_rg_5][itiran_x],460 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_5][itiran_y],627 ;new rg
-mov ?r[3][ma3_rg_6][itiran_x],555 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_6][itiran_y],627 ;new rg
+mov ?r[3][ma3_goa][itiran_x],200-100-0+4+15 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ma3_goa][itiran_y],490-120
+mov ?r[3][ma3_rg][itiran_x],460-160-24-2-57+2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ma3_rg][itiran_y],490-120
+mov ?r[3][ma3_rg_1][itiran_x],460-160-24-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_1][itiran_y],490-120 ;new rg ;+2 and -2 are to avoid repeated black borders
+mov ?r[3][ma3_rg_2][itiran_x],460-160-24-2+57-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_2][itiran_y],490-120 ;new rg
+mov ?r[3][ma3_rg_3][itiran_x],460-160-24-2+57*2-4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_3][itiran_y],490-120 ;new rg
 
-mov ?r[3][ma3_ber][itiran_x],200 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_ber][itiran_y],790
-mov ?r[3][ma3_lam][itiran_x],330 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_lam][itiran_y],790
+mov ?r[3][ma3_rg_4][itiran_x],460-160-24-2-29 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_4][itiran_y],490-120+64-2 ;new rg
+mov ?r[3][ma3_rg_5][itiran_x],460-160-24-2-29+57-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_5][itiran_y],490-120+64-2 ;new rg
+mov ?r[3][ma3_rg_6][itiran_x],460-160-24-2-29+57*2-4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_6][itiran_y],490-120+64-2 ;new rg
+
+mov ?r[3][ma3_ber][itiran_x],200-100-0+4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_ber][itiran_y],790-240-4
+mov ?r[3][ma3_lam][itiran_x],330-130-12+2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_lam][itiran_y],790-240-4
 
 return
 
@@ -2565,33 +2574,32 @@ mov ?r[4][enj][condition_end],1
 mov $?r[4][enj][0],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_non.png"
 mov $?r[4][enj][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj0.png"
 
-
 ;numalias itiran_x,%tmp11 : inc %tmp11
 ;numalias itiran_y,%tmp11 : inc %tmp11
-mov ?r[4][kin][itiran_x],200 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][kin][itiran_y],190
-mov ?r[4][kla][itiran_x],330 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][kla][itiran_y],190
-mov ?r[4][nat][itiran_x],460 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][nat][itiran_y],190
-mov ?r[4][jes][itiran_x],590 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][jes][itiran_y],190
+mov ?r[4][kin][itiran_x],200-100-0+4  : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][kin][itiran_y],190
+mov ?r[4][kla][itiran_x],330-130-12+2 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][kla][itiran_y],190
+mov ?r[4][nat][itiran_x],460-160-24-2 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][nat][itiran_y],190
+mov ?r[4][jes][itiran_x],590-190-36-4 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][jes][itiran_y],190
 
-mov ?r[4][bea][itiran_x],200 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][bea][itiran_y],340
-mov ?r[4][eva][itiran_x],330 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][eva][itiran_y],340
-mov ?r[4][hid][itiran_x],460 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][hid][itiran_y],340
-mov ?r[4][geo][itiran_x],590 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][geo][itiran_y],340
+mov ?r[4][bea][itiran_x],200-100-0+4  : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][bea][itiran_y],340-60+2
+mov ?r[4][eva][itiran_x],330-130-12+2 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][eva][itiran_y],340-60+2
+mov ?r[4][hid][itiran_x],460-160-24-2 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][hid][itiran_y],340-60+2
+mov ?r[4][geo][itiran_x],590-190-36-4 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][geo][itiran_y],340-60+2
 
-mov ?r[4][rud][itiran_x],330 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][rud][itiran_y],490
-mov ?r[4][kir][itiran_x],460 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][kir][itiran_y],490
-mov ?r[4][but][itiran_x],590 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][but][itiran_y],490
-mov ?r[4][enj][itiran_x],720 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj][itiran_y],490
+mov ?r[4][rud][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][rud][itiran_y],490-120
+mov ?r[4][kir][itiran_x],460-160-24-2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][kir][itiran_y],490-120
+mov ?r[4][but][itiran_x],590-190-36-4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][but][itiran_y],490-120
+mov ?r[4][enj][itiran_x],720-220-48-4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj][itiran_y],490-120
 
-mov ?r[4][nan][itiran_x],200 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][nan][itiran_y],640
-mov ?r[4][ros][itiran_x],330 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][ros][itiran_y],640
-mov ?r[4][mar][itiran_x],590 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][mar][itiran_y],640
+mov ?r[4][nan][itiran_x],200-100-0+4  : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][nan][itiran_y],640-180-2
+mov ?r[4][ros][itiran_x],330-130-12+2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][ros][itiran_y],640-180-2
+mov ?r[4][mar][itiran_x],590-190-36-4 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][mar][itiran_y],640-180-2
 
-mov ?r[4][gen][itiran_x],200 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][gen][itiran_y],790
-mov ?r[4][sha][itiran_x],330 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][sha][itiran_y],790
-mov ?r[4][kan][itiran_x],460 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][kan][itiran_y],790
-mov ?r[4][goh][itiran_x],590 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][goh][itiran_y],790
-mov ?r[4][kum][itiran_x],720 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][kum][itiran_y],790
+mov ?r[4][gen][itiran_x],200-100-0+4  : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][gen][itiran_y],790-240-4
+mov ?r[4][sha][itiran_x],330-130-12+2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][sha][itiran_y],790-240-4
+mov ?r[4][kan][itiran_x],460-160-24   : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][kan][itiran_y],790-240-4
+mov ?r[4][goh][itiran_x],590-190-36-2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][goh][itiran_y],790-240-4
+mov ?r[4][kum][itiran_x],720-220-48-4 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][kum][itiran_y],790-240-4
 
 mov ?r[4][ber][itiran_x],-200 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][ber][itiran_y],%tmp
 mov ?r[4][enj][itiran_x],-200 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][enj][itiran_y],%tmp
@@ -2616,101 +2624,114 @@ for %tmp11 = 1 to char_max_ep4_2
 next
 
 mov ?r[4][ma4_lam][condition_end],1
-mov $?r[4][ma4_lam][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_lam0_s.png"
+mov $?r[4][ma4_lam][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_lam0.png"
 
 mov ?r[4][ma4_ber][condition_end],1
-mov $?r[4][ma4_ber][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ber0_s.png"
+mov $?r[4][ma4_ber][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ber0.png"
 
 mov ?r[4][ma4_bea][condition_end],2
-mov $?r[4][ma4_bea][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0_s.png"
-mov $?r[4][ma4_bea][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0_s.png"
+mov $?r[4][ma4_bea][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0.png"
+mov $?r[4][ma4_bea][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0.png"
 
 mov ?r[4][ma4_mar][condition_end],2
-mov $?r[4][ma4_mar][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_mar0_s.png"
-mov $?r[4][ma4_mar][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_mar1_s.png"
+mov $?r[4][ma4_mar][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_mar0.png"
+mov $?r[4][ma4_mar][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_mar1.png"
 
 mov ?r[4][ma4_enj][condition_end],1
-mov $?r[4][ma4_enj][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj0_s.png"
+mov $?r[4][ma4_enj][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj0.png"
 
 mov ?r[4][ma4_kin][condition_end],1
-mov $?r[4][ma4_kin][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_kin0_s.png"
+mov $?r[4][ma4_kin][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_kin0.png"
 
 mov ?r[4][ma4_sak][condition_end],2
-mov $?r[4][ma4_sak][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sak0_s.png"
-mov $?r[4][ma4_sak][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sak1_s.png"
+mov $?r[4][ma4_sak][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sak0.png"
+mov $?r[4][ma4_sak][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sak1.png"
 
 mov ?r[4][ma4_wal][condition_end],1
-mov $?r[4][ma4_wal][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_wal0_s.png"
+mov $?r[4][ma4_wal][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_wal0.png"
 
 mov ?r[4][ma4_ron][condition_end],1
-mov $?r[4][ma4_ron][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ron0_s.png"
+mov $?r[4][ma4_ron][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ron0.png"
 
 mov ?r[4][ma4_gap][condition_end],1
-mov $?r[4][ma4_gap][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_gap0_s.png"
+mov $?r[4][ma4_gap][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_gap0.png"
 
 mov ?r[4][ma4_s00][condition_end],1
-mov $?r[4][ma4_s00][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie0_s.png"
+mov $?r[4][ma4_s00][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie0.png"
 
 mov ?r[4][ma4_s410][condition_end],1
-mov $?r[4][ma4_s410][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie1_s.png"
+mov $?r[4][ma4_s410][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie1.png"
 
 mov ?r[4][ma4_s45][condition_end],1
-mov $?r[4][ma4_s45][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie2_s.png"
+mov $?r[4][ma4_s45][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie2.png"
 
 mov ?r[4][ma4_s556][condition_end],2
-mov $?r[4][ma4_s556][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3_s.png"
-mov $?r[4][ma4_s556][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3_d_s.png"
+mov $?r[4][ma4_s556][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3.png"
+mov $?r[4][ma4_s556][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3_d.png"
 
 mov ?r[4][ma4_rg][condition_end],1
-mov $?r[4][ma4_rg][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk0_s.png"
+mov $?r[4][ma4_rg][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk0.png"
 
 mov ?r[4][ma4_rg_1][condition_end],1
-mov $?r[4][ma4_rg_1][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk1_s.png"
+mov $?r[4][ma4_rg_1][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk1.png"
 
 mov ?r[4][ma4_rg_2][condition_end],1
-mov $?r[4][ma4_rg_2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk2_s.png"
+mov $?r[4][ma4_rg_2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk2.png"
 
 mov ?r[4][ma4_rg_3][condition_end],1
-mov $?r[4][ma4_rg_3][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk3_s.png"
+mov $?r[4][ma4_rg_3][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk3.png"
 
 mov ?r[4][ma4_rg_4][condition_end],1
-mov $?r[4][ma4_rg_4][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk4_s.png"
+mov $?r[4][ma4_rg_4][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk4.png"
 
 mov ?r[4][ma4_rg_5][condition_end],1
-mov $?r[4][ma4_rg_5][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk5_s.png"
+mov $?r[4][ma4_rg_5][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk5.png"
 
 mov ?r[4][ma4_rg_6][condition_end],1
-mov $?r[4][ma4_rg_6][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk6_s.png"
+mov $?r[4][ma4_rg_6][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_rgk6.png"
 
 mov ?r[4][ma4_goa][condition_end],1
-mov $?r[4][ma4_goa][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_goa0_s.png"
+mov $?r[4][ma4_goa][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_goa0.png"
 
-mov ?r[4][ma4_lam][itiran_x],342 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],213
-mov ?r[4][ma4_ber][itiran_x],602 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],213
+;Legend: (57wx64h)
+;200-100-0+4 
+;330-130-12+2
+;460-160-24  
+;590-190-36-2
+;720-220-48-4
 
-mov ?r[4][ma4_bea][itiran_x],342 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],350
-mov ?r[4][ma4_mar][itiran_x],472 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],350
-mov ?r[4][ma4_enj][itiran_x],602 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],350
+;190
+;340-60+2
+;490-120
+;640-180-2
+;790-240-4
 
-mov ?r[4][ma4_kin][itiran_x],342 : mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],487
-mov ?r[4][ma4_sak][itiran_x],472 : mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],487
+mov ?r[4][ma4_lam][itiran_x],330-130-12+2 	: mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],190
+mov ?r[4][ma4_ber][itiran_x],590-190-36-2 	: mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],190
 
-mov ?r[4][ma4_wal][itiran_x],112 : mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_wal][itiran_y],640
-mov ?r[4][ma4_ron][itiran_x],225 : mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_ron][itiran_y],640
-mov ?r[4][ma4_gap][itiran_x],342 : mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_gap][itiran_y],640
-mov ?r[4][ma4_s45][itiran_x],472 : mov %tmp,472 : add %tmp,90 : mov ?r[4][ma4_s45][itiran_y],640
-mov ?r[4][ma4_s410][itiran_x],%tmp : add %tmp,90 : mov ?r[4][ma4_s410][itiran_y],640
-mov ?r[4][ma4_s00][itiran_x],%tmp : add %tmp,90 : mov ?r[4][ma4_s00][itiran_y],640
-mov ?r[4][ma4_s556][itiran_x],%tmp : mov ?r[4][ma4_s556][itiran_y],640
+mov ?r[4][ma4_bea][itiran_x],330-130-12+2 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],340-60+2
+mov ?r[4][ma4_mar][itiran_x],460-160-24 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],340-60+2
+mov ?r[4][ma4_enj][itiran_x],590-190-36-2  	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],340-60+2
 
-mov ?r[4][ma4_goa][itiran_x],112 : mov %tmp,185 : add %tmp,r_top_y : mov ?r[4][ma4_goa][itiran_y],793
-mov ?r[4][ma4_rg][itiran_x],215 : mov %tmp,215 : add %tmp,90 : mov ?r[4][ma4_rg][itiran_y],793
-mov ?r[4][ma4_rg_1][itiran_x],%tmp : add %tmp,90 : mov ?r[4][ma4_rg_1][itiran_y],793 ;new rg +95
-mov ?r[4][ma4_rg_2][itiran_x],%tmp : add %tmp,90 : mov ?r[4][ma4_rg_2][itiran_y],793 ;new rg
-mov ?r[4][ma4_rg_3][itiran_x],%tmp : add %tmp,90 : mov ?r[4][ma4_rg_3][itiran_y],793 ;new rg
-mov ?r[4][ma4_rg_4][itiran_x],%tmp : add %tmp,90 : mov ?r[4][ma4_rg_4][itiran_y],793 ;new rg
-mov ?r[4][ma4_rg_5][itiran_x],%tmp : add %tmp,90 : mov ?r[4][ma4_rg_5][itiran_y],793 ;new rg
-mov ?r[4][ma4_rg_6][itiran_x],%tmp : add %tmp,90 : mov ?r[4][ma4_rg_6][itiran_y],793 ;new rg
+mov ?r[4][ma4_kin][itiran_x],330-130-12+2  	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],490-120
+mov ?r[4][ma4_sak][itiran_x],460-160-24 	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],490-120
+
+mov ?r[4][ma4_wal][itiran_x],200-100-0+4   		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_wal][itiran_y],490-120
+mov ?r[4][ma4_ron][itiran_x],330-130-12+2 		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_ron][itiran_y],640-180-2
+mov ?r[4][ma4_gap][itiran_x],460-160-24  		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_gap][itiran_y],640-180-2
+mov ?r[4][ma4_s45][itiran_x],590-190-36-2+29 		: mov %tmp,640-180-2 : sub %tmp,62 : mov ?r[4][ma4_s45][itiran_y],640-180-2
+mov ?r[4][ma4_s410][itiran_x],590-190-36-2+29	  	: mov ?r[4][ma4_s410][itiran_y],%tmp : sub %tmp,62 
+mov ?r[4][ma4_s556][itiran_x],590-190-36-2+55+29  	: mov %tmp,640-180-2 : sub %tmp,62 mov ?r[4][ma4_s556][itiran_y],640-180-2
+mov ?r[4][ma4_s00][itiran_x],590-190-36-2+55+29 	: mov ?r[4][ma4_s00][itiran_y],%tmp : sub %tmp,62 
+
+mov ?r[4][ma4_goa][itiran_x],200-100-0+4 : mov %tmp,185 : add %tmp,r_top_y : mov ?r[4][ma4_goa][itiran_y],640-180-2
+mov ?r[4][ma4_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[4][ma4_rg][itiran_y],790-240-4
+mov ?r[4][ma4_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_1][itiran_y],790-240-4 ;new rg +95
+mov ?r[4][ma4_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_2][itiran_y],790-240-4 ;new rg
+mov ?r[4][ma4_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_3][itiran_y],790-240-4 ;new rg
+mov ?r[4][ma4_rg_4][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_4][itiran_y],790-240-4 ;new rg
+mov ?r[4][ma4_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_5][itiran_y],790-240-4 ;new rg
+mov ?r[4][ma4_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_6][itiran_y],790-240-4 ;new rg
 
 return
 
@@ -2788,29 +2809,42 @@ mov $?r[4][enj_kwa][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\char
 mov ?r[4][enj_ber][condition_end],1
 mov $?r[4][enj_ber][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ber0.png"
 
-mov ?r[4][enj_ber][itiran_x],150 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_ber][itiran_y],190
+;Legend: (57wx64h)
+;200-100-0+4 
+;330-130-12+2
+;460-160-24  
+;590-190-36-2
+;720-220-48-4
 
-mov ?r[4][enj_eva][itiran_x],472 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],190
-mov ?r[4][enj_oko][itiran_x],602 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],190
+;190
+;340-60+2
+;490-120
+;640-180-2
+;790-240-4
 
-mov ?r[4][enj_kas][itiran_x],220 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],350
-mov ?r[4][enj_enj][itiran_x],472 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],350
-mov ?r[4][enj_ama][itiran_x],602 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],350
+mov ?r[4][enj_ber][itiran_x],200-100-0+4 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_ber][itiran_y],190
 
-mov ?r[4][enj_mar][itiran_x],150 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_mar][itiran_y],510
-mov ?r[4][enj_sak][itiran_x],280 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_sak][itiran_y],510
-mov ?r[4][enj_rg][itiran_x],410 : mov %tmp,410 : add %tmp,90 : mov ?r[4][enj_rg][itiran_y],510
-mov ?r[4][enj_rg_1][itiran_x],%tmp : add %tmp,90 : mov ?r[4][enj_rg_1][itiran_y],510 ;new rg +95
-mov ?r[4][enj_rg_2][itiran_x],%tmp : add %tmp,90 : mov ?r[4][enj_rg_2][itiran_y],510 ;new rg
-mov ?r[4][enj_rg_3][itiran_x],%tmp : add %tmp,90 : mov ?r[4][enj_rg_3][itiran_y],510 ;new rg
-mov ?r[4][enj_rg_4][itiran_x],410 : mov %tmp,410 : add %tmp,90 : mov ?r[4][enj_rg_4][itiran_y],617 ;new rg
-mov ?r[4][enj_rg_5][itiran_x],%tmp : add %tmp,90 : mov ?r[4][enj_rg_5][itiran_y],617 ;new rg
-mov ?r[4][enj_rg_6][itiran_x],%tmp : add %tmp,90 : mov ?r[4][enj_rg_6][itiran_y],617 ;new rg
+mov ?r[4][enj_eva][itiran_x],460-160-24+28 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],190
+mov ?r[4][enj_oko][itiran_x],460-160-24+28+29+57 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],190
 
-mov ?r[4][enj_pro][itiran_x],150 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],777
-mov ?r[4][enj_mas][itiran_x],280 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_mas][itiran_y],777
-mov ?r[4][enj_sab][itiran_x],410 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_sab][itiran_y],777
-mov ?r[4][enj_kwa][itiran_x],540 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_kwa][itiran_y],777
+mov ?r[4][enj_kas][itiran_x],200-100-0+4+36 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],340-60+2
+mov ?r[4][enj_enj][itiran_x],460-160-24+28 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],340-60+2
+mov ?r[4][enj_ama][itiran_x],460-160-24+28+29+57 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],340-60+2
+
+mov ?r[4][enj_mar][itiran_x],200-100-0+4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_mar][itiran_y],490-120
+mov ?r[4][enj_sak][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_sak][itiran_y],490-120
+mov ?r[4][enj_rg][itiran_x],460-160-24 : mov %tmp,460-160-24 : add %tmp,55 : mov ?r[4][enj_rg][itiran_y],490-120
+mov ?r[4][enj_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_1][itiran_y],490-120 ;new rg +95
+mov ?r[4][enj_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_2][itiran_y],490-120 ;new rg
+mov ?r[4][enj_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_3][itiran_y],490-120 ;new rg
+mov ?r[4][enj_rg_4][itiran_x],460-160-24+28 : mov %tmp,460-160-24+28 : add %tmp,55 : mov ?r[4][enj_rg_4][itiran_y],490-120+62 ;new rg
+mov ?r[4][enj_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_5][itiran_y],490-120+62 ;new rg
+mov ?r[4][enj_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_6][itiran_y],490-120+62 ;new rg
+
+mov ?r[4][enj_pro][itiran_x],200-100-0+4  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],790-240-4
+mov ?r[4][enj_mas][itiran_x],330-130-12+2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_mas][itiran_y],790-240-4
+mov ?r[4][enj_sab][itiran_x],460-160-24 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_sab][itiran_y],790-240-4
+mov ?r[4][enj_kwa][itiran_x],590-190-36-2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_kwa][itiran_y],790-240-4
 
 return
 
@@ -4701,13 +4735,19 @@ goto *r_cha_display_end
 	if %char_is_selected == 0 aspt xpos,r_info_lsp,0,500 : mov %char_is_selected,1 ;W_CUSTOM ;Char Menu - needed for drawer animation
 	;W_CUSTOM - ;Char Menu - Select char
 	;vsp gen_txt_14,1
-	aspt xpos,gen_txt_14,?r[%scenario_Number][%r_display_cha][itiran_x]
-	aspt ypos,gen_txt_14,?r[%scenario_Number][%r_display_cha][itiran_y];+2
-	sptwait ypos,gen_txt_14
+
+		aspt xpos,gen_txt_14,?r[%scenario_Number][%r_display_cha_universal][itiran_x]
+		aspt ypos,gen_txt_14,?r[%scenario_Number][%r_display_cha_universal][itiran_y];+2
+		sptwait ypos,gen_txt_14
+
+	mov %r_display_cha_universal,%r_display_cha
+	if %scenario_Number > 2 && %r_side = 1 mov %r_display_cha_universal,%r_display_cha_ma
+	if %scenario_Number > 2 && %r_side = 2 mov %r_display_cha_universal,%r_display_cha_enj
 
 	;W_CUSTOM - ;Char Menu - Moving Side Animations
 	if %char_performing_action != 0 jumpf ;If not executing or resurrecting
-		aspt alpha,gen_txt_14,255,300
+		if %char_selector_ep_change = 1	aspt alpha,gen_txt_14,0,300
+		if %char_selector_ep_change != 1 aspt alpha,gen_txt_14,255,300
 		;sptwait alpha,gen_txt_14
 	~
 
@@ -4715,17 +4755,17 @@ goto *r_cha_display_end
         ;execute btn disabling
 	if %r_for_title = 0 jumpf
 
-        if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 3 lsp r_exec_lsp,char_action_btn_disabled,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
-        if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn_disabled,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
-        if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn_disabled,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+        if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha_universal][condition] = 3 lsp r_exec_lsp,char_action_btn_disabled,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+        if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha_universal][condition] = 2 lsp r_exec_lsp,char_action_btn_disabled,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+        if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha_universal][condition] = 1 lsp r_exec_lsp,char_action_btn_disabled,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
 
-		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"enabled"
-        if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"enabled"
-        if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha][condition] = 0 lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"enabled"
+		if %mchar_state=1 && ?r[%scenario_Number][%r_display_cha_universal][condition] = 2 lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"enabled"
+        if %mchar_state=0 && ?r[%scenario_Number][%r_display_cha_universal][condition] = 1 lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"enabled"
+        if %mchar_state=2 && ?r[%scenario_Number][%r_display_cha_universal][condition] = 0 lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"enabled"
 
         ;resurrect btn disabling
-        if ?r[%scenario_Number][%r_display_cha][condition] = 1 lsp r_resu_lsp,char_action_btn_disabled,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"disabled"
-		if ?r[%scenario_Number][%r_display_cha][condition] = 2 lsp r_resu_lsp,char_action_btn,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"enabled"
+        if ?r[%scenario_Number][%r_display_cha_universal][condition] = 1 lsp r_resu_lsp,char_action_btn_disabled,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"disabled"
+		if ?r[%scenario_Number][%r_display_cha_universal][condition] = 2 lsp r_resu_lsp,char_action_btn,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"enabled"
 
 	~
 
@@ -33357,8 +33397,8 @@ return
 	~
 	if $lsp_type != "char_desc" jumpf
 		split $lsp_text1,"|",$char_desc_title,$char_desc_jpn,$char_desc_desc
-		if $char_desc_desc == "" mov $char_desc_desc,$char_desc_jpn : lsp %lsp_slot,":s;#FFFFFF`{p:3:{interline:-20: {n}}{interline:-6:"+$char_desc_title+" }{interline:-8: {n}}{interline:-5:"+$char_desc_desc+"}}",%lsp_x,%lsp_y : return
-	    lsp %lsp_slot,":s;#FFFFFF`{p:3:{interline:-20: {n}}{interline:-6:"+$char_desc_title+" {p:4:"+$char_desc_jpn+"} }{interline:-8: {n}}{interline:-5:"+$char_desc_desc+"}}",%lsp_x,%lsp_y
+		if $char_desc_desc == "" mov $char_desc_desc,$char_desc_jpn : lsp %lsp_slot,":s;#FFFFFF`{p:3:{interline:-25: {n}}{interline:-6:"+$char_desc_title+" }{interline:-8: {n}}{interline:-5:{n}{n}"+$char_desc_desc+"}{interline:-7: {n}}",%lsp_x,%lsp_y : return
+	    lsp %lsp_slot,":s;#FFFFFF`{p:3:{interline:-25: {n}}{interline:-6:"+$char_desc_title+" {p:4:"+$char_desc_jpn+"} }{interline:-8: {n}}{interline:-5:{n}{n}"+$char_desc_desc+"}{interline:-7: {n}}",%lsp_x,%lsp_y
 		if %char_is_selected == 0 aspt xpos,%lsp_slot,-1000
 		;aspt alpha,%lsp_slot,0
 		return
@@ -34741,6 +34781,9 @@ goto *quick_reload
 
 ;stopwatch "rmenu_main_new start"
 
+;Fixing if on ange menu but changing to an ep that does not have it (remember that ep btn are available only from the title)
+;if %scenario_Numer = 1 || %scenario_Numer = 2 || %scenario_Numer = 3 if %r_side = 2 mov %r_side,0 : mov %r_display_side,0 : mov %r_display,0 : mov %char_moving_side,1
+
 if %r_display = 0 goto *rmenu_main_char ;reused variable, 0 if char display
 if %r_display = 1 goto *rmenu_main_tips ;reused variable, 1 or 2 if tips display
 if %r_display = 2 goto *rmenu_main_tips
@@ -34763,7 +34806,8 @@ if %r_display = 2 goto *rmenu_main_tips
 	write_special_text r_bg_lsp,"select_char",0,500,char_select_request_label
 	write_special_text 100,"config_title",0,15," " + title_char_txt + " {n}"
 
-	lsp gen_txt_14,char_selector,0,0,0 ;search for vsp gen_txt_14
+	if %char_selector_ep_change = 1 aspt alpha,gen_txt_14,0,300
+	if %char_selector_ep_change != 1 lsp gen_txt_14,char_selector,0,0,0 ;search for vsp gen_txt_14
 
 	lsp gen_txt_2,char_change_ep_btn,97+53*0,898 : if %scenario_Number = 1 lsp gen_txt_2,char_change_ep_btn_clicked,97+53*0,898
 	lsp gen_txt_3,char_change_ep_btn,97+53*1,898 : if %scenario_Number = 2 lsp gen_txt_3,char_change_ep_btn_clicked,97+53*1,898
@@ -35068,9 +35112,9 @@ goto *rmenu_button_reconfigure_new
 ;==========EP4_3===========
 *rmenu_main_eps_4_3
 	;lsp line menu
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_3.png"
+	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_3.png"
 	
-	lsp r_hana_lsp,r_hana_ange,1148,180
+	;lsp r_hana_lsp,r_hana_ange,1148,180
 	
 	gosub *bt_ep4_3_def
 	
@@ -35090,7 +35134,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep4_3
 	
 	;lsp line menu
-	lsp r_cha_back_lsp,$r_cha_back,100,150
+	;lsp r_cha_back_lsp,$r_cha_back,100,150
 	
 	if ?r[4][%r_display_cha_enj][condition] <= 0 mov %r_display_cha_enj,0
 	
@@ -35484,15 +35528,15 @@ return
 	mov ?r[1][bea][condition],1
 
 	;Beatrice initially unlocked in the 1st Ura
-	mov ?r[1][bea][itiran_x],441-159 : mov ?r[1][bea][itiran_y],490-120 ;position Ura_tea_chars
+	mov ?r[1][bea][itiran_x],224-28+81 : mov ?r[1][bea][itiran_y],490-120 ;position Ura_tea_chars
 return
 ;=====================
 *r_ber_flg_ep1
 ;W_CUSTOM - ;Char Menu - Customized Positions
 	;Moving Bea to place Bern 1st Ura
 	mov ?r[1][ber][condition],1
-	mov ?r[1][bea][itiran_x],353-153 : mov ?r[1][bea][itiran_y],490-120 ;position Ura_tea_chars
-	mov ?r[1][ber][itiran_x],511-153 : mov ?r[1][ber][itiran_y],490-120 ;position Ura_tea_chars
+	mov ?r[1][bea][itiran_x],224+81-28-57 : mov ?r[1][bea][itiran_y],490-120 ;position Ura_tea_chars
+	mov ?r[1][ber][itiran_x],224+81+28 : mov ?r[1][ber][itiran_y],490-120 ;position Ura_tea_chars
 return
 ;=====================
 *r_tea_bea_flg_ep1
@@ -35573,12 +35617,12 @@ return
 ;=====================
 *r_for_title_0_ep4
 	for %tmp = 1 to char_max_ep4
-		mov ?r[%scenario_Number][%tmp][condition],1
+		mov ?r[4][%tmp][condition],1
 	next
 
-	mov ?r[%scenario_Number][ber][condition],-1
-	mov ?r[%scenario_Number][lam][condition],-1
-	mov ?r[%scenario_Number][enj][condition],-1
+	mov ?r[4][ber][condition],-1
+	mov ?r[4][lam][condition],-1
+	mov ?r[4][enj][condition],-1
 
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line.png"
 
@@ -35589,10 +35633,10 @@ return
 ;=====================
 *r_for_title_0_ep4_2
 	for %tmp = 1 to char_max_ep4_2
-		mov ?r[%scenario_Number][%tmp][condition],1
+		mov ?r[4][%tmp][condition],1
 	next
 
-	mov ?r[ma4_s556][condition],2 ;s556 die
+	mov ?r[4][ma4_s556][condition],2 ;s556 die
 	;gosub *bgm_mode_rnd_bg_majo
 	;mov $r_bg_path,$tmp
 	;lsp r_bg_lsp,$r_bg_path,0,0
@@ -35606,7 +35650,7 @@ return
 ;=====================
 *r_for_title_0_ep4_3
 	for %tmp = 1 to char_max_ep4_3
-		mov ?r[%scenario_Number][%tmp][condition],1
+		mov ?r[4][%tmp][condition],1
 	next
 	;mov ?r[enj_ber][condition],-1
 
@@ -35619,10 +35663,10 @@ return
 ;=====================
 *r_for_title_0_ep5
 	for %tmp = 1 to 18
-		mov ?r[%scenario_Number][%tmp][condition],1
+		mov ?r[5][%tmp][condition],1
 	next
 
-	mov ?r[%scenario_Number][eri][condition],1
+	mov ?r[5][eri][condition],1
 
 	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line.png"
 
@@ -35722,9 +35766,9 @@ return
 return
 ;=====================
 *r_for_title_0_ep6_3
-		mov ?r[%scenario_Number][ma5_enj][condition],1
-		mov ?r[%scenario_Number][ma5_AMA][condition],1
-		mov ?r[%scenario_Number][ma5_FEA][condition],1
+		mov ?r[6][ma5_enj][condition],1
+		mov ?r[6][ma5_AMA][condition],1
+		mov ?r[6][ma5_FEA][condition],1
 
 	mov %r_display_cha_enj,ma5_enj
 	;amsp r_black_lsp,0,0,0
@@ -35751,22 +35795,23 @@ return
 		;change clothing chars
 		if %r_display > 0 jumpf
 			;if %r_display_cha_ma = ma5_bea && ?r[%scenario_Number][ma5_bea][condition] = 1 lsp r_change_lsp,r_change,0,0
-			if %r_display_cha_ma = ma5_rg && ?r[%scenario_Number][ma5_rg][condition] = 1 lsp r_change_lsp,r_change,0,0
-			if %r_display_cha_ma = ma5_rg_1 && ?r[%scenario_Number][ma5_rg_1][condition] = 1 lsp r_change_lsp,r_change,0,0
-			if %r_display_cha_ma = ma5_rg_2 && ?r[%scenario_Number][ma5_rg_2][condition] = 1 lsp r_change_lsp,r_change,0,0
-			if %r_display_cha_ma = ma5_rg_3 && ?r[%scenario_Number][ma5_rg_3][condition] = 1 lsp r_change_lsp,r_change,0,0
-			if %r_display_cha_ma = ma5_rg_4 && ?r[%scenario_Number][ma5_rg_4][condition] = 1 lsp r_change_lsp,r_change,0,0
-			if %r_display_cha_ma = ma5_rg_5 && ?r[%scenario_Number][ma5_rg_5][condition] = 1 lsp r_change_lsp,r_change,0,0
-			if %r_display_cha_ma = ma5_rg_6 && ?r[%scenario_Number][ma5_rg_6][condition] = 1 lsp r_change_lsp,r_change,0,0			
+			if %r_display_cha_ma = ma5_rg && ?r[7][ma5_rg][condition] = 1 lsp r_change_lsp,r_change,0,0
+			if %r_display_cha_ma = ma5_rg_1 && ?r[7][ma5_rg_1][condition] = 1 lsp r_change_lsp,r_change,0,0
+			if %r_display_cha_ma = ma5_rg_2 && ?r[7][ma5_rg_2][condition] = 1 lsp r_change_lsp,r_change,0,0
+			if %r_display_cha_ma = ma5_rg_3 && ?r[7][ma5_rg_3][condition] = 1 lsp r_change_lsp,r_change,0,0
+			if %r_display_cha_ma = ma5_rg_4 && ?r[7][ma5_rg_4][condition] = 1 lsp r_change_lsp,r_change,0,0
+			if %r_display_cha_ma = ma5_rg_5 && ?r[7][ma5_rg_5][condition] = 1 lsp r_change_lsp,r_change,0,0
+			if %r_display_cha_ma = ma5_rg_6 && ?r[7][ma5_rg_6][condition] = 1 lsp r_change_lsp,r_change,0,0			
 	~	
 return
+;=====================
 *r_for_title_ep8_2
   notif %r_for_title = 1 jumpf
     ;change clothing chars
     if %r_display > 0 jumpf
-      if %r_display_cha_ma = ma5_dla && ?r[%scenario_Number][ma5_dla][condition] = 1 lsp r_change_lsp,r_change,0,0
-      if %r_display_cha_ma = ma5_eri && ?r[%scenario_Number][ma5_eri][condition] = 1 lsp r_change_lsp,r_change,0,0
-      if %r_display_cha_ma = ma5_en2 && ?r[%scenario_Number][ma5_en2][condition] = 1 lsp r_change_lsp,r_change,0,0
+      if %r_display_cha_ma = ma5_dla && ?r[8][ma5_dla][condition] = 1 lsp r_change_lsp,r_change,0,0
+      if %r_display_cha_ma = ma5_eri && ?r[8][ma5_eri][condition] = 1 lsp r_change_lsp,r_change,0,0
+      if %r_display_cha_ma = ma5_en2 && ?r[8][ma5_en2][condition] = 1 lsp r_change_lsp,r_change,0,0
   ~
 return
 ;=====================
@@ -35854,9 +35899,9 @@ return
 return
 ;=====================
 *r_for_title_0_ep8_3
-		mov ?r[%scenario_Number][ma5_enj][condition],1
-		mov ?r[%scenario_Number][ma5_AMA][condition],1
-		mov ?r[%scenario_Number][ma5_FEA][condition],1
+		mov ?r[8][ma5_enj][condition],1
+		mov ?r[8][ma5_AMA][condition],1
+		mov ?r[8][ma5_FEA][condition],1
 
 	mov $r_cha_back,":c;bmp\r_click\cha_btn\cha_back23.bmp"
 
@@ -35993,68 +36038,73 @@ return
 return
 
 *rmenu_sai_n_display_ep4
+	_csp r_ange_lsp
 	notif %r_display = 0 jumpf
-		lsp r_people_lsp,r_people_select,0,0
-		lsp r_witches_lsp,r_witches,0,0
-		lsp r_ange_lsp,r_ange,0,0
+		lsp r_people_lsp,char_previous_btn_clicked,70,660 : write_special_text gen_txt_15,"char_page_previous",114,657,char_prev_text,"disabled"
+		lsp r_witches_lsp,char_next_btn,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"enabled"
+		;lsph r_ange_lsp,char_next_btn,0,0,0
 	~
 	
 	notif %play_scene = 40000 jumpf
 		_csp r_witches_lsp
-		_csp r_ange_lsp
+		;_csp r_ange_lsp
 	~
 	
 	notif %play_scene = 40001 jumpf
-		_csp r_ange_lsp
+		;_csp r_ange_lsp
 	~
 	
 	notif %play_scene = 40005 jumpf
-		_csp r_ange_lsp
+		;_csp r_ange_lsp
 	~
 	
 	if %r_u_tea_flg =1 mov %r_display,0
 	
 	notif %r_for_title = 1 jumpf
-		lsp r_exec_lsp,r_exec,0,0
-		lsp r_resu_lsp,r_resu,0,0
+		lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+		lsp r_resu_lsp,char_action_btn,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"disabled"
 	~
 
 	notif %r_u_tea_flg  = 1 jumpf
-		mov %tmp10,%tmp1 : sub %tmp10,128
-		lsp r_exec_lsp,r_exec,%tmp,%tmp10 : add %tmp10,32
-		lsp r_resu_lsp,r_resu,%tmp,%tmp10 ;: add %tmp1,32
+		;mov %tmp10,%tmp1 : sub %tmp10,128
+		lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+		lsp r_resu_lsp,char_action_btn,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"disabled"
 	~
 return
 
 *rmenu_sai_n_display_ep4_2
+	_csp r_witches_lsp
 	notif %r_display = 0 jumpf
 	if %play_scene = 40450 jumpf
-		lsp r_people_lsp,r_people,0,0
-		lsp r_witches_lsp,r_witches_select,0,0
-		lsp r_ange_lsp,r_ange,0,0
+		lsp r_people_lsp,char_previous_btn,70,660 : write_special_text gen_txt_15,"char_page_previous",114,657,char_prev_text,"enabled"
+		;lsph r_witches_lsp,char_next_btn_clicked,0,0
+		lsp r_ange_lsp,char_next_btn,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"enabled"
 	~
 	
 	notif %play_scene = 40001 jumpf
+		lsp r_witches_lsp,char_next_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 		_csp r_ange_lsp
 	~
 	
 	notif %play_scene = 40005 jumpf
+		lsp r_witches_lsp,char_next_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 		_csp r_ange_lsp
 	~
 	
 	if %r_u_tea_flg =1 mov %r_display,0
 
 	notif %r_for_title = 1 jumpf
-		lsp r_exec_lsp,r_exec,0,0
-		lsp r_resu_lsp,r_resu,0,0
+		lsp r_people_lsp,char_previous_btn,70,660 : write_special_text gen_txt_15,"char_page_previous",114,657,char_prev_text,"enabled"
+		lsp r_ange_lsp,char_next_btn,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"enabled"
 	~
 return
 
 *rmenu_sai_n_display_ep4_3
+	_csp r_people_lsp
 	notif %r_display = 0 jumpf
-		lsp r_people_lsp,r_people,0,0
-		lsp r_witches_lsp,r_witches,0,0
-		lsp r_ange_lsp,r_ange_select,0,0
+		;lsph r_people_lsp,char_previous_btn,70,660 : write_special_text gen_txt_15,"char_page_previous",114,657,char_prev_text,"enabled"
+		lsp r_witches_lsp,char_previous_btn,70,660 : write_special_text gen_txt_15,"char_page_previous",114,657,char_prev_text,"enabled"
+		lsp r_ange_lsp,char_next_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 	~
 	
 	if %r_u_tea_flg =1 mov %r_display,0
@@ -36321,29 +36371,95 @@ return
 		aspt alpha,sha_btn_lsp,255,300
 		aspt alpha,kan_btn_lsp,255,300
 		aspt alpha,bea_btn_lsp,255,300
-		aspt alpha,enj_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,enj_btn_lsp,255,300
 	~
 	if %char_moving_side != -2 && %char_moving_side != 2 jumpf
 		if %scenario_Number = 1 aspt alpha,bea_btn_lsp,255,300
 		if %scenario_Number = 1 aspt alpha,ber_btn_lsp,255,300
-		if %scenario_Number > 1 aspt alpha,ma_kin_btn_lsp,255,300 
-		if %scenario_Number > 1 aspt alpha,ma_but_btn_lsp,255,300 
-		if %scenario_Number > 1 aspt alpha,ma_mar_btn_lsp,255,300 
-		if %scenario_Number > 1 aspt alpha,ma_gen_btn_lsp,255,300 
-		if %scenario_Number > 1 aspt alpha,ma_sha_btn_lsp,255,300 
-		if %scenario_Number > 1 aspt alpha,ma_kan_btn_lsp,255,300 
-		if %scenario_Number > 1 aspt alpha,ma_bea_btn_lsp,255,300 
-		if %scenario_Number > 1 aspt alpha,ma_ber_btn_lsp,255,300 
-		if %scenario_Number > 1 aspt alpha,ma_lam_btn_lsp,255,300 
-		if %scenario_Number > 1 aspt alpha,ma_rg_btn_lsp,255,300
-		if %scenario_Number > 1 aspt alpha,ma_rg_1_btn_lsp,255,300
-		if %scenario_Number > 1 aspt alpha,ma_rg_2_btn_lsp,255,300
-		if %scenario_Number > 1 aspt alpha,ma_rg_3_btn_lsp,255,300
-		if %scenario_Number > 1 aspt alpha,ma_rg_4_btn_lsp,255,300
-		if %scenario_Number > 1 aspt alpha,ma_rg_5_btn_lsp,255,300
-		if %scenario_Number > 1 aspt alpha,ma_rg_6_btn_lsp,255,300
+
+		if %scenario_Number = 2 aspt alpha,ma_kin_btn_lsp,255,300 
+		if %scenario_Number = 2 aspt alpha,ma_but_btn_lsp,255,300 
+		if %scenario_Number = 2 aspt alpha,ma_mar_btn_lsp,255,300 
+		if %scenario_Number = 2 aspt alpha,ma_gen_btn_lsp,255,300 
+		if %scenario_Number = 2 aspt alpha,ma_sha_btn_lsp,255,300 
+		if %scenario_Number = 2 aspt alpha,ma_kan_btn_lsp,255,300 
+		if %scenario_Number = 2 aspt alpha,ma_bea_btn_lsp,255,300 
+		if %scenario_Number = 2 aspt alpha,ma_ber_btn_lsp,255,300 
+		if %scenario_Number = 2 aspt alpha,ma_lam_btn_lsp,255,300 
+		if %scenario_Number = 2 aspt alpha,ma_rg_btn_lsp,255,300
+		if %scenario_Number = 2 aspt alpha,ma_rg_1_btn_lsp,255,300
+		if %scenario_Number = 2 aspt alpha,ma_rg_2_btn_lsp,255,300
+		if %scenario_Number = 2 aspt alpha,ma_rg_3_btn_lsp,255,300
+		if %scenario_Number = 2 aspt alpha,ma_rg_4_btn_lsp,255,300
+		if %scenario_Number = 2 aspt alpha,ma_rg_5_btn_lsp,255,300
+		if %scenario_Number = 2 aspt alpha,ma_rg_6_btn_lsp,255,300
+
+		if %scenario_Number = 3 aspt alpha,ma3_bea_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_ber_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_lam_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_rg_btn_lsp,255,300	
+		if %scenario_Number = 3 aspt alpha,ma3_goa_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_wal_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_ron_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_ev2_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_enj_btn_lsp,255,300
+		;if %scenario_Number = 3 aspt alpha,ma3_s_btn_lsp,255,300	
+		if %scenario_Number = 3 aspt alpha,ma3_s_1_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_s_2_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_rg_1_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_rg_2_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_rg_3_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_rg_4_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_rg_5_btn_lsp,255,300
+		if %scenario_Number = 3 aspt alpha,ma3_rg_6_btn_lsp,255,300
+				
+		if %scenario_Number = 4 aspt alpha,ma4_lam_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_ber_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_bea_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_mar_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_enj_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_kin_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_sak_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_wal_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_ron_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_gap_btn_lsp,255,300
+		;if %scenario_Number = 4 aspt alpha,ma4_s_btn_lsp,255,300	
+		if %scenario_Number = 4 aspt alpha,ma4_rg_btn_lsp,255,300	
+		if %scenario_Number = 4 aspt alpha,ma4_goa_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_s00_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_s410_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_s45_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_s556_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_rg_1_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_rg_2_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_rg_3_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_rg_4_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_rg_5_btn_lsp,255,300
+		if %scenario_Number = 4 aspt alpha,ma4_rg_6_btn_lsp,255,300
 	~
-	mov %char_hider,255
+	if %char_moving_side != -3 && %char_moving_side != 3 jumpf
+		aspt alpha,enj_eva_btn_lsp,255,300	
+		aspt alpha,enj_oko_btn_lsp,255,300	
+		aspt alpha,enj_kas_btn_lsp,255,300	
+		aspt alpha,enj_enj_btn_lsp,255,300	
+		aspt alpha,enj_ama_btn_lsp,255,300	
+		aspt alpha,enj_sak_btn_lsp,255,300	
+		aspt alpha,enj_mar_btn_lsp,255,300	
+		aspt alpha,enj_rg_btn_lsp,255,300		
+		aspt alpha,enj_pro_btn_lsp,255,300	
+		aspt alpha,enj_mas_btn_lsp,255,300	
+		aspt alpha,enj_sab_btn_lsp,255,300	
+		aspt alpha,enj_kwa_btn_lsp,255,300	
+		aspt alpha,enj_ber_btn_lsp,255,300	
+		aspt alpha,enj_rg_1_btn_lsp,255,300	
+		aspt alpha,enj_rg_2_btn_lsp,255,300	
+		aspt alpha,enj_rg_3_btn_lsp,255,300	
+		aspt alpha,enj_rg_4_btn_lsp,255,300	
+		aspt alpha,enj_rg_5_btn_lsp,255,300	
+		aspt alpha,enj_rg_6_btn_lsp,255,300	
+	~
+		mov %char_hider,255
+		if %char_selector_ep_change = 1 mov %char_selector_ep_change,0 : aspt alpha,gen_txt_14,255,300
 	*skip_char_side_anim
 
 	;change clotch lsp
@@ -36380,9 +36496,9 @@ return
 	if %scenario_Number = 1 && %r_u_tea_flg = 0 spbtn r_witches_lsp,r_witches_lsp
 	if %scenario_Number = 2 && %r_side = 1 spbtn r_people_lsp,r_people_lsp
 	if %scenario_Number = 2 && %r_side = 0 spbtn r_witches_lsp,r_witches_lsp
-	if %r_display_side = 0 spbtn r_witches_lsp,r_witches_lsp spbtn r_ange_lsp,r_ange_lsp
+	if %r_display_side = 0 spbtn r_witches_lsp,r_witches_lsp ;spbtn r_ange_lsp,r_ange_lsp
 	if %r_display_side = 1 spbtn r_people_lsp,r_people_lsp spbtn r_ange_lsp,r_ange_lsp
-	if %r_display_side = 2 spbtn r_people_lsp,r_people_lsp spbtn r_witches_lsp,r_witches_lsp
+	if %r_display_side = 2 spbtn r_witches_lsp,r_witches_lsp ;spbtn r_people_lsp,r_people_lsp 
 	
 	;rondo
 	if %scenario_Number = 1 goto *rmenu_button_reconfigure_ep1
@@ -36534,14 +36650,14 @@ return
 
 	;W_CUSTOM - ;Char menu - Ep change btns
 	mov %char_switching_ep,0 ;lsp 2,":c;graphics\colour\black.png",0,0 : print 22 : _csp 97,r_used_lsp : _csp 2
-	if %scenario_Number != 1 if %BtnRes=gen_txt_2 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,1 : mov %char_switching_ep,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
-	if %scenario_Number != 2 if %BtnRes=gen_txt_3 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,2 : mov %char_switching_ep,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
-	if %scenario_Number != 3 if %BtnRes=gen_txt_4 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,3 : mov %char_switching_ep,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
-	if %scenario_Number != 4 if %BtnRes=gen_txt_5 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,4 : mov %char_switching_ep,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
-	if %scenario_Number != 5 if %BtnRes=gen_txt_6 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,5 : mov %char_switching_ep,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
-	if %scenario_Number != 6 if %BtnRes=gen_txt_7 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,6 : mov %char_switching_ep,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
-	if %scenario_Number != 7 if %BtnRes=gen_txt_8 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,7 : mov %char_switching_ep,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
-	if %scenario_Number != 8 if %BtnRes=gen_txt_9 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,8 : mov %char_switching_ep,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+	if %scenario_Number != 1 if %BtnRes=gen_txt_2 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,1 : mov %char_switching_ep,1 : mov %char_selector_ep_change,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+	if %scenario_Number != 2 if %BtnRes=gen_txt_3 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,2 : mov %char_switching_ep,1 : mov %char_selector_ep_change,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+	if %scenario_Number != 3 if %BtnRes=gen_txt_4 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,3 : mov %char_switching_ep,1 : mov %char_selector_ep_change,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+	if %scenario_Number != 4 if %BtnRes=gen_txt_5 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,4 : mov %char_switching_ep,1 : mov %char_selector_ep_change,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+	if %scenario_Number != 5 if %BtnRes=gen_txt_6 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,5 : mov %char_switching_ep,1 : mov %char_selector_ep_change,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+	if %scenario_Number != 6 if %BtnRes=gen_txt_7 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,6 : mov %char_switching_ep,1 : mov %char_selector_ep_change,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+	if %scenario_Number != 7 if %BtnRes=gen_txt_8 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,7 : mov %char_switching_ep,1 : mov %char_selector_ep_change,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
+	if %scenario_Number != 8 if %BtnRes=gen_txt_9 mov %char_save_scenario_Num,%scenario_Number : mov %scenario_Number,8 : mov %char_switching_ep,1 : mov %char_selector_ep_change,1 : mov %r_for_title,1 : _csp 97,r_used_lsp : gosub *rmenu_main_new : mov %title_skip,1 : goto *b_title
 
 	;rondo
 	if %scenario_Number = 1 goto *rmenu_custom_btlp_ep1
@@ -37033,6 +37149,8 @@ return
 
 ;=====================
 *r_cha_button_new
+	;if %char_selector_ep_change = 1 aspt alpha,gen_txt_14,0,300
+
 	if %scenario_Number = 1 goto *r_cha_button_ep1
 	if %scenario_Number = 2 && %r_side = 0 goto *r_cha_button_ep2
 	if %scenario_Number = 2 && %r_side = 1 goto *r_cha_button_ep2_2
@@ -37082,7 +37200,6 @@ goto *r_cha_button_end
 goto *r_cha_button_end
 ;----EP2----
 *r_cha_button_ep2
-
 	if %UMINEKOEND_TIPS_CHA_FLG <= 2 mov %UMINEKOEND_TIPS_CHA_FLG,0
 
 	mov %tmp,kin_btn_lsp
@@ -37146,9 +37263,9 @@ goto *r_cha_button_end
 	mov %tmp,kin_btn_lsp
 	for %tmp2 = 1 to char_max_ep4
 		if ?r[4][%tmp2][condition] = -1 jumpf
-			lsph %tmp,$?r[4][%tmp2][?r[4][%tmp2][condition]],?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y]
+			lsp %tmp,$?r[4][%tmp2][?r[4][%tmp2][condition]],?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y],%char_hider
 			
-			if %tmp2 = enj && ?r[4][%tmp2][condition] = 1 && ?r[4][%tmp2][r_ishou] = 2 lsp enj_btn_lsp,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj0.png",?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y]
+			if %tmp2 = enj && ?r[4][%tmp2][condition] = 1 && ?r[4][%tmp2][r_ishou] = 2 lsp enj_btn_lsp,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj0.png",?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y],%char_hider
 		~
 		inc %tmp
 	next
@@ -37160,7 +37277,7 @@ goto *r_cha_button_end
 	mov %tmp,ma4_lam_btn_lsp
 	for %tmp2 = 1 to char_max_ep4_2
 		if ?r[4][%tmp2][condition] = -1 jumpf
-			lsph %tmp,$?r[4][%tmp2][?r[4][%tmp2][condition]],?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y]
+			lsp %tmp,$?r[4][%tmp2][?r[4][%tmp2][condition]],?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y],%char_hider
 		~
 		inc %tmp
 	next
@@ -37172,10 +37289,10 @@ goto *r_cha_button_end
 	mov %tmp,enj_eva_btn_lsp
 	for %tmp2 = 1 to char_max_ep4_3
 		if ?r[4][%tmp2][condition] = -1 jumpf
-			lsph %tmp,$?r[4][%tmp2][?r[4][%tmp2][condition]],?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y]
+			lsp %tmp,$?r[4][%tmp2][?r[4][%tmp2][condition]],?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y],%char_hider
 
-			if %tmp2 = enj_enj && ?r[4][%tmp2][r_ishou] = 2 : lsp enj_enj_btn_lsp,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj1.png",?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y]
-			if %tmp2 = enj_enj && ?r[4][%tmp2][r_ishou] = 1 : lsp enj_enj_btn_lsp,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj0.png",?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y]
+			if %tmp2 = enj_enj && ?r[4][%tmp2][r_ishou] = 2 : lsp enj_enj_btn_lsp,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj1.png",?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y],%char_hider
+			if %tmp2 = enj_enj && ?r[4][%tmp2][r_ishou] = 1 : lsp enj_enj_btn_lsp,":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj0.png",?r[4][%tmp2][itiran_x],?r[4][%tmp2][itiran_y],%char_hider
 		~
 		inc %tmp
 	next
@@ -37819,29 +37936,31 @@ return
 		aspt alpha,sha_btn_lsp,0,300 : _csp sha_btn_lsp
 		aspt alpha,kan_btn_lsp,0,300 : _csp kan_btn_lsp
 		aspt alpha,enj_btn_lsp,0,300 : _csp enj_btn_lsp
-;
+
 		aspt alpha,bea_btn_lsp,0,300 : _csp bea_btn_lsp
-		;aspt alpha,ber_btn_lsp,0,300 : _csp ber_btn_lsp
-		;aspt alpha,lam_btn_lsp,0,300 : _csp lam_btn_lsp
-;
-		;aspt alpha,ma_kin_btn_lsp,0,300
-		;aspt alpha,ma_but_btn_lsp,0,300
-		;aspt alpha,ma_mar_btn_lsp,0,300
-		;aspt alpha,ma_gen_btn_lsp,0,300
-		;aspt alpha,ma_sha_btn_lsp,0,300
-		;aspt alpha,ma_kan_btn_lsp,0,300
-		;aspt alpha,ma_bea_btn_lsp,0,300
-		;aspt alpha,ma_ber_btn_lsp,0,300
-		;aspt alpha,ma_lam_btn_lsp,0,300
-		;aspt alpha,ma_rg_btn_lsp,0,300
-		;aspt alpha,ma_rg_1_btn_lsp,0,300
-		;aspt alpha,ma_rg_2_btn_lsp,0,300
-		;aspt alpha,ma_rg_3_btn_lsp,0,300
-		;aspt alpha,ma_rg_4_btn_lsp,0,300
-		;aspt alpha,ma_rg_5_btn_lsp,0,300
-		;aspt alpha,ma_rg_6_btn_lsp,0,300
+
+		aspt alpha,enj_eva_btn_lsp,0,300		: _csp enj_eva_btn_lsp	
+		aspt alpha,enj_oko_btn_lsp,0,300		: _csp enj_oko_btn_lsp	
+		aspt alpha,enj_kas_btn_lsp,0,300		: _csp enj_kas_btn_lsp	
+		aspt alpha,enj_enj_btn_lsp,0,300		: _csp enj_enj_btn_lsp	
+		aspt alpha,enj_ama_btn_lsp,0,300		: _csp enj_ama_btn_lsp	
+		aspt alpha,enj_sak_btn_lsp,0,300		: _csp enj_sak_btn_lsp	
+		aspt alpha,enj_mar_btn_lsp,0,300		: _csp enj_mar_btn_lsp	
+		aspt alpha,enj_rg_btn_lsp,0,300			: _csp enj_rg_btn_lsp	
+		aspt alpha,enj_pro_btn_lsp,0,300		: _csp enj_pro_btn_lsp	
+		aspt alpha,enj_mas_btn_lsp,0,300		: _csp enj_mas_btn_lsp	
+		aspt alpha,enj_sab_btn_lsp,0,300		: _csp enj_sab_btn_lsp	
+		aspt alpha,enj_kwa_btn_lsp,0,300		: _csp enj_kwa_btn_lsp	
+		aspt alpha,enj_ber_btn_lsp,0,300		: _csp enj_ber_btn_lsp	
+		aspt alpha,enj_rg_1_btn_lsp,0,300		: _csp enj_rg_1_btn_lsp
+		aspt alpha,enj_rg_2_btn_lsp,0,300		: _csp enj_rg_2_btn_lsp
+		aspt alpha,enj_rg_3_btn_lsp,0,300		: _csp enj_rg_3_btn_lsp
+		aspt alpha,enj_rg_4_btn_lsp,0,300		: _csp enj_rg_4_btn_lsp
+		aspt alpha,enj_rg_5_btn_lsp,0,300		: _csp enj_rg_5_btn_lsp
+		aspt alpha,enj_rg_6_btn_lsp,0,300		: _csp enj_rg_6_btn_lsp
 
 		aspt alpha,gen_txt_14,0,300 : _csp gen_txt_14;char selector
+		
 
 		if %scenario_Number = 1 mov %r_u_tea_flg,1
 		if %scenario_Number = 1 mov %r_ber_flg,1
@@ -37867,6 +37986,32 @@ return
 		if %char_moving_side < 3 mov %char_moving_side,3
 		if %char_moving_side > 3 mov %char_moving_side,-3
 
+		if %scenario_Number = 4  aspt alpha,ma4_lam_btn_lsp,0,300	: _csp ma4_lam_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_ber_btn_lsp,0,300	: _csp ma4_ber_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_bea_btn_lsp,0,300	: _csp ma4_bea_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_mar_btn_lsp,0,300	: _csp ma4_mar_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_enj_btn_lsp,0,300	: _csp ma4_enj_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_kin_btn_lsp,0,300	: _csp ma4_kin_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_sak_btn_lsp,0,300	: _csp ma4_sak_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_wal_btn_lsp,0,300	: _csp ma4_wal_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_ron_btn_lsp,0,300	: _csp ma4_ron_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_gap_btn_lsp,0,300	: _csp ma4_gap_btn_lsp
+		;if %scenario_Number = 4 aspt alpha,ma4_s_btn_lsp,0,300		: _csp ma4_s_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_btn_lsp,0,300	: _csp ma4_rg_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_goa_btn_lsp,0,300	: _csp ma4_goa_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_s00_btn_lsp,0,300	: _csp ma4_s00_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_s410_btn_lsp,0,300	: _csp ma4_s410_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_s45_btn_lsp,0,300	: _csp ma4_s45_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_s556_btn_lsp,0,300	: _csp ma4_s556_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_1_btn_lsp,0,300	: _csp ma4_rg_1_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_2_btn_lsp,0,300	: _csp ma4_rg_2_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_3_btn_lsp,0,300	: _csp ma4_rg_3_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_4_btn_lsp,0,300	: _csp ma4_rg_4_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_5_btn_lsp,0,300	: _csp ma4_rg_5_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_6_btn_lsp,0,300	: _csp ma4_rg_6_btn_lsp
+
+		aspt alpha,gen_txt_14,0,300 : _csp gen_txt_14;char selector
+
 		if %scenario_Number = 4 mov %r_display_cha,enj_enj
 		mov %r_side,2
 		mov %r_display_side,2
@@ -37887,46 +38032,71 @@ return
 		if %char_moving_side < 1 mov %char_moving_side,1
 		if %char_moving_side > 1 mov %char_moving_side,-1
 
-		;aspt alpha,kin_btn_lsp,0,300
-		;aspt alpha,kla_btn_lsp,0,300
-		;aspt alpha,nat_btn_lsp,0,300
-		;aspt alpha,jes_btn_lsp,0,300
-		;aspt alpha,hid_btn_lsp,0,300
-		;aspt alpha,eva_btn_lsp,0,300
-		;aspt alpha,geo_btn_lsp,0,300
-		;aspt alpha,rud_btn_lsp,0,300
-		;aspt alpha,kir_btn_lsp,0,300
-		;aspt alpha,but_btn_lsp,0,300
-		;aspt alpha,ros_btn_lsp,0,300
-		;aspt alpha,mar_btn_lsp,0,300
-		;aspt alpha,nan_btn_lsp,0,300
-		;aspt alpha,gen_btn_lsp,0,300
-		;aspt alpha,kum_btn_lsp,0,300
-		;aspt alpha,goh_btn_lsp,0,300
-		;aspt alpha,sha_btn_lsp,0,300
-		;aspt alpha,kan_btn_lsp,0,300
-		;aspt alpha,enj_btn_lsp,0,300 : _csp enj_btn_lsp
-;
-		aspt alpha,bea_btn_lsp,0,300 : _csp bea_btn_lsp
-		aspt alpha,ber_btn_lsp,0,300 : _csp ber_btn_lsp
-		aspt alpha,lam_btn_lsp,0,300 : _csp lam_btn_lsp
-;
-		aspt alpha,ma_kin_btn_lsp,0,300		: _csp ma_kin_btn_lsp
-		aspt alpha,ma_but_btn_lsp,0,300		: _csp ma_but_btn_lsp
-		aspt alpha,ma_mar_btn_lsp,0,300		: _csp ma_mar_btn_lsp
-		aspt alpha,ma_gen_btn_lsp,0,300		: _csp ma_gen_btn_lsp
-		aspt alpha,ma_sha_btn_lsp,0,300		: _csp ma_sha_btn_lsp
-		aspt alpha,ma_kan_btn_lsp,0,300		: _csp ma_kan_btn_lsp
-		aspt alpha,ma_bea_btn_lsp,0,300		: _csp ma_bea_btn_lsp
-		aspt alpha,ma_ber_btn_lsp,0,300		: _csp ma_ber_btn_lsp
-		aspt alpha,ma_lam_btn_lsp,0,300		: _csp ma_lam_btn_lsp
-		aspt alpha,ma_rg_btn_lsp,0,300		: _csp ma_rg_btn_lsp
-		aspt alpha,ma_rg_1_btn_lsp,0,300	: _csp ma_rg_1_btn_lsp
-		aspt alpha,ma_rg_2_btn_lsp,0,300	: _csp ma_rg_2_btn_lsp
-		aspt alpha,ma_rg_3_btn_lsp,0,300	: _csp ma_rg_3_btn_lsp
-		aspt alpha,ma_rg_4_btn_lsp,0,300	: _csp ma_rg_4_btn_lsp
-		aspt alpha,ma_rg_5_btn_lsp,0,300	: _csp ma_rg_5_btn_lsp
-		aspt alpha,ma_rg_6_btn_lsp,0,300	: _csp ma_rg_6_btn_lsp
+		;All the ma_'s have the same sprite number, thus we need to specify in roder to prevent some from loading faster 
+
+		if %scenario_Number = 1 aspt alpha,bea_btn_lsp,0,300 : _csp bea_btn_lsp
+		if %scenario_Number = 1 aspt alpha,ber_btn_lsp,0,300 : _csp ber_btn_lsp
+		;if %scenario_Number = 3 aspt alpha,lam_btn_lsp,0,300 : _csp lam_btn_lsp
+
+		if %scenario_Number = 2  aspt alpha,ma_kin_btn_lsp,0,300	: _csp ma_kin_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_but_btn_lsp,0,300	: _csp ma_but_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_mar_btn_lsp,0,300	: _csp ma_mar_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_gen_btn_lsp,0,300	: _csp ma_gen_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_sha_btn_lsp,0,300	: _csp ma_sha_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_kan_btn_lsp,0,300	: _csp ma_kan_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_bea_btn_lsp,0,300	: _csp ma_bea_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_ber_btn_lsp,0,300	: _csp ma_ber_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_lam_btn_lsp,0,300	: _csp ma_lam_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_rg_btn_lsp,0,300		: _csp ma_rg_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_rg_1_btn_lsp,0,300	: _csp ma_rg_1_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_rg_2_btn_lsp,0,300	: _csp ma_rg_2_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_rg_3_btn_lsp,0,300	: _csp ma_rg_3_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_rg_4_btn_lsp,0,300	: _csp ma_rg_4_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_rg_5_btn_lsp,0,300	: _csp ma_rg_5_btn_lsp
+		if %scenario_Number = 2  aspt alpha,ma_rg_6_btn_lsp,0,300	: _csp ma_rg_6_btn_lsp
+ 
+		if %scenario_Number = 3  aspt alpha,ma3_bea_btn_lsp,0,300	: _csp ma3_bea_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_ber_btn_lsp,0,300	: _csp ma3_ber_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_lam_btn_lsp,0,300	: _csp ma3_lam_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_rg_btn_lsp,0,300	: _csp ma3_rg_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_goa_btn_lsp,0,300	: _csp ma3_goa_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_wal_btn_lsp,0,300	: _csp ma3_wal_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_ron_btn_lsp,0,300	: _csp ma3_ron_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_ev2_btn_lsp,0,300	: _csp ma3_ev2_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_enj_btn_lsp,0,300	: _csp ma3_enj_btn_lsp
+		;if %scenario_Number = 3 aspt alpha,ma3_s_btn_lsp,0,300		: _csp ma3_s_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_s_1_btn_lsp,0,300	: _csp ma3_s_1_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_s_2_btn_lsp,0,300	: _csp ma3_s_2_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_rg_1_btn_lsp,0,300	: _csp ma3_rg_1_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_rg_2_btn_lsp,0,300	: _csp ma3_rg_2_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_rg_3_btn_lsp,0,300	: _csp ma3_rg_3_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_rg_4_btn_lsp,0,300	: _csp ma3_rg_4_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_rg_5_btn_lsp,0,300	: _csp ma3_rg_5_btn_lsp
+		if %scenario_Number = 3  aspt alpha,ma3_rg_6_btn_lsp,0,300	: _csp ma3_rg_6_btn_lsp
+				 
+		if %scenario_Number = 4  aspt alpha,ma4_lam_btn_lsp,0,300	: _csp ma4_lam_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_ber_btn_lsp,0,300	: _csp ma4_ber_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_bea_btn_lsp,0,300	: _csp ma4_bea_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_mar_btn_lsp,0,300	: _csp ma4_mar_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_enj_btn_lsp,0,300	: _csp ma4_enj_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_kin_btn_lsp,0,300	: _csp ma4_kin_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_sak_btn_lsp,0,300	: _csp ma4_sak_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_wal_btn_lsp,0,300	: _csp ma4_wal_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_ron_btn_lsp,0,300	: _csp ma4_ron_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_gap_btn_lsp,0,300	: _csp ma4_gap_btn_lsp
+		;if %scenario_Number = 4 aspt alpha,ma4_s_btn_lsp,0,300		: _csp ma4_s_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_btn_lsp,0,300	: _csp ma4_rg_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_goa_btn_lsp,0,300	: _csp ma4_goa_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_s00_btn_lsp,0,300	: _csp ma4_s00_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_s410_btn_lsp,0,300	: _csp ma4_s410_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_s45_btn_lsp,0,300	: _csp ma4_s45_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_s556_btn_lsp,0,300	: _csp ma4_s556_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_1_btn_lsp,0,300	: _csp ma4_rg_1_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_2_btn_lsp,0,300	: _csp ma4_rg_2_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_3_btn_lsp,0,300	: _csp ma4_rg_3_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_4_btn_lsp,0,300	: _csp ma4_rg_4_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_5_btn_lsp,0,300	: _csp ma4_rg_5_btn_lsp
+		if %scenario_Number = 4  aspt alpha,ma4_rg_6_btn_lsp,0,300	: _csp ma4_rg_6_btn_lsp
 
 		aspt alpha,gen_txt_14,0,300 : _csp gen_txt_14;char selector
 
@@ -37997,7 +38167,7 @@ return
 		*rmenu_custom_btlp_100_ep4_2
 
 		gosub *r_cha_button_new
-		print 1
+		;print 1
 	~
 
 	notif %BtnRes = r_resu_lsp jumpf
@@ -38021,7 +38191,7 @@ return
 		*rmenu_custom_btlp_200_ep4_2
 
 		gosub *r_cha_button_new
-		print 22
+		;print 22
 	~
 return
 	
@@ -38049,7 +38219,7 @@ return
 		*rmenu_custom_btlp_100_ep4_3
 
 		gosub *r_cha_button_new
-		print 1
+		;print 1
 	~
 
 	notif %BtnRes = r_resu_lsp jumpf
@@ -38072,7 +38242,7 @@ return
 		*rmenu_custom_btlp_200_ep4_3
 
 		gosub *r_cha_button_new
-		print 22
+		;print 22
 	~
 return
 	

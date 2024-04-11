@@ -1451,6 +1451,7 @@ defsub romaji_bgm_order
 defsub bgm_instrumental_order
 defsub empty_slot_cache
 defsub texton_bgonly
+defsub redeclare_portraits_numaliases
 ;End Custom
 
 ;====================================================   Custom Vars - W_CUSTOM
@@ -1601,7 +1602,9 @@ numalias char_is_selected,9599
 numalias char_switching_ep,9609
 numalias char_save_scenario_Num,9610
 numalias char_hider,9611
-
+numalias char_reloading_numaliases,9612
+numalias r_display_cha_universal,9613
+numalias char_selector_ep_change,9614
 
 
 
@@ -1898,7 +1901,10 @@ if %bgm_title_language < 1 || %bgm_title_language > 4 gosub *traditional_bgm_ord
 mov %char_performing_action,0
 mov %char_is_selected,0
 mov %char_switching_ep,0
+mov %char_selector_ep_change,0
 mov %char_hider,0
+mov %char_reloading_numaliases,0
+mov %r_display_cha_universal,0
 ;Char Menu ;TODO Some char menu open in different pages, fix ;W_CUSTOM
 mov %char_moving_side,1
 

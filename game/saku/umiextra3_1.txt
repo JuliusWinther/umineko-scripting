@@ -1,3 +1,64 @@
+*OCchoice
+
+jnskip_s
+return
+~
+
+lsp s0_29,extra_story_btn,375,320 
+write_special_text gen_txt_19,"in_story_choice",375,330,"KILL"
+
+lsp s0_28,extra_story_btn,375,410 
+write_special_text gen_txt_20,"in_story_choice",375,420,"DON'T"
+flush 22
+
+*OCloop
+
+btndef ""
+
+spbtn s0_29,s0_29
+spbtn s0_28,s0_28
+
+
+btndown 0
+btnwait %choice_extra
+
+
+if %choice_extra = 0 goto *OCloop
+
+if %choice_extra = s0_29 goto *OCkill
+
+if %choice_extra != s0_28 jumpf
+
+csp_slot s0_29
+csp_slot s0_28
+csp_text gen_txt_19
+csp_text gen_txt_20
+lbg "c:colour",s0_3,"white"
+flush 42
+
+csp_slot s0_3
+vol_bgm -1 2000
+flush 4
+
+seplay 11,82,100
+lbg "c:local_saku",s0_3,"warera_arigatou"
+flush 2
+
+*e31_50
+d [lv 0*"27"*"bea_03511"]``[\]
+textoff2
+wait 1000
+goto *OCloop_end
+~
+
+
+goto *OCloop
+*OCloop_end
+return
+
+
+
+
 *umiextra2_11
 log_reset
 mov $name_chapter_r_click,r_click_extra2_11
@@ -15,45 +76,33 @@ csp_slot s0_10
 flush 2
 
 seplay 11,19,100
-
+wait 1500
 seplay 11,17,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 43
 
 bgmplay 12,70,0
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 lss s0_9,"bea","a15_1_hoshin1star"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 42
 
-lss s0_10,"ron","a11_defo2"
-spt_mem "a2","xpos",s0_10,550
-flush 80
-
+lss s0_7,"ron","a11_defo2"
+spt_mem "a2","xpos",s0_7,550
 flush 22
 
-lss s0_10,"ron","a11_defo1"
-spt_mem "a2","xpos",s0_10,550
+lss s0_7,"ron","a11_defo1"
+spt_mem "a2","xpos",s0_7,550
 flush 80
 
 msgwnd_ron
 *e31_1
 d [lv 0*"31"*"ron_01840"]`{qt}Milady,`[@][lv 0*"31"*"ron_01850"]` Dlanor-sama has arrived.{qt}`[\]
 
+csp_slot s0_9
+flush 80
 
 lss s0_8,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_8,-549
@@ -63,7 +112,6 @@ msgwnd_bea
 *e31_2
 d [lv 0*"27"*"bea_03360"]`{qt}Oh, what is this!`[@][lv 0*"27"*"bea_03370"]` The Inquisition has come just to check the outline, and what's more, it's the head Inquisitor herself!`[@][lv 0*"27"*"bea_03380"]` The Great Court seems to have too much free time or too many people.{qt}`[\]
 
-
 lss s0_9,"dla","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -71,7 +119,6 @@ flush 80
 msgwnd_dla
 *e31_3
 d [lv 0*"47"*"dla_00210"]`{qt}...By my presiding witness,`[@][lv 0*"47"*"dla_00220"]` I expect your game will be unfathomably difficult and SPLENDID.{qt}`[\]
-
 
 lss s0_8,"bea","a11_warai2"
 spt_mem "a2","xpos",s0_8,-549
@@ -81,24 +128,27 @@ msgwnd_bea
 *e31_4
 d [lv 0*"27"*"bea_03390"]`{qt}No need for flattery, have a seat.`[@][lv 0*"27"*"bea_03400"]` Ronove, prepare some tasty tea and cookies for the head Inquisitor.{qt}`[\]
 
-
-lss s0_10,"ron","a11_warai2"
-spt_mem "a2","xpos",s0_10,550
+lss s0_7,"ron","a11_warai2"
+spt_mem "a2","xpos",s0_7,550
 flush 80
 
 msgwnd_ron
 *e31_5
 d [lv 0*"31"*"ron_01860"]`{qt}Certainly.{qt}`[\]
 
-
+csp_slot s0_7
+flush 80
+wait 100
+csp_slot s0_9
+flush 80
+wait 100
 lss s0_10,"dla","a11_defo2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
 msgwnd_dla
 *e31_6
-d [lv 0*"47"*"dla_00230"]`{qt}No, that's ALRIGHT.`[@][lv 0*"47"*"dla_00240"]` More importantly, I would like to see it right AWAY.`[@][lv 0*"47"*"dla_00250"]`...   The outline of a new game you are SPINNING.{qt}`[\]
-
+d [lv 0*"47"*"dla_00230"]`{qt}No, that's ALRIGHT.`[@][lv 0*"47"*"dla_00240"]` More importantly, I would like to see it right AWAY.`[@][lv 0*"47"*"dla_00250"]`...The outline of a new game you are SPINNING.{qt}`[\]
 
 lss s0_8,"bea","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
@@ -107,55 +157,38 @@ flush 80
 msgwnd_bea
 *e31_7
 d [lv 0*"27"*"bea_03410"]`{qt}Very well.`[@][lv 0*"27"*"bea_03420"]` The outline is complete.`[@][lv 0*"27"*"bea_03430"]` But I'm still in the middle of decorating it as a story.{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 26
 
 msgwnd_non
 *e31_8
 d `Beato pushed her way through a pile of manuscripts on top of her desk and pulled out a single bundle.`[\]
 
-
 *e31_9
 d `It was the manuscript for the new game.`[\]
 
-
 *e31_10
-d `Revised countless times with various notes and tabs attached,`[@]`it emanated a kind of dignified presence.`[\]
-
+d `Revised countless times with various notes and tabs attached,`[@]` it emanated a kind of dignified presence.`[\]
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mlib_1ap"
-
 lss s0_9,"dla","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
+flush 22
 
 *e31_11
 d `Dlanor gave a bow, and accepted it.`[\]
 
-
 *e31_12
 d `Then amidst the tea vapors as Ronove set the table, she turned over the front cover.`[\]
-
 
 lss s0_9,"dla","a11_majime1"
 spt_mem "a2","xpos",s0_9,0
@@ -165,7 +198,6 @@ msgwnd_dla
 *e31_13
 d [lv 0*"47"*"dla_00260"]`{qt}What is the name of the game this TIME?{qt}`[\]
 
-
 lss s0_8,"bea","a11_defo2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -174,6 +206,8 @@ msgwnd_bea
 *e31_14
 d [lv 0*"27"*"bea_03440"]`{qt}There isn't one yet.`[@][lv 0*"27"*"bea_03450"]` I always wait until I have completely finished writing the story before thinking of a name.{qt}`[\]
 
+csp_slot s0_9
+flush 80
 
 lss s0_10,"dla","a11_defo2"
 spt_mem "a2","xpos",s0_10,550
@@ -181,8 +215,7 @@ flush 80
 
 msgwnd_dla
 *e31_15
-d [lv 0*"47"*"dla_00270"]`{qt}UNDERSTOOD.`[@][lv 0*"47"*"dla_00280"]`...   Then with no delay, I shall begin the READING.`[@][lv 0*"47"*"dla_00290"]` Although if I may say, it is disappointing that my first reading will be before it has become a beatifully arranged STORY.{qt}`[\]
-
+d [lv 0*"47"*"dla_00270"]`{qt}UNDERSTOOD.`[@][lv 0*"47"*"dla_00280"]`...Then with no delay, I shall begin the READING.`[@][lv 0*"47"*"dla_00290"]` Although if I may say, it is disappointing that my first reading will be before it has become a beatifully arranged STORY.{qt}`[\]
 
 lss s0_8,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_8,-549
@@ -192,15 +225,13 @@ msgwnd_bea
 *e31_16
 d [lv 0*"27"*"bea_03460"]`{qt}*cackle*`[@][lv 0*"27"*"bea_03470"]` That is the unfortunate side of being a playtester.{qt}`[\]
 
-
 lss s0_10,"dla","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
 msgwnd_dla
 *e31_17
-d [lv 0*"47"*"dla_00300"]`{qt}...It seems that this time, too, it will be a truly complex and mysterious INCIDENT.`[@][lv 0*"47"*"dla_00310"]`...   I am really looking forward to seeing just how this will be elevated to 'story' STATUS.{qt}`[\]
-
+d [lv 0*"47"*"dla_00300"]`{qt}...It seems that this time, too, it will be a truly complex and mysterious INCIDENT.`[@][lv 0*"47"*"dla_00310"]`...I am really looking forward to seeing just how this will be elevated to 'story' STATUS.{qt}`[\]
 
 lss s0_8,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_8,-549
@@ -209,65 +240,47 @@ flush 80
 msgwnd_bea
 *e31_18
 d [lv 0*"27"*"bea_03480"]`{qt}No need for flattery.`[@][lv 0*"27"*"bea_03490"]` Hurry and turn the page.`[@][lv 0*"27"*"bea_03500"]` I feel as if I am the newbie mangaka putting my manuscript in front of the editor.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mlib_1ep"
-
 flush 22
 
 msgwnd_non
 *e31_19
 d `Beato made a roguish smile, and Dlanor returned the same expression.`[\]
 
-
 *e31_20
 d `Dlanor had in her hands, ...the so-called unfinished manuscript.`[\]
 
-
 *e31_21
 d `No, it was truly an unformed thing on its way to becoming a manuscript, with a plot in the middle of its construction mixed in.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
-
 flush 22
 
 *e31_22
 d `If we were to use Beato's style of speech, ......it's just as if it was the milky form of ice cream before it was frozen.`[\]
 
-
 *e31_23
 d `No, it's probably even less complete than that.`[\]
 
-
 *e31_24
 d `It's still egg yolk, milk, and raw cream cast into a bowl and at the height of its mixing stage.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 flush 22
 
 lss s0_9,"dla","am11_majime3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
+
+wait 500
+csp_slot s0_9
+flush 80
 
 lss s0_8,"dla","am11_defo1"
 spt_mem "a2","xpos",s0_8,-549
@@ -277,7 +290,6 @@ msgwnd_dla
 *e31_25
 d [lv 0*"47"*"dla_00320"]`{qt}It really is just like the egg of a TALE.`[@][lv 0*"47"*"dla_00330"]` You carefully put time into keeping it warm and cause it to HATCH.{qt}`[\]
 
-
 lss s0_10,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -286,138 +298,106 @@ msgwnd_bea
 *e31_26
 d [lv 0*"27"*"bea_03510"]`{qt}If I could, I would love to show it to you as magnificent ice cream, since I wanted to allow you to fully appreciate it.{qt}`[\]
 
-
 lss s0_8,"dla","am11_majime3"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
 msgwnd_dla
 *e31_27
-d [lv 0*"47"*"dla_00340"]`{qt}Of course, that would be IDEAL.`[@][lv 0*"47"*"dla_00350"]`...   However, I think this makes for the next best THING.{qt}`[\]
-
+d [lv 0*"47"*"dla_00340"]`{qt}Of course, that would be IDEAL.`[@][lv 0*"47"*"dla_00350"]`...However, I think this makes for the next best THING.{qt}`[\]
 
 msgwnd_non
 *e31_28
 d `Because, even if it's in an incomplete state now, the recipe is still exposed.`[\]
 
-
 *e31_29
 d `We can see the precious other side of it, the side we could never see from a completed story.`[\]
-
 
 *e31_30
 d `Those able to see this are...`[\]
 
-
 *e31_31
 d `Only the witch who wrote the tale herself, and... the very few observers she allows.`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 22
 
 *e31_32
 d `This is the unfinished manuscript, in a muddy chaos soup state before it becomes ice cream...`[\]
 
-
 *e31_33
 d `In fact, it's missing the narrative development characteristic of a story, it's not even complete as any kind of reading material.`[\]
 
-
 *e31_34
-d `However, even so,`[@]`the Endless Witch BEATRICE's secret recipe, yet discerned by no one, is recorded upon it.`[\]
+d `However, even so,`[@]` the Endless Witch {f:5:Beatrice}'s secret recipe, yet discerned by no one, is recorded upon it.`[\]
 
-
-*e31_35
-d `The Endless Witch BEATRICE's secret recipe, yet discerned by no one, is recorded upon it.`[\]
-
+;*e31_35
+;d `The Endless Witch {f:5:Beatrice}'s secret recipe, yet discerned by no one, is recorded upon it.`[\]
 
 *e31_36
 d `To a chef, their recipes and their kitchen are sacred ground.`[\]
 
-
 *e31_37
 d `To desecrate that is the greatest sacrilege.`[\]
 
-
 *e31_38
 d `However, for those who admire delicacies, it is also the forbidden honey that none can resist.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
-
+wait 1000
+vol_bgm -1,1500
+wait 2000
 bgmplay 177,70,0
 
 lss s0_9,"fea","b11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
+color_mod2 s0_9,#ffffff
+flush 22
 
 *e31_39
-d `This is not an example of one of Beato's interests,`[@]`... but we could instead say it's an example of one of FEATHERINE's.`[\]
-
+d `This is not an example of one of Beato's interests,`[@]` ... but we could instead say it's an example of one of {f:5:Featherine}'s.`[\]
 
 *e31_40
 d `From here on, what is recorded is... the cat's... guts.`[\]
 
-
 *e31_41
 d `From here on, turning the pages means splitting the cat's stomach open and killing it.`[\]
-
 
 *e31_42
 d `To love the cat, then kill it and enjoy it again.`[\]
 
-
 *e31_43
-d `Those were BERNKASTEL's words, but they were originally uttered by FEATHERINE.`[\]
-
+d `Those were {f:5:Bernkastel}'s words, but they were originally uttered by {f:5:Featherine}.`[\]
 
 lss s0_9,"fea","b11_warai1"
 spt_mem "a2","xpos",s0_9,0
+color_mod2 s0_9,#ffffff
 flush 80
 
 *e31_44
 d `So I inquire of thee.`[\]
 
-
 *e31_45
 d `Doth thou kill the cat? Or not?`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"moon_1a"
-
 flush 22
 
 *e31_46
-d `The ancient FEATHERINE has regretted splitting the stomachs of and killing thousands of tales.`[\]
-
+d `The ancient {f:5:Featherine} has regretted splitting the stomachs of and killing thousands of tales.`[\]
 
 *e31_47
 d `And, in the relationship of irreversibility between knowing and not knowing, she even likened not knowing to that of noble virginity.`[\]
-
 
 lss s0_9,"fea","b11_warai2"
 spt_mem "a2","xpos",s0_9,0
@@ -425,83 +405,64 @@ flush 80
 
 *e31_48
 d `Thus, I ask you again.`[\]
-
+textoff2
 
 seplay 11,20,100
 
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:efe",s0_3,"blade9r"
-
 flush 1
 
-seplay 11,36,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+seplay 12,36,100
 
 lbg "c:efe",s0_3,"cateye_1"
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 200
 lbg "c:efe",s0_3,"blood_1ar"
-
 flush 1
 
 *e31_49
-d `Doth thou kill the cat? Or not?
+d `Doth thou kill the cat? Or not?`[\]
+textoff2
+
+gosub *OCchoice
+
+goto *OCend
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*OCkill
+
+
+csp_slot s0_29
+csp_slot s0_28
+csp_text gen_txt_19
+csp_text gen_txt_20
+lbg "c:colour",s0_3,"white"
+flush 42
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-flush 2
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-flush 4
-
-seplay 11,82,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-;lbg "c:backgrounds",s0_3,"warera_arigatou"
-
-flush 2
-
-*e31_50
-d `[lv 0*"27"*"bea_03511"]`Thank you...`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-flush 2
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 seplay 11,79,100
@@ -527,7 +488,7 @@ csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
-;lbg "c:backgrounds",s0_3,"title_warera"
+lbg "c:local_saku",s0_3,"title_warera"
 
 flush 2
 
@@ -538,7 +499,7 @@ csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
-lbg "c:locale_lan",s0_3,"ep4last00"
+lbg "c:locale_shared",s0_3,"ep4last00"
 
 flush 8
 
@@ -787,7 +748,7 @@ flush 80
 
 msgwnd_cla
 *e31_71
-d [lv 0*"02"*"kla_00300"]`{qt}...I wouldn't go down these foreboding stairs either, if I could.`[@][lv 0*"02"*"kla_00310"]`...   But it seems we have no other choice.{qt}`[\]
+d [lv 0*"02"*"kla_00300"]`{qt}...I wouldn't go down these foreboding stairs either, if I could.`[@][lv 0*"02"*"kla_00310"]`...But it seems we have no other choice.{qt}`[\]
 
 
 seplay 11,30,100
@@ -1040,7 +1001,7 @@ flush 80
 
 msgwnd_gen
 *e31_93
-d [lv 0*"14"*"gen_00680"]`{qt}...Yes.`[@][lv 0*"14"*"gen_00690"]` The time bomb device created by the former head...`[@][lv 0*"14"*"gen_00700"]` now belongs to a new master, BEATRICE-sama.{qt}`[\]
+d [lv 0*"14"*"gen_00680"]`{qt}...Yes.`[@][lv 0*"14"*"gen_00690"]` The time bomb device created by the former head...`[@][lv 0*"14"*"gen_00700"]` now belongs to a new master, {f:5:Beatrice}-sama.{qt}`[\]
 
 
 lss s0_10,"nat","a12_odoroki2"
@@ -1132,7 +1093,7 @@ flush 80
 
 msgwnd_bea
 *e31_102
-d [lv 0*"27"*"bea_03640"]`{qt}*cackle*`[@][lv 0*"27"*"bea_03650"]` We also tested them, of course.`[@][lv 0*"27"*"bea_03660"]` There was nothing to criticize about their power.`[@][lv 0*"27"*"bea_03670"]`...   ...With that kind of amount, they demonstrated such power.`[@][lv 0*"27"*"bea_03680"]` At the very least, easily everything within several hundred meters of the mansion will be completely blown away.{qt}`[\]
+d [lv 0*"27"*"bea_03640"]`{qt}*cackle*`[@][lv 0*"27"*"bea_03650"]` We also tested them, of course.`[@][lv 0*"27"*"bea_03660"]` There was nothing to criticize about their power.`[@][lv 0*"27"*"bea_03670"]`......With that kind of amount, they demonstrated such power.`[@][lv 0*"27"*"bea_03680"]` At the very least, easily everything within several hundred meters of the mansion will be completely blown away.{qt}`[\]
 
 
 lss s0_9,"cla","a11_komaru4"
@@ -1226,7 +1187,7 @@ flush 80
 
 msgwnd_gen
 *e31_108
-d [lv 0*"14"*"gen_00730"]`{qt}......Master, Madam.`[@][lv 0*"14"*"gen_00740"]` Have you forgotten?`[@][lv 0*"14"*"gen_00750"]`...   About the local shrine?{qt}`[\]
+d [lv 0*"14"*"gen_00730"]`{qt}......Master, Madam.`[@][lv 0*"14"*"gen_00740"]` Have you forgotten?`[@][lv 0*"14"*"gen_00750"]`...About the local shrine?{qt}`[\]
 
 
 lss s0_8,"cla","a11_komaru4"
@@ -1317,7 +1278,7 @@ flush 80
 
 msgwnd_cla
 *e31_117
-d [lv 0*"02"*"kla_00420"]`{qt}......Okay. We understand the situation.`[@][lv 0*"02"*"kla_00430"]`...   So...?`[@][lv 0*"02"*"kla_00440"]` You invited us here and had us listen to your story.`[@][lv 0*"02"*"kla_00450"]` I'm trying to think of what you seek to get out of that.{qt}`[\]
+d [lv 0*"02"*"kla_00420"]`{qt}......Okay. We understand the situation.`[@][lv 0*"02"*"kla_00430"]`...So...?`[@][lv 0*"02"*"kla_00440"]` You invited us here and had us listen to your story.`[@][lv 0*"02"*"kla_00450"]` I'm trying to think of what you seek to get out of that.{qt}`[\]
 
 
 *e31_118
@@ -1427,7 +1388,7 @@ flush 80
 
 msgwnd_cla
 *e31_130
-d [lv 0*"02"*"kla_00500"]`{qt}...Now you're going to strong-arm us into an exchange for something.`[@][lv 0*"02"*"kla_00510"]`...   I can't even imagine what that something is,`[@][lv 0*"02"*"kla_00520"]` but as long as it's possible, negotiations are open.{qt}`[\]
+d [lv 0*"02"*"kla_00500"]`{qt}...Now you're going to strong-arm us into an exchange for something.`[@][lv 0*"02"*"kla_00510"]`...I can't even imagine what that something is,`[@][lv 0*"02"*"kla_00520"]` but as long as it's possible, negotiations are open.{qt}`[\]
 
 
 lss s0_10,"bea","a11_defo2"
@@ -1463,7 +1424,7 @@ flush 80
 
 msgwnd_cla
 *e31_134
-d [lv 0*"02"*"kla_00550"]`{qt}We get it.`[@][lv 0*"02"*"kla_00560"]` We value our lives.`[@][lv 0*"02"*"kla_00570"]`...   But at the same time, it seems you require some kind of cooperation from us.`[@][lv 0*"02"*"kla_00580"]` You're carrying the two incredible trump cards of the time bomb and the gold, so it seems to be your good fortune that we must merely nod our heads.{qt}`[\]
+d [lv 0*"02"*"kla_00550"]`{qt}We get it.`[@][lv 0*"02"*"kla_00560"]` We value our lives.`[@][lv 0*"02"*"kla_00570"]`...But at the same time, it seems you require some kind of cooperation from us.`[@][lv 0*"02"*"kla_00580"]` You're carrying the two incredible trump cards of the time bomb and the gold, so it seems to be your good fortune that we must merely nod our heads.{qt}`[\]
 
 
 lss s0_9,"bea","a11_futeki2"
@@ -1472,7 +1433,7 @@ flush 80
 
 msgwnd_bea
 *e31_135
-d [lv 0*"27"*"bea_03850"]`{qt}*cackle*cackle*...! Wonderful, Krauss.`[@][lv 0*"27"*"bea_03860"]` If that's the way you wish it, let's do it that way.`[@][lv 0*"27"*"bea_03870"]`...   This isn't a threat.`[@][lv 0*"27"*"bea_03880"]` It's a trade.`[@][lv 0*"27"*"bea_03890"]` I wish for your cooperation.{qt}`[\]
+d [lv 0*"27"*"bea_03850"]`{qt}*cackle*cackle*...! Wonderful, Krauss.`[@][lv 0*"27"*"bea_03860"]` If that's the way you wish it, let's do it that way.`[@][lv 0*"27"*"bea_03870"]`...This isn't a threat.`[@][lv 0*"27"*"bea_03880"]` It's a trade.`[@][lv 0*"27"*"bea_03890"]` I wish for your cooperation.{qt}`[\]
 
 
 lss s0_8,"cla","a11_majime1"
@@ -2160,7 +2121,7 @@ d [lv 0*"14"*"gen_00760"]`{qt}...Forgive the intrusion.`[@][lv 0*"14"*"gen_00770
 
 msgwnd_non
 *e31_204
-d `He is also a person following BEATRICE's scenario.`[\]
+d `He is also a person following {f:5:Beatrice}'s scenario.`[\]
 
 
 csp_slot s0_3
@@ -2176,7 +2137,7 @@ flush 80
 
 msgwnd_eva
 *e31_205
-d [lv 0*"05"*"eva_00310"]`{qt}Oh, Genji-san.`[@][lv 0*"05"*"eva_00320"]`...   What is it at such an hour?{qt}`[\]
+d [lv 0*"05"*"eva_00310"]`{qt}Oh, Genji-san.`[@][lv 0*"05"*"eva_00320"]`...What is it at such an hour?{qt}`[\]
 
 
 lss s0_10,"hid","a11_odayaka1"
@@ -2262,7 +2223,7 @@ flush 80
 
 msgwnd_cla
 *e31_212
-d [lv 0*"02"*"kla_00640"]`{qt}I... I don't know.`[@][lv 0*"02"*"kla_00650"]`...   I've never been able to understand Father's whims.{qt}`[\]
+d [lv 0*"02"*"kla_00640"]`{qt}I... I don't know.`[@][lv 0*"02"*"kla_00650"]`...I've never been able to understand Father's whims.{qt}`[\]
 
 
 csp_slot s0_3
@@ -2332,7 +2293,7 @@ flush 80
 
 msgwnd_gen
 *e31_216
-d [lv 0*"14"*"gen_00800"]`{qt}Please wait.`[@][lv 0*"14"*"gen_00810"]`...   The Master and Madam are to wait here.{qt}`[\]
+d [lv 0*"14"*"gen_00800"]`{qt}Please wait.`[@][lv 0*"14"*"gen_00810"]`...The Master and Madam are to wait here.{qt}`[\]
 
 
 msgwnd_non
@@ -2417,7 +2378,7 @@ flush 80
 
 msgwnd_gen
 *e31_225
-d [lv 0*"14"*"gen_00850"]`{qt}Ladies and gentlemen.`[@][lv 0*"14"*"gen_00860"]`...   it is the study of the glorious Ushiromiya family Head, Kinzo-sama.`[@][lv 0*"14"*"gen_00870"]` I implore you not to make any careless mistakes.{qt}`[\]
+d [lv 0*"14"*"gen_00850"]`{qt}Ladies and gentlemen.`[@][lv 0*"14"*"gen_00860"]`...it is the study of the glorious Ushiromiya family Head, Kinzo-sama.`[@][lv 0*"14"*"gen_00870"]` I implore you not to make any careless mistakes.{qt}`[\]
 
 
 lss s0_10,"rud","a11_akuwarai1"
@@ -2478,7 +2439,7 @@ lbg "c:backgrounds",s0_3,"portrait1"
 flush 22
 
 *e31_231
-d `Right now, awaiting them inside the study... was the Golden Witch, BEATRICE.`[\]
+d `Right now, awaiting them inside the study... was the Golden Witch, {f:5:Beatrice}.`[\]
 
 
 *e31_232
@@ -2581,7 +2542,7 @@ flush 80
 
 msgwnd_nat
 *e31_239
-d [lv 0*"03"*"nat_00460"]`{qt}That woman is ominous.`[@][lv 0*"03"*"nat_00470"]`...   She gives me the terrible feeling that she's capable of destroying herself and everyone else if we're careless in dealing with her.{qt}`[\]
+d [lv 0*"03"*"nat_00460"]`{qt}That woman is ominous.`[@][lv 0*"03"*"nat_00470"]`...She gives me the terrible feeling that she's capable of destroying herself and everyone else if we're careless in dealing with her.{qt}`[\]
 
 
 lss s0_10,"cla","a11_komaru1"
@@ -2590,7 +2551,7 @@ flush 80
 
 msgwnd_cla
 *e31_240
-d [lv 0*"02"*"kla_00700"]`{qt}You think so too then.`[@][lv 0*"02"*"kla_00710"]`...   Yeah, me too.`[@][lv 0*"02"*"kla_00720"]` That's why I think we should do exactly what she says.`[@][lv 0*"02"*"kla_00730"]` I think... if we didn't just nod our heads to her she would have killed us on the spot.{qt}`[\]
+d [lv 0*"02"*"kla_00700"]`{qt}You think so too then.`[@][lv 0*"02"*"kla_00710"]`...Yeah, me too.`[@][lv 0*"02"*"kla_00720"]` That's why I think we should do exactly what she says.`[@][lv 0*"02"*"kla_00730"]` I think... if we didn't just nod our heads to her she would have killed us on the spot.{qt}`[\]
 
 
 lss s0_8,"nat","a12_nayamu3"
@@ -2608,7 +2569,7 @@ flush 80
 
 msgwnd_cla
 *e31_242
-d [lv 0*"02"*"kla_00740"]`{qt}Well, no one wants to die.`[@][lv 0*"02"*"kla_00750"]`...   Also, they may have the same reward promised to them.`[@][lv 0*"02"*"kla_00760"]`...   She's got 20 billion in gold, after all.{qt}`[\]
+d [lv 0*"02"*"kla_00740"]`{qt}Well, no one wants to die.`[@][lv 0*"02"*"kla_00750"]`...Also, they may have the same reward promised to them.`[@][lv 0*"02"*"kla_00760"]`...She's got 20 billion in gold, after all.{qt}`[\]
 
 
 csp_slot s0_3
@@ -2672,7 +2633,7 @@ flush 80
 
 msgwnd_kum
 *e31_249
-d [lv 0*"18"*"kum_00250"]`{qt}Who knows...`[@][lv 0*"18"*"kum_00260"]` I don't know how BEATRICE-sama thinks.{qt}`[\]
+d [lv 0*"18"*"kum_00250"]`{qt}Who knows...`[@][lv 0*"18"*"kum_00260"]` I don't know how {f:5:Beatrice}-sama thinks.{qt}`[\]
 
 
 lss s0_10,"cla","a11_akuwarai1"
@@ -2699,7 +2660,7 @@ flush 80
 
 msgwnd_kum
 *e31_252
-d [lv 0*"18"*"kum_00270"]`{qt}...I was told that we should return to our rooms and rest.`[@][lv 0*"18"*"kum_00280"]`...   Starting tomorrow you are to follow tomorrow's scenario...{qt}`[\]
+d [lv 0*"18"*"kum_00270"]`{qt}...I was told that we should return to our rooms and rest.`[@][lv 0*"18"*"kum_00280"]`...Starting tomorrow you are to follow tomorrow's scenario...{qt}`[\]
 
 
 csp_slot s0_3
@@ -2784,7 +2745,7 @@ flush 80
 
 msgwnd_kum
 *e31_259
-d [lv 0*"18"*"kum_00320"]`{qt}......All I've heard is that it's a big show meant to surprise a certain person.`[@][lv 0*"18"*"kum_00330"]`...   Please let me off at that.`[@][lv 0*"18"*"kum_00340"]`...   I've also been threatened with my life if I say anything unnecessary......{qt}`[\]
+d [lv 0*"18"*"kum_00320"]`{qt}......All I've heard is that it's a big show meant to surprise a certain person.`[@][lv 0*"18"*"kum_00330"]`...Please let me off at that.`[@][lv 0*"18"*"kum_00340"]`...I've also been threatened with my life if I say anything unnecessary......{qt}`[\]
 
 
 msgwnd_non
@@ -2957,7 +2918,7 @@ flush 80
 
 msgwnd_gen
 *e31_272
-d [lv 0*"14"*"gen_00920"]`{qt}Ladies and gentlemen.`[@][lv 0*"14"*"gen_00930"]` You are visiting the glorious Ushiromiya family Head, BEATRICE-sama.{qt}`[\]
+d [lv 0*"14"*"gen_00920"]`{qt}Ladies and gentlemen.`[@][lv 0*"14"*"gen_00930"]` You are visiting the glorious Ushiromiya family Head, {f:5:Beatrice}-sama.{qt}`[\]
 
 
 csp_slot s0_3
@@ -3175,7 +3136,7 @@ flush 80
 
 msgwnd_kin
 *e31_293
-d [lv 0*"01"*"kin_00040"]`{qt}...BEATRICE.`[@][lv 0*"01"*"kin_00050"]` To have prepared a question that even I do not know the answer, is truly something astounding.`[@][lv 0*"01"*"kin_00060"]` Why? Why is it that you do not have Krauss and Natsuhi here to celebrate your resurrection?{qt}`[\]
+d [lv 0*"01"*"kin_00040"]`{qt}...{f:5:Beatrice}.`[@][lv 0*"01"*"kin_00050"]` To have prepared a question that even I do not know the answer, is truly something astounding.`[@][lv 0*"01"*"kin_00060"]` Why? Why is it that you do not have Krauss and Natsuhi here to celebrate your resurrection?{qt}`[\]
 
 
 lss s0_9,"bea","a11_akuwarai1"
@@ -3184,7 +3145,7 @@ flush 80
 
 msgwnd_bea
 *e31_294
-d [lv 0*"27"*"bea_04070"]`{qt}You haven't realized it, Kinzo?`[@][lv 0*"27"*"bea_04080"]`...   *cackle*.`[@][lv 0*"27"*"bea_04090"]` I'll give another hint:`[@][lv 0*"27"*"bea_04100"]` it's something that was signaled by the grandfather clock in the entrance hall, just a little while ago.{qt}`[\]
+d [lv 0*"27"*"bea_04070"]`{qt}You haven't realized it, Kinzo?`[@][lv 0*"27"*"bea_04080"]`...*cackle*.`[@][lv 0*"27"*"bea_04090"]` I'll give another hint:`[@][lv 0*"27"*"bea_04100"]` it's something that was signaled by the grandfather clock in the entrance hall, just a little while ago.{qt}`[\]
 
 
 csp_slot s0_3
@@ -3398,7 +3359,7 @@ flush 80
 
 msgwnd_kin
 *e31_319
-d [lv 0*"01"*"kin_00070"]`{qt}What a beautiful summoning.`[@][lv 0*"01"*"kin_00080"]` My my, who did you go and summon?`[@][lv 0*"01"*"kin_00090"]`...   ...Such majesty.`[@][lv 0*"01"*"kin_00100"]` Looks like one of the great demons of the 72 pillars.{qt}`[\]
+d [lv 0*"01"*"kin_00070"]`{qt}What a beautiful summoning.`[@][lv 0*"01"*"kin_00080"]` My my, who did you go and summon?`[@][lv 0*"01"*"kin_00090"]`......Such majesty.`[@][lv 0*"01"*"kin_00100"]` Looks like one of the great demons of the 72 pillars.{qt}`[\]
 
 
 lss s0_8,"bea","a11_defo2"
@@ -3540,14 +3501,14 @@ flush 80
 
 msgwnd_bea
 *e31_329
-d [lv 0*"27"*"bea_04260"]`{qt}Flauros.`[@][lv 0*"27"*"bea_04270"]` It has been a while.`[@][lv 0*"27"*"bea_04280"]`...   For you to acknowledge my summons, it means that you are not currently bound by contract to anyone.`[@][lv 0*"27"*"bea_04290"]` I am pleased. I welcome you as my ally.{qt}`[\]
+d [lv 0*"27"*"bea_04260"]`{qt}Flauros.`[@][lv 0*"27"*"bea_04270"]` It has been a while.`[@][lv 0*"27"*"bea_04280"]`...For you to acknowledge my summons, it means that you are not currently bound by contract to anyone.`[@][lv 0*"27"*"bea_04290"]` I am pleased. I welcome you as my ally.{qt}`[\]
 
 
 lss s0_8,"fla","a11_def2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_330
 d [lv 0*"64"*"fla_00010"]`{qt}Rank number 64 of the 72 Noble Demons,`[@][lv 0*"64"*"fla_00020"]` Flauros of Hellfire, is here!{qt}`[\]
 
@@ -3589,9 +3550,9 @@ flush 80
 
 flush 23
 
-;msgwnd_fla
+msgwnd_fla
 *e31_334
-d [lv 0*"64"*"fla_00030"]`{qt}It was just some random summons,`[@][lv 0*"64"*"fla_00040"]` but it seems I got someone interesting.`[@][lv 0*"64"*"fla_00050"]` To imagine that my summoner was the great Lady BEATRICE!`[@][lv 0*"64"*"fla_00060"]` Even though I'm here for business, it looks like it's going to be fun!{qt}`[\]
+d [lv 0*"64"*"fla_00030"]`{qt}It was just some random summons,`[@][lv 0*"64"*"fla_00040"]` but it seems I got someone interesting.`[@][lv 0*"64"*"fla_00050"]` To imagine that my summoner was the great Lady {f:5:Beatrice}!`[@][lv 0*"64"*"fla_00060"]` Even though I'm here for business, it looks like it's going to be fun!{qt}`[\]
 
 
 lss s0_8,"bea","a11_defo2"
@@ -3607,7 +3568,7 @@ lss s0_10,"fla","a11_def3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_336
 d [lv 0*"64"*"fla_00070"]`{qt}Well, 'twas just business.`[@][lv 0*"64"*"fla_00080"]` So, what's the new gig?`[@][lv 0*"64"*"fla_00090"]` My only job is to kill or destroy things.`[@][lv 0*"64"*"fla_00100"]` It's been a while, so I'm itching to get wild!{qt}`[\]
 
@@ -3625,7 +3586,7 @@ lss s0_9,"fla","a11_def6"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_338
 d [lv 0*"64"*"fla_00110"]`{qt}Kill six? Got it! Can I kill the six of 'em conveniently lined up right here?{qt}`[\]
 
@@ -3700,7 +3661,7 @@ lss s0_9,"fla","a11_def6"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_345
 d [lv 0*"64"*"fla_00120"]`{qt}You're a bunch of unlucky guys! Sooooo, whom shall I eat first!?{qt}`[\]
 
@@ -3875,7 +3836,7 @@ lbg "c:efe",s0_3,"blood_2c"
 
 flush 1
 
-;msgwnd_fla
+msgwnd_fla
 *e31_362
 d [lv 0*"64"*"fla_00130"]`{qt}Did ya think I would let my prey escape!?`[@][lv 0*"64"*"fla_00140"]` Starting now y'all too will be prepared one by one, just you wait!{qt}`[\]
 
@@ -3896,7 +3857,7 @@ csp_slot s0_10
 
 flush 25
 
-;msgwnd_fla
+msgwnd_fla
 *e31_365
 d [lv 0*"64"*"fla_00150"]`{qt}......Ugh.`[@][lv 0*"64"*"fla_00160"]` Should've known grandpa meat isn't tasty.`[@][lv 0*"64"*"fla_00170"]` I'll have to take some stomach medicine later.`[@][lv 0*"64"*"fla_00180"]` Ugh, blergh......{qt}`[\]
 
@@ -3933,7 +3894,7 @@ lss s0_9,"fla","a11_def6"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_368
 d [lv 0*"64"*"fla_00190"]`{qt}I hate to say it but I'm not swallowing y'all whole, so I'll just be chewing on your soft meat.`[@][lv 0*"64"*"fla_00200"]` For me to get a sour stomach from just swallowing one, even I've become old.{qt}`[\]
 
@@ -4007,7 +3968,7 @@ lss s0_10,"fla","a11_def2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_373
 d [lv 0*"64"*"fla_00210"]`{qt}Yeah, I know the deal!`[@][lv 0*"64"*"fla_00220"]` 'Cause I'm in the mood for guts, I'll spill y'all's warm entrails all over!!{qt}`[\]
 
@@ -4038,9 +3999,9 @@ lss s0_9,"fla","a11_def6"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_377
-d [lv 0*"64"*"fla_00230"]`{qt}Your liver looks tasty.`[@][lv 0*"64"*"fla_00240"]`...   ...Here we go, time to grit your teeth!!{qt}`[\]
+d [lv 0*"64"*"fla_00230"]`{qt}Your liver looks tasty.`[@][lv 0*"64"*"fla_00240"]`......Here we go, time to grit your teeth!!{qt}`[\]
 
 
 seplay 11,20,100
@@ -4176,7 +4137,7 @@ flush 80
 
 seplay 11,20,100
 
-;msgwnd_fla
+msgwnd_fla
 *e31_384
 d [lv 0*"64"*"fla_00250"]`{qt}Uwaa, it's giving such an unappetizing color.`[@][lv 0*"64"*"fla_00260"]` Well then, whose bowels shall I open up next!{qt}`[\]
 
@@ -4273,9 +4234,9 @@ flush 80
 
 flush 22
 
-;msgwnd_fla
+msgwnd_fla
 *e31_390
-d [lv 0*"64"*"fla_00270"]`{qt}Middle-aged folks, all of them have such unappetizing guts.`[@][lv 0*"64"*"fla_00280"]`...   ...Uuh, Kinzo is making my stomach grumble.`[@][lv 0*"64"*"fla_00290"]` Ugh, I'm gonna throw up.{qt}`[\]
+d [lv 0*"64"*"fla_00270"]`{qt}Middle-aged folks, all of them have such unappetizing guts.`[@][lv 0*"64"*"fla_00280"]`......Uuh, Kinzo is making my stomach grumble.`[@][lv 0*"64"*"fla_00290"]` Ugh, I'm gonna throw up.{qt}`[\]
 
 
 lss s0_10,"gen","a21_kashikomari1"
@@ -4300,7 +4261,7 @@ lss s0_8,"fla","a11_def2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_393
 d [lv 0*"64"*"fla_00300"]`{qt}I didn't mean to be particularly brutal.`[@][lv 0*"64"*"fla_00310"]` It was just me gobbling up the ones I was ordered to.`[@][lv 0*"64"*"fla_00320"]` Well, who am I going to slaughter next?`[@][lv 0*"64"*"fla_00330"]` Because I was locked up in a furnace for a hundred years and bored out of my mind for so long, I'm itching to let loose!!{qt}`[\]
 
@@ -4345,7 +4306,7 @@ lss s0_8,"fla","a11_def4"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_397
 d [lv 0*"64"*"fla_00340"]`{qt}Dang, even after I went as far as bathing in a rain of blood.`[@][lv 0*"64"*"fla_00350"]` What a serious letdown.{qt}`[\]
 
@@ -4363,9 +4324,9 @@ lss s0_9,"fla","a11_def3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_399
-d [lv 0*"64"*"fla_00360"]`{qt}Well, you see,`[@][lv 0*"64"*"fla_00370"]` even though I love all-you-can-eat most of the time,`[@][lv 0*"64"*"fla_00380"]` I don't hate a dignified course meal served in small portions.`[@][lv 0*"64"*"fla_00390"]` Since you have summoned me,`[@][lv 0*"64"*"fla_00400"]` I'll certainly enjoy the Great BEATRICE's full course meal until the very end!{qt}`[\]
+d [lv 0*"64"*"fla_00360"]`{qt}Well, you see,`[@][lv 0*"64"*"fla_00370"]` even though I love all-you-can-eat most of the time,`[@][lv 0*"64"*"fla_00380"]` I don't hate a dignified course meal served in small portions.`[@][lv 0*"64"*"fla_00390"]` Since you have summoned me,`[@][lv 0*"64"*"fla_00400"]` I'll certainly enjoy the Great {f:5:Beatrice}'s full course meal until the very end!{qt}`[\]
 
 
 lss s0_10,"bea","a11_defo1"
@@ -4381,7 +4342,7 @@ lss s0_8,"fla","a11_def1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_401
 d [lv 0*"64"*"fla_00410"]`{qt}So, shall I be dismissed from my duties until the second twilight then?{qt}`[\]
 
@@ -4410,7 +4371,7 @@ flush 80
 
 flush 24
 
-;msgwnd_fla
+msgwnd_fla
 *e31_403
 d [lv 0*"64"*"fla_00420"]`{qt}Alright, I'll do whatever I want until then.`[@][lv 0*"64"*"fla_00430"]` I wanna dash around freely outside, showering in that intense thunderstorm!!{qt}`[\]
 
@@ -4430,7 +4391,7 @@ lss s0_9,"fla","a11_def5"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_406
 d [lv 0*"64"*"fla_00440"]`{qt}I am rank 64 of of the 72 Noble Demons, Flauros of Hellfire!!`[@][lv 0*"64"*"fla_00450"]` I eat it all, burn it all, smash it all!!`[@][lv 0*"64"*"fla_00460"]` Aaah, I can't wait until it's my turn again!!{qt}`[\]
 
@@ -4519,7 +4480,7 @@ lss s0_10,"fla","a11_def6"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
-;msgwnd_fla
+msgwnd_fla
 *e31_412
 d [lv 0*"64"*"fla_00470"]`{qt}Nyahhihihihi!`[@][lv 0*"64"*"fla_00480"]` I did somethin' bad!`[@][lv 0*"64"*"fla_00490"]` I love destroyin' about as much as I love killin'!`[@][lv 0*"64"*"fla_00500"]` And I love incineratin' most of all!!{qt}`[\]
 
@@ -6120,7 +6081,7 @@ flush 80
 
 msgwnd_kum
 *e31_557
-d [lv 0*"18"*"kum_00430"]`{qt}Oh, BEATRICE-sama.`[@][lv 0*"18"*"kum_00440"]` As a servant it just doesn't feel right to lie on Madam's bed.{qt}`[\]
+d [lv 0*"18"*"kum_00430"]`{qt}Oh, {f:5:Beatrice}-sama.`[@][lv 0*"18"*"kum_00440"]` As a servant it just doesn't feel right to lie on Madam's bed.{qt}`[\]
 
 
 lss s0_10,"bea","a11_fukigen2"
@@ -6138,7 +6099,7 @@ flush 80
 
 msgwnd_kum
 *e31_559
-d [lv 0*"18"*"kum_00450"]`{qt}Hohhohohohoho.`[@][lv 0*"18"*"kum_00460"]` That is what BEATRICE-sama would say.{qt}`[\]
+d [lv 0*"18"*"kum_00450"]`{qt}Hohhohohohoho.`[@][lv 0*"18"*"kum_00460"]` That is what {f:5:Beatrice}-sama would say.{qt}`[\]
 
 
 lss s0_10,"bea","a11_akuwarai1"
@@ -6294,7 +6255,7 @@ d [lv 0*"27"*"bea_04780"]`{qt}Good.`[@][lv 0*"27"*"bea_04790"]` That looks right
 
 msgwnd_kum
 *e31_577
-d [lv 0*"18"*"kum_00540"]`{qt}Hohhohhohho.`[@][lv 0*"18"*"kum_00550"]` I couldn't possibly compare to BEATRICE-sama and her grand show.{qt}`[\]
+d [lv 0*"18"*"kum_00540"]`{qt}Hohhohhohho.`[@][lv 0*"18"*"kum_00550"]` I couldn't possibly compare to {f:5:Beatrice}-sama and her grand show.{qt}`[\]
 
 
 lss s0_9,"bea","a11_defo2"
@@ -6901,7 +6862,7 @@ flush 23
 
 msgwnd_geo
 *e31_641
-d [lv 0*"07"*"geo_00760"]`{qt}With this... The suspicion that the servants might be culprits has been cleared up.`[@][lv 0*"07"*"geo_00770"]`...   Hasn't it, Aunt Natsuhi?{qt}`[\]
+d [lv 0*"07"*"geo_00760"]`{qt}With this... The suspicion that the servants might be culprits has been cleared up.`[@][lv 0*"07"*"geo_00770"]`...Hasn't it, Aunt Natsuhi?{qt}`[\]
 
 
 msgwnd_non
@@ -7015,7 +6976,7 @@ flush 80
 
 msgwnd_nan
 *e31_651
-d [lv 0*"19"*"nan_00200"]`{qt}......`[@][lv 0*"19"*"nan_00210"]`...   ...Let's go see.{qt}`[\]
+d [lv 0*"19"*"nan_00200"]`{qt}......`[@][lv 0*"19"*"nan_00210"]`......Let's go see.{qt}`[\]
 
 
 lss s0_8,"cla","a11_komaru2"
@@ -7126,7 +7087,7 @@ flush 80
 
 msgwnd_geo
 *e31_657
-d [lv 0*"07"*"geo_00780"]`{qt}......Which means... what about the fourth, fifth, and sixth twilights?`[@][lv 0*"07"*"geo_00790"]`...   Doesn't it mean that at least 3 other people have already been killed...?{qt}`[\]
+d [lv 0*"07"*"geo_00780"]`{qt}......Which means... what about the fourth, fifth, and sixth twilights?`[@][lv 0*"07"*"geo_00790"]`...Doesn't it mean that at least 3 other people have already been killed...?{qt}`[\]
 
 
 lss s0_9,"but","b11_aseru3"
@@ -7171,7 +7132,7 @@ flush 23
 
 msgwnd_jes
 *e31_661
-d [lv 0*"04"*"jes_03600"]`{qt}Kanon-kun... Kanon-kun...`[@][lv 0*"04"*"jes_03610"]`...   Mom, can I at least... see his face one last time...?{qt}`[\]
+d [lv 0*"04"*"jes_03600"]`{qt}Kanon-kun... Kanon-kun...`[@][lv 0*"04"*"jes_03610"]`...Mom, can I at least... see his face one last time...?{qt}`[\]
 
 
 lss s0_10,"nat","a12_naku3"
@@ -7180,7 +7141,7 @@ flush 80
 
 msgwnd_nat
 *e31_662
-d [lv 0*"03"*"nat_00540"]`{qt}I understand how you feel...`[@][lv 0*"03"*"nat_00550"]` but we won't disturb the crime scene any further.`[@][lv 0*"03"*"nat_00560"]`...   We have to leave it as is to ensure they find the culprit.`[@][lv 0*"03"*"nat_00570"]` So from now on just hope...`[@][lv 0*"03"*"nat_00580"]` for his happiness in the next world...{qt}`[\]
+d [lv 0*"03"*"nat_00540"]`{qt}I understand how you feel...`[@][lv 0*"03"*"nat_00550"]` but we won't disturb the crime scene any further.`[@][lv 0*"03"*"nat_00560"]`...We have to leave it as is to ensure they find the culprit.`[@][lv 0*"03"*"nat_00570"]` So from now on just hope...`[@][lv 0*"03"*"nat_00580"]` for his happiness in the next world...{qt}`[\]
 
 
 lss s0_9,"jes","a11_naki1"
@@ -7334,7 +7295,7 @@ flush 80
 
 msgwnd_kan
 *e31_676
-d [lv 0*"16"*"kan_00800"]`{qt}...Thank you, BEATRICE-sama.`[@][lv 0*"16"*"kan_00810"]`...   Bye, Sis.`[@][lv 0*"16"*"kan_00820"]` See you on the next gameboard.{qt}`[\]
+d [lv 0*"16"*"kan_00800"]`{qt}...Thank you, {f:5:Beatrice}-sama.`[@][lv 0*"16"*"kan_00810"]`...Bye, Sis.`[@][lv 0*"16"*"kan_00820"]` See you on the next gameboard.{qt}`[\]
 
 
 lss s0_8,"kan","a12_warai1"
@@ -7376,7 +7337,7 @@ seplay 11,56,100
 
 msgwnd_non
 *e31_678
-d `Beatrice waved her cane, and then Kanon's body sublimated into mist and disappeared into her smoking pipe.`[\]
+d `{f:5:Beatrice} waved her cane, and then Kanon's body sublimated into mist and disappeared into her smoking pipe.`[\]
 
 
 lss s0_8,"bea","a11_akuwarai1"
@@ -7714,7 +7675,7 @@ flush 80
 
 msgwnd_sha
 *e31_713
-d [lv 0*"15"*"sha_00890"]`{qt}...None.`[@][lv 0*"15"*"sha_00900"]` It is all as BEATRICE-sama wills.{qt}`[\]
+d [lv 0*"15"*"sha_00890"]`{qt}...None.`[@][lv 0*"15"*"sha_00900"]` It is all as {f:5:Beatrice}-sama wills.{qt}`[\]
 
 
 lss s0_10,"bea","a11_majime4"
@@ -7723,7 +7684,7 @@ flush 80
 
 msgwnd_bea
 *e31_714
-d [lv 0*"27"*"bea_05270"]`{qt}It's too bad.`[@][lv 0*"27"*"bea_05280"]`...   If someone had solved the mystery of the epitaph... You would have finished alive.{qt}`[\]
+d [lv 0*"27"*"bea_05270"]`{qt}It's too bad.`[@][lv 0*"27"*"bea_05280"]`...If someone had solved the mystery of the epitaph... You would have finished alive.{qt}`[\]
 
 
 lss s0_8,"sha","a11_defo1h"
@@ -7732,7 +7693,7 @@ flush 80
 
 msgwnd_sha
 *e31_715
-d [lv 0*"15"*"sha_00910"]`{qt}There's no way someone could solve`[|][lv 0*"15"*"sha_00920"]` such an incomprehensible mystery.`[@][lv 0*"15"*"sha_00930"]`...   From the beginning, it was a hopeless gamble.{qt}`[\]
+d [lv 0*"15"*"sha_00910"]`{qt}There's no way someone could solve`[|][lv 0*"15"*"sha_00920"]` such an incomprehensible mystery.`[@][lv 0*"15"*"sha_00930"]`...From the beginning, it was a hopeless gamble.{qt}`[\]
 
 
 lss s0_10,"bea","a11_fuman2"
@@ -7741,7 +7702,7 @@ flush 80
 
 msgwnd_bea
 *e31_716
-d [lv 0*"27"*"bea_05290"]`{qt}Yet I still bet.`[@][lv 0*"27"*"bea_05300"]`...   Because if the miracle were granted, it would truly be magic.{qt}`[\]
+d [lv 0*"27"*"bea_05290"]`{qt}Yet I still bet.`[@][lv 0*"27"*"bea_05300"]`...Because if the miracle were granted, it would truly be magic.{qt}`[\]
 
 
 lss s0_9,"sha","a11_warai1h"
@@ -7750,7 +7711,7 @@ flush 80
 
 msgwnd_sha
 *e31_717
-d [lv 0*"15"*"sha_00940"]`{qt}......In this world of toxin-filled humans, there is no magic nor miracles.`[@][lv 0*"15"*"sha_00950"]`...   BEATRICE-sama,`[@][lv 0*"15"*"sha_00960"]` as the one true witch...... You are the only existence that can bring magic to this world.{qt}`[\]
+d [lv 0*"15"*"sha_00940"]`{qt}......In this world of toxin-filled humans, there is no magic nor miracles.`[@][lv 0*"15"*"sha_00950"]`...{f:5:Beatrice}-sama,`[@][lv 0*"15"*"sha_00960"]` as the one true witch...... You are the only existence that can bring magic to this world.{qt}`[\]
 
 
 lss s0_10,"bea","a11_fuman3"
@@ -7759,7 +7720,7 @@ flush 80
 
 msgwnd_bea
 *e31_718
-d [lv 0*"27"*"bea_05310"]`{qt}That's right.`[@][lv 0*"27"*"bea_05320"]`...   I am the Golden Witch, BEATRICE.`[@][lv 0*"27"*"bea_05330"]` Rest in peace.`[@][lv 0*"27"*"bea_05340"]` The next time you awaken, it will be in The Golden Land.`[@][lv 0*"27"*"bea_05350"]` Your beloved George will also be there.{qt}`[\]
+d [lv 0*"27"*"bea_05310"]`{qt}That's right.`[@][lv 0*"27"*"bea_05320"]`...I am the Golden Witch, {f:5:Beatrice}.`[@][lv 0*"27"*"bea_05330"]` Rest in peace.`[@][lv 0*"27"*"bea_05340"]` The next time you awaken, it will be in The Golden Land.`[@][lv 0*"27"*"bea_05350"]` Your beloved George will also be there.{qt}`[\]
 
 
 lss s0_8,"sha","a11_tokui1"
@@ -7768,7 +7729,7 @@ flush 80
 
 msgwnd_sha
 *e31_719
-d [lv 0*"15"*"sha_00970"]`{qt}...Thank you very much,`[@][lv 0*"15"*"sha_00980"]` BEATRICE-sama...{qt}`[\]
+d [lv 0*"15"*"sha_00970"]`{qt}...Thank you very much,`[@][lv 0*"15"*"sha_00980"]` {f:5:Beatrice}-sama...{qt}`[\]
 
 
 csp_slot s0_3
@@ -7957,7 +7918,7 @@ flush 80
 
 msgwnd_bea
 *e31_734
-d [lv 0*"27"*"bea_05380"]`{qt}Now...`[@][lv 0*"27"*"bea_05390"]` with this, the epitaph murders are over.`[@][lv 0*"27"*"bea_05400"]` What do you think, Battleeer?`[@][lv 0*"27"*"bea_05410"]` I hope you enjoy my mystery.`[@][lv 0*"27"*"bea_05420"]`...   ...*cackle*cackle* Hahhahhahahahahahahahaha!!!{qt}`[\]
+d [lv 0*"27"*"bea_05380"]`{qt}Now...`[@][lv 0*"27"*"bea_05390"]` with this, the epitaph murders are over.`[@][lv 0*"27"*"bea_05400"]` What do you think, Battleeer?`[@][lv 0*"27"*"bea_05410"]` I hope you enjoy my mystery.`[@][lv 0*"27"*"bea_05420"]`......*cackle*cackle* Hahhahhahahahahahahahaha!!!{qt}`[\]
 
 
 seplay 11,27,100
@@ -8067,7 +8028,7 @@ flush 80
 
 msgwnd_bea
 *e31_740
-d [lv 0*"27"*"bea_05430"]`{qt}That's what it is at present.`[@][lv 0*"27"*"bea_05440"]` I will arrange it into a proper story format, but that's the really tough part.`[@][lv 0*"27"*"bea_05450"]`...   The displayed story and the undisplayed story.`[@][lv 0*"27"*"bea_05460"]` Matching them together as literature is truly an ordeal.`[@][lv 0*"27"*"bea_05470"]` It's like having to think up all the tricks, except I have to do even more.{qt}`[\]
+d [lv 0*"27"*"bea_05430"]`{qt}That's what it is at present.`[@][lv 0*"27"*"bea_05440"]` I will arrange it into a proper story format, but that's the really tough part.`[@][lv 0*"27"*"bea_05450"]`...The displayed story and the undisplayed story.`[@][lv 0*"27"*"bea_05460"]` Matching them together as literature is truly an ordeal.`[@][lv 0*"27"*"bea_05470"]` It's like having to think up all the tricks, except I have to do even more.{qt}`[\]
 
 
 lss s0_10,"dla","am11_majime2"
@@ -8100,7 +8061,7 @@ flush 80
 
 msgwnd_dla
 *e31_743
-d [lv 0*"47"*"dla_00370"]`{qt}An extravagant COMPARISON.`[@][lv 0*"47"*"dla_00380"]`...   However, ...do you not have REGRETS?{qt}`[\]
+d [lv 0*"47"*"dla_00370"]`{qt}An extravagant COMPARISON.`[@][lv 0*"47"*"dla_00380"]`...However, ...do you not have REGRETS?{qt}`[\]
 
 
 lss s0_8,"bea","a11_fukigen3"
@@ -8149,7 +8110,7 @@ flush 22
 
 msgwnd_dla
 *e31_747
-d [lv 0*"47"*"dla_00390"]`{qt}......You paint twice the story, and then you only cook the surface HALF.`[@][lv 0*"47"*"dla_00400"]` Those who would know of the remaining half, so extravagantly discarded, would surely sing praise and astonishment at its taste and bold CUTS.`[@][lv 0*"47"*"dla_00410"]`...   However, among all the humans in the world, there aren't many that are as discerning as you DESIRE.{qt}`[\]
+d [lv 0*"47"*"dla_00390"]`{qt}......You paint twice the story, and then you only cook the surface HALF.`[@][lv 0*"47"*"dla_00400"]` Those who would know of the remaining half, so extravagantly discarded, would surely sing praise and astonishment at its taste and bold CUTS.`[@][lv 0*"47"*"dla_00410"]`...However, among all the humans in the world, there aren't many that are as discerning as you DESIRE.{qt}`[\]
 
 
 lss s0_10,"bea","a11_akuwarai1"
@@ -8196,7 +8157,7 @@ flush 80
 
 msgwnd_dla
 *e31_751
-d [lv 0*"47"*"dla_00450"]`{qt}......Are you happy with THAT?`[@][lv 0*"47"*"dla_00460"]` People paint stories to be READ.`[@][lv 0*"47"*"dla_00470"]`...   ...To paint a story not to be read by anyone, to cast it into darkness by one's own will, is beyond extravagance, it can even be thought to be FOOLISH.{qt}`[\]
+d [lv 0*"47"*"dla_00450"]`{qt}......Are you happy with THAT?`[@][lv 0*"47"*"dla_00460"]` People paint stories to be READ.`[@][lv 0*"47"*"dla_00470"]`......To paint a story not to be read by anyone, to cast it into darkness by one's own will, is beyond extravagance, it can even be thought to be FOOLISH.{qt}`[\]
 
 
 lss s0_10,"bea","a11_1_warai1"
@@ -8205,7 +8166,7 @@ flush 80
 
 msgwnd_bea
 *e31_752
-d [lv 0*"27"*"bea_05580"]`{qt}*cackle*...`[@][lv 0*"27"*"bea_05590"]` Isn't it fine that way?`[@][lv 0*"27"*"bea_05600"]` If things written so that the 999 of 1000 people can understand them can be called 'civilization's' writings,`[@][lv 0*"27"*"bea_05610"]` then it would be most fitting if my story, written so that only 1 in 1000 can understand it, could be called an 'oddity' writing.`[@][lv 0*"27"*"bea_05620"]`...   ...It's a story painted by a witch,`[@][lv 0*"27"*"bea_05630"]` so if it has an 'odd' taste then should it not be called an 'oddity' writing?{qt}`[\]
+d [lv 0*"27"*"bea_05580"]`{qt}*cackle*...`[@][lv 0*"27"*"bea_05590"]` Isn't it fine that way?`[@][lv 0*"27"*"bea_05600"]` If things written so that the 999 of 1000 people can understand them can be called 'civilization's' writings,`[@][lv 0*"27"*"bea_05610"]` then it would be most fitting if my story, written so that only 1 in 1000 can understand it, could be called an 'oddity' writing.`[@][lv 0*"27"*"bea_05620"]`......It's a story painted by a witch,`[@][lv 0*"27"*"bea_05630"]` so if it has an 'odd' taste then should it not be called an 'oddity' writing?{qt}`[\]
 
 
 lss s0_8,"dla","a11_defo1"
@@ -8223,7 +8184,7 @@ flush 80
 
 msgwnd_bea
 *e31_754
-d [lv 0*"27"*"bea_05640"]`{qt}Indeed.`[@][lv 0*"27"*"bea_05650"]`...   That's exactly why I don't want to entrust it to you.{qt}`[\]
+d [lv 0*"27"*"bea_05640"]`{qt}Indeed.`[@][lv 0*"27"*"bea_05650"]`...That's exactly why I don't want to entrust it to you.{qt}`[\]
 
 
 lss s0_8,"dla","a11_defo2"
@@ -8292,7 +8253,7 @@ flush 80
 
 msgwnd_bea
 *e31_760
-d [lv 0*"27"*"bea_05680"]`{qt}There is a possibility that not even that 1 person will appear.`[@][lv 0*"27"*"bea_05690"]`...   ...It's not just young girls in love who wish for someone to understand their inner heart.`[@][lv 0*"27"*"bea_05700"]`...   ...Even witches who have experienced over a thousand years want it.{qt}`[\]
+d [lv 0*"27"*"bea_05680"]`{qt}There is a possibility that not even that 1 person will appear.`[@][lv 0*"27"*"bea_05690"]`......It's not just young girls in love who wish for someone to understand their inner heart.`[@][lv 0*"27"*"bea_05700"]`......Even witches who have experienced over a thousand years want it.{qt}`[\]
 
 
 lss s0_9,"dla","a11_defo1"
@@ -8394,7 +8355,7 @@ flush 80
 
 msgwnd_bea
 *e31_768
-d [lv 0*"27"*"bea_05770"]`{qt}Fu......*cackle* Hahhahahahahahahahahahaha.`[@][lv 0*"27"*"bea_05780"]`...   ....Very well.`[@][lv 0*"27"*"bea_05790"]` I shall give you this manuscript.{qt}`[\]
+d [lv 0*"27"*"bea_05770"]`{qt}Fu......*cackle* Hahhahahahahahahahahahaha.`[@][lv 0*"27"*"bea_05780"]`.......Very well.`[@][lv 0*"27"*"bea_05790"]` I shall give you this manuscript.{qt}`[\]
 
 
 csp_slot s0_3
@@ -8470,7 +8431,7 @@ flush 80
 
 msgwnd_bea
 *e31_776
-d [lv 0*"27"*"bea_05840"]`{qt}The only prince I await is the one who arrives without reading the manuscript.`[@][lv 0*"27"*"bea_05850"]`...   ...One cannot love a cat after tearing out its guts.`[@][lv 0*"27"*"bea_05860"]` That is, opening that bottle is the same as tearing out my guts.{qt}`[\]
+d [lv 0*"27"*"bea_05840"]`{qt}The only prince I await is the one who arrives without reading the manuscript.`[@][lv 0*"27"*"bea_05850"]`......One cannot love a cat after tearing out its guts.`[@][lv 0*"27"*"bea_05860"]` That is, opening that bottle is the same as tearing out my guts.{qt}`[\]
 
 
 lss s0_9,"dla","a11_komaru1"
@@ -8488,7 +8449,7 @@ flush 80
 
 msgwnd_bea
 *e31_778
-d [lv 0*"27"*"bea_05870"]`{qt}I don't know...`[@][lv 0*"27"*"bea_05880"]`...   ...The great witches of the Sea of Fragments are truly quite cold.`[@][lv 0*"27"*"bea_05890"]` Even if we suppose there was a person who'd visit my grave, they'd probably just come to spit on it.{qt}`[\]
+d [lv 0*"27"*"bea_05870"]`{qt}I don't know...`[@][lv 0*"27"*"bea_05880"]`......The great witches of the Sea of Fragments are truly quite cold.`[@][lv 0*"27"*"bea_05890"]` Even if we suppose there was a person who'd visit my grave, they'd probably just come to spit on it.{qt}`[\]
 
 
 lss s0_10,"dla","a11_majime3"
@@ -8514,7 +8475,7 @@ flush 80
 
 msgwnd_bea
 *e31_780
-d [lv 0*"27"*"bea_05900"]`{qt}......Fu, ......fuffufufufu.`[@][lv 0*"27"*"bea_05910"]`...   ...You've got me.`[@][lv 0*"27"*"bea_05920"]` You win.`[@][lv 0*"27"*"bea_05930"]` Alright, take that bottle with you.`[@][lv 0*"27"*"bea_05940"]` I'm not going to die just yet.`[@][lv 0*"27"*"bea_05950"]` I still have much story-writing to finish, after all.{qt}`[\]
+d [lv 0*"27"*"bea_05900"]`{qt}......Fu, ......fuffufufufu.`[@][lv 0*"27"*"bea_05910"]`......You've got me.`[@][lv 0*"27"*"bea_05920"]` You win.`[@][lv 0*"27"*"bea_05930"]` Alright, take that bottle with you.`[@][lv 0*"27"*"bea_05940"]` I'm not going to die just yet.`[@][lv 0*"27"*"bea_05950"]` I still have much story-writing to finish, after all.{qt}`[\]
 
 
 csp_slot s0_3
@@ -8538,7 +8499,7 @@ flush 80
 
 msgwnd_dla
 *e31_781
-d [lv 0*"47"*"dla_00700"]`{qt}Then I shall take my LEAVE.`[@][lv 0*"47"*"dla_00710"]`...   ...Lady BEATRICE, be WELL.`[@][lv 0*"47"*"dla_00720"]` Please do not forget the many love-filled witches that wait for YOU.{qt}`[\]
+d [lv 0*"47"*"dla_00700"]`{qt}Then I shall take my LEAVE.`[@][lv 0*"47"*"dla_00710"]`......Lady {f:5:Beatrice}, be WELL.`[@][lv 0*"47"*"dla_00720"]` Please do not forget the many love-filled witches that wait for YOU.{qt}`[\]
 
 
 lss s0_10,"dla","a11_majime3"
@@ -8612,7 +8573,7 @@ bgmplay 198,70,0
 
 msgwnd_non
 *e31_784
-d `As a result of Lady BEATRICE's death, I am releasing this incomplete tale in accordance with her will.`[\]
+d `As a result of Lady {f:5:Beatrice}'s death, I am releasing this incomplete tale in accordance with her will.`[\]
 
 
 *e31_785
@@ -8717,7 +8678,7 @@ flush 80
 flush 22
 
 *e31_798
-d `After you read this, it doesn't matter what your feelings toward the woman named BEATRICE are.`[@]`Whether it's love or anger.`[\]
+d `After you read this, it doesn't matter what your feelings toward the woman named {f:5:Beatrice} are.`[@]`Whether it's love or anger.`[\]
 
 
 *e31_799
@@ -8856,6 +8817,10 @@ lbg "c:backgrounds",s0_3,"book1"
 
 flush 2
 
+return
+
+
+*OCend
 ;END
 *umiextra2_11_end
-goto *end_game
+gosub *end_game

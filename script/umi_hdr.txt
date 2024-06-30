@@ -1753,7 +1753,7 @@ textgosub *text_cw
 skipgosub *skip_cw
 loadgosub *load_system
 event_callback *script_state
-ctrl_callback *ctrl_state
+;ctrl_callback *ctrl_state
 
 usewheel
 useescspc
@@ -1797,12 +1797,12 @@ movs $0,"QT"
 numalias exlv,0
 regex_define exlv,"lv \d+\*"+$0+"(\d+)"+$0+"\*"+$0+"([a-zA-Z0-9_]+)"+$0
 numalias exsp,1
-regex_define exsp,"lss s\d_\d+,"+$0+"([a-z0-9_]+)"+$0+","+$0+"([a-z0-9_]+)"
+regex_define exsp,"lss s\d_\d+,"+$0+"([a-z0-9_:\/]+)"+$0+","+$0+"([a-z0-9_:\/]+)"
 numalias exbg,2
 getram %Free1 ; Avoid caching big images on low memory devices
 ;Original Edited ;Dynamic BGs - adapted rexex to accept the new parameter - W_CUSTOM ($0 are \")
-if %Free1 <= 2048 regex_define exbg,"lbg "+$0+"([a-z0-9_:]+)"+$0+",s\d_\d+,"+$0+"([a-z0-9_]+)"+$0
-if %Free1  > 2048 regex_define exbg,"lbg2? "+$0+"([a-z0-9_:]+)"+$0+",s\d_\d+,"+$0+"([a-z0-9_]+)"+$0
+if %Free1 <= 2048 regex_define exbg,"lbg "+$0+"([a-z0-9_:\/]+))"+$0+",s\d_\d+,"+$0+"([a-z0-9_:\/]+)"+$0
+if %Free1  > 2048 regex_define exbg,"lbg2? "+$0+"([a-z0-9_:\/]+)"+$0+",s\d_\d+,"+$0+"([a-z0-9_:\/]+)"+$0
 ;"c:backgrounds",s0_1,"mlib_1a_bg"
 ;End Custom
 numalias exse,3
@@ -1916,6 +1916,8 @@ mov %char_reloading_numaliases,0
 mov %r_display_cha_universal,0
 ;Char Menu ;TODO Some char menu open in different pages, fix ;W_CUSTOM
 mov %char_moving_side,1
+mov $r_cha_back,blank ;Pre-initialize family tree to transparent
+mov %char_save_scenario_Num,1
 
 ;End Custom
 

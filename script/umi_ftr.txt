@@ -1328,7 +1328,7 @@ numalias r_tips_txt_lsp,%0 : inc %0
 numalias r_grim_txt_lsp,%0 : inc %0
 numalias r_hana_lsp,%0 	   : inc %0
 numalias r_txt_lsp,%0	   : inc %0
-numalias r_cha_back_lsp,%0 : inc %0
+numalias r_cha_back_lsp,%0 : inc %0 ;212 -> 213
 numalias r_cha_back,%0	   : inc %0
 numalias r_tips1_back_lsp,%0 : inc %0
 
@@ -1772,9 +1772,9 @@ if %init_done = 1 jumpf
 
 
 	;Old code for low ram devices, c'mon, what has low ram now-a-days
-	;getram %Free1 ; default to 720p on low memory devices (like iOS)
-	;if %Free1 <= 2048 mov %video_res,1
-	;if %Free1 >  2048 mov %video_res,0
+	getram %Free1 ; default to 720p on low memory devices (like iOS)
+	if %Free1 <= 2048 mov %video_res,1
+	if %Free1 >  2048 mov %video_res,0
 	;mov %animated_rain,1 - never existed
 	;mov %bgm_chapter_display,1 - Separated
 
@@ -1935,29 +1935,29 @@ mov $?r[1][ber][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_be
 
 mov ?r[1][kin][itiran_x],200-100-0+4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][kin][itiran_y],190 ;x+130
 mov ?r[1][kla][itiran_x],330-130-12+2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][kla][itiran_y],190
-mov ?r[1][nat][itiran_x],460-160-24-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][nat][itiran_y],190
-mov ?r[1][jes][itiran_x],590-190-36-4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][jes][itiran_y],190
+mov ?r[1][nat][itiran_x],460-160-24 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][nat][itiran_y],190
+mov ?r[1][jes][itiran_x],590-190-36-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[1][jes][itiran_y],190
 
-mov ?r[1][eva][itiran_x],330-130-12+2 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][eva][itiran_y],340-60+2
-mov ?r[1][hid][itiran_x],460-160-24-2 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][hid][itiran_y],340-60+2
-mov ?r[1][geo][itiran_x],590-190-36-4 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][geo][itiran_y],340-60+2
+mov ?r[1][eva][itiran_x],330-130-12+2 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][eva][itiran_y],278
+mov ?r[1][hid][itiran_x],460-160-24 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][hid][itiran_y],278
+mov ?r[1][geo][itiran_x],590-190-36-2 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][geo][itiran_y],278
 
-mov ?r[1][rud][itiran_x],330-130-12+2 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][rud][itiran_y],490-120
-mov ?r[1][kir][itiran_x],460-160-24-2 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][kir][itiran_y],490-120
-mov ?r[1][but][itiran_x],590-190-36-4 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][but][itiran_y],490-120
+mov ?r[1][rud][itiran_x],330-130-12+2 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][rud][itiran_y],366
+mov ?r[1][kir][itiran_x],460-160-24 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][kir][itiran_y],366
+mov ?r[1][but][itiran_x],590-190-36-2 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][but][itiran_y],366
 
-mov ?r[1][nan][itiran_x],200-100-0+4  : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][nan][itiran_y],640-180-2
-mov ?r[1][ros][itiran_x],330-130-12+2 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][ros][itiran_y],640-180-2
-mov ?r[1][mar][itiran_x],590-190-36-4 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][mar][itiran_y],640-180-2
+mov ?r[1][nan][itiran_x],200-100-0+4  : mov %tmp,104 : add %tmp,r_top_y : mov ?r[1][nan][itiran_y],454
+mov ?r[1][ros][itiran_x],330-130-12+2 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][ros][itiran_y],454
+mov ?r[1][mar][itiran_x],590-190-36-2 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][mar][itiran_y],454
 
-mov ?r[1][gen][itiran_x],200-100-0+4  : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][gen][itiran_y],790-240-4
-mov ?r[1][sha][itiran_x],330-130-12+2 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][sha][itiran_y],790-240-4
-mov ?r[1][kan][itiran_x],460-160-24 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][kan][itiran_y],790-240-4
-mov ?r[1][goh][itiran_x],590-190-36-2 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][goh][itiran_y],790-240-4
-mov ?r[1][kum][itiran_x],720-220-48-4 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][kum][itiran_y],790-240-4
+mov ?r[1][gen][itiran_x],200-100-0+4  : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][gen][itiran_y],542
+mov ?r[1][sha][itiran_x],330-130-12+2 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][sha][itiran_y],542
+mov ?r[1][kan][itiran_x],460-160-24 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][kan][itiran_y],542
+mov ?r[1][goh][itiran_x],590-190-36-2 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][goh][itiran_y],542
+mov ?r[1][kum][itiran_x],720-220-48-4 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[1][kum][itiran_y],542
 
-mov ?r[1][bea][itiran_x],200-100-0  : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][bea][itiran_y],490-120
-mov ?r[1][ber][itiran_x],460-160-24 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][ber][itiran_y],490-120
+mov ?r[1][bea][itiran_x],200-100-0  : mov %tmp,192 : add %tmp,r_top_y : mov ?r[1][bea][itiran_y],366
+mov ?r[1][ber][itiran_x],460-160-24 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[1][ber][itiran_y],366
 
 return
 
@@ -2094,29 +2094,29 @@ mov $?r[2][lam][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_la
 ;numalias itiran_y,%tmp11 : inc %tmp11
 mov ?r[2][kin][itiran_x],200-100-0+4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][kin][itiran_y],190 ;x+130
 mov ?r[2][kla][itiran_x],330-130-12+2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][kla][itiran_y],190
-mov ?r[2][nat][itiran_x],460-160-24-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][nat][itiran_y],190
-mov ?r[2][jes][itiran_x],590-190-36-4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][jes][itiran_y],190
+mov ?r[2][nat][itiran_x],460-160-24 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][nat][itiran_y],190
+mov ?r[2][jes][itiran_x],590-190-36-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[2][jes][itiran_y],190
 
-mov ?r[2][eva][itiran_x],330-130-12+2 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][eva][itiran_y],340-60+2
-mov ?r[2][hid][itiran_x],460-160-24-2 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][hid][itiran_y],340-60+2
-mov ?r[2][geo][itiran_x],590-190-36-4 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][geo][itiran_y],340-60+2
+mov ?r[2][eva][itiran_x],330-130-12+2 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][eva][itiran_y],278
+mov ?r[2][hid][itiran_x],460-160-24 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][hid][itiran_y],278
+mov ?r[2][geo][itiran_x],590-190-36-2 : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][geo][itiran_y],278
 
-mov ?r[2][rud][itiran_x],330-130-12+2 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][rud][itiran_y],490-120
-mov ?r[2][kir][itiran_x],460-160-24-2 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][kir][itiran_y],490-120
-mov ?r[2][but][itiran_x],590-190-36-4 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][but][itiran_y],490-120
+mov ?r[2][rud][itiran_x],330-130-12+2 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][rud][itiran_y],366
+mov ?r[2][kir][itiran_x],460-160-24 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][kir][itiran_y],366
+mov ?r[2][but][itiran_x],590-190-36-2 : mov %tmp,192 : add %tmp,r_top_y : mov ?r[2][but][itiran_y],366
 
-mov ?r[2][nan][itiran_x],200-100-0+4  : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][nan][itiran_y],640-180-2
-mov ?r[2][ros][itiran_x],330-130-12+2 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][ros][itiran_y],640-180-2
-mov ?r[2][mar][itiran_x],590-190-36-4 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][mar][itiran_y],640-180-2
+mov ?r[2][nan][itiran_x],200-100-0+4  : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][nan][itiran_y],454
+mov ?r[2][ros][itiran_x],330-130-12+2 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][ros][itiran_y],454
+mov ?r[2][mar][itiran_x],590-190-36-2 : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][mar][itiran_y],454
 
-mov ?r[2][gen][itiran_x],200-100-0+4  : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][gen][itiran_y],790-240-4
-mov ?r[2][sha][itiran_x],330-130-12+2 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][sha][itiran_y],790-240-4
-mov ?r[2][kan][itiran_x],460-160-24 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][kan][itiran_y],790-240-4
-mov ?r[2][goh][itiran_x],590-190-36-2 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][goh][itiran_y],790-240-4
-mov ?r[2][kum][itiran_x],720-220-48-4 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][kum][itiran_y],790-240-4
+mov ?r[2][gen][itiran_x],200-100-0+4  : mov %tmp,280 : add %tmp,r_top_y : mov ?r[2][gen][itiran_y],542
+mov ?r[2][sha][itiran_x],330-130-12+2 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][sha][itiran_y],542
+mov ?r[2][kan][itiran_x],460-160-24 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][kan][itiran_y],542
+mov ?r[2][goh][itiran_x],590-190-36-2 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][goh][itiran_y],542
+mov ?r[2][kum][itiran_x],720-220-48-4 : mov %tmp,368 : add %tmp,r_top_y : mov ?r[2][kum][itiran_y],542
 
 ;mov ?r[2][ber][itiran_x],460-160-24 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[2][ber][itiran_y],%tmp
-mov ?r[2][bea][itiran_x],200-100-0+4  : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][bea][itiran_y],340-60+2
+mov ?r[2][bea][itiran_x],200-100-0+4  : mov %tmp,104 : add %tmp,r_top_y : mov ?r[2][bea][itiran_y],278
 
 return
 
@@ -2339,28 +2339,28 @@ mov $?r[3][enj][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_en
 ;numalias itiran_y,%tmp11 : inc %tmp11
 mov ?r[3][kin][itiran_x],200-100-0+4 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[3][kin][itiran_y],190 ;x+130
 mov ?r[3][kla][itiran_x],330-130-12+2 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[3][kla][itiran_y],190
-mov ?r[3][nat][itiran_x],460-160-24-2 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[3][nat][itiran_y],190
-mov ?r[3][jes][itiran_x],590-190-36-4 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[3][jes][itiran_y],190
+mov ?r[3][nat][itiran_x],460-160-24 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[3][nat][itiran_y],190
+mov ?r[3][jes][itiran_x],590-190-36-2 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[3][jes][itiran_y],190
 
-mov ?r[3][bea][itiran_x],200-100-0+4  : mov %tmp,52 : add %tmp,r_top_y : mov ?r[3][bea][itiran_y],340-60+2
-mov ?r[3][eva][itiran_x],330-130-12+2 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[3][eva][itiran_y],340-60+2
-mov ?r[3][hid][itiran_x],460-160-24-2 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[3][hid][itiran_y],340-60+2
-mov ?r[3][geo][itiran_x],590-190-36-4 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[3][geo][itiran_y],340-60+2
+mov ?r[3][bea][itiran_x],200-100-0+4  : mov %tmp,52 : add %tmp,r_top_y : mov ?r[3][bea][itiran_y],278
+mov ?r[3][eva][itiran_x],330-130-12+2 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[3][eva][itiran_y],278
+mov ?r[3][hid][itiran_x],460-160-24 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[3][hid][itiran_y],278
+mov ?r[3][geo][itiran_x],590-190-36-2 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[3][geo][itiran_y],278
 
-mov ?r[3][rud][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][rud][itiran_y],490-120
-mov ?r[3][kir][itiran_x],460-160-24-2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][kir][itiran_y],490-120
-mov ?r[3][but][itiran_x],590-190-36-4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][but][itiran_y],490-120
-mov ?r[3][enj][itiran_x],720-220-48-4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][enj][itiran_y],490-120
+mov ?r[3][rud][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][rud][itiran_y],366
+mov ?r[3][kir][itiran_x],460-160-24 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][kir][itiran_y],366
+mov ?r[3][but][itiran_x],590-190-36-2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][but][itiran_y],366
+mov ?r[3][enj][itiran_x],720-220-48-4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][enj][itiran_y],366
 
-mov ?r[3][nan][itiran_x],200-100-0+4  : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][nan][itiran_y],640-180-2
-mov ?r[3][ros][itiran_x],330-130-12+2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ros][itiran_y],640-180-2
-mov ?r[3][mar][itiran_x],590-190-36-4 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][mar][itiran_y],640-180-2
+mov ?r[3][nan][itiran_x],200-100-0+4  : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][nan][itiran_y],454
+mov ?r[3][ros][itiran_x],330-130-12+2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ros][itiran_y],454
+mov ?r[3][mar][itiran_x],590-190-36-2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][mar][itiran_y],454
 
-mov ?r[3][gen][itiran_x],200-100-0+4  : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][gen][itiran_y],790-240-4
-mov ?r[3][sha][itiran_x],330-130-12+2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[3][sha][itiran_y],790-240-4
-mov ?r[3][kan][itiran_x],460-160-24 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[3][kan][itiran_y],790-240-4
-mov ?r[3][goh][itiran_x],590-190-36-2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[3][goh][itiran_y],790-240-4
-mov ?r[3][kum][itiran_x],720-220-48-4 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[3][kum][itiran_y],790-240-4
+mov ?r[3][gen][itiran_x],200-100-0+4  : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][gen][itiran_y],542
+mov ?r[3][sha][itiran_x],330-130-12+2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[3][sha][itiran_y],542
+mov ?r[3][kan][itiran_x],460-160-24 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[3][kan][itiran_y],542
+mov ?r[3][goh][itiran_x],590-190-36-2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[3][goh][itiran_y],542
+mov ?r[3][kum][itiran_x],720-220-48-4 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[3][kum][itiran_y],542
 
 ;mov ?r[3][ber][itiran_x],106 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ber][itiran_y],%tmp
 
@@ -2435,25 +2435,25 @@ mov $?r[3][ma3_s_2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\char
 
 mov ?r[3][ma3_wal][itiran_x],200-100-0+4  : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_wal][itiran_y],190
 mov ?r[3][ma3_bea][itiran_x],330-130-12+2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_bea][itiran_y],190
-mov ?r[3][ma3_ev2][itiran_x],460-160-24-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_ev2][itiran_y],190
+mov ?r[3][ma3_ev2][itiran_x],460-160-24 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_ev2][itiran_y],190
 mov ?r[3][ma3_enj][itiran_x],720-220-48-4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_enj][itiran_y],190
 
-mov ?r[3][ma3_ron][itiran_x],460-160-24-2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_ron][itiran_y],340-60+2
-mov ?r[3][ma3_s_2][itiran_x],460-160-24-2+35+57 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_s_2][itiran_y],340-60+2
-mov ?r[3][ma3_s_1][itiran_x],460-160-24-2+35+57*2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_s_1][itiran_y],340-60+2
+mov ?r[3][ma3_ron][itiran_x],460-160-24 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_ron][itiran_y],278
+mov ?r[3][ma3_s_2][itiran_x],460-160-24+35+57 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_s_2][itiran_y],278
+mov ?r[3][ma3_s_1][itiran_x],460-160-24+35+57*2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][ma3_s_1][itiran_y],278
 
-mov ?r[3][ma3_goa][itiran_x],200-100-0+4+15 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ma3_goa][itiran_y],490-120
-mov ?r[3][ma3_rg][itiran_x],460-160-24-2-57+2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ma3_rg][itiran_y],490-120
-mov ?r[3][ma3_rg_1][itiran_x],460-160-24-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_1][itiran_y],490-120 ;new rg ;+2 and -2 are to avoid repeated black borders
-mov ?r[3][ma3_rg_2][itiran_x],460-160-24-2+57-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_2][itiran_y],490-120 ;new rg
-mov ?r[3][ma3_rg_3][itiran_x],460-160-24-2+57*2-4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_3][itiran_y],490-120 ;new rg
+mov ?r[3][ma3_goa][itiran_x],200-100-0+4+15 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ma3_goa][itiran_y],366
+mov ?r[3][ma3_rg][itiran_x],460-160-24-57+2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][ma3_rg][itiran_y],366
+mov ?r[3][ma3_rg_1][itiran_x],460-160-24 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_1][itiran_y],366 ;new rg ;+2 and -2 are to avoid repeated black borders
+mov ?r[3][ma3_rg_2][itiran_x],460-160-24+57-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_2][itiran_y],366 ;new rg
+mov ?r[3][ma3_rg_3][itiran_x],460-160-24+57*2-4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_3][itiran_y],366 ;new rg
 
-mov ?r[3][ma3_rg_4][itiran_x],460-160-24-2-29 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_4][itiran_y],490-120+64-2 ;new rg
-mov ?r[3][ma3_rg_5][itiran_x],460-160-24-2-29+57-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_5][itiran_y],490-120+64-2 ;new rg
-mov ?r[3][ma3_rg_6][itiran_x],460-160-24-2-29+57*2-4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_6][itiran_y],490-120+64-2 ;new rg
+mov ?r[3][ma3_rg_4][itiran_x],460-160-24-29 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_4][itiran_y],366+64-2 ;new rg
+mov ?r[3][ma3_rg_5][itiran_x],460-160-24-29+57-2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_5][itiran_y],366+64-2 ;new rg
+mov ?r[3][ma3_rg_6][itiran_x],460-160-24-29+57*2-4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_rg_6][itiran_y],366+64-2 ;new rg
 
-mov ?r[3][ma3_ber][itiran_x],200-100-0+4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_ber][itiran_y],790-240-4
-mov ?r[3][ma3_lam][itiran_x],330-130-12+2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_lam][itiran_y],790-240-4
+mov ?r[3][ma3_ber][itiran_x],200-100-0+4 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_ber][itiran_y],542
+mov ?r[3][ma3_lam][itiran_x],330-130-12+2 : mov %tmp,14 : add %tmp,r_top_y : mov ?r[3][ma3_lam][itiran_y],542
 
 return
 
@@ -2564,7 +2564,7 @@ mov $?r[4][kan][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ka
 mov $?r[4][kan][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_kan_d.png"
 
 mov ?r[4][bea][condition_end],2
-;mov $?r[4][bea][0],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_non.png"
+;mov $?r[4][bea][0],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_non.png" ;This was commented
 mov $?r[4][bea][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0.png"
 mov $?r[4][bea][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea_d.png"
 
@@ -2583,30 +2583,31 @@ mov $?r[4][enj][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_en
 
 ;numalias itiran_x,%tmp11 : inc %tmp11
 ;numalias itiran_y,%tmp11 : inc %tmp11
+
 mov ?r[4][kin][itiran_x],200-100-0+4  : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][kin][itiran_y],190
 mov ?r[4][kla][itiran_x],330-130-12+2 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][kla][itiran_y],190
-mov ?r[4][nat][itiran_x],460-160-24-2 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][nat][itiran_y],190
-mov ?r[4][jes][itiran_x],590-190-36-4 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][jes][itiran_y],190
+mov ?r[4][nat][itiran_x],460-160-24 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][nat][itiran_y],190
+mov ?r[4][jes][itiran_x],590-190-36-2 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][jes][itiran_y],190
 
-mov ?r[4][bea][itiran_x],200-100-0+4  : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][bea][itiran_y],340-60+2
-mov ?r[4][eva][itiran_x],330-130-12+2 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][eva][itiran_y],340-60+2
-mov ?r[4][hid][itiran_x],460-160-24-2 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][hid][itiran_y],340-60+2
-mov ?r[4][geo][itiran_x],590-190-36-4 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][geo][itiran_y],340-60+2
+mov ?r[4][bea][itiran_x],200-100-0+4  : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][bea][itiran_y],278
+mov ?r[4][eva][itiran_x],330-130-12+2 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][eva][itiran_y],278
+mov ?r[4][hid][itiran_x],460-160-24 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][hid][itiran_y],278
+mov ?r[4][geo][itiran_x],590-190-36-2 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][geo][itiran_y],278
 
-mov ?r[4][rud][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][rud][itiran_y],490-120
-mov ?r[4][kir][itiran_x],460-160-24-2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][kir][itiran_y],490-120
-mov ?r[4][but][itiran_x],590-190-36-4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][but][itiran_y],490-120
-mov ?r[4][enj][itiran_x],720-220-48-4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj][itiran_y],490-120
+mov ?r[4][rud][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][rud][itiran_y],366
+mov ?r[4][kir][itiran_x],460-160-24 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][kir][itiran_y],366
+mov ?r[4][but][itiran_x],590-190-36-2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][but][itiran_y],366
+mov ?r[4][enj][itiran_x],720-220-48-4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj][itiran_y],366
 
-mov ?r[4][nan][itiran_x],200-100-0+4  : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][nan][itiran_y],640-180-2
-mov ?r[4][ros][itiran_x],330-130-12+2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][ros][itiran_y],640-180-2
-mov ?r[4][mar][itiran_x],590-190-36-4 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][mar][itiran_y],640-180-2
+mov ?r[4][nan][itiran_x],200-100-0+4  : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][nan][itiran_y],454
+mov ?r[4][ros][itiran_x],330-130-12+2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][ros][itiran_y],454
+mov ?r[4][mar][itiran_x],590-190-36-2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][mar][itiran_y],454
 
-mov ?r[4][gen][itiran_x],200-100-0+4  : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][gen][itiran_y],790-240-4
-mov ?r[4][sha][itiran_x],330-130-12+2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][sha][itiran_y],790-240-4
-mov ?r[4][kan][itiran_x],460-160-24   : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][kan][itiran_y],790-240-4
-mov ?r[4][goh][itiran_x],590-190-36-2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][goh][itiran_y],790-240-4
-mov ?r[4][kum][itiran_x],720-220-48-4 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][kum][itiran_y],790-240-4
+mov ?r[4][gen][itiran_x],200-100-0+4  : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][gen][itiran_y],542
+mov ?r[4][sha][itiran_x],330-130-12+2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][sha][itiran_y],542
+mov ?r[4][kan][itiran_x],460-160-24   : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][kan][itiran_y],542
+mov ?r[4][goh][itiran_x],590-190-36-2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][goh][itiran_y],542
+mov ?r[4][kum][itiran_x],720-220-48-4 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][kum][itiran_y],542
 
 mov ?r[4][ber][itiran_x],-200 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][ber][itiran_y],%tmp
 mov ?r[4][enj][itiran_x],-200 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[4][enj][itiran_y],%tmp
@@ -2707,38 +2708,45 @@ mov $?r[4][ma4_goa][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\char
 ;590-190-36-2
 ;720-220-48-4
 
+;Old Y positioning:
 ;190
 ;340-60+2
 ;490-120
 ;640-180-2
 ;790-240-4
 
+;190
+;278
+;366
+;454
+;542
+
 mov ?r[4][ma4_lam][itiran_x],330-130-12+2 	: mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],190
 mov ?r[4][ma4_ber][itiran_x],590-190-36-2 	: mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],190
 
-mov ?r[4][ma4_bea][itiran_x],330-130-12+2 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],340-60+2
-mov ?r[4][ma4_mar][itiran_x],460-160-24 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],340-60+2
-mov ?r[4][ma4_enj][itiran_x],590-190-36-2  	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],340-60+2
+mov ?r[4][ma4_bea][itiran_x],330-130-12+2 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],278
+mov ?r[4][ma4_mar][itiran_x],460-160-24 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],278
+mov ?r[4][ma4_enj][itiran_x],590-190-36-2  	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],278
 
-mov ?r[4][ma4_kin][itiran_x],330-130-12+2  	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],490-120
-mov ?r[4][ma4_sak][itiran_x],460-160-24 	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],490-120
+mov ?r[4][ma4_kin][itiran_x],330-130-12+2  	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],366
+mov ?r[4][ma4_sak][itiran_x],460-160-24 	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],366
 
-mov ?r[4][ma4_wal][itiran_x],200-100-0+4   		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_wal][itiran_y],490-120
-mov ?r[4][ma4_ron][itiran_x],330-130-12+2 		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_ron][itiran_y],640-180-2
-mov ?r[4][ma4_gap][itiran_x],460-160-24  		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_gap][itiran_y],640-180-2
-mov ?r[4][ma4_s45][itiran_x],590-190-36-2+29 		: mov %tmp,640-180-2 : sub %tmp,62 : mov ?r[4][ma4_s45][itiran_y],640-180-2
+mov ?r[4][ma4_wal][itiran_x],200-100-0+4   		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_wal][itiran_y],366
+mov ?r[4][ma4_ron][itiran_x],330-130-12+2 		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_ron][itiran_y],454
+mov ?r[4][ma4_gap][itiran_x],460-160-24  		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_gap][itiran_y],454
+mov ?r[4][ma4_s45][itiran_x],590-190-36-2+29 		: mov %tmp,454 : sub %tmp,62 : mov ?r[4][ma4_s45][itiran_y],454
 mov ?r[4][ma4_s410][itiran_x],590-190-36-2+29	  	: mov ?r[4][ma4_s410][itiran_y],%tmp : sub %tmp,62 
-mov ?r[4][ma4_s556][itiran_x],590-190-36-2+55+29  	: mov %tmp,640-180-2 : sub %tmp,62 mov ?r[4][ma4_s556][itiran_y],640-180-2
+mov ?r[4][ma4_s556][itiran_x],590-190-36-2+55+29  	: mov %tmp,454 : sub %tmp,62 mov ?r[4][ma4_s556][itiran_y],454
 mov ?r[4][ma4_s00][itiran_x],590-190-36-2+55+29 	: mov ?r[4][ma4_s00][itiran_y],%tmp : sub %tmp,62 
 
-mov ?r[4][ma4_goa][itiran_x],200-100-0+4 : mov %tmp,185 : add %tmp,r_top_y : mov ?r[4][ma4_goa][itiran_y],640-180-2
-mov ?r[4][ma4_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[4][ma4_rg][itiran_y],790-240-4
-mov ?r[4][ma4_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_1][itiran_y],790-240-4 ;new rg +95
-mov ?r[4][ma4_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_2][itiran_y],790-240-4 ;new rg
-mov ?r[4][ma4_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_3][itiran_y],790-240-4 ;new rg
-mov ?r[4][ma4_rg_4][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_4][itiran_y],790-240-4 ;new rg
-mov ?r[4][ma4_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_5][itiran_y],790-240-4 ;new rg
-mov ?r[4][ma4_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_6][itiran_y],790-240-4 ;new rg
+mov ?r[4][ma4_goa][itiran_x],200-100-0+4 : mov %tmp,185 : add %tmp,r_top_y : mov ?r[4][ma4_goa][itiran_y],454
+mov ?r[4][ma4_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[4][ma4_rg][itiran_y],542
+mov ?r[4][ma4_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_1][itiran_y],542 ;new rg +95
+mov ?r[4][ma4_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_2][itiran_y],542 ;new rg
+mov ?r[4][ma4_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_3][itiran_y],542 ;new rg
+mov ?r[4][ma4_rg_4][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_4][itiran_y],542 ;new rg
+mov ?r[4][ma4_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_5][itiran_y],542 ;new rg
+mov ?r[4][ma4_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_6][itiran_y],542 ;new rg
 
 return
 
@@ -2824,34 +2832,34 @@ mov $?r[4][enj_ber][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\char
 ;720-220-48-4
 
 ;190
-;340-60+2
-;490-120
-;640-180-2
-;790-240-4
+;278
+;366
+;454
+;542
 
 mov ?r[4][enj_ber][itiran_x],200-100-0+4 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_ber][itiran_y],190
 
 mov ?r[4][enj_eva][itiran_x],460-160-24+28 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],190
 mov ?r[4][enj_oko][itiran_x],460-160-24+28+29+57 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],190
 
-mov ?r[4][enj_kas][itiran_x],200-100-0+4+36 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],340-60+2
-mov ?r[4][enj_enj][itiran_x],460-160-24+28 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],340-60+2
-mov ?r[4][enj_ama][itiran_x],460-160-24+28+29+57 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],340-60+2
+mov ?r[4][enj_kas][itiran_x],200-100-0+4+36 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],278
+mov ?r[4][enj_enj][itiran_x],460-160-24+28 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],278
+mov ?r[4][enj_ama][itiran_x],460-160-24+28+29+57 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],278
 
-mov ?r[4][enj_mar][itiran_x],200-100-0+4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_mar][itiran_y],490-120
-mov ?r[4][enj_sak][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_sak][itiran_y],490-120
-mov ?r[4][enj_rg][itiran_x],460-160-24 : mov %tmp,460-160-24 : add %tmp,55 : mov ?r[4][enj_rg][itiran_y],490-120
-mov ?r[4][enj_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_1][itiran_y],490-120 ;new rg +95
-mov ?r[4][enj_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_2][itiran_y],490-120 ;new rg
-mov ?r[4][enj_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_3][itiran_y],490-120 ;new rg
-mov ?r[4][enj_rg_4][itiran_x],460-160-24+28 : mov %tmp,460-160-24+28 : add %tmp,55 : mov ?r[4][enj_rg_4][itiran_y],490-120+62 ;new rg
-mov ?r[4][enj_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_5][itiran_y],490-120+62 ;new rg
-mov ?r[4][enj_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_6][itiran_y],490-120+62 ;new rg
+mov ?r[4][enj_mar][itiran_x],200-100-0+4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_mar][itiran_y],366
+mov ?r[4][enj_sak][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_sak][itiran_y],366
+mov ?r[4][enj_rg][itiran_x],460-160-24 : mov %tmp,460-160-24 : add %tmp,55 : mov ?r[4][enj_rg][itiran_y],366
+mov ?r[4][enj_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_1][itiran_y],366 ;new rg +95
+mov ?r[4][enj_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_2][itiran_y],366 ;new rg
+mov ?r[4][enj_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_3][itiran_y],366 ;new rg
+mov ?r[4][enj_rg_4][itiran_x],460-160-24+28 : mov %tmp,460-160-24+28 : add %tmp,55 : mov ?r[4][enj_rg_4][itiran_y],366+62 ;new rg
+mov ?r[4][enj_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_5][itiran_y],366+62 ;new rg
+mov ?r[4][enj_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_6][itiran_y],366+62 ;new rg
 
-mov ?r[4][enj_pro][itiran_x],200-100-0+4  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],790-240-4
-mov ?r[4][enj_mas][itiran_x],330-130-12+2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_mas][itiran_y],790-240-4
-mov ?r[4][enj_sab][itiran_x],460-160-24 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_sab][itiran_y],790-240-4
-mov ?r[4][enj_kwa][itiran_x],590-190-36-2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_kwa][itiran_y],790-240-4
+mov ?r[4][enj_pro][itiran_x],200-100-0+4+40  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],542
+mov ?r[4][enj_mas][itiran_x],330-130-12+2+40 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_mas][itiran_y],542
+mov ?r[4][enj_sab][itiran_x],460-160-24+40 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_sab][itiran_y],542
+mov ?r[4][enj_kwa][itiran_x],590-190-36-2+40 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_kwa][itiran_y],542
 
 return
 
@@ -2962,34 +2970,34 @@ mov $?r[5][eri][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\ch
 ;720-220-48-4
 
 ;190
-;340-60+2
-;490-120
-;640-180-2
-;790-240-4
+;278
+;366
+;454
+;542
 
 mov ?r[5][kin][itiran_x],200-100-0+4 	: mov ?r[5][kin][itiran_y],190
 mov ?r[5][kla][itiran_x],330-130-12+2 	: mov ?r[5][kla][itiran_y],190
 mov ?r[5][nat][itiran_x],460-160-24  	: mov ?r[5][nat][itiran_y],190
 mov ?r[5][jes][itiran_x],590-190-36-2 	: mov ?r[5][jes][itiran_y],190
 
-mov ?r[5][eri][itiran_x],200-100-0+4 	: mov ?r[5][eri][itiran_y],340-60+2
-mov ?r[5][eva][itiran_x],330-130-12+2 	: mov ?r[5][eva][itiran_y],340-60+2
-mov ?r[5][hid][itiran_x],460-160-24 	: mov ?r[5][hid][itiran_y],340-60+2
-mov ?r[5][geo][itiran_x],590-190-36-2	: mov ?r[5][geo][itiran_y],340-60+2
+mov ?r[5][eri][itiran_x],200-100-0+4 	: mov ?r[5][eri][itiran_y],278
+mov ?r[5][eva][itiran_x],330-130-12+2 	: mov ?r[5][eva][itiran_y],278
+mov ?r[5][hid][itiran_x],460-160-24 	: mov ?r[5][hid][itiran_y],278
+mov ?r[5][geo][itiran_x],590-190-36-2	: mov ?r[5][geo][itiran_y],278
 
-mov ?r[5][rud][itiran_x],330-130-12+2 	: mov ?r[5][rud][itiran_y],490-120
-mov ?r[5][kir][itiran_x],460-160-24 	: mov ?r[5][kir][itiran_y],490-120
-mov ?r[5][but][itiran_x],590-190-36-2 	: mov ?r[5][but][itiran_y],490-120
+mov ?r[5][rud][itiran_x],330-130-12+2 	: mov ?r[5][rud][itiran_y],366
+mov ?r[5][kir][itiran_x],460-160-24 	: mov ?r[5][kir][itiran_y],366
+mov ?r[5][but][itiran_x],590-190-36-2 	: mov ?r[5][but][itiran_y],366
 
-mov ?r[5][nan][itiran_x],200-100-0+4  : mov ?r[5][nan][itiran_y],640-180-2
-mov ?r[5][ros][itiran_x],330-130-12+2 : mov ?r[5][ros][itiran_y],640-180-2
-mov ?r[5][mar][itiran_x],590-190-36-2 : mov ?r[5][mar][itiran_y],640-180-2
+mov ?r[5][nan][itiran_x],200-100-0+4  : mov ?r[5][nan][itiran_y],454
+mov ?r[5][ros][itiran_x],330-130-12+2 : mov ?r[5][ros][itiran_y],454
+mov ?r[5][mar][itiran_x],590-190-36-2 : mov ?r[5][mar][itiran_y],454
 
-mov ?r[5][gen][itiran_x],200-100-0+4 : mov ?r[5][gen][itiran_y],790-240-4
-mov ?r[5][sha][itiran_x],330-130-12+2 : mov ?r[5][sha][itiran_y],790-240-4
-mov ?r[5][kan][itiran_x],460-160-24 : mov ?r[5][kan][itiran_y],790-240-4
-mov ?r[5][goh][itiran_x],590-190-36-2 : mov ?r[5][goh][itiran_y],790-240-4
-mov ?r[5][kum][itiran_x],720-220-48-4 : mov ?r[5][kum][itiran_y],790-240-4
+mov ?r[5][gen][itiran_x],200-100-0+4 : mov ?r[5][gen][itiran_y],542
+mov ?r[5][sha][itiran_x],330-130-12+2 : mov ?r[5][sha][itiran_y],542
+mov ?r[5][kan][itiran_x],460-160-24 : mov ?r[5][kan][itiran_y],542
+mov ?r[5][goh][itiran_x],590-190-36-2 : mov ?r[5][goh][itiran_y],542
+mov ?r[5][kum][itiran_x],720-220-48-4 : mov ?r[5][kum][itiran_y],542
 
 return
 
@@ -3085,41 +3093,41 @@ mov $?r[5][ma5_cor][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chir
 ;720-220-48-4
 
 ;190
-;340-60+2
-;490-120
-;640-180-2
-;790-240-4
+;278
+;366
+;454
+;542
 
 
 mov ?r[5][ma5_bea][itiran_x],200-100-0+4+55 	: mov ?r[5][ma5_bea][itiran_y],190
 mov ?r[5][ma5_ber][itiran_x],720-220-48-4 	: mov ?r[5][ma5_ber][itiran_y],190
 
-mov ?r[5][ma5_wal][itiran_x],200-100-0+4 	: mov ?r[5][ma5_wal][itiran_y],340-60+2
-mov ?r[5][ma5_ron][itiran_x],200-100-0+4+55 	    : mov ?r[5][ma5_ron][itiran_y],340-60+2
-mov ?r[5][ma5_gap][itiran_x],200-100-0+4+55+55 	: mov ?r[5][ma5_gap][itiran_y],340-60+2
-mov ?r[5][ma5_but][itiran_x],200-100-0+4+55+55+57+28 	: mov ?r[5][ma5_but][itiran_y],340-60+2
-mov ?r[5][ma5_lam][itiran_x],720-220-48-4-28-57 	: mov ?r[5][ma5_lam][itiran_y],340-60+2
-mov ?r[5][ma5_eri][itiran_x],720-220-48-4 	: mov ?r[5][ma5_eri][itiran_y],340-60+2
+mov ?r[5][ma5_wal][itiran_x],200-100-0+4 	: mov ?r[5][ma5_wal][itiran_y],278
+mov ?r[5][ma5_ron][itiran_x],200-100-0+4+55 	    : mov ?r[5][ma5_ron][itiran_y],278
+mov ?r[5][ma5_gap][itiran_x],200-100-0+4+55+55 	: mov ?r[5][ma5_gap][itiran_y],278
+mov ?r[5][ma5_but][itiran_x],200-100-0+4+55+55+57+28 	: mov ?r[5][ma5_but][itiran_y],278
+mov ?r[5][ma5_lam][itiran_x],720-220-48-4-28-57 	: mov ?r[5][ma5_lam][itiran_y],278
+mov ?r[5][ma5_eri][itiran_x],720-220-48-4 	: mov ?r[5][ma5_eri][itiran_y],278
 
 mov %tmp,200-100-0+4
-mov ?r[5][ma5_rg][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg][itiran_y],490-120
-mov ?r[5][ma5_rg_1][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg_1][itiran_y],490-120
-mov ?r[5][ma5_rg_2][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg_2][itiran_y],490-120
-mov ?r[5][ma5_rg_3][itiran_x],%tmp 	: mov %tmp,200-100-0+4+28 : mov ?r[5][ma5_rg_3][itiran_y],490-120
-mov ?r[5][ma5_rg_4][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg_4][itiran_y],490-120+62
-mov ?r[5][ma5_rg_5][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg_5][itiran_y],490-120+62
-mov ?r[5][ma5_rg_6][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg_6][itiran_y],490-120+62
+mov ?r[5][ma5_rg][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg][itiran_y],366
+mov ?r[5][ma5_rg_1][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg_1][itiran_y],366
+mov ?r[5][ma5_rg_2][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg_2][itiran_y],366
+mov ?r[5][ma5_rg_3][itiran_x],%tmp 	: mov %tmp,200-100-0+4+28 : mov ?r[5][ma5_rg_3][itiran_y],366
+mov ?r[5][ma5_rg_4][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg_4][itiran_y],366+62
+mov ?r[5][ma5_rg_5][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg_5][itiran_y],366+62
+mov ?r[5][ma5_rg_6][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_rg_6][itiran_y],366+62
 
-mov ?r[5][ma5_dla][itiran_x],720-220-48-4 	: mov ?r[5][ma5_dla][itiran_y],490-120
+mov ?r[5][ma5_dla][itiran_x],720-220-48-4 	: mov ?r[5][ma5_dla][itiran_y],366
 
-mov ?r[5][ma5_ger][itiran_x],720-220-48-4-55 	: mov ?r[5][ma5_ger][itiran_y],640-180-2
-mov ?r[5][ma5_cor][itiran_x],720-220-48-4 	: mov ?r[5][ma5_cor][itiran_y],640-180-2
+mov ?r[5][ma5_ger][itiran_x],720-220-48-4-55 	: mov ?r[5][ma5_ger][itiran_y],454
+mov ?r[5][ma5_cor][itiran_x],720-220-48-4 	: mov ?r[5][ma5_cor][itiran_y],454
 
 mov %tmp,200-100-0+4
-mov ?r[5][ma5_s45][itiran_x],200-100-0+4 	: add %tmp,55 : mov ?r[5][ma5_s45][itiran_y],790-240-4
-mov ?r[5][ma5_s410][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_s410][itiran_y],790-240-4
-mov ?r[5][ma5_s00][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_s00][itiran_y],790-240-4
-mov ?r[5][ma5_s556][itiran_x],%tmp 	: 				mov ?r[5][ma5_s556][itiran_y],790-240-4
+mov ?r[5][ma5_s45][itiran_x],200-100-0+4 	: add %tmp,55 : mov ?r[5][ma5_s45][itiran_y],542
+mov ?r[5][ma5_s410][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_s410][itiran_y],542
+mov ?r[5][ma5_s00][itiran_x],%tmp 	: add %tmp,55 : mov ?r[5][ma5_s00][itiran_y],542
+mov ?r[5][ma5_s556][itiran_x],%tmp 	: 				mov ?r[5][ma5_s556][itiran_y],542
 
 return
 
@@ -3235,24 +3243,24 @@ mov ?r[6][kla][itiran_x],330-130-12+2 	: mov ?r[6][kla][itiran_y],190
 mov ?r[6][nat][itiran_x],460-160-24  	: mov ?r[6][nat][itiran_y],190
 mov ?r[6][jes][itiran_x],590-190-36-2 	: mov ?r[6][jes][itiran_y],190
 
-mov ?r[6][eri][itiran_x],200-100-0+4 	: mov ?r[6][eri][itiran_y],340-60+2
-mov ?r[6][eva][itiran_x],330-130-12+2 	: mov ?r[6][eva][itiran_y],340-60+2
-mov ?r[6][hid][itiran_x],460-160-24 	: mov ?r[6][hid][itiran_y],340-60+2
-mov ?r[6][geo][itiran_x],590-190-36-2	: mov ?r[6][geo][itiran_y],340-60+2
+mov ?r[6][eri][itiran_x],200-100-0+4 	: mov ?r[6][eri][itiran_y],278
+mov ?r[6][eva][itiran_x],330-130-12+2 	: mov ?r[6][eva][itiran_y],278
+mov ?r[6][hid][itiran_x],460-160-24 	: mov ?r[6][hid][itiran_y],278
+mov ?r[6][geo][itiran_x],590-190-36-2	: mov ?r[6][geo][itiran_y],278
 
-mov ?r[6][rud][itiran_x],330-130-12+2 	: mov ?r[6][rud][itiran_y],490-120
-mov ?r[6][kir][itiran_x],460-160-24 	: mov ?r[6][kir][itiran_y],490-120
-mov ?r[6][but][itiran_x],590-190-36-2 	: mov ?r[6][but][itiran_y],490-120
+mov ?r[6][rud][itiran_x],330-130-12+2 	: mov ?r[6][rud][itiran_y],366
+mov ?r[6][kir][itiran_x],460-160-24 	: mov ?r[6][kir][itiran_y],366
+mov ?r[6][but][itiran_x],590-190-36-2 	: mov ?r[6][but][itiran_y],366
 
-mov ?r[6][nan][itiran_x],200-100-0+4  : mov ?r[6][nan][itiran_y],640-180-2
-mov ?r[6][ros][itiran_x],330-130-12+2 : mov ?r[6][ros][itiran_y],640-180-2
-mov ?r[6][mar][itiran_x],590-190-36-2 : mov ?r[6][mar][itiran_y],640-180-2
+mov ?r[6][nan][itiran_x],200-100-0+4  : mov ?r[6][nan][itiran_y],454
+mov ?r[6][ros][itiran_x],330-130-12+2 : mov ?r[6][ros][itiran_y],454
+mov ?r[6][mar][itiran_x],590-190-36-2 : mov ?r[6][mar][itiran_y],454
 
-mov ?r[6][gen][itiran_x],200-100-0+4 : mov ?r[6][gen][itiran_y],790-240-4
-mov ?r[6][sha][itiran_x],330-130-12+2 : mov ?r[6][sha][itiran_y],790-240-4
-mov ?r[6][kan][itiran_x],460-160-24 : mov ?r[6][kan][itiran_y],790-240-4
-mov ?r[6][goh][itiran_x],590-190-36-2 : mov ?r[6][goh][itiran_y],790-240-4
-mov ?r[6][kum][itiran_x],720-220-48-4 : mov ?r[6][kum][itiran_y],790-240-4
+mov ?r[6][gen][itiran_x],200-100-0+4 : mov ?r[6][gen][itiran_y],542
+mov ?r[6][sha][itiran_x],330-130-12+2 : mov ?r[6][sha][itiran_y],542
+mov ?r[6][kan][itiran_x],460-160-24 : mov ?r[6][kan][itiran_y],542
+mov ?r[6][goh][itiran_x],590-190-36-2 : mov ?r[6][goh][itiran_y],542
+mov ?r[6][kum][itiran_x],720-220-48-4 : mov ?r[6][kum][itiran_y],542
 
 return
 
@@ -3371,10 +3379,10 @@ mov $?r[6][ma5_GOA][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\char
 ;720-220-48-4
 
 ;190
-;340-60+2
-;490-120
-;640-180-2
-;790-240-4
+;278
+;366
+;454
+;542
 
 
 mov ?r[6][ma5_be2][itiran_x],330-130-12+2	: mov ?r[6][ma5_be2][itiran_y],190
@@ -3384,32 +3392,32 @@ mov ?r[6][ma5_lam][itiran_x],720-220-48-4 	: mov ?r[6][ma5_lam][itiran_y],190
 mov ?r[6][ma5_zep][itiran_x],200-100-0+4 	: mov ?r[6][ma5_zep][itiran_y],190+16
 mov ?r[6][ma5_fur][itiran_x],200-100-0+4 	: mov ?r[6][ma5_fur][itiran_y],190+16+62
 
-mov ?r[6][ma5_bea][itiran_x],330-130-12+2 	: mov ?r[6][ma5_bea][itiran_y],340-60+2
-mov ?r[6][ma5_but][itiran_x],460-160-24 	: mov ?r[6][ma5_but][itiran_y],340-60+2
-mov ?r[6][ma5_eri][itiran_x],590-190-36-2 	: mov ?r[6][ma5_eri][itiran_y],340-60+2
-mov ?r[6][ma5_dla][itiran_x],720-220-48-4 	: mov ?r[6][ma5_dla][itiran_y],340-60+2
+mov ?r[6][ma5_bea][itiran_x],330-130-12+2 	: mov ?r[6][ma5_bea][itiran_y],278
+mov ?r[6][ma5_but][itiran_x],460-160-24 	: mov ?r[6][ma5_but][itiran_y],278
+mov ?r[6][ma5_eri][itiran_x],590-190-36-2 	: mov ?r[6][ma5_eri][itiran_y],278
+mov ?r[6][ma5_dla][itiran_x],720-220-48-4 	: mov ?r[6][ma5_dla][itiran_y],278
 
-mov ?r[6][ma5_wal][itiran_x],330-130-12+2-55 	: mov ?r[6][ma5_wal][itiran_y],490-120
-mov ?r[6][ma5_ron][itiran_x],330-130-12+2 	: mov ?r[6][ma5_ron][itiran_y],490-120
-mov ?r[6][ma5_gap][itiran_x],330-130-12+2+55 	: mov ?r[6][ma5_gap][itiran_y],490-120
+mov ?r[6][ma5_wal][itiran_x],330-130-12+2-55 	: mov ?r[6][ma5_wal][itiran_y],366
+mov ?r[6][ma5_ron][itiran_x],330-130-12+2 	: mov ?r[6][ma5_ron][itiran_y],366
+mov ?r[6][ma5_gap][itiran_x],330-130-12+2+55 	: mov ?r[6][ma5_gap][itiran_y],366
 
-mov ?r[6][ma5_cor][itiran_x],720-220-48-4 	: mov ?r[6][ma5_cor][itiran_y],490-120
-mov ?r[6][ma5_ger][itiran_x],720-220-48-4-55 	: mov ?r[6][ma5_ger][itiran_y],490-120
+mov ?r[6][ma5_cor][itiran_x],720-220-48-4 	: mov ?r[6][ma5_cor][itiran_y],366
+mov ?r[6][ma5_ger][itiran_x],720-220-48-4-55 	: mov ?r[6][ma5_ger][itiran_y],366
 
-mov ?r[6][ma5_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[6][ma5_rg][itiran_y],640-180-2
-mov ?r[6][ma5_rg_1][itiran_x],%tmp	: add %tmp,55 : mov ?r[6][ma5_rg_1][itiran_y],640-180-2
-mov ?r[6][ma5_rg_2][itiran_x],%tmp	: add %tmp,55 : mov ?r[6][ma5_rg_2][itiran_y],640-180-2
-mov ?r[6][ma5_rg_3][itiran_x],%tmp 	: add %tmp,55 : mov ?r[6][ma5_rg_3][itiran_y],640-180-2
-mov ?r[6][ma5_rg_4][itiran_x],%tmp 	: add %tmp,55 : mov ?r[6][ma5_rg_4][itiran_y],640-180-2
-mov ?r[6][ma5_rg_5][itiran_x],%tmp 	: add %tmp,55 : mov ?r[6][ma5_rg_5][itiran_y],640-180-2
-mov ?r[6][ma5_rg_6][itiran_x],%tmp 	: add %tmp,55 : mov ?r[6][ma5_rg_6][itiran_y],640-180-2
+mov ?r[6][ma5_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[6][ma5_rg][itiran_y],454
+mov ?r[6][ma5_rg_1][itiran_x],%tmp	: add %tmp,55 : mov ?r[6][ma5_rg_1][itiran_y],454
+mov ?r[6][ma5_rg_2][itiran_x],%tmp	: add %tmp,55 : mov ?r[6][ma5_rg_2][itiran_y],454
+mov ?r[6][ma5_rg_3][itiran_x],%tmp 	: add %tmp,55 : mov ?r[6][ma5_rg_3][itiran_y],454
+mov ?r[6][ma5_rg_4][itiran_x],%tmp 	: add %tmp,55 : mov ?r[6][ma5_rg_4][itiran_y],454
+mov ?r[6][ma5_rg_5][itiran_x],%tmp 	: add %tmp,55 : mov ?r[6][ma5_rg_5][itiran_y],454
+mov ?r[6][ma5_rg_6][itiran_x],%tmp 	: add %tmp,55 : mov ?r[6][ma5_rg_6][itiran_y],454
 
-mov ?r[6][ma5_GOA][itiran_x],200-100-0+4 	: mov ?r[6][ma5_GOA][itiran_y],790-240-4
+mov ?r[6][ma5_GOA][itiran_x],200-100-0+4 	: mov ?r[6][ma5_GOA][itiran_y],542
 
-mov ?r[6][ma5_s00][itiran_x],720-220-48-4-55*3 	: add %tmp,90 : mov ?r[6][ma5_s00][itiran_y],790-240-4
-mov ?r[6][ma5_s45][itiran_x],720-220-48-4-55*2 	: mov %tmp,287 : add %tmp,55 : mov ?r[6][ma5_s45][itiran_y],790-240-4
-mov ?r[6][ma5_s410][itiran_x],720-220-48-4-55 	: add %tmp,90 : mov ?r[6][ma5_s410][itiran_y],790-240-4
-mov ?r[6][ma5_s556][itiran_x],720-220-48-4 	: mov ?r[6][ma5_s556][itiran_y],790-240-4
+mov ?r[6][ma5_s00][itiran_x],720-220-48-4-55*3 	: add %tmp,90 : mov ?r[6][ma5_s00][itiran_y],542
+mov ?r[6][ma5_s45][itiran_x],720-220-48-4-55*2 	: mov %tmp,287 : add %tmp,55 : mov ?r[6][ma5_s45][itiran_y],542
+mov ?r[6][ma5_s410][itiran_x],720-220-48-4-55 	: add %tmp,90 : mov ?r[6][ma5_s410][itiran_y],542
+mov ?r[6][ma5_s556][itiran_x],720-220-48-4 	: mov ?r[6][ma5_s556][itiran_y],542
 
 return
 
@@ -3428,8 +3436,8 @@ for %tmp11 = 1 to char_max_ep5_2
 	next
 next
 
-;mov ?r[1][bea][itiran_x],224+81-28-57 : mov ?r[1][bea][itiran_y],490-120 ;position Ura_tea_chars
-;mov ?r[1][ber][itiran_x],224+81+28 : mov ?r[1][ber][itiran_y],490-120 ;position Ura_tea_chars
+;mov ?r[1][bea][itiran_x],224+81-28-57 : mov ?r[1][bea][itiran_y],366 ;position Ura_tea_chars
+;mov ?r[1][ber][itiran_x],224+81+28 : mov ?r[1][ber][itiran_y],366 ;position Ura_tea_chars
 
 mov ?r[6][ma5_AMA][condition_end],1
 mov $?r[6][ma5_AMA][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ama0.png"
@@ -3442,10 +3450,10 @@ mov ?r[6][ma5_enj][condition_end],1
 mov $?r[6][ma5_enj][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj0.png"
 mov $?r[6][ma5_enj][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_enj0.png"
 
-mov ?r[6][ma5_FEA][itiran_x],224+81-28-57 : mov ?r[6][ma5_FEA][itiran_y],490-120-56
+mov ?r[6][ma5_FEA][itiran_x],224+81-28-57 : mov ?r[6][ma5_FEA][itiran_y],366-56
 
-mov ?r[6][ma5_enj][itiran_x],224+81+28 : mov ?r[6][ma5_enj][itiran_y],490-120-56
-mov ?r[6][ma5_AMA][itiran_x],224+81+28 : mov ?r[6][ma5_AMA][itiran_y],490-120+56
+mov ?r[6][ma5_enj][itiran_x],224+81+28 : mov ?r[6][ma5_enj][itiran_y],366-56
+mov ?r[6][ma5_AMA][itiran_x],224+81+28 : mov ?r[6][ma5_AMA][itiran_y],366+56
 
 return
 
@@ -3548,24 +3556,24 @@ mov ?r[7][nat][itiran_x],460-160-24  	: mov ?r[7][nat][itiran_y],190
 mov ?r[7][rio][itiran_x],590-190-36-2 	: mov ?r[7][rio][itiran_y],190
 mov ?r[7][jes][itiran_x],720-220-48-4 	: mov ?r[7][jes][itiran_y],190
 
-mov ?r[7][eri][itiran_x],200-100-0+4 	: mov ?r[7][eri][itiran_y],340-60+2
-mov ?r[7][eva][itiran_x],330-130-12+2 	: mov ?r[7][eva][itiran_y],340-60+2
-mov ?r[7][hid][itiran_x],460-160-24 	: mov ?r[7][hid][itiran_y],340-60+2
-mov ?r[7][geo][itiran_x],590-190-36-2	: mov ?r[7][geo][itiran_y],340-60+2
+mov ?r[7][eri][itiran_x],200-100-0+4 	: mov ?r[7][eri][itiran_y],278
+mov ?r[7][eva][itiran_x],330-130-12+2 	: mov ?r[7][eva][itiran_y],278
+mov ?r[7][hid][itiran_x],460-160-24 	: mov ?r[7][hid][itiran_y],278
+mov ?r[7][geo][itiran_x],590-190-36-2	: mov ?r[7][geo][itiran_y],278
 
-mov ?r[7][rud][itiran_x],330-130-12+2 	: mov ?r[7][rud][itiran_y],490-120
-mov ?r[7][kir][itiran_x],460-160-24 	: mov ?r[7][kir][itiran_y],490-120
-mov ?r[7][but][itiran_x],590-190-36-2 	: mov ?r[7][but][itiran_y],490-120
+mov ?r[7][rud][itiran_x],330-130-12+2 	: mov ?r[7][rud][itiran_y],366
+mov ?r[7][kir][itiran_x],460-160-24 	: mov ?r[7][kir][itiran_y],366
+mov ?r[7][but][itiran_x],590-190-36-2 	: mov ?r[7][but][itiran_y],366
 
-mov ?r[7][nan][itiran_x],200-100-0+4  : mov ?r[7][nan][itiran_y],640-180-2
-mov ?r[7][ros][itiran_x],330-130-12+2 : mov ?r[7][ros][itiran_y],640-180-2
-mov ?r[7][mar][itiran_x],590-190-36-2 : mov ?r[7][mar][itiran_y],640-180-2
+mov ?r[7][nan][itiran_x],200-100-0+4  : mov ?r[7][nan][itiran_y],454
+mov ?r[7][ros][itiran_x],330-130-12+2 : mov ?r[7][ros][itiran_y],454
+mov ?r[7][mar][itiran_x],590-190-36-2 : mov ?r[7][mar][itiran_y],454
 
-mov ?r[7][gen][itiran_x],200-100-0+4 	: mov ?r[7][gen][itiran_y],790-240-4
-mov ?r[7][sha][itiran_x],330-130-12+2 	: mov ?r[7][sha][itiran_y],790-240-4
-mov ?r[7][kan][itiran_x],460-160-24 	: mov ?r[7][kan][itiran_y],790-240-4
-mov ?r[7][goh][itiran_x],590-190-36-2 	: mov ?r[7][goh][itiran_y],790-240-4
-mov ?r[7][kum][itiran_x],720-220-48-4 	: mov ?r[7][kum][itiran_y],790-240-4
+mov ?r[7][gen][itiran_x],200-100-0+4 	: mov ?r[7][gen][itiran_y],542
+mov ?r[7][sha][itiran_x],330-130-12+2 	: mov ?r[7][sha][itiran_y],542
+mov ?r[7][kan][itiran_x],460-160-24 	: mov ?r[7][kan][itiran_y],542
+mov ?r[7][goh][itiran_x],590-190-36-2 	: mov ?r[7][goh][itiran_y],542
+mov ?r[7][kum][itiran_x],720-220-48-4 	: mov ?r[7][kum][itiran_y],542
 
 return
 
@@ -3585,73 +3593,73 @@ for %tmp11 = 1 to char_max_ep5_2
 next
 
 mov ?r[7][ma5_ber][condition_end],1
-mov $?r[7][ma5_ber][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ber0_s.png"
+mov $?r[7][ma5_ber][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ber0.png"
 
 mov ?r[7][ma5_bea][condition_end],2
-mov $?r[7][ma5_bea][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0_s.png"
-mov $?r[7][ma5_bea][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_bea4_s.png"
+mov $?r[7][ma5_bea][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0.png"
+mov $?r[7][ma5_bea][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_bea4.png"
 ;mov $?r[7][ma5_bea][3],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea03.png"
 
 mov ?r[7][ma5_wal][condition_end],1
-mov $?r[7][ma5_wal][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_wal0_s.png"
+mov $?r[7][ma5_wal][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_wal0.png"
 
 mov ?r[7][ma5_mar][condition_end],1
-mov $?r[7][ma5_mar][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_mar0_s.png"
+mov $?r[7][ma5_mar][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_mar0.png"
 
 mov ?r[7][ma5_ron][condition_end],1
-mov $?r[7][ma5_ron][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ron0_s.png"
+mov $?r[7][ma5_ron][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ron0.png"
 
 mov ?r[7][ma5_gap][condition_end],1
-mov $?r[7][ma5_gap][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_gap0_s.png"
+mov $?r[7][ma5_gap][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_gap0.png"
 
 mov ?r[7][ma5_s00][condition_end],1
-mov $?r[7][ma5_s00][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie0_s.png"
+mov $?r[7][ma5_s00][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie0.png"
 
 mov ?r[7][ma5_s410][condition_end],1
-mov $?r[7][ma5_s410][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie1_s.png"
+mov $?r[7][ma5_s410][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie1.png"
 
 mov ?r[7][ma5_s45][condition_end],1
-mov $?r[7][ma5_s45][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie2_s.png"
+mov $?r[7][ma5_s45][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie2.png"
 
 mov ?r[7][ma5_s556][condition_end],2
-mov $?r[7][ma5_s556][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3_s.png"
-mov $?r[7][ma5_s556][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3_d_s.png"
+mov $?r[7][ma5_s556][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3.png"
+mov $?r[7][ma5_s556][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3_d.png"
 
 mov ?r[7][ma5_rg][condition_end],1
-mov $?r[7][ma5_rg][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg0_s.png"
+mov $?r[7][ma5_rg][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg0.png"
 
 mov ?r[7][ma5_rg_1][condition_end],1
-mov $?r[7][ma5_rg_1][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg1_s.png"
+mov $?r[7][ma5_rg_1][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg1.png"
 
 mov ?r[7][ma5_rg_2][condition_end],1
-mov $?r[7][ma5_rg_2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg2_s.png"
+mov $?r[7][ma5_rg_2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg2.png"
 
 mov ?r[7][ma5_rg_3][condition_end],1
-mov $?r[7][ma5_rg_3][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg3_s.png"
+mov $?r[7][ma5_rg_3][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg3.png"
 
 mov ?r[7][ma5_rg_4][condition_end],1
-mov $?r[7][ma5_rg_4][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg4_s.png"
+mov $?r[7][ma5_rg_4][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg4.png"
 
 mov ?r[7][ma5_rg_5][condition_end],1
-mov $?r[7][ma5_rg_5][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg5_s.png"
+mov $?r[7][ma5_rg_5][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg5.png"
 
 mov ?r[7][ma5_rg_6][condition_end],1
-mov $?r[7][ma5_rg_6][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg6_s.png"
+mov $?r[7][ma5_rg_6][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg6.png"
 
 mov ?r[7][ma5_ZEP][condition_end],1
-mov $?r[7][ma5_ZEP][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_zep0_s.png"
+mov $?r[7][ma5_ZEP][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_zep0.png"
 
 mov ?r[7][ma5_FUR][condition_end],1
-mov $?r[7][ma5_FUR][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_ful0_s.png"
+mov $?r[7][ma5_FUR][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_ful0.png"
 
 mov ?r[7][ma5_GOA][condition_end],1
-mov $?r[7][ma5_GOA][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_goa0_s.png"
+mov $?r[7][ma5_GOA][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_goa0.png"
 
 mov ?r[7][ma5_WIL][condition_end],1
-mov $?r[7][ma5_WIL][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_wil0_s.png"
+mov $?r[7][ma5_WIL][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_wil0.png"
 
 mov ?r[7][ma5_CUR][condition_end],1
-mov $?r[7][ma5_CUR][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_cur0_s.png"
+mov $?r[7][ma5_CUR][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_cur0.png"
 
 ;Legend: (57wx64h)
 ;200-100-0+4 
@@ -3661,32 +3669,32 @@ mov $?r[7][ma5_CUR][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chir
 ;720-220-48-4
 
 ;190
-;340-60+2
-;490-120
-;640-180-2
-;790-240-4
+;278
+;366
+;454
+;542
 
 mov ?r[7][ma5_ber][itiran_x],200-100-0+4 	: mov ?r[7][ma5_ber][itiran_y],190
 mov ?r[7][ma5_CUR][itiran_x],720-220-48-4 	: mov ?r[7][ma5_CUR][itiran_y],190
 
-mov ?r[7][ma5_WIL][itiran_x],200-100-0+4 	: mov ?r[7][ma5_WIL][itiran_y],340-60+2
-mov ?r[7][ma5_mar][itiran_x],330-130-12+2 	: mov ?r[7][ma5_mar][itiran_y],340-60+2
-mov ?r[7][ma5_bea][itiran_x],460-160-24 	: mov ?r[7][ma5_bea][itiran_y],340-60+2
+mov ?r[7][ma5_WIL][itiran_x],200-100-0+4 	: mov ?r[7][ma5_WIL][itiran_y],278
+mov ?r[7][ma5_mar][itiran_x],330-130-12+2 	: mov ?r[7][ma5_mar][itiran_y],278
+mov ?r[7][ma5_bea][itiran_x],460-160-24 	: mov ?r[7][ma5_bea][itiran_y],278
 
-mov ?r[7][ma5_wal][itiran_x],460-160-24-55 	: mov ?r[7][ma5_wal][itiran_y],490-120
-mov ?r[7][ma5_ron][itiran_x],460-160-24 	: mov ?r[7][ma5_ron][itiran_y],490-120
-mov ?r[7][ma5_gap][itiran_x],460-160-24+55 	: mov ?r[7][ma5_gap][itiran_y],490-120
+mov ?r[7][ma5_wal][itiran_x],460-160-24-55 	: mov ?r[7][ma5_wal][itiran_y],366
+mov ?r[7][ma5_ron][itiran_x],460-160-24 	: mov ?r[7][ma5_ron][itiran_y],366
+mov ?r[7][ma5_gap][itiran_x],460-160-24+55 	: mov ?r[7][ma5_gap][itiran_y],366
 
-mov ?r[7][ma5_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[7][ma5_rg][itiran_y],640-180-2
-mov ?r[7][ma5_rg_1][itiran_x],%tmp	: add %tmp,55 : mov ?r[7][ma5_rg_1][itiran_y],640-180-2
-mov ?r[7][ma5_rg_2][itiran_x],%tmp	: add %tmp,55 : mov ?r[7][ma5_rg_2][itiran_y],640-180-2
-mov ?r[7][ma5_rg_3][itiran_x],%tmp 	: add %tmp,55 : mov ?r[7][ma5_rg_3][itiran_y],640-180-2
-mov ?r[7][ma5_rg_4][itiran_x],%tmp 	: add %tmp,55 : mov ?r[7][ma5_rg_4][itiran_y],640-180-2
-mov ?r[7][ma5_rg_5][itiran_x],%tmp	: add %tmp,55 : mov ?r[7][ma5_rg_5][itiran_y],640-180-2
-mov ?r[7][ma5_rg_6][itiran_x],%tmp	: add %tmp,55 : mov ?r[7][ma5_rg_6][itiran_y],640-180-2
+mov ?r[7][ma5_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[7][ma5_rg][itiran_y],454
+mov ?r[7][ma5_rg_1][itiran_x],%tmp	: add %tmp,55 : mov ?r[7][ma5_rg_1][itiran_y],454
+mov ?r[7][ma5_rg_2][itiran_x],%tmp	: add %tmp,55 : mov ?r[7][ma5_rg_2][itiran_y],454
+mov ?r[7][ma5_rg_3][itiran_x],%tmp 	: add %tmp,55 : mov ?r[7][ma5_rg_3][itiran_y],454
+mov ?r[7][ma5_rg_4][itiran_x],%tmp 	: add %tmp,55 : mov ?r[7][ma5_rg_4][itiran_y],454
+mov ?r[7][ma5_rg_5][itiran_x],%tmp	: add %tmp,55 : mov ?r[7][ma5_rg_5][itiran_y],454
+mov ?r[7][ma5_rg_6][itiran_x],%tmp	: add %tmp,55 : mov ?r[7][ma5_rg_6][itiran_y],454
 
-mov ?r[7][ma5_zep][itiran_x],200-100-0+4 		: mov ?r[7][ma5_zep][itiran_y],790-240-4
-mov ?r[7][ma5_fur][itiran_x],200-100-0+4+55 	: mov ?r[7][ma5_fur][itiran_y],790-240-4
+mov ?r[7][ma5_zep][itiran_x],200-100-0+4 		: mov ?r[7][ma5_zep][itiran_y],542
+mov ?r[7][ma5_fur][itiran_x],200-100-0+4+55 	: mov ?r[7][ma5_fur][itiran_y],542
 
 ;mov ?r[7][ma5_GOA][itiran_x],106 	: mov ?r[7][ma5_GOA][itiran_y],%tmp
 ;mov %tmp,287
@@ -3822,38 +3830,38 @@ mov $?r[8][bea][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\ch
 
 ;mov ?r[8][ep8][itiran_x],17 : mov ?r[8][ep8][itiran_y],%tmp
 
-mov ?r[8][kin][itiran_x],200 : mov ?r[8][kin][itiran_y],190
-mov ?r[8][kla][itiran_x],330 : mov ?r[8][kla][itiran_y],190
-mov ?r[8][nat][itiran_x],460 : mov ?r[8][nat][itiran_y],190
-mov ?r[8][jes][itiran_x],590 : mov ?r[8][jes][itiran_y],190
+mov ?r[8][kin][itiran_x],200-100-0+4  : mov ?r[8][kin][itiran_y],190
+mov ?r[8][kla][itiran_x],330-130-12+2 : mov ?r[8][kla][itiran_y],190
+mov ?r[8][nat][itiran_x],460-160-24   : mov ?r[8][nat][itiran_y],190
+mov ?r[8][jes][itiran_x],590-190-36-2 : mov ?r[8][jes][itiran_y],190
 
 ;mov ?r[8][rio][itiran_x],17 : mov ?r[8][rio][itiran_y],%tmp
 
-mov ?r[8][bea][itiran_x],200 : mov ?r[8][bea][itiran_y],340
-mov ?r[8][eva][itiran_x],330 : mov ?r[8][eva][itiran_y],340
-mov ?r[8][hid][itiran_x],460 : mov ?r[8][hid][itiran_y],340
-mov ?r[8][geo][itiran_x],590 : mov ?r[8][geo][itiran_y],340
+mov ?r[8][bea][itiran_x],200-100-0+4  : mov ?r[8][bea][itiran_y],278
+mov ?r[8][eva][itiran_x],330-130-12+2 : mov ?r[8][eva][itiran_y],278
+mov ?r[8][hid][itiran_x],460-160-24   : mov ?r[8][hid][itiran_y],278
+mov ?r[8][geo][itiran_x],590-190-36-2 : mov ?r[8][geo][itiran_y],278
 
 
-mov ?r[8][rud][itiran_x],330 : mov ?r[8][rud][itiran_y],490
-mov ?r[8][kir][itiran_x],460 : mov ?r[8][kir][itiran_y],490
-mov ?r[8][but][itiran_x],590 : mov ?r[8][but][itiran_y],490
-mov ?r[8][EN2][itiran_x],720 : mov ?r[8][en2][itiran_y],490
+mov ?r[8][rud][itiran_x],330-130-12+2 : mov ?r[8][rud][itiran_y],366
+mov ?r[8][kir][itiran_x],460-160-24   : mov ?r[8][kir][itiran_y],366
+mov ?r[8][but][itiran_x],590-190-36-2 : mov ?r[8][but][itiran_y],366
+mov ?r[8][EN2][itiran_x],720-220-48-4 : mov ?r[8][en2][itiran_y],366
 
 
 ;mov ?r[8][eri][itiran_x],17 : mov ?r[8][eri][itiran_y],%tmp
 
-mov ?r[8][nan][itiran_x],200 : mov ?r[8][nan][itiran_y],640
-mov ?r[8][ros][itiran_x],330 : mov ?r[8][ros][itiran_y],640
-mov ?r[8][mar][itiran_x],590 : mov ?r[8][mar][itiran_y],640
+mov ?r[8][nan][itiran_x],200-100-0+4  : mov ?r[8][nan][itiran_y],454
+mov ?r[8][ros][itiran_x],330-130-12+2 : mov ?r[8][ros][itiran_y],454
+mov ?r[8][mar][itiran_x],590-190-36-2 : mov ?r[8][mar][itiran_y],454
 
 ;mov ?r[8][si][itiran_x],17  : mov ?r[8][si][itiran_y],%tmp
 
-mov ?r[8][gen][itiran_x],200 : mov ?r[8][gen][itiran_y],790
-mov ?r[8][sha][itiran_x],330 : mov ?r[8][sha][itiran_y],790
-mov ?r[8][kan][itiran_x],460 : mov ?r[8][kan][itiran_y],790
-mov ?r[8][goh][itiran_x],590 : mov ?r[8][goh][itiran_y],790
-mov ?r[8][kum][itiran_x],720 : mov ?r[8][kum][itiran_y],790
+mov ?r[8][gen][itiran_x],200-100-0+4  : mov ?r[8][gen][itiran_y],542
+mov ?r[8][sha][itiran_x],330-130-12+2 : mov ?r[8][sha][itiran_y],542
+mov ?r[8][kan][itiran_x],460-160-24   : mov ?r[8][kan][itiran_y],542
+mov ?r[8][goh][itiran_x],590-190-36-2 : mov ?r[8][goh][itiran_y],542
+mov ?r[8][kum][itiran_x],720-220-48-4 : mov ?r[8][kum][itiran_y],542
 
 ;mov ?r[8][nan][itiran_x],1700 : mov ?r[8][nan][itiran_y],%tmp
 ;mov ?r[8][gen][itiran_x],1700 : mov ?r[8][gen][itiran_y],%tmp
@@ -3884,157 +3892,171 @@ for %tmp11 = 1 to char_max_ep5_2
 next
 
 mov ?r[8][ma5_lam][condition_end],1
-mov $?r[8][ma5_lam][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_lam0_s.png"
+mov $?r[8][ma5_lam][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_lam0.png"
 
 mov ?r[8][ma5_ber][condition_end],1
-mov $?r[8][ma5_ber][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ber0_s.png"
+mov $?r[8][ma5_ber][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ber0.png"
 
 ;mov ?r[8][ma5_be2][condition_end],1
 ;mov $?r[8][ma5_be2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_be20_s.png"
 
 mov ?r[8][ma5_bea][condition_end],1
-mov $?r[8][ma5_bea][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0_s.png"
-mov $?r[8][ma5_bea][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0_s.png"
+mov $?r[8][ma5_bea][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0.png"
+mov $?r[8][ma5_bea][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea0.png"
 ;mov $?r[8][ma5_bea][3],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_bea03_s.png"
 
 mov ?r[8][ma5_wal][condition_end],1
-mov $?r[8][ma5_wal][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_wal0_s.png"
+mov $?r[8][ma5_wal][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_wal0.png"
 
 ;mov ?r[8][ma5_mar][condition_end],1
 ;mov $?r[8][ma5_mar][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_mar0_s.png"
 
 mov ?r[8][ma5_ron][condition_end],1
-mov $?r[8][ma5_ron][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ron0_s.png"
+mov $?r[8][ma5_ron][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_ron0.png"
 
 mov ?r[8][ma5_gap][condition_end],1
-mov $?r[8][ma5_gap][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_gap0_s.png"
+mov $?r[8][ma5_gap][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_gap0.png"
 
 mov ?r[8][ma5_but][condition_end],1
-mov $?r[8][ma5_but][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_but0_s.png"
+mov $?r[8][ma5_but][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_but0.png"
 
 mov ?r[8][ma5_s00][condition_end],1
-mov $?r[8][ma5_s00][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie0_s.png"
+mov $?r[8][ma5_s00][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie0.png"
 
 mov ?r[8][ma5_s410][condition_end],1
-mov $?r[8][ma5_s410][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie1_s.png"
+mov $?r[8][ma5_s410][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie1.png"
 
 mov ?r[8][ma5_s45][condition_end],1
-mov $?r[8][ma5_s45][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie2_s.png"
+mov $?r[8][ma5_s45][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie2.png"
 
 mov ?r[8][ma5_s556][condition_end],2
-mov $?r[8][ma5_s556][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3_s.png"
-mov $?r[8][ma5_s556][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3_d_s.png"
+mov $?r[8][ma5_s556][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3.png"
+mov $?r[8][ma5_s556][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_sie3_d.png"
 
 mov ?r[8][ma5_rg][condition_end],1
-mov $?r[8][ma5_rg][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg0_s.png"
+mov $?r[8][ma5_rg][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg0.png"
 ;mov $?r[8][ma5_rg][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg0_s.png"
 
 mov ?r[8][ma5_rg_1][condition_end],1
-mov $?r[8][ma5_rg_1][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg1_s.png"
+mov $?r[8][ma5_rg_1][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg1.png"
 
 mov ?r[8][ma5_rg_2][condition_end],1
-mov $?r[8][ma5_rg_2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg2_s.png"
+mov $?r[8][ma5_rg_2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg2.png"
 
 mov ?r[8][ma5_rg_3][condition_end],1
-mov $?r[8][ma5_rg_3][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg3_s.png"
+mov $?r[8][ma5_rg_3][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg3.png"
 
 mov ?r[8][ma5_rg_4][condition_end],1
-mov $?r[8][ma5_rg_4][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg4_s.png"
+mov $?r[8][ma5_rg_4][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg4.png"
 
 mov ?r[8][ma5_rg_5][condition_end],1
-mov $?r[8][ma5_rg_5][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg5_s.png"
+mov $?r[8][ma5_rg_5][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg5.png"
 
 mov ?r[8][ma5_rg_6][condition_end],1
-mov $?r[8][ma5_rg_6][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg6_s.png"
+mov $?r[8][ma5_rg_6][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_rg6.png"
 
 mov ?r[8][ma5_ZEP][condition_end],1
-mov $?r[8][ma5_ZEP][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_zep0_s.png"
+mov $?r[8][ma5_ZEP][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_zep0.png"
 
 mov ?r[8][ma5_FUR][condition_end],1
-mov $?r[8][ma5_FUR][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_ful0_s.png"
+mov $?r[8][ma5_FUR][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_ful0.png"
 
 ;mov ?r[8][ma5_zf][condition_end],1
 ;mov $?r[8][ma5_zf][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_zf0_s.png"
 
 mov ?r[8][ma5_GOA][condition_end],1
-mov $?r[8][ma5_GOA][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_GOA0_s.png"
+mov $?r[8][ma5_GOA][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_GOA0.png"
 
 mov ?r[8][ma5_WIL][condition_end],1
-mov $?r[8][ma5_WIL][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_WIL0_s.png"
+mov $?r[8][ma5_WIL][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_WIL0.png"
 
 ;mov ?r[8][ma5_CUR][condition_end],1
 ;mov $?r[8][ma5_CUR][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_CUR0_s.png"
 
 mov ?r[8][ma5_en2][condition_end],1
-mov $?r[8][ma5_en2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_enj1_s.png"
+mov $?r[8][ma5_en2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_enj1.png"
 
 mov ?r[8][ma5_eri][condition_end],1
-mov $?r[8][ma5_eri][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_eri0_s.png"
+mov $?r[8][ma5_eri][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_eri0.png"
 ;mov $?r[8][ma5_eri][2],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_eri_d_s.png"
 
 mov ?r[8][ma5_dla][condition_end],1
-mov $?r[8][ma5_dla][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_dla0_s.png"
+mov $?r[8][ma5_dla][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_dla0.png"
 
 mov ?r[8][ma5_ger][condition_end],1
-mov $?r[8][ma5_ger][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_gur0_s.png"
+mov $?r[8][ma5_ger][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_gur0.png"
 
 mov ?r[8][ma5_cor][condition_end],1
-mov $?r[8][ma5_cor][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_cor0_s.png"
+mov $?r[8][ma5_cor][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_cor0.png"
 
 mov ?r[8][ma5_wr][condition_end],1
-mov $?r[8][ma5_wr][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_wr_0_s.png"
+mov $?r[8][ma5_wr][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_wr_0.png"
 
 mov ?r[8][ma5_bb][condition_end],1
-mov $?r[8][ma5_bb][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_bb_0_s.png"
+mov $?r[8][ma5_bb][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_bb_0.png"
 
 mov ?r[8][ma5_ev2][condition_end],1
-mov $?r[8][ma5_ev2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_evb0_s.png"
+mov $?r[8][ma5_ev2][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chars_evb0.png"
 
 mov ?r[8][ma5_fea][condition_end],1
-mov $?r[8][ma5_fea][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_fea1_s.png"
+mov $?r[8][ma5_fea][1],":c/1,0,3;graphics\portraits\"+$sprite_folder_name+"\chiru\chars_fea1.png"
 
-mov ?r[8][ma5_lam][itiran_x],371 	: mov ?r[8][ma5_lam][itiran_y],169
-mov ?r[8][ma5_ber][itiran_x],487 	: mov ?r[8][ma5_ber][itiran_y],169
+;Legend: (57wx64h)
+;200-100-0+4 
+;330-130-12+2
+;460-160-24  
+;590-190-36-2
+;720-220-48-4
 
-mov ?r[8][ma5_wr][itiran_x],127 	: mov ?r[8][ma5_wr][itiran_y],320
-mov ?r[8][ma5_fea][itiran_x],249 	: mov ?r[8][ma5_fea][itiran_y],320
-mov ?r[8][ma5_bb][itiran_x],371 	: mov ?r[8][ma5_bb][itiran_y],320
-mov ?r[8][ma5_en2][itiran_x],487 	: mov ?r[8][ma5_en2][itiran_y],320
-mov ?r[8][ma5_eri][itiran_x],609 	: mov ?r[8][ma5_eri][itiran_y],320
-mov ?r[8][ma5_ev2][itiran_x],731 	: mov ?r[8][ma5_ev2][itiran_y],320
+;190
+;278
+;366
+;454
+;542
 
-mov ?r[8][ma5_wal][itiran_x],191 	: mov ?r[8][ma5_wal][itiran_y],470
-mov ?r[8][ma5_ron][itiran_x],281 	: mov ?r[8][ma5_ron][itiran_y],470
-mov ?r[8][ma5_gap][itiran_x],371 	: mov ?r[8][ma5_gap][itiran_y],470
-mov ?r[8][ma5_dla][itiran_x],487 	: mov ?r[8][ma5_dla][itiran_y],470
-mov ?r[8][ma5_ger][itiran_x],577 	: mov ?r[8][ma5_ger][itiran_y],470
-mov ?r[8][ma5_cor][itiran_x],667 	: mov ?r[8][ma5_cor][itiran_y],470
+mov %tmp,22
+mov ?r[8][ma5_lam][itiran_x],224+81-28-57+%tmp 	: mov ?r[8][ma5_lam][itiran_y],190
+mov ?r[8][ma5_ber][itiran_x],224+81+28-%tmp 		: mov ?r[8][ma5_ber][itiran_y],190
 
-mov %tmp,159
-mov ?r[8][ma5_rg][itiran_x],%tmp 	: add %tmp,90 : mov ?r[8][ma5_rg][itiran_y],620
-mov ?r[8][ma5_rg_1][itiran_x],%tmp 	: add %tmp,90 : mov ?r[8][ma5_rg_1][itiran_y],620
-mov ?r[8][ma5_rg_2][itiran_x],%tmp 	: add %tmp,90 : mov ?r[8][ma5_rg_2][itiran_y],620
-mov ?r[8][ma5_rg_3][itiran_x],%tmp 	: add %tmp,90 : mov ?r[8][ma5_rg_3][itiran_y],620
-mov ?r[8][ma5_rg_4][itiran_x],%tmp 	: add %tmp,90 : mov ?r[8][ma5_rg_4][itiran_y],620
-mov ?r[8][ma5_rg_5][itiran_x],%tmp 	: add %tmp,90 : mov ?r[8][ma5_rg_5][itiran_y],620
-mov ?r[8][ma5_rg_6][itiran_x],%tmp 	: add %tmp,90 : mov ?r[8][ma5_rg_6][itiran_y],620
+mov ?r[8][ma5_wr][itiran_x],224+81-28-57+%tmp-57*2-(56-%tmp*2)*2 	: mov ?r[8][ma5_wr][itiran_y],278
+mov ?r[8][ma5_fea][itiran_x],224+81-28-57+%tmp-57-(56-%tmp*2) 		: mov ?r[8][ma5_fea][itiran_y],278
+mov ?r[8][ma5_bb][itiran_x],224+81-28-57+%tmp				: mov ?r[8][ma5_bb][itiran_y],278
+mov ?r[8][ma5_en2][itiran_x],224+81+28-%tmp 	 			: mov ?r[8][ma5_en2][itiran_y],278
+mov ?r[8][ma5_eri][itiran_x],224+81+28-%tmp+57+(56-%tmp*2)	: mov ?r[8][ma5_eri][itiran_y],278
+mov ?r[8][ma5_ev2][itiran_x],224+81+28-%tmp+57*2+(56-%tmp*2)*2	: mov ?r[8][ma5_ev2][itiran_y],278
 
-mov ?r[8][ma5_s00][itiran_x],127	: mov ?r[8][ma5_s00][itiran_y],770
-mov ?r[8][ma5_s410][itiran_x],217 	: mov ?r[8][ma5_s410][itiran_y],770
-mov ?r[8][ma5_s45][itiran_x],307 	: mov ?r[8][ma5_s45][itiran_y],770
-mov ?r[8][ma5_s556][itiran_x],397 	: mov ?r[8][ma5_s556][itiran_y],770
-mov ?r[8][ma5_zep][itiran_x],519 	: mov ?r[8][ma5_zep][itiran_y],770
-mov ?r[8][ma5_fur][itiran_x],609 	: mov ?r[8][ma5_fur][itiran_y],770
-mov ?r[8][ma5_GOA][itiran_x],731 	: mov ?r[8][ma5_GOA][itiran_y],770
+mov ?r[8][ma5_wal][itiran_x],224+81-28-57+%tmp-55*2  					: mov ?r[8][ma5_wal][itiran_y],366
+mov ?r[8][ma5_ron][itiran_x],224+81-28-57+%tmp-55  					: mov ?r[8][ma5_ron][itiran_y],366
+mov ?r[8][ma5_gap][itiran_x],224+81-28-57+%tmp	 	: mov ?r[8][ma5_gap][itiran_y],366
+mov ?r[8][ma5_dla][itiran_x],224+81+28-%tmp 	 		: mov ?r[8][ma5_dla][itiran_y],366
+mov ?r[8][ma5_ger][itiran_x],224+81+28-%tmp+55					: mov ?r[8][ma5_ger][itiran_y],366
+mov ?r[8][ma5_cor][itiran_x],224+81+28-%tmp+55*2 					: mov ?r[8][ma5_cor][itiran_y],366
+
+mov ?r[8][ma5_s00][itiran_x],224+81-28-57+%tmp-57*2-(56-%tmp*2)*2	: mov ?r[8][ma5_s00][itiran_y],542
+mov ?r[8][ma5_s410][itiran_x],224+81-28-57+%tmp-57*2-(56-%tmp*2)*2+55 	: mov ?r[8][ma5_s410][itiran_y],542
+mov ?r[8][ma5_s45][itiran_x],224+81-28-57+%tmp-57*2-(56-%tmp*2)*2+55*2 	: mov ?r[8][ma5_s45][itiran_y],542
+mov ?r[8][ma5_s556][itiran_x],224+81-28-57+%tmp-57*2-(56-%tmp*2)*2+55*3 	: mov ?r[8][ma5_s556][itiran_y],542
+mov ?r[8][ma5_zep][itiran_x],224+81-28-57+%tmp-57*2-(56-%tmp*2)*2+55*4+7 	: mov ?r[8][ma5_zep][itiran_y],542
+mov ?r[8][ma5_fur][itiran_x],224+81-28-57+%tmp-57*2-(56-%tmp*2)*2+55*4+7+55 	: mov ?r[8][ma5_fur][itiran_y],542
+mov ?r[8][ma5_GOA][itiran_x],224+81+28-%tmp+57*2+(56-%tmp*2)*2 	: mov ?r[8][ma5_GOA][itiran_y],542
+
+mov ?r[8][ma5_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[8][ma5_rg][itiran_y],454
+mov ?r[8][ma5_rg_1][itiran_x],%tmp	: add %tmp,55 : mov ?r[8][ma5_rg_1][itiran_y],454
+mov ?r[8][ma5_rg_2][itiran_x],%tmp	: add %tmp,55 : mov ?r[8][ma5_rg_2][itiran_y],454
+mov ?r[8][ma5_rg_3][itiran_x],%tmp 	: add %tmp,55 : mov ?r[8][ma5_rg_3][itiran_y],454
+mov ?r[8][ma5_rg_4][itiran_x],%tmp 	: add %tmp,55 : mov ?r[8][ma5_rg_4][itiran_y],454
+mov ?r[8][ma5_rg_5][itiran_x],%tmp 	: add %tmp,55 : mov ?r[8][ma5_rg_5][itiran_y],454
+mov ?r[8][ma5_rg_6][itiran_x],%tmp 	: add %tmp,55 : mov ?r[8][ma5_rg_6][itiran_y],454
+
 
 ;mov ?r[8][ma5_w][itiran_x],17 		: mov ?r[8][ma5_w][itiran_y],%tmp
 ;mov ?r[8][ma5_s][itiran_x],17 		: mov ?r[8][ma5_s][itiran_y],%tmp
 ;mov ?r[8][ma5_k][itiran_x],62 		: mov ?r[8][ma5_k][itiran_y],%tmp
 ;mov ?r[8][ma5_zf][itiran_x],106 	: mov ?r[8][ma5_zf][itiran_y],%tmp
 
-mov ?r[8][ma5_but][itiran_x],1500 	: mov ?r[8][ma5_but][itiran_y],500
-mov ?r[8][ma5_bea][itiran_x],1500 	: mov ?r[8][ma5_bea][itiran_y],600
-mov ?r[8][ma5_wil][itiran_x],1500 	: mov ?r[8][ma5_wil][itiran_y],700
+mov ?r[8][ma5_but][itiran_x],1500 	: mov ?r[8][ma5_but][itiran_y],366
+mov ?r[8][ma5_bea][itiran_x],1500 	: mov ?r[8][ma5_bea][itiran_y],454
+mov ?r[8][ma5_wil][itiran_x],1500 	: mov ?r[8][ma5_wil][itiran_y],542
 
 return
 
@@ -4804,8 +4826,8 @@ goto *r_cha_display_end
 
 	;W_CUSTOM - ;Char Menu - Moving Side Animations
 	if %char_performing_action != 0 jumpf ;If not executing or resurrecting
-		if %char_selector_ep_change = 1	aspt alpha,gen_txt_14,0,300
-		if %char_selector_ep_change != 1 aspt alpha,gen_txt_14,255,300
+		if %char_selector_ep_change = 1	aspt alpha,gen_txt_14,0,300 : aspt alpha,r_hana_lsp,0,150
+		if %char_selector_ep_change != 1 aspt alpha,gen_txt_14,255,300 : aspt alpha,r_hana_lsp,255,2000 ;There are two of this
 		;sptwait alpha,gen_txt_14
 	~
 
@@ -8412,7 +8434,7 @@ return
 	mov ?r[4][enj_eva][condition],1
 	mov ?r[4][enj_enj][condition],1
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40001
@@ -8420,10 +8442,10 @@ return
 	mov ?r[4][ma4_ber][condition],1
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 
-	mov ?r[4][ma4_enj][itiran_x],353 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],490
-	mov ?r[4][ma4_ber][itiran_x],511 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],490
+	mov ?r[4][ma4_enj][itiran_x],224+81-28-57 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366
+	mov ?r[4][ma4_ber][itiran_x],224+81+28 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],366
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40005
@@ -8436,12 +8458,12 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_4.png"
 	
-	mov ?r[4][ma4_lam][itiran_x],302 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],400
-	mov ?r[4][ma4_ber][itiran_x],562 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],400
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],366-31-16
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],366-31-16
 
-	mov ?r[4][ma4_bea][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],537
-	mov ?r[4][ma4_mar][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],537
-	mov ?r[4][ma4_enj][itiran_x],562 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],537
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366+31+16
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366+31+16
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366+31+16
 return
 ;---------------------------------
 *rmenu_main_ep4_3_scene_40030
@@ -8452,8 +8474,8 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_5.png"
 	
-	mov ?r[4][enj_eva][itiran_x],441 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],390
-	mov ?r[4][enj_enj][itiran_x],441 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],550
+	mov ?r[4][enj_eva][itiran_x],460-160-24 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],366-31-16
+	mov ?r[4][enj_enj][itiran_x],460-160-24 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],366+31+16
 	
 return
 ;---------------------------------
@@ -8466,9 +8488,9 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_6.png"
 	
-	mov ?r[4][enj_eva][itiran_x],401 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],390
-	mov ?r[4][enj_oko][itiran_x],531 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],390
-	mov ?r[4][enj_enj][itiran_x],401 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],550
+	mov ?r[4][enj_eva][itiran_x],460-160-24-45 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],366-31-16
+	mov ?r[4][enj_oko][itiran_x],590-190-36-2-45 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],366-31-16
+	mov ?r[4][enj_enj][itiran_x],460-160-24-45 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],366+31+16
 
 return
 ;---------------------------------
@@ -8482,10 +8504,10 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_7.png"
 	
-	mov ?r[4][enj_eva][itiran_x],472 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],390
-	mov ?r[4][enj_oko][itiran_x],602 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],390
-	mov ?r[4][enj_kas][itiran_x],220 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],550
-	mov ?r[4][enj_enj][itiran_x],472 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],550
+	mov ?r[4][enj_eva][itiran_x],460-160-24+45   : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],366-31-16
+	mov ?r[4][enj_oko][itiran_x],590-190-36-2+45 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],366-31-16
+	mov ?r[4][enj_kas][itiran_x],200-100-0+4+45  : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],366+31+16
+	mov ?r[4][enj_enj][itiran_x],460-160-24+45 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],366+31+16
 	
 return
 ;---------------------------------
@@ -8500,11 +8522,11 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_8.png"
 	
-	mov ?r[4][enj_eva][itiran_x],472 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],390
-	mov ?r[4][enj_oko][itiran_x],602 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],390
-	mov ?r[4][enj_kas][itiran_x],220 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],550
-	mov ?r[4][enj_enj][itiran_x],472 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],550
-	mov ?r[4][enj_ama][itiran_x],602 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],550
+	mov ?r[4][enj_eva][itiran_x],460-160-24+45  : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],366-31-16
+	mov ?r[4][enj_oko][itiran_x],590-190-36-2+45 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],366-31-16
+	mov ?r[4][enj_kas][itiran_x],200-100-0+4+45 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],366+31+16
+	mov ?r[4][enj_enj][itiran_x],460-160-24+45 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],366+31+16
+	mov ?r[4][enj_ama][itiran_x],590-190-36-2+45 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],366+31+16
 	
 return
 ;---------------------------------
@@ -8520,12 +8542,12 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_8.png"
 	
-	mov ?r[4][enj_ber][itiran_x],220 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_ber][itiran_y],390
-	mov ?r[4][enj_eva][itiran_x],472 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],390
-	mov ?r[4][enj_oko][itiran_x],602 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],390
-	mov ?r[4][enj_kas][itiran_x],220 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],550
-	mov ?r[4][enj_enj][itiran_x],472 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],550
-	mov ?r[4][enj_ama][itiran_x],602 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],550
+	mov ?r[4][enj_ber][itiran_x],200-100-0+4+45 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_ber][itiran_y],366-31-16
+	mov ?r[4][enj_eva][itiran_x],460-160-24+45  : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],366-31-16
+	mov ?r[4][enj_oko][itiran_x],590-190-36-2+45 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],366-31-16
+	mov ?r[4][enj_kas][itiran_x],200-100-0+4+45 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],366+31+16
+	mov ?r[4][enj_enj][itiran_x],460-160-24+45 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],366+31+16
+	mov ?r[4][enj_ama][itiran_x],590-190-36-2+45 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],366+31+16
 	
 return
 ;---------------------------------
@@ -8540,11 +8562,11 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_8.png"
 	
-	mov ?r[4][enj_eva][itiran_x],472 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],390
-	mov ?r[4][enj_oko][itiran_x],602 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],390
-	mov ?r[4][enj_kas][itiran_x],220 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],550
-	mov ?r[4][enj_enj][itiran_x],472 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],550
-	mov ?r[4][enj_ama][itiran_x],602 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],550
+	mov ?r[4][enj_eva][itiran_x],460-160-24+45  : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],366-31-16
+	mov ?r[4][enj_oko][itiran_x],590-190-36-2+45 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],366-31-16
+	mov ?r[4][enj_kas][itiran_x],200-100-0+4+45 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],366+31+16
+	mov ?r[4][enj_enj][itiran_x],460-160-24+45 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],366+31+16
+	mov ?r[4][enj_ama][itiran_x],590-190-36-2+45 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],366+31+16
 	
 return
 ;---------------------------------
@@ -8559,14 +8581,14 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_9.png"
 	
-	mov ?r[4][ma4_lam][itiran_x],302 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],400
-	mov ?r[4][ma4_ber][itiran_x],562 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],400
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],278
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],278
 
-	mov ?r[4][ma4_bea][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],537
-	mov ?r[4][ma4_mar][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],537
-	mov ?r[4][ma4_enj][itiran_x],562 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],537
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366
 	
-	mov ?r[4][ma4_kin][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],674
+	mov ?r[4][ma4_kin][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],454
 
 return
 ;---------------------------------
@@ -8582,15 +8604,15 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_10.png"
 	
-	mov ?r[4][ma4_lam][itiran_x],302 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],400
-	mov ?r[4][ma4_ber][itiran_x],562 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],400
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],278
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],278
 
-	mov ?r[4][ma4_bea][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],537
-	mov ?r[4][ma4_mar][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],537
-	mov ?r[4][ma4_enj][itiran_x],562 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],537
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366
 	
-	mov ?r[4][ma4_kin][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],674
-	mov ?r[4][ma4_sak][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],674
+	mov ?r[4][ma4_kin][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],454
+	mov ?r[4][ma4_sak][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],454
 	
 return
 ;---------------------------------
@@ -8607,15 +8629,16 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_10.png"
 	
-	mov ?r[4][ma4_lam][itiran_x],302 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],400
-	mov ?r[4][ma4_ber][itiran_x],562 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],400
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],278
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],278
 
-	mov ?r[4][ma4_bea][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],537
-	mov ?r[4][ma4_mar][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],537
-	mov ?r[4][ma4_enj][itiran_x],562 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],537
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366
 	
-	mov ?r[4][ma4_kin][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],674
-	mov ?r[4][ma4_sak][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],674
+	mov ?r[4][ma4_kin][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],454
+	mov ?r[4][ma4_sak][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],454
+
 return
 ;---------------------------------
 *rmenu_main_ep4_3_scene_40120
@@ -8630,12 +8653,14 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_8.png"
 	
-	mov ?r[4][enj_eva][itiran_x],472 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],390
-	mov ?r[4][enj_oko][itiran_x],602 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],390
-	mov ?r[4][enj_kas][itiran_x],220 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],550
-	mov ?r[4][enj_enj][itiran_x],472 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],550
-	mov ?r[4][enj_ama][itiran_x],602 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],550
-	mov ?r[4][enj_pro][itiran_x],220 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],710
+	mov ?r[4][enj_eva][itiran_x],460-160-24+28 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],278
+	mov ?r[4][enj_oko][itiran_x],460-160-24+28+29+57 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],278
+	
+	mov ?r[4][enj_kas][itiran_x],200-100-0+4+36 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],366
+	mov ?r[4][enj_enj][itiran_x],460-160-24+28 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],366
+	mov ?r[4][enj_ama][itiran_x],460-160-24+28+29+57 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],366
+
+	mov ?r[4][enj_pro][itiran_x],460-160-24  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],542
 	
 return
 ;---------------------------------
@@ -8652,17 +8677,17 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_11.png"
 	
-	mov ?r[4][enj_eva][itiran_x],472 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],290
-	mov ?r[4][enj_oko][itiran_x],602 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],290
+	mov ?r[4][enj_eva][itiran_x],460-160-24+28 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],190
+	mov ?r[4][enj_oko][itiran_x],460-160-24+28+29+57 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],190
 
-	mov ?r[4][enj_kas][itiran_x],220 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],450
-	mov ?r[4][enj_enj][itiran_x],472 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],450
-	mov ?r[4][enj_ama][itiran_x],602 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],450
+	mov ?r[4][enj_kas][itiran_x],200-100-0+4+36 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],278
+	mov ?r[4][enj_enj][itiran_x],460-160-24+28 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],278
+	mov ?r[4][enj_ama][itiran_x],460-160-24+28+29+57 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],278
 
-	mov ?r[4][enj_mar][itiran_x],472 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_mar][itiran_y],610
-	
-	mov ?r[4][enj_pro][itiran_x],220 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],777
-	
+	mov ?r[4][enj_mar][itiran_x],460-160-24+28 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_mar][itiran_y],366
+		
+	mov ?r[4][enj_pro][itiran_x],460-160-24  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],542
+
 return
 ;---------------------------------
 *rmenu_main_ep4_3_scene_40140
@@ -8685,24 +8710,24 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_12.png"
 	
-	mov ?r[4][enj_eva][itiran_x],472 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],190
-	mov ?r[4][enj_oko][itiran_x],602 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],190
+	mov ?r[4][enj_eva][itiran_x],460-160-24+28 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],190
+	mov ?r[4][enj_oko][itiran_x],460-160-24+28+29+57 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],190
 
-	mov ?r[4][enj_kas][itiran_x],220 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],350
-	mov ?r[4][enj_enj][itiran_x],472 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],350
-	mov ?r[4][enj_ama][itiran_x],602 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],350
+	mov ?r[4][enj_kas][itiran_x],200-100-0+4+36 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],278
+	mov ?r[4][enj_enj][itiran_x],460-160-24+28 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],278
+	mov ?r[4][enj_ama][itiran_x],460-160-24+28+29+57 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],278
 
-	mov ?r[4][enj_mar][itiran_x],280 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_mar][itiran_y],510
+	mov ?r[4][enj_mar][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_mar][itiran_y],366
 	;mov ?r[4][enj_sak][itiran_x],280 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_sak][itiran_y],510
-	mov ?r[4][enj_rg][itiran_x],410 : mov %tmp,410 : add %tmp,90 : mov ?r[4][enj_rg][itiran_y],510
-	mov ?r[4][enj_rg_1][itiran_x],%tmp : add %tmp,90 : mov ?r[4][enj_rg_1][itiran_y],510 ;new rg +95
-	mov ?r[4][enj_rg_2][itiran_x],%tmp : add %tmp,90 : mov ?r[4][enj_rg_2][itiran_y],510 ;new rg
-	mov ?r[4][enj_rg_3][itiran_x],%tmp : add %tmp,90 : mov ?r[4][enj_rg_3][itiran_y],510 ;new rg
-	mov ?r[4][enj_rg_4][itiran_x],410 : mov %tmp,410 : add %tmp,90 : mov ?r[4][enj_rg_4][itiran_y],617 ;new rg
-	mov ?r[4][enj_rg_5][itiran_x],%tmp : add %tmp,90 : mov ?r[4][enj_rg_5][itiran_y],617 ;new rg
-	mov ?r[4][enj_rg_6][itiran_x],%tmp : add %tmp,90 : mov ?r[4][enj_rg_6][itiran_y],617 ;new rg
+	mov ?r[4][enj_rg][itiran_x],460-160-24 : mov %tmp,460-160-24 : add %tmp,55 : mov ?r[4][enj_rg][itiran_y],366
+	mov ?r[4][enj_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_1][itiran_y],366 ;new rg +95
+	mov ?r[4][enj_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_2][itiran_y],366 ;new rg
+	mov ?r[4][enj_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_3][itiran_y],366 ;new rg
+	mov ?r[4][enj_rg_4][itiran_x],460-160-24+28 : mov %tmp,460-160-24+28 : add %tmp,55 : mov ?r[4][enj_rg_4][itiran_y],366+62 ;new rg
+	mov ?r[4][enj_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_5][itiran_y],366+62 ;new rg
+	mov ?r[4][enj_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_6][itiran_y],366+62 ;new rg
 
-	mov ?r[4][enj_pro][itiran_x],220 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],777
+	mov ?r[4][enj_pro][itiran_x],460-160-24  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],542
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40150
@@ -8711,10 +8736,10 @@ return
 	mov ?r[4][ma4_enj][condition],1
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 
-	mov ?r[4][ma4_lam][itiran_x],353 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],490
-	mov ?r[4][ma4_enj][itiran_x],511 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],490
+	mov ?r[4][ma4_lam][itiran_x],224+81-28-57 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],366
+	mov ?r[4][ma4_enj][itiran_x],224+81+28  : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40160
@@ -8730,16 +8755,16 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_10.png"
 	
-	mov ?r[4][ma4_lam][itiran_x],302 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],400
-	mov ?r[4][ma4_ber][itiran_x],562 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],400
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],278
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],278
 
-	mov ?r[4][ma4_bea][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],537
-	mov ?r[4][ma4_mar][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],537
-	mov ?r[4][ma4_enj][itiran_x],562 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],537
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366
 	
-	mov ?r[4][ma4_kin][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],674
-	mov ?r[4][ma4_sak][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],674
-	
+	mov ?r[4][ma4_kin][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],454
+	mov ?r[4][ma4_sak][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],454
+
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40170
@@ -8755,15 +8780,15 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_10.png"
 	
-	mov ?r[4][ma4_lam][itiran_x],302 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],400
-	mov ?r[4][ma4_ber][itiran_x],562 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],400
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],278
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],278
 
-	mov ?r[4][ma4_bea][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],537
-	mov ?r[4][ma4_mar][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],537
-	mov ?r[4][ma4_enj][itiran_x],562 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],537
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366
 	
-	mov ?r[4][ma4_kin][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],674
-	mov ?r[4][ma4_sak][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],674
+	mov ?r[4][ma4_kin][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],454
+	mov ?r[4][ma4_sak][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],454
 return
 ;---------------------------------
 *rmenu_main_ep4_3_scene_40175
@@ -8782,6 +8807,8 @@ return
 	
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_3.png"
 	
+	mov ?r[4][enj_pro][itiran_x],460-160-24  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],542
+
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40180
@@ -8801,19 +8828,19 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_13.png"
 	
-	mov ?r[4][ma4_lam][itiran_x],302 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],300
-	mov ?r[4][ma4_ber][itiran_x],562 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],300
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],278-45
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],278-45
 
-	mov ?r[4][ma4_bea][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],437
-	mov ?r[4][ma4_mar][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],437
-	mov ?r[4][ma4_enj][itiran_x],562 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],437
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366-45
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366-45
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366-45
 	
-	mov ?r[4][ma4_kin][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],574
-	mov ?r[4][ma4_sak][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],574
+	mov ?r[4][ma4_kin][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],454-45
+	mov ?r[4][ma4_sak][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],454-45
 	
-	mov ?r[4][ma4_s45][itiran_x],212 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_s45][itiran_y],711
-	mov ?r[4][ma4_s410][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_s410][itiran_y],711
-	mov ?r[4][ma4_s00][itiran_x],392 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_s00][itiran_y],711
+	mov ?r[4][ma4_s45][itiran_x],330-130-12+2-55 		 : mov ?r[4][ma4_s45][itiran_y],542-45
+	mov ?r[4][ma4_s00][itiran_x],330-130-12+2 : mov ?r[4][ma4_s00][itiran_y],542-45
+	mov ?r[4][ma4_s410][itiran_x],330-130-12+2+55	  	: mov ?r[4][ma4_s410][itiran_y],542-45 
 
 return
 ;---------------------------------
@@ -8838,21 +8865,21 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_14.png"
 	
-	mov ?r[4][ma4_lam][itiran_x],302 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],300
-	mov ?r[4][ma4_ber][itiran_x],562 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],300
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],278-45
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 : mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],278-45
 
-	mov ?r[4][ma4_bea][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],437
-	mov ?r[4][ma4_mar][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],437
-	mov ?r[4][ma4_enj][itiran_x],562 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],437
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366-45
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366-45
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366-45
 	
-	mov ?r[4][ma4_kin][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],574
-	mov ?r[4][ma4_sak][itiran_x],432 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],574
+	mov ?r[4][ma4_kin][itiran_x],330-130-12+2 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],454-45
+	mov ?r[4][ma4_sak][itiran_x],460-160-24 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],454-45
 	
-	mov ?r[4][ma4_ron][itiran_x],302 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_ron][itiran_y],711
+	mov ?r[4][ma4_ron][itiran_x],330-130-12+2-57 : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_ron][itiran_y],542-45
 	
-	mov ?r[4][ma4_s45][itiran_x],432 : mov %tmp,432 : add %tmp,90 : mov ?r[4][ma4_s45][itiran_y],711
-	mov ?r[4][ma4_s410][itiran_x],%tmp : add %tmp,90 : mov ?r[4][ma4_s410][itiran_y],711
-	mov ?r[4][ma4_s00][itiran_x],%tmp : mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_s00][itiran_y],711
+	mov ?r[4][ma4_s45][itiran_x],460-160-24-55 		 : mov ?r[4][ma4_s45][itiran_y],542-45
+	mov ?r[4][ma4_s00][itiran_x],460-160-24+55-55 : mov ?r[4][ma4_s00][itiran_y],542-45
+	mov ?r[4][ma4_s410][itiran_x],460-160-24+55+55-55	  	: mov ?r[4][ma4_s410][itiran_y],542-45 
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40210
@@ -8882,9 +8909,36 @@ return
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_15.png"
 	
-	mov ?r[4][ma4_wal][itiran_x],225 : mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_wal][itiran_y],640
-	mov ?r[4][ma4_ron][itiran_x],342 : mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_ron][itiran_y],640
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 	: mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],190
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 	: mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],190
 
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],278
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],278
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2  	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],278
+
+	mov ?r[4][ma4_kin][itiran_x],330-130-12+2  	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],366
+	mov ?r[4][ma4_sak][itiran_x],460-160-24 	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],366
+
+	mov ?r[4][ma4_wal][itiran_x],200-100-0+4   		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_wal][itiran_y],366
+	mov ?r[4][ma4_ron][itiran_x],460-160-24-45 		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_ron][itiran_y],454
+	;mov ?r[4][ma4_gap][itiran_x],460-160-24  		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_gap][itiran_y],454
+	mov ?r[4][ma4_s45][itiran_x],720-220-48-4-55-55 		 	: mov ?r[4][ma4_s45][itiran_y],454
+	mov ?r[4][ma4_s00][itiran_x],720-220-48-4-55 				: mov ?r[4][ma4_s00][itiran_y],454
+	mov ?r[4][ma4_s410][itiran_x],720-220-48-4	  	: mov ?r[4][ma4_s410][itiran_y],454
+
+	;mov ?r[4][ma4_s45][itiran_x],590-190-36-2+29 		: mov %tmp,454 : sub %tmp,62 : mov ?r[4][ma4_s45][itiran_y],454-13
+	;mov ?r[4][ma4_s410][itiran_x],590-190-36-2+29	  	: mov ?r[4][ma4_s410][itiran_y],%tmp-13 : sub %tmp,62 
+	;mov ?r[4][ma4_s556][itiran_x],590-190-36-2+55+29  	: mov %tmp,454 : sub %tmp,62 mov ?r[4][ma4_s556][itiran_y],454
+	;mov ?r[4][ma4_s00][itiran_x],590-190-36-2+55+29  	: mov ?r[4][ma4_s00][itiran_y],%tmp-13+32 : sub %tmp,62 
+
+	mov ?r[4][ma4_goa][itiran_x],200-100-0+4 : mov %tmp,185 : add %tmp,r_top_y : mov ?r[4][ma4_goa][itiran_y],454
+	mov ?r[4][ma4_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[4][ma4_rg][itiran_y],542
+	mov ?r[4][ma4_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_1][itiran_y],542 ;new rg +95
+	mov ?r[4][ma4_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_2][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_3][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_4][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_4][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_5][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_6][itiran_y],542 ;new rg
 	
 return
 ;---------------------------------
@@ -8903,9 +8957,38 @@ return
 	mov ?r[4][ma4_rg_5][condition],1
 	mov ?r[4][ma4_rg_6][condition],1
 	mov ?r[4][ma4_gap][condition],1
-	
+
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_2.png"
+
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 	: mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],190
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 	: mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],190
+
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],278
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],278
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2  	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],278
+
+	mov ?r[4][ma4_kin][itiran_x],330-130-12+2  	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],366
+	mov ?r[4][ma4_sak][itiran_x],460-160-24 	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],366
+
+	mov ?r[4][ma4_wal][itiran_x],200-100-0+4   		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_wal][itiran_y],366
+	mov ?r[4][ma4_ron][itiran_x],330-130-12+2 		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_ron][itiran_y],454
+	mov ?r[4][ma4_gap][itiran_x],460-160-24  		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_gap][itiran_y],454
+
+	mov ?r[4][ma4_s45][itiran_x],590-190-36-2+29 		: mov %tmp,454 : sub %tmp,62 : mov ?r[4][ma4_s45][itiran_y],454-13
+	mov ?r[4][ma4_s410][itiran_x],590-190-36-2+29	  	: mov ?r[4][ma4_s410][itiran_y],%tmp-13 : sub %tmp,62 
+	mov ?r[4][ma4_s556][itiran_x],590-190-36-2+55+29  	: mov %tmp,454 : sub %tmp,62 mov ?r[4][ma4_s556][itiran_y],454
+	mov ?r[4][ma4_s00][itiran_x],590-190-36-2+55+29  	: mov ?r[4][ma4_s00][itiran_y],%tmp-13+32 : sub %tmp,62 
+
+	mov ?r[4][ma4_goa][itiran_x],200-100-0+4 : mov %tmp,185 : add %tmp,r_top_y : mov ?r[4][ma4_goa][itiran_y],454
+	mov ?r[4][ma4_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[4][ma4_rg][itiran_y],542
+	mov ?r[4][ma4_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_1][itiran_y],542 ;new rg +95
+	mov ?r[4][ma4_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_2][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_3][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_4][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_4][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_5][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_6][itiran_y],542 ;new rg
+
 return
 ;---------------------------------
 *rmenu_main_ep4_3_scene_40230
@@ -8924,6 +9007,10 @@ return
 	
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_3.png"
+
+	mov ?r[4][enj_pro][itiran_x],330-130-12+2+40  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],542
+	mov ?r[4][enj_mas][itiran_x],460-160-24+40 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_mas][itiran_y],542
+
 return
 ;---------------------------------
 *rmenu_main_ep4_3_scene_40240
@@ -8943,6 +9030,11 @@ return
 	
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_3.png"
+
+	mov ?r[4][enj_pro][itiran_x],330-130-12+2  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],542
+	mov ?r[4][enj_mas][itiran_x],460-160-24 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_mas][itiran_y],542
+	mov ?r[4][enj_sab][itiran_x],590-190-36-2 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_sab][itiran_y],542
+
 return
 ;---------------------------------
 *rmenu_main_ep4_3_scene_40250
@@ -8962,6 +9054,12 @@ return
 	
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_3.png"
+
+	mov ?r[4][enj_pro][itiran_x],200-100-0+4+40  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],542
+	mov ?r[4][enj_mas][itiran_x],330-130-12+2+40 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_mas][itiran_y],542
+	mov ?r[4][enj_sab][itiran_x],460-160-24+40 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_sab][itiran_y],542
+	mov ?r[4][enj_kwa][itiran_x],590-190-36-2+40 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_kwa][itiran_y],542
+
 return
 ;---------------------------------
 *rmenu_main_ep4_scene_40260
@@ -8982,10 +9080,10 @@ return
 	mov ?r[4][ma4_mar][condition],2
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 
-	mov ?r[4][ma4_mar][itiran_x],353 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],490
-	mov ?r[4][ma4_bea][itiran_x],511 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],490
+	mov ?r[4][ma4_mar][itiran_x],224+81-28-57 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366
+	mov ?r[4][ma4_bea][itiran_x],224+81+28   : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366
 return
 ;---------------------------------
 *rmenu_main_ep4_3_scene_40290
@@ -9006,6 +9104,32 @@ return
 	
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_3.png"
+
+	mov ?r[4][enj_ber][itiran_x],200-100-0+4 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_ber][itiran_y],190
+
+	mov ?r[4][enj_eva][itiran_x],460-160-24+28 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_eva][itiran_y],190
+	mov ?r[4][enj_oko][itiran_x],460-160-24+28+29+57 : mov %tmp,7 : add %tmp,r_top_y : mov ?r[4][enj_oko][itiran_y],190
+
+	mov ?r[4][enj_kas][itiran_x],200-100-0+4+36 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_kas][itiran_y],278
+	mov ?r[4][enj_enj][itiran_x],460-160-24+28 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_enj][itiran_y],278
+	mov ?r[4][enj_ama][itiran_x],460-160-24+28+29+57 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[4][enj_ama][itiran_y],278
+
+	mov ?r[4][enj_mar][itiran_x],200-100-0+4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_mar][itiran_y],366
+	mov ?r[4][enj_sak][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][enj_sak][itiran_y],366
+	mov ?r[4][enj_rg][itiran_x],460-160-24 : mov %tmp,460-160-24 : add %tmp,55 : mov ?r[4][enj_rg][itiran_y],366
+	mov ?r[4][enj_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_1][itiran_y],366 ;new rg +95
+	mov ?r[4][enj_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_2][itiran_y],366 ;new rg
+	mov ?r[4][enj_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_3][itiran_y],366 ;new rg
+	mov ?r[4][enj_rg_4][itiran_x],460-160-24+28 : mov %tmp,460-160-24+28 : add %tmp,55 : mov ?r[4][enj_rg_4][itiran_y],366+62 ;new rg
+	mov ?r[4][enj_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_5][itiran_y],366+62 ;new rg
+	mov ?r[4][enj_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][enj_rg_6][itiran_y],366+62 ;new rg
+
+	mov ?r[4][enj_pro][itiran_x],200-100-0+4+40  : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_pro][itiran_y],542
+	mov ?r[4][enj_mas][itiran_x],330-130-12+2+40 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_mas][itiran_y],542
+	mov ?r[4][enj_sab][itiran_x],460-160-24+40 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_sab][itiran_y],542
+	mov ?r[4][enj_kwa][itiran_x],590-190-36-2+40 : mov %tmp,184 : add %tmp,r_top_y : mov ?r[4][enj_kwa][itiran_y],542
+
+
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40300
@@ -9015,11 +9139,11 @@ return
 	mov ?r[4][ma4_mar][condition],2
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 
-	mov ?r[4][ma4_enj][itiran_x],253 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],490
-	mov ?r[4][ma4_mar][itiran_x],503 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],490
-	mov ?r[4][ma4_bea][itiran_x],621 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],490
+	mov ?r[4][ma4_enj][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366
+	mov ?r[4][ma4_mar][itiran_x],460-160-24   : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366
+	mov ?r[4][ma4_bea][itiran_x],590-190-36-2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40310
@@ -9029,12 +9153,13 @@ return
 	mov ?r[4][ma4_mar][condition],2
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 
-	mov ?r[4][ma4_enj][itiran_x],253 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],520
-	mov ?r[4][ma4_sak][itiran_x],371 : mov %tmp,55 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],383
-	mov ?r[4][ma4_mar][itiran_x],371 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],520
-	mov ?r[4][ma4_bea][itiran_x],621 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],520
+	mov ?r[4][ma4_enj][itiran_x],330-130-12+2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366+31+16
+	mov ?r[4][ma4_mar][itiran_x],460-160-24   : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],366+31+16
+	mov ?r[4][ma4_bea][itiran_x],590-190-36-2 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366+31+16
+	mov ?r[4][ma4_sak][itiran_x],460-160-24  : mov %tmp,55 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],366-31-16
+
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40320
@@ -9042,10 +9167,10 @@ return
 	mov ?r[4][ma4_bea][condition],1
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 
-	mov ?r[4][ma4_enj][itiran_x],353 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],490
-	mov ?r[4][ma4_bea][itiran_x],511 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],490
+	mov ?r[4][ma4_enj][itiran_x],224+81-28-57 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],366
+	mov ?r[4][ma4_bea][itiran_x],224+81+28   : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],366
 return
 ;---------------------------------
 *rmenu_main_ep4_2_scene_40330
@@ -9066,6 +9191,36 @@ return
 	
 	;background lines
 	mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_2.png"
+
+	mov ?r[4][ma4_lam][itiran_x],330-130-12+2 	: mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],190
+	mov ?r[4][ma4_ber][itiran_x],590-190-36-2 	: mov %tmp,5 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],190
+
+	mov ?r[4][ma4_bea][itiran_x],330-130-12+2 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_bea][itiran_y],278
+	mov ?r[4][ma4_mar][itiran_x],460-160-24 	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_mar][itiran_y],278
+	mov ?r[4][ma4_enj][itiran_x],590-190-36-2  	: mov %tmp,48 : add %tmp,r_top_y : mov ?r[4][ma4_enj][itiran_y],278
+
+	mov ?r[4][ma4_kin][itiran_x],330-130-12+2  	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_kin][itiran_y],366
+	mov ?r[4][ma4_sak][itiran_x],460-160-24 	: mov %tmp,91 : add %tmp,r_top_y : mov ?r[4][ma4_sak][itiran_y],366
+
+	mov ?r[4][ma4_wal][itiran_x],200-100-0+4   		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_wal][itiran_y],366
+	mov ?r[4][ma4_ron][itiran_x],330-130-12+2 		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_ron][itiran_y],454
+	mov ?r[4][ma4_gap][itiran_x],460-160-24  		: mov %tmp,138 : add %tmp,r_top_y : mov ?r[4][ma4_gap][itiran_y],454
+
+	mov ?r[4][ma4_s45][itiran_x],590-190-36-2+29 		: mov %tmp,454 : sub %tmp,62 : mov ?r[4][ma4_s45][itiran_y],454-13
+	mov ?r[4][ma4_s410][itiran_x],590-190-36-2+29	  	: mov ?r[4][ma4_s410][itiran_y],%tmp-13 : sub %tmp,62 
+	mov ?r[4][ma4_s556][itiran_x],590-190-36-2+55+29  	: mov %tmp,454 : sub %tmp,62 mov ?r[4][ma4_s556][itiran_y],454
+	mov ?r[4][ma4_s00][itiran_x],590-190-36-2+55+29  	: mov ?r[4][ma4_s00][itiran_y],%tmp-13+32 : sub %tmp,62 
+
+	mov ?r[4][ma4_goa][itiran_x],200-100-0+4 : mov %tmp,185 : add %tmp,r_top_y : mov ?r[4][ma4_goa][itiran_y],454
+	mov ?r[4][ma4_rg][itiran_x],200-100-0+4+8 : mov %tmp,200-100-0+4+6 : add %tmp,55 : mov ?r[4][ma4_rg][itiran_y],542
+	mov ?r[4][ma4_rg_1][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_1][itiran_y],542 ;new rg +95
+	mov ?r[4][ma4_rg_2][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_2][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_3][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_3][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_4][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_4][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_5][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_5][itiran_y],542 ;new rg
+	mov ?r[4][ma4_rg_6][itiran_x],%tmp : add %tmp,55 : mov ?r[4][ma4_rg_6][itiran_y],542 ;new rg
+
+
 return
 ;---------------------------------
 *rmenu_main_ep4_scene_40350
@@ -9170,7 +9325,7 @@ return
 	mov ?r[4][but][condition],1
 	mov ?r[4][bea][condition],1
 	
-	mov ?r[4][bea][itiran_x],200 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][bea][itiran_y],340
+	mov ?r[4][bea][itiran_x],200-100-0+4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][bea][itiran_y],278
 
 	;background lines
 	;mov $r_cha_back,":c;bmp\r_click\cha_btn\cha_back3.bmp"
@@ -9181,10 +9336,10 @@ return
 	mov ?r[4][ma4_ber][condition],1
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 
-	mov ?r[4][ma4_lam][itiran_x],353 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],490
-	mov ?r[4][ma4_ber][itiran_x],511: mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],490
+	mov ?r[4][ma4_lam][itiran_x],224+81-28-57 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_lam][itiran_y],366
+	mov ?r[4][ma4_ber][itiran_x],224+81+28   : mov %tmp,96 : add %tmp,r_top_y : mov ?r[4][ma4_ber][itiran_y],366
 return
 ;---------------------------------
 ;******************************************************************
@@ -9239,7 +9394,7 @@ return
 *rmenu_main_ep3_2_scene_30030
 	for %tmp = 1 to char_max_ep3_2 : mov ?r[3][%tmp][condition],-1 : next
 	;mov ?r[3][enj][condition],-1
-
+;CONTINUE
 	mov ?r[3][ma3_bea][condition],1
 	mov ?r[3][ma3_rg][condition],1
 	mov ?r[3][ma3_rg_1][condition],1
@@ -11418,7 +11573,7 @@ return
 	for %tmp = 1 to 14 : mov ?grim[%tmp][grim_flg],0 : next
 
 
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 	
 	mov ?tips[1][tips_flg],1
 	mov ?tips[2][tips_flg],1
@@ -11496,7 +11651,7 @@ return
 	for %tmp = 1 to 10 : mov ?tips[%tmp][tips_flg],0 : next
 	for %tmp = 1 to 14 : mov ?grim[%tmp][grim_flg],0 : next
 
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 	
 	mov ?tips[1][tips_flg],1
 	mov ?tips[2][tips_flg],1
@@ -11970,7 +12125,7 @@ return
 	mov %r_display_cha,sha
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 return
 
 
@@ -12070,7 +12225,7 @@ return
 	mov %r_display_cha,jes
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 return
 
 *rmenu_main_ep2_scene_46
@@ -12093,7 +12248,7 @@ return
 	mov %r_display_cha,jes
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 return
 
 
@@ -12123,7 +12278,7 @@ return
 	mov %r_display_cha,jes
 
 	;background lines
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 return
 
 *rmenu_main_ep2_scene_52
@@ -12635,7 +12790,7 @@ return
 	;mov ?r[2][ma_bea][itiran_x],62 : mov %tmp,72 : add %tmp,r_top_y : mov ?r[2][ma_bea][itiran_y],900 ;ura2
 	;mov ?r[2][ma_ber][itiran_x],106 : mov %tmp,72 : add %tmp,r_top_y : mov ?r[2][ma_ber][itiran_y],900 ;ura2
 	mov %r_display_cha,ma_bea
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	;mov $r_cha_back,blank
 return
 
 
@@ -12675,7 +12830,7 @@ return
 	;mov ?r[2][ma_ber][itiran_x],84 : mov %tmp,72 : add %tmp,r_top_y : mov ?r[2][ma_ber][itiran_y],%tmp
 	;mov ?r[2][ma_lam][itiran_x],130 : mov %tmp,72 : add %tmp,r_top_y : mov ?r[2][ma_lam][itiran_y],%tmp
 	mov %r_display_cha,ma_lam
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	;mov $r_cha_back,blank
 return
 
 ;chiru
@@ -13059,7 +13214,7 @@ return
 
 *rmenu_main_ep6_3_scene_60000
 
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"	;cha_back.bmp"
+	mov $r_cha_back,blank	;cha_back.bmp"
 
 return
 
@@ -13084,7 +13239,7 @@ return
 
 	mov ?r[6][ma5_enj][itiran_x],433 : mov ?r[6][ma5_enj][itiran_y],493
 
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 
 return
 
@@ -13559,7 +13714,7 @@ return
 	
 	mov ?r[7][RIO][itiran_x],433 : mov ?r[7][RIO][itiran_y],493
 	
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 
 return
 
@@ -13681,7 +13836,7 @@ return
 
 	mov ?r[8][EN2][condition],-1
 	
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"	;cha_back3.bmp"
+	mov $r_cha_back,blank	;cha_back3.bmp"
 
 return
 
@@ -13692,7 +13847,7 @@ return
 *rmenu_main_ep8_2_scene_80020
 *rmenu_main_ep8_2_scene_80110
 	
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"	;cha_back3.bmp"
+	mov $r_cha_back,blank	;cha_back3.bmp"
 
 return
 
@@ -13764,7 +13919,7 @@ return
 	mov ?r[8][ma5_gap][itiran_x],523 : mov ?r[8][ma5_gap][itiran_y],550
 	mov ?r[8][ma5_bb][itiran_x],523  : mov ?r[8][ma5_bb][itiran_y],400
 
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"	;cha_back3.bmp"
+	mov $r_cha_back,blank	;cha_back3.bmp"
 
 return
 
@@ -13791,7 +13946,7 @@ return
 	mov ?r[8][ma5_rg_5][condition],1
 	mov ?r[8][ma5_rg_6][condition],1
 
-	mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"	;cha_back3.bmp"
+	mov $r_cha_back,blank	;cha_back3.bmp"
 
 return
 
@@ -24311,6 +24466,7 @@ return
 	mid $lbg_path,$lbg_path,3,%lbg_path-3
 
 	if $lbg_name == "" jumpf
+		debug_str $lbg_path
 		async_cache_img 1,$lbg_path
 		;debug_str "Caching lbg by name"
 	~
@@ -32397,7 +32553,7 @@ return
 return
 
 *script_state
-debug_str "script_state"
+;debug_str "script_state"
 jnskip
 	; Make it fade-out one day
 	dwavestop 0
@@ -33580,7 +33736,7 @@ return
 	if $lbg_type == "cg/bea" : mov $lbg_path,":"+$paste_method+";graphics\cg\bea\" + $lbg_name + ".png" : return
 	if $lbg_type == "cg/ber" : mov $lbg_path,":"+$paste_method+";graphics\cg\ber\" + $lbg_name + ".png" : return
 	if $lbg_type == "cg/but" : mov $lbg_path,":"+$paste_method+";graphics\cg\but\" + $lbg_name + ".png" : return
-	if $lbg_type == "cg/cg_box" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : return
+	if $lbg_type == "cg/cgbox" : mov $lbg_path,":"+$paste_method+";graphics\cg\cg_box\" + $lbg_name + ".png" : return
 	if $lbg_type == "cg/dla" : mov $lbg_path,":"+$paste_method+";graphics\cg\dla\" + $lbg_name + ".png" : return
 	if $lbg_type == "cg/enj" : mov $lbg_path,":"+$paste_method+";graphics\cg\enj\" + $lbg_name + ".png" : return
 	if $lbg_type == "cg/eri" : mov $lbg_path,":"+$paste_method+";graphics\cg\eri\" + $lbg_name + ".png" : return
@@ -34876,13 +35032,17 @@ goto *quick_reload
 ;stopwatch "rmenu_main_new start"
 
 ;Fixing if on ange menu but changing to an ep that does not have it (remember that ep btn are available only from the title)
-if %scenario_Number != 1 && %scenario_Number != 2 && %scenario_Number != 3 && %scenario_Number != 5 && %scenario_Number != 7 jumpf
-	if %r_side != 2 && %r_display_side != 2 jumpf
-		mov %r_side,0 : mov %r_display_side,0 : mov %r_display,0 : mov %char_moving_side,-1 : mov %r_side_change,3 : mov %cha_text_page,1
-~
+;if %scenario_Number != 1 && %scenario_Number != 2 && %scenario_Number != 3 && %scenario_Number != 5 && %scenario_Number != 7 jumpf
+;	if %r_side != 2 && %r_display_side != 2 jumpf
+;		mov %r_side,0 : mov %r_display_side,0 : mov %r_display,0 : mov %char_moving_side,-1 : mov %r_side_change,3 : mov %cha_text_page,1
+;~ 
+if %r_for_title == 1 mov %r_side,0 : mov %r_display_side,0 : mov %r_display,0 : mov %char_moving_side,-1 : mov %r_side_change,3 : mov %cha_text_page,1
 
+if %r_display_side == 0 mov %char_moving_side,-1
+if %r_display_side == 1 mov %char_moving_side,-2
+if %r_display_side == 2 mov %char_moving_side,-3
+ 
 _csp 97,r_used_lsp
-
 
 if %r_display = 0 goto *rmenu_main_char ;reused variable, 0 if char display
 if %r_display = 1 goto *rmenu_main_tips ;reused variable, 1 or 2 if tips display
@@ -34898,6 +35058,7 @@ if %r_display = 2 goto *rmenu_main_tips
 
 *rmenu_main_new_reload
 	
+
 ;W_CUSTOM - ;Char Menu - Redo the whole Menu
 
 	;Common Char UI elements
@@ -34906,8 +35067,8 @@ if %r_display = 2 goto *rmenu_main_tips
 	write_special_text r_bg_lsp,"select_char",0,500,char_select_request_label
 	write_special_text 100,"config_title",0,15," " + title_char_txt + " {n}"
 
-	if %char_selector_ep_change = 1 aspt alpha,gen_txt_14,0,300
-	if %char_selector_ep_change != 1 lsp gen_txt_14,char_selector,0,0,0 ;search for vsp gen_txt_14
+	if %char_selector_ep_change = 1 aspt alpha,gen_txt_14,0,300 : aspt alpha,r_hana_lsp,0,150
+	if %char_selector_ep_change != 1 lsp gen_txt_14,char_selector,0,0,0 : lsp r_hana_lsp,$r_cha_back,0,0,0;search for vsp gen_txt_14
 	;write_special_text gen_txt_1,"r_menu_btn",50,50+9,"Load"
 	lsp gen_txt_2,char_change_ep_btn,97+53*0,898 : write_special_text gen_txt_2,"char_ep_btn",91+53*0,902,"1" : if %scenario_Number = 1 lsp gen_txt_2,char_change_ep_btn_clicked,97+53*0,898 : write_special_text gen_txt_2,"char_ep_btn",91+53*0,902,"1","disabled"  
 	lsp gen_txt_3,char_change_ep_btn,97+53*1,898 : write_special_text gen_txt_3,"char_ep_btn",91+53*1,902,"2" : if %scenario_Number = 2 lsp gen_txt_3,char_change_ep_btn_clicked,97+53*1,898 : write_special_text gen_txt_3,"char_ep_btn",91+53*1,902,"2","disabled"  
@@ -34921,7 +35082,7 @@ if %r_display = 2 goto *rmenu_main_tips
 	;Low Number = Lower Level
 	lsp gen_txt_1,char_left_overlay,0,0
 	;lsp gen_txt_3,char_selection_bg_top,0,0
-	lsp r_hana_lsp,char_selection_bg,0,0
+	lsp r_cha_back_lsp,char_selection_bg,0,0
 	lsp r_txt_lsp,char_selection_box,0,0
 	if %char_is_selected = 0 lsp r_info_lsp,char_drawer,-1000,0 
 	if %char_is_selected = 1 lsp r_info_lsp,char_drawer,0,0
@@ -34931,6 +35092,9 @@ if %r_display = 2 goto *rmenu_main_tips
 
 	lsp r_exit_lsp,set_exit,0,0
 	align_buttons_r r_exit_lsp
+
+	debug_var %scenario_Number
+	debug_var %r_display_side
 
 	;jump in menu
 	;rondo
@@ -34962,8 +35126,8 @@ if %r_display = 2 goto *rmenu_main_tips
 ;==========EP1===========
 *rmenu_main_eps_1
 	;during the Ura of ep1 the only sheet available is that of witches
-	;if %r_u_tea_flg = 0 lsp r_cha_back_lsp,":a;graphics\menu\chars\chars_left_line.png",100,150 : lsp r_hana_lsp,r_hana,1148,180
-	;if %r_u_tea_flg = 1 lsp r_cha_back_lsp,":a;graphics\menu\chars\chars_left.png",100,150 : lsp r_hana_lsp,r_hana_witch,1148,180
+	if %r_u_tea_flg = 0 lsp r_hana_lsp,char_tree_1f,0,0,0 
+	if %r_u_tea_flg = 1 _csp r_hana_lsp
 
 	gosub *bt_ep1_def
 
@@ -34976,6 +35140,12 @@ if %r_display = 2 goto *rmenu_main_tips
 	next
 
 	;W_CUSTOM - ;Char Menu - ep1 Standard btn behavior
+
+	;debug_var %r_for_title
+	;debug_var %r_side
+	;debug_var %r_u_tea_flg
+	;debug_var %r_ber_flg
+	;debug_var %r_tea_bea
 
 	if %r_for_title = 1 && %r_side = 0 gosub *r_for_title_ep1
 	if %r_for_title = 1 && %r_side = 1 gosub *r_u_tea_flg_ep1
@@ -34994,7 +35164,7 @@ goto *rmenu_button_reconfigure_new
 	notif %r_for_title = 1 if %play_scene >= 2010 goto *rmenu_main_eps_2_2
 
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line.png"
+	mov $r_cha_back,char_tree_1f
 	;lsp r_hana_lsp,r_hana,1148,180
 
 	mov %load_for_title,0
@@ -35019,7 +35189,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep2
 
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[2][%r_display_cha][condition]= -1 mov %r_display_cha,0
 	
@@ -35031,8 +35201,8 @@ goto *rmenu_button_reconfigure_new
 ;==========EP2_2===========
 *rmenu_main_eps_2_2
 	;lsp line menu
-	;if %r_u_tea_flg = 0 lsp r_cha_back_lsp,":a;graphics\menu\chars\chars_left_line_ep2_2.png",100,150
-	;if %r_u_tea_flg = 1 lsp r_cha_back_lsp,":a;graphics\menu\chars\chars_left.png",100,150
+	if %r_u_tea_flg = 0 lsp r_hana_lsp,char_tree_2m,0,0,0
+	if %r_u_tea_flg = 1 _csp r_hana_lsp
 	
 	;lsp r_hana_lsp,r_hana_witch,1148,180
 	
@@ -35065,7 +35235,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP3===========
 *rmenu_main_eps_3
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep3.png"
+	mov $r_cha_back,char_tree_8f 
 
 	;lsp r_hana_lsp,r_hana,1148,180
 
@@ -35092,7 +35262,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep3
 
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[3][%r_display_cha][condition]= -1 mov %r_display_cha,0
 	
@@ -35104,7 +35274,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP3_2===========
 *rmenu_main_eps_3_2
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep3_2.png"
+	mov $r_cha_back,char_tree_3m
 	
 	;lsp r_hana_lsp,r_hana_witch,1148,180
 	
@@ -35127,7 +35297,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep3_2
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[3][%r_display_cha_ma][condition]= -1 mov %r_display_cha_ma,0
 	
@@ -35138,8 +35308,9 @@ goto *rmenu_button_reconfigure_new
 
 ;==========EP4===========
 *rmenu_main_eps_4
+
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line.png"
+	mov $r_cha_back,char_tree_1f
 	
 	;lsp r_hana_lsp,r_hana,1148,180
 	
@@ -35163,7 +35334,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep4
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[4][%r_display_cha][condition]= -1 mov %r_display_cha,0
 	
@@ -35174,8 +35345,9 @@ goto *rmenu_button_reconfigure_new
 
 ;==========EP4_2===========
 *rmenu_main_eps_4_2
+
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_2.png"
+	mov $r_cha_back,char_tree_4m
 	
 	;lsp r_hana_lsp,r_hana_witch,1148,180
 	
@@ -35200,7 +35372,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep4_2
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[4][%r_display_cha_ma][condition]= -1 mov %r_display_cha_ma,0
 	
@@ -35211,8 +35383,9 @@ goto *rmenu_button_reconfigure_new
 	
 ;==========EP4_3===========
 *rmenu_main_eps_4_3
+
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep4_3.png"
+	mov $r_cha_back,char_tree_4a
 	
 	;lsp r_hana_lsp,r_hana_ange,1148,180
 	
@@ -35234,7 +35407,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep4_3
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[4][%r_display_cha_enj][condition] <= 0 mov %r_display_cha_enj,0
 	
@@ -35245,7 +35418,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP5===========
 *rmenu_main_eps_5
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line.png"
+	mov $r_cha_back,char_tree_1f
 	
 	;lsp r_hana_lsp,r_hana,1148,180
 	
@@ -35271,7 +35444,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep5
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[%scenario_Number][%r_display_cha][condition]= -1 mov %r_display_cha,0
 	
@@ -35282,7 +35455,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP5_2===========
 *rmenu_main_eps_5_2
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep5_2.png"
+	mov $r_cha_back,char_tree_5m
 	
 	;lsp r_hana_lsp,r_hana_witch,1148,180
 	
@@ -35308,7 +35481,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep5_2
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[%scenario_Number][%r_display_cha_ma][condition]= -1 mov %r_display_cha_ma,0
 	
@@ -35320,7 +35493,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP6===========
 *rmenu_main_eps_6
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line.png"
+	mov $r_cha_back,char_tree_1f
 	
 	;lsp r_hana_lsp,r_hana,1148,180
 	
@@ -35344,7 +35517,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep6
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[6][%r_display_cha][condition]= -1 mov %r_display_cha,0
 	
@@ -35355,7 +35528,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP6_2===========
 *rmenu_main_eps_6_2
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep6_2.png"
+	mov $r_cha_back,char_tree_6m
 	
 	;lsp r_hana_lsp,r_hana_witch,1148,180
 	
@@ -35381,7 +35554,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep6_2
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[%scenario_Number][%r_display_cha_ma][condition]= -1 mov %r_display_cha_ma,0
 
@@ -35392,7 +35565,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP6_3===========
 *rmenu_main_eps_6_3
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep6_3.png"
+	mov $r_cha_back,char_tree_6a
 	
 	;lsp r_hana_lsp,r_hana_ange,1148,180
 	
@@ -35417,7 +35590,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep6_3
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[%scenario_Number][%r_display_cha_enj][condition]= -1 mov %r_display_cha_enj,0
 
@@ -35428,7 +35601,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP7===========
 *rmenu_main_eps_7
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep7.png"
+	mov $r_cha_back,char_tree_7f
 	
 	;lsp r_hana_lsp,r_hana,1148,180
 	
@@ -35452,7 +35625,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep7
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[7][%r_display_cha][condition]= -1 mov %r_display_cha,0
 	
@@ -35463,7 +35636,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP7_2===========
 *rmenu_main_eps_7_2
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep7_2.png"
+	mov $r_cha_back,char_tree_7m
 	
 	;lsp r_hana_lsp,r_hana_witch,1148,180
 	
@@ -35489,7 +35662,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep7_2
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[%scenario_Number][%r_display_cha_ma][condition]= -1 mov %r_display_cha_ma,0
 
@@ -35500,7 +35673,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP8===========
 *rmenu_main_eps_8
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep3.png"
+	mov $r_cha_back,char_tree_8f
 	
 	;lsp r_hana_lsp,r_hana,1148,180
 	
@@ -35524,7 +35697,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep8
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[8][%r_display_cha][condition]= -1 mov %r_display_cha,0
 	
@@ -35535,7 +35708,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP8_2===========
 *rmenu_main_eps_8_2
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left.png"
+	mov $r_cha_back,blank
 	
 	;lsp r_hana_lsp,r_hana_witch,1148,180
 	
@@ -35561,7 +35734,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep8_2
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	_csp r_hana_lsp
 	
 	if ?r[%scenario_Number][%r_display_cha_ma][condition]= -1 mov %r_display_cha_ma,0
 
@@ -35572,7 +35745,7 @@ goto *rmenu_button_reconfigure_new
 ;==========EP8_3===========
 *rmenu_main_eps_8_3
 	;lsp line menu
-	;mov $r_cha_back,":a;graphics\menu\chars\chars_left_line_ep5_2.png"
+	mov $r_cha_back,char_tree_5m
 	
 	;lsp r_hana_lsp,r_hana_ange,1148,180
 	
@@ -35597,7 +35770,7 @@ goto *rmenu_button_reconfigure_new
 	gosub *rmenu_play_scene_ep8_2
 	
 	;lsp line menu
-	;lsp r_cha_back_lsp,$r_cha_back,100,150
+	lsp r_hana_lsp,$r_cha_back,0,0,0
 	
 	if ?r[%scenario_Number][%r_display_cha_ma][condition]= -1 mov %r_display_cha_ma,0
 
@@ -35628,15 +35801,15 @@ return
 	mov ?r[1][bea][condition],1
 
 	;Beatrice initially unlocked in the 1st Ura
-	mov ?r[1][bea][itiran_x],224-28+81 : mov ?r[1][bea][itiran_y],490-120 ;position Ura_tea_chars
+	mov ?r[1][bea][itiran_x],224-28+81 : mov ?r[1][bea][itiran_y],366 ;position Ura_tea_chars
 return
 ;=====================
 *r_ber_flg_ep1
 ;W_CUSTOM - ;Char Menu - Customized Positions
 	;Moving Bea to place Bern 1st Ura
 	mov ?r[1][ber][condition],1
-	mov ?r[1][bea][itiran_x],224+81-28-57 : mov ?r[1][bea][itiran_y],490-120 ;position Ura_tea_chars
-	mov ?r[1][ber][itiran_x],224+81+28 : mov ?r[1][ber][itiran_y],490-120 ;position Ura_tea_chars
+	mov ?r[1][bea][itiran_x],224+81-28-57 : mov ?r[1][bea][itiran_y],366 ;position Ura_tea_chars
+	mov ?r[1][ber][itiran_x],224+81+28 : mov ?r[1][ber][itiran_y],366 ;position Ura_tea_chars
 return
 ;=====================
 *r_tea_bea_flg_ep1
@@ -35689,9 +35862,9 @@ return
 
 	mov ?r[3][ber][condition],-1
 	mov ?r[3][lam][condition],-1
-	mov ?r[3][bea][itiran_x],200-100-0+4 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[3][bea][itiran_y],340-60+2
-	mov ?r[3][enj][itiran_x],720-220-48-4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][enj][itiran_y],490-120
-	mov ?r[3][mar][itiran_x],590-190-36-4 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][mar][itiran_y],640-180-2
+	mov ?r[3][bea][itiran_x],200-100-0+4 : mov %tmp,52 : add %tmp,r_top_y : mov ?r[3][bea][itiran_y],278
+	mov ?r[3][enj][itiran_x],720-220-48-4 : mov %tmp,96 : add %tmp,r_top_y : mov ?r[3][enj][itiran_y],366
+	mov ?r[3][mar][itiran_x],590-190-36-2 : mov %tmp,140 : add %tmp,r_top_y : mov ?r[3][mar][itiran_y],454
 
 	mov %play_scene,33000
 	mov %r_display_cha,enj : mov %mchar_state,2
@@ -36394,23 +36567,22 @@ return
 	_csp r_ange_lsp
 	notif %r_display = 0 jumpf
 		lsp r_people_lsp,char_previous_btn,70,660 : write_special_text gen_txt_15,"char_page_previous",114,657,char_prev_text,"enabled"
-		;lsph r_witches_lsp,char_next_btn_clicked,0,0
-		lsp r_ange_lsp,char_next_btn,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"enabled"
+		lsp r_witches_lsp,char_next_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 	~
 	
 	notif %play_scene = 70000 jumpf
-		lsp r_people_lsp,char_previous_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 		_csp r_people_lsp
+		lsp r_people_lsp,char_previous_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 		;_csp r_witches_lsp
 	~
 	notif %play_scene = 70010 jumpf
-		lsp r_people_lsp,char_previous_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 		_csp r_people_lsp
+		lsp r_people_lsp,char_previous_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 		;_csp r_witches_lsp
 	~
 	notif %play_scene = 70011 jumpf
-		lsp r_people_lsp,char_previous_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 		_csp r_people_lsp
+		lsp r_people_lsp,char_previous_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 		;_csp r_witches_lsp
 	~
 	
@@ -36444,8 +36616,8 @@ return
 	_csp r_witches_lsp
 	_csp r_ange_lsp
 	notif %r_display = 0 jumpf
-		lsp r_people_lsp,r_people_select,0,0
-		lsp r_witches_lsp,r_witches,0,0
+		lsp r_people_lsp,char_previous_btn_clicked,70,660 : write_special_text gen_txt_15,"char_page_previous",114,657,char_prev_text,"enabled"
+		lsp r_witches_lsp,char_next_btn,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"enabled"
 	~
 	
 	notif %play_scene = 80010 && %play_scene = 80011 && %play_scene = 80020 && %play_scene = 80110 jumpf
@@ -36461,14 +36633,14 @@ return
 	if %r_u_tea_flg =1 mov %r_display,0
 
 	notif %r_for_title = 1 jumpf
-		lsp r_exec_lsp,r_exec,0,0
-		lsp r_resu_lsp,r_resu,0,0
+		lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+		lsp r_resu_lsp,char_action_btn,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"disabled"
 	~
 
 	notif %r_u_tea_flg  = 1 jumpf
 		mov %tmp10,%tmp1 : sub %tmp10,128
-		lsp r_exec_lsp,r_exec,%tmp,%tmp10 : add %tmp10,32
-		lsp r_resu_lsp,r_resu,%tmp,%tmp10 ;: add %tmp1,32
+		lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+		lsp r_resu_lsp,char_action_btn,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"disabled"
 	~
 return
 
@@ -36477,19 +36649,19 @@ return
 	_csp r_witches_lsp
 	_csp r_ange_lsp
 	notif %r_display = 0 jumpf
-		lsp r_people_lsp,r_people,0,0
-		lsp r_witches_lsp,r_witches_select,0,0
+		lsp r_people_lsp,char_previous_btn,70,660 : write_special_text gen_txt_15,"char_page_previous",114,657,char_prev_text,"enabled"
+		lsp r_witches_lsp,char_next_btn_clicked,316,660 : write_special_text gen_txt_16,"char_page_next",317,657,char_next_text,"disabled"
 	~
 	if %r_u_tea_flg = 1 mov %r_display,0
 	notif %r_for_title = 1 jumpf
-		lsp r_exec_lsp,r_exec,0,0
-		lsp r_resu_lsp,r_resu,0,0
+		lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+		lsp r_resu_lsp,char_action_btn,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"disabled"
 	~
 
 	notif %r_u_tea_flg = 1 jumpf
 		mov %tmp10,%tmp1 : sub %tmp10,128
-		lsp r_exec_lsp,r_exec,%tmp,%tmp10 : add %tmp10,32
-		lsp r_resu_lsp,r_resu,%tmp,%tmp10 ;: add %tmp1,32
+		lsp r_exec_lsp,char_action_btn,120,743 : write_special_text gen_txt_17,"char_action",124,742,char_execute_label,"disabled"
+		lsp r_resu_lsp,char_action_btn,120,807 : write_special_text gen_txt_18,"char_action",124,806,char_resurrect_label,"disabled"
 	~
 	notif %r_for_title = 1 jumpf
 		;change clothing chars 
@@ -36664,7 +36836,7 @@ return
 		if %scenario_Number = 6 aspt alpha,ma5_enj_btn_lsp,255,300
 	~
 		mov %char_hider,255
-		if %char_selector_ep_change = 1 mov %char_selector_ep_change,0 : aspt alpha,gen_txt_14,255,300
+		if %char_selector_ep_change = 1 mov %char_selector_ep_change,0 : aspt alpha,gen_txt_14,255,300 : aspt alpha,r_hana_lsp,255,2000
 	*skip_char_side_anim
 
 	;change clotch lsp
@@ -36696,11 +36868,6 @@ return
 	if %scenario_Number != 6 spbtn gen_txt_7,gen_txt_7
 	if %scenario_Number != 7 spbtn gen_txt_8,gen_txt_8
 	if %scenario_Number != 8 spbtn gen_txt_9,gen_txt_9
-	
-	debug_var %scenario_Number
-	debug_var %r_side
-	debug_var %r_display_side
-	debug_str "====="
 
 	if %scenario_Number = 1 && %r_u_tea_flg = 1 spbtn r_people_lsp,r_people_lsp
 	if %scenario_Number = 1 && %r_u_tea_flg = 0 spbtn r_witches_lsp,r_witches_lsp
@@ -37352,7 +37519,7 @@ return
 	mov %char_is_selected,0 ;W_CUSTOM ;Char Menu - needed for drawer animation
 	mov %char_switching_ep,0
 	mov %char_moving_side,1
-	mov %scenario_Number,%char_save_scenario_Num
+	if %r_for_title == 1 mov %scenario_Number,%char_save_scenario_Num
 	gosub *menu_rain_unpause
 	goto *r_exit
 return
@@ -38124,6 +38291,8 @@ return
 		if %char_moving_side < 2 mov %char_moving_side,2
 		if %char_moving_side > 2 mov %char_moving_side,-2
 
+		aspt alpha,r_hana_lsp,0,150 : _csp r_hana_lsp;family tree
+
 		;Remove all
 		aspt alpha,kin_btn_lsp,0,300 : _csp kin_btn_lsp
 		aspt alpha,kla_btn_lsp,0,300 : _csp kla_btn_lsp
@@ -38202,6 +38371,8 @@ return
 		mov %char_hider,0
 		if %char_moving_side < 3 mov %char_moving_side,3
 		if %char_moving_side > 3 mov %char_moving_side,-3
+
+		aspt alpha,r_hana_lsp,0,150 : _csp r_hana_lsp;family tree
 
 		if %scenario_Number = 2  aspt alpha,ma_kin_btn_lsp,0,300	: _csp ma_kin_btn_lsp
 		if %scenario_Number = 2  aspt alpha,ma_but_btn_lsp,0,300	: _csp ma_but_btn_lsp
@@ -38326,6 +38497,8 @@ return
 		if %char_moving_side > 1 mov %char_moving_side,-1
 
 		;All the ma_'s have the same sprite number, thus we need to specify in roder to prevent some from loading faster 
+
+		aspt alpha,r_hana_lsp,0,150 : _csp r_hana_lsp;family tree
 
 		if %scenario_Number = 1 aspt alpha,bea_btn_lsp,0,300 : _csp bea_btn_lsp
 		if %scenario_Number = 1 aspt alpha,ber_btn_lsp,0,300 : _csp ber_btn_lsp
@@ -38639,6 +38812,8 @@ return
 		if %char_moving_side < 2 mov %char_moving_side,2
 		if %char_moving_side > 2 mov %char_moving_side,-2
 
+		aspt alpha,r_hana_lsp,0,150 : _csp r_hana_lsp;family tree
+
 		;Remove all
 		aspt alpha,kin_btn_lsp,0,300 : _csp kin_btn_lsp
 		aspt alpha,kla_btn_lsp,0,300 : _csp kla_btn_lsp
@@ -38692,7 +38867,6 @@ return
 		aspt alpha,enj_rg_6_btn_lsp,0,300		: _csp enj_rg_6_btn_lsp
 
 		aspt alpha,gen_txt_14,0,300 : _csp gen_txt_14;char selector
-		
 
 		if %scenario_Number = 1 mov %r_u_tea_flg,1
 		if %scenario_Number = 1 mov %r_ber_flg,1
@@ -38791,6 +38965,8 @@ return
 		mov %char_hider,0
 		if %char_moving_side < 3 mov %char_moving_side,3
 		if %char_moving_side > 3 mov %char_moving_side,-3
+
+		aspt alpha,r_hana_lsp,0,150 : _csp r_hana_lsp;family tree
 
 		if %scenario_Number = 2  aspt alpha,ma_kin_btn_lsp,0,300	: _csp ma_kin_btn_lsp
 		if %scenario_Number = 2  aspt alpha,ma_but_btn_lsp,0,300	: _csp ma_but_btn_lsp
@@ -38915,6 +39091,8 @@ return
 		if %char_moving_side > 1 mov %char_moving_side,-1
 
 		;All the ma_'s have the same sprite number, thus we need to specify in roder to prevent some from loading faster 
+
+		aspt alpha,r_hana_lsp,0,150 : _csp r_hana_lsp;family tree
 
 		if %scenario_Number = 1 aspt alpha,bea_btn_lsp,0,300 : _csp bea_btn_lsp
 		if %scenario_Number = 1 aspt alpha,ber_btn_lsp,0,300 : _csp ber_btn_lsp
@@ -39121,6 +39299,8 @@ return
 		if %char_moving_side < 2 mov %char_moving_side,2
 		if %char_moving_side > 2 mov %char_moving_side,-2
 
+		aspt alpha,r_hana_lsp,0,150 : _csp r_hana_lsp;family tree
+
 		;Remove all
 		aspt alpha,kin_btn_lsp,0,300 : _csp kin_btn_lsp
 		aspt alpha,kla_btn_lsp,0,300 : _csp kla_btn_lsp
@@ -39222,7 +39402,7 @@ return
 	if %r_display = 1 lsp 100,tips_caption,20,0
 	if %r_display = 2 lsp 100,grim_caption,20,0
 	lsp r_exit_lsp,set_exit,0,0
-	lsp r_cha_back_lsp,":a;graphics\menu\chars\chars_left.png",100,150
+	lsp r_cha_back_lsp,blank,100,150
 	lsp r_txt_lsp,":a;graphics\menu\tips\tips_right.png",900,150
 	lsp 97,set_ctrl,100,990
 
@@ -41157,7 +41337,7 @@ return
 	mov %r_display_tips,1
 	mov %r_display_grim,1 ; used as a page here
 	
-	lsp r_cha_back_lsp,":a;graphics\menu\chars\chars_left.png",100+1920,150
+	lsp r_cha_back_lsp,blank,100+1920,150
 	lsp r_txt_lsp,":a;graphics\menu\tips\tips_right.png",900+1920,150
 	lsph 99,move_up,1740,155
 	lsph 98,move_down,1740,900

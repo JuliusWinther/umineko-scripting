@@ -1459,6 +1459,8 @@ defsub OCkill ;confession
 defsub OCend ;confession
 defsub OCloop ;confession
 defsub OCloop_end ;confession
+defsub outfit_change
+defsub outfit_change_register
 ;End Custom
 
 ;====================================================   Custom Vars - W_CUSTOM
@@ -1586,40 +1588,45 @@ numalias display_mode_changed,9580
 numalias wnd_size_changed,9581
 numalias renderer_changed,9582
 
-numalias vdl_choices,9583 : dim ?vdl_choices[17]
+numalias vdl_choices,9583 : dim ?vdl_choices[17] ;9600 - remember every dimension of an array is a slot - ;TODO
 
-numalias spt_mem_type,9584
-numalias voice_folder,9585
+numalias spt_mem_type,9605
+numalias voice_folder,9606
 
-numalias bgm_details,9586
-numalias bgm_yt,9587
-numalias bgm_spotify,9588
-numalias bgm_cd,9589
-numalias mbox_page,9590
-numalias bgm_box_type,9591
-numalias bgm_order,9592 : dim ?bgm_order[4][250]
-numalias bgm_not_inst,9593
+numalias bgm_details,9607
+numalias bgm_yt,9608
+numalias bgm_spotify,9609
+numalias bgm_cd,9610
+numalias mbox_page,9611
+numalias bgm_box_type,9612
+numalias bgm_order,9613 : dim ?bgm_order[4][250] ;+1000 slot
+numalias bgm_not_inst,10620
 
-numalias char_moving_side,9594
-numalias char_performing_action,9595
-numalias char_desc_title,9596
-numalias char_desc_jpn,9597
-numalias char_desc_desc,9598
-numalias char_is_selected,9599
-numalias char_switching_ep,9609
-numalias char_save_scenario_Num,9610
-numalias char_hider,9611
-numalias char_reloading_numaliases,9612
-numalias r_display_cha_universal,9613
-numalias char_selector_ep_change,9614
+numalias char_moving_side,10621
+numalias char_performing_action,10622
+numalias char_desc_title,10623
+numalias char_desc_jpn,10624
+numalias char_desc_desc,10625
+numalias char_is_selected,10626
+numalias char_switching_ep,10627
+numalias char_save_scenario_Num,10628
+numalias char_hider,10629
+numalias char_reloading_numaliases,10630
+numalias r_display_cha_universal,10631
+numalias char_selector_ep_change,10632
 
-numalias choice_extra,9615
+numalias choice_extra,10633
+numalias outfit_change_p_lsp,10634
+numalias outfit_selector,10635
 
+numalias outfits,11500 : dim ?outfits[70][6][6] ;a lot of slots
 
+;Sprite cache - Array that stores sprites data for reload - W_CUSTOM
+numalias slot_cache,15000 : dim ?slot_cache[248][27]
 
 ;Discord - W_CUSTOM
 
-numalias USE_DISCORD,9600 
+numalias USE_DISCORD,9601 
 numalias ds_Free1,9602
 timestamp %ds_Free1
 itoa $ds_Free1,%ds_Free1 
@@ -1640,7 +1647,7 @@ stralias ware,":a;graphics\system\clock\ware.png"
 ;new straliases
 stralias blank,":a;graphics\colour\transparent.png"
 
-;From 9700 onward are used for slot_cache
+;From 15000 onward are used for slot_cache
 
 ;====================================================   End Custom
 
@@ -1781,6 +1788,7 @@ setlayer 10,33,"video.dll"
 numalias cg_list,64 : dim ?cg_list[4][60]	;cg open list for rondo (59)/chiru (77)
 numalias bgm_list,65 : dim ?bgm_list[2007]	;unified bgm open list ;TODO add saku
 numalias voice_s,66 : dim ?voice_s[7]		;voice states
+
 ;124 slots, 6 subslots with values {enabled,layer_id,objects,speed,wind,paused,orbs}
 numalias rain_s,67 : dim ?rain_s[123][6]	;rain states
 numalias rain_l,68 : dim ?rain_l[7]			;rain layers
@@ -1788,8 +1796,6 @@ numalias layer_q,69 : dim ?layer_q[10]		;layer queue
 numalias padding_s,70 : dim ?padding_s[10]	;border_padding stack
 numalias rain_q,71 : dim ?rain_q[10]		;rain queue
 
-;Sprite cache - Array that stores sprites data for reload - W_CUSTOM
-numalias slot_cache,9100 : dim ?slot_cache[248][27]
 ;End Custom
 
 movs $0,"QT"
@@ -1871,7 +1877,9 @@ mov %msgwnd4_fade,500
 mov %msgwnd4_bg_slot,749
 
 ;Sprite cache - Initializing slot cache - W_CUSTOM
-mov %0,9700
+;THIS WORKS!
+mov %0,slot_cache
+;debug_var %0
 
 for %for_index1=0 to 247
 	;DEBUG
@@ -1883,8 +1891,21 @@ for %for_index1=0 to 247
 	next
 next
 
+mov %0,vdl_choices
+;debug_var %0
 for %for_index1 = 0 to 16
-   mov ?vdl_choices[%for_index1],0
+   mov ?vdl_choices[%for_index1],vdl_choices+%for_index1
+next
+
+mov %0,outfits
+;debug_var %0
+for %for_index1=0 to 70
+	for %for_index2=0 to 6
+		for %for_index3=0 to 6
+			mov ?outfits[%for_index1][%for_index2][%for_index3],%0 : inc %0
+			mov $?outfits[%for_index1][%for_index2][%for_index3],""
+		next
+	next
 next
 
 mov %reloading_status,0 ;Used for Sprites Reload, VERY improtant when clearing slots
@@ -1918,8 +1939,41 @@ mov %r_display_cha_universal,0
 mov %char_moving_side,1
 mov $r_cha_back,blank ;Pre-initialize family tree to transparent
 mov %char_save_scenario_Num,1
-
 ;End Custom
+
+;Outfits
+;Family
+mov $?outfits[jes][0][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\jessica_school.png"
+mov $?outfits[jes][1][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\jessica_festival.png"
+mov $?outfits[jes][0][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\jessica_festival_p.png"
+mov $?outfits[jes][1][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\jessica_school_p.png"
+
+mov $?outfits[bea][0][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\beatrice_modern.png"
+mov $?outfits[bea][0][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\beatrice_modern_p.png"
+
+mov $?outfits[geo][0][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\george_casual.png"
+mov $?outfits[geo][0][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\george_casual_p.png"
+
+mov $?outfits[kan][0][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\kanon_casual.png"
+mov $?outfits[kan][0][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\kanon_casual_p.png"
+
+mov $?outfits[sha][0][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\shannon_casual.png"
+mov $?outfits[sha][0][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\shannon_casual_p.png"
+
+mov $?outfits[eri][0][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\erika_pirate.png"
+mov $?outfits[eri][1][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\erika_spouse.png"
+mov $?outfits[eri][0][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\erika_pirate_p.png"
+mov $?outfits[eri][1][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\erika_spouse_p.png"
+
+;Magic
+mov $?outfits[ev2][0][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\evabea_casual.png"
+mov $?outfits[ev2][0][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\evabea_casual_p.png"
+
+;Ange
+mov $?outfits[enj][0][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\ange_school.png"
+mov $?outfits[enj][0][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\ange_school_p.png"
+
+
 
 if %firstsetting = 0 goto *first_setting
 gosub *load_font_preference

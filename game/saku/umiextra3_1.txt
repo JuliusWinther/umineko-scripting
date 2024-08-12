@@ -507,7 +507,7 @@ flush 23
 
 set_window_simple 80,430
 *e31_51
-d `{a:c:■ Accomplices`[@]`{n}This time, let's make Krauss and Natsuhi into accomplices.}`[\]
+d `{a:c:{p:0:■} Accomplices`[@]`{n}This time, let's make Krauss and Natsuhi into accomplices.}`[\]
 set_name_window_non
 textoff2
 
@@ -1662,7 +1662,9 @@ d `*knock-knock*`[\]
 d `And there it was.`[\]
 textoff2
 
-lbg "a:backgrounds",s0_2,"mdin_1cr_bg"
+rain_load s0_2
+rain_params s0_2,100,500,0
+lbg "a:backgrounds",s0_1,"mdin_1cr_bg"
 lbg "a:backgrounds",s0_3,"mdin_1cr"
 lss s0_9,"cla","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
@@ -1693,6 +1695,7 @@ msgwnd_non
 d `He is also a person following {f:5:Beatrice}'s scenario.`[\]
 textoff2
 
+csp_slot s0_1
 csp_slot s0_2
 csp_slot s0_9
 csp_slot s0_10
@@ -2593,7 +2596,7 @@ d `Flauros.`[@]` Fla-chan.`[@]` Yes, I like the sound of it.`[\]
 d `...What? Has the appearance of a leopard?`[\]
 textoff2
 
-;lbg "c:backgrounds",s0_3,"note3"
+lbg "c:backgrounds",s0_3,"note3"
 flush 22
 
 *e31_311
@@ -2609,7 +2612,7 @@ d `Let's sketch it.`[\]
 d `Good good good...`[\]
 textoff2
 
-;lbg "c:backgrounds",s0_3,"note4"
+lbg "c:backgrounds",s0_3,"note4"
 flush 42
 
 csp_slot s0_3
@@ -2660,6 +2663,8 @@ flush 80
 lss s0_8,"bea","a11_defo2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
+
+wait 200
 
 lss s0_8,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_8,-549
@@ -2980,176 +2985,125 @@ d `And when she stood up again,`[@]` she was holding in both of her hands one fr
 
 *e31_352
 d `The relatives could only imagine the sight of her wearing a dress and holding an antique gun... to be that of a proper lady holding something like a folding fan.`[\]
-
-
-seplay 11,46,100
-
-seplay 11,36,100
+textoff2
 
 seplay 11,46,100
+seplay 12,36,100
 
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 2
 
 bgmplay 143,70,0
 
 *e31_353
 d `Well, at least they couldn't imagine lead actually gushing from those muzzles.`[\]
-
+textoff2
 
 seplay 11,1010,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 23
 
 *e31_354
 d `First, in Ushiromiya Kinzo's study shoot Eva, Hideyoshi, Rudolf, Kyrie, and Rosa dead.`[\]
 
-
 *e31_355
 d `The door to Kinzo's study is thick, so the sounds of the guns won't be heard easily.`[\]
 
-
 *e31_356
-d `Krauss and Natsuhi will already have been guided far enough away from the study by Kumasawa...`[@]`and won't hear the guns firing.`[\]
-
+d `Krauss and Natsuhi will already have been guided far enough away from the study by Kumasawa...`[@]` and won't hear the guns firing.`[\]
 
 *e31_357
 d `The tools necessary for dealing with the corpses will already have been brought to the study.`[\]
-
 
 seplay 11,1010,100
 
 *e31_358
 d `Flauros changed into the form of a giant leopard, and started by swallowing Kinzo in one gulp.`[\]
 
-
 *e31_359
 d `Swallowing him whole served as an explanation for Kinzo not to leave a corpse.`[\]
-
 
 *e31_360
 d `It might be good to leave something like some of cut-off scrap of Kinzo's robe behind in the room.`[\]
 
-
 *e31_361
-d `Shocked by this, the relatives tried to escape the room,`[@]`but they couldn't because it had been magically sealed.`[\]
-
+d `Shocked by this, the relatives tried to escape the room,`[@]` but they couldn't because it had been magically sealed.`[\]
+textoff2
 
 seplay 11,1010,100
-
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 23
 
-seplay 11,35,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+seplay 12,35,100
 lbg "c:efe",s0_3,"blood_2a"
-
 flush 1
-
+wait 300
 seplay 11,35,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:efe",s0_3,"blood_2b"
-
 flush 1
+wait 300
 
-seplay 11,35,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+seplay 12,35,100
 lbg "c:efe",s0_3,"blood_2c"
-
 flush 1
 
 msgwnd_fla
 *e31_362
 d [lv 0*"64"*"fla_00130"]`{qt}Did ya think I would let my prey escape!?`[@][lv 0*"64"*"fla_00140"]` Starting now y'all too will be prepared one by one, just you wait!{qt}`[\]
 
-
 msgwnd_non
 *e31_363
 d `The enormous leopard bellowed that as it twisted its greatly inflated belly.`[\]
 
-
 *e31_364
 d `Maybe Kinzo who was swallowed whole was struggling. Or maybe it was indigestion.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 25
 
 msgwnd_fla
 *e31_365
 d [lv 0*"64"*"fla_00150"]`{qt}......Ugh.`[@][lv 0*"64"*"fla_00160"]` Should've known grandpa meat isn't tasty.`[@][lv 0*"64"*"fla_00170"]` I'll have to take some stomach medicine later.`[@][lv 0*"64"*"fla_00180"]` Ugh, blergh......{qt}`[\]
-
+textoff2
 
 seplay 11,22,100
-
+lbg "c:colour",s0_10,"white"
 flush 42
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "a:backgrounds",s0_3,"mlib_1br"
 lbg "a:backgrounds",s0_1,"mlib_1br_bg"
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 lss s0_8,"fla","a11_def3"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
+spt_mem "a2","breakup",s0_10,0
+spt_mem "a2","alpha",s0_10,255
+spt_mem "a2","breakupdir",s0_10,3
 flush 1
-
-seplay 11,52,100
+seplay 11,52,90
+spt_mem "a2","breakup",s0_10,1000,2000
+sptwait2 breakup,s0_10
+flush 1
 
 msgwnd_non
 *e31_366
 d `Flauros returns to the form of a girl, rubbing her belly that was protruding like a watermelon.`[\]
 
-
 *e31_367
 d `Before long her stomach retracts as she shrugs.`[\]
+textoff2
 
-
+csp_slot s0_8
+flush 80
 lss s0_9,"fla","a11_def6"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -3158,7 +3112,6 @@ msgwnd_fla
 *e31_368
 d [lv 0*"64"*"fla_00190"]`{qt}I hate to say it but I'm not swallowing y'all whole, so I'll just be chewing on your soft meat.`[@][lv 0*"64"*"fla_00200"]` For me to get a sour stomach from just swallowing one, even I've become old.{qt}`[\]
 
-
 lss s0_10,"rud","a11_ikari2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3166,55 +3119,49 @@ flush 80
 msgwnd_rud
 *e31_369
 d [lv 0*"08"*"rud_00650"]`{qt}A-are we dreaming?!`[@][lv 0*"08"*"rud_00660"]` What kind of joke is this...?!`[@][lv 0*"08"*"rud_00670"]` Shit, shit!!{qt}`[\]
-
-
-seplay 11,19,100
+textoff2
 
 seplay 11,19,100
+wait 500
+seplay 12,19,100
 
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"m_door1"
-
 flush 23
 
 msgwnd_hid
 *e31_370
 d [lv 0*"06"*"hid_00250"]`{qt}Is someone out there?!`[@][lv 0*"06"*"hid_00260"]` Please open this door!!`[@][lv 0*"06"*"hid_00270"]` Why won't it open!!{qt}`[\]
 
-
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 msgwnd_non
 *e31_371
-d `With the door that would never be opened again as long as the first twilight lasted behind them,`[@]`some of the relatives were banging on it,`[@]`while others were in front staring at Flauros.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `With the door that would never be opened again as long as the first twilight lasted behind them,`[@]` some of the relatives were banging on it,`[@]` while others were in front staring at Flauros.`[\]
+textoff2
 
 lbg "a:backgrounds",s0_3,"mlib_1br"
 lbg "a:backgrounds",s0_1,"mlib_1br_bg"
+rain_load s0_2
+rain_params s0_2,100,500,0
 
 lss s0_9,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"fla","a11_def1"
 spt_mem "a2","xpos",s0_10,550
+flush 22
+
+csp_slot s0_9
 flush 80
 
-flush 22
+wait 200
 
 lss s0_8,"bea","a11_futeki2"
 spt_mem "a2","xpos",s0_8,-549
@@ -3224,7 +3171,6 @@ msgwnd_bea
 *e31_372
 d [lv 0*"27"*"bea_04390"]`{qt}There are five people left.`[@][lv 0*"27"*"bea_04400"]` Deal with them swiftly.{qt}`[\]
 
-
 lss s0_10,"fla","a11_def2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3232,7 +3178,6 @@ flush 80
 msgwnd_fla
 *e31_373
 d [lv 0*"64"*"fla_00210"]`{qt}Yeah, I know the deal!`[@][lv 0*"64"*"fla_00220"]` 'Cause I'm in the mood for guts, I'll spill y'all's warm entrails all over!!{qt}`[\]
-
 
 lss s0_8,"rud","a11_akuwarai2"
 spt_mem "a2","xpos",s0_8,-549
@@ -3242,19 +3187,19 @@ msgwnd_rud
 *e31_374
 d [lv 0*"08"*"rud_00680"]`{qt}S-spewing such disturbing things......!!`[@][lv 0*"08"*"rud_00690"]` Make fun of adults too much and you're gonna get hurt...?!{qt}`[\]
 
-
 msgwnd_non
 *e31_375
-d `Rudolf was posturing, but his was shaking and his hips were buckling.`[\]
+d `Rudolf was posturing, but he was shaking and his hips were buckling.`[\]
+textoff2
 
-
+csp_slot s0_10
+flush 80
 lss s0_9,"fla","a11_def3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
 *e31_376
 d `Flauros approaches him in that state while laughing impishly and licking her lips.`[\]
-
 
 lss s0_9,"fla","a11_def6"
 spt_mem "a2","xpos",s0_9,0
@@ -3263,77 +3208,59 @@ flush 80
 msgwnd_fla
 *e31_377
 d [lv 0*"64"*"fla_00230"]`{qt}Your liver looks tasty.`[@][lv 0*"64"*"fla_00240"]`......Here we go, time to grit your teeth!!{qt}`[\]
-
+textoff2
 
 seplay 11,20,100
-
-csp_slot s0_3
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
 
-lbg "c:efe",s0_3,"homing7s"
-
+lbg "a:efe",s0_3,"homing7s"
 flush 1
-
-seplay 11,36,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 800
+seplay 12,36,100
 lbg "c:efe",s0_3,"blood_1a"
-
 flush 1
-
-seplay 11,38,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
+wait 1000
+seplay 13,38,100
 lbg "c:efe",s0_3,"blood_1ar"
-
 flush 22
 
 msgwnd_non
 *e31_378
 d `Contrary to the tone of the girl who had eaten a person, those nails were way too sharp.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 5
 
 msgwnd_rud
 *e31_379
 d [lv 0*"08"*"rud_00700"]`{qt}Ga, ......ga, ha..................,{qt}`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "a:backgrounds",s0_3,"mlib_1br"
 lbg "a:backgrounds",s0_1,"mlib_1br_bg"
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 lss s0_10,"eva","b25_ikari2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_9,"ros","a11_aseru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 1
-
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
 seplay 11,13,100
+gptwait quakeyamp
 
 lss s0_9,"ros","a11_odoroki1"
 spt_mem "a2","xpos",s0_9,0
@@ -3343,165 +3270,115 @@ msgwnd_ros
 *e31_380
 d [lv 0*"12"*"ros_00260"]`{qt}Rudolf-niisan......?!?!{qt}`[\]
 
-
 msgwnd_non
 *e31_381
 d `Rudolf fell on his knees.`[\]
-
 
 seplay 11,35,100
 
 *e31_382
 d `Then, with a thud and a splash, intestines spilled out on the floor from that torn up stomach.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_9
 csp_slot s0_10
 
 lbg "c:colour",s0_3,"red_b"
-
 flush 5
-
 seplay 11,38,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 400
 lbg "c:efe",s0_3,"blood_1ar"
-
 flush 1
 
 *e31_383
 d [lv 0*"98"*"merged_saku60"]`{qt}{qt}{qt}U-uwaaaaaaaaaaaaaa?!?!{qt}{qt}{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "a:backgrounds",s0_3,"mlib_1br"
 lbg "a:backgrounds",s0_1,"mlib_1br_bg"
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 lss s0_9,"fla","a11_def6"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
 seplay 11,20,100
+gptwait quakeyamp
 
 msgwnd_fla
 *e31_384
 d [lv 0*"64"*"fla_00250"]`{qt}Uwaa, it's giving such an unappetizing color.`[@][lv 0*"64"*"fla_00260"]` Well then, whose bowels shall I open up next!{qt}`[\]
+textoff2
 
-
-seplay 11,20,100
-
-seplay 11,38,100
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
+seplay 11,20,100
+wait 800
+
+csp_slot s0_1
+csp_slot s0_2
 
 lbg "c:efe",s0_3,"blood_2a"
-
 flush 1
 
-seplay 11,38,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+seplay 12,38,100
+wait 500
 
 lbg "c:efe",s0_3,"blood_2c"
-
 flush 1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+seplay 11,38,100
+wait 500
 lbg "c:colour",s0_3,"red_b"
-
 flush 1
 
 msgwnd_non
 *e31_385
 d `Lines of fresh blood were drawn on the walls several times......`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 1
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 23
 
 *e31_386
 d `To abide by the above scenario, the bodies were distorted.`[\]
 
-
 *e31_387
 d `So that bullet holes are not discovered, whole chunks of their bodies were destroyed.`[\]
-
 
 *e31_388
 d `Flauros tore into their stomachs, pulled out the entrails and bit them off.`[\]
 
-
 *e31_389
 d `This was also carefully reproduced.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "a:backgrounds",s0_3,"mlib_1br"
 lbg "a:backgrounds",s0_1,"mlib_1br_bg"
+rain_load s0_2
+rain_params s0_2,100,500,0
 
 ;lss s0_8,"fla","a12_def4a"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 msgwnd_fla
 *e31_390
 d [lv 0*"64"*"fla_00270"]`{qt}Middle-aged folks, all of them have such unappetizing guts.`[@][lv 0*"64"*"fla_00280"]`......Uuh, Kinzo is making my stomach grumble.`[@][lv 0*"64"*"fla_00290"]` Ugh, I'm gonna throw up.{qt}`[\]
-
 
 lss s0_10,"gen","a21_kashikomari1"
 spt_mem "a2","xpos",s0_10,550
@@ -3511,48 +3388,39 @@ msgwnd_gen
 *e31_391
 d [lv 0*"14"*"gen_00970"]`{qt}.........It's a terrible sight.{qt}`[\]
 
-
 lss s0_9,"bea","a11_akuwarai3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
 msgwnd_bea
 *e31_392
-d [lv 0*"27"*"bea_04410"]`{qt}Sure is.`[@][lv 0*"27"*"bea_04420"]` With the corpses ripped up and organs scattered about like this, this bloodstained first twilight is truly splendid!`[@][lv 0*"27"*"bea_04430"]` Its brutality gives the impression of EVA returning!{qt}`[\]
+d [lv 0*"27"*"bea_04410"]`{qt}Sure is.`[@][lv 0*"27"*"bea_04420"]` With the corpses ripped up and organs scattered about like this, this bloodstained first twilight is truly splendid!`[@][lv 0*"27"*"bea_04430"]` Its brutality gives the impression of {f:5:EVA} returning!{qt}`[\]
+textoff2
 
-
-lss s0_8,"fla","a11_def2"
-spt_mem "a2","xpos",s0_8,-549
+csp_slot s0_8
+lss s0_18,"fla","a11_def2"
+spt_mem "a2","xpos",s0_18,-549
 flush 80
 
 msgwnd_fla
 *e31_393
 d [lv 0*"64"*"fla_00300"]`{qt}I didn't mean to be particularly brutal.`[@][lv 0*"64"*"fla_00310"]` It was just me gobbling up the ones I was ordered to.`[@][lv 0*"64"*"fla_00320"]` Well, who am I going to slaughter next?`[@][lv 0*"64"*"fla_00330"]` Because I was locked up in a furnace for a hundred years and bored out of my mind for so long, I'm itching to let loose!!{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
+csp_slot s0_18
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "a:backgrounds",s0_3,"mlib_1cr"
 lbg "a:backgrounds",s0_1,"mlib_1cr_bg"
-
 flush 24
 
 msgwnd_non
 *e31_394
 d `It seems like Flauros couldn't contain the throbbing delight bubbling through her entire body for having been summoned after so long.`[\]
 
-
 *e31_395
 d `She moaned as she stretched, standing on her hands and feet in an animal-like stance.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "a:backgrounds",s0_3,"mlib_1br"
 lbg "a:backgrounds",s0_1,"mlib_1br_bg"
@@ -3567,7 +3435,6 @@ msgwnd_bea
 *e31_396
 d [lv 0*"27"*"bea_04440"]`{qt}I'm sorry, but my ceremony has various rules to follow.`[@][lv 0*"27"*"bea_04450"]` Until the following second twilight, your turn on the stage over.{qt}`[\]
 
-
 lss s0_8,"fla","a11_def4"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -3576,7 +3443,6 @@ msgwnd_fla
 *e31_397
 d [lv 0*"64"*"fla_00340"]`{qt}Dang, even after I went as far as bathing in a rain of blood.`[@][lv 0*"64"*"fla_00350"]` What a serious letdown.{qt}`[\]
 
-
 lss s0_10,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3584,26 +3450,28 @@ flush 80
 msgwnd_bea
 *e31_398
 d [lv 0*"27"*"bea_04460"]`{qt}It's probably because you are always summoned in the middle of a swarm of enemies.`[@][lv 0*"27"*"bea_04470"]` I'm truly sorry your first prey after a hundred years is only six people.{qt}`[\]
+textoff2
 
-
-lss s0_9,"fla","a11_def3"
-spt_mem "a2","xpos",s0_9,0
+csp_slot s0_8
+flush 80
+lss s0_19,"fla","a11_def3"
+spt_mem "a2","xpos",s0_19,0
 flush 80
 
 msgwnd_fla
 *e31_399
 d [lv 0*"64"*"fla_00360"]`{qt}Well, you see,`[@][lv 0*"64"*"fla_00370"]` even though I love all-you-can-eat most of the time,`[@][lv 0*"64"*"fla_00380"]` I don't hate a dignified course meal served in small portions.`[@][lv 0*"64"*"fla_00390"]` Since you have summoned me,`[@][lv 0*"64"*"fla_00400"]` I'll certainly enjoy the Great {f:5:Beatrice}'s full course meal until the very end!{qt}`[\]
 
-
-lss s0_10,"bea","a11_defo1"
-spt_mem "a2","xpos",s0_10,550
+csp_slot s0_10
+lss s0_20,"bea","a11_defo1"
+spt_mem "a2","xpos",s0_20,550
 flush 80
 
 msgwnd_bea
 *e31_400
 d [lv 0*"27"*"bea_04480"]`{qt}The more you rage and rampage, the more interesting it is to me.`[@][lv 0*"27"*"bea_04490"]` I'm also hoping you'll enjoy yourself.{qt}`[\]
 
-
+csp_slot s0_19
 lss s0_8,"fla","a11_def1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -3612,7 +3480,7 @@ msgwnd_fla
 *e31_401
 d [lv 0*"64"*"fla_00410"]`{qt}So, shall I be dismissed from my duties until the second twilight then?{qt}`[\]
 
-
+csp_slot s0_20
 lss s0_10,"bea","a11_warai2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3620,39 +3488,34 @@ flush 80
 msgwnd_bea
 *e31_402
 d [lv 0*"27"*"bea_04500"]`{qt}Yes.`[@][lv 0*"27"*"bea_04510"]` Until then, feel free to relax.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
+wait 800
 csp_slot s0_10
-
 lbg "a:backgrounds",s0_3,"mlib_1cr"
 lbg "a:backgrounds",s0_1,"mlib_1cr_bg"
-
 flush 24
 
 lss s0_9,"fla","a11_def3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 24
 
 msgwnd_fla
 *e31_403
 d [lv 0*"64"*"fla_00420"]`{qt}Alright, I'll do whatever I want until then.`[@][lv 0*"64"*"fla_00430"]` I wanna dash around freely outside, showering in that intense thunderstorm!!{qt}`[\]
 
-
 msgwnd_non
 *e31_404
 d `Flauros stood four-legged as she moaned happily with a stretch, her entire body quivering in delight.`[\]
+textoff2
 
-
+lbg "c:colour",s0_21,"red_b"
+aspt2 alpha,s0_21,200
 flush 6
 
 *e31_405
 d `Her body slowly glowing red, she burnt brightly.`[\]
-
 
 lss s0_9,"fla","a11_def5"
 spt_mem "a2","xpos",s0_9,0
@@ -3661,77 +3524,53 @@ flush 80
 msgwnd_fla
 *e31_406
 d [lv 0*"64"*"fla_00440"]`{qt}I am rank 64 of of the 72 Noble Demons, Flauros of Hellfire!!`[@][lv 0*"64"*"fla_00450"]` I eat it all, burn it all, smash it all!!`[@][lv 0*"64"*"fla_00460"]` Aaah, I can't wait until it's my turn again!!{qt}`[\]
+textoff2
 
+seplay 12,61,100
 
-seplay 11,61,100
+seplay 13,27,100
 
-seplay 11,27,100
-
-seplay 11,2,100
-
-csp_slot s0_3
-csp_slot s0_8
+lbg "c:colour",s0_3,"white"
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_21
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 2
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
+seplay 11,2,100
 flush 28
 
 msgwnd_non
 *e31_407
 d `Her bright red light turned to white, and suddenly caused a giant explosion.`[\]
 
-
 *e31_408
 d `The room splinters, and everything turns white with smoke and dust from the blast.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 1
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 23
 
-meplay 11,12,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+meplay 1,12,100
 
 lbg "a:backgrounds",s0_3,"mlib_1ar"
 lbg "a:backgrounds",s0_1,"mlib_1ar_bg"
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 flush 22
 
 *e31_409
 d `The inside of the study was swallowed up by a torrent of blistering rain...`[\]
 
-
 *e31_410
 d `Flauros's explosion broke a gaping hole in the wall of the study.`[\]
-
 
 lss s0_9,"bea","a11_defo2"
 spt_mem "a2","xpos",s0_9,0
@@ -3741,9 +3580,7 @@ msgwnd_bea
 *e31_411
 d [lv 0*"27"*"bea_04520"]`{qt}My my,`[@][lv 0*"27"*"bea_04530"]` you didn't need to be so flashy.`[@][lv 0*"27"*"bea_04540"]` I wasn't planning to do something like that, since the idea was that it's supposed to be a closed room murder.`[@][lv 0*"27"*"bea_04550"]` That kind of unfettered destruction of the wall is intolerable.{qt}`[\]
 
-
 seplay 11,3,100
-
 lss s0_10,"fla","a11_def6"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3751,23 +3588,29 @@ flush 80
 msgwnd_fla
 *e31_412
 d [lv 0*"64"*"fla_00470"]`{qt}Nyahhihihihi!`[@][lv 0*"64"*"fla_00480"]` I did somethin' bad!`[@][lv 0*"64"*"fla_00490"]` I love destroyin' about as much as I love killin'!`[@][lv 0*"64"*"fla_00500"]` And I love incineratin' most of all!!{qt}`[\]
-
+textoff2
 
 seplay 11,9,100
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 23,150
+gptwait quakexamp
+csp_slot s0_10
+flush 80
 
 msgwnd_non
 *e31_413
 d `As she yelled, Flauros returned to leopard form and, leaving behind flaming footprints, jumped out into the storm-filled sky.`[\]
 
-
 *e31_414
 d `From the giant hole in the wall she landed in the middle courtyard, kicking the walls and prancing about until she disappeared into the jet black sky.`[\]
 
-
 *e31_415
 d `It seems she just couldn't help herself after being separated from the physical world for so long.`[\]
+textoff2
 
-
+csp_slot s0_9
 lss s0_8,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -3775,77 +3618,56 @@ flush 80
 msgwnd_bea
 *e31_416
 d [lv 0*"27"*"bea_04560"]`{qt}I see.`[@][lv 0*"27"*"bea_04570"]` She's the kind that never bores.`[@][lv 0*"27"*"bea_04580"]` *cackle*...`[@][lv 0*"27"*"bea_04590"]` But still, this is awful.{qt}`[\]
+textoff2
 
-
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 flush 22
+wait 300
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_12
+rain_params s0_12,100,500,0
 lbg "c:backgrounds",s0_3,"garden_1cr"
-
 flush 22
+wait 800
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_12
 flush 22
+wait 300
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_12
+rain_params s0_12,100,500,0
 lbg "c:backgrounds",s0_3,"m_o1ar"
-
 flush 2
+wait 800
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_12
 flush 22
 
 msgwnd_non
 *e31_417
 d `The giant gaping hole, the wreckage and dust, and the storm blowing in all made the study quite a wreck.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:efe",s0_3,"blood_1ar"
-
 flush 22
 
 *e31_418
 d `And of course... the sacrifices with their innards cruelly strewn about.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "a:backgrounds",s0_3,"mlib_1cr"
 lbg "a:backgrounds",s0_1,"mlib_1cr_bg"
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 lss s0_9,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_9,"bea","a11_akuwarai2"
@@ -3855,334 +3677,241 @@ flush 80
 msgwnd_bea
 *e31_419
 d [lv 0*"27"*"bea_04600"]`{qt}Well, sometimes a bold first twilight like this has its own charm.`[@][lv 0*"27"*"bea_04610"]` *cackle*, hahahahahahahahahahaha...!!{qt}`[\]
-
+textoff2
 
 vol_mix_fade 500
-
 seplay 11,1010,100
-
 bgmplay 95,70,0
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+csp_slot s0_2
 
 lbg "a:backgrounds",s0_3,"mlib_1cr"
+color_mod2 s0_3,#ffffff
 lbg "a:backgrounds",s0_1,"mlib_1cr_bg"
-
+color_mod2 s0_1,#ffffff
 lss s0_9,"bea","a11_akuwarai2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
+color_mod2 s0_9,#ffffff
 flush 2
 
 msgwnd_non
 *e31_420
 d `Then, Krauss and Natsuhi were to be brought to the scene and made full witness to everything.`[\]
 
-
 *e31_421
 d `So... it would probably be good to get them a bit dusted up.`[\]
-
 
 *e31_422
 d `Something like having them do one roll on the floor of the trashed up study should do the trick.`[\]
 
-
 *e31_423
-d `So after the murder of the first six,`[@]`Beato sneered {qt}aren't you lucky?{qt} at Krauss and Natsuhi who, since the seal had expired, managed to flee out the door... ...or something.`[\]
-
+d `So after the murder of the first six,`[@]` Beato sneered {qt}aren't you lucky?{qt} at Krauss and Natsuhi who, since the seal had expired, managed to flee out the door......or something.`[\]
+textoff2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
+csp_slot s0_1
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"tel1a"
-
+color_mod2 s0_3,#ffffff
 flush 22
 
 *e31_424
 d `After that, Krauss and Natsuhi rushed to call the police, but for some reason the call couldn't get through.`[\]
 
-
 *e31_425
 d `The general outline is that they, in a panic, took the servants and rushed to the guesthouse.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 lss s0_8,"kan","a12_defo2"
 spt_mem "a2","xpos",s0_8,-369
-flush 80
+color_mod2 s0_8,#ffffff
 
 lss s0_10,"sha","a11_majime1"
 spt_mem "a2","xpos",s0_10,370
-flush 80
-
+color_mod2 s0_10,#ffffff
 flush 22
 
 *e31_426
 d `But both Shannon and Kanon can't go together, so this part will have to be done carefully.`[\]
-
+textoff2
 
 seplay 11,1010,100
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
+color_mod2 s0_3,#ffffff
 flush 23
 
 *e31_427
-d `A simple story would be... Natsuhi and Shannon went on ahead to the guesthouse,`[@]`while Krauss and Kanon went to get guns for self-defense but are a bit late coming back.`[\]
-
+d `A simple story would be... Natsuhi and Shannon went on ahead to the guesthouse,`[@]` while Krauss and Kanon went to get guns for self-defense but are a bit late coming back.`[\]
 
 *e31_428
-d `Shannon entered the servants's room with the terrified Kumasawa,`[@]`slipped out through the window, and met up with Krauss.`[\]
-
+d `Shannon entered the servants's room with the terrified Kumasawa,`[@]` slipped out through the window, and met up with Krauss.`[\]
 
 *e31_429
 d `Then for a while everyone holed up in the guesthouse.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"g1f_r1an"
-
+color_mod2 s0_3,#ffffff
 lss s0_8,"but","b11_sakebu2a"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
+color_mod2 s0_8,#ffffff
 
 lss s0_9,"geo","b23_naku1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
+color_mod2 s0_9,#ffffff
 
 lss s0_10,"jes","a11_naku3"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
+color_mod2 s0_10,#ffffff
 flush 22
 
 *e31_430
-d `The children of the killed parents will probably want to see the crime scene,`[@]`or start planning revenge, or find some other reason to leave the guesthouse.`[\]
-
+d `The children of the killed parents will probably want to see the crime scene,`[@]` or start planning revenge, or find some other reason to leave the guesthouse.`[\]
 
 *e31_431
 d `If they're really persistent, they can once more go to the study.`[\]
 
-
 *e31_432
-d `Once again it will be auto-locked,`[@]`but it's not a problem since Genji has a key.`[\]
+d `Once again it will be auto-locked,`[@]` but it's not a problem since Genji has a key.`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
 lbg "c:efe",s0_3,"blood_1ar"
-
+color_mod2 s0_3,#ffffff
 flush 22
 
 *e31_433
-d `When they see such a bizarre crime scene with a large hole in the wall,`[@]`they will certainly accept that it couldn't possibly have been done by humans.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `When they see such a bizarre crime scene with a large hole in the wall,`[@]` they will certainly accept that it couldn't possibly have been done by humans.`[\]
+textoff2
 
 lbg "c:efe",s0_3,"magicsquare_sun7"
-
+color_mod2 s0_3,#ffffff
 flush 22
 
 *e31_434
 d `It would also be interesting if there was a magic circle at the crime scene that wasn't there before.`[\]
 
-
 *e31_435
-d `The magic circle could have been prepared several days earlier.`[@]`All that's needed is for Krauss and Natsuhi to give false testimony that it wasn't there before.`[\]
-
+d `The magic circle could have been prepared several days earlier.`[@]` All that's needed is for Krauss and Natsuhi to give false testimony that it wasn't there before.`[\]
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"letter1"
-
+color_mod2 s0_3,#ffffff
 flush 22
 
 *e31_436
 d `And to make it even more inexplicable, Krauss or Natsuhi will carry an envelope that makes a proclamation about the crime... and it will be 'discovered' in a closed room situation.`[\]
 
-
 *e31_437
-d `This is just an example but, something like having a room that was just confirmed locked with nothing unusual,`[@]`but then when it's re-entered there'll suddenly be a creepy letter there.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `This is just an example but, something like having a room that was just confirmed locked with nothing unusual,`[@]` but then when it's re-entered there'll suddenly be a creepy letter there.`[\]
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
-
+color_mod2 s0_3,#ffffff
 flush 22
 
 *e31_438
 d `It will be impossible to explain it by methods other than magic without doubting Krauss and Natsuhi.`[\]
 
-
 *e31_439
 d `The first mystery argument in the metaworld can be held here.`[\]
 
-
 *e31_440
 d `Without doubting Krauss and Natsuhi there is absolutely no way to see through it.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"key1"
-
+color_mod2 s0_3,#ffffff
 flush 22
 
 *e31_441
 d `Probably, 'he' won't be able to think of anything outside of something having to do with the lock, or some kind of location-based trick based off a gap in or around the door or window.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
-
+color_mod2 s0_3,#ffffff
 flush 22
 
 *e31_442
 d `But if this is a closed room in the true meaning, there isn't some mysterious culprit hiding somewhere.`[\]
 
-
 *e31_443
 d `If I note all these things in red, he'll just give up.`[\]
-
 
 *e31_444
 d `He can only destroy 'false closed rooms'.`[\]
 
-
 *e31_445
 d `So, if this room really is a closed room, he'll go as far as 'it's magnificent' and stop thinking.`[\]
+textoff2
 
-
+vol_bgm,-1,1000
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"book1"
-
 flush 23
 
 bgmplay 62,70,0
 
 *e31_446
-d `Certainly, in Carr's closed room taxonomies... there are listed many false closed rooms made to appear like true closed rooms.`[@]`They provide enjoyment with tricks, and when thinking of how to entertain with mystery novels, it's true that a tangibly identifiable {qt}answer{qt} which can be reasoned out is convenient.`[\]
-
+d `Certainly, in Carr's closed room taxonomies... there are listed many false closed rooms made to appear like true closed rooms.`[@]` They provide enjoyment with tricks, and when thinking of how to entertain with mystery novels, it's true that a tangibly identifiable {qt}answer{qt} which can be reasoned out is convenient.`[\]
 
 *e31_447
-d `It's why we can say that there's no helping the fact that the vast majority of mysteries are overflowing with false closed rooms.`[@]`(But, incidentally, this also makes for a limit on the thinking involved in the majority of closed rooms.`[@]`Don't misunderstand, I'm not criticizing false closed rooms.`[@]`What I am criticizing is a section of narrow-minded humans who, because they only know false closed rooms, think it's the one and only kind of closed room mystery.)`[\]
-
+d `It's why we can say that there's no helping the fact that the vast majority of mysteries are overflowing with false closed rooms.`[@]` (But, incidentally, this also makes for a limit on the thinking involved in the majority of closed rooms.`[@]` Don't misunderstand, I'm not criticizing false closed rooms.`[@]` What I am criticizing is a section of narrow-minded humans who, because they only know false closed rooms, think it's the one and only kind of closed room mystery.)`[\]
+textoff2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 23
 
 *e31_448
 d `However, we mustn't forget that in Carr's closed rooms taxonomies there are also descriptions of methods for murder in true closed rooms, too.`[\]
 
-
 *e31_449
 d `In fact, if guaranteed a perfect closed room in red, it becomes easy to reason based on H. H. Holmes's closed room taxonomies.`[\]
 
-
 *e31_450
 d `(Because saying Holmes is a little confusing, let's use his legal name, Boucher, from now on.)`[\]
-
 
 seplay 11,1010,100
 
 *e31_451
 d `According to Boucher, closed room murders can be explained with three categories.`[\]
 
-
 *e31_452
 d `To make these categorizations extremely clear, I've written them below.`[\]
-
 
 seplay 11,1010,100
 
 *e31_453
-d `■The crime was committed before the closed room was constructed.`[@]` ■The crime was committed while the closed room was up.`[@]` ■The crime was committed after the closed room had been destroyed.`[@]` It's only these 3 categories.`[\]
+d `{p:0:■}The crime was committed before the closed room was constructed.`[@]` {n}{p:0:■}The crime was committed while the closed room was up.`[@]` {n}{p:0:■}The crime was committed after the closed room had been destroyed.`[@]` {n}It's only these 3 categories.`[\]
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 *e31_454
-d `If red truth says it's impossible to do it while the closed room was up,`[@]`then it would be natural to think the crime was committed before the closed room's construction or after its destruction.`[\]
-
+d `If the red truth says it's impossible to do it while the closed room was up,`[@]` then it would be natural to think the crime was committed before the closed room's construction or after its destruction.`[\]
 
 *e31_455
-d `If we are to use an incident of the sudden appearance of a letter in a closed room as an example,`[@]`then the letter was placed before the closed room, or after the closed room, it's just these 2 categories.`[\]
-
+d `If we are to use an incident of the sudden appearance of a letter in a closed room as an example,`[@]` then the letter was placed before the closed room, or after the closed room, it's just these 2 categories.`[\]
+textoff2
 
 lss s0_10,"gen","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
@@ -4190,7 +3919,7 @@ flush 80
 
 *e31_456
 d `With the former, you can doubt the person who confirmed its absence when they locked the room.`[\]
-
+textoff2
 
 lss s0_8,"cla","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
@@ -4198,55 +3927,35 @@ flush 80
 
 *e31_457
 d `With the latter, you can doubt the person who discovered the letter.`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
-
 flush 22
 
 *e31_458
 d `In other words, if you base your thinking on Boucher's closed room taxonomies, you can immediately suspect that someone in the Ushiromiya family is cooperating with the culprit.`[\]
 
-
 *e31_459
-d `And it should be clear as day who is more suspicious between the children from the guesthouse who confirmed the closed room,`[@]`and the lone survivors of the previous tragedy, Krauss and Natsuhi, who claimed to {qt}have been witness to a demon summoned by a witch killing their relatives{qt}.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `And it should be clear as day who is more suspicious between the children from the guesthouse who confirmed the closed room,`[@]` and the lone survivors of the previous tragedy, Krauss and Natsuhi, who claimed to {qt}have been witness to a demon summoned by a witch killing their relatives{qt}.`[\]
+textoff2
 
 lbg "c:backgrounds",s0_3,"sweet2"
-
 flush 22
 
 *e31_460
 d `For those who see this world as a mystery, they won't be caught by this kind of deception.`[\]
 
-
 *e31_461
-d `Because to declare {qt}I saw a witch, I saw magic, I saw demons{qt} in this world...`[@]`is the same as confessing to being bought out to play a part in the culprit's ruse.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `Because to declare {qt}I saw a witch, I saw magic, I saw demons{qt} in this world...`[@]` is the same as confessing to being bought out to play a part in the culprit's ruse.`[\]
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_space_2d"
-
 flush 22
 
 lss s0_9,"bea","a11_majime1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_9,"bea","a11_futeki1"
@@ -4256,75 +3965,52 @@ flush 80
 *e31_462
 d `What a simple and cheap mystery.`[\]
 
-
 *e31_463
 d `Probably, for those people who love to read the mystery novels that I have boundless respect for, they'll see right through it with a big laugh.`[\]
 
-
 *e31_464
-d `To witness demons, even with a brazen display of fantasy as {qt}proof{qt},`[@]`is to mystery the height of satire, it will no doubt get laughs.`[\]
-
+d `To witness demons, even with a brazen display of fantasy as {qt}proof{qt},`[@]` is to mystery the height of satire, it will no doubt get laughs.`[\]
 
 *e31_465
 d `Though even if I think so...`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"sweet1"
-
 flush 22
 
 *e31_466
 d `About 1 in 1000 people might seriously believe that a witch summoned a demon.`[\]
 
-
 *e31_467
 d `Only for that rare person can my world of fantasy be sufficient.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 *e31_468
 d `Excuse the digression.`[\]
 
-
 *e31_469
 d `So anyway, I will confuse the foregoing matter using the metaworld, decorating it with the preface of an incomprehensible incident.`[\]
-
+textoff2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 23
 
 lss s0_9,"sha","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e31_470
 d `The target of the upcoming Second Twilight will be Shannon.`[\]
 
-
 *e31_471
 d `We'll have it so the women will go up to the guesthouse's second floor while Krauss and the servant men fortify the first floor.`[\]
-
 
 lss s0_10,"geo","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
@@ -4333,64 +4019,56 @@ flush 80
 *e31_472
 d `And so, Shannon and George can be together.`[\]
 
-
 *e31_473
-d `George will probably attend to the frightened Shannon.`[@]`These two 'close' ones will be the target of the Second Twilight.`[\]
-
+d `George will probably attend to the frightened Shannon.`[@]` These two 'close' ones will be the target of the Second Twilight.`[\]
 
 *e31_474
 d `This time I will go with a nuance of 'tearing apart those who are close' of tearing apart their relationship with an abduction.`[\]
-
 
 seplay 11,1010,100
 
 *e31_475
 d `After going to the servants' room on the first floor, Shannon will head to the bathroom.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-;lbg "c:backgrounds",s0_3,"g1f_p1br"
+rain_load s0_2
+rain_params s0_2,100,500,0
+lbg "a:backgrounds",s0_1,"g1f_p1br_bg"
+lbg "a:backgrounds",s0_3,"g1f_p1br"
 
 lss s0_9,"geo","a11_majime3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"sha","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
+csp_slot s0_10
 flush 3
 
 *e31_476
-d `Naturally, George will come too.`[@]`But of course, he can't go inside the girls' bathroom.`[@]`He'll wait at the entrance.`[\]
+d `Naturally, George will come too.`[@]` But of course, he can't go inside the girls' bathroom.`[@]` He'll wait at the entrance.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_9
-csp_slot s0_10
-
-;lbg "c:backgrounds",s0_3,"toilette"
-
+lbg "c:backgrounds",s0_3,"toilette"
 flush 22
 
 *e31_477
 d `This is not a single person bathroom, but a bathroom made for use in the guesthouse, designed to be large enough to serve several people at once.`[\]
-
+textoff2
 
 lss s0_9,"sha","a11_fuman1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
+wait 1000
+csp_slot s0_9
+flush 80
 
 *e31_478
 d `At this point Shannon will exit through the window in the back of the bathroom.`[\]
-
 
 lss s0_9,"kum","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
@@ -4398,67 +4076,51 @@ flush 80
 
 *e31_479
 d `Then, Kumasawa will enter.`[\]
+textoff2
 
+csp_slot s0_9
+flush 80
 
 seplay 11,31,100
-
 lss s0_8,"kum","a12_warai1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
 *e31_480
 d `And she will lock the window Shannon escaped through.`[\]
+textoff2
 
-
+csp_slot s0_8
+flush 80
 lss s0_9,"kum","a11_odoroki1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
 *e31_481
 d `Then she'll scream to announce some kind of incident.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 22
-
 bgmplay 31,70,0
 
 msgwnd_geo
 *e31_482
 d [lv 0*"07"*"geo_00650"]`{qt}Wh, what's wrong, Kumasawa-san?!`[@][lv 0*"07"*"geo_00660"]` I'm going to open the door!!{qt}`[\]
-
+textoff2
 
 seplay 11,16,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 23
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-;lbg "c:backgrounds",s0_3,"toilette"
-
+lbg "c:backgrounds",s0_3,"toilette"
 lss s0_9,"kum","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_10,"geo","a11_ikari2"
@@ -4469,10 +4131,12 @@ msgwnd_non
 *e31_483
 d `George opens the door to the girls' bathroom.`[\]
 
-
 *e31_484
 d `When he does, Kumasawa's face will be pale and she will be pointing to a stall, shaking.`[\]
+textoff2
 
+csp_slot s0_9
+flush 80
 
 lss s0_8,"kum","a11_odoroki1"
 spt_mem "a2","xpos",s0_8,-549
@@ -4482,69 +4146,49 @@ msgwnd_kum
 *e31_485
 d [lv 0*"18"*"kum_00350"]`{qt}Hiii, hii-iiiii...!!!{qt}`[\]
 
-
-lss s0_10,"geo","a11_ikari2"
-spt_mem "a2","xpos",s0_10,550
-flush 80
-
 msgwnd_geo
 *e31_486
 d2 [lv 0*"07"*"geo_00670"]`{qt}What happened...!?`[@][#][*][lv 0*"07"*"geo_00680"]` Shannon! Shannon!!{qt}`[\]
-
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
+csp_slot s0_10
+flush 80
 lss s0_9,"geo","a11_ikari4"
 spt_mem "a2","xpos",s0_9,0
 flush 80
+d_continue
+wait_on_d -1
 
 msgwnd_non
 *e31_487
-d `Shannon went into the girls' bathroom before Kumasawa.`[@]`Kumasawa's scream had conveyed only that something strange had happened to Shannon.`[\]
-
+d `Shannon went into the girls' bathroom before Kumasawa.`[@]` Kumasawa's scream had conveyed only that something strange had happened to Shannon.`[\]
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 23
 
 *e31_488
-d `Fearing the worst,`[@]`George peered into the stall that Kumasawa was pointing at.`[\]
-
+d `Fearing the worst,`[@]` George peered into the stall that Kumasawa was pointing at.`[\]
 
 *e31_489
 d `There was... pasted thickly... in red...`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:efe",s0_3,"magicsquare_sun7"
-
 flush 22
 
 *e31_490
 d `A creepy magic circle drawn on the wall in blood-like paint...`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-;lbg "c:backgrounds",s0_3,"toilette"
-
+lbg "c:backgrounds",s0_3,"toilette"
 lss s0_10,"geo","a11_majime3"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
+
+csp_slot s0_10
+flush 80
 
 lss s0_9,"geo","a11_ikari2"
 spt_mem "a2","xpos",s0_9,0
@@ -4554,7 +4198,6 @@ msgwnd_geo
 *e31_491
 d [lv 0*"07"*"geo_00690"]`{qt}Wh-what is this...!?`[@][lv 0*"07"*"geo_00700"]` Shannon!`[@][lv 0*"07"*"geo_00710"]` Where's Shannon!?{qt}`[\]
 
-
 lss s0_10,"kum","a11_odoroki1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -4562,8 +4205,10 @@ flush 80
 msgwnd_kum
 *e31_492
 d [lv 0*"18"*"kum_00360"]`{qt}I-I don't know...!{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"geo","a11_ikari4"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -4571,40 +4216,32 @@ flush 80
 msgwnd_geo
 *e31_493
 d [lv 0*"07"*"geo_00720"]`{qt}That's impossible!!`[@][lv 0*"07"*"geo_00730"]` Shannon went in right before you,`[@][lv 0*"07"*"geo_00740"]` so why isn't she here!? Shannon!? Shannon!?!?{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
 seplay 11,16,100
-
-seplay 11,16,100
+wait 500
+seplay 12,16,100
 
 msgwnd_non
 *e31_494
-d `There were three stalls,`[@]`but all of them were empty.`[\]
-
+d `There were three stalls,`[@]` but all of them were empty.`[\]
 
 *e31_495
-d `There was only one entrance.`[@]`And since George had been there the whole time, right now, Shannon should be somewhere in the bathroom.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `There was only one entrance.`[@]` And since George had been there the whole time, right now, Shannon should be somewhere in the bathroom.`[\]
+textoff2
 
 lbg "c:backgrounds",s0_3,"g_o1cn"
-
+rain_load s0_12
+rain_params s0_12,100,500,0
 flush 22
 
 *e31_496
 d `It's hard for George to imagine, but she could have left through the window in the back.`[\]
-
 
 lss s0_9,"sha","a11_defo1h"
 spt_mem "a2","xpos",s0_9,0
@@ -4612,43 +4249,26 @@ flush 80
 
 *e31_497
 d `However, it's locked from the inside, and he can't understand why Shannon would need to crawl out a window in the first place.`[\]
+textoff2
 
-
+csp_slot s0_12
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
-
 flush 28
 
 *e31_498
-d `It makes no sense.`[@]`This couldn't happen.`[\]
-
+d `It makes no sense.`[@]` This couldn't happen.`[\]
 
 *e31_499
 d `Shannon suddenly disappeared and was exchanged for a creepy magic circle...!!`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-;lbg "c:backgrounds",s0_3,"toilette"
-
+lbg "c:backgrounds",s0_3,"toilette"
 lss s0_9,"kum","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 23
 
 lss s0_9,"kum","a11_odoroki1"
@@ -4658,46 +4278,36 @@ flush 80
 msgwnd_kum
 *e31_500
 d [lv 0*"18"*"kum_00370"]`{qt}G-George-sama...`[@][lv 0*"18"*"kum_00380"]` um... there's one of the Head's envelopes...{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"letter1"
-
 flush 22
 
 msgwnd_non
 *e31_501
-d `On the toilet in the stall with the magic circle...`[@]`there was a mysterious envelope... just like the last tauntful envelope from the witch.`[\]
-
+d `On the toilet in the stall with the magic circle...`[@]` there was a mysterious envelope... just like the last tauntful envelope from the witch.`[\]
 
 msgwnd_geo
 *e31_502
 d [lv 0*"07"*"geo_00750"]`{qt}It can't be... this is... this is...!!{qt}`[\]
-
+textoff2
 
 seplay 11,12,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-;lbg "c:backgrounds",s0_3,"toilette"
-
+lbg "c:backgrounds",s0_3,"toilette"
 lss s0_9,"geo","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 1
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 
 msgwnd_non
 *e31_503
 d `George picked up the envelope and violently tore it open.`[\]
-
 
 lss s0_9,"geo","a11_ikari2"
 spt_mem "a2","xpos",s0_9,0
@@ -4705,121 +4315,79 @@ flush 80
 
 *e31_504
 d `Seeing only a single short sentence... as if assaulted by a wave of dizziness, George staggered into a wall, collapsing against it.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 *e31_505
 d `'On the Second Twilight, tear apart the two who are close.'`[\]
-
+textoff2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 23
 
 *e31_506
 d `Since I'd like to make Flauros the one responsible, I want to leave some Flauros-style evidence.`[\]
 
-
 *e31_507
-d `Something like having the stall be hideously burned.`[@]`Or having traces of an explosion from inside it.`[\]
-
+d `Something like having the stall be hideously burned.`[@]` Or having traces of an explosion from inside it.`[\]
 
 *e31_508
 d `Once again they'll find weird evidence that they'll think clearly could not be produced by human means.`[\]
 
-
 *e31_509
 d `Regarding this, it could all be prepared with leisure before the incident.`[\]
-
+textoff2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-;lbg "c:backgrounds",s0_3,"note3"
-
+lbg "c:backgrounds",s0_3,"note3"
 flush 23
 
 *e31_510
-d `The only problem is,`[@]`the possibility that one of the women would come in to this bathroom beforehand.`[\]
-
+d `The only problem is,`[@]` the possibility that one of the women would come in to this bathroom beforehand.`[\]
 
 *e31_511
-d `For that, the day before the incident the bathroom on the first floor of the guesthouse could be 'out of order',`[@]`so it would be necessary to instead use the bathrooms of the various bedrooms.`[\]
-
+d `For that, the day before the incident the bathroom on the first floor of the guesthouse could be 'out of order',`[@]` so it would be necessary to instead use the bathrooms of the various bedrooms.`[\]
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 *e31_512
 d `This itself can also be interesting as foreshadowing for the trick.`[\]
 
-
 *e31_513
-d `Or if the flashy decorations were something that couldn't be noticed from the outside,`[@]`having the stall's door closed would be all that's needed to keep guests from seeing them.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `Or if the flashy decorations were something that couldn't be noticed from the outside,`[@]` having the stall's door closed would be all that's needed to keep guests from seeing them.`[\]
+textoff2
 
 lbg "c:efe",s0_3,"magicsquare_sun7"
-
 flush 22
 
 *e31_514
 d `Then later thinking back, they can realize that no one was supposed to be in stall during that time, and that door was closed.`[@]`...So then, who closed that door? If they reason from {qt}no one was supposed to be there{qt}, they should be able to figure out that the magic circle was prepared beforehand.`[\]
 
-
 *e31_515
 d `I hope to have a lot of fun debating the Second Twilight.`[\]
-
+textoff2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-;lbg "c:backgrounds",s0_3,"note3"
-
+lbg "c:backgrounds",s0_3,"note3"
 flush 23
 
 lss s0_8,"kum","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"sha","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 *e31_516
 d `It shouldn't be hard to suspect Shannon and Kumasawa here.`[\]
-
 
 lss s0_9,"nat","a12_majime1"
 spt_mem "a2","xpos",s0_9,0
@@ -4828,58 +4396,45 @@ flush 80
 *e31_517
 d `We'll have a scenario where Natsuhi comes to this conclusion and accuses the servants.`[\]
 
-
 *e31_518
-d `This is a mystery novel gimmick.`[@]`I'll use the readers' expectations, that the reasoning coming from the other characters is usually wrong, against them.`[\]
-
+d `This is a mystery novel gimmick.`[@]` I'll use the readers' expectations, that the reasoning coming from the other characters is usually wrong, against them.`[\]
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
 *e31_519
 d `By having Natsuhi say something is {qt}right{qt}, it will cause them to think it must not be so, it's a confusion technique.`[\]
-
+textoff2
 
 seplay 11,1010,100
-
 lss s0_8,"nat","a12_ikari1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"cla","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 *e31_520
 d `So after that, Natsuhi and Krauss will level suspicion at the servants.`[\]
 
-
 *e31_521
-d `Of course George and the others will object.`[@]`They will insist that the servants are victims caught up in the same situation as everyone else.`[\]
+d `Of course George and the others will object.`[@]` They will insist that the servants are victims caught up in the same situation as everyone else.`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
-;lbg "c:backgrounds",s0_3,"note3"
-
+lbg "c:backgrounds",s0_3,"note3"
 flush 22
 
 *e31_522
 d `After the discourse between Krauss and the servants, the decision will be to hunker down in two separate groups: a relatives group and a servants group.`[\]
 
-
 *e31_523
-d `The relatives group will stay in the guesthouse,`[@]`and the servants group will go to the mansion.`[\]
-
+d `The relatives group will stay in the guesthouse,`[@]` and the servants group will go to the mansion.`[\]
 
 lss s0_9,"geo","a11_ikari2"
 spt_mem "a2","xpos",s0_9,0
@@ -4888,85 +4443,57 @@ flush 80
 *e31_524
 d `In the middle of all this, George will probably insist on looking outside for Shannon.`[\]
 
-
 *e31_525
-d `He can look as much as he wants.`[@]`He'll probably be quickly chilled to the bone in the thunderstorm, give up, and return to the guesthouse.`[\]
+d `He can look as much as he wants.`[@]` He'll probably be quickly chilled to the bone in the thunderstorm, give up, and return to the guesthouse.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mhal_2cr"
-
 flush 22
 
 *e31_526
-d `Following that, all the servants will have a meeting together in the mansion.`[@]`They'll reaffirm what their next actions will be.`[\]
-
+d `Following that, all the servants will have a meeting together in the mansion.`[@]` They'll reaffirm what their next actions will be.`[\]
 
 *e31_527
 d `The Fourth, Fifth, Sixth, Seventh and Eighth Twilights will be a closed room chain.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:efe",s0_3,"map10"
-
 flush 22
 
 *e31_528
 d `The feature of closed room chains is that the corpses will be found in a chosen order.`[\]
 
-
 *e31_529
-d `As long as the first closed room is on the first floor and the others on the second floor or higher,`[@]`or in places outside the mansion, I can control the flow of their investigation.`[\]
-
+d `As long as the first closed room is on the first floor and the others on the second floor or higher,`[@]` or in places outside the mansion, I can control the flow of their investigation.`[\]
+textoff2
 
 seplay 11,1010,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
-
-meplay 11,12,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+vol_bgm,-1,500
+wait 1000
+meplay 1,12,100
 
 lbg "c:backgrounds",s0_3,"m_o1ar"
+rain_load s0_12
+rain_params s0_12,100,500,0
+flush 22
+wait 1000
 
+csp_slot s0_12
+csp_slot s0_3
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+rain_load s0_2
+rain_params s0_2,100,500,0
 
-flush 22
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"mhal_1ar"
-
+lbg "a:backgrounds",s0_1,"mhal_1ar_bg"
+lbg "a:backgrounds",s0_3,"mhal_1ar"
 flush 22
 
 lss s0_9,"bea","a11_nayamu1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_9,"bea","a11_warai2"
@@ -4977,53 +4504,36 @@ msgwnd_bea
 *e31_530
 d [lv 0*"27"*"bea_04620"]`{qt}Servants.`[@][lv 0*"27"*"bea_04630"]` Your turn has finally come.{qt}`[\]
 
-
 msgwnd_non
 *e31_531
 d `Beato gathered all the servants to the mansion's banquet hall to make this pronouncement.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_1
+csp_slot s0_2
 lbg "c:backgrounds",s0_3,"mhal_1cr"
 
 lss s0_8,"kan","a12_nayamu1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_9,"gen","a21_kashikomari1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"sha","a11_fuman1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
+wait 1000
 
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mhal_1cr"
-
 lss s0_9,"goh","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 lss s0_10,"kum","a11_komaru1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 *e31_532
-d `Genji, Shannon and Kanon's expressions were calm,`[@]`but Kumasawa and Gohda's weren't.`[\]
-
+d `Genji, Shannon and Kanon's expressions were calm,`[@]` but Kumasawa and Gohda's weren't.`[\]
 
 lss s0_10,"kum","a11_odoroki1"
 spt_mem "a2","xpos",s0_10,550
@@ -5032,8 +4542,10 @@ flush 80
 msgwnd_kum
 *e31_533
 d [lv 0*"18"*"kum_00390"]`{qt}...Is it really going well?`[@][lv 0*"18"*"kum_00400"]` I'm worried...{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"goh","a11_odoroki1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5042,285 +4554,187 @@ msgwnd_goh
 *e31_534
 d [lv 0*"17"*"goh_01160"]`{qt}Since I've never done something like this,`[@][lv 0*"17"*"goh_01170"]` I'm not sure whether I'm enjoying myself or I'm nervous... haha... haha...{qt}`[\]
 
-
 msgwnd_non
 *e31_535
 d `Gohda feigned laughter while trying to appear composed.`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
 *e31_536
 d `They don't know.`[\]
 
-
 *e31_537
 d `They don't even know that Eva and the others are really dead.`[\]
 
-
 *e31_538
-d `This is Beato's deception, made possible by her discovery of the gold.`[@]`They believe the five victims were also paid off, and that they're just playing dead.`[\]
-
+d `This is Beato's deception, made possible by her discovery of the gold.`[@]` They believe the five victims were also paid off, and that they're just playing dead.`[\]
+textoff2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 23
 
 *e31_539
-d `Barring exceptions like Genji, most bribees are easier to manage if they aren't informed that they're involved with murder.`[@]`It's case-by-case, though.`[\]
-
+d `Barring exceptions like Genji, most bribees are easier to manage if they aren't informed that they're involved with murder.`[@]` It's case-by-case, though.`[\]
+textoff2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 23
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"mhal_1ar"
-
+lbg "a:backgrounds",s0_1,"mhal_1ar_bg"
+lbg "a:backgrounds",s0_3,"mhal_1ar"
+rain_load s0_2
+rain_params s0_2,100,500,0
 lss s0_9,"bea","a11_defo2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_bea
 *e31_540
 d [lv 0*"27"*"bea_04640"]`{qt}Alright, now everyone move to your respective rooms.`[@][lv 0*"27"*"bea_04650"]` Playing dead can be surprisingly tiring, you know.`[@][lv 0*"27"*"bea_04660"]` Lie in a position that won't wear you out.`[@][lv 0*"27"*"bea_04670"]` *cackle*{qt}`[\]
+textoff2
 
+vol_mix_fade 500
 
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 bgmplay 9,70,0
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"m1f_s1cr"
-
 lss s0_8,"kan","a12_defo2"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 msgwnd_non
 *e31_541
 d `Kanon in the parlor.`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mvip_1ar"
-
 lss s0_9,"gen","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e31_542
 d `Genji in on the 2nd floor, the VIP room.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"mnat_1ar"
+rain_load s0_2
+rain_params s0_2,100,500,0
+lbg "a:backgrounds",s0_1,"mnat_1ar_bg"
+lbg "a:backgrounds",s0_3,"mnat_1ar"
 
 lss s0_9,"kum","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e31_543
 d `Kumasawa on the 2nd floor, Natsuhi's bedroom.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"g1f_r2ar"
-
+lbg "a:backgrounds",s0_1,"g1f_r2ar_bg"
+lbg "a:backgrounds",s0_3,"g1f_r2ar"
 lss s0_9,"goh","a11_majime1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e31_544
 d `Gohda on the 3rd floor, waiting room.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_1
+csp_slot s0_2
 lbg "c:backgrounds",s0_3,"cha_i1ar"
-
 lss s0_9,"sha","a11_majime1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e31_545
 d `Shannon in the chapel.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 *e31_546
 d `They all go to their respective murder scenes and do their make-up.`[\]
 
-
 *e31_547
 d `From the Fourth Twilight on they are all 'gouge and kill'.`[\]
 
-
 *e31_548
 d `They are all to be gouged with some Seven Stakes of Purgatory.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"m1f_p1cr"
-
 flush 22
 
 *e31_549
 d `Everybody attends to their separate tasks in their separate rooms.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"mvip_1ar"
-
 lss s0_9,"gen","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e31_550
 d `Genji is composed.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"m1f_s1cr"
-
 lss s0_8,"kan","a12_defo1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 lss s0_10,"sha","a11_fuman1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 *e31_551
 d `So are Shannon and Kanon.`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"g1f_r2ar"
-
+rain_load s0_2
+rain_params s0_2,100,500,0
+lbg "a:backgrounds",s0_1,"g1f_r2ar_bg"
+lbg "a:backgrounds",s0_3,"g1f_r2ar"
 lss s0_9,"goh","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e31_552
 d `Gohda is nervous that his faking will be found out.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"mnat_1ar"
-
+lbg "a:backgrounds",s0_1,"mnat_1ar_bg"
+lbg "a:backgrounds",s0_3,"mnat_1ar"
 lss s0_9,"kum","a11_defo2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e31_553
 d `Kumasawa is over that, and is starting to look forward to putting on the show.`[\]
-
 
 lss s0_9,"kum","a12_warai1"
 spt_mem "a2","xpos",s0_9,0
@@ -5330,11 +4744,9 @@ msgwnd_kum
 *e31_554
 d [lv 0*"18"*"kum_00410"]`{qt}Hohhohohoho...`[@][lv 0*"18"*"kum_00420"]` I've played a lot of pranks, but this is the biggest one I've ever done.{qt}`[\]
 
-
 msgwnd_non
 *e31_555
 d `Kumasawa was chuckling in Natsuhi's room.`[\]
-
 
 lss s0_10,"bea","a11_nayamu1"
 spt_mem "a2","xpos",s0_10,550
@@ -5343,8 +4755,10 @@ flush 80
 msgwnd_bea
 *e31_556
 d [lv 0*"27"*"bea_04680"]`{qt}Is everything ready, Kumasawa?{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"kum","a11_warai1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5352,7 +4766,6 @@ flush 80
 msgwnd_kum
 *e31_557
 d [lv 0*"18"*"kum_00430"]`{qt}Oh, {f:5:Beatrice}-sama.`[@][lv 0*"18"*"kum_00440"]` As a servant it just doesn't feel right to lie on Madam's bed.{qt}`[\]
-
 
 lss s0_10,"bea","a11_fukigen2"
 spt_mem "a2","xpos",s0_10,550
@@ -5362,7 +4775,6 @@ msgwnd_bea
 *e31_558
 d [lv 0*"27"*"bea_04690"]`{qt}You liar.`[@][lv 0*"27"*"bea_04700"]` I know that while making it you've wanted to jump on it once or twice.{qt}`[\]
 
-
 lss s0_8,"kum","a12_warai1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5370,7 +4782,6 @@ flush 80
 msgwnd_kum
 *e31_559
 d [lv 0*"18"*"kum_00450"]`{qt}Hohhohohohoho.`[@][lv 0*"18"*"kum_00460"]` That is what {f:5:Beatrice}-sama would say.{qt}`[\]
-
 
 lss s0_10,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_10,550
@@ -5380,7 +4791,6 @@ msgwnd_bea
 *e31_560
 d [lv 0*"27"*"bea_04710"]`{qt}Okay, time to start the make-up.`[@][lv 0*"27"*"bea_04720"]` Lie down.{qt}`[\]
 
-
 lss s0_8,"kum","a11_defo2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5388,13 +4798,11 @@ flush 80
 msgwnd_kum
 *e31_561
 d [lv 0*"18"*"kum_00470"]`{qt}Alright...{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
+flush 80
 lss s0_9,"kum","a11_defo2"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -5402,7 +4810,6 @@ flush 80
 msgwnd_non
 *e31_562
 d `Kumasawa takes off her shoes and starts to get on the bed.`[\]
-
 
 lss s0_8,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_8,-549
@@ -5412,7 +4819,6 @@ msgwnd_bea
 *e31_563
 d [lv 0*"27"*"bea_04730"]`{qt}Hey, hey.`[@][lv 0*"27"*"bea_04740"]` Does a corpse go and take off her shoes?`[@][lv 0*"27"*"bea_04750"]` You should keep them on.{qt}`[\]
 
-
 lss s0_9,"kum","a12_warai1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -5420,80 +4826,58 @@ flush 80
 msgwnd_kum
 *e31_564
 d [lv 0*"18"*"kum_00480"]`{qt}To get on Madam's bed while wearing shoes feels like something really I shouldn't do.`[@][lv 0*"18"*"kum_00490"]` Hohohoho.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mnat_2br"
-
 flush 26
 
 msgwnd_non
 *e31_565
 d `Kumasawa climbed onto the bed with her shoes on.`[\]
 
-
 *e31_566
 d `Beato opened up her make-up bag.`[\]
-
 
 msgwnd_bea
 *e31_567
 d [lv 0*"27"*"bea_04760"]`{qt}Have you found a comfortable position?`[@][lv 0*"27"*"bea_04770"]` You'll get tired from holding the same pose for a long time even if you are laying down.{qt}`[\]
 
-
 msgwnd_kum
 *e31_568
 d [lv 0*"18"*"kum_00500"]`{qt}Yes, I know.`[@][lv 0*"18"*"kum_00510"]` But this is for a hundred million yen.`[@][lv 0*"18"*"kum_00520"]` Hohhohohohoho.{qt}`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"letter1"
-
 flush 22
 
 msgwnd_non
 *e31_569
 d `Each of the servants is getting a hundred million yen.`[\]
 
-
 *e31_570
 d `...In fact, it's already been sent.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 *e31_571
 d `In a few days bank keycards should arrive at their homes.`[\]
 
-
 *e31_572
-d `They won't be able to receive them, but their bereaved families can.`[@]`It will be more than enough for their funeral costs......`[\]
+d `They won't be able to receive them, but their bereaved families can.`[@]` It will be more than enough for their funeral costs......`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"mnat_1ar"
-
+rain_load s0_2
+rain_params s0_2,100,500,0
+lbg "a:backgrounds",s0_1,"mnat_1ar_bg"
+lbg "a:backgrounds",s0_3,"mnat_1ar"
 lss s0_9,"kum","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_9,"kum","a11_defo2"
@@ -5504,15 +4888,15 @@ msgwnd_kum
 *e31_573
 d [lv 0*"18"*"kum_00530"]`{qt}Something like this?{qt}`[\]
 
+csp_slot s0_9
+flush 80
 
 msgwnd_non
 *e31_574
 d `Kumasawa had been stirring restlessly, but it seems she finally found a comfortable pose.`[\]
 
-
 *e31_575
 d `It really looked like she had been killed.`[\]
-
 
 lss s0_10,"bea","a11_akuwarai5"
 spt_mem "a2","xpos",s0_10,550
@@ -5522,11 +4906,13 @@ msgwnd_bea
 *e31_576
 d [lv 0*"27"*"bea_04780"]`{qt}Good.`[@][lv 0*"27"*"bea_04790"]` That looks right.`[@][lv 0*"27"*"bea_04800"]` You definitely have a knack for fooling people.{qt}`[\]
 
-
 msgwnd_kum
 *e31_577
 d [lv 0*"18"*"kum_00540"]`{qt}Hohhohhohho.`[@][lv 0*"18"*"kum_00550"]` I couldn't possibly compare to {f:5:Beatrice}-sama and her grand show.{qt}`[\]
+textoff2
 
+csp_slot s0_10
+flush 80
 
 lss s0_9,"bea","a11_defo2"
 spt_mem "a2","xpos",s0_9,0
@@ -5536,12 +4922,13 @@ msgwnd_bea
 *e31_578
 d [lv 0*"27"*"bea_04810"]`{qt}I'm going to start the make-up.`[@][lv 0*"27"*"bea_04820"]` Hold still for a minute...`[@][lv 0*"27"*"bea_04830"]` No, actually you're already a corpse, so don't move for an even longer while.{qt}`[\]
 
-
 msgwnd_kum
 *e31_579
 d [lv 0*"18"*"kum_00560"]`{qt}Once Doctor Nanjo visits I'll be able to rest, right?{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5550,9 +4937,7 @@ msgwnd_bea
 *e31_580
 d [lv 0*"27"*"bea_04840"]`{qt}Right.`[@][lv 0*"27"*"bea_04850"]` After Nanjo does his autopsy, the room will be sealed until the police arrive.`[@][lv 0*"27"*"bea_04860"]` When that happens, you'll be able to rest a bit.`[@][lv 0*"27"*"bea_04870"]` But you'll still be a corpse.`[@][lv 0*"27"*"bea_04880"]` You can't make any loud noises.{qt}`[\]
 
-
 seplay 11,3,100
-
 lss s0_9,"kum","a11_warai1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -5561,11 +4946,12 @@ msgwnd_kum
 *e31_581
 d [lv 0*"18"*"kum_00570"]`{qt}Yes, of course not...`[@][lv 0*"18"*"kum_00580"]` Sooo, I should hide this.{qt}`[\]
 
+csp_slot s0_9
+flush 80
 
 msgwnd_non
 *e31_582
 d `Kumasawa hides her half-read book and bag of smoked squid under the bedsheets.`[\]
-
 
 lss s0_8,"bea","a11_fukigen1"
 spt_mem "a2","xpos",s0_8,-549
@@ -5575,234 +4961,176 @@ msgwnd_bea
 *e31_583
 d [lv 0*"27"*"bea_04890"]`{qt}My,`[@][lv 0*"27"*"bea_04900"]` aren't you well prepared?`[@][lv 0*"27"*"bea_04910"]` Careful not to relax toooo much.`[@][lv 0*"27"*"bea_04920"]` Don't forget that if for some reason the show is a failure, there will be no reward.{qt}`[\]
 
-
 msgwnd_kum
 *e31_584
 d [lv 0*"18"*"kum_00590"]`{qt}Of course. I'll be careful. Ohhohohohoho......{qt}`[\]
-
 
 msgwnd_non
 *e31_585
 d `During their light banter, Beato had pulled a stake from her tool bag.`[\]
 
-
 *e31_586
 d `Kumasawa is to be gouged and killed with this stake.`[\]
+textoff2
 
-
+vol_bgm -1,500
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mjes_1e"
-
 flush 26
 
-meplay 11,12,100
+meplay 1,12,100
 
 msgwnd_bea
 *e31_587
 d [lv 0*"27"*"bea_04930"]`{qt}......Hm...`[@][lv 0*"27"*"bea_04940"]` Sorry, but could you lie face-down?`[@][lv 0*"27"*"bea_04950"]` The face-up pose just isn't working.{qt}`[\]
 
-
 msgwnd_kum
 *e31_588
 d [lv 0*"18"*"kum_00600"]`{qt}Face-down, is it?`[@][lv 0*"18"*"kum_00610"]` I can do that but, I think it might be hard to breathe...{qt}`[\]
-
 
 msgwnd_bea
 *e31_589
 d [lv 0*"27"*"bea_04960"]`{qt}Face-up just looks like you're sleeping.`[@][lv 0*"27"*"bea_04970"]` Could you just test laying face-down out for a minute?`[@][lv 0*"27"*"bea_04980"]` Just a test.{qt}`[\]
 
-
 msgwnd_kum
 *e31_590
 d [lv 0*"18"*"kum_00620"]`{qt}Is that so? Then I'll try it...{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 5
 
 msgwnd_bea
 *e31_591
 d [lv 0*"27"*"bea_04990"]`{qt}Will it be difficult to hold that pose for a long time?{qt}`[\]
 
-
 msgwnd_kum
 *e31_592
 d [lv 0*"18"*"kum_00630"]`{qt}For the time being I can manage somehow...`[@][lv 0*"18"*"kum_00640"]` Hohoho, I hope the autopsy comes soon.{qt}`[\]
 
-
 msgwnd_bea
 *e31_593
 d [lv 0*"27"*"bea_05000"]`{qt}I see, I see.`[@][lv 0*"27"*"bea_05010"]` Stay like that for now.`[@][lv 0*"27"*"bea_05020"]` I'm going to adjust your clothes a bit.`[@][lv 0*"27"*"bea_05030"]` Without the clothes set up right there's no realism.{qt}`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
-
 flush 22
 
 msgwnd_non
 *e31_594
 d `Beato takes a tool from her bag.`[\]
 
-
 *e31_595
 d `It's a twirled up, lightweight extension cord.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"mnat_1ar"
+rain_load s0_2
+rain_params s0_2,100,500,0
+lbg "a:backgrounds",s0_1,"mnat_1ar_bg"
+lbg "a:backgrounds",s0_3,"mnat_1ar"
 
 lss s0_9,"bea","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_bea
 *e31_596
 d [lv 0*"27"*"bea_05040"]`{qt}Sorry, I'm adjusting them now.`[@][lv 0*"27"*"bea_05050"]` Stay just like that.{qt}`[\]
 
-
 msgwnd_kum
 *e31_597
 d [lv 0*"18"*"kum_00650"]`{qt}Yes, yes.{qt}`[\]
-
 
 msgwnd_non
 *e31_598
 d `She coiled the extension cord around Kumasawa's neck, cross-lacing it from behind.`[\]
 
-
 *e31_599
 d `She grasped the ends with both hands.`[\]
+textoff2
 
-
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 25
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mnat_2g"
-
 flush 1
-
 seplay 11,13,100
-
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 bgmplay 57,70,0
 
 *e31_600
 d `Beato flumped herself onto Kumasawa's back, straddling her.`[\]
 
-
 *e31_601
 d `Suddenly, Kumasawa's throat tightened.`[\]
 
-
 *e31_602
 d `And she could neither breathe nor scream.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 6
 
 *e31_603
-d `That extension cord wrapped around her neck...`[@]`was making a crackling sound... from strangling her.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `That extension cord wrapped around her neck...`[@]` was making a crackling sound... from strangling her.`[\]
+textoff2
 
 lbg "c:colour",s0_3,"red_b"
-
 flush 26
 
 *e31_604
 d `Kumasawa looked like she was doing the flutter kick in the pool, her heavier kicks occasionally pounding the bed.`[\]
 
-
 seplay 11,13,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 
 *e31_605
-d `And straddling on top was Beato,`[@]`in complete silence, as if she thought Kumasawa some kind of a bug or rodent, mercilessly wringing her neck.`[\]
-
+d `And straddling on top was Beato,`[@]` in complete silence, as if she thought Kumasawa some kind of a bug or rodent, mercilessly wringing her neck.`[\]
 
 *e31_606
 d `...The scene looked just as if a giant golden spider had captured some pitiful prey and was injecting it's poison.`[\]
 
-
 *e31_607
 d `And along with that, the canopy bed must also appear to be made from this strange spider's silk.`[\]
 
-
 *e31_608
 d `This web would sometimes suddenly quiver... from Kumasawa's feeble resistance.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 5
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"mnat_1ar"
-
+rain_load s0_2
+rain_params s0_2,100,500,0
+lbg "a:backgrounds",s0_1,"mnat_1ar_bg"
+lbg "a:backgrounds",s0_3,"mnat_1ar"
 flush 22
 
 lss s0_9,"bea","a15_1_hanbeso3star"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 6
 
 *e31_609
 d `And finally, Beato slowly got off of Kumasawa's back.`[\]
 
-
 *e31_610
-d `Kumasawa didn't move a muscle......`[@]`She was dead.`[\]
-
+d `Kumasawa didn't move a muscle......`[@]` She was dead.`[\]
 
 lss s0_9,"bea","va1_va1"
 spt_mem "a2","xpos",s0_9,0
@@ -5812,87 +5140,64 @@ msgwnd_bea
 *e31_611
 d [lv 0*"27"*"bea_05060"]`{qt}Sorry, Kumasawa.`[@][lv 0*"27"*"bea_05070"]` Your gouge is in the leg.`[@][lv 0*"27"*"bea_05080"]` To kill you by stabbing you there would be unnecessarily painful.{qt}`[\]
 
-
 seplay 11,30,100
 
 msgwnd_non
 *e31_612
 d `Done with her strangling tool, Beato next grabbed her nearby rifle.`[\]
 
-
 seplay 11,46,100
 
 *e31_613
 d `And then aiming at Kumasawa's calf, she pulled the trigger.`[\]
 
-
 *e31_614
-d `The gunshot wasn't loud...`[@]`it wasn't like the 'bang' sounds from TV or the movies.`[\]
-
+d `The gunshot wasn't loud...`[@]` it wasn't like the 'bang' sounds from TV or the movies.`[\]
 
 *e31_615
 d `At most, it was as loud as uncorking a champagne bottle.`[\]
-
+textoff2
 
 seplay 11,35,100
 
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:colour",s0_3,"red_b"
-
 flush 8
 
 *e31_616
 d `But then a splot of blood flies, and there's blood oozing out of the discomforting hole as it's being fished into.`[\]
 
-
 *e31_617
 d `This time she was digging into it tweezers in hand.`[\]
 
-
 *e31_618
 d `She picked out the bullet that was just shot into the calf.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"mnat_1ar"
-
+rain_load s0_2
+rain_params s0_2,100,500,0
+lbg "a:backgrounds",s0_1,"mnat_1ar_bg"
+lbg "a:backgrounds",s0_3,"mnat_1ar"
 flush 22
 
 lss s0_9,"bea","a11_nayamu1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 26
 
 *e31_619
 d `Then she unceremoniously tossed it into a small vinyl bag she had in her larger tool bag.`[\]
 
-
 *e31_620
 d `Already stored in that vinyl bag were several bloodstained bullets......`[\]
-
+textoff2
 
 lss s0_9,"bea","a11_futeki2"
 spt_mem "a2","xpos",s0_9,0
@@ -5901,111 +5206,73 @@ flush 80
 msgwnd_bea
 *e31_621
 d [lv 0*"27"*"bea_05090"]`{qt}The deaths for the Fourth and Fifth Twilights can be taken care of with just a gun,`[@][lv 0*"27"*"bea_05100"]` but it gets more troublesome as the Twilights go on.`[@][lv 0*"27"*"bea_05110"]` Sooo... if the large Gohda isn't killed on the Fourth or Fifth Twilight it will lead to problems.{qt}`[\]
+textoff2
 
+csp_slot s0_1
+csp_slot s0_2
+csp_slot s0_3
+csp_slot s0_9
 
 seplay 11,20,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 25
 
 msgwnd_non
 *e31_622
 d `Then, taking the stake... she put the tip into the bloody, still-oozing hole in the calf.`[\]
 
-
 seplay 11,38,100
 
 *e31_623
 d `Using her body weight, she carefully pressed it deeper.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"mnat_2br"
-
 flush 22
 
 *e31_624
 d `When she let up, the stake was cleanly plunged into the calf.`[\]
 
-
 *e31_625
 d `She was still a bit worried that it might fall out before it's discovered, but it should still be enough to sustain the idea of sacrifices being gouged with stakes.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"bite"
-
 flush 22
 
 *e31_626
 d `And now Kumasawa, Gohda, and Genji have been killed.`[\]
-
+textoff2
 
 seplay 11,1010,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 23
 
 *e31_627
 d `As for Kanon, who will be the first discovered, he can't die yet because he still has work to do.`[\]
 
-
 *e31_628
 d `He will take his time drawing magic circles on the doors of all the crime scenes.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"cha_i1ed"
-
 flush 22
 
 *e31_629
 d `The chapel is far from the mansion, so it won't be searched first.`[\]
 
-
 *e31_630
 d `There are four scenes to find in the mansion, but they'll have to break a window to get in since they're all locked.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 *e31_631
 d `Other than the parlor, all the locations are on the second floor or higher, so it's nearly certain that the first scene they'll set foot in will be the parlor.`[\]
-
 
 lss s0_9,"kan","a12_nayamu1"
 spt_mem "a2","xpos",s0_9,0
@@ -6013,155 +5280,114 @@ flush 80
 
 *e31_632
 d `In the parlor, Kanon will be dead, and in his pocket a master key.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"letter1"
-
 flush 22
 
 *e31_633
 d `And in the room will also be a letter from the witch that includes the key to the next room.`[\]
 
-
 *e31_634
 d `The survivors will end up finding the corpses by following the dictated route.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:efe",s0_3,"map10"
-
 flush 22
 
 *e31_635
 d `Under the pretense of preserving the room to hand over to the police, the crime scenes will be protected from possible investigation.`[\]
-
+textoff2
 
 lss s0_8,"nat","a12_nayamu1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_9,"nan","a1_komaru3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"cla","a11_nayamu2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 *e31_636
 d `Natsuhi will restrain the children, and Doctor Nanjo and Krauss will be the only ones who go near the corpses.`[\]
 
-
 *e31_637
 d `Jessica might try to rush to Kanon's corpse, so she'll require special attention.`[\]
-
+textoff2
 
 seplay 11,1010,100
-
+vol_bgm -1,1000
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
+wait 1300
 bgmplay 124,70,0
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"m1f_s1cr"
-
 lss s0_9,"jes","a11_naki1"
-spt_mem "a2","xpos",s0_9,0
-flush 80
-
+spt_mem "a2","xpos",s0_9,300
 flush 22
 
 lss s0_9,"jes","a11_naku3"
-spt_mem "a2","xpos",s0_9,0
-flush 80
-
+spt_mem "a2","xpos",s0_9,300
 flush 80
 
 msgwnd_jes
 *e31_638
 d [lv 0*"04"*"jes_03570"]`{qt}Kanon-kun! Kanon-kun!!`[@][lv 0*"04"*"jes_03580"]` Uwaaaaaaaaaa!!{qt}`[\]
 
-
 lss s0_10,"nat","a12_ikari1"
-spt_mem "a2","xpos",s0_10,550
-flush 80
-
+spt_mem "a2","xpos",s0_10,750
 flush 23
 
 msgwnd_nat
 *e31_639
 d [lv 0*"03"*"nat_00520"]`{qt}Jessica! Calm down!!`[@][lv 0*"03"*"nat_00530"]` Don't look! Don't come in!!{qt}`[\]
 
-
-lss s0_8,"but","b11_naku2"
-spt_mem "a2","xpos",s0_8,-549
-flush 80
-
+lss s0_12,"but","b11_naku2"
+spt_mem "a2","xpos",s0_12,-700
 flush 23
 
 msgwnd_but
 *e31_640
 d [lv 0*"10"*"bat_05320"]`{qt}...Un... believable...`[@][lv 0*"10"*"bat_05330"]` Dammit......{qt}`[\]
 
-
-lss s0_9,"geo","a11k_ikari4k"
-spt_mem "a2","xpos",s0_9,0
-flush 80
-
+lss s0_11,"geo","a11k_ikari4k"
+spt_mem "a2","xpos",s0_11,-250
 flush 23
 
 msgwnd_geo
 *e31_641
 d [lv 0*"07"*"geo_00760"]`{qt}With this... The suspicion that the servants might be culprits has been cleared up.`[@][lv 0*"07"*"geo_00770"]`...Hasn't it, Aunt Natsuhi?{qt}`[\]
 
-
 msgwnd_non
 *e31_642
 d `George sent a cold glare at Natsuhi, who had suspected the servants and driven them from the guesthouse.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
+csp_slot s0_11
+csp_slot s0_12
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+lbg "a:backgrounds",s0_1,"m1f_s1ar_bg"
+lbg "a:backgrounds",s0_3,"m1f_s1ar"
 
-lbg "c:backgrounds",s0_3,"m1f_s1ar"
+rain_load s0_2
+rain_params s0_2,100,500,0
 
 lss s0_8,"nan","a1_komaru3"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_9,"cla","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_9,"cla","a11_nayamu2"
@@ -6172,7 +5398,6 @@ msgwnd_cla
 *e31_643
 d [lv 0*"02"*"kla_00860"]`{qt}How is it, Doctor Nanjo...?{qt}`[\]
 
-
 lss s0_8,"nan","a1_majime1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6180,47 +5405,38 @@ flush 80
 msgwnd_nan
 *e31_644
 d [lv 0*"19"*"nan_00150"]`{qt}...I can't tell the exact cause, but I can tell he's dead...`[@][lv 0*"19"*"nan_00160"]` One thing certain is that this isn't the fatal wound.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"m1f_s1dr"
-
 flush 22
 
 msgwnd_non
 *e31_645
 d `There was an awful wound on Kanon's knee, and a bloodied stake on the floor.`[\]
 
-
 *e31_646
 d `There's no doubt that the culprit pierced Kanon's knee.`[\]
 
-
 *e31_647
 d `But, it's hard to think that stabbing a knee would lead to death.`[@]`...He was probably killed another way, but Nanjo couldn't grasp what it was with a cursory examination.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"m1f_s1ar"
+lbg "a:backgrounds",s0_1,"m1f_s1ar_bg"
+lbg "a:backgrounds",s0_3,"m1f_s1ar"
+rain_load s0_2
+rain_params s0_2,100,500,0
 
 lss s0_9,"cla","a11_majime1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_cla
 *e31_648
 d [lv 0*"02"*"kla_00870"]`{qt}In any case, we should tread lightly at the crime scene, for the sake of the police.`[@][lv 0*"02"*"kla_00880"]` If we carelessly disturb it, it could hinder their investigation.{qt}`[\]
-
 
 lss s0_10,"nan","a1_komaru3"
 spt_mem "a2","xpos",s0_10,550
@@ -6229,8 +5445,10 @@ flush 80
 msgwnd_nan
 *e31_649
 d [lv 0*"19"*"nan_00170"]`{qt}...I agree.`[@][lv 0*"19"*"nan_00180"]` We should probably not do anything more in this room...`[@][lv 0*"19"*"nan_00190"]` More importantly, I'm concerned about the key to the VIP room that was inside the envelope.{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"cla","a11_nayamu2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6238,8 +5456,10 @@ flush 80
 msgwnd_cla
 *e31_650
 d [lv 0*"02"*"kla_00890"]`{qt}...I don't want to think about it... but the VIP room might also...{qt}`[\]
+textoff2
 
-
+csp_slot s0_10
+flush 80
 lss s0_9,"nan","a1_komaru3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6248,7 +5468,6 @@ msgwnd_nan
 *e31_651
 d [lv 0*"19"*"nan_00200"]`{qt}......`[@][lv 0*"19"*"nan_00210"]`......Let's go see.{qt}`[\]
 
-
 lss s0_8,"cla","a11_komaru2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6256,81 +5475,53 @@ flush 80
 msgwnd_cla
 *e31_652
 d [lv 0*"02"*"kla_00900"]`{qt}...What is all this...`[@][lv 0*"02"*"kla_00910"]` If we hadn't driven them from the guesthouse......{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"m1f_s1dr"
-
 flush 26
 
 msgwnd_non
 *e31_653
 d `Krauss hung his head and pulled at his hair.`[\]
 
-
 msgwnd_cla
 *e31_654
 d [lv 0*"02"*"kla_00920"]`{qt}Sorry, Kanon...`[@][lv 0*"02"*"kla_00930"]` for not being able to trust you and the others...`[@][lv 0*"02"*"kla_00940"]` To be unable to trust in my subordinates... I have no right to stand above other people.{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
-
 seplay 11,27,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 2
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_12
+rain_params s0_12,100,500,0
 lbg "c:backgrounds",s0_3,"m_o1ar"
-
+flush 22
+wait 2000
+csp_slot s0_3
+csp_slot s0_12
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
-flush 22
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"mhal_2ar"
-
+rain_load s0_2
+rain_params s0_2,100,500,0
+lbg "a:backgrounds",s0_1,"mhal_2ar_bg"
+lbg "a:backgrounds",s0_3,"mhal_2ar"
 lss s0_10,"mar","a22_defo1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_9,"jes","a11_naku2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_9,"jes","a11_odoroki1"
@@ -6341,7 +5532,6 @@ msgwnd_jes
 *e31_655
 d [lv 0*"04"*"jes_03590"]`{qt}Kanon-kun had a stake in... the knee...?{qt}`[\]
 
-
 lss s0_10,"mar","a11_akuwarai1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6350,7 +5540,6 @@ msgwnd_mar
 *e31_656
 d [lv 0*"13"*"mar_01020"]`{qt}Kihihihihihi.`[@][lv 0*"13"*"mar_01030"]` It's the seventh twilight.`[@][lv 0*"13"*"mar_01040"]` Gouge the knee and kill.{qt}`[\]
 
-
 lss s0_8,"geo","a11k_ikari2k"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6358,8 +5547,10 @@ flush 80
 msgwnd_geo
 *e31_657
 d [lv 0*"07"*"geo_00780"]`{qt}......Which means... what about the fourth, fifth, and sixth twilights?`[@][lv 0*"07"*"geo_00790"]`...Doesn't it mean that at least 3 other people have already been killed...?{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_9,"but","b11_aseru3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6368,7 +5559,6 @@ msgwnd_but
 *e31_658
 d [lv 0*"10"*"bat_05340"]`{qt}C-Calm down, George-aniki...`[@][lv 0*"10"*"bat_05350"]` We still don't know that for sure...{qt}`[\]
 
-
 lss s0_8,"geo","a11_ikari2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6376,8 +5566,10 @@ flush 80
 msgwnd_geo
 *e31_659
 d [lv 0*"07"*"geo_00800"]`{qt}Un, Uncle Krauss,`[@][lv 0*"07"*"geo_00810"]` let's hurry to the VIP room!{qt}`[\]
+textoff2
 
-
+csp_slot s0_10
+flush 80
 lss s0_10,"cla","a11_komaru4"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6385,25 +5577,21 @@ flush 80
 msgwnd_cla
 *e31_660
 d [lv 0*"02"*"kla_00950"]`{qt}R-Right.`[@][lv 0*"02"*"kla_00960"]` But just a minute.`[@][lv 0*"02"*"kla_00970"]` We can't leave the broken window this way.`[@][lv 0*"02"*"kla_00980"]` Let's close the shutter...{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"m2f_p1br"
+lbg "a:backgrounds",s0_1,"m2f_p1br_bg"
+lbg "a:backgrounds",s0_3,"m2f_p1br"
 
 lss s0_9,"jes","a11_naku3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 23
 
 msgwnd_jes
 *e31_661
 d [lv 0*"04"*"jes_03600"]`{qt}Kanon-kun... Kanon-kun...`[@][lv 0*"04"*"jes_03610"]`...Mom, can I at least... see his face one last time...?{qt}`[\]
-
 
 lss s0_10,"nat","a12_naku3"
 spt_mem "a2","xpos",s0_10,550
@@ -6413,7 +5601,6 @@ msgwnd_nat
 *e31_662
 d [lv 0*"03"*"nat_00540"]`{qt}I understand how you feel...`[@][lv 0*"03"*"nat_00550"]` but we won't disturb the crime scene any further.`[@][lv 0*"03"*"nat_00560"]`...We have to leave it as is to ensure they find the culprit.`[@][lv 0*"03"*"nat_00570"]` So from now on just hope...`[@][lv 0*"03"*"nat_00580"]` for his happiness in the next world...{qt}`[\]
 
-
 lss s0_9,"jes","a11_naki1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6421,30 +5608,23 @@ flush 80
 msgwnd_jes
 *e31_663
 d [lv 0*"04"*"jes_03620"]`{qt}Uuuuuuuuu...............{qt}`[\]
+textoff2
 
-
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 23
 
 msgwnd_non
 *e31_664
-d `And so they all head to the second floor's VIP room.`[@]`Then to Natsuhi's bedroom.`[@]`Then to the third floor's waiting room.`[\]
-
+d `And so they all head to the second floor's VIP room.`[@]` Then to Natsuhi's bedroom.`[@]` Then to the third floor's waiting room.`[\]
 
 lss s0_8,"kan","a12_defo2"
 spt_mem "a2","xpos",s0_8,-549
@@ -6453,26 +5633,18 @@ flush 80
 *e31_665
 d `Meanwhile, Kanon quietly sneaked out of the parlor.`[\]
 
-
 *e31_666
 d `He's got a master key, so he can just leave straight out the door and then lock it.`[\]
-
 
 *e31_667
 d `Kanon's even got two master keys, so he can leave one behind in the parlor.`[\]
 
-
 *e31_668
 d `Of course there is a concern that after the epitaph murders are complete, the crime scenes will all be investigated again.`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"chess1"
-
 flush 22
 
 seplay 11,1010,100
@@ -6480,25 +5652,19 @@ seplay 11,1010,100
 *e31_669
 d `For that situation, so that Kanon's missing corpse won't create an inconsistency, the culprit will have to perform some action that takes Kanon's corpse away.`[\]
 
-
 *e31_670
 d `Kanon's disappearing corpse can become the trigger for another mystery.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
 *e31_671
 d `Kanon headed towards the chapel, and met Shannon.`[\]
 
-
 *e31_672
 d `Then he gave his master key to Shannon.`[\]
-
+textoff2
 
 seplay 11,1010,100
 
@@ -6658,7 +5824,7 @@ csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
-;lbg "c:backgrounds",s0_3,"cha_i1dn"
+lbg "c:backgrounds",s0_3,"cha_i1dn"
 
 flush 22
 
@@ -6732,7 +5898,7 @@ csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
-;lbg "c:backgrounds",s0_3,"cha_i1en"
+lbg "c:backgrounds",s0_3,"cha_i1en"
 
 flush 26
 
@@ -6749,7 +5915,7 @@ csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
-;lbg "c:backgrounds",s0_3,"cha_i1dn"
+lbg "c:backgrounds",s0_3,"cha_i1dn"
 
 lss s0_10,"sha","a11_fuman1"
 spt_mem "a2","xpos",s0_10,550
@@ -6795,7 +5961,7 @@ csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
-;lbg "c:backgrounds",s0_3,"cha_i1en"
+lbg "c:backgrounds",s0_3,"cha_i1en"
 
 flush 22
 
@@ -7027,11 +6193,11 @@ csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
-;lbg "c:backgrounds",s0_3,"cha_i1en"
+lbg "c:backgrounds",s0_3,"cha_i1en"
 
 flush 6
 
-meplay 11,12,100
+meplay 1,12,100
 
 msgwnd_non
 *e31_720
@@ -7277,7 +6443,7 @@ csp_slot s0_10
 
 flush 22
 
-meplay 11,15,100
+meplay 1,15,100
 
 csp_slot s0_3
 csp_slot s0_8

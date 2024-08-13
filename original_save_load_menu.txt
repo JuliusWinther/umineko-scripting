@@ -1,0 +1,598 @@
+;************************************************************
+;Save screen
+;************************************************************
+*savemode
+	;Called on external enter. I expect save to be off here already though.
+	saveoff
+*savemode1
+	mov %Free21,on ;save
+	gosub *save_load_init
+	gosub *save_load_build
+
+*savemode_btn_loop
+
+	btnwait2 %BtnRes
+
+	if %BtnRes = 13 mov %savemodePage,%savemodePageNow : goto *loadmode1
+	
+	if %BtnRes = Page1  mov %savemodePage,1 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page2  mov %savemodePage,2 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page3  mov %savemodePage,3 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page4  mov %savemodePage,4 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page5  mov %savemodePage,5 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page6  mov %savemodePage,6 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page7  mov %savemodePage,7 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page8  mov %savemodePage,8 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page9  mov %savemodePage,9 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page10  mov %savemodePage,10 : seplay 9,1010,100 : goto *savemode1
+	
+	if %BtnRes = 1 goto *savemode_save
+	if %BtnRes = 2 goto *savemode_save
+	if %BtnRes = 3 goto *savemode_save
+	if %BtnRes = 4 goto *savemode_save
+
+	if %BtnRes = rmenu_btn_Exit : goto *save_exit
+	if %BtnRes = -1 goto *save_exit
+	if %BtnRes = -10 goto *save_exit
+
+	goto *savemode_btn_loop
+
+;***************************************************************
+;Loading screen
+;***************************************************************
+*loadmode
+	;Called on external enter. I expect save to be off here already though.
+	saveoff
+	if %load_for_title = 1 lsp 2,":c;graphics\colour\black.png",0,0 : print 10,500 : _csp 2
+
+*loadmode1
+	mov %Free21,off
+	gosub *save_load_init
+	gosub *save_load_build
+
+*loadmode_btn_loop
+
+	btnwait2 %BtnRes
+
+	if %BtnRes = Page1  mov %savemodePage,1 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page2  mov %savemodePage,2 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page3  mov %savemodePage,3 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page4  mov %savemodePage,4 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page5  mov %savemodePage,5 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page6  mov %savemodePage,6 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page7  mov %savemodePage,7 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page8  mov %savemodePage,8 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page9  mov %savemodePage,9 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page10  mov %savemodePage,10 : seplay 9,1010,100 : goto *loadmode1
+
+	if %BtnRes = 12 mov %savemodePage,%savemodePageNow : goto *savemode1
+
+	if %BtnRes = 1 goto *loadmode_load
+	if %BtnRes = 2 goto *loadmode_load
+	if %BtnRes = 3 goto *loadmode_load
+	if %BtnRes = 4 goto *loadmode_load
+
+	if %BtnRes = rmenu_btn_Exit : goto *save_exit
+	if %BtnRes = -1 goto *save_exit
+	if %BtnRes = -10 goto *save_exit
+
+	goto *loadmode_btn_loop
+
+; Common code
+
+*save_exit
+	gosub *save_load_cleanup
+
+	seplay 9,1005,100 : wait 50
+
+	;print 1
+	;texton
+	mov %load_for_title,0
+return
+
+*save_load_init
+	gosub *save_load_cleanup
+
+	mov %Free1,0
+	mov %Free2,0
+	mov %Free3,0
+	mov %Free4,0
+	mov %Free5,0
+	mov %Free6,0
+
+	mov %savescreenshotsp,31 ;Save screenshot sprite data
+	mov %saveTimesp,11
+	mov %saveTextsp,21
+
+	btndef ""
+
+	;Default to page 1
+	if %savemodePage = 0 mov %savemodePage,1
+	mov %savemodePageNow,%savemodePage
+
+	lsp 451,":c;graphics\colour\black.png",0,0,black_toukaritu
+	lsp saveload_caption,saveload_caption,20,0 ;new
+
+	;Display frame for save data
+	;x: x2+330, y: x2
+	mov %tmp,150
+	lsp 41,saveload_area,82,%tmp : add %tmp,200	;Frame a save area 1
+	lsp 42,saveload_area,82,%tmp : add %tmp,200	;Frame a save area 2
+	lsp 43,saveload_area,82,%tmp : add %tmp,200	;Frame a save area 3
+	lsp 44,saveload_area,82,%tmp				;Frame a save area 4
+		   
+	if %savemodePageNow = 1 lsp 5,":a;graphics\menu\save\saveload_area_n1.png",-18,0	;Frame a save n 1
+	if %savemodePageNow = 2 lsp 5,":a;graphics\menu\save\saveload_area_n2.png",-18,0	;Frame a save n 2
+	if %savemodePageNow = 3 lsp 5,":a;graphics\menu\save\saveload_area_n3.png",-18,0	;Frame a save n 3
+	if %savemodePageNow = 4 lsp 5,":a;graphics\menu\save\saveload_area_n4.png",-18,0	;Frame a save n 4
+	if %savemodePageNow = 5 lsp 5,":a;graphics\menu\save\saveload_area_n5.png",-18,0	;Frame a save n 5
+	if %savemodePageNow = 6 lsp 5,":a;graphics\menu\save\saveload_area_n6.png",-18,0	;Frame a save n 6
+	if %savemodePageNow = 7 lsp 5,":a;graphics\menu\save\saveload_area_n7.png",-18,0	;Frame a save n 7
+	if %savemodePageNow = 8 lsp 5,":a;graphics\menu\save\saveload_area_n8.png",-18,0	;Frame a save n 8
+	if %savemodePageNow = 9 lsp 5,":a;graphics\menu\save\saveload_area_n9.png",-18,0	;Frame a save n 9
+	if %savemodePageNow = 10 lsp 5,":a;graphics\menu\save\saveload_area_n10.png",-18,0	;Frame a save n 10
+
+	mov %tmp,150
+	lsp 25,":a/2,0,3;graphics\menu\save\saveload_area_black.png",82,%tmp,150 : add %tmp,200	;Frame a save select area 1
+	lsp 26,":a/2,0,3;graphics\menu\save\saveload_area_black.png",82,%tmp,150 : add %tmp,200	;Frame a save select area 2
+	lsp 27,":a/2,0,3;graphics\menu\save\saveload_area_black.png",82,%tmp,150 : add %tmp,200	;Frame a save select area 3
+	lsp 28,":a/2,0,3;graphics\menu\save\saveload_area_black.png",82,%tmp,150				;Frame a save select area 4
+return
+
+*save_load_chapter
+
+	mov $saveTextsp2,""
+
+	;if %CHIRU_MODE != 0 jumpf - ;Original Edited - saves unified - W_CUSTOM
+		;Episode 1
+		if $%Free5 = "1_op"		mov $saveTextsp2,save_1_op : return
+		if $%Free5 = "1_01"		mov $saveTextsp2,save_1_01 : return
+		if $%Free5 = "1_02"		mov $saveTextsp2,save_1_02 : return
+		if $%Free5 = "1_03"		mov $saveTextsp2,save_1_03 : return
+		if $%Free5 = "1_04"		mov $saveTextsp2,save_1_04 : return
+		if $%Free5 = "1_05"		mov $saveTextsp2,save_1_05 : return
+		if $%Free5 = "1_06"		mov $saveTextsp2,save_1_06 : return
+		if $%Free5 = "1_07"		mov $saveTextsp2,save_1_07 : return
+		if $%Free5 = "1_08"		mov $saveTextsp2,save_1_08 : return
+		if $%Free5 = "1_09"		mov $saveTextsp2,save_1_09 : return
+		if $%Free5 = "1_10"		mov $saveTextsp2,save_1_10 : return
+		if $%Free5 = "1_11"		mov $saveTextsp2,save_1_11 : return
+		if $%Free5 = "1_12"		mov $saveTextsp2,save_1_12 : return
+		if $%Free5 = "1_13"		mov $saveTextsp2,save_1_13 : return
+		if $%Free5 = "1_14"		mov $saveTextsp2,save_1_14 : return
+		if $%Free5 = "1_15"		mov $saveTextsp2,save_1_15 : return
+		if $%Free5 = "1_16"		mov $saveTextsp2,save_1_16 : return
+		if $%Free5 = "1_17"		mov $saveTextsp2,save_1_17 : return
+		if $%Free5 = "1_tea"	mov $saveTextsp2,save_1_tea : return
+		if $%Free5 = "1_ura"	mov $saveTextsp2,save_1_ura : return
+		
+		;Episode 2
+		if $%Free5 = "2_op"		mov $saveTextsp2,save_2_op : return
+		if $%Free5 = "2_01"		mov $saveTextsp2,save_2_01 : return
+		if $%Free5 = "2_02"		mov $saveTextsp2,save_2_02 : return
+		if $%Free5 = "2_03"		mov $saveTextsp2,save_2_03 : return
+		if $%Free5 = "2_04"		mov $saveTextsp2,save_2_04 : return
+		if $%Free5 = "2_05"		mov $saveTextsp2,save_2_05 : return
+		if $%Free5 = "2_06"		mov $saveTextsp2,save_2_06 : return
+		if $%Free5 = "2_07"		mov $saveTextsp2,save_2_07 : return
+		if $%Free5 = "2_08"		mov $saveTextsp2,save_2_08 : return
+		if $%Free5 = "2_09"		mov $saveTextsp2,save_2_09 : return
+		if $%Free5 = "2_10"		mov $saveTextsp2,save_2_10 : return
+		if $%Free5 = "2_11"		mov $saveTextsp2,save_2_11 : return
+		if $%Free5 = "2_12"		mov $saveTextsp2,save_2_12 : return
+		if $%Free5 = "2_13"		mov $saveTextsp2,save_2_13 : return
+		if $%Free5 = "2_14"		mov $saveTextsp2,save_2_14 : return
+		if $%Free5 = "2_15"		mov $saveTextsp2,save_2_15 : return
+		if $%Free5 = "2_16"		mov $saveTextsp2,save_2_16 : return
+		if $%Free5 = "2_17"		mov $saveTextsp2,save_2_17 : return
+		if $%Free5 = "2_18"		mov $saveTextsp2,save_2_18 : return
+		if $%Free5 = "2_tea"	mov $saveTextsp2,save_2_tea : return
+		if $%Free5 = "2_ura"	mov $saveTextsp2,save_2_ura : return
+		
+		;Episode 3
+		if $%Free5 = "3_op"		mov $saveTextsp2,save_3_op : return
+		if $%Free5 = "3_01"		mov $saveTextsp2,save_3_01 : return
+		if $%Free5 = "3_02"		mov $saveTextsp2,save_3_02 : return
+		if $%Free5 = "3_03"		mov $saveTextsp2,save_3_03 : return
+		if $%Free5 = "3_04"		mov $saveTextsp2,save_3_04 : return
+		if $%Free5 = "3_05"		mov $saveTextsp2,save_3_05 : return
+		if $%Free5 = "3_06"		mov $saveTextsp2,save_3_06 : return
+		if $%Free5 = "3_07"		mov $saveTextsp2,save_3_07 : return
+		if $%Free5 = "3_08"		mov $saveTextsp2,save_3_08 : return
+		if $%Free5 = "3_09"		mov $saveTextsp2,save_3_09 : return
+		if $%Free5 = "3_10"		mov $saveTextsp2,save_3_10 : return
+		if $%Free5 = "3_11"		mov $saveTextsp2,save_3_11 : return
+		if $%Free5 = "3_12"		mov $saveTextsp2,save_3_12 : return
+		if $%Free5 = "3_13"		mov $saveTextsp2,save_3_13 : return
+		if $%Free5 = "3_14"		mov $saveTextsp2,save_3_14 : return
+		if $%Free5 = "3_15"		mov $saveTextsp2,save_3_15 : return
+		if $%Free5 = "3_16"		mov $saveTextsp2,save_3_16 : return
+		if $%Free5 = "3_17"		mov $saveTextsp2,save_3_17 : return
+		if $%Free5 = "3_18"		mov $saveTextsp2,save_3_18 : return
+		if $%Free5 = "3_tea"	mov $saveTextsp2,save_3_tea : return
+		if $%Free5 = "3_ura"	mov $saveTextsp2,save_3_ura : return
+		
+		;Episode 4
+		if $%Free5 = "4_op"		mov $saveTextsp2,save_4_op : return
+		if $%Free5 = "4_01"		mov $saveTextsp2,save_4_01 : return
+		if $%Free5 = "4_02"		mov $saveTextsp2,save_4_02 : return
+		if $%Free5 = "4_03"		mov $saveTextsp2,save_4_03 : return
+		if $%Free5 = "4_04"		mov $saveTextsp2,save_4_04 : return
+		if $%Free5 = "4_05"		mov $saveTextsp2,save_4_05 : return
+		if $%Free5 = "4_06"		mov $saveTextsp2,save_4_06 : return
+		if $%Free5 = "4_07"		mov $saveTextsp2,save_4_07 : return
+		if $%Free5 = "4_08"		mov $saveTextsp2,save_4_08 : return
+		if $%Free5 = "4_09"		mov $saveTextsp2,save_4_09 : return
+		if $%Free5 = "4_10"		mov $saveTextsp2,save_4_10 : return
+		if $%Free5 = "4_11"		mov $saveTextsp2,save_4_11 : return
+		if $%Free5 = "4_12"		mov $saveTextsp2,save_4_12 : return
+		if $%Free5 = "4_13"		mov $saveTextsp2,save_4_13 : return
+		if $%Free5 = "4_14"		mov $saveTextsp2,save_4_14 : return
+		if $%Free5 = "4_15"		mov $saveTextsp2,save_4_15 : return
+		if $%Free5 = "4_16"		mov $saveTextsp2,save_4_16 : return
+		if $%Free5 = "4_17"		mov $saveTextsp2,save_4_17 : return
+		if $%Free5 = "4_18"		mov $saveTextsp2,save_4_18 : return
+		if $%Free5 = "4_19"		mov $saveTextsp2,save_4_19 : return
+		if $%Free5 = "4_tea"	mov $saveTextsp2,save_4_tea : return
+		if $%Free5 = "4_ura"	mov $saveTextsp2,save_4_ura : return
+	;~
+
+
+	;if %CHIRU_MODE != 1 jumpf - ;Original Edited - saves unified - W_CUSTOM
+		;Episode 5
+		if $%Free5 = "5_op"		mov $saveTextsp2,save_5_op : return
+		if $%Free5 = "5_01"		mov $saveTextsp2,save_5_01 : return
+		if $%Free5 = "5_02"		mov $saveTextsp2,save_5_02 : return
+		if $%Free5 = "5_03"		mov $saveTextsp2,save_5_03 : return
+		if $%Free5 = "5_04"		mov $saveTextsp2,save_5_04 : return
+		if $%Free5 = "5_05"		mov $saveTextsp2,save_5_05 : return
+		if $%Free5 = "5_06"		mov $saveTextsp2,save_5_06 : return
+		if $%Free5 = "5_07"		mov $saveTextsp2,save_5_07 : return
+		if $%Free5 = "5_08"		mov $saveTextsp2,save_5_08 : return
+		if $%Free5 = "5_09"		mov $saveTextsp2,save_5_09 : return
+		if $%Free5 = "5_10"		mov $saveTextsp2,save_5_10 : return
+		if $%Free5 = "5_11"		mov $saveTextsp2,save_5_11 : return
+		if $%Free5 = "5_12"		mov $saveTextsp2,save_5_12 : return
+		if $%Free5 = "5_13"		mov $saveTextsp2,save_5_13 : return
+		if $%Free5 = "5_14"		mov $saveTextsp2,save_5_14 : return
+		if $%Free5 = "5_15"		mov $saveTextsp2,save_5_15 : return
+		if $%Free5 = "5_tea"	mov $saveTextsp2,save_5_tea : return
+		if $%Free5 = "5_ura"	mov $saveTextsp2,save_5_ura : return
+		
+		;Episode 6
+		if $%Free5 = "6_op"		mov $saveTextsp2,save_6_op : return
+		if $%Free5 = "6_01"		mov $saveTextsp2,save_6_01 : return
+		if $%Free5 = "6_02"		mov $saveTextsp2,save_6_02 : return
+		if $%Free5 = "6_03"		mov $saveTextsp2,save_6_03 : return
+		if $%Free5 = "6_04"		mov $saveTextsp2,save_6_04 : return
+		if $%Free5 = "6_05"		mov $saveTextsp2,save_6_05 : return
+		if $%Free5 = "6_06"		mov $saveTextsp2,save_6_06 : return
+		if $%Free5 = "6_07"		mov $saveTextsp2,save_6_07 : return
+		if $%Free5 = "6_08"		mov $saveTextsp2,save_6_08 : return
+		if $%Free5 = "6_09"		mov $saveTextsp2,save_6_09 : return
+		if $%Free5 = "6_10"		mov $saveTextsp2,save_6_10 : return
+		if $%Free5 = "6_11"		mov $saveTextsp2,save_6_11 : return
+		if $%Free5 = "6_12"		mov $saveTextsp2,save_6_12 : return
+		if $%Free5 = "6_13"		mov $saveTextsp2,save_6_13 : return
+		if $%Free5 = "6_14"		mov $saveTextsp2,save_6_14 : return
+		if $%Free5 = "6_15"		mov $saveTextsp2,save_6_15 : return
+		if $%Free5 = "6_16"		mov $saveTextsp2,save_6_16 : return
+		if $%Free5 = "6_17"		mov $saveTextsp2,save_6_17 : return
+		if $%Free5 = "6_18"		mov $saveTextsp2,save_6_18 : return
+		if $%Free5 = "6_tea"	mov $saveTextsp2,save_6_tea : return
+		if $%Free5 = "6_ura"	mov $saveTextsp2,save_6_ura : return
+		
+		;Episode 7
+		if $%Free5 = "7_op"		mov $saveTextsp2,save_7_op : return
+		if $%Free5 = "7_01"		mov $saveTextsp2,save_7_01 : return
+		if $%Free5 = "7_02"		mov $saveTextsp2,save_7_02 : return
+		if $%Free5 = "7_03"		mov $saveTextsp2,save_7_03 : return
+		if $%Free5 = "7_04"		mov $saveTextsp2,save_7_04 : return
+		if $%Free5 = "7_05"		mov $saveTextsp2,save_7_05 : return
+		if $%Free5 = "7_06"		mov $saveTextsp2,save_7_06 : return
+		if $%Free5 = "7_07"		mov $saveTextsp2,save_7_07 : return
+		if $%Free5 = "7_08"		mov $saveTextsp2,save_7_08 : return
+		if $%Free5 = "7_09"		mov $saveTextsp2,save_7_09 : return
+		if $%Free5 = "7_10"		mov $saveTextsp2,save_7_10 : return
+		if $%Free5 = "7_11"		mov $saveTextsp2,save_7_11 : return
+		if $%Free5 = "7_12"		mov $saveTextsp2,save_7_12 : return
+		if $%Free5 = "7_13"		mov $saveTextsp2,save_7_13 : return
+		if $%Free5 = "7_14"		mov $saveTextsp2,save_7_14 : return
+		if $%Free5 = "7_15"		mov $saveTextsp2,save_7_15 : return
+		if $%Free5 = "7_16"		mov $saveTextsp2,save_7_16 : return
+		if $%Free5 = "7_17"		mov $saveTextsp2,save_7_17 : return
+		if $%Free5 = "7_18"		mov $saveTextsp2,save_7_18 : return
+		if $%Free5 = "7_tea"	mov $saveTextsp2,save_7_tea : return
+		if $%Free5 = "7_ura"	mov $saveTextsp2,save_7_ura : return
+		
+		;Episode 8
+		if $%Free5 = "8_op"		mov $saveTextsp2,save_8_op : return
+		if $%Free5 = "8_01"		mov $saveTextsp2,save_8_01 : return
+		if $%Free5 = "8_02"		mov $saveTextsp2,save_8_02 : return
+		if $%Free5 = "8_03"		mov $saveTextsp2,save_8_03 : return
+		if $%Free5 = "8_04"		mov $saveTextsp2,save_8_04 : return
+		if $%Free5 = "8_05"		mov $saveTextsp2,save_8_05 : return
+		if $%Free5 = "8_06"		mov $saveTextsp2,save_8_06 : return
+		if $%Free5 = "8_07"		mov $saveTextsp2,save_8_07 : return
+		if $%Free5 = "8_08"		mov $saveTextsp2,save_8_08 : return
+		if $%Free5 = "8_09"		mov $saveTextsp2,save_8_09 : return
+		if $%Free5 = "8_10"		mov $saveTextsp2,save_8_10 : return
+		if $%Free5 = "8_11"		mov $saveTextsp2,save_8_11 : return
+		if $%Free5 = "8_12"		mov $saveTextsp2,save_8_12 : return
+		if $%Free5 = "8_13"		mov $saveTextsp2,save_8_13 : return
+		if $%Free5 = "8_14"		mov $saveTextsp2,save_8_14 : return
+		if $%Free5 = "8_15"		mov $saveTextsp2,save_8_15 : return
+		if $%Free5 = "8_16"		mov $saveTextsp2,save_8_16 : return
+		if $%Free5 = "8_tea"	mov $saveTextsp2,save_8_tea : return
+		if $%Free5 = "8_ura"	mov $saveTextsp2,save_8_ura : return
+	;~
+return
+
+*save_load_build
+	
+	;Obtain (first) save index
+	mov %Free3,%savemodePageNow
+	mul %Free3,4
+	sub %Free3,4
+	inc %Free3
+
+	mov %Free1,savedataflg
+	add %Free1,%Free3				;save state
+
+	mov %savedataTime,savedataTime
+	add %savedataTime,%Free3		;save time
+
+	mov %Free5,savedataComment
+	add %Free5,%Free3				;save comment
+
+	;For screenshot index
+	;if %CHIRU_MODE = 1 add %Free3,100 - ;Original Edited - saves unified - W_CUSTOM
+
+	mov %savescreenshotsp,31   ;Save screenshot sprite data
+	mov %saveTimesp,11
+	mov %saveTextsp,21
+
+	mov %x,94  ;screenshot
+	mov %y,163 ;screenshot
+
+	mov %x2,1545 ;time
+	mov %y2,165  ;time
+
+	mov %x3,427 ;comment
+	mov %y3,220 ;comment
+
+	btndef ""
+
+	for %Free2 = 1 to 4
+
+		;get the xy axis
+		;Fixes last offset?
+		if %y > 800 mov %y,100 : mov %x,1192 : mov %y2,222 : mov %y3,160 : mov %x2,1192 : mov %x3,1352
+
+		;Save present
+		if %%Free1 = 0 jumpf
+
+			;Screenshot of the save data
+			mov $Free1,":c;screenshot\ss"
+			itoa $Free2,%Free3
+			add $Free1,$Free2
+			add $Free1,".bmp"
+			lsp %savescreenshotsp,$Free1,%x,%y
+
+			border_pad_push 3
+
+			;Date and time of the save data
+			mov $saveTimesp2,":s;#FFFFFF`{p:31:" + $%savedataTime + "}"
+			lsp %saveTimesp,$saveTimesp2,%x2,%y2
+
+			;Comment of the save data
+			gosub *save_load_chapter
+			lsp %saveTextsp,$saveTextsp2,%x3,%y3
+
+			border_pad_pop
+
+			;Skip if saving (marks present saves clickable)
+			if %Free21 == on jumpf
+			if %Free2 = 1 spbtn 41,%Free2 : spbtn 25,%Free2
+			if %Free2 = 2 spbtn 42,%Free2 : spbtn 26,%Free2
+			if %Free2 = 3 spbtn 43,%Free2 : spbtn 27,%Free2
+			if %Free2 = 4 spbtn 44,%Free2 : spbtn 28,%Free2
+		~
+
+		inc %Free1 				;state
+		inc %Free3 				;screenshot index
+		inc %savescreenshotsp	;screenshot sprite
+		inc %savedataTime 		;time
+		inc %saveTimesp			;time sprite
+		inc %Free5 				;comment
+		inc %saveTextsp			;comment sprite
+
+		add %y,200 		;down for screenshot
+		add %y2,200 	;down for time
+		add %y3,200 	;down for comment
+	next
+
+	;Define buttons
+
+	;Skip if loading
+	if %Free21 == off jumpf
+		spbtn 41,1	;save area 1
+		spbtn 42,2	;save area 2
+		spbtn 43,3	;save area 3
+		spbtn 44,4	;save area 4
+		spbtn 25,1
+		spbtn 26,2
+		spbtn 27,3
+		spbtn 28,4
+	~
+
+	lsp Page_line_down,":a;graphics\menu\save\saveload_line_down.png",0,900
+	lsp Page_line_up,":a;graphics\menu\save\saveload_line_up.png",0,0
+
+	if %Free21 == on gosub *savemode_buttons
+	if %Free21 == off gosub *loadmode_buttons
+
+	lsp saveload_Exit_button,set_exit,0,0
+	align_buttons_r saveload_Exit_button,saveload_Load_button,Save
+	
+	if %load_for_title = 0 spbtn Save,12
+	spbtn saveload_Load_button,13
+	spbtn saveload_Exit_button,rmenu_btn_Exit
+
+	mov %tmp1,82 : mov %tmp2,100
+	lsp Page1,":a/2,0,3;graphics\menu\save\saveload_area_n1_button.png",%tmp1,980 : add %tmp1,%tmp2
+	lsp Page2,":a/2,0,3;graphics\menu\save\saveload_area_n2_button.png",%tmp1,980 : add %tmp1,%tmp2
+	lsp Page3,":a/2,0,3;graphics\menu\save\saveload_area_n3_button.png",%tmp1,980 : add %tmp1,%tmp2
+	lsp Page4,":a/2,0,3;graphics\menu\save\saveload_area_n4_button.png",%tmp1,980 : add %tmp1,%tmp2
+	lsp Page5,":a/2,0,3;graphics\menu\save\saveload_area_n5_button.png",%tmp1,980 : add %tmp1,%tmp2
+	lsp Page6,":a/2,0,3;graphics\menu\save\saveload_area_n6_button.png",%tmp1,980 : add %tmp1,%tmp2
+	lsp Page7,":a/2,0,3;graphics\menu\save\saveload_area_n7_button.png",%tmp1,980 : add %tmp1,%tmp2
+	lsp Page8,":a/2,0,3;graphics\menu\save\saveload_area_n8_button.png",%tmp1,980 : add %tmp1,%tmp2
+	lsp Page9,":a/2,0,3;graphics\menu\save\saveload_area_n9_button.png",%tmp1,980 : add %tmp1,%tmp2
+	lsp Page10,":a/2,0,3;graphics\menu\save\saveload_area_n10_button.png",%tmp1,980 : add %tmp1,%tmp2
+
+	if %savemodePageNow = 1 lsp Page1,":a/2,0,3;graphics\menu\save\saveload_area_n1_button_b.png",140-58,980
+	if %savemodePageNow = 2 lsp Page2,":a/2,0,3;graphics\menu\save\saveload_area_n2_button_b.png",240-58,980
+	if %savemodePageNow = 3 lsp Page3,":a/2,0,3;graphics\menu\save\saveload_area_n3_button_b.png",340-58,980
+	if %savemodePageNow = 4 lsp Page4,":a/2,0,3;graphics\menu\save\saveload_area_n4_button_b.png",440-58,980
+	if %savemodePageNow = 5 lsp Page5,":a/2,0,3;graphics\menu\save\saveload_area_n5_button_b.png",540-58,980
+	if %savemodePageNow = 6 lsp Page6,":a/2,0,3;graphics\menu\save\saveload_area_n6_button_b.png",640-58,980
+	if %savemodePageNow = 7 lsp Page7,":a/2,0,3;graphics\menu\save\saveload_area_n7_button_b.png",740-58,980
+	if %savemodePageNow = 8 lsp Page8,":a/2,0,3;graphics\menu\save\saveload_area_n8_button_b.png",840-58,980
+	if %savemodePageNow = 9 lsp Page9,":a/2,0,3;graphics\menu\save\saveload_area_n9_button_b.png",940-58,980
+	if %savemodePageNow = 10 lsp Page10,":a/2,0,3;graphics\menu\save\saveload_area_n10_button_b.png",1040-58,980
+
+	spbtn Page1,Page1
+	spbtn Page2,Page2
+	spbtn Page3,Page3
+	spbtn Page4,Page4
+	spbtn Page5,Page5
+	spbtn Page6,Page6
+	spbtn Page7,Page7
+	spbtn Page8,Page8
+	spbtn Page9,Page9
+	spbtn Page10,Page10
+
+	print 10,200
+return
+
+*save_load_cleanup
+
+	_csp 2,100
+	_csp Page1,Page10
+	_csp Page_line_down
+	_csp Page_line_up
+	_csp saveload_Load_button
+	_csp saveload_Exit_button
+	_csp Save
+	_csp rmenu_btn_Exit
+	_csp 451
+	_csp r_black_lsp
+
+	;checkme from savemode
+	_csp 302
+	_csp 303
+
+return
+
+*save_load_index
+	mov %savedataNowNum,%savemodePageNow
+	mul %savedataNowNum,4
+	sub %savedataNowNum,4
+	add %savedataNowNum,%BtnRes
+
+	;Real save index
+	mov %Free1,%savedataNowNum
+	;if %CHIRU_MODE = 1 add %Free1,100 - ;Original Edited - saves unified - W_CUSTOM
+return
+
+*savemode_buttons
+		lsp Save,save_btn_b,0,0
+		lsp saveload_Load_button,load_btn,0,0
+return
+
+*loadmode_buttons
+		if %load_for_title = 0 lsp Save,save_btn,0,0
+		lsp saveload_Load_button,load_btn_b,0,0
+return
+
+
+;Actual save code
+*savemode_save
+	gosub *save_load_index
+	
+	mov %savedataflg,savedataflg
+	add %savedataflg,%savedataNowNum
+	mov %%savedataflg,1
+
+	mov $Free1,"screenshot\ss"
+	itoa $Free2,%Free1
+	add $Free1,$Free2
+	add $Free1,".bmp"
+	savescreenshot2 $Free1
+
+	time %Hour,%Minute
+	date %Year,%Month,%Day
+
+	;Add Day
+	mov $SaveTime,"`"
+	if %Day < 10 add $SaveTime,"0" : itoa $Free1,%Day : add $SaveTime,$Free1 : add $SaveTime,"/"
+	if %Day >= 10 itoa $Free1,%Day : add $SaveTime,$Free1 : add $SaveTime,"/"
+	;Add Month
+	if %Month < 10 add $SaveTime,"0" : itoa $Free1,%Month : add $SaveTime,$Free1 : add $SaveTime,"/"
+	if %Month >= 10 itoa $Free1,%Month : add $SaveTime,$Free1 : add $SaveTime,"/"
+	;Add Year
+	add $SaveTime,"20" : itoa $Free1,%Year : add $SaveTime,$Free1 : add $SaveTime," "
+	;Add Hour
+	if %Hour < 10 add $SaveTime,"0" : itoa $Free1,%Hour : add $SaveTime,$Free1 : add $SaveTime,":"
+	if %Hour >= 10 itoa $Free1,%Hour : add $SaveTime,$Free1 : add $SaveTime,":"
+	;Add Minute
+	if %Minute < 10 add $SaveTime,"0" : itoa $Free1,%Minute : add $SaveTime,$Free1
+	if %Minute >= 10 itoa $Free1,%Minute : add $SaveTime,$Free1
+	add $SaveTime,"`"
+
+	mov %Free2,savedataTime
+	add %Free2,%savedataNowNum
+	mov $%Free2,$SaveTime
+
+	;Save chapter title
+	mov %Free2,savedataComment+%savedataNowNum
+	mov $Free2,$name_chapter_save
+	mov $%Free2,$Free2
+
+	;Save game
+	savegame %Free1
+	seplay 9,1030,100
+
+	goto *savemode1
+
+
+*loadmode_load
+	gosub *save_load_index
+
+	notif %load_for_title = 0 jumpf
+		E_A
+		seplay 9,1022,100
+		lsp 2,ware,0,0
+		print 1
+		delay 1000
+		lsp 2,":c;graphics\colour\black.png",0,0
+		print 22
+		delay 2000
+	~
+
+	gosub *save_load_cleanup
+
+	btndef ""
+
+	notif %load_for_title = 1 jumpf
+		E_A
+		seplay 9,17,100
+		bg white,10
+		delay 3000
+	~
+
+	mov %load_for_title,0
+	loadgame %Free1
+
+	goto *loadmode1

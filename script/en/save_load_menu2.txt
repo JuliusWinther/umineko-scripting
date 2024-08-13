@@ -1,0 +1,360 @@
+;************************************************************
+;Save screen
+;************************************************************
+*savemode
+	;Called on external enter. I expect save to be off here already though.
+	saveoff
+*savemode1
+	mov %Free21,on ;save
+	gosub *save_load_init
+	gosub *save_load_build
+
+*savemode_btn_loop
+
+	btnwait2 %BtnRes
+
+	if %BtnRes = 13 mov %savemodePage,%savemodePageNow : goto *loadmode1
+	
+	if %BtnRes = Page1  mov %savemodePage,1 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page2  mov %savemodePage,2 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page3  mov %savemodePage,3 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page4  mov %savemodePage,4 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page5  mov %savemodePage,5 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page6  mov %savemodePage,6 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page7  mov %savemodePage,7 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page8  mov %savemodePage,8 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page9  mov %savemodePage,9 : seplay 9,1010,100 : goto *savemode1
+    if %BtnRes = Page10  mov %savemodePage,10 : seplay 9,1010,100 : goto *savemode1
+	
+	if %BtnRes = 1 goto *savemode_save
+	if %BtnRes = 2 goto *savemode_save
+	if %BtnRes = 3 goto *savemode_save
+	if %BtnRes = 4 goto *savemode_save
+
+	if %BtnRes = rmenu_btn_Exit : goto *save_exit
+	if %BtnRes = -1 goto *save_exit
+	if %BtnRes = -10 goto *save_exit
+
+	goto *savemode_btn_loop
+
+;***************************************************************
+;Loading screen
+;***************************************************************
+*loadmode
+	;Called on external enter. I expect save to be off here already though.
+	saveoff
+	if %load_for_title = 1 lsp 2,":c;graphics\colour\black.png",0,0 : print 10,500 : _csp 2
+
+*loadmode1
+	mov %Free21,off
+	gosub *save_load_init
+	gosub *save_load_build
+
+*loadmode_btn_loop
+
+	btnwait2 %BtnRes
+
+	if %BtnRes = Page1  mov %savemodePage,1 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page2  mov %savemodePage,2 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page3  mov %savemodePage,3 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page4  mov %savemodePage,4 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page5  mov %savemodePage,5 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page6  mov %savemodePage,6 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page7  mov %savemodePage,7 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page8  mov %savemodePage,8 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page9  mov %savemodePage,9 : seplay 9,1010,100 : goto *loadmode1
+	if %BtnRes = Page10  mov %savemodePage,10 : seplay 9,1010,100 : goto *loadmode1
+
+	if %BtnRes = 12 mov %savemodePage,%savemodePageNow : goto *savemode1
+
+	if %BtnRes = 1 goto *loadmode_load
+	if %BtnRes = 2 goto *loadmode_load
+	if %BtnRes = 3 goto *loadmode_load
+	if %BtnRes = 4 goto *loadmode_load
+
+	if %BtnRes = rmenu_btn_Exit : goto *save_exit
+	if %BtnRes = -1 goto *save_exit
+	if %BtnRes = -10 goto *save_exit
+
+	goto *loadmode_btn_loop
+
+; Common code
+
+*save_exit
+	gosub *save_load_cleanup
+
+	seplay 9,1005,100 : wait 50
+
+	;print 1
+	;texton
+	mov %load_for_title,0
+return
+
+*save_load_init
+	gosub *save_load_cleanup
+
+	mov %Free1,0
+	mov %Free2,0
+	mov %Free3,0
+	mov %Free4,0
+	mov %Free5,0
+	mov %Free6,0
+
+	mov %savescreenshotsp,31 ;Save screenshot sprite data
+	mov %saveTimesp,11
+	mov %saveTextsp,21
+
+	btndef ""
+
+	;Default to page 1
+	if %savemodePage = 0 mov %savemodePage,1
+	mov %savemodePageNow,%savemodePage
+
+	_csp t_logo_lsp
+	_csp t_btn_start_lsp
+	_csp t_btn_ep1_lsp : _csp t_btn_ep2_lsp : _csp t_btn_ep3_lsp : _csp t_btn_ep4_lsp : _csp t_btn_ep5_8_lsp
+	_csp t_btn_ep2_unlock_lsp : _csp t_btn_ep3_unlock_lsp : _csp t_btn_ep4_unlock_lsp : _csp t_btn_ep5_8_unlock_lsp 
+	_csp t_btn_load_lsp
+    _csp t_txt_ep1_lsp
+    _csp t_txt_ep2_lsp
+    _csp t_txt_ep3_lsp
+    _csp t_txt_ep4_lsp
+    _csp t_txt_ep5_lsp
+    _csp t_txt_ep6_lsp
+    _csp t_txt_ep7_lsp
+    _csp t_txt_ep8_lsp
+    _csp t_txt_load_lsp
+    _csp t_txt_lock_lsp
+    _csp t_txt_unlock_lsp
+    _csp t_txt_ep1_4_lsp
+    _csp t_txt_ep5_8_lsp
+	_csp t_txt_bg_lsp
+
+	lsp 451,":c;graphics\menu\save\save_load_menu_bg.png"
+	write_special_text 105,"config_title",0,15," " + "Episode 1 Saves" + " {n}"
+
+
+	mov %tmp,150
+	lsp 41,saveload_area,169,%tmp : add %tmp,173+5	
+
+
+*save_load_build
+	
+	;Obtain (first) save index
+	mov %Free3,%savemodePageNow
+	mul %Free3,4
+	sub %Free3,4
+	inc %Free3
+
+	mov %Free1,savedataflg
+	add %Free1,%Free3				;save state
+
+	mov %savedataTime,savedataTime
+	add %savedataTime,%Free3		;save time
+
+	mov %Free5,savedataComment
+	add %Free5,%Free3				;save comment
+
+	;For screenshot index
+	;if %CHIRU_MODE = 1 add %Free3,100 - ;Original Edited - saves unified - W_CUSTOM
+
+	mov %savescreenshotsp,31   ;Save screenshot sprite data
+	mov %saveTimesp,11
+	mov %saveTextsp,21
+
+	mov %x,175+142  ;screenshot
+	mov %y,157+79 ;screenshot
+
+	mov %x2,1475 ;time
+	mov %y2,165  ;time
+
+	mov %x3,470 ;comment
+	mov %y3,160 ;comment
+
+	btndef ""
+
+		if %%Free1 = 0 jumpf
+
+			;Screenshot of the save data
+			mov $Free1,":c;screenshot\ss"
+			itoa $Free2,%Free3
+			add $Free1,$Free2
+			add $Free1,".bmp"
+			lsp2 %savescreenshotsp,$Free1,%x,%y,91,91
+
+			border_pad_push 3
+
+			;Date and time of the save data
+			mov $saveTimesp2,":s;#FFFFFF`{p:31:" + $%savedataTime + "}"
+			lsp %saveTimesp,$saveTimesp2,%x2,%y2
+
+			;Comment of the save data
+			gosub *save_load_chapter
+			lsp %saveTextsp,$saveTextsp2,%x3,%y3
+
+			border_pad_pop
+
+			;Skip if saving (marks present saves clickable)
+			if %Free21 == on jumpf
+			if %Free2 = 1 spbtn 41,%Free2 : spbtn 25,%Free2
+			if %Free2 = 2 spbtn 42,%Free2 : spbtn 26,%Free2
+			if %Free2 = 3 spbtn 43,%Free2 : spbtn 27,%Free2
+			if %Free2 = 4 spbtn 44,%Free2 : spbtn 28,%Free2
+		~
+
+	inc %Free1 				;state
+	inc %Free3 				;screenshot index
+	inc %savescreenshotsp	;screenshot sprite
+	inc %savedataTime 		;time
+	inc %saveTimesp			;time sprite
+	inc %Free5 				;comment
+	inc %saveTextsp			;comment sprite
+
+	mov %tmp1,82 : mov %tmp2,100
+	lsp2 Page1,char_change_ep_btn,90-20,240,120,120 : write_special_text gen_txt_2,"save_ep_btn",90-5-20+3,240+17,"1"
+	lsp2 Page2,char_change_ep_btn,90-20,240+80,120,120 : write_special_text gen_txt_3,"save_ep_btn",90-5-20+3,240+17+80,"2"
+	lsp2 Page3,char_change_ep_btn,90-20,240+80*2,120,120 : write_special_text gen_txt_4,"save_ep_btn",90-5-20+3,240+17+80*2,"3"
+	lsp2 Page4,char_change_ep_btn,90-20,240+80*3,120,120 : write_special_text gen_txt_5,"save_ep_btn",90-5-20+3,240+17+80*3,"4"
+	lsp2 Page5,char_change_ep_btn,90-20,240+80*4,120,120 : write_special_text gen_txt_6,"save_ep_btn",90-5-20+3,240+17+80*4,"5"
+	lsp2 Page6,char_change_ep_btn,90-20,240+80*5,120,120 : write_special_text gen_txt_7,"save_ep_btn",90-5-20+3,240+17+80*5,"6"
+	lsp2 Page7,char_change_ep_btn,90-20,240+80*6,120,120 : write_special_text gen_txt_8,"save_ep_btn",90-5-20+3,240+17+80*6,"7"
+	lsp2 Page8,char_change_ep_btn,90-20,240+80*7,120,120 : write_special_text gen_txt_9,"save_ep_btn",90-5-20+3,240+17+80*7,"8"
+	lsp2 Page10,char_change_ep_btn,90-20,240+80*8,120,120 : write_special_text gen_txt_10,"save_ep_btn",90-5-20+3,240+17+80*8,"E"
+	
+	;if %savemodePageNow = 1 lsp2 Page1,char_change_ep_btn_clicked,82+120,980+45,120,120 : write_special_text gen_txt_2,"save_ep_btn",82+120-5,984+45+13,"1","disabled"
+	if %savemodePageNow = 1 lsp2 Page1,char_change_ep_btn_clicked,90-20,240,120,120 : write_special_text gen_txt_2,"save_ep_btn",90-5-20+3,240+17,"1","disabled"
+
+	spbtn Page1,Page1
+	spbtn Page2,Page2
+	spbtn Page3,Page3
+	spbtn Page4,Page4
+	spbtn Page5,Page5
+	spbtn Page6,Page6
+	spbtn Page7,Page7
+	spbtn Page8,Page8
+	;spbtn Page9,Page9
+	spbtn Page10,Page10
+
+	print 10,200
+return
+
+*save_load_cleanup
+
+	_csp 2,100
+	_csp Page1,Page10
+	_csp Page_line_down
+	_csp Page_line_up
+	_csp saveload_Load_button
+	_csp saveload_Exit_button
+	_csp Save
+	_csp rmenu_btn_Exit
+	_csp 451
+	_csp r_black_lsp
+
+	;checkme from savemode
+	_csp 302
+	_csp 303
+
+return
+
+*save_load_index
+	mov %savedataNowNum,%savemodePageNow
+	mul %savedataNowNum,4
+	sub %savedataNowNum,4
+	add %savedataNowNum,%BtnRes
+
+	;Real save index
+	mov %Free1,%savedataNowNum
+	;if %CHIRU_MODE = 1 add %Free1,100 - ;Original Edited - saves unified - W_CUSTOM
+return
+
+;*savemode_buttons
+;		lsp Save,save_btn_b,0,0
+;		lsp saveload_Load_button,load_btn,0,0
+;return
+;
+;*loadmode_buttons
+;		if %load_for_title = 0 lsp Save,save_btn,0,0
+;		lsp saveload_Load_button,load_btn_b,0,0
+;return
+
+
+;Actual save code
+*savemode_save
+	gosub *save_load_index
+	
+	mov %savedataflg,savedataflg
+	add %savedataflg,%savedataNowNum
+	mov %%savedataflg,1
+
+	mov $Free1,"screenshot\ss"
+	itoa $Free2,%Free1
+	add $Free1,$Free2
+	add $Free1,".bmp"
+	savescreenshot2 $Free1
+
+	time %Hour,%Minute
+	date %Year,%Month,%Day
+
+	;Add Day
+	mov $SaveTime,"`"
+	if %Day < 10 add $SaveTime,"0" : itoa $Free1,%Day : add $SaveTime,$Free1 : add $SaveTime,"/"
+	if %Day >= 10 itoa $Free1,%Day : add $SaveTime,$Free1 : add $SaveTime,"/"
+	;Add Month
+	if %Month < 10 add $SaveTime,"0" : itoa $Free1,%Month : add $SaveTime,$Free1 : add $SaveTime,"/"
+	if %Month >= 10 itoa $Free1,%Month : add $SaveTime,$Free1 : add $SaveTime,"/"
+	;Add Year
+	add $SaveTime,"20" : itoa $Free1,%Year : add $SaveTime,$Free1 : add $SaveTime," "
+	;Add Hour
+	if %Hour < 10 add $SaveTime,"0" : itoa $Free1,%Hour : add $SaveTime,$Free1 : add $SaveTime,":"
+	if %Hour >= 10 itoa $Free1,%Hour : add $SaveTime,$Free1 : add $SaveTime,":"
+	;Add Minute
+	if %Minute < 10 add $SaveTime,"0" : itoa $Free1,%Minute : add $SaveTime,$Free1
+	if %Minute >= 10 itoa $Free1,%Minute : add $SaveTime,$Free1
+	add $SaveTime,"`"
+
+	mov %Free2,savedataTime
+	add %Free2,%savedataNowNum
+	mov $%Free2,$SaveTime
+
+	;Save chapter title
+	mov %Free2,savedataComment+%savedataNowNum
+	mov $Free2,$name_chapter_save
+	mov $%Free2,$Free2
+
+	;Save game
+	savegame %Free1
+	seplay 9,1030,100
+
+	goto *savemode1
+
+
+*loadmode_load
+	gosub *save_load_index
+
+	notif %load_for_title = 0 jumpf
+		E_A
+		seplay 9,1022,100
+		lsp 2,ware,0,0
+		print 1
+		delay 1000
+		lsp 2,":c;graphics\colour\black.png",0,0
+		print 22
+		delay 2000
+	~
+
+	gosub *save_load_cleanup
+
+	btndef ""
+
+	notif %load_for_title = 1 jumpf
+		E_A
+		seplay 9,17,100
+		bg white,10
+		delay 3000
+	~
+
+	mov %load_for_title,0
+	loadgame %Free1
+
+	goto *loadmode1

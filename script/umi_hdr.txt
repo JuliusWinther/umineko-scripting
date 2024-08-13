@@ -1571,6 +1571,7 @@ numalias cfg_bg_movement,2912		;Global Variable = Saved
 numalias cfg_rm_sex_content_index,2913	;Global Variable = Saved
 numalias skip_unread,8085	;Global Variable = Saved
 numalias hide_textbox,8086	;Global Variable = Saved
+numalias last_save,2914 ;Global Variable = Saved
 
 numalias cfg_mouse_y,9574
 numalias is_log_param,9575 ;W_TEMP
@@ -1618,6 +1619,9 @@ numalias char_selector_ep_change,10632
 numalias choice_extra,10633
 numalias outfit_change_p_lsp,10634
 numalias outfit_selector,10635
+
+numalias save_index,10636
+numalias first_save_opening,10638
 
 numalias outfits,11500 : dim ?outfits[70][6][6] ;a lot of slots
 
@@ -1687,7 +1691,9 @@ preset_define 41,1,-1,#FFAA00,0,0,0,1,-1,#000000,0,-1,-1,#000000,1,-1 ;Gold text
 preset_define 42,1,-1,#AA71FF,0,0,0,1,-1,#000000,0,-1,-1,#000000,1,-1 ;Purple text
 ;MENU PRESETS
 ;Texts
-preset_define 3,1,40,#FFFFFF,0,0,0,1,8,#000000,0,0,0,#000000,2,40,725 ;Menu chars text
+;preset_define 3,1,40,#FFFFFF,0,0,0,1,0,#000000,0,0,0,#000000,2,40,725 ;Menu chars text - initial
+;preset_define 3,10,30,#FFFFFF,0,0,0,1,6,#000000,0,0,0,#000000,2,40,725 ;Menu chars text - test
+preset_define 3,1,36,#FFFFFF,0,0,0,1,6,#000000,0,0,0,#000000,2,40,725 ;Menu chars text
 preset_define 4,6,30,#FFFFFF,0,0,0,1,8,#000000,0,0,0,#000000,2,40 ;Menu chars/tips/notes text jp
 preset_define 5,1,40,#FFFFFF,0,0,0,1,8,#000000,0,0,0,#000000,2,20,830 ;Menu tips/notes text
 preset_define 13,2,55,#FFFFFF,1,0,0,1,10,#000000,0,0,0,#000000,3,80 ;Menu tips/notes titles
@@ -1941,6 +1947,8 @@ mov $r_cha_back,blank ;Pre-initialize family tree to transparent
 mov %char_save_scenario_Num,1
 ;End Custom
 
+debug_var last_save
+
 ;Outfits
 ;Family
 mov $?outfits[jes][0][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\jessica_school.png"
@@ -1972,8 +1980,6 @@ mov $?outfits[ev2][0][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\ou
 ;Ange
 mov $?outfits[enj][0][0],":a;graphics\big_chars\"+$sprite_folder_name+"\outfits\ange_school.png"
 mov $?outfits[enj][0][1],":c/1,0,3;graphics\big_chars\"+$sprite_folder_name+"\outfits\ange_school_p.png"
-
-
 
 if %firstsetting = 0 goto *first_setting
 gosub *load_font_preference

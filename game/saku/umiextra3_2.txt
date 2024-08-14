@@ -1,6 +1,9 @@
-;*umiextra1_2
+*umiextra2_11
 log_reset
-;new_extra_episode 24
+mov $name_chapter_r_click,r_click_extra3_2
+mov $name_chapter_r_click_l2,r_click_extra3_2_l2
+mov $name_chapter_r_click_l3,r_click_extra3_2_l3
+new_extra_episode 32
 textoff2
 ;START
 
@@ -12,7 +15,7 @@ csp_slot s0_10
 
 flush 2
 
-meplay 11,15,100
+meplay 1,15,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -70,7 +73,7 @@ flush 80
 
 msgwnd_but
 *e32_4
-d [lv 0*"10"*"bat_05400"]`{qt}I have no idea what you mean by 'these' snacks.`[@][lv 0*"10"*"bat_05410"]`...   .I've been eating and drinking for a while, but I still can't figure out what this taste is.{qt}`[\]
+d [lv 0*"10"*"bat_05400"]`{qt}I have no idea what you mean by 'these' snacks.`[@][lv 0*"10"*"bat_05410"]`....I've been eating and drinking for a while, but I still can't figure out what this taste is.{qt}`[\]
 
 
 lss s0_8,"bea","a11_1_warai1"
@@ -119,7 +122,7 @@ flush 80
 
 msgwnd_bea
 *e32_8
-d2 [lv 0*"27"*"bea_06050"]`{qt}Don't leave our tea ceremony!!!{qt}[#][*]`[\]
+d2 [lv 0*"27"*"bea_06050"]`{qt}Don't leave our tea ceremony!!!{qt}`[#][*][\]
 
 wait_on_d 0
 
@@ -255,7 +258,7 @@ flush 80
 
 msgwnd_but
 *e32_19
-d [lv 0*"10"*"bat_05460"]`{qt}L I S
+d [lv 0*"10"*"bat_05460"]`{qt}L I S `[@]` I      A`[@]` K     I`[@]` E    D...!`[\]
 
 lss s0_9,"but","b25_sakebu1"
 spt_mem "a2","xpos",s0_9,0
@@ -266,7 +269,7 @@ flush 1
 seplay 11,2,100
 
 *e32_20
-d [lv 0*"10"*"bat_05470"]`@z150.{qt}Don't fight over me!!!{qt}`[\]
+d [lv 0*"10"*"bat_05470"]`{qt}Don't fight over me!!!{qt}`[\]
 
 
 csp_slot s0_3
@@ -472,11 +475,11 @@ flush 80
 
 flush 22
 
-meplay 11,15,100
+meplay 1,15,100
 
 msgwnd_but
 *e32_39
-d [lv 0*"10"*"bat_05500"]`{qt}......Beato, Ange,`[@][lv 0*"10"*"bat_05510"]`...   ...when did we start drinking tea here?{qt}`[\]
+d [lv 0*"10"*"bat_05500"]`{qt}......Beato, Ange,`[@][lv 0*"10"*"bat_05510"]`......when did we start drinking tea here?{qt}`[\]
 
 
 lss s0_8,"bea","a11_fuman1"
@@ -485,7 +488,7 @@ flush 80
 
 msgwnd_bea
 *e32_40
-d [lv 0*"27"*"bea_06230"]`{qt}Fuu.`[@][lv 0*"27"*"bea_06240"]` You finally noticed.`[@][lv 0*"27"*"bea_06250"]`...   ...I have no memory of gathering here to start this tea party.{qt}`[\]
+d [lv 0*"27"*"bea_06230"]`{qt}Fuu.`[@][lv 0*"27"*"bea_06240"]` You finally noticed.`[@][lv 0*"27"*"bea_06250"]`......I have no memory of gathering here to start this tea party.{qt}`[\]
 
 
 lss s0_9,"enj","a11_fuman2"
@@ -494,7 +497,7 @@ flush 80
 
 msgwnd_enj
 *e32_41
-d [lv 0*"11"*"enj_00580"]`{qt}I see. Same here.`[@][lv 0*"11"*"enj_00590"]`...   ...When a witch summons you, this is what it always feels like...`[|][lv 0*"11"*"enj_00600"]` You never remember how or when you came here...{qt}`[\]
+d [lv 0*"11"*"enj_00580"]`{qt}I see. Same here.`[@][lv 0*"11"*"enj_00590"]`......When a witch summons you, this is what it always feels like...`[|][lv 0*"11"*"enj_00600"]` You never remember how or when you came here...{qt}`[\]
 
 
 csp_slot s0_3
@@ -537,7 +540,7 @@ flush 80
 
 msgwnd_enj
 *e32_44
-d [lv 0*"11"*"enj_00610"]`{qt}It can't be...`[@][lv 0*"11"*"enj_00620"]` did they call us here just to watch me and Beato fight over Onii-chan......?`[@][lv 0*"11"*"enj_00630"]` It has to be BERNKASTEL.`[@][lv 0*"11"*"enj_00640"]` Is she unveiling a new Fragment?{qt}`[\]
+d [lv 0*"11"*"enj_00610"]`{qt}It can't be...`[@][lv 0*"11"*"enj_00620"]` did they call us here just to watch me and Beato fight over Onii-chan......?`[@][lv 0*"11"*"enj_00630"]` It has to be {f:5:Bernkastel}.`[@][lv 0*"11"*"enj_00640"]` Is she unveiling a new Fragment?{qt}`[\]
 
 
 csp_slot s0_3
@@ -614,7 +617,7 @@ flush 80
 
 msgwnd_enj
 *e32_48
-d [lv 0*"11"*"enj_00650"]`{qt}That's not BERNKASTEL...{qt}`[\]
+d [lv 0*"11"*"enj_00650"]`{qt}That's not {f:5:Bernkastel}...{qt}`[\]
 
 
 lss s0_9,"but","b11_majime7"
@@ -627,7 +630,7 @@ flush 80
 
 msgwnd_bea
 *e32_49
-d [lv 0*"27"*"bea_06290"]`{qt}Introduce yourself, guest.`[@][lv 0*"27"*"bea_06300"]`...   ...I may not know who the game master is, but I am the owner of this tearoom.`[@][lv 0*"27"*"bea_06310"]` You have the duty of introducing yourself before me.{qt}`[\]
+d [lv 0*"27"*"bea_06290"]`{qt}Introduce yourself, guest.`[@][lv 0*"27"*"bea_06300"]`......I may not know who the game master is, but I am the owner of this tearoom.`[@][lv 0*"27"*"bea_06310"]` You have the duty of introducing yourself before me.{qt}`[\]
 
 
 csp_slot s0_3
@@ -641,7 +644,7 @@ flush 22
 
 msgwnd_pie
 *e32_50
-d [lv 0*"65"*"pie_00010"]`{qt}I apologize for the rudeness,`[@][lv 0*"65"*"pie_00020"]` Lady BEATRICE,`[@][lv 0*"65"*"pie_00030"]` Witch of the Gold.{qt}`[\]
+d [lv 0*"65"*"pie_00010"]`{qt}I apologize for the rudeness,`[@][lv 0*"65"*"pie_00020"]` Lady {f:5:Beatrice},`[@][lv 0*"65"*"pie_00030"]` Witch of the Gold.{qt}`[\]
 
 
 csp_slot s0_3
@@ -654,7 +657,7 @@ lbg "c:backgrounds",s0_3,"new_evcg04_1"
 flush 22
 
 *e32_51
-d [lv 0*"65"*"pie_00040"]`{qt}My name is @bPIECE.@<ピース@>.`[@][lv 0*"65"*"pie_00050"]`...   ...Witch of the Piece, as my Master has commanded me to call myself.{qt}`[\]
+d [lv 0*"65"*"pie_00040"]`{qt}My name is {p:0:{ruby:{f:5:Piece}:ピース}}.`[@][lv 0*"65"*"pie_00050"]`......Witch of the Piece, as my Master has commanded me to call myself.{qt}`[\]
 
 
 msgwnd_enj
@@ -691,7 +694,7 @@ flush 80
 
 msgwnd_pie
 *e32_55
-d [lv 0*"65"*"pie_00060"]`{qt}Indeed.`[@][lv 0*"65"*"pie_00070"]` By order of my Master, I have been sent to this game board to challenge it.`[@][lv 0*"65"*"pie_00080"]`...   ...That is, as an assassin...`[@][lv 0*"65"*"pie_00090"]` of you all.{qt}`[\]
+d [lv 0*"65"*"pie_00060"]`{qt}Indeed.`[@][lv 0*"65"*"pie_00070"]` By order of my Master, I have been sent to this game board to challenge it.`[@][lv 0*"65"*"pie_00080"]`......That is, as an assassin...`[@][lv 0*"65"*"pie_00090"]` of you all.{qt}`[\]
 
 
 lss s0_9,"but","b11_niramu2"
@@ -749,7 +752,7 @@ flush 80
 
 msgwnd_pie
 *e32_60
-d [lv 0*"65"*"pie_00100"]`{qt}My Master ordered me to fight you three.`[@][lv 0*"65"*"pie_00110"]`...   *giggle*.{qt}`[\]
+d [lv 0*"65"*"pie_00100"]`{qt}My Master ordered me to fight you three.`[@][lv 0*"65"*"pie_00110"]`...*giggle*.{qt}`[\]
 
 
 csp_slot s0_3
@@ -840,7 +843,7 @@ flush 80
 
 msgwnd_pie
 *e32_66
-d [lv 0*"65"*"pie_00130"]`{qt}Thank you, Lady BEATRICE.`[@][lv 0*"65"*"pie_00140"]` With that, let me unveil my Master's Fragment...{qt}`[\]
+d [lv 0*"65"*"pie_00130"]`{qt}Thank you, Lady {f:5:Beatrice}.`[@][lv 0*"65"*"pie_00140"]` With that, let me unveil my Master's Fragment...{qt}`[\]
 
 
 csp_slot s0_3
@@ -906,7 +909,7 @@ flush 80
 
 msgwnd_pie
 *e32_70
-d [lv 0*"65"*"pie_00150"]`{qt}With all due respect,`[@][lv 0*"65"*"pie_00160"]`...   my Master is not Lady BERNKASTEL.{qt}`[\]
+d [lv 0*"65"*"pie_00150"]`{qt}With all due respect,`[@][lv 0*"65"*"pie_00160"]`...my Master is not Lady {f:5:Bernkastel}.{qt}`[\]
 
 
 lss s0_8,"but","b11_majime3"
@@ -924,7 +927,7 @@ flush 80
 
 msgwnd_pie
 *e32_72
-d [lv 0*"65"*"pie_00170"]`{qt}May I humbly state that`[|][lv 0*"65"*"pie_00180"]` this Fragment was created by the majestic Witch of Theatergoing, Drama and Spectating, FEATHERINE AUGUSTUS AURORA.{qt}`[\]
+d [lv 0*"65"*"pie_00170"]`{qt}May I humbly state that`[|][lv 0*"65"*"pie_00180"]` this Fragment was created by the majestic Witch of Theatergoing, Drama and Spectating, {f:5:Featherine Augustus Aurora}.{qt}`[\]
 
 
 lss s0_10,"pie","a11_10"
@@ -970,7 +973,7 @@ lbg "c:backgrounds",s0_3,"new_evcg04_4"
 flush 22
 
 *e32_75
-d2 [lv 0*"65"*"pie_00230"]`{qt}Now piece, let me begin my rampage,[#][*]piece,[#][*]piece.{qt}[#][*]`[\]
+d2 [lv 0*"65"*"pie_00230"]`{qt}Now piece, let me begin my rampage,`[#][*]`piece,`[#][*]`piece.{qt}`[#][*][\]
 
 wait_on_d 0
 
@@ -1008,7 +1011,7 @@ lbg "c:backgrounds",s0_3,"new_evcg04_a"
 flush 1
 
 *e32_76
-d2 [lv 0*"65"*"pie_00240"]`{qt}Hhehehehe,[#][*]hihihihihi!{qt}`[\]
+d2 [lv 0*"65"*"pie_00240"]`{qt}Hhehehehe,`[#][*]`hihihihihi!{qt}`[\]
 
 wait_on_d 0
 
@@ -1117,7 +1120,7 @@ flush 80
 
 msgwnd_pie
 *e32_84
-d [lv 0*"65"*"pie_00260"]`{qt}It is exactly that, piece.`[@][lv 0*"65"*"pie_00270"]` With honor and respect to Lady BEATRICE's story, I shall ask that same question, piece.{qt}`[\]
+d [lv 0*"65"*"pie_00260"]`{qt}It is exactly that, piece.`[@][lv 0*"65"*"pie_00270"]` With honor and respect to Lady {f:5:Beatrice}'s story, I shall ask that same question, piece.{qt}`[\]
 
 
 csp_slot s0_3
@@ -1216,7 +1219,7 @@ seplay 11,11,100
 
 msgwnd_pie
 *e32_90
-d2 [lv 0*"65"*"pie_00290"]`{qt}Shut up, piece![#][*]`[@][lv 0*"65"*"pie_00300"]` I like to piece[#][*]talk like this, piece[#][*]piece[#][*]piece piiece!!{qt}[#][*]`[\]
+d2 [lv 0*"65"*"pie_00290"]`{qt}Shut up, piece!`[#][*][@][lv 0*"65"*"pie_00300"]` I like to piece`[#][*]`talk like this, piece`[#][*]`piece`[#][*]`piece piiece!!{qt}`[#][*][\]
 
 wait_on_d 0
 
@@ -1318,11 +1321,11 @@ lss s0_8,"pie","b11_14"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
-meplay 11,17,100
+meplay 1,17,100
 
-meplay 11,14,100
+meplay 1,14,100
 
-meplay 11,13,100
+meplay 1,13,100
 
 seplay 11,1022,100
 
@@ -1342,7 +1345,7 @@ csp_slot s0_10
 
 flush 2
 
-meplay 11,13,100
+meplay 1,13,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -1525,7 +1528,7 @@ flush 80
 flush 22
 
 *e32_102
-d2 `The second son's family.`[@]`Rudolf, Kyrie and Battler.`[@]`[#][*]And also, Ange.`[\]
+d2 `The second son's family.`[@]`Rudolf, Kyrie and Battler.`[@][#][*]`And also, Ange.`[\]
 
 wait_on_d 0
 
@@ -1630,7 +1633,7 @@ flush 80
 
 msgwnd_bea
 *e32_107
-d [lv 0*"27"*"bea_06510"]`{qt}Is that so?`[@][lv 0*"27"*"bea_06520_"]` Ange didn't fall ill with stomach pain, so she was able to attend the family conference in 1986.{qt}`[\]
+d [lv 0*"27"*"bea_06510"]`{qt}Is that so?`[@][lv 0*"27"*"bea_06520"]` Ange didn't fall ill with stomach pain, so she was able to attend the family conference in 1986.{qt}`[\]
 
 
 lss s0_10,"but","b11_nayamu2_san"
@@ -1655,7 +1658,7 @@ seplay 11,56,100
 
 flush 8
 
-meplay 11,13,100
+meplay 1,13,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -1779,7 +1782,7 @@ flush 1
 
 msgwnd_pie
 *e32_120
-d [lv 0*"65"*"pie_00380"]`{qt}Did you think it was the perverted detective who washed ashore here?!`[@][lv 0*"65"*"pie_00390"]` Too bad!`[@][lv 0*"65"*"pie_00400"]` It's the witch beauty PIECE-chan, piece!!{qt}`[\]
+d [lv 0*"65"*"pie_00380"]`{qt}Did you think it was the perverted detective who washed ashore here?!`[@][lv 0*"65"*"pie_00390"]` Too bad!`[@][lv 0*"65"*"pie_00400"]` It's the witch beauty {f:5:Piece}-chan, piece!!{qt}`[\]
 
 
 msgwnd_non
@@ -1882,7 +1885,7 @@ d `Static electricity sparked, and she drew her hand back...`[\]
 
 
 *e32_134
-d `PIECE once again stretched out her hand.`[\]
+d `{f:5:Piece} once again stretched out her hand.`[\]
 
 
 seplay 11,87,100
@@ -1912,7 +1915,7 @@ flush 24
 
 msgwnd_pie
 *e32_136
-d [lv 0*"65"*"pie_00460"]`{qt}This... is brazen.`[@][lv 0*"65"*"pie_00470"]` It's a barrier.`[@][lv 0*"65"*"pie_00480"]`...   I see.`[@][lv 0*"65"*"pie_00490"]` As one might expect from Kinzo, the Ushiromiya family magician.`[@][lv 0*"65"*"pie_00500"]` An uninvited guest cannot simply cross over the threshold, right, piece?`[@][lv 0*"65"*"pie_00510"]` *giggle*{qt}`[\]
+d [lv 0*"65"*"pie_00460"]`{qt}This... is brazen.`[@][lv 0*"65"*"pie_00470"]` It's a barrier.`[@][lv 0*"65"*"pie_00480"]`...I see.`[@][lv 0*"65"*"pie_00490"]` As one might expect from Kinzo, the Ushiromiya family magician.`[@][lv 0*"65"*"pie_00500"]` An uninvited guest cannot simply cross over the threshold, right, piece?`[@][lv 0*"65"*"pie_00510"]` *giggle*{qt}`[\]
 
 
 csp_slot s0_3
@@ -1931,7 +1934,7 @@ d `Laughing indulgently, she tried to open the door several times, but couldn't.
 d `It seemed to be a particularly strong barrier.`[@]`At the very least, it looked like the witch of pieces couldn't break it...`[\]
 
 
-meplay 11,13,100
+meplay 1,13,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -1943,7 +1946,7 @@ lbg "c:backgrounds",s0_3,"sky_3a"
 flush 4
 
 *e32_139
-d `PIECE, while pretending to gracefully shelter from the rain under the eaves of the entrance vestibule for the time being,`[@]`thought about what to do next with an impish smile on her face...`[\]
+d `{f:5:Piece}, while pretending to gracefully shelter from the rain under the eaves of the entrance vestibule for the time being,`[@]`thought about what to do next with an impish smile on her face...`[\]
 
 
 csp_slot s0_3
@@ -1976,7 +1979,7 @@ flush 80
 
 msgwnd_sha
 *e32_140
-d [lv 0*"15"*"sha_00990"]`{qt}I apologize for the impoliteness, BEATRICE-sama...{qt}`[\]
+d [lv 0*"15"*"sha_00990"]`{qt}I apologize for the impoliteness, {f:5:Beatrice}-sama...{qt}`[\]
 
 
 lss s0_9,"bea","a11_nayamu1"
@@ -2032,7 +2035,7 @@ flush 80
 
 msgwnd_sha
 *e32_144
-d [lv 0*"15"*"sha_01000"]`{qt}Thank you.`[@][lv 0*"15"*"sha_01010"]`...   The barrier tonight is something that can only be broken by a member of the Ushiromiya family.{qt}`[\]
+d [lv 0*"15"*"sha_01000"]`{qt}Thank you.`[@][lv 0*"15"*"sha_01010"]`...The barrier tonight is something that can only be broken by a member of the Ushiromiya family.{qt}`[\]
 
 
 lss s0_10,"kan","a12_defo2"
@@ -2050,7 +2053,7 @@ flush 80
 
 msgwnd_bea
 *e32_146
-d [lv 0*"27"*"bea_06610"]`{qt}Don't get so jumpy.`[@][lv 0*"27"*"bea_06620"]` Shannon's barrier is strong.`[@][lv 0*"27"*"bea_06630"]` You can relax and have fun.`[@][lv 0*"27"*"bea_06640"]`...   If there is a monster out there that can breach the barrier,`[@][lv 0*"27"*"bea_06650"]` I'll gladly become its opponent.`[@][lv 0*"27"*"bea_06660"]` I won't let you become its prey.`[@][lv 0*"27"*"bea_06670"]` *cackle*{qt}`[\]
+d [lv 0*"27"*"bea_06610"]`{qt}Don't get so jumpy.`[@][lv 0*"27"*"bea_06620"]` Shannon's barrier is strong.`[@][lv 0*"27"*"bea_06630"]` You can relax and have fun.`[@][lv 0*"27"*"bea_06640"]`...If there is a monster out there that can breach the barrier,`[@][lv 0*"27"*"bea_06650"]` I'll gladly become its opponent.`[@][lv 0*"27"*"bea_06660"]` I won't let you become its prey.`[@][lv 0*"27"*"bea_06670"]` *cackle*{qt}`[\]
 
 
 csp_slot s0_3
@@ -2128,7 +2131,7 @@ csp_slot s0_10
 
 flush 4
 
-meplay 11,12,100
+meplay 1,12,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -2245,7 +2248,7 @@ flush 80
 
 msgwnd_enj
 *e32_160
-d [lv 0*"11"*"enj_00840"]`{qt}So once the victim is out of the mansion, PIECE will be lying in wait?`[@][lv 0*"11"*"enj_00850"]`...   Or there might be some trick we don't understand yet.{qt}`[\]
+d [lv 0*"11"*"enj_00840"]`{qt}So once the victim is out of the mansion, {f:5:Piece} will be lying in wait?`[@][lv 0*"11"*"enj_00850"]`...Or there might be some trick we don't understand yet.{qt}`[\]
 
 
 lss s0_9,"bea","a11_fukigen2"
@@ -2254,7 +2257,7 @@ flush 80
 
 msgwnd_bea
 *e32_161
-d [lv 0*"27"*"bea_06710"]`{qt}I see.`[@][lv 0*"27"*"bea_06720"]`...   If Rudolf and Kyrie are attacked by somebody suspicious like you said, we wouldn't be able to accept that without question.{qt}`[\]
+d [lv 0*"27"*"bea_06710"]`{qt}I see.`[@][lv 0*"27"*"bea_06720"]`...If Rudolf and Kyrie are attacked by somebody suspicious like you said, we wouldn't be able to accept that without question.{qt}`[\]
 
 
 lss s0_8,"but","b11_niramu2"
@@ -2263,7 +2266,7 @@ flush 80
 
 msgwnd_but
 *e32_162
-d [lv 0*"10"*"bat_05780"]`{qt}Either way, it seems the first victims are my old man and Kyrie.`[@][lv 0*"10"*"bat_05790"]`...   Let's see what kind of tasteless ways they'll use to kill us.{qt}`[\]
+d [lv 0*"10"*"bat_05780"]`{qt}Either way, it seems the first victims are my old man and Kyrie.`[@][lv 0*"10"*"bat_05790"]`...Let's see what kind of tasteless ways they'll use to kill us.{qt}`[\]
 
 
 lss s0_10,"enj","a11_fuman2"
@@ -2294,7 +2297,7 @@ flush 80
 
 msgwnd_bea
 *e32_167
-d [lv 0*"27"*"bea_06730"]`{qt}PIECE.`[@][lv 0*"27"*"bea_06740"]` You're most likely just a performer, and not the forgery author of this grotesque show....`[@][lv 0*"27"*"bea_06750"]` but if this is just a tacky grotesque drama...{qt}`[\]
+d [lv 0*"27"*"bea_06730"]`{qt}{f:5:Piece}.`[@][lv 0*"27"*"bea_06740"]` You're most likely just a performer, and not the forgery author of this grotesque show....`[@][lv 0*"27"*"bea_06750"]` but if this is just a tacky grotesque drama...{qt}`[\]
 
 
 csp_slot s0_3
@@ -2321,7 +2324,7 @@ flush 80
 
 msgwnd_bea
 *e32_169
-d [lv 0*"27"*"bea_06760"]`{qt}It follows you guys' preferred style.`[@][lv 0*"27"*"bea_06770"]`...   .Cut open the belly, and drag out the guts...{qt}`[\]
+d [lv 0*"27"*"bea_06760"]`{qt}It follows you guys' preferred style.`[@][lv 0*"27"*"bea_06770"]`....Cut open the belly, and drag out the guts...{qt}`[\]
 
 
 lss s0_8,"pie","a11_13"
@@ -2342,7 +2345,7 @@ csp_slot s0_10
 
 lbg "c:colour",s0_3,"black"
 
-meplay 11,13,100
+meplay 1,13,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -2445,7 +2448,7 @@ flush 80
 
 msgwnd_pie
 *e32_179
-d [lv 0*"65"*"pie_00560"]`{qt}I was surprised to see a couple so excited on such a stormy night.`[@][lv 0*"65"*"pie_00570"]` I'll kill them in a hockey mask first, piece♪{qt}`[\]
+d [lv 0*"65"*"pie_00560"]`{qt}I was surprised to see a couple so excited on such a stormy night.`[@][lv 0*"65"*"pie_00570"]` I'll kill them in a hockey mask first, piece{p:0:♪}{qt}`[\]
 
 
 csp_slot s0_3
@@ -2710,7 +2713,7 @@ flush 4
 
 msgwnd_kir
 *e32_202
-d2 [lv 0*"09"*"kir_00500"]`{qt}Kyaa[#][*]...aaaaa *glub*[#][*]...this[#][*].......{qt}`[\]
+d2 [lv 0*"09"*"kir_00500"]`{qt}Kyaa`[#][*]`...aaaaa *glub*`[#][*]`...this`[#][*]`.......{qt}`[\]
 
 wait_on_d 0
 
@@ -2752,12 +2755,12 @@ d `She was drowning.`[\]
 
 
 *e32_205
-d `Kyrie had been swallowed by the sea of PIECE's hair and was drowning...`[\]
+d `Kyrie had been swallowed by the sea of {f:5:Piece}'s hair and was drowning...`[\]
 
 
 msgwnd_kir
 *e32_206
-d2 [lv 0*"09"*"kir_00510"]`{qt}...H......elp....[#][*]......Ru... dolf....!!{qt}[#][*]`[\]
+d2 [lv 0*"09"*"kir_00510"]`{qt}...H......elp....`[#][*]`......Ru... dolf....!!{qt}`[#][*][\]
 
 wait_on_d 0
 
@@ -2870,7 +2873,7 @@ seplay 11,13,100
 
 msgwnd_kir
 *e32_213
-d2 [lv 0*"09"*"kir_00540"]`{qt}.....[#][*]......!![#][*]......ghh...[#][*]......{qt}[#][*]`[\]
+d2 [lv 0*"09"*"kir_00540"]`{qt}.....`[#][*]`......!!`[#][*]`......ghh...`[#][*]`......{qt}`[#][*][\]
 
 wait_on_d 0
 
@@ -2985,7 +2988,7 @@ flush 1
 
 msgwnd_non
 *e32_214
-d2 `*snap*[#][*]*crunch*[#][*]`[\]
+d2 `*snap*`[#][*]`*crunch*`[#][*][\]
 
 wait_on_d 0
 
@@ -3022,7 +3025,7 @@ d [lv 0*"08"*"rud_00950"]`{qt}K, Kyrie....?{qt}`[\]
 
 msgwnd_non
 *e32_216
-d2 `*snap*[#][*]*crack* *crack* *crackle*[#][*]*crunch*[#][*]*snap*[#][*]`[\]
+d2 `*snap*`[#][*]`*crack* *crack* *crackle*`[#][*]`*crunch*`[#][*]`*snap*`[#][*][\]
 
 wait_on_d 0
 
@@ -3172,7 +3175,7 @@ flush 80
 
 msgwnd_bea
 *e32_228
-d [lv 0*"27"*"bea_06780"]`{qt}...Wait, Ange.`[@][lv 0*"27"*"bea_06790"]`...   don't be too quick to judge.{qt}`[\]
+d [lv 0*"27"*"bea_06780"]`{qt}...Wait, Ange.`[@][lv 0*"27"*"bea_06790"]`...don't be too quick to judge.{qt}`[\]
 
 
 lss s0_8,"enj","a11_defo1"
@@ -3208,7 +3211,7 @@ flush 80
 
 msgwnd_bea
 *e32_232
-d [lv 0*"27"*"bea_06820"]`{qt}Right.`[@][lv 0*"27"*"bea_06830"]` If it was me, I'd thrash them around a bit more in order to break their heart.`[@][lv 0*"27"*"bea_06840"]`...   but if you swallow the victim, that's it.{qt}`[\]
+d [lv 0*"27"*"bea_06820"]`{qt}Right.`[@][lv 0*"27"*"bea_06830"]` If it was me, I'd thrash them around a bit more in order to break their heart.`[@][lv 0*"27"*"bea_06840"]`...but if you swallow the victim, that's it.{qt}`[\]
 
 
 lss s0_8,"but","b11_nayamu2_san"
@@ -3217,7 +3220,7 @@ flush 80
 
 msgwnd_but
 *e32_233
-d [lv 0*"10"*"bat_05830"]`{qt}She killed, then erased the corpse.`[@][lv 0*"10"*"bat_05840"]`...   What more could you possibly do to put the dead to shame?{qt}`[\]
+d [lv 0*"10"*"bat_05830"]`{qt}She killed, then erased the corpse.`[@][lv 0*"10"*"bat_05840"]`...What more could you possibly do to put the dead to shame?{qt}`[\]
 
 
 lss s0_10,"bea","a11_majime1"
@@ -3231,7 +3234,7 @@ d [lv 0*"27"*"bea_06850"]`{qt}If my guess is right......{qt}`[\]
 
 flush 8
 
-meplay 11,13,100
+meplay 1,13,100
 
 lss s0_9,"rud","a11_naku2"
 spt_mem "a2","xpos",s0_9,0
@@ -3239,7 +3242,7 @@ flush 80
 
 msgwnd_rud
 *e32_235
-d [lv 0*"08"*"rud_00990"]`{qt}...Kyrie...`[@][lv 0*"08"*"rud_01000"]`...   Ky... rie...`[@][lv 0*"08"*"rud_01010"]`...   ...{qt}`[\]
+d [lv 0*"08"*"rud_00990"]`{qt}...Kyrie...`[@][lv 0*"08"*"rud_01000"]`...Ky... rie...`[@][lv 0*"08"*"rud_01010"]`......{qt}`[\]
 
 
 csp_slot s0_3
@@ -3275,7 +3278,7 @@ flush 23
 
 msgwnd_rud
 *e32_237
-d [lv 0*"08"*"rud_01020"]`{qt}Huh?`[@][lv 0*"08"*"rud_01030"]`...   .........ah.................................{qt}`[\]
+d [lv 0*"08"*"rud_01020"]`{qt}Huh?`[@][lv 0*"08"*"rud_01030"]`............ah.................................{qt}`[\]
 
 
 lss s0_10,"pie","a11_13"
@@ -3356,7 +3359,7 @@ flush 80
 
 msgwnd_enj
 *e32_245
-d [lv 0*"11"*"enj_00910"]`{qt}I, I don't understand.`[@][lv 0*"11"*"enj_00920"]`...   What happened, Onii-chan...?{qt}`[\]
+d [lv 0*"11"*"enj_00910"]`{qt}I, I don't understand.`[@][lv 0*"11"*"enj_00920"]`...What happened, Onii-chan...?{qt}`[\]
 
 
 lss s0_10,"but","b11_aseru2"
@@ -3399,7 +3402,7 @@ flush 80
 
 msgwnd_bea
 *e32_250
-d [lv 0*"27"*"bea_06890"]`{qt}That's correct.`[@][lv 0*"27"*"bea_06900"]`...   ..It's likely that is her power.{qt}`[\]
+d [lv 0*"27"*"bea_06890"]`{qt}That's correct.`[@][lv 0*"27"*"bea_06900"]`.....It's likely that is her power.{qt}`[\]
 
 
 msgwnd_non
@@ -3413,12 +3416,12 @@ flush 80
 
 msgwnd_but
 *e32_252
-d [lv 0*"10"*"bat_05870"]`{qt}...Right now, that's why my old geezer took her hand with such an embarrassed look on his face.`[@][lv 0*"10"*"bat_05880"]`...   ...That witch.....just ate Kyrie.`[@][lv 0*"10"*"bat_05890"]`...   Even the fact that Kyrie existed has been swallowed whole...{qt}`[\]
+d [lv 0*"10"*"bat_05870"]`{qt}...Right now, that's why my old geezer took her hand with such an embarrassed look on his face.`[@][lv 0*"10"*"bat_05880"]`......That witch.....just ate Kyrie.`[@][lv 0*"10"*"bat_05890"]`...Even the fact that Kyrie existed has been swallowed whole...{qt}`[\]
 
 
 flush 8
 
-meplay 11,13,100
+meplay 1,13,100
 
 lss s0_8,"rud","a11_akuwarai2"
 spt_mem "a2","xpos",s0_8,-369
@@ -3453,7 +3456,7 @@ flush 80
 
 msgwnd_pie
 *e32_256
-d [lv 0*"65"*"pie_00780"]`{qt}Why are you hesitating?`[@][lv 0*"65"*"pie_00790"]` I'm your 'wife'.`[@][lv 0*"65"*"pie_00800"]` *giggle* You can ask me anything, 'dear'♪`[\]
+d [lv 0*"65"*"pie_00780"]`{qt}Why are you hesitating?`[@][lv 0*"65"*"pie_00790"]` I'm your 'wife'.`[@][lv 0*"65"*"pie_00800"]` *giggle* You can ask me anything, 'dear'{p:0:♪}`[\]
 
 
 lss s0_8,"rud","a11_akuwarai2"
@@ -3471,7 +3474,7 @@ flush 80
 
 msgwnd_pie
 *e32_258
-d [lv 0*"65"*"pie_00810"]`{qt}Isn't it PIECE Ushiromiya, piece?`[@][lv 0*"65"*"pie_00820"]` *giggle* How strange, Rudolf...♪{qt}`[\]
+d [lv 0*"65"*"pie_00810"]`{qt}Isn't it {f:5:Piece} Ushiromiya, piece?`[@][lv 0*"65"*"pie_00820"]` *giggle* How strange, Rudolf...{p:0:♪}{qt}`[\]
 
 
 lss s0_8,"rud","a11_defo2"
@@ -3480,7 +3483,7 @@ flush 80
 
 msgwnd_rud
 *e32_259
-d [lv 0*"08"*"rud_01130"]`{qt}That's right, I forgot.`[@][lv 0*"08"*"rud_01140"]` It's PIECE.`[@][lv 0*"08"*"rud_01150"]`...   ..I really am sorry, hahahaha....{qt}`[\]
+d [lv 0*"08"*"rud_01130"]`{qt}That's right, I forgot.`[@][lv 0*"08"*"rud_01140"]` It's {f:5:Piece}.`[@][lv 0*"08"*"rud_01150"]`.....I really am sorry, hahahaha....{qt}`[\]
 
 
 vol_bgm -1 500
@@ -3508,7 +3511,7 @@ flush 80
 
 msgwnd_bea
 *e32_261
-d [lv 0*"27"*"bea_06910"]`{qt}Perhaps this is not limited to Rudolf.`[@][lv 0*"27"*"bea_06920"]` Right now,`[@][lv 0*"27"*"bea_06930"]` that person is PIECE Ushiromiya.`[@][lv 0*"27"*"bea_06940"]`...   .Rudolf's wife.{qt}`[\]
+d [lv 0*"27"*"bea_06910"]`{qt}Perhaps this is not limited to Rudolf.`[@][lv 0*"27"*"bea_06920"]` Right now,`[@][lv 0*"27"*"bea_06930"]` that person is {f:5:Piece} Ushiromiya.`[@][lv 0*"27"*"bea_06940"]`....Rudolf's wife.{qt}`[\]
 
 
 lss s0_10,"but","b11_aseru2"
@@ -3517,7 +3520,7 @@ flush 80
 
 msgwnd_but
 *e32_262
-d [lv 0*"10"*"bat_05900"]`{qt}Kyrie's existence was erased to pure white as if an eraser was taken to her...... and then PIECE inserted herself in Kyrie's place as if she had always been there...{qt}`[\]
+d [lv 0*"10"*"bat_05900"]`{qt}Kyrie's existence was erased to pure white as if an eraser was taken to her...... and then {f:5:Piece} inserted herself in Kyrie's place as if she had always been there...{qt}`[\]
 
 
 lss s0_8,"bea","a11_fukigen1"
@@ -3548,7 +3551,7 @@ flush 22
 
 msgwnd_but
 *e32_266
-d [lv 0*"10"*"bat_05910"]`{qt}...You're wrong.`[@][lv 0*"10"*"bat_05920"]` PIECE's way of killing is unimaginably cruel....{qt}`[\]
+d [lv 0*"10"*"bat_05910"]`{qt}...You're wrong.`[@][lv 0*"10"*"bat_05920"]` {f:5:Piece}'s way of killing is unimaginably cruel....{qt}`[\]
 
 
 lss s0_10,"bea","a11_komaru3"
@@ -3594,7 +3597,7 @@ flush 80
 
 msgwnd_but
 *e32_270
-d [lv 0*"10"*"bat_05930"]`{qt}...Dignity.`[@][lv 0*"10"*"bat_05940"]`...   .is only a measure of how many people will weep for you when you pass.`[@][lv 0*"10"*"bat_05950"]` After all, dying while a great number of people hold you dear and dying by the roadside with nobody to remember you are completely different.{qt}`[\]
+d [lv 0*"10"*"bat_05930"]`{qt}...Dignity.`[@][lv 0*"10"*"bat_05940"]`....is only a measure of how many people will weep for you when you pass.`[@][lv 0*"10"*"bat_05950"]` After all, dying while a great number of people hold you dear and dying by the roadside with nobody to remember you are completely different.{qt}`[\]
 
 
 lss s0_8,"bea","a11_majime2"
@@ -3652,7 +3655,7 @@ flush 80
 
 msgwnd_enj
 *e32_276
-d [lv 0*"11"*"enj_00990"]`{qt}..I think...I get it.....`[@][lv 0*"11"*"enj_01000"]` something more important than life...`[@][lv 0*"11"*"enj_01010"]` is dignity.`[@][lv 0*"11"*"enj_01020"]`...   ...Dignity is what remains of one's life, reputation, and efforts after death.`[@][lv 0*"11"*"enj_01030"]` Something important that you have left behind in your lifetime and were able to pass on to someone else.`[@][lv 0*"11"*"enj_01040"]` But once this girl eats you.... you can't even leave that behind.....{qt}`[\]
+d [lv 0*"11"*"enj_00990"]`{qt}..I think...I get it.....`[@][lv 0*"11"*"enj_01000"]` something more important than life...`[@][lv 0*"11"*"enj_01010"]` is dignity.`[@][lv 0*"11"*"enj_01020"]`......Dignity is what remains of one's life, reputation, and efforts after death.`[@][lv 0*"11"*"enj_01030"]` Something important that you have left behind in your lifetime and were able to pass on to someone else.`[@][lv 0*"11"*"enj_01040"]` But once this girl eats you.... you can't even leave that behind.....{qt}`[\]
 
 
 flush 22
@@ -3743,7 +3746,7 @@ flush 80
 
 flush 2
 
-meplay 11,13,100
+meplay 1,13,100
 
 lss s0_8,"rud","a11_warai1"
 spt_mem "a2","xpos",s0_8,-369
@@ -3777,7 +3780,7 @@ flush 80
 
 msgwnd_rud
 *e32_290
-d [lv 0*"08"*"rud_01180"]`{qt}O, oh.`[@][lv 0*"08"*"rud_01190"]`...   ...Somehow, you seem off tonight... it's sexy.{qt}`[\]
+d [lv 0*"08"*"rud_01180"]`{qt}O, oh.`[@][lv 0*"08"*"rud_01190"]`......Somehow, you seem off tonight... it's sexy.{qt}`[\]
 
 
 lss s0_9,"pie","b11_13"
@@ -3786,7 +3789,7 @@ flush 80
 
 msgwnd_pie
 *e32_291
-d [lv 0*"65"*"pie_00960"]`{qt}Oh, my.`[@][lv 0*"65"*"pie_00970"]` That's the highest form of praise, piece♪{qt}`[\]
+d [lv 0*"65"*"pie_00960"]`{qt}Oh, my.`[@][lv 0*"65"*"pie_00970"]` That's the highest form of praise, piece{p:0:♪}{qt}`[\]
 
 
 csp_slot s0_3
@@ -3814,7 +3817,7 @@ csp_slot s0_10
 
 flush 22
 
-meplay 11,24,100
+meplay 1,24,100
 
 *e32_294
 d `The halloween party was an extremely relaxed affair.`[\]
@@ -3871,7 +3874,7 @@ flush 80
 
 msgwnd_rud
 *e32_298
-d [lv 0*"08"*"rud_01200"]`{qt}Sure,`[@][lv 0*"08"*"rud_01210"]` can we get one for the two of us?`[@][lv 0*"08"*"rud_01220"]` And can you get a blanket for PIECE?{qt}`[\]
+d [lv 0*"08"*"rud_01200"]`{qt}Sure,`[@][lv 0*"08"*"rud_01210"]` can we get one for the two of us?`[@][lv 0*"08"*"rud_01220"]` And can you get a blanket for {f:5:Piece}?{qt}`[\]
 
 
 lss s0_9,"pie","a11_1"
@@ -3898,7 +3901,7 @@ flush 80
 
 msgwnd_pie
 *e32_301
-d [lv 0*"65"*"pie_01000"]`{qt}*giggle*.`[@][lv 0*"65"*"pie_01010"]` Oh, you......♪`[@][lv 0*"65"*"pie_01020"]` Piece....♪{qt}`[\]
+d [lv 0*"65"*"pie_01000"]`{qt}*giggle*.`[@][lv 0*"65"*"pie_01010"]` Oh, you......{p:0:♪}`[@][lv 0*"65"*"pie_01020"]` Piece....{p:0:♪}{qt}`[\]
 
 
 msgwnd_non
@@ -3948,7 +3951,7 @@ d `It was frustrating, but the piece version of Battler was unable to see throug
 
 
 *e32_307
-d `His memory of the word that meant 'Kyrie' would be completely replaced with the word 'PIECE'.`[\]
+d `His memory of the word that meant 'Kyrie' would be completely replaced with the word '{f:5:Piece}'.`[\]
 
 
 vol_bgm -1 500
@@ -3976,7 +3979,7 @@ flush 80
 
 msgwnd_enj
 *e32_309
-d [lv 0*"11"*"enj_01060"]`{qt}If it just interferes with a few people's memories, it's no different from brainwashing or hypnosis.`[@][lv 0*"11"*"enj_01070"]`...   ...But this witch's power is different.{qt}`[\]
+d [lv 0*"11"*"enj_01060"]`{qt}If it just interferes with a few people's memories, it's no different from brainwashing or hypnosis.`[@][lv 0*"11"*"enj_01070"]`......But this witch's power is different.{qt}`[\]
 
 
 lss s0_9,"but","b11_majime4"
@@ -4003,11 +4006,11 @@ flush 22
 
 msgwnd_non
 *e32_311
-d `FEATHERINE AUGUSTUS AURORA.`[\]
+d `{f:5:Featherine Augustus Aurora}.`[\]
 
 
 *e32_312
-d `The witch who had sent PIECE was a top-ranking witch.`[\]
+d `The witch who had sent {f:5:Piece} was a top-ranking witch.`[\]
 
 
 *e32_313
@@ -4026,11 +4029,11 @@ flush 80
 flush 22
 
 *e32_314
-d `PIECE's power is not as simple as swallowing Kyrie, taking her place, and making Rudolf believe that she was his wife.`[\]
+d `{f:5:Piece}'s power is not as simple as swallowing Kyrie, taking her place, and making Rudolf believe that she was his wife.`[\]
 
 
 *e32_315
-d `PIECE's power, to swallow anything from the world`[@]`and replace it with herself... was a power very similar to FEATHERINE's...`[\]
+d `{f:5:Piece}'s power, to swallow anything from the world`[@]`and replace it with herself... was a power very similar to {f:5:Featherine}'s...`[\]
 
 
 csp_slot s0_3
@@ -4066,7 +4069,7 @@ flush 80
 
 msgwnd_pie
 *e32_318
-d [lv 0*"65"*"pie_01060"]`{qt}I was created as the messenger to look after the piece that the great AURORA, the Witch of Theatergoing, Drama, and Spectating, sent.`[@][lv 0*"65"*"pie_01070"]` If the great lady AURORA is a candle that shines upon the great pillar that supports this world,`[@][lv 0*"65"*"pie_01080"]` I am a being whose fire is a small Fragment of that candle, piece.`[@][lv 0*"65"*"pie_01090"]`...   In accordance with my master's command, I am to fill the time in this game with antics and buffoonery, piece.{qt}`[\]
+d [lv 0*"65"*"pie_01060"]`{qt}I was created as the messenger to look after the piece that the great {f:5:Aurora}, the Witch of Theatergoing, Drama, and Spectating, sent.`[@][lv 0*"65"*"pie_01070"]` If the great lady {f:5:Aurora} is a candle that shines upon the great pillar that supports this world,`[@][lv 0*"65"*"pie_01080"]` I am a being whose fire is a small Fragment of that candle, piece.`[@][lv 0*"65"*"pie_01090"]`...In accordance with my master's command, I am to fill the time in this game with antics and buffoonery, piece.{qt}`[\]
 
 
 csp_slot s0_3
@@ -4106,7 +4109,7 @@ flush 80
 
 msgwnd_pie
 *e32_322
-d [lv 0*"65"*"pie_01120"]`{qt}Hey, everybody.`[@][lv 0*"65"*"pie_01130"]`...   do you remember if it really was three of you that challenged me, piece...?{qt}`[\]
+d [lv 0*"65"*"pie_01120"]`{qt}Hey, everybody.`[@][lv 0*"65"*"pie_01130"]`...do you remember if it really was three of you that challenged me, piece...?{qt}`[\]
 
 
 csp_slot s0_3
@@ -4116,7 +4119,7 @@ csp_slot s0_10
 
 flush 22
 
-meplay 11,16,100
+meplay 1,16,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -4145,7 +4148,7 @@ d `...Beato's forehead... had a trail of cold sweat flowing down it.`[\]
 
 
 *e32_324
-d `Battler and Ange... also understood by now the creepy thing PIECE was saying.`[\]
+d `Battler and Ange... also understood by now the creepy thing {f:5:Piece} was saying.`[\]
 
 
 *e32_325
@@ -4157,11 +4160,11 @@ d `Had she really challenged three people...?`[\]
 
 
 *e32_327
-d `Perhaps......`[@]`from their memories, and from the world's memories...`[@]`PIECE had gulped down a fourth person as a warning...?`[\]
+d `Perhaps......`[@]`from their memories, and from the world's memories...`[@]`{f:5:Piece} had gulped down a fourth person as a warning...?`[\]
 
 
 *e32_328
-d `When they saw PIECE's eyes, which seemed to freeze the soul with a mere glance...... all three were imagining the same thing.`[\]
+d `When they saw {f:5:Piece}'s eyes, which seemed to freeze the soul with a mere glance...... all three were imagining the same thing.`[\]
 
 
 *e32_329
@@ -4177,7 +4180,7 @@ d `No.`[@]`They wouldn't show any feelings, and wouldn't even realize anything h
 
 
 *e32_332
-d `The two people who were left would think there had only been two people from the beginning, and that only two people had challenged PIECE......`[\]
+d `The two people who were left would think there had only been two people from the beginning, and that only two people had challenged {f:5:Piece}......`[\]
 
 
 csp_slot s0_3
@@ -4200,7 +4203,7 @@ flush 80
 
 flush 22
 
-meplay 11,11,100
+meplay 1,11,100
 
 lss s0_9,"bea","a11_nayamu1"
 spt_mem "a2","xpos",s0_9,0
@@ -4208,12 +4211,12 @@ flush 80
 
 msgwnd_bea
 *e32_333
-d [lv 0*"27"*"bea_07100"]`{qt}...Are you threatening us,`[@][lv 0*"27"*"bea_07110"]` Lady PIECE?{qt}`[\]
+d [lv 0*"27"*"bea_07100"]`{qt}...Are you threatening us,`[@][lv 0*"27"*"bea_07110"]` Lady {f:5:Piece}?{qt}`[\]
 
 
 msgwnd_non
 *e32_334
-d `Beato's manner of speaking to PIECE had clearly changed.`[\]
+d `Beato's manner of speaking to {f:5:Piece} had clearly changed.`[\]
 
 
 *e32_335
@@ -4226,7 +4229,7 @@ flush 80
 
 msgwnd_bea
 *e32_336
-d [lv 0*"27"*"bea_07120"]`{qt}...If our warm welcome has caused offense to you in any way, let me apologize.`[@][lv 0*"27"*"bea_07130"]`...   We are shallow and unrefined,`[@][lv 0*"27"*"bea_07140"]` and don't know how to behave any better...`[\]
+d [lv 0*"27"*"bea_07120"]`{qt}...If our warm welcome has caused offense to you in any way, let me apologize.`[@][lv 0*"27"*"bea_07130"]`...We are shallow and unrefined,`[@][lv 0*"27"*"bea_07140"]` and don't know how to behave any better...`[\]
 
 
 lss s0_10,"pie","a11_3"
@@ -4235,7 +4238,7 @@ flush 80
 
 msgwnd_pie
 *e32_337
-d [lv 0*"65"*"pie_01140"]`{qt}Respect is important, piece.`[@][lv 0*"65"*"pie_01150"]`...   So long as everybody shows the highest respect to me, I can be quite generous, piece...{qt}`[\]
+d [lv 0*"65"*"pie_01140"]`{qt}Respect is important, piece.`[@][lv 0*"65"*"pie_01150"]`...So long as everybody shows the highest respect to me, I can be quite generous, piece...{qt}`[\]
 
 
 csp_slot s0_3
@@ -4247,7 +4250,7 @@ flush 1
 
 msgwnd_non
 *e32_338
-d2 `*thump*[#][*]`[@]`Battler, Ange and Beato all crossed their legs in unison, as if to show that they were all on the same page.`[\]
+d2 `*thump*`[#][*][@]`Battler, Ange and Beato all crossed their legs in unison, as if to show that they were all on the same page.`[\]
 
 wait_on_d 0
 
@@ -4265,7 +4268,7 @@ d `However, it was the opposite of an elegant gesture, as they were too careless
 
 
 *e32_340
-d `PIECE wasn't able to understand what happened in front of her,`[@]`and forgot to even close her mouth...`[\]
+d `{f:5:Piece} wasn't able to understand what happened in front of her,`[@]`and forgot to even close her mouth...`[\]
 
 
 lss s0_9,"pie","a21_3a"
@@ -4363,7 +4366,7 @@ flush 2
 
 msgwnd_pie
 *e32_347
-d [lv 0*"65"*"pie_01160"]`{qt}.........?!`[@][lv 0*"65"*"pie_01170"]`...   .....?!?!`[@][lv 0*"65"*"pie_01180"]`...   ...Huh????!!??{qt}`[\]
+d [lv 0*"65"*"pie_01160"]`{qt}.........?!`[@][lv 0*"65"*"pie_01170"]`........?!?!`[@][lv 0*"65"*"pie_01180"]`......Huh????!!??{qt}`[\]
 
 
 lss s0_8,"enj","a11_nayamu2"
@@ -4372,7 +4375,7 @@ flush 80
 
 msgwnd_enj
 *e32_348
-d [lv 0*"11"*"enj_01100"]`{qt}Do you.... not know why she's laughing at you?`[@][lv 0*"11"*"enj_01110"]`...   Come on now.`[@][lv 0*"11"*"enj_01120"]`...   ...You thought that if you showed us your power,`[@][lv 0*"11"*"enj_01130"]` we'd all cringe in fear and show respect to you, right?{qt}`[\]
+d [lv 0*"11"*"enj_01100"]`{qt}Do you.... not know why she's laughing at you?`[@][lv 0*"11"*"enj_01110"]`...Come on now.`[@][lv 0*"11"*"enj_01120"]`......You thought that if you showed us your power,`[@][lv 0*"11"*"enj_01130"]` we'd all cringe in fear and show respect to you, right?{qt}`[\]
 
 
 msgwnd_non
@@ -4408,7 +4411,7 @@ flush 80
 
 msgwnd_bea
 *e32_351
-d [lv 0*"27"*"bea_07200"]`{qt}Hey, Great Lady PIECE?`[@][lv 0*"27"*"bea_07210"]` What's so scary about yooooou....?`[@][lv 0*"27"*"bea_07220"]` It's like saying 'I've checkmated opponents before, are you scared?' right before you face off against your opponent in a boxing match. What the hellll......??{qt}`[\]
+d [lv 0*"27"*"bea_07200"]`{qt}Hey, Great Lady {f:5:Piece}?`[@][lv 0*"27"*"bea_07210"]` What's so scary about yooooou....?`[@][lv 0*"27"*"bea_07220"]` It's like saying 'I've checkmated opponents before, are you scared?' right before you face off against your opponent in a boxing match. What the hellll......??{qt}`[\]
 
 
 msgwnd_non
@@ -4526,7 +4529,7 @@ flush 80
 
 msgwnd_but
 *e32_360
-d [lv 0*"10"*"bat_06230"]`{qt}By the way, I completely get your analogy.`[@][lv 0*"10"*"bat_06240"]`...   I'm crazy about boxing and checkmating opponents... kuukuukukukukuku!!{qt}`[\]
+d [lv 0*"10"*"bat_06230"]`{qt}By the way, I completely get your analogy.`[@][lv 0*"10"*"bat_06240"]`...I'm crazy about boxing and checkmating opponents... kuukuukukukukuku!!{qt}`[\]
 
 
 lss s0_10,"enj","a11_nayamu2"
@@ -4557,7 +4560,7 @@ flush 24
 
 msgwnd_bea
 *e32_362
-d2 [lv 0*"27"*"bea_07280"]`{qt}Uhyaahaahaahahahahaahaaaa,[#][*]gehahahahahahahaaaaaaaaa!!!!{qt}`[\]
+d2 [lv 0*"27"*"bea_07280"]`{qt}Uhyaahaahaahahahahaahaaaa,`[#][*]`gehahahahahahahaaaaaaaaa!!!!{qt}`[\]
 
 wait_on_d 0
 
@@ -4580,7 +4583,7 @@ d [lv 0*"65"*"pie_01190"]`{qt}......Heh...`[@][lv 0*"65"*"pie_01200"]` haha...`[
 
 
 *e32_364
-d2 [lv 0*"65"*"pie_01230"]`{qt}Fuuuuuu!!![#][*]`[@][lv 0*"65"*"pie_01240"]`...   ...Haahaahaa......{qt}`[\]
+d2 [lv 0*"65"*"pie_01230"]`{qt}Fuuuuuu!!!`[#][*][@][lv 0*"65"*"pie_01240"]`......Haahaahaa......{qt}`[\]
 
 wait_on_d 0
 
@@ -4686,7 +4689,7 @@ d [lv 0*"65"*"pie_01310"]`{qt}No, no.`[@][lv 0*"65"*"pie_01320"]` We will not go
 
 flush 8
 
-meplay 11,12,100
+meplay 1,12,100
 
 lss s0_9,"pie","a11_1"
 spt_mem "a2","xpos",s0_9,0
@@ -4774,7 +4777,7 @@ flush 80
 
 msgwnd_pie
 *e32_381
-d [lv 0*"65"*"pie_01400"]`{qt}Aren't I your mom, PIECE Ushiromiya?`[@][lv 0*"65"*"pie_01410"]` The one who gave birth to you...{qt}`[\]
+d [lv 0*"65"*"pie_01400"]`{qt}Aren't I your mom, {f:5:Piece} Ushiromiya?`[@][lv 0*"65"*"pie_01410"]` The one who gave birth to you...{qt}`[\]
 
 
 msgwnd_non
@@ -4809,7 +4812,7 @@ flush 22
 
 msgwnd_non
 *e32_384
-d2 `*snap*[#][*]*crunch*[#][*]*thud*......!!!![#][*]`[\]
+d2 `*snap*`[#][*]`*crunch*`[#][*]`*thud*......!!!![#][*][\]
 
 wait_on_d 0
 
@@ -4954,7 +4957,7 @@ flush 80
 
 msgwnd_enj
 *e32_395
-d [lv 0*"11"*"enj_01220"]`{qt}She was eaten and forgotten.`[@][lv 0*"11"*"enj_01230"]`...   Again, I'm reminded how awful this power is.{qt}`[\]
+d [lv 0*"11"*"enj_01220"]`{qt}She was eaten and forgotten.`[@][lv 0*"11"*"enj_01230"]`...Again, I'm reminded how awful this power is.{qt}`[\]
 
 
 lss s0_8,"bea","a11_majime2"
@@ -4990,7 +4993,7 @@ flush 80
 
 msgwnd_enj
 *e32_398
-d [lv 0*"11"*"enj_01240"]`{qt}The goal of this game is just to determine PIECE's identity.`[@][lv 0*"11"*"enj_01250"]` It's a little different from Beato and Onii-chan's game.{qt}`[\]
+d [lv 0*"11"*"enj_01240"]`{qt}The goal of this game is just to determine {f:5:Piece}'s identity.`[@][lv 0*"11"*"enj_01250"]` It's a little different from Beato and Onii-chan's game.{qt}`[\]
 
 
 lss s0_8,"bea","a11_defo1"
@@ -4999,7 +5002,7 @@ flush 80
 
 msgwnd_bea
 *e32_399
-d [lv 0*"27"*"bea_07300"]`{qt}That's true.`[@][lv 0*"27"*"bea_07310"]`...   In my game, I asked for the illusion of the witch smashed, as well as answering the question 'Who am I?'{qt}`[\]
+d [lv 0*"27"*"bea_07300"]`{qt}That's true.`[@][lv 0*"27"*"bea_07310"]`...In my game, I asked for the illusion of the witch smashed, as well as answering the question 'Who am I?'{qt}`[\]
 
 
 lss s0_10,"enj","a11_majime1"
@@ -5008,7 +5011,7 @@ flush 80
 
 msgwnd_enj
 *e32_400
-d [lv 0*"11"*"enj_01260"]`{qt}PIECE.`[@][lv 0*"11"*"enj_01270"]`...   In this game, do we also have to smash the illusion of the witch?{qt}`[\]
+d [lv 0*"11"*"enj_01260"]`{qt}{f:5:Piece}.`[@][lv 0*"11"*"enj_01270"]`...In this game, do we also have to smash the illusion of the witch?{qt}`[\]
 
 
 csp_slot s0_3
@@ -5056,7 +5059,7 @@ flush 80
 seplay 11,59,100
 
 *e32_404
-d2 [lv 0*"65"*"pie_01510"]`{qt}@c900.@[The only objective of this game is to determine who I am.`[@][#][*][lv 0*"65"*"pie_01520"]` I do not care if you affirm or deny fantasy.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_01510"]`{qt}{p:1:The only objective of this game is to determine who I am.`[@][#][*][lv 0*"65"*"pie_01520"]` I do not care if you affirm or deny fantasy.}{qt}`[\]
 
 wait_on_d 0
 
@@ -5080,7 +5083,7 @@ flush 22
 
 msgwnd_bea
 *e32_405
-d2 [lv 0*"27"*"bea_07320"]`{qt}Then let's cut to the heart of the matter in the most simple way possible.`[@][lv 0*"27"*"bea_07330"]` Blue declaration.`[@][#][*][lv 0*"27"*"bea_07340"]` @c279.@[You are PIECE,`[@][lv 0*"27"*"bea_07350"]` Witch of the Piece.@]@c.{qt}`[\]
+d2 [lv 0*"27"*"bea_07320"]`{qt}Then let's cut to the heart of the matter in the most simple way possible.`[@][lv 0*"27"*"bea_07330"]` Blue declaration.`[@][#][*][lv 0*"27"*"bea_07340"]` {p:2:You are {f:5:Piece},`[@][lv 0*"27"*"bea_07350"]` Witch of the Piece.}{qt}`[\]
 
 wait_on_d 0
 
@@ -5095,7 +5098,7 @@ flush 80
 
 msgwnd_pie
 *e32_406
-d2 [lv 0*"65"*"pie_01530"]`{qt}Of course, that's not true.`[@][lv 0*"65"*"pie_01540"]` I'll declare it in red.`[@][#][*][lv 0*"65"*"pie_01550"]` @c900.@[I am a person who has existed from Episode 1 through Episode 8.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_01530"]`{qt}Of course, that's not true.`[@][lv 0*"65"*"pie_01540"]` I'll declare it in red.`[@][#][*][lv 0*"65"*"pie_01550"]` {p:1:I am a person who has existed from Episode 1 through Episode 8}.{qt}`[\]
 
 wait_on_d 0
 
@@ -5137,7 +5140,7 @@ flush 80
 
 msgwnd_pie
 *e32_409
-d2 [lv 0*"65"*"pie_01560"]`{qt}That's correct.`[@][#][*][lv 0*"65"*"pie_01570"]` @c900.@[I was present during Episodes 1 through 8 and had that power during that time.`[@][#][*][lv 0*"65"*"pie_01580"]` This is the first time that my master has allowed me to show it to you.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_01560"]`{qt}That's correct.`[@][#][*][lv 0*"65"*"pie_01570"]` {p:1:I was present during Episodes 1 through 8 and had that power during that time.`[@][#][*][lv 0*"65"*"pie_01580"]` This is the first time that my master has allowed me to show it to you.}{qt}`[\]
 
 wait_on_d 0
 
@@ -5166,7 +5169,7 @@ flush 80
 
 msgwnd_bea
 *e32_411
-d [lv 0*"27"*"bea_07360"]`{qt}Wait, Ange.`[@][lv 0*"27"*"bea_07370"]` It seems there is still more to this event.`[@][lv 0*"27"*"bea_07380"]` You'll still be able to ask questions even after PIECE has exposed her hand.{qt}`[\]
+d [lv 0*"27"*"bea_07360"]`{qt}Wait, Ange.`[@][lv 0*"27"*"bea_07370"]` It seems there is still more to this event.`[@][lv 0*"27"*"bea_07380"]` You'll still be able to ask questions even after {f:5:Piece} has exposed her hand.{qt}`[\]
 
 
 lss s0_10,"enj","a11_fuman2"
@@ -5213,7 +5216,7 @@ flush 80
 
 msgwnd_enj
 *e32_415
-d [lv 0*"11"*"enj_01360"]`{qt}...PIECE,`[@][lv 0*"11"*"enj_01370"]` please continue.`[@][lv 0*"11"*"enj_01380"]` While fast-forwarding, of course.{qt}`[\]
+d [lv 0*"11"*"enj_01360"]`{qt}...{f:5:Piece},`[@][lv 0*"11"*"enj_01370"]` please continue.`[@][lv 0*"11"*"enj_01380"]` While fast-forwarding, of course.{qt}`[\]
 
 
 csp_slot s0_3
@@ -5271,7 +5274,7 @@ flush 22
 
 msgwnd_enj
 *e32_420
-d [lv 0*"11"*"enj_01390"]`{qt}Please, just keep it snappy and fast-forward, please, PIECE.{qt}`[\]
+d [lv 0*"11"*"enj_01390"]`{qt}Please, just keep it snappy and fast-forward, please, {f:5:Piece}.{qt}`[\]
 
 
 lss s0_8,"pie","a11_3"
@@ -5350,7 +5353,7 @@ flush 80
 flush 2
 
 *e32_423
-d `PIECE, an intruder from another realm who has blended into the Ushiromiya family.`[\]
+d `{f:5:Piece}, an intruder from another realm who has blended into the Ushiromiya family.`[\]
 
 
 seplay 11,57,100
@@ -5517,11 +5520,11 @@ flush 80
 flush 23
 
 *e32_425
-d `Kinzo and Beato, as well as Genji, Shannon, and Kanon, confronted the witch from another world who claimed the name PIECE Ushiromiya.`[\]
+d `Kinzo and Beato, as well as Genji, Shannon, and Kanon, confronted the witch from another world who claimed the name {f:5:Piece} Ushiromiya.`[\]
 
 
 *e32_426
-d `However, while they realized PIECE was an uninvited guest from another world, they didn't realize that there have already been two sacrifices.`[\]
+d `However, while they realized {f:5:Piece} was an uninvited guest from another world, they didn't realize that there have already been two sacrifices.`[\]
 
 
 *e32_427
@@ -5625,7 +5628,7 @@ flush 80
 flush 2
 
 *e32_429
-d `But even then... it is difficult to fully convince them that PIECE Ushiromiya was an enemy.`[\]
+d `But even then... it is difficult to fully convince them that {f:5:Piece} Ushiromiya was an enemy.`[\]
 
 
 *e32_430
@@ -5633,7 +5636,7 @@ d `The strong barrier would alert them to any visitors from a different Fragment
 
 
 *e32_431
-d `...However, as everybody faced off against PIECE.... they recognized her as a familiar relative, PIECE Ushiromiya.`[\]
+d `...However, as everybody faced off against {f:5:Piece}.... they recognized her as a familiar relative, {f:5:Piece} Ushiromiya.`[\]
 
 
 seplay 11,72,100
@@ -5683,7 +5686,7 @@ flush 80
 
 msgwnd_pie
 *e32_433
-d [lv 0*"65"*"pie_01670"]`{qt}As you'd expect from somebody who just introduced herself as an advising alchemist, piece.`[@][lv 0*"65"*"pie_01680"]`...   I am impressed that you have seen through my power.`[@][lv 0*"65"*"pie_01690"]` But is that the only thing you've noticed about it...?{qt}`[\]
+d [lv 0*"65"*"pie_01670"]`{qt}As you'd expect from somebody who just introduced herself as an advising alchemist, piece.`[@][lv 0*"65"*"pie_01680"]`...I am impressed that you have seen through my power.`[@][lv 0*"65"*"pie_01690"]` But is that the only thing you've noticed about it...?{qt}`[\]
 
 
 csp_slot s0_3
@@ -5722,7 +5725,7 @@ flush 80
 
 msgwnd_sha
 *e32_435
-d [lv 0*"15"*"sha_01030"]`{qt}Kanon-kun.`[@][lv 0*"15"*"sha_01040"]`...   .Right now, there are five of us fighting.`[@][lv 0*"15"*"sha_01050"]`...   .Are you sure there were always five of us?{qt}`[\]
+d [lv 0*"15"*"sha_01030"]`{qt}Kanon-kun.`[@][lv 0*"15"*"sha_01040"]`....Right now, there are five of us fighting.`[@][lv 0*"15"*"sha_01050"]`....Are you sure there were always five of us?{qt}`[\]
 
 
 lss s0_9,"kan","a12_komaru1"
@@ -5776,7 +5779,7 @@ flush 80
 
 msgwnd_kin
 *e32_441
-d [lv 0*"01"*"kin_00190"]`{qt}Fufufufufu.`[@][lv 0*"01"*"kin_00200"]` Now that you mention it, yes.`[@][lv 0*"01"*"kin_00210"]`...   However, it's a stingy power that can't even give me a single gold coin.`[@][lv 0*"01"*"kin_00220"]` Fuuhaahaaha...!{qt}`[\]
+d [lv 0*"01"*"kin_00190"]`{qt}Fufufufufu.`[@][lv 0*"01"*"kin_00200"]` Now that you mention it, yes.`[@][lv 0*"01"*"kin_00210"]`...However, it's a stingy power that can't even give me a single gold coin.`[@][lv 0*"01"*"kin_00220"]` Fuuhaahaaha...!{qt}`[\]
 
 
 seplay 11,56,100
@@ -5834,7 +5837,7 @@ flush 80
 
 msgwnd_bea
 *e32_447
-d [lv 0*"27"*"bea_07490"]`{qt}Hey, PIECE.`[@][lv 0*"27"*"bea_07500"]` If you want to swallow up this brocon, go for it.{qt}`[\]
+d [lv 0*"27"*"bea_07490"]`{qt}Hey, {f:5:Piece}.`[@][lv 0*"27"*"bea_07500"]` If you want to swallow up this brocon, go for it.{qt}`[\]
 
 
 lss s0_8,"pie","a11_10"
@@ -5843,7 +5846,7 @@ flush 80
 
 msgwnd_pie
 *e32_448
-d [lv 0*"65"*"pie_01700"]`{qt}I'm not going to try to checkmate in this boxing match, piece♪{qt}`[\]
+d [lv 0*"65"*"pie_01700"]`{qt}I'm not going to try to checkmate in this boxing match, piece{p:0:♪}{qt}`[\]
 
 
 flush 8
@@ -5905,7 +5908,7 @@ flush 22
 
 msgwnd_non
 *e32_449
-d2 `In the meantime, the five people led by Kinzo and Beato quickly reduced in number.`[@]`[#][*]Even though they couldn't remember how many people were originally in the group, a distorted, strange battle ensued.`[\]
+d2 `In the meantime, the five people led by Kinzo and Beato quickly reduced in number.`[@][#][*]`Even though they couldn't remember how many people were originally in the group, a distorted, strange battle ensued.`[\]
 
 wait_on_d 0
 
@@ -5957,14 +5960,14 @@ flush 2
 
 msgwnd_pie
 *e32_453
-d [lv 0*"65"*"pie_01710"]`{qt}Thank you, piece♪`[@][lv 0*"65"*"pie_01720"]` That kind of praise pleases my master the most, piece.{qt}`[\]
+d [lv 0*"65"*"pie_01710"]`{qt}Thank you, piece{p:0:♪}`[@][lv 0*"65"*"pie_01720"]` That kind of praise pleases my master the most, piece.{qt}`[\]
 
 
 seplay 11,64,100
 
 msgwnd_non
 *e32_454
-d2 `*whoosh*!![#][*]*crack*......!![#][*]......*snap*...[#][*]...*urk*......`[\]
+d2 `*whoosh*!!`[#][*]`*crack*......!!`[#][*]`......*snap*...`[#][*]`...*urk*......`[\]
 
 wait_on_d 0
 
@@ -6000,7 +6003,7 @@ d [lv 0*"65"*"pie_01730"]`{qt}...Huh...?{qt}`[\]
 
 msgwnd_non
 *e32_456
-d2 `*urk*...[#][*]*urk*[#][*].........`[@]`[#][*]...*ptoo*[#][*]`[\]
+d2 `*urk*...`[#][*]`*urk*`[#][*]`.........`[@][#][*]`...*ptoo*`[#][*][\]
 
 wait_on_d 0
 
@@ -6072,7 +6075,7 @@ flush 80
 
 msgwnd_pie
 *e32_463
-d [lv 0*"65"*"pie_01790"]`{qt}Well, it's fine, piece♪`[@][lv 0*"65"*"pie_01800"]` Now there are no more obstacles in my way, piece.`[@][lv 0*"65"*"pie_01810"]` But it is almost time for the fun-filled Halloween party to end.`[@][lv 0*"65"*"pie_01820"]`...   The remaining servants were clueless.`[@][lv 0*"65"*"pie_01830"]` Now it seems that only Gohda and Kumasawa are tidying up after the party, piece.{qt}`[\]
+d [lv 0*"65"*"pie_01790"]`{qt}Well, it's fine, piece{p:0:♪}`[@][lv 0*"65"*"pie_01800"]` Now there are no more obstacles in my way, piece.`[@][lv 0*"65"*"pie_01810"]` But it is almost time for the fun-filled Halloween party to end.`[@][lv 0*"65"*"pie_01820"]`...The remaining servants were clueless.`[@][lv 0*"65"*"pie_01830"]` Now it seems that only Gohda and Kumasawa are tidying up after the party, piece.{qt}`[\]
 
 
 csp_slot s0_3
@@ -6082,7 +6085,7 @@ csp_slot s0_10
 
 flush 22
 
-meplay 11,12,100
+meplay 1,12,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -6171,7 +6174,7 @@ flush 80
 
 msgwnd_pie
 *e32_472
-d [lv 0*"65"*"pie_01870"]`{qt}That's absolutely right.`[@][lv 0*"65"*"pie_01880"]` I am not going to make the uncivilized demand that you eat with your bare hands.`[@][lv 0*"65"*"pie_01890"]` Please, use your red fork and blue spoon to your heart's content, piece♪{qt}`[\]
+d [lv 0*"65"*"pie_01870"]`{qt}That's absolutely right.`[@][lv 0*"65"*"pie_01880"]` I am not going to make the uncivilized demand that you eat with your bare hands.`[@][lv 0*"65"*"pie_01890"]` Please, use your red fork and blue spoon to your heart's content, piece{p:0:♪}{qt}`[\]
 
 
 csp_slot s0_3
@@ -6207,7 +6210,7 @@ flush 80
 
 msgwnd_bea
 *e32_474
-d2 [lv 0*"27"*"bea_07550"]`{qt}As for you, [#][*]@c900.@[a person that exists from Episode 1 to Episode 8@]@c. correct?`[@][lv 0*"27"*"bea_07560"]` Let me further clarify.`[@][lv 0*"27"*"bea_07570"]` Is that person a person all three of us all can recognize?{qt}`[\]
+d2 [lv 0*"27"*"bea_07550"]`{qt}As for you, `[#][*]`{p:1:a person that exists from Episode 1 to Episode 8} correct?`[@][lv 0*"27"*"bea_07560"]` Let me further clarify.`[@][lv 0*"27"*"bea_07570"]` Is that person a person all three of us all can recognize?{qt}`[\]
 
 wait_on_d 0
 
@@ -6244,7 +6247,7 @@ lbg "c:backgrounds",s0_3,"kaisou_ep8ber"
 flush 22
 
 *e32_477
-d2 [lv 0*"10"*"bat_06550"]`{qt}In episode 8, the expression 'many of LAMBDADELTA's friends are terrifying monsters' was said.`[@][#][*][lv 0*"10"*"bat_06560"]` If, hypothetically, one of those monsters was the right answer,`[@][lv 0*"10"*"bat_06570"]` even though they existed throughout that Fragment, we wouldn't know any of their names.`[@][lv 0*"10"*"bat_06580"]` Therefore, it would be impossible for us to give you the correct answer.{qt}`[\]
+d2 [lv 0*"10"*"bat_06550"]`{qt}In episode 8, the expression 'many of {f:5:Lambdadelta}'s friends are terrifying monsters' was said.`[@][#][*][lv 0*"10"*"bat_06560"]` If, hypothetically, one of those monsters was the right answer,`[@][lv 0*"10"*"bat_06570"]` even though they existed throughout that Fragment, we wouldn't know any of their names.`[@][lv 0*"10"*"bat_06580"]` Therefore, it would be impossible for us to give you the correct answer.{qt}`[\]
 
 wait_on_d 0
 
@@ -6270,7 +6273,7 @@ flush 80
 
 msgwnd_pie
 *e32_478
-d2 [lv 0*"65"*"pie_01910"]`{qt}Ohh, right.`[@][lv 0*"65"*"pie_01920"]` I understand.`[@][lv 0*"65"*"pie_01930"]` I'll say this in red, piece.`[@][#][*][lv 0*"65"*"pie_01940"]` @c900.@[You three definitely know my name.`[@][#][*][lv 0*"65"*"pie_01950"]` In other words, my existence and name is one that exists within your memories.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_01910"]`{qt}Ohh, right.`[@][lv 0*"65"*"pie_01920"]` I understand.`[@][lv 0*"65"*"pie_01930"]` I'll say this in red, piece.`[@][#][*][lv 0*"65"*"pie_01940"]` {p:1:You three definitely know my name.`[@][#][*][lv 0*"65"*"pie_01950"]` In other words, my existence and name is one that exists within your memories}.{qt}`[\]
 
 wait_on_d 0
 
@@ -6473,7 +6476,7 @@ flush 80
 
 msgwnd_pie
 *e32_496
-d [lv 0*"65"*"pie_02060"]`{qt}My master didn't order me to put a restriction on the number of times you could give an answer.`[@][lv 0*"65"*"pie_02070"]`...   .But if doing so will make you all more interested in the story and show us a heated logic battle, my master will be happy to oblige.{qt}`[\]
+d [lv 0*"65"*"pie_02060"]`{qt}My master didn't order me to put a restriction on the number of times you could give an answer.`[@][lv 0*"65"*"pie_02070"]`....But if doing so will make you all more interested in the story and show us a heated logic battle, my master will be happy to oblige.{qt}`[\]
 
 
 lss s0_8,"enj","a11_nayamu1"
@@ -6482,7 +6485,7 @@ flush 80
 
 msgwnd_enj
 *e32_497
-d [lv 0*"11"*"enj_01530"]`{qt}....Good grief.`[@][lv 0*"11"*"enj_01540"]` Oh, well.`[@][lv 0*"11"*"enj_01550"]`...   Thanks to that, it looks like it's no longer going to be a trival fight where we just have to name a few suspicious characters at random.{qt}`[\]
+d [lv 0*"11"*"enj_01530"]`{qt}....Good grief.`[@][lv 0*"11"*"enj_01540"]` Oh, well.`[@][lv 0*"11"*"enj_01550"]`...Thanks to that, it looks like it's no longer going to be a trival fight where we just have to name a few suspicious characters at random.{qt}`[\]
 
 
 lss s0_10,"but","b11_niramu2"
@@ -6491,7 +6494,7 @@ flush 80
 
 msgwnd_but
 *e32_498
-d [lv 0*"10"*"bat_06660"]`{qt}Then, let's begin.`[@][lv 0*"10"*"bat_06670let's take everybody's views into consideration"]` {qt}`[\]
+d [lv 0*"10"*"bat_06660"]`{qt}Then, let's begin.`[@][lv 0*"10"*"bat_06670"]` let's take everybody's views into consideration{qt}`[\]
 
 
 lss s0_9,"pie","b11_14"
@@ -6653,7 +6656,7 @@ flush 22
 
 msgwnd_but
 *e32_513
-d [lv 0*"10"*"bat_06680"]`{qt}PIECE`[@][lv 0*"10"*"bat_06690"]`...   Just to clarify,`[@][lv 0*"10"*"bat_06700"]` what is the motive behind this strange event?{qt}`[\]
+d [lv 0*"10"*"bat_06680"]`{qt}{f:5:Piece}`[@][lv 0*"10"*"bat_06690"]`...Just to clarify,`[@][lv 0*"10"*"bat_06700"]` what is the motive behind this strange event?{qt}`[\]
 
 
 lss s0_10,"bea","a11_1_warai1"
@@ -6716,7 +6719,7 @@ flush 80
 
 msgwnd_pie
 *e32_519
-d2 [lv 0*"65"*"pie_02100"]`{qt}There is no reason to distrust the standing of the Fragment my master created.`[@][lv 0*"65"*"pie_02110"]` So I will state it in red.`[@][#][*][lv 0*"65"*"pie_02120"]` @c900.@[There is motive and heart behind this incident.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_02100"]`{qt}There is no reason to distrust the standing of the Fragment my master created.`[@][lv 0*"65"*"pie_02110"]` So I will state it in red.`[@][#][*][lv 0*"65"*"pie_02120"]` {p:1:There is motive and heart behind this incident.}{qt}`[\]
 
 wait_on_d 0
 
@@ -7012,7 +7015,7 @@ spt_mem "a2","xpos",s0_8,-549
 flush 80
 
 *e32_545
-d [lv 0*"65"*"pie_02171"]`@z90.@c900.@[In regards to Beato, Kyrie, Ange, Kinzo, Kanon, Shannon and Genji,
+d [lv 0*"65"*"pie_02171"]`{p:1:In regards to Beato, Kyrie, Ange, Kinzo, Kanon, Shannon and Genji,I have reasons to want them to disappear}`[\]
 
 bgmplay 146,70,0
 
@@ -7076,7 +7079,7 @@ d `By the nature of the witch's game, you dont't give out unnecessary hints that
 
 
 *e32_551
-d `But PIECE was doing that.`[\]
+d `But {f:5:Piece} was doing that.`[\]
 
 
 *e32_552
@@ -7096,13 +7099,13 @@ seplay 11,59,100
 
 msgwnd_pie
 *e32_553
-d [lv 0*"65"*"pie_02210"]`{qt}@c900.@[In order for me to enter this gameboard, they were pieces that should not exist.@]@c.{qt}`[\]
+d [lv 0*"65"*"pie_02210"]`{qt}{p:1:In order for me to enter this gameboard, they were pieces that should not exist}.{qt}`[\]
 
 
 seplay 11,59,100
 
 *e32_554
-d2 [lv 0*"65"*"pie_02220"]`{qt}@c900.@[For several of the victims, I was originally going to allow them to live.`[@][#][*][lv 0*"65"*"pie_02230"]` However, because of their circumstances, they cannot stay on this game board.`[@][#][*][lv 0*"65"*"pie_02240"]` Therefore, I removed them.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_02220"]`{qt}{p:1:For several of the victims, I was originally going to allow them to live.`[@][#][*][lv 0*"65"*"pie_02230"]` However, because of their circumstances, they cannot stay on this game board.`[@][#][*][lv 0*"65"*"pie_02240"]` Therefore, I removed them.}{qt}`[\]
 
 wait_on_d 0
 
@@ -7119,7 +7122,7 @@ seplay 11,59,100
 seplay 11,59,100
 
 *e32_555
-d2 [lv 0*"65"*"pie_02250"]`{qt}@c900.@[Don't misunderstand.`[@][#][*][lv 0*"65"*"pie_02260"]` We did not remove them because we despised them.`[@][#][*][lv 0*"65"*"pie_02270"]`...   However, for those I truly wanted to kill, I had no regards for their hearts and showed them no mercy or pity as I removed them from the gameboard.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_02250"]`{qt}{p:1:Don't misunderstand.`[@][#][*][lv 0*"65"*"pie_02260"]` We did not remove them because we despised them.`[@][#][*][lv 0*"65"*"pie_02270"]`...However, for those I truly wanted to kill, I had no regards for their hearts and showed them no mercy or pity as I removed them from the gameboard.}{qt}`[\]
 
 wait_on_d 0
 
@@ -7241,10 +7244,10 @@ d `No, no, in the first place, as far as the choice of victims goes, having a ph
 
 
 *e32_566
-d `But in this case, she said, @c900.@[they were all pieces that shouldn't exist@]@c., so it's in conflict with what she said earlier.`[\]
+d `But in this case, she said, {p:1:they were all pieces that shouldn't exist}, so it's in conflict with what she said earlier.`[\]
 
 
-meplay 11,5,100
+meplay 1,5,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -7296,7 +7299,7 @@ flush 22
 
 msgwnd_pie
 *e32_570
-d [lv 0*"65"*"pie_02290"]`{qt}Uuhihihihi pi-piece♪{qt}`[\]
+d [lv 0*"65"*"pie_02290"]`{qt}Uuhihihihi pi-piece{p:0:♪}{qt}`[\]
 
 
 lss s0_8,"enj","a11_fuman2"
@@ -7325,7 +7328,7 @@ flush 80
 
 msgwnd_enj
 *e32_573
-d [lv 0*"11"*"enj_01670"]`{qt}I don't have any line of motivation for her.`[@][lv 0*"11"*"enj_01680"]`...   But I've been trying to think of what this witch's aura brings to mind.{qt}`[\]
+d [lv 0*"11"*"enj_01670"]`{qt}I don't have any line of motivation for her.`[@][lv 0*"11"*"enj_01680"]`...But I've been trying to think of what this witch's aura brings to mind.{qt}`[\]
 
 
 lss s0_9,"pie","b11_14"
@@ -7343,7 +7346,7 @@ flush 80
 
 msgwnd_enj
 *e32_575
-d [lv 0*"11"*"enj_01690"]`{qt}That haughtiness and laughter that delights in her intellectual overbearance.`[@][lv 0*"11"*"enj_01700"]`...   ...It's just like my comrade.{qt}`[\]
+d [lv 0*"11"*"enj_01690"]`{qt}That haughtiness and laughter that delights in her intellectual overbearance.`[@][lv 0*"11"*"enj_01700"]`......It's just like my comrade.{qt}`[\]
 
 
 lss s0_10,"bea","a11_futeki2"
@@ -7405,7 +7408,7 @@ flush 80
 
 msgwnd_eri
 *e32_577
-d [lv 0*"46"*"eri_00010"]`{qt}This is unexpected, Comrade Ange.`[@][lv 0*"46"*"eri_00020"]` As a witch of truth, it is only natural that I have both grace and intelligence.`[@][lv 0*"46"*"eri_00030"]`...   ...So?`[@][lv 0*"46"*"eri_00040"]` How is this tacky witch of pieces similar to me?`[\]
+d [lv 0*"46"*"eri_00010"]`{qt}This is unexpected, Comrade Ange.`[@][lv 0*"46"*"eri_00020"]` As a witch of truth, it is only natural that I have both grace and intelligence.`[@][lv 0*"46"*"eri_00030"]`......So?`[@][lv 0*"46"*"eri_00040"]` How is this tacky witch of pieces similar to me?`[\]
 
 
 lss s0_10,"enj","a11_defo1"
@@ -7604,7 +7607,7 @@ flush 80
 
 msgwnd_enj
 *e32_591
-d [lv 0*"11"*"enj_01770"]`{qt}After she drifted ashore, they welcomed her as an overnight guest.`[@][lv 0*"11"*"enj_01780"]`...   She acted superior and irritated them, so it's possible that the Ushiromiya family all conspired together to create a fake murder case and discredit her pretensions of being a detective.{qt}`[\]
+d [lv 0*"11"*"enj_01770"]`{qt}After she drifted ashore, they welcomed her as an overnight guest.`[@][lv 0*"11"*"enj_01780"]`...She acted superior and irritated them, so it's possible that the Ushiromiya family all conspired together to create a fake murder case and discredit her pretensions of being a detective.{qt}`[\]
 
 
 lss s0_10,"eri","a11_akuwarai2"
@@ -7833,7 +7836,7 @@ flush 80
 
 msgwnd_pie
 *e32_604
-d [lv 0*"65"*"pie_02340"]`{qt}Uuuuhiihiihihihihihi!!!`[@][lv 0*"65"*"pie_02350"]` I see, yes,`[@][lv 0*"65"*"pie_02360"]` we are somewhat similar in personality, piece♪`[@][lv 0*"65"*"pie_02370"]` Two similar pieces on the board are really annoying, piece.{qt}`[\]
+d [lv 0*"65"*"pie_02340"]`{qt}Uuuuhiihiihihihihihi!!!`[@][lv 0*"65"*"pie_02350"]` I see, yes,`[@][lv 0*"65"*"pie_02360"]` we are somewhat similar in personality, piece{p:0:♪}`[@][lv 0*"65"*"pie_02370"]` Two similar pieces on the board are really annoying, piece.{qt}`[\]
 
 
 lss s0_10,"eri","a11_warai3"
@@ -7898,7 +7901,7 @@ flush 22
 
 msgwnd_enj
 *e32_609
-d2 [lv 0*"11"*"enj_01860"]`{qt}Blue declaration!`[@][#][*][lv 0*"11"*"enj_01870"]` @c279.@[The culprit is Furudo Erika!`[@][#][*][lv 0*"11"*"enj_01880"]` This sequence of events was all to trick Erika, or was a farce to mock her!`[@][#][*][lv 0*"11"*"enj_01890"]` Everybody suddenly acting like we didn't exist was all arranged beforehand!@]@c.{qt}`[\]
+d2 [lv 0*"11"*"enj_01860"]`{qt}Blue declaration!`[@][#][*][lv 0*"11"*"enj_01870"]` {p:2:The culprit is Furudo Erika!`[@][#][*][lv 0*"11"*"enj_01880"]` This sequence of events was all to trick Erika, or was a farce to mock her!`[@][#][*][lv 0*"11"*"enj_01890"]` Everybody suddenly acting like we didn't exist was all arranged beforehand!}{qt}`[\]
 
 wait_on_d 0
 
@@ -7925,7 +7928,7 @@ seplay 11,2,100
 
 msgwnd_non
 *e32_610
-d2 `That will explain what you just said with red truth![#][*]{qt}@c900.@[For several of the victims, I was originally going to allow them to live.`[@]`[#][*]However, because of their circumstances, they cannot stay on this game board.`[@]`[#][*]Therefore, I removed them.@]@c.{qt}.`[\]
+d2 `That will explain what you just said with red truth!`[#][*]`{qt}{p:1:For several of the victims, I was originally going to allow them to live.`[@][#][*]`However, because of their circumstances, they cannot stay on this game board.`[@][#][*]`Therefore, I removed them}{qt}.`[\]
 
 wait_on_d 0
 
@@ -8008,7 +8011,7 @@ flush 80
 
 msgwnd_eri
 *e32_616
-d2 [lv 0*"46"*"eri_00230"]`{qt}For your red truth of '[#][*]@c900.@[for those I truly wanted to kill, I had no regards for their hearts and showed them no mercy or pity as I removed them from the gameboard@]@c.', you presented a grave sin of trying to fool the great detective with a farce!{qt}`[\]
+d2 [lv 0*"46"*"eri_00230"]`{qt}For your red truth of `[#][*]`'{p:1:for those I truly wanted to kill, I had no regards for their hearts and showed them no mercy or pity as I removed them from the gameboard}', you presented a grave sin of trying to fool the great detective with a farce!{qt}`[\]
 
 wait_on_d 0
 
@@ -8095,7 +8098,7 @@ d [lv 0*"46"*"eri_00280"]`{qt}This level of reasoning is possible!!!{qt}`[\]
 
 msgwnd_non
 *e32_620
-d `Ange and Erika stood back-to-back while pointing their index fingers at PIECE as if to condemn her.`[\]
+d `Ange and Erika stood back-to-back while pointing their index fingers at {f:5:Piece} as if to condemn her.`[\]
 
 
 *e32_621
@@ -8119,7 +8122,7 @@ d `The other version of Ange, the witch of truth, while showing off a wink with 
 
 flush 2
 
-meplay 11,17,100
+meplay 1,17,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -8136,7 +8139,7 @@ flush 2
 
 msgwnd_pie
 *e32_623
-d [lv 0*"65"*"pie_02400"]`{qt}Piece....♪`[@][lv 0*"65"*"pie_02410"]` I truly am grateful for your piece heartfelt logic, piece♪{qt}`[\]
+d [lv 0*"65"*"pie_02400"]`{qt}Piece....{p:0:♪}`[@][lv 0*"65"*"pie_02410"]` I truly am grateful for your piece heartfelt logic, piece{p:0:♪}{qt}`[\]
 
 
 lss s0_9,"pie","a11_5"
@@ -8208,7 +8211,7 @@ flush 80
 
 msgwnd_bea
 *e32_630
-d [lv 0*"27"*"bea_07940"]`{qt}If the culprit was limited to humans, your theory would be the best one.`[@][lv 0*"27"*"bea_07950"]`...   But this time, even the residents of the witch's illusion can be the culprit, right?!{qt}`[\]
+d [lv 0*"27"*"bea_07940"]`{qt}If the culprit was limited to humans, your theory would be the best one.`[@][lv 0*"27"*"bea_07950"]`...But this time, even the residents of the witch's illusion can be the culprit, right?!{qt}`[\]
 
 
 lss s0_8,"enj","a11_ikari1"
@@ -8217,7 +8220,7 @@ flush 80
 
 msgwnd_enj
 *e32_631
-d [lv 0*"11"*"enj_01970"]`{qt}Lambda has her monster friends, FEATHERINE has her black cats following her, BERNKASTEL, LAMBDADELTA...`[@][lv 0*"11"*"enj_01980"]` Isn't this a free-for-all!?{qt}`[\]
+d [lv 0*"11"*"enj_01970"]`{qt}Lambda has her monster friends, {f:5:Featherine} has her black cats following her, {f:5:Bernkastel}, {f:5:Lambdadelta}...`[@][lv 0*"11"*"enj_01980"]` Isn't this a free-for-all!?{qt}`[\]
 
 
 lss s0_10,"bea","a11_aseru1"
@@ -8255,7 +8258,7 @@ bgmplay 122,70,0
 
 msgwnd_but
 *e32_634
-d2 [lv 0*"10"*"bat_06940"]`{qt}She means that in a situation where there are multiple possible culprits, what is possible is not sufficient to prove who is the culprit.`[@][lv 0*"10"*"bat_06950"]` Besides, PIECE's first red truth clearly stated`[@][#][*][lv 0*"10"*"bat_06960"]` @c900.@[I am a person who has existed from Episode 1 through Episode 8.@]@c.{qt}`[\]
+d2 [lv 0*"10"*"bat_06940"]`{qt}She means that in a situation where there are multiple possible culprits, what is possible is not sufficient to prove who is the culprit.`[@][lv 0*"10"*"bat_06950"]` Besides, {f:5:Piece}'s first red truth clearly stated`[@][#][*][lv 0*"10"*"bat_06960"]` {p:1:I am a person who has existed from Episode 1 through Episode 8}{qt}`[\]
 
 wait_on_d 0
 
@@ -8270,7 +8273,7 @@ flush 80
 
 msgwnd_bea
 *e32_635
-d [lv 0*"27"*"bea_07990"]`{qt}In other words,`[@][lv 0*"27"*"bea_08000"]` {qt}In other words, in order to expose PIECE's identity in this situation, your whodunnit and howdunnit aren't enough to pinpoint a single specific culprit...!!{qt}`[\]
+d [lv 0*"27"*"bea_07990"]`{qt}In other words,`[@][lv 0*"27"*"bea_08000"]` {qt}In other words, in order to expose {f:5:Piece}'s identity in this situation, your whodunnit and howdunnit aren't enough to pinpoint a single specific culprit...!!{qt}`[\]
 
 
 lss s0_9,"enj","a11_ikari1"
@@ -8279,7 +8282,7 @@ flush 80
 
 msgwnd_enj
 *e32_636
-d [lv 0*"11"*"enj_02000"]`{qt}Just a bit ago, you and Onii-chan said that trying to figure out the howdunnit might just ensnare us in one of PIECE's traps and confuse us!`[@][lv 0*"11"*"enj_02010"]` So I looked for the who and why, and argued the most probable person was the culprit...!{qt}`[\]
+d [lv 0*"11"*"enj_02000"]`{qt}Just a bit ago, you and Onii-chan said that trying to figure out the howdunnit might just ensnare us in one of {f:5:Piece}'s traps and confuse us!`[@][lv 0*"11"*"enj_02010"]` So I looked for the who and why, and argued the most probable person was the culprit...!{qt}`[\]
 
 
 lss s0_10,"but","b11_aseru4"
@@ -8353,7 +8356,7 @@ flush 80
 
 msgwnd_bea
 *e32_644
-d [lv 0*"27"*"bea_08050"]`{qt}It's like what Kyrie likes to say.`[@][lv 0*"27"*"bea_08060"]` I'll turn the chessboard over on her...!`[@][lv 0*"27"*"bea_08070"]` However, I'm not going to imagine the culprit's point of view to make a deduction.`[@][lv 0*"27"*"bea_08080"]`...   I'm going to turn over the assumption that the culprit is a human.`[\]
+d [lv 0*"27"*"bea_08050"]`{qt}It's like what Kyrie likes to say.`[@][lv 0*"27"*"bea_08060"]` I'll turn the chessboard over on her...!`[@][lv 0*"27"*"bea_08070"]` However, I'm not going to imagine the culprit's point of view to make a deduction.`[@][lv 0*"27"*"bea_08080"]`...I'm going to turn over the assumption that the culprit is a human.`[\]
 
 
 lss s0_9,"enj","a11_ikari1"
@@ -8418,7 +8421,7 @@ flush 80
 
 msgwnd_but
 *e32_649
-d [lv 0*"10"*"bat_07030"]`{qt}Ahh.`[@][lv 0*"10"*"bat_07040"]` It would be possible for FEATHERINE or BERNKASTEL to commit the crime.`[@][lv 0*"10"*"bat_07050"]` But they wouldn't have a motive to commit such a twisted scenario.{qt}`[\]
+d [lv 0*"10"*"bat_07030"]`{qt}Ahh.`[@][lv 0*"10"*"bat_07040"]` It would be possible for {f:5:Featherine} or {f:5:Bernkastel} to commit the crime.`[@][lv 0*"10"*"bat_07050"]` But they wouldn't have a motive to commit such a twisted scenario.{qt}`[\]
 
 
 lss s0_8,"enj","a11_ikari1"
@@ -8490,7 +8493,7 @@ bgmplay 106,70,0
 
 msgwnd_but
 *e32_654
-d [lv 0*"10"*"bat_07070"]`{qt}It's a witches' game.`[@][lv 0*"10"*"bat_07080"]`...   Anything goes.`[@][lv 0*"10"*"bat_07090"]` It's so freaky, crazy, out of touch and insane that it's almost ridiculous to even think about it...!!`[@][lv 0*"10"*"bat_07100"]` But don't ever underestimate...`[@][lv 0*"10"*"bat_07110"]` the heart...!!!{qt}`[\]
+d [lv 0*"10"*"bat_07070"]`{qt}It's a witches' game.`[@][lv 0*"10"*"bat_07080"]`...Anything goes.`[@][lv 0*"10"*"bat_07090"]` It's so freaky, crazy, out of touch and insane that it's almost ridiculous to even think about it...!!`[@][lv 0*"10"*"bat_07100"]` But don't ever underestimate...`[@][lv 0*"10"*"bat_07110"]` the heart...!!!{qt}`[\]
 
 
 msgwnd_non
@@ -8680,7 +8683,7 @@ flush 80
 
 msgwnd_pie
 *e32_665
-d [lv 0*"65"*"pie_02550"]`{qt}From your mouth.`[@][lv 0*"65"*"pie_02560"]` Just by listening to those words.`[@][lv 0*"65"*"pie_02570"]`...   ...Just with those, it was worth coming here today on a witch's errand......{qt}`[\]
+d [lv 0*"65"*"pie_02550"]`{qt}From your mouth.`[@][lv 0*"65"*"pie_02560"]` Just by listening to those words.`[@][lv 0*"65"*"pie_02570"]`......Just with those, it was worth coming here today on a witch's errand......{qt}`[\]
 
 
 csp_slot s0_3
@@ -8700,7 +8703,7 @@ flush 22
 
 msgwnd_enj
 *e32_666
-d [lv 0*"11"*"enj_02130"]`{qt}...Beato.`[@][lv 0*"11"*"enj_02140"]` And PIECE.`[@][lv 0*"11"*"enj_02150"]`...   And furthermore, the uncountable number of witches I haven't met. I'm sorry.{qt}`[\]
+d [lv 0*"11"*"enj_02130"]`{qt}...Beato.`[@][lv 0*"11"*"enj_02140"]` And {f:5:Piece}.`[@][lv 0*"11"*"enj_02150"]`...And furthermore, the uncountable number of witches I haven't met. I'm sorry.{qt}`[\]
 
 
 lss s0_9,"enj","a11_defo1"
@@ -8708,7 +8711,7 @@ spt_mem "a2","xpos",s0_9,0
 flush 80
 
 *e32_667
-d2 [lv 0*"11"*"enj_02160"]`{qt}In addition, you had already declared it in red.`[@][#][*][lv 0*"11"*"enj_02170"]` @c900.@[There is motive and heart behind this incident.@]@c.`[@][lv 0*"11"*"enj_02180"]`...   I'm embarrassed I lost my self-control and got sulky.{qt}`[\]
+d2 [lv 0*"11"*"enj_02160"]`{qt}In addition, you had already declared it in red.`[@][#][*][lv 0*"11"*"enj_02170"]` {p:1:There is motive and heart behind this incident}.`[@][lv 0*"11"*"enj_02180"]`...I'm embarrassed I lost my self-control and got sulky.{qt}`[\]
 
 wait_on_d 0
 
@@ -8821,7 +8824,7 @@ d `That's right...`[@]`All the ghosts of witches want to be defeated like that, 
 
 
 *e32_679
-d `...Like Rokkenjima's BEATRICE.`[\]
+d `...Like Rokkenjima's {f:5:Beatrice}.`[\]
 
 
 csp_slot s0_3
@@ -8900,11 +8903,11 @@ d [lv 0*"65"*"pie_02640"]`{qt}I gave the two of them free rein to enjoy their de
 
 msgwnd_non
 *e32_687
-d `I don't know what has offended or upset PIECE.`[\]
+d `I don't know what has offended or upset {f:5:Piece}.`[\]
 
 
 *e32_688
-d `But I can certainly feel the invisible sparks quietly flying between Beato and PIECE......`[\]
+d `But I can certainly feel the invisible sparks quietly flying between Beato and {f:5:Piece}......`[\]
 
 
 csp_slot s0_3
@@ -8950,7 +8953,7 @@ flush 80
 
 msgwnd_but
 *e32_690
-d [lv 0*"10"*"bat_07200"]`{qt}But it's fine.`[@][lv 0*"10"*"bat_07210"]`...   you've crossed a great distance over the sea of nothing to come here, so it's only fair that we give you a warm welcome.{qt}`[\]
+d [lv 0*"10"*"bat_07200"]`{qt}But it's fine.`[@][lv 0*"10"*"bat_07210"]`...you've crossed a great distance over the sea of nothing to come here, so it's only fair that we give you a warm welcome.{qt}`[\]
 
 
 csp_slot s0_3
@@ -8968,7 +8971,7 @@ flush 4
 
 msgwnd_non
 *e32_691
-d `Now, BEATRICE...`[@]`my golden brains`[@]`rip it open!`[@]`This woman, this witch of the piece, rip her open.`[\]
+d `Now, {f:5:Beatrice}...`[@]`my golden brains`[@]`rip it open!`[@]`This woman, this witch of the piece, rip her open.`[\]
 
 
 csp_slot s0_3
@@ -9000,7 +9003,7 @@ flush 80
 flush 2
 
 *e32_693
-d2 `All they have to say {qt}I'm lonely, please give me some attention{qt}...`[@]`[#][*]But they are so crass and inconsiderate that they fill a thousand bottles with redundant stories that take a thousand years to read and release them into the ocean...`[@]`[#][*]And the big idiots wait on the beach for someone to read it, even if it takes anyone a thousand years and a thousand times over for them to decipher it......!!`[\]
+d2 `All they have to say {qt}I'm lonely, please give me some attention{qt}...`[@][#][*]`But they are so crass and inconsiderate that they fill a thousand bottles with redundant stories that take a thousand years to read and release them into the ocean...`[@][#][*]`And the big idiots wait on the beach for someone to read it, even if it takes anyone a thousand years and a thousand times over for them to decipher it......!!`[\]
 
 wait_on_d 0
 
@@ -9093,7 +9096,7 @@ d `...Why did Kyrie, Ange, Kinzo, Beato, Shannon, Kanon and Genji have to disapp
 
 
 *e32_696
-d2 `She said...`[@]`[#][*]@c900.@[In order for me to enter this gameboard, they were pieces that should not exist.@]@c.`[\]
+d2 `She said...`[@][#][*]`{p:1:In order for me to enter this gameboard, they were pieces that should not exist}.`[\]
 
 wait_on_d 0
 
@@ -9228,7 +9231,7 @@ flush 80
 seplay 11,59,100
 
 *e32_708
-d2 [lv 0*"65"*"pie_02700"]`{qt}@c900.@[Aren't riddles my specialty?`[@][#][*][lv 0*"65"*"pie_02710"]` I'm even better at them than you are.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_02700"]`{qt}{p:1:Aren't riddles my specialty?`[@][#][*][lv 0*"65"*"pie_02710"]` I'm even better at them than you are}.{qt}`[\]
 
 wait_on_d 0
 
@@ -9256,7 +9259,7 @@ seplay 11,59,100
 
 msgwnd_pie
 *e32_710
-d2 [lv 0*"65"*"pie_02720"]`{qt}@c900.@[So you were completely immersed in solving riddles...`[@][#][*][lv 0*"65"*"pie_02730"]` but that's only been for a short period of time, less than ten years, since you met Battler.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_02720"]`{qt}{p:1:So you were completely immersed in solving riddles...`[@][#][*][lv 0*"65"*"pie_02730"]` but that's only been for a short period of time, less than ten years, since you met Battler}{qt}`[\]
 
 wait_on_d 0
 
@@ -9268,7 +9271,7 @@ seplay 11,59,100
 seplay 11,59,100
 
 *e32_711
-d2 [lv 0*"65"*"pie_02740"]`{qt}@c900.@[Unlike you, I'm not a little girl.`[@][#][*][lv 0*"65"*"pie_02750"]` Ever since before you were born, I've always loved riddles, and am very good at them.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_02740"]`{qt}{p:1:Unlike you, I'm not a little girl.`[@][#][*][lv 0*"65"*"pie_02750"]` Ever since before you were born, I've always loved riddles, and am very good at them}{qt}`[\]
 
 wait_on_d 0
 
@@ -9280,7 +9283,7 @@ seplay 11,59,100
 seplay 11,59,100
 
 *e32_712
-d2 [lv 0*"65"*"pie_02760"]`{qt}@c900.@[...It's regrettable that I wasn't able to challenge the riddle of the epitaph.`[@][#][*][lv 0*"65"*"pie_02770"]` If I had challenged the riddle of the epitaph together with you, we surely would've easily solved the childish wordplay that Grandfather frantically dreamt up.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_02760"]`{qt}{p:1:...It's regrettable that I wasn't able to challenge the riddle of the epitaph.`[@][#][*][lv 0*"65"*"pie_02770"]` If I had challenged the riddle of the epitaph together with you, we surely would've easily solved the childish wordplay that Grandfather frantically dreamt up}{qt}`[\]
 
 wait_on_d 0
 
@@ -9292,7 +9295,7 @@ seplay 11,59,100
 seplay 11,59,100
 
 *e32_713
-d2 [lv 0*"65"*"pie_02780"]`{qt}@c900.@[I know because...`[@][#][*][lv 0*"65"*"pie_02790"]` this was the first time I tried to solve the riddle of the epitaph, as the witch of the piece.`[@][#][*][lv 0*"65"*"pie_02800"]` I solved it so easily!@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_02780"]`{qt}{p:1:I know because...`[@][#][*][lv 0*"65"*"pie_02790"]` this was the first time I tried to solve the riddle of the epitaph, as the witch of the piece.`[@][#][*][lv 0*"65"*"pie_02800"]` I solved it so easily!}{qt}`[\]
 
 wait_on_d 0
 
@@ -9343,7 +9346,7 @@ flush 22
 
 msgwnd_pie
 *e32_717
-d [lv 0*"65"*"pie_02810"]`{qt}Right.`[@][lv 0*"65"*"pie_02820"]` What you call the revival of the Golden Witch, you, rising up after six years from nothing...`[@][lv 0*"65"*"pie_02830"]`...   and lowering your human self to furniture whose body was incapable of love...`[@][lv 0*"65"*"pie_02840"]` All that was the trigger for the tragedy.`[\]
+d [lv 0*"65"*"pie_02810"]`{qt}Right.`[@][lv 0*"65"*"pie_02820"]` What you call the revival of the Golden Witch, you, rising up after six years from nothing...`[@][lv 0*"65"*"pie_02830"]`...and lowering your human self to furniture whose body was incapable of love...`[@][lv 0*"65"*"pie_02840"]` All that was the trigger for the tragedy.`[\]
 
 
 lss s0_9,"pie","a11_16"
@@ -9359,7 +9362,7 @@ spt_mem "a2","xpos",s0_9,0
 flush 80
 
 *e32_719
-d [lv 0*"65"*"pie_02880"]`{qt}I would have held in my hand the key that would have saved your life!`[@][lv 0*"65"*"pie_02890"]`...   However, the fact that I wasn't able to do that was my greatest sin!`[@][lv 0*"65"*"pie_02900because of that, you were born,`[@]@v65"]` Battler was locked in the cat box,`[@][lv 0*"65"*"pie_02920"]` and Ange was left all alone in the future...!{qt}`[\]
+d [lv 0*"65"*"pie_02880"]`{qt}I would have held in my hand the key that would have saved your life!`[@][lv 0*"65"*"pie_02890"]`...However, the fact that I wasn't able to do that was my greatest sin!`[@][lv 0*"65"*"pie_02900"]` Because of that, you were born,`[@][lv 0*"65"*"pie_02910"]` Battler was locked in the cat box,`[@][lv 0*"65"*"pie_02920"]` and Ange was left all alone in the future...!{qt}`[\]
 
 
 lss s0_10,"pie","a11_17"
@@ -9369,7 +9372,7 @@ flush 80
 seplay 11,11,100
 
 *e32_720
-d2 [lv 0*"65"*"pie_02930"]`{qt}This is all my responsibility!`[@][lv 0*"65"*"pie_02940"]` I gave birth to you!`[@][lv 0*"65"*"pie_02950"]` I should've given birth earlier!`[@][lv 0*"65"*"pie_02960"]` Then, surely...`[@][lv 0*"65"*"pie_02970"]` everybody would have been...[#][*]...[#][*]...[#][*]much happier!!{qt}`[\]
+d2 [lv 0*"65"*"pie_02930"]`{qt}This is all my responsibility!`[@][lv 0*"65"*"pie_02940"]` I gave birth to you!`[@][lv 0*"65"*"pie_02950"]` I should've given birth earlier!`[@][lv 0*"65"*"pie_02960"]` Then, surely...`[@][lv 0*"65"*"pie_02970"]` everybody would have been...`[#][*]`...`[#][*]`...`[#][*]`much happier!!{qt}`[\]
 
 wait_on_d 0
 
@@ -9401,7 +9404,7 @@ d `S...she gave birth to me...?`[@]`......It can't be, the...... mom I'd only se
 
 
 *e32_723
-d2 `No, it can't be that.`[@]`It's impossible.`[@]`[#][*]Because I'm positive my mother escaped from Kuwadorian with Rosa, then fell off a cliff to her death.`[@]`That happened right after giving birth to me.`[\]
+d2 `No, it can't be that.`[@]`It's impossible.`[@][#][*]`Because I'm positive my mother escaped from Kuwadorian with Rosa, then fell off a cliff to her death.`[@]` That happened right after giving birth to me.`[\]
 
 wait_on_d 0
 
@@ -9481,7 +9484,7 @@ flush 80
 
 msgwnd_bea
 *e32_729
-d2 [lv 0*"27"*"bea_08280"]`{qt}Ah...`[@][lv 0*"27"*"bea_08290"]` She's at a place she can look down on me.`[@][lv 0*"27"*"bea_08300"]` But she isn't looking down at me in arrogance.`[@][lv 0*"27"*"bea_08310"]` It's from a place similar to trying to guide a very young child...`[@][lv 0*"27"*"bea_08320"]` it's hard to believe[#][*]it's like she's doing it out of parental love!!!{qt}`[\]
+d2 [lv 0*"27"*"bea_08280"]`{qt}Ah...`[@][lv 0*"27"*"bea_08290"]` She's at a place she can look down on me.`[@][lv 0*"27"*"bea_08300"]` But she isn't looking down at me in arrogance.`[@][lv 0*"27"*"bea_08310"]` It's from a place similar to trying to guide a very young child...`[@][lv 0*"27"*"bea_08320"]` it's hard to believe`[#][*]` it's like she's doing it out of parental love!!!{qt}`[\]
 
 wait_on_d 0
 
@@ -9516,7 +9519,7 @@ seplay 11,59,100
 
 msgwnd_pie
 *e32_731
-d2 [lv 0*"65"*"pie_02980"]`{qt}@c900.@[Ange.`[@][#][*][lv 0*"65"*"pie_02990"]`...   Of course you wouldn't recognize me.`[@][#][*][lv 0*"65"*"pie_03000"]`...   ...Because...`[@][#][*][lv 0*"65"*"pie_03010"]` Even though you know my name, we have never met even once.`[@][#][*][lv 0*"65"*"pie_03020"]` Furthermore, I will say this.`[@][#][*][lv 0*"65"*"pie_03030"]` Until I became the witch of the piece, I did not know your name, or even that you existed.@]@c.{qt}`[\]
+d2 [lv 0*"65"*"pie_02980"]`{qt}{p:1:Ange.`[@][#][*][lv 0*"65"*"pie_02990"]`...Of course you wouldn't recognize me.`[@][#][*][lv 0*"65"*"pie_03000"]`......Because...`[@][#][*][lv 0*"65"*"pie_03010"]` Even though you know my name, we have never met even once.`[@][#][*][lv 0*"65"*"pie_03020"]` Furthermore, I will say this.`[@][#][*][lv 0*"65"*"pie_03030"]` Until I became the witch of the piece, I did not know your name, or even that you existed}{qt}`[\]
 
 wait_on_d 0
 
@@ -9618,7 +9621,7 @@ spt_mem "a2","xpos",s0_9,0
 flush 80
 
 *e32_740
-d2 `I can't stop crying from the disappointment and frustration...`[@]`dammit,[#][*]dammit dammit dammit,[#][*]dammit aaaah!!!!`[\]
+d2 `I can't stop crying from the disappointment and frustration...`[@]`dammit,`[#][*]`dammit dammit dammit,`[#][*]`dammit aaaah!!!!`[\]
 
 wait_on_d 0
 
@@ -9684,7 +9687,7 @@ d [lv 0*"10"*"bat_07280"]`{qt}..............................{qt}`[\]
 
 
 *e32_745
-d2 [lv 0*"10"*"bat_07290"]`{qt}.......................................[#][*]!!!{qt}`[\]
+d2 [lv 0*"10"*"bat_07290"]`{qt}.......................................`[#][*]`!!!{qt}`[\]
 
 wait_on_d 0
 
@@ -9749,7 +9752,7 @@ flush 80
 
 msgwnd_but
 *e32_755
-d [lv 0*"10"*"bat_07320"]`{qt}It wasn't just Beato and her friends.`[@][lv 0*"10"*"bat_07330"]`...   Some of us...... can't exist at the same time as her......{qt}`[\]
+d [lv 0*"10"*"bat_07320"]`{qt}It wasn't just Beato and her friends.`[@][lv 0*"10"*"bat_07330"]`...Some of us...... can't exist at the same time as her......{qt}`[\]
 
 
 lss s0_8,"enj","a21_komaru4"
@@ -9807,7 +9810,7 @@ bgmplay 197,70,0
 
 msgwnd_pie
 *e32_761
-d [lv 0*"65"*"pie_03120"]`{qt}Ange.`[@][lv 0*"65"*"pie_03130"]`...   ...I called you all the way here to be mean to you.`[@][lv 0*"65"*"pie_03140"]`...   ...I am a piece whose existence is incompatible with yours.`[\]
+d [lv 0*"65"*"pie_03120"]`{qt}Ange.`[@][lv 0*"65"*"pie_03130"]`......I called you all the way here to be mean to you.`[@][lv 0*"65"*"pie_03140"]`......I am a piece whose existence is incompatible with yours.`[\]
 
 
 msgwnd_non
@@ -9825,7 +9828,7 @@ flush 80
 
 msgwnd_pie
 *e32_764
-d [lv 0*"65"*"pie_03150"]`{qt}We are...`[@][lv 0*"65"*"pie_03160"]` If we had met, we surely would've gotten along.`[@][lv 0*"65"*"pie_03170"]`...   That is what I believe.`[@][lv 0*"65"*"pie_03180"]`...   ...Even so, I would like to give thanks from the bottom of my heart that the two of us were able to meet today by some miracle.{qt}`[\]
+d [lv 0*"65"*"pie_03150"]`{qt}We are...`[@][lv 0*"65"*"pie_03160"]` If we had met, we surely would've gotten along.`[@][lv 0*"65"*"pie_03170"]`...That is what I believe.`[@][lv 0*"65"*"pie_03180"]`......Even so, I would like to give thanks from the bottom of my heart that the two of us were able to meet today by some miracle.{qt}`[\]
 
 
 csp_slot s0_3
@@ -9867,7 +9870,7 @@ flush 22
 
 msgwnd_pie
 *e32_767
-d [lv 0*"65"*"pie_03190"]`{qt}Ange.`[@][lv 0*"65"*"pie_03200"]` My wickedness tried to get revenge not only on Kyrie, but on you, too.`[@][lv 0*"65"*"pie_03210"]` For a feud between two women, the right thing to do is to only drag those two involved into the coffin.`[@][lv 0*"65"*"pie_03220"]`...   Even though I have never met you,`[@][lv 0*"65"*"pie_03230"]` for the trival purpose of comforting myself by hurting you just because you are her daughter,`[@][lv 0*"65"*"pie_03240"]` I have called you here.`[@][lv 0*"65"*"pie_03250"]` I am truly ashamed of that, especially as a human parent myself......!{qt}`[\]
+d [lv 0*"65"*"pie_03190"]`{qt}Ange.`[@][lv 0*"65"*"pie_03200"]` My wickedness tried to get revenge not only on Kyrie, but on you, too.`[@][lv 0*"65"*"pie_03210"]` For a feud between two women, the right thing to do is to only drag those two involved into the coffin.`[@][lv 0*"65"*"pie_03220"]`...Even though I have never met you,`[@][lv 0*"65"*"pie_03230"]` for the trival purpose of comforting myself by hurting you just because you are her daughter,`[@][lv 0*"65"*"pie_03240"]` I have called you here.`[@][lv 0*"65"*"pie_03250"]` I am truly ashamed of that, especially as a human parent myself......!{qt}`[\]
 
 
 csp_slot s0_3
@@ -9959,7 +9962,7 @@ flush 1
 
 msgwnd_non
 *e32_773
-d `Asumu...... Ushiromiya......@e`[\]
+d `Asumu...... Ushiromiya......`[\]
 
 
 lss s0_9,"enj","a11_hanbeso3"
@@ -9986,7 +9989,7 @@ flush 80
 
 msgwnd_pie
 *e32_775
-d [lv 0*"65"*"pie_03260"]`{qt}......Ange.`[@][lv 0*"65"*"pie_03270"]`...   That still is only a small part of the answer.`[@][lv 0*"65"*"pie_03280"]`...   Because,`[@][lv 0*"65"*"pie_03290"]` you still need to deny the terrible Fragment I brought with me.{qt}`[\]
+d [lv 0*"65"*"pie_03260"]`{qt}......Ange.`[@][lv 0*"65"*"pie_03270"]`...That still is only a small part of the answer.`[@][lv 0*"65"*"pie_03280"]`...Because,`[@][lv 0*"65"*"pie_03290"]` you still need to deny the terrible Fragment I brought with me.{qt}`[\]
 
 
 csp_slot s0_3
@@ -10031,7 +10034,7 @@ flush 4
 
 msgwnd_pie
 *e32_779
-d [lv 0*"65"*"pie_03300"]`{qt}Well then, start the autopsy.`[@][lv 0*"65"*"pie_03310"]`...   ...because they say cats can be loved, killed, and enjoyed twice.{qt}`[\]
+d [lv 0*"65"*"pie_03300"]`{qt}Well then, start the autopsy.`[@][lv 0*"65"*"pie_03310"]`......because they say cats can be loved, killed, and enjoyed twice.{qt}`[\]
 
 
 csp_slot s0_3
@@ -10129,7 +10132,7 @@ flush 22
 
 msgwnd_enj
 *e32_788
-d [lv 0*"11"*"enj_02450"]`{qt}......I understand up to here.`[@][lv 0*"11"*"enj_02460"]`...   ...But why would you say that this Fragment is something that will hurt me...?{qt}`[\]
+d [lv 0*"11"*"enj_02450"]`{qt}......I understand up to here.`[@][lv 0*"11"*"enj_02460"]`......But why would you say that this Fragment is something that will hurt me...?{qt}`[\]
 
 
 lss s0_8,"pie","a11_18"
@@ -10251,7 +10254,7 @@ flush 80
 
 msgwnd_but
 *e32_800
-d [lv 0*"10"*"bat_07420"]`{qt}...Mom.`[@][lv 0*"10"*"bat_07430"]`...   As I thought, this world is a little too convenient.{qt}`[\]
+d [lv 0*"10"*"bat_07420"]`{qt}...Mom.`[@][lv 0*"10"*"bat_07430"]`...As I thought, this world is a little too convenient.{qt}`[\]
 
 
 lss s0_9,"pie","a11_3"
@@ -10278,7 +10281,7 @@ flush 80
 
 msgwnd_bea
 *e32_803
-d [lv 0*"27"*"bea_08420"]`{qt}......In that world...... I would live not in despair, but in a far-off, calmer everyday life.`[@][lv 0*"27"*"bea_08430"]`...   ...Therefore, after I found the gold, everything would change...{qt}`[\]
+d [lv 0*"27"*"bea_08420"]`{qt}......In that world...... I would live not in despair, but in a far-off, calmer everyday life.`[@][lv 0*"27"*"bea_08430"]`......Therefore, after I found the gold, everything would change...{qt}`[\]
 
 
 csp_slot s0_3
@@ -10464,7 +10467,7 @@ flush 80
 
 msgwnd_bea
 *e32_817
-d [lv 0*"27"*"bea_08440"]`{qt}...Ange.`[@][lv 0*"27"*"bea_08450"]` I will say it in place of her,`[@][lv 0*"27"*"bea_08460"]` over and over again.`[@][lv 0*"27"*"bea_08470"]`...   ...This is her fairy tale.{qt}`[\]
+d [lv 0*"27"*"bea_08440"]`{qt}...Ange.`[@][lv 0*"27"*"bea_08450"]` I will say it in place of her,`[@][lv 0*"27"*"bea_08460"]` over and over again.`[@][lv 0*"27"*"bea_08470"]`......This is her fairy tale.{qt}`[\]
 
 
 lss s0_8,"enj","a31_komaru3"
@@ -10478,7 +10481,7 @@ d [lv 0*"11"*"enj_02500"]`{qt}...........................{qt}`[\]
 
 msgwnd_non
 *e32_819
-d `At first, Ange... was puzzled as to why PIECE and Beato were so apologetically repeating over and over again that this was a fantasy.`[\]
+d `At first, Ange... was puzzled as to why {f:5:Piece} and Beato were so apologetically repeating over and over again that this was a fantasy.`[\]
 
 
 *e32_820
@@ -10491,7 +10494,7 @@ flush 80
 
 msgwnd_bea
 *e32_821
-d2 [lv 0*"27"*"bea_08480"]`{qt}And then.`[@][#][*][lv 0*"27"*"bea_08490"]` The girl took a share for herself, one large enough for a more than merely comfortable life, then gave the rest to the Ushiromiya family relatives.`[@][lv 0*"27"*"bea_08500"]`...   Therefore,`[@][lv 0*"27"*"bea_08510"]`...   Therefore, all of the relatives had enough to settle their financial problems.`[@][#][*][lv 0*"27"*"bea_08520"]` Concealing Kinzo's death was unnecessary.`[@][lv 0*"27"*"bea_08530"]` There was no reason to quarrel... leaving just a happy island.{qt}`[\]
+d2 [lv 0*"27"*"bea_08480"]`{qt}And then.`[@][#][*][lv 0*"27"*"bea_08490"]` The girl took a share for herself, one large enough for a more than merely comfortable life, then gave the rest to the Ushiromiya family relatives.`[@][lv 0*"27"*"bea_08500"]`...Therefore,`[@][lv 0*"27"*"bea_08510"]`...Therefore, all of the relatives had enough to settle their financial problems.`[@][#][*][lv 0*"27"*"bea_08520"]` Concealing Kinzo's death was unnecessary.`[@][lv 0*"27"*"bea_08530"]` There was no reason to quarrel... leaving just a happy island.{qt}`[\]
 
 wait_on_d 0
 
@@ -10659,7 +10662,7 @@ flush 80
 
 msgwnd_pie
 *e32_828
-d [lv 0*"65"*"pie_03420"]`{qt}That's correct...`[@][lv 0*"65"*"pie_03430"]` One side of the coin is shut up in the catbox of misery.`[@][lv 0*"65"*"pie_03440"]` The other is a world where everyone is happy, with the exception of you and Kyrie.`[@][lv 0*"65"*"pie_03450"]`...   Beato fulfilled her dream.`[@][lv 0*"65"*"pie_03460"]`...   Battler's dream of living with his relatives and going to the same school came true.`[@][lv 0*"65"*"pie_03470"]` He wouldn't be hurt by his mother's death and his father's remarriage... he would also gladly accept that miracle.{qt}`[\]
+d [lv 0*"65"*"pie_03420"]`{qt}That's correct...`[@][lv 0*"65"*"pie_03430"]` One side of the coin is shut up in the catbox of misery.`[@][lv 0*"65"*"pie_03440"]` The other is a world where everyone is happy, with the exception of you and Kyrie.`[@][lv 0*"65"*"pie_03450"]`...Beato fulfilled her dream.`[@][lv 0*"65"*"pie_03460"]`...Battler's dream of living with his relatives and going to the same school came true.`[@][lv 0*"65"*"pie_03470"]` He wouldn't be hurt by his mother's death and his father's remarriage... he would also gladly accept that miracle.{qt}`[\]
 
 
 lss s0_9,"enj","a11_fuman1"
@@ -10668,7 +10671,7 @@ flush 80
 
 msgwnd_enj
 *e32_829
-d [lv 0*"11"*"enj_02550"]`{qt}......`[@][lv 0*"11"*"enj_02560"]` I see.`[@][lv 0*"11"*"enj_02570"]` If that's true, then the three of us will agree on that answer and expose your identity.`[@][lv 0*"11"*"enj_02580"]` Even so...... I'll deny it.`[@][lv 0*"11"*"enj_02590"]` That answer.`[@][lv 0*"11"*"enj_02600"]`...   You knew that, right?{qt}`[\]
+d [lv 0*"11"*"enj_02550"]`{qt}......`[@][lv 0*"11"*"enj_02560"]` I see.`[@][lv 0*"11"*"enj_02570"]` If that's true, then the three of us will agree on that answer and expose your identity.`[@][lv 0*"11"*"enj_02580"]` Even so...... I'll deny it.`[@][lv 0*"11"*"enj_02590"]` That answer.`[@][lv 0*"11"*"enj_02600"]`...You knew that, right?{qt}`[\]
 
 
 lss s0_10,"pie","a11_4"
@@ -10677,7 +10680,7 @@ flush 80
 
 msgwnd_pie
 *e32_830
-d [lv 0*"65"*"pie_03480"]`{qt}......Yes.`[@][lv 0*"65"*"pie_03490"]`...   I wanted to make you suffer.`[@][lv 0*"65"*"pie_03500"]` You know the answer, but if you deny it, your side cannot win.`[@][lv 0*"65"*"pie_03510"]`...   I was going to make it that sort of game... and torment you through it.{qt}`[\]
+d [lv 0*"65"*"pie_03480"]`{qt}......Yes.`[@][lv 0*"65"*"pie_03490"]`...I wanted to make you suffer.`[@][lv 0*"65"*"pie_03500"]` You know the answer, but if you deny it, your side cannot win.`[@][lv 0*"65"*"pie_03510"]`...I was going to make it that sort of game... and torment you through it.{qt}`[\]
 
 
 seplay 11,52,100
@@ -10779,7 +10782,7 @@ flush 80
 
 msgwnd_but
 *e32_839
-d [lv 0*"10"*"bat_07510"]`{qt}I, I'm fine.`[@][lv 0*"10"*"bat_07520"]`...   I don't care about me anymore at this point......!`[@][lv 0*"10"*"bat_07530"]` But what will happen to Ange if this Fragment is recognized...?!`[@][lv 0*"10"*"bat_07540"]` Will she vanish!?{qt}`[\]
+d [lv 0*"10"*"bat_07510"]`{qt}I, I'm fine.`[@][lv 0*"10"*"bat_07520"]`...I don't care about me anymore at this point......!`[@][lv 0*"10"*"bat_07530"]` But what will happen to Ange if this Fragment is recognized...?!`[@][lv 0*"10"*"bat_07540"]` Will she vanish!?{qt}`[\]
 
 
 lss s0_9,"enj","a11_hanbeso1"
@@ -10788,7 +10791,7 @@ flush 80
 
 msgwnd_enj
 *e32_840
-d [lv 0*"11"*"enj_02610"]`{qt}Because my mom married into the Ushiromiya family...... a tragedy occured.`[@][lv 0*"11"*"enj_02620"]` If Asumu Ushiromiya Asumu did not die then...... nobody would have been sad.`[@][lv 0*"11"*"enj_02630"]`...   ...I... shouldn't have been born.{qt}`[\]
+d [lv 0*"11"*"enj_02610"]`{qt}Because my mom married into the Ushiromiya family...... a tragedy occured.`[@][lv 0*"11"*"enj_02620"]` If Asumu Ushiromiya Asumu did not die then...... nobody would have been sad.`[@][lv 0*"11"*"enj_02630"]`......I... shouldn't have been born.{qt}`[\]
 
 
 lss s0_8,"but","b11_aseru3"
@@ -10806,7 +10809,7 @@ flush 80
 
 msgwnd_bea
 *e32_842
-d [lv 0*"27"*"bea_08670"]`{qt}That's right.`[@][lv 0*"27"*"bea_08680"]`...   Ange.`[@][lv 0*"27"*"bea_08690"]` Don't worry about this.{qt}`[\]
+d [lv 0*"27"*"bea_08670"]`{qt}That's right.`[@][lv 0*"27"*"bea_08680"]`...Ange.`[@][lv 0*"27"*"bea_08690"]` Don't worry about this.{qt}`[\]
 
 
 csp_slot s0_3
@@ -10854,7 +10857,7 @@ flush 80
 
 msgwnd_enj
 *e32_845
-d [lv 0*"11"*"enj_02640"]`{qt}......Right.`[@][lv 0*"11"*"enj_02650"]`...   That's the whole point.`[@][lv 0*"11"*"enj_02660"]` It would be strange for me to feel ashamed of being here.`[@][lv 0*"11"*"enj_02670"]` You're such a weird ghost.`[@][lv 0*"11"*"enj_02680"]`...   Although the future would be so much happier if you were still alive.`[@][lv 0*"11"*"enj_02690"]`...   But you can make up any future you want if you embellish it.{qt}`[\]
+d [lv 0*"11"*"enj_02640"]`{qt}......Right.`[@][lv 0*"11"*"enj_02650"]`...That's the whole point.`[@][lv 0*"11"*"enj_02660"]` It would be strange for me to feel ashamed of being here.`[@][lv 0*"11"*"enj_02670"]` You're such a weird ghost.`[@][lv 0*"11"*"enj_02680"]`...Although the future would be so much happier if you were still alive.`[@][lv 0*"11"*"enj_02690"]`...But you can make up any future you want if you embellish it.{qt}`[\]
 
 
 csp_slot s0_3
@@ -10872,7 +10875,7 @@ flush 2
 
 msgwnd_pie
 *e32_846
-d [lv 0*"65"*"pie_03600"]`{qt}Right.`[@][lv 0*"65"*"pie_03610"]`...   So for this wicked witch of the piece,`[@][lv 0*"65"*"pie_03620"]` spit on and forget about me... don't ever think of me.`[@][lv 0*"65"*"pie_03630"]`...   Ah, that's right.`[@][lv 0*"65"*"pie_03640"]`...   ......So that's why I have that power.`[@][lv 0*"65"*"pie_03650"]` Ufufufu......{qt}`[\]
+d [lv 0*"65"*"pie_03600"]`{qt}Right.`[@][lv 0*"65"*"pie_03610"]`...So for this wicked witch of the piece,`[@][lv 0*"65"*"pie_03620"]` spit on and forget about me... don't ever think of me.`[@][lv 0*"65"*"pie_03630"]`...Ah, that's right.`[@][lv 0*"65"*"pie_03640"]`.........So that's why I have that power.`[@][lv 0*"65"*"pie_03650"]` Ufufufu......{qt}`[\]
 
 
 lss s0_8,"enj","a31_komaru3"
@@ -10903,7 +10906,7 @@ flush 80
 
 msgwnd_bea
 *e32_848
-d [lv 0*"27"*"bea_08700"]`{qt}Battler.`[@][lv 0*"27"*"bea_08710"]`...   ..She's...{qt}`[\]
+d [lv 0*"27"*"bea_08700"]`{qt}Battler.`[@][lv 0*"27"*"bea_08710"]`.....She's...{qt}`[\]
 
 
 lss s0_9,"but","b11_sakebu1a"
@@ -10932,7 +10935,7 @@ bgmplay 243,70,0
 
 msgwnd_non
 *e32_850
-d2 `@e@s50.The witch of pieces' hair......[#][*]danced as if it was a curtain in the wind,[#][*]and billowed out in great sheets.`[\]
+d2 `The witch of pieces' hair......`[#][*]`danced as if it was a curtain in the wind,`[#][*]`and billowed out in great sheets.`[\]
 
 wait_on_d 0
 
@@ -10958,7 +10961,7 @@ flush 22
 
 msgwnd_pie
 *e32_851
-d @e@s50.`[|][lv 0*"65"*"pie_03660"]`{qt}It's fine, Ange...[*][lv 0*"65"*"pie_03670"]` and Battler...[*][lv 0*"65"*"pie_03680"]` I'll heal your sadness right now.[*]`[\]
+d [lv 0*"65"*"pie_03660"]`{qt}It's fine, Ange...`[lv 0*"65"*"pie_03670"]` and Battler...`[lv 0*"65"*"pie_03680"]` I'll heal your sadness right now.`[\]
 
 
 flush 4
@@ -10967,7 +10970,7 @@ flush 3
 
 msgwnd_non
 *e32_852
-d `@e@s50.A beautiful bundle of hair, growing like the branches of a large tree, slowly enveloped the body of the witch of pieces......`[\]
+d `A beautiful bundle of hair, growing like the branches of a large tree, slowly enveloped the body of the witch of pieces......`[\]
 
 
 lss s0_9,"pie","b13_14"
@@ -10976,7 +10979,7 @@ flush 80
 
 msgwnd_pie
 *e32_853
-d2 @e@s50.`[|][lv 0*"65"*"pie_03690"]`{qt}Uiipipipipi.[#][*][*][lv 0*"65"*"pie_03700"]`...   It seems I also played a strange Human piece, piece.[*][lv 0*"65"*"pie_03710"]` Well, it was short, but I was able to brush off the dust that had piled up on me in the abyss of oblivion, piece♪{qt}[*]`[\]
+d2 [lv 0*"65"*"pie_03690"]`{qt}Uiipipipipi.`[#][*][lv 0*"65"*"pie_03700"]`...It seems I also played a strange Human piece, piece.`[#][*][lv 0*"65"*"pie_03710"]` Well, it was short, but I was able to brush off the dust that had piled up on me in the abyss of oblivion, piece{p:0:♪}{qt}`[\]
 
 wait_on_d 0
 
@@ -10984,12 +10987,7 @@ d_continue
 wait_on_d 1
 
 d_continue
-wait_on_d 2
 
-d_continue
-wait_on_d 3
-
-d_continue
 wait_on_d -1
 
 csp_slot s0_3
@@ -11015,7 +11013,7 @@ flush 80
 
 msgwnd_bea
 *e32_854
-d @e@s50.`[|][lv 0*"27"*"bea_08720"]`{qt}Your role was difficult,[*][lv 0*"27"*"bea_08730"]` witch of pieces.[*][lv 0*"27"*"bea_08740"]` We'll be sure to tell your master that you have fulfilled that role brilliantly.{qt}[*]`[\]
+d [lv 0*"27"*"bea_08720"]`{qt}Your role was difficult,`[lv 0*"27"*"bea_08730"]` witch of pieces.`[lv 0*"27"*"bea_08740"]` We'll be sure to tell your master that you have fulfilled that role brilliantly.{qt}`[\]
 
 
 csp_slot s0_3
@@ -11029,12 +11027,12 @@ flush 22
 
 msgwnd_pie
 *e32_855
-d @e@s50.`[|][lv 0*"65"*"pie_03720"]`{qt}Goodbye, Battler.[*][lv 0*"65"*"pie_03730"]` Take good care of your sister.[*][lv 0*"65"*"pie_03740"]` Girls can be much more fragile than you think......{qt}[*]`[\]
+d [lv 0*"65"*"pie_03720"]`{qt}Goodbye, Battler.`[lv 0*"65"*"pie_03730"]` Take good care of your sister.`[lv 0*"65"*"pie_03740"]` Girls can be much more fragile than you think......{qt}`[\]
 
 
 msgwnd_but
 *e32_856
-d @e@s50.`[|][lv 0*"10"*"bat_07580"]`{qt}Mom......{qt}[*]`[\]
+d [lv 0*"10"*"bat_07580"]`{qt}Mom......{qt}`[\]
 
 
 csp_slot s0_3
@@ -11048,12 +11046,12 @@ flush 22
 
 msgwnd_pie
 *e32_857
-d @e@s50.`[|][lv 0*"65"*"pie_03750"]`{qt}Goodbye, Ange.{qt}[*]`[\]
+d [lv 0*"65"*"pie_03750"]`{qt}Goodbye, Ange.{qt}`[\]
 
 
 msgwnd_enj
 *e32_858
-d @e@s50.`[|][lv 0*"11"*"enj_02710"]`{qt}.....................{qt}[*]`[\]
+d [lv 0*"11"*"enj_02710"]`{qt}.....................{qt}`[\]
 
 
 csp_slot s0_3
@@ -11067,12 +11065,12 @@ flush 22
 
 msgwnd_pie
 *e32_859
-d @e@s50.`[|][lv 0*"65"*"pie_03760"]`{qt}If it is our destiny that only one of us should remain in the Ushiromiya family and live a prosperous future......[*][lv 0*"65"*"pie_03770"]` I am glad that it was you.[*][lv 0*"65"*"pie_03780"]` You're smarter and stronger than anybody else, and... I'm glad you're the blood of of Kirie Ushiromiya, who was smarter and tougher than anyone else and was willing to go to any length for the sake of her family.[*][lv 0*"65"*"pie_03790"]`...   Ufufufu, it's not very healthy to be the daughter of such a pathetic, riddle-happy aunt.{qt}[*]`[\]
+d [lv 0*"65"*"pie_03760"]`{qt}If it is our destiny that only one of us should remain in the Ushiromiya family and live a prosperous future......`[lv 0*"65"*"pie_03770"]` I am glad that it was you.`[lv 0*"65"*"pie_03780"]` You're smarter and stronger than anybody else, and... I'm glad you're the blood of of Kirie Ushiromiya, who was smarter and tougher than anyone else and was willing to go to any length for the sake of her family.`[lv 0*"65"*"pie_03790"]`...Ufufufu, it's not very healthy to be the daughter of such a pathetic, riddle-happy aunt.{qt}`[\]
 
 
 msgwnd_enj
 *e32_860
-d @e@s50.`[|][lv 0*"11"*"enj_02720"]`{qt}......Even though... In my whole life, I never called you mom...!![*][lv 0*"11"*"enj_02730"]`...   ...Because my mom was jealous of you even after your death... You were dad's splendid partner![*][lv 0*"11"*"enj_02740"]` I can say this without a doubt!{qt}[*]`[\]
+d [lv 0*"11"*"enj_02720"]`{qt}......Even though... In my whole life, I never called you mom...!!`[lv 0*"11"*"enj_02730"]`......Because my mom was jealous of you even after your death... You were dad's splendid partner!`[lv 0*"11"*"enj_02740"]` I can say this without a doubt!{qt}`[\]
 
 
 csp_slot s0_3
@@ -11086,7 +11084,7 @@ flush 22
 
 msgwnd_pie
 *e32_861
-d @e@s50.`[|][lv 0*"65"*"pie_03800"]`{qt}Thank you.[*][lv 0*"65"*"pie_03810"]` I wish you all the best!{qt}[*]`[\]
+d [lv 0*"65"*"pie_03800"]`{qt}Thank you.`[lv 0*"65"*"pie_03810"]` I wish you all the best!{qt}`[\]
 
 
 csp_slot s0_3
@@ -11099,11 +11097,11 @@ lbg "c:backgrounds",s0_3,"new_evcg05_4"
 flush 22
 
 *e32_862
-d @e@s50.`[|][lv 0*"65"*"pie_03820"]`{qt}With that, the curtain falls![*][lv 0*"65"*"pie_03830"]` Your opponent was me, the witch of the piece, peaceful lovely Piece!{qt}[*]`[\]
+d [lv 0*"65"*"pie_03820"]`{qt}With that, the curtain falls!`[lv 0*"65"*"pie_03830"]` Your opponent was me, the witch of the piece, peaceful lovely Piece!{qt}`[\]
 
 
 *e32_863
-d2 @e@s50.`[|][lv 0*"65"*"pie_03840"]`May all humanity be at peace.`[@][#][*][lv 0*"65"*"pie_03850"]` Mmm~~~~~![#][*]`[@][#][*][lv 0*"65"*"pie_03860"]` Piece!!{qt}`[\]
+d2 [lv 0*"65"*"pie_03840"]`May all humanity be at peace.`[@][#][*][lv 0*"65"*"pie_03850"]` Mmm~~~~~!`[#][*][@][#][*][lv 0*"65"*"pie_03860"]` Piece!!{qt}`[\]
 
 wait_on_d 0
 
@@ -11143,7 +11141,7 @@ flush 2
 
 msgwnd_non
 *e32_864
-d2 `@e@s100.[#][*]*bang*[#][*]*snap*[#][*]......*squish*............!!![#][*]`[\]
+d2 `[#][*]`*bang*`[#][*]`*snap*`[#][*]`......*squish*............!!!`[#][*][\]
 
 wait_on_d 0
 
@@ -11303,7 +11301,7 @@ spt_mem "a2","xpos",s0_8,-549
 flush 80
 
 *e32_872
-d [lv 0*"29"*"lam_01890"]`{qt}Oh yeah, by the way, PIECE.`[@][lv 0*"29"*"lam_01900"]` You know, your power of swallowing your opponent's existence whole......`[@][lv 0*"29"*"lam_01910"]` you really can?{qt}`[\]
+d [lv 0*"29"*"lam_01890"]`{qt}Oh yeah, by the way, {f:5:Piece}.`[@][lv 0*"29"*"lam_01900"]` You know, your power of swallowing your opponent's existence whole......`[@][lv 0*"29"*"lam_01910"]` you really can?{qt}`[\]
 
 
 csp_slot s0_3
@@ -11348,7 +11346,7 @@ flush 22
 
 msgwnd_enj
 *e32_875
-d [lv 0*"11"*"enj_02760"]`{qt}...For FEATHERINE, our world...`[@][lv 0*"11"*"enj_02770"]` looks like it was written on paper, and she can take a pencil and eraser to those words to erase and rewrite them as she sees fit, or so I've heard.{qt}`[\]
+d [lv 0*"11"*"enj_02760"]`{qt}...For {f:5:Featherine}, our world...`[@][lv 0*"11"*"enj_02770"]` looks like it was written on paper, and she can take a pencil and eraser to those words to erase and rewrite them as she sees fit, or so I've heard.{qt}`[\]
 
 
 lss s0_10,"but","b11_defo2"
@@ -11445,7 +11443,7 @@ flush 80
 
 msgwnd_bea
 *e32_884
-d [lv 0*"27"*"bea_08770"]`{qt}That's how it is.`[@][lv 0*"27"*"bea_08780"]` The more restrictions are removed, the more the power of creation can spread its wings.`[@][lv 0*"27"*"bea_08790"]`...   However, once the lack of restriction passes a certain point, when there are no restrictions at all,`[@][lv 0*"27"*"bea_08800"]` contrarily, the power of creation shrinks.{qt}`[\]
+d [lv 0*"27"*"bea_08770"]`{qt}That's how it is.`[@][lv 0*"27"*"bea_08780"]` The more restrictions are removed, the more the power of creation can spread its wings.`[@][lv 0*"27"*"bea_08790"]`...However, once the lack of restriction passes a certain point, when there are no restrictions at all,`[@][lv 0*"27"*"bea_08800"]` contrarily, the power of creation shrinks.{qt}`[\]
 
 
 lss s0_9,"pie","a11_3"
@@ -11483,7 +11481,7 @@ bgmplay 113,70,0
 
 msgwnd_lam
 *e32_886
-d [lv 0*"29"*"lam_01940"]`{qt}Then, PIECE!`[@][lv 0*"29"*"lam_01950"]` You only inherited FEATHERINE's power of erasure!`[@][lv 0*"29"*"lam_01960"]` So I'm guessing you can't do the opposite?{qt}`[\]
+d [lv 0*"29"*"lam_01940"]`{qt}Then, {f:5:Piece}!`[@][lv 0*"29"*"lam_01950"]` You only inherited {f:5:Featherine}'s power of erasure!`[@][lv 0*"29"*"lam_01960"]` So I'm guessing you can't do the opposite?{qt}`[\]
 
 
 lss s0_10,"ber","a21_warai2"
@@ -11510,7 +11508,7 @@ flush 80
 
 msgwnd_pie
 *e32_889
-d [lv 0*"65"*"pie_03950"]`{qt}Pi?`[@][lv 0*"65"*"pie_03960"]`...   ...Haaaa, I never thought about that, piece.{qt}`[\]
+d [lv 0*"65"*"pie_03950"]`{qt}Pi?`[@][lv 0*"65"*"pie_03960"]`......Haaaa, I never thought about that, piece.{qt}`[\]
 
 
 csp_slot s0_3
@@ -11528,7 +11526,7 @@ flush 22
 
 msgwnd_but
 *e32_890
-d [lv 0*"10"*"bat_07670"]`{qt}Right now I'm aware of six of us here, namely me, Beato, Ange, Bern, Lambda, and PIECE.{qt}`[\]
+d [lv 0*"10"*"bat_07670"]`{qt}Right now I'm aware of six of us here, namely me, Beato, Ange, Bern, Lambda, and {f:5:Piece}.{qt}`[\]
 
 
 lss s0_8,"bea","a11_warai3"
@@ -11537,7 +11535,7 @@ flush 80
 
 msgwnd_bea
 *e32_891
-d [lv 0*"27"*"bea_08810"]`{qt}Fumufumu.`[@][lv 0*"27"*"bea_08820"]` This is going to be interesting.`[@][lv 0*"27"*"bea_08830"]`...   ...so it's possible that there were 7 people here earlier, one of whom has already had been swallowed up and whose existence we have forgotten......?{qt}`[\]
+d [lv 0*"27"*"bea_08810"]`{qt}Fumufumu.`[@][lv 0*"27"*"bea_08820"]` This is going to be interesting.`[@][lv 0*"27"*"bea_08830"]`......so it's possible that there were 7 people here earlier, one of whom has already had been swallowed up and whose existence we have forgotten......?{qt}`[\]
 
 
 lss s0_9,"pie","a11_13"
@@ -11546,7 +11544,7 @@ flush 80
 
 msgwnd_pie
 *e32_892
-d [lv 0*"65"*"pie_03970"]`{qt}Ueehihihihihi...`[@][lv 0*"65"*"pie_03980"]` Actually, yes.`[@][lv 0*"65"*"pie_03990"]`...   There was originally one more guest here, but they were a little noisy, so I swallowed them and put them away, piece.{qt}`[\]
+d [lv 0*"65"*"pie_03970"]`{qt}Ueehihihihihi...`[@][lv 0*"65"*"pie_03980"]` Actually, yes.`[@][lv 0*"65"*"pie_03990"]`...There was originally one more guest here, but they were a little noisy, so I swallowed them and put them away, piece.{qt}`[\]
 
 
 csp_slot s0_3
@@ -11582,7 +11580,7 @@ flush 80
 
 msgwnd_pie
 *e32_895
-d [lv 0*"65"*"pie_04000"]`{qt}I'm not sure if I've swallowed them completely, so some memory of them may still linger in you guys, piece.`[@][lv 0*"65"*"pie_04010"]`...   To try to help you remember, I'll give you a little hint, piece.`[@][lv 0*"65"*"pie_04020"]` First hint.`[@][lv 0*"65"*"pie_04030"]` They're a kid who's pretty skilled with chopsticks.{qt}`[\]
+d [lv 0*"65"*"pie_04000"]`{qt}I'm not sure if I've swallowed them completely, so some memory of them may still linger in you guys, piece.`[@][lv 0*"65"*"pie_04010"]`...To try to help you remember, I'll give you a little hint, piece.`[@][lv 0*"65"*"pie_04020"]` First hint.`[@][lv 0*"65"*"pie_04030"]` They're a kid who's pretty skilled with chopsticks.{qt}`[\]
 
 
 csp_slot s0_3
@@ -11725,7 +11723,7 @@ flush 80
 
 msgwnd_pie
 *e32_906
-d [lv 0*"65"*"pie_04110"]`{qt}They see themselves as Lady LAMBDADELTA's rival.`[@][lv 0*"65"*"pie_04120"]` Before, when Lady LAMBDADELTA's arm had been torn off, they took it and with a grin, started tickling it, piece.{qt}`[\]
+d [lv 0*"65"*"pie_04110"]`{qt}They see themselves as Lady {f:5:Lambdadelta}'s rival.`[@][lv 0*"65"*"pie_04120"]` Before, when Lady {f:5:Lambdadelta}'s arm had been torn off, they took it and with a grin, started tickling it, piece.{qt}`[\]
 
 
 csp_slot s0_3
@@ -11752,7 +11750,7 @@ flush 80
 
 msgwnd_bea
 *e32_908
-d [lv 0*"27"*"bea_08870"]`{qt}Uumu... why would we invite such a person over?`[@][lv 0*"27"*"bea_08880"]`...   Who on earth would ever be friends with them?{qt}`[\]
+d [lv 0*"27"*"bea_08870"]`{qt}Uumu... why would we invite such a person over?`[@][lv 0*"27"*"bea_08880"]`...Who on earth would ever be friends with them?{qt}`[\]
 
 
 lss s0_8,"enj","a11_defo1"
@@ -11830,7 +11828,7 @@ flush 80
 
 msgwnd_pie
 *e32_916
-d [lv 0*"65"*"pie_04150"]`{qt}Uehyahyahyahhya!`[@][lv 0*"65"*"pie_04160"]` Then I'll do that, piece, Lady Bernkastel♪{qt}`[\]
+d [lv 0*"65"*"pie_04150"]`{qt}Uehyahyahyahhya!`[@][lv 0*"65"*"pie_04160"]` Then I'll do that, piece, Lady Bernkastel{p:0:♪}{qt}`[\]
 
 
 csp_slot s0_3
@@ -11881,7 +11879,7 @@ flush 80
 
 msgwnd_bea
 *e32_919
-d [lv 0*"27"*"bea_08890"]`{qt}......I see.`[@][lv 0*"27"*"bea_08900"]` So it's as Lady LAMBDADELTA said?`[@][lv 0*"27"*"bea_08910"]` Aside from tonight, there may be another person that PIECE has swallowed and erased.`[@][lv 0*"27"*"bea_08920"]` At any rate, I have no idea how many pieces were created in the process of writing these massive tales.{qt}`[\]
+d [lv 0*"27"*"bea_08890"]`{qt}......I see.`[@][lv 0*"27"*"bea_08900"]` So it's as Lady {f:5:Lambdadelta} said?`[@][lv 0*"27"*"bea_08910"]` Aside from tonight, there may be another person that {f:5:Piece} has swallowed and erased.`[@][lv 0*"27"*"bea_08920"]` At any rate, I have no idea how many pieces were created in the process of writing these massive tales.{qt}`[\]
 
 
 lss s0_8,"but","b11_defo2"
@@ -11935,7 +11933,7 @@ flush 80
 
 msgwnd_bea
 *e32_924
-d [lv 0*"27"*"bea_08940"]`{qt}Certainly... I don't remember every single reject character.`[@][lv 0*"27"*"bea_08950"]`...   Maybe... PIECE swallowed some of them up and didn't even allow them to exist...?{qt}`[\]
+d [lv 0*"27"*"bea_08940"]`{qt}Certainly... I don't remember every single reject character.`[@][lv 0*"27"*"bea_08950"]`...Maybe... {f:5:Piece} swallowed some of them up and didn't even allow them to exist...?{qt}`[\]
 
 
 csp_slot s0_3
@@ -12106,7 +12104,7 @@ csp_slot s0_10
 
 flush 42
 
-meplay 11,15,100
+meplay 1,15,100
 
 csp_slot s0_3
 csp_slot s0_8
@@ -12151,7 +12149,7 @@ flush 22
 
 msgwnd_non
 *e32_940
-d `PIECE's hair spread out like a curtain billowing in the wind.`[\]
+d `{f:5:Piece}'s hair spread out like a curtain billowing in the wind.`[\]
 
 
 *e32_941
@@ -12170,7 +12168,7 @@ csp_slot s0_10
 flush 28
 
 *e32_942
-d `@z150.*pop*!!!`[\]
+d `*pop*!!!`[\]
 
 
 bgmplay 137,70,0
@@ -12362,7 +12360,7 @@ flush 28
 
 msgwnd_non
 *e32_955
-d `@z150.*pop*!!!`[\]
+d `*pop*!!!`[\]
 
 
 bgmplay 146,70,0
@@ -12455,7 +12453,7 @@ flush 22
 
 msgwnd_enj
 *e32_961
-d [lv 0*"11"*"enj_02930"]`{qt}...No way.`[@][lv 0*"11"*"enj_02940"]`...   But... this......{qt}`[\]
+d [lv 0*"11"*"enj_02930"]`{qt}...No way.`[@][lv 0*"11"*"enj_02940"]`...But... this......{qt}`[\]
 
 
 lss s0_9,"bea","a11_akuwarai2"
@@ -12464,7 +12462,7 @@ flush 80
 
 msgwnd_bea
 *e32_962
-d [lv 0*"27"*"bea_09150"]`{qt}Yes, yes!`[@][lv 0*"27"*"bea_09160"]` That's right.`[@][lv 0*"27"*"bea_09170"]` To tell the truth, the person you thought was Natsuhi was actually me!`[@][lv 0*"27"*"bea_09180"]` She was a rejected design for BEATRICE!!{qt}`[\]
+d [lv 0*"27"*"bea_09150"]`{qt}Yes, yes!`[@][lv 0*"27"*"bea_09160"]` That's right.`[@][lv 0*"27"*"bea_09170"]` To tell the truth, the person you thought was Natsuhi was actually me!`[@][lv 0*"27"*"bea_09180"]` She was a rejected design for {f:5:Beatrice}!!{qt}`[\]
 
 
 lss s0_8,"but","b11_aseru3"
@@ -12635,7 +12633,7 @@ flush 80
 
 msgwnd_pie
 *e32_977
-d [lv 0*"65"*"pie_04380"]`{qt}Well then,`[@][lv 0*"65"*"pie_04390"]` I extracted some of BEATRICE's greatest lines.`[@][lv 0*"65"*"pie_04400"]` Please take your pick, piece~.{qt}`[\]
+d [lv 0*"65"*"pie_04380"]`{qt}Well then,`[@][lv 0*"65"*"pie_04390"]` I extracted some of {f:5:Beatrice}'s greatest lines.`[@][lv 0*"65"*"pie_04400"]` Please take your pick, piece~.{qt}`[\]
 
 
 csp_slot s0_3
@@ -12715,7 +12713,7 @@ flush 80
 
 msgwnd_lam
 *e32_982
-d [lv 0*"29"*"lam_02290"]`{qt}I like that spirit!`[@][lv 0*"29"*"lam_02300"]` Then, she'll make her debut for the first time in Japan!`[@][lv 0*"29"*"lam_02310"]` BEATRICE Natsuhi~~!!!{qt}`[\]
+d [lv 0*"29"*"lam_02290"]`{qt}I like that spirit!`[@][lv 0*"29"*"lam_02300"]` Then, she'll make her debut for the first time in Japan!`[@][lv 0*"29"*"lam_02310"]` {f:5:Beatrice} Natsuhi~~!!!{qt}`[\]
 
 
 flush 22
@@ -12892,7 +12890,7 @@ flush 22
 
 msgwnd_pie
 *e32_993
-d2 [lv 0*"65"*"pie_04410"]`{qt}Surprisingly, it wasn't as interesting as I'd expected~.[#][*]`[@][lv 0*"65"*"pie_04420"]` And now, our third and final person!`[@][lv 0*"65"*"pie_04430"]` Come out, my trump card~!`[@][lv 0*"65"*"pie_04440"]` Nnnnngh.........!!!{qt}`[\]
+d2 [lv 0*"65"*"pie_04410"]`{qt}Surprisingly, it wasn't as interesting as I'd expected~.`[#][*][@][lv 0*"65"*"pie_04420"]` And now, our third and final person!`[@][lv 0*"65"*"pie_04430"]` Come out, my trump card~!`[@][lv 0*"65"*"pie_04440"]` Nnnnngh.........!!!{qt}`[\]
 
 wait_on_d 0
 
@@ -12964,7 +12962,7 @@ lss s0_9,"wel","a11_def5"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
-ERROR
+msgwnd_wel
 *e32_996
 d [lv 0*"66"*"wel_00010"]`{qt}...........................{qt}`[\]
 
@@ -13049,7 +13047,7 @@ flush 80
 
 msgwnd_enj
 *e32_1004
-d [lv 0*"11"*"enj_03030"]`{qt}If that's what you say, then we have VIRGILIA and Virgilius.`[@][lv 0*"11"*"enj_03040"]` They're similar enough to be confusing.{qt}`[\]
+d [lv 0*"11"*"enj_03030"]`{qt}If that's what you say, then we have {f:5:Virgilia} and Virgilius.`[@][lv 0*"11"*"enj_03040"]` They're similar enough to be confusing.{qt}`[\]
 
 
 lss s0_9,"lam","a11_futeki2"
@@ -13058,7 +13056,7 @@ flush 80
 
 msgwnd_lam
 *e32_1005
-d [lv 0*"29"*"lam_02350"]`{qt}Because,`[@][lv 0*"29"*"lam_02360"]` VIRGILIA is, as I recall, a name of a character in a play from long ago.{qt}`[\]
+d [lv 0*"29"*"lam_02350"]`{qt}Because,`[@][lv 0*"29"*"lam_02360"]` {f:5:Virgilia} is, as I recall, a name of a character in a play from long ago.{qt}`[\]
 
 
 lss s0_10,"but","b11_futeki1"
@@ -13067,7 +13065,7 @@ flush 80
 
 msgwnd_but
 *e32_1006
-d [lv 0*"10"*"bat_07920"]`As I recall, it means {qt}He who leads us to BEATRICE{qt}...`[@][lv 0*"10"*"bat_07930"]` I see.`[@][lv 0*"10"*"bat_07940"]` Her role is similar to the one in the original source, so it makes sense that their names would be similar!{qt}`[\]
+d [lv 0*"10"*"bat_07920"]`As I recall, it means {qt}He who leads us to {f:5:Beatrice}{qt}...`[@][lv 0*"10"*"bat_07930"]` I see.`[@][lv 0*"10"*"bat_07940"]` Her role is similar to the one in the original source, so it makes sense that their names would be similar!{qt}`[\]
 
 
 csp_slot s0_3
@@ -13155,7 +13153,7 @@ flush 80
 
 flush 2
 
-ERROR
+msgwnd_wel
 *e32_1014
 d [lv 0*"66"*"wel_00020"]`{qt}...........................{qt}`[\]
 
@@ -13175,7 +13173,7 @@ flush 80
 
 msgwnd_but
 *e32_1016
-d [lv 0*"10"*"bat_07950"]`{qt}That's what I thought, too.`[@][lv 0*"10"*"bat_07960"]` If you're a witch, you should be dressed eccentrically.`[@][lv 0*"10"*"bat_07970"]`...   He looks more like a human, doesn't he?`[\]
+d [lv 0*"10"*"bat_07950"]`{qt}That's what I thought, too.`[@][lv 0*"10"*"bat_07960"]` If you're a witch, you should be dressed eccentrically.`[@][lv 0*"10"*"bat_07970"]`...He looks more like a human, doesn't he?`[\]
 
 
 csp_slot s0_3
@@ -13202,7 +13200,7 @@ flush 80
 
 msgwnd_enj
 *e32_1018
-d [lv 0*"11"*"enj_03070"]`{qt}Eh?!`[@][lv 0*"11"*"enj_03080"]` Then, in other words, Eri.....huh?`[@][lv 0*"11"*"enj_03090"]`...   Eri, Eri.....ugh.{qt}`[\]
+d [lv 0*"11"*"enj_03070"]`{qt}Eh?!`[@][lv 0*"11"*"enj_03080"]` Then, in other words, Eri.....huh?`[@][lv 0*"11"*"enj_03090"]`...Eri, Eri.....ugh.{qt}`[\]
 
 
 lss s0_9,"pie","b11_10"
@@ -13253,7 +13251,7 @@ lss s0_9,"wel","a11_def3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
-ERROR
+msgwnd_wel
 *e32_1022
 d [lv 0*"66"*"wel_00030"]`{qt}Mah debut was planned for Episode 3.`[@][lv 0*"66"*"wel_00040"]` Mah role was that I was s'posed ta completely knock Battler ta tha bottom after he submitted to the Witch Illusion in EP2.{qt}`[\]
 
@@ -13271,7 +13269,7 @@ lss s0_8,"wel","a11_def2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
-ERROR
+msgwnd_wel
 *e32_1024
 d [lv 0*"66"*"wel_00050"]`{qt}Shut up, Battler...!{qt}`[\]
 
@@ -13282,7 +13280,7 @@ flush 80
 
 msgwnd_but
 *e32_1025
-d2 [lv 0*"10"*"bat_08000"]`{qt}You just wanted to make him say that!!!!{qt}[#][*]`[\]
+d2 [lv 0*"10"*"bat_08000"]`{qt}You just wanted to make him say that!!!!{qt}`[#][*][\]
 
 wait_on_d 0
 
@@ -13304,9 +13302,9 @@ flush 80
 
 flush 22
 
-ERROR
+msgwnd_wel
 *e32_1026
-d2 [lv 0*"66"*"wel_00060"]`{qt}<Hello!>[#][*]`[@][lv 0*"66"*"wel_00070"]` There are always two truths.`[@][#][*][lv 0*"66"*"wel_00080"]` Without love, it cannot be seen.{qt}`[\]
+d2 [lv 0*"66"*"wel_00060"]`{qt}<Hello!>`[#][*][@][lv 0*"66"*"wel_00070"]` There are always two truths.`[@][#][*][lv 0*"66"*"wel_00080"]` Without love, it cannot be seen.{qt}`[\]
 
 wait_on_d 0
 
@@ -13330,7 +13328,7 @@ flush 80
 
 msgwnd_but
 *e32_1027
-d2 [lv 0*"10"*"bat_08010"]`{qt}Trick end and magic end![#][*]`[@][lv 0*"10"*"bat_08020"]` ---Stop pranking me so much!!{qt}[#][*]`[\]
+d2 [lv 0*"10"*"bat_08010"]`{qt}Trick end and magic end!`[#][*][@][lv 0*"10"*"bat_08020"]` ---Stop pranking me so much!!{qt}`[#][*][\]
 
 wait_on_d 0
 
@@ -13374,7 +13372,7 @@ lss s0_10,"wel","a11_def4"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
-ERROR
+msgwnd_wel
 *e32_1029
 d [lv 0*"66"*"wel_00090"]`{qt}Really...`[@][lv 0*"66"*"wel_00100"]` As ye rival, was I s'posed ta be really annoying and noisy!{qt}`[\]
 
@@ -13402,7 +13400,7 @@ flush 80
 
 flush 22
 
-ERROR
+msgwnd_wel
 *e32_1031
 d [lv 0*"66"*"wel_00110"]`{qt}Thank you...{qt}`[\]
 
@@ -13429,7 +13427,7 @@ lss s0_10,"wel","a11_def5"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
-ERROR
+msgwnd_wel
 *e32_1033
 d [lv 0*"66"*"wel_00120"]`{qt}Quite a few, although the details were fairly vague...`[@][lv 0*"66"*"wel_00130"]` for instance, apparently somebody from the Ushiromiya family... was Natsuhi's illegitimate child from 19 years ago?`[@][lv 0*"66"*"wel_00140"]` It was something along the lines of a mysterious man arriving at the family conference.{qt}`[\]
 
@@ -13447,7 +13445,7 @@ lss s0_10,"wel","a11_def1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
-ERROR
+msgwnd_wel
 *e32_1035
 d [lv 0*"66"*"wel_00150"]`I would have been very ruthless and would have had the power to patch together the truth and circumstantial evidence as I wished,`[@][lv 0*"66"*"wel_00160"]` in order to 'fix' the world with whatever reasoning I could construct.`[\]
 
@@ -13575,7 +13573,7 @@ flush 22
 
 msgwnd_enj
 *e32_1046
-d [lv 0*"11"*"enj_03150"]`{qt}...Is that why you created VIRGILIA?{qt}`[\]
+d [lv 0*"11"*"enj_03150"]`{qt}...Is that why you created {f:5:Virgilia}?{qt}`[\]
 
 
 lss s0_8,"but","b11_defo3"
@@ -13584,7 +13582,7 @@ flush 80
 
 msgwnd_but
 *e32_1047
-d [lv 0*"10"*"bat_08040"]`{qt}Ah, I see...`[@][lv 0*"10"*"bat_08050"]` VIRGILIA was really nice and taught me how to fight witches.{qt}`[\]
+d [lv 0*"10"*"bat_08040"]`{qt}Ah, I see...`[@][lv 0*"10"*"bat_08050"]` {f:5:Virgilia} was really nice and taught me how to fight witches.{qt}`[\]
 
 
 lss s0_9,"ber","a21_warai3"
@@ -13627,7 +13625,7 @@ flush 80
 
 flush 22
 
-ERROR
+msgwnd_wel
 *e32_1051
 d [lv 0*"66"*"wel_00170"]`{qt}Unfortunately, that choice was not mine...`[@][lv 0*"66"*"wel_00180"]` but even so, I feel honored to have been allowed to be introduced in this fashion......{qt}`[\]
 
@@ -13654,7 +13652,7 @@ lss s0_8,"wel","a11_def5"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
-ERROR
+msgwnd_wel
 *e32_1054
 d [lv 0*"66"*"wel_00190"]`{qt}...There may be a Fragment like that.`[@][lv 0*"66"*"wel_00200"]` Then, I'll make arrangements for us to meet there one day.{qt}`[\]
 
@@ -13668,9 +13666,9 @@ msgwnd_but
 d [lv 0*"10"*"bat_08090"]`{qt}But, I'll be the one who wins!!{qt}`[\]
 
 
-ERROR
+msgwnd_wel
 *e32_1056
-d2 [lv 0*"66"*"wel_00210"]`{qt}You're noisy, Battler!!!{qt}[#][*]`[\]
+d2 [lv 0*"66"*"wel_00210"]`{qt}You're noisy, Battler!!!{qt}`[#][*][\]
 
 wait_on_d 0
 
@@ -13687,7 +13685,7 @@ flush 1
 
 msgwnd_bea
 *e32_1057
-d2 [lv 0*"27"*"bea_09610"]`{qt}I just wanted to say that---!!!{qt}[#][*]`[\]
+d2 [lv 0*"27"*"bea_09610"]`{qt}I just wanted to say that---!!!{qt}`[#][*][\]
 
 wait_on_d 0
 
@@ -13751,7 +13749,7 @@ flush 80
 flush 2
 
 *e32_1060
-d [lv 0*"46"*"eri_00300"]`Preparations for the great lady AURORA's tea party are finished.`[@][lv 0*"46"*"eri_00310"]` Please follow me.`[@][lv 0*"46"*"eri_00320"]` I will guide you there.{qt}`[\]
+d [lv 0*"46"*"eri_00300"]`Preparations for the great lady {f:5:Aurora}'s tea party are finished.`[@][lv 0*"46"*"eri_00310"]` Please follow me.`[@][lv 0*"46"*"eri_00320"]` I will guide you there.{qt}`[\]
 
 
 csp_slot s0_3
@@ -13828,7 +13826,7 @@ d [lv 0*"46"*"eri_00330"]`{qt}As always, you're all getting along nicely...{qt}`
 
 msgwnd_non
 *e32_1067
-d `When Erika moved to open the door... a door appears leading to FEATHERINE's tea party.`[\]
+d `When Erika moved to open the door... a door appears leading to {f:5:Featherine}'s tea party.`[\]
 
 
 *e32_1068
@@ -14132,5 +14130,5 @@ flush 2
 
 
 ;END
-;*umiextra1_2_end
-;goto *end_game
+*umiextra2_11_end
+goto *end_game

@@ -1,6 +1,9 @@
 *OCchoice
 
+mov %chosen_ending,0
+
 jnskip_s
+accept_choice %chosen_ending
 return
 ~
 
@@ -25,31 +28,9 @@ btnwait %choice_extra
 
 if %choice_extra = 0 goto *OCloop
 
-if %choice_extra = s0_29 goto *OCkill
+if %choice_extra = s0_29 mov %chosen_ending,1: set_choice %chosen_ending: csp_rst: return
 
-if %choice_extra != s0_28 jumpf
-
-csp_slot s0_29
-csp_slot s0_28
-csp_text gen_txt_19
-csp_text gen_txt_20
-lbg "c:colour",s0_3,"white"
-flush 42
-
-csp_slot s0_3
-vol_bgm -1 2000
-flush 4
-
-seplay 11,82,100
-lbg "c:local_saku",s0_3,"warera_arigatou"
-flush 2
-
-*e31_50
-d [lv 0*"27"*"bea_03511"]``[\]
-textoff2
-wait 1000
-goto *OCloop_end
-~
+if %choice_extra = s0_28 mov %chosen_ending,2: set_choice %chosen_ending: csp_rst: return
 
 
 goto *OCloop
@@ -59,12 +40,14 @@ return
 
 
 
-*umiextra2_11
+
+
+*umiextra3_1
 log_reset
-mov $name_chapter_r_click,r_click_extra2_11
-mov $name_chapter_r_click_l2,r_click_extra2_11_l2
-mov $name_chapter_r_click_l3,r_click_extra2_11_l3
-new_extra_episode 211
+mov $name_chapter_r_click,r_click_extra3_1
+mov $name_chapter_r_click_l2,r_click_extra3_1_l2
+mov $name_chapter_r_click_l3,r_click_extra3_1_l3
+new_extra_episode 31
 textoff2
 ;START
 
@@ -426,8 +409,30 @@ flush 1
 d `Doth thou kill the cat? Or not?`[\]
 textoff2
 
-gosub *OCchoice
+OCchoice
+if %chosen_ending = 1 goto *OCkill
+if %chosen_ending = 2 goto *OCsave
 
+*OCsave
+csp_slot s0_29
+csp_slot s0_28
+csp_text gen_txt_19
+csp_text gen_txt_20
+lbg "c:colour",s0_3,"white"
+flush 42
+
+csp_slot s0_3
+vol_bgm -1 2000
+flush 4
+
+seplay 11,82,100
+lbg "c:local_saku",s0_3,"warera_arigatou"
+flush 2
+
+*e31_50
+d [lv 0*"27"*"bea_03511"]``[\]
+textoff2
+wait 1000
 goto *OCend
 
 
@@ -452,8 +457,8 @@ goto *OCend
 
 
 
-*OCkill
 
+*OCkill
 
 csp_slot s0_29
 csp_slot s0_28
@@ -506,6 +511,7 @@ lbg "c:backgrounds",s0_3,"note1"
 flush 23
 
 set_window_simple 80,430
+
 *e31_51
 d `{a:c:{p:0:■} Accomplices`[@]`{n}This time, let's make Krauss and Natsuhi into accomplices.}`[\]
 set_name_window_non
@@ -3372,7 +3378,7 @@ lbg "a:backgrounds",s0_1,"mlib_1br_bg"
 rain_load s0_2
 rain_params s0_2,100,500,0
 
-;lss s0_8,"fla","a12_def4a"
+lss s0_8,"fla","a12_extra1"
 spt_mem "a2","xpos",s0_8,-549
 flush 22
 
@@ -5240,7 +5246,7 @@ d `When she let up, the stake was cleanly plunged into the calf.`[\]
 d `She was still a bit worried that it might fall out before it's discovered, but it should still be enough to sustain the idea of sacrifices being gouged with stakes.`[\]
 textoff2
 
-lbg "c:backgrounds",s0_3,"bite"
+lbg "c:efe",s0_3,"bite"
 flush 22
 
 *e31_626
@@ -5342,7 +5348,7 @@ msgwnd_jes
 d [lv 0*"04"*"jes_03570"]`{qt}Kanon-kun! Kanon-kun!!`[@][lv 0*"04"*"jes_03580"]` Uwaaaaaaaaaa!!{qt}`[\]
 
 lss s0_10,"nat","a12_ikari1"
-spt_mem "a2","xpos",s0_10,750
+spt_mem "a2","xpos",s0_10,720
 flush 23
 
 msgwnd_nat
@@ -5350,7 +5356,7 @@ msgwnd_nat
 d [lv 0*"03"*"nat_00520"]`{qt}Jessica! Calm down!!`[@][lv 0*"03"*"nat_00530"]` Don't look! Don't come in!!{qt}`[\]
 
 lss s0_12,"but","b11_naku2"
-spt_mem "a2","xpos",s0_12,-700
+spt_mem "a2","xpos",s0_12,-650
 flush 23
 
 msgwnd_but
@@ -5358,7 +5364,7 @@ msgwnd_but
 d [lv 0*"10"*"bat_05320"]`{qt}...Un... believable...`[@][lv 0*"10"*"bat_05330"]` Dammit......{qt}`[\]
 
 lss s0_11,"geo","a11k_ikari4k"
-spt_mem "a2","xpos",s0_11,-250
+spt_mem "a2","xpos",s0_11,-200
 flush 23
 
 msgwnd_geo
@@ -5668,32 +5674,20 @@ textoff2
 
 seplay 11,1010,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+vol_bgm -1,500
 lbg "c:backgrounds",s0_3,"cha_o1an"
-
+rain_load s0_12
+rain_params s0_12,100,500,0
 flush 22
+wait 1700
 
 bgmplay 110,70,0
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"cha_o2an"
-
 lss s0_9,"kan","a12_majime1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"sha","a11_fuman1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 23
 
 lss s0_10,"sha","a11_warai1"
@@ -5703,7 +5697,10 @@ flush 80
 msgwnd_sha
 *e31_673
 d [lv 0*"15"*"sha_00730"]`{qt}...Thank you.`[@][lv 0*"15"*"sha_00740"]` How was the assignment?{qt}`[\]
+textoff2
 
+csp_slot s0_9
+flush 80
 
 lss s0_8,"kan","a12_komaru1"
 spt_mem "a2","xpos",s0_8,-549
@@ -5712,18 +5709,15 @@ flush 80
 msgwnd_kan
 *e31_674
 d [lv 0*"16"*"kan_00780"]`{qt}I was just lying down.`[@][lv 0*"16"*"kan_00790"]` It was a lot easier than carrying sacks of fertilizer.{qt}`[\]
-
+textoff2
 
 lss s0_9,"bea","a11_futeki1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 23
 
 msgwnd_bea
 *e31_675
 d [lv 0*"27"*"bea_05120"]`{qt}Good work, Kanon.`[@][lv 0*"27"*"bea_05130"]` With this, your role is over.{qt}`[\]
-
 
 lss s0_8,"kan","a12_nayamu1"
 spt_mem "a2","xpos",s0_8,-549
@@ -5733,49 +5727,49 @@ msgwnd_kan
 *e31_676
 d [lv 0*"16"*"kan_00800"]`{qt}...Thank you, {f:5:Beatrice}-sama.`[@][lv 0*"16"*"kan_00810"]`...Bye, Sis.`[@][lv 0*"16"*"kan_00820"]` See you on the next gameboard.{qt}`[\]
 
-
 lss s0_8,"kan","a12_warai1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"sha","a11_majime3"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_sha
 *e31_677
 d [lv 0*"15"*"sha_00750"]`{qt}Okay,`[@][lv 0*"15"*"sha_00760"]` see you on the next gameboard.{qt}`[\]
-
+textoff2
 
 lss s0_10,"sha","a11_fuman1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_8,"kan","a12_nayamu1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
-flush 80
-
 lss s0_9,"bea","a11_nayamu1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
-flush 80
+wait 1300
 
 lss s0_9,"bea","a11_majime1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
-seplay 11,56,100
+wait 800
+spt_mem "a2","breakup",s0_8,0
+spt_mem "a2","alpha",s0_8,255
+spt_mem "a2","breakupdir",s0_8,3
+flush 1
+seplay 11,56,90
+spt_mem "a2","breakup",s0_8,1000,2000
+sptwait2 breakup,s0_8
 
 msgwnd_non
 *e31_678
 d `{f:5:Beatrice} waved her cane, and then Kanon's body sublimated into mist and disappeared into her smoking pipe.`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5783,7 +5777,6 @@ flush 80
 msgwnd_bea
 *e31_679
 d [lv 0*"27"*"bea_05140"]`{qt}Alright.`[@][lv 0*"27"*"bea_05150"]` So you are to decorate the last link of the closed room chain.{qt}`[\]
-
 
 lss s0_10,"sha","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
@@ -5802,7 +5795,6 @@ msgwnd_bea
 *e31_681
 d [lv 0*"27"*"bea_05160"]`{qt}I will grant you the Fourth Twilight.`[@][lv 0*"27"*"bea_05170"]` It's a very merciful twilight.{qt}`[\]
 
-
 lss s0_10,"sha","a11_warai1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -5810,32 +5802,26 @@ flush 80
 msgwnd_sha
 *e31_682
 d [lv 0*"15"*"sha_00790"]`{qt}Thank you very much.{qt}`[\]
+textoff2
 
-
+csp_slot s0_12
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"cha_i1dn"
-
+lbg "a:backgrounds",s0_1,"cha_i1dn_bg"
+lbg "a:backgrounds",s0_3,"cha_i1dn"
+rain_load s0_2
+rain_params s0_2,100,500,0
 flush 22
 
 msgwnd_non
 *e31_683
 d `Beato and Shannon entered the chapel.`[\]
 
-
 *e31_684
 d `The gloomy, solemn chapel was engulfed in nothing but the sound of wind and rain.`[\]
-
 
 lss s0_8,"sha","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
@@ -5845,7 +5831,6 @@ msgwnd_sha
 *e31_685
 d [lv 0*"15"*"sha_00800"]`{qt}...Where would be good...?{qt}`[\]
 
-
 lss s0_10,"bea","a11_defo2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -5854,7 +5839,6 @@ msgwnd_bea
 *e31_686
 d [lv 0*"27"*"bea_05180"]`{qt}How about behind the altar?{qt}`[\]
 
-
 lss s0_8,"sha","a11_warai2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5862,71 +5846,50 @@ flush 80
 msgwnd_sha
 *e31_687
 d [lv 0*"15"*"sha_00810"]`{qt}Understood.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"cha_i1an"
-
 flush 22
 
 msgwnd_non
 *e31_688
 d `Between the stained glass and the altar in front of it there was a crevice no more than 20cm wide.`[\]
 
-
 *e31_689
 d `The crevice was sufficiently deep.`[\]
 
-
 *e31_690
 d `Shannon had in advance prepared a metal dumbbell tied to a rope.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 25
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"cha_i1en"
-
 flush 26
 
 *e31_691
 d `And then she carefully tested hanging and lowering the dumbbell into the crevice.`[\]
 
-
 *e31_692
-d `It went in with no problems.`[@]`The weight of the dumbbell was ideal.`[\]
+d `It went in with no problems.`[@]` The weight of the dumbbell was ideal.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"cha_i1dn"
-
+lbg "a:backgrounds",s0_1,"cha_i1dn_bg"
+lbg "a:backgrounds",s0_3,"cha_i1dn"
+rain_load s0_2
+rain_params s0_2,100,500,0
 lss s0_10,"sha","a11_fuman1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 lss s0_8,"bea","a11_nayamu1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 23
 
 lss s0_8,"bea","a11_defo2"
@@ -5937,7 +5900,6 @@ msgwnd_bea
 *e31_693
 d [lv 0*"27"*"bea_05190"]`{qt}How is it? Any problems?{qt}`[\]
 
-
 lss s0_10,"sha","a11_tokui1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -5946,7 +5908,6 @@ msgwnd_sha
 *e31_694
 d [lv 0*"15"*"sha_00820"]`{qt}No,`[@][lv 0*"15"*"sha_00830"]` it's fine.`[@][lv 0*"15"*"sha_00840"]` There are no problems.{qt}`[\]
 
-
 lss s0_8,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5954,47 +5915,35 @@ flush 80
 msgwnd_bea
 *e31_695
 d [lv 0*"27"*"bea_05200"]`{qt}Then let's start the stake make-up.`[@][lv 0*"27"*"bea_05210"]` It's pretty hard to stain your stake with real blood, after all.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"cha_i1en"
-
 flush 22
 
 msgwnd_non
 *e31_696
 d `She pulled some painting materials out of her bag.`[\]
 
-
 *e31_697
 d `It's the exact same stuff used in movies and the like.`[\]
 
-
 *e31_698
 d `And so she applied blood make-up to the end of the stake.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"cha_i1an"
-
 lss s0_8,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 msgwnd_bea
 *e31_699
 d [lv 0*"27"*"bea_05220"]`{qt}A cinch.`[@][lv 0*"27"*"bea_05230"]` How are your preparations?{qt}`[\]
-
 
 lss s0_10,"sha","a11_fuman1"
 spt_mem "a2","xpos",s0_10,550
@@ -6004,48 +5953,34 @@ msgwnd_sha
 *e31_700
 d [lv 0*"15"*"sha_00850"]`{qt}Yes,`[@][lv 0*"15"*"sha_00860"]` I'm ready.{qt}`[\]
 
-
 msgwnd_non
 *e31_701
 d `Shannon tied a pistol to the end of the rope opposite to that of the dumbbell.`[\]
 
-
 *e31_702
 d `And then she carefully lowered the dumbbell into the crevice between the altar and the stained glass window.`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
 *e31_703
 d `The middle of the rope was caught against the corner of the altar.`[\]
 
-
 *e31_704
 d `Since the dumbbell was heavier than the pistol, as soon as she lets go, everything, gun and all, will be pulled into the crevice.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"cha_i1an"
-
 lss s0_10,"bea","a11_nayamu1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 24
 
 msgwnd_bea
 *e31_705
 d [lv 0*"27"*"bea_05240"]`{qt}Does it look like it'll fall in?{qt}`[\]
-
 
 lss s0_8,"sha","a11_warai1"
 spt_mem "a2","xpos",s0_8,-549
@@ -6055,7 +5990,6 @@ msgwnd_sha
 *e31_706
 d [lv 0*"15"*"sha_00870"]`{qt}Yes.`[@][lv 0*"15"*"sha_00880"]` There are no problems.{qt}`[\]
 
-
 lss s0_10,"bea","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6063,7 +5997,10 @@ flush 80
 msgwnd_bea
 *e31_707
 d [lv 0*"27"*"bea_05250"]`{qt}......Good.{qt}`[\]
+textoff2
 
+csp_slot s0_8
+flush 80
 
 lss s0_9,"sha","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
@@ -6073,15 +6010,16 @@ msgwnd_non
 *e31_708
 d `Shannon hands the pistol tied to the rope to Beato.`[\]
 
-
 lss s0_10,"bea","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
 *e31_709
 d `And Beato hands Shannon the fake-bloodied stake.`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"sha","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6089,12 +6027,10 @@ flush 80
 *e31_710
 d `Shannon gently presses the stake against her own forehead.`[\]
 
-
 seplay 11,43,100
 
 *e31_711
 d `Beato also puts the pistol to Shannon's forehead, aligning it with the stake.`[\]
-
 
 lss s0_10,"bea","a11_1_hoshin2star"
 spt_mem "a2","xpos",s0_10,550
@@ -6104,7 +6040,6 @@ msgwnd_bea
 *e31_712
 d [lv 0*"27"*"bea_05260"]`{qt}You have no regrets?{qt}`[\]
 
-
 lss s0_8,"sha","a11_fuman1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6112,7 +6047,6 @@ flush 80
 msgwnd_sha
 *e31_713
 d [lv 0*"15"*"sha_00890"]`{qt}...None.`[@][lv 0*"15"*"sha_00900"]` It is all as {f:5:Beatrice}-sama wills.{qt}`[\]
-
 
 lss s0_10,"bea","a11_majime4"
 spt_mem "a2","xpos",s0_10,550
@@ -6122,7 +6056,6 @@ msgwnd_bea
 *e31_714
 d [lv 0*"27"*"bea_05270"]`{qt}It's too bad.`[@][lv 0*"27"*"bea_05280"]`...If someone had solved the mystery of the epitaph... You would have finished alive.{qt}`[\]
 
-
 lss s0_8,"sha","a11_defo1h"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6131,7 +6064,6 @@ msgwnd_sha
 *e31_715
 d [lv 0*"15"*"sha_00910"]`{qt}There's no way someone could solve`[|][lv 0*"15"*"sha_00920"]` such an incomprehensible mystery.`[@][lv 0*"15"*"sha_00930"]`...From the beginning, it was a hopeless gamble.{qt}`[\]
 
-
 lss s0_10,"bea","a11_fuman2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6139,8 +6071,10 @@ flush 80
 msgwnd_bea
 *e31_716
 d [lv 0*"27"*"bea_05290"]`{qt}Yet I still bet.`[@][lv 0*"27"*"bea_05300"]`...Because if the miracle were granted, it would truly be magic.{qt}`[\]
+textoff2
 
-
+csp_slot s0_8
+flush 80
 lss s0_9,"sha","a11_warai1h"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6149,7 +6083,6 @@ msgwnd_sha
 *e31_717
 d [lv 0*"15"*"sha_00940"]`{qt}......In this world of toxin-filled humans, there is no magic nor miracles.`[@][lv 0*"15"*"sha_00950"]`...{f:5:Beatrice}-sama,`[@][lv 0*"15"*"sha_00960"]` as the one true witch...... You are the only existence that can bring magic to this world.{qt}`[\]
 
-
 lss s0_10,"bea","a11_fuman3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6157,8 +6090,10 @@ flush 80
 msgwnd_bea
 *e31_718
 d [lv 0*"27"*"bea_05310"]`{qt}That's right.`[@][lv 0*"27"*"bea_05320"]`...I am the Golden Witch, {f:5:Beatrice}.`[@][lv 0*"27"*"bea_05330"]` Rest in peace.`[@][lv 0*"27"*"bea_05340"]` The next time you awaken, it will be in The Golden Land.`[@][lv 0*"27"*"bea_05350"]` Your beloved George will also be there.{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"sha","a11_tokui1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6166,35 +6101,24 @@ flush 80
 msgwnd_sha
 *e31_719
 d [lv 0*"15"*"sha_00970"]`{qt}...Thank you very much,`[@][lv 0*"15"*"sha_00980"]` {f:5:Beatrice}-sama...{qt}`[\]
+textoff2
 
-
+vol_bgm -2,1000
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 5
 
 seplay 11,46,100
 
-seplay 11,36,100
+seplay 12,36,100
 
-seplay 11,2,100
+seplay 13,2,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"cha_i1en"
-
 flush 6
 
 meplay 1,12,100
@@ -6203,56 +6127,39 @@ msgwnd_non
 *e31_720
 d `It was a weak sound but, inside the chapel where only wind and rain could be heard, there was a faint echo.`[\]
 
-
 seplay 11,13,100
 
 *e31_721
 d `Shannon was tranquilly looking up at the ceiling... then she suddenly collapsed like a puppet that had lost its strings.`[\]
-
+textoff2
 
 seplay 11,20,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 26
 
 *e31_722
 d `Beato lets go of the pistol in her hand.`[\]
 
-
-seplay 11,39,100
+seplay 12,39,100
 
 *e31_723
 d `And when she does, the pistol, pulled by the heavy dumbbell, is swiftly swallowed up by the darkness of the crevice, disappearing with a heavy metallic clank.`[\]
 
-
 *e31_724
-d `All that's left in front of the altar is Shannon's body with a bloody forehead,`[@]`and, strewn on the floor beside her, a stake for gouging sacrifices.`[\]
+d `All that's left in front of the altar is Shannon's body with a bloody forehead,`[@]` and, strewn on the floor beside her, a stake for gouging sacrifices.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+vol_mix_fade 1200
+wait 1800
 
 lbg "c:backgrounds",s0_3,"cha_i1an"
-
 flush 22
 
 lss s0_9,"bea","a11_futeki2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 bgmplay 41,70,0
@@ -6260,94 +6167,68 @@ bgmplay 41,70,0
 msgwnd_bea
 *e31_725
 d [lv 0*"27"*"bea_05360"]`{qt}...Indeed.`[@][lv 0*"27"*"bea_05370"]` This way it looks as though the stake came out of her forehead when she fell.{qt}`[\]
-
+textoff2
 
 seplay 11,22,100
+anim s0_5,"no83",1
+flush 1
+waitvideo
 
 msgwnd_non
 *e31_726
 d `And with another wave of her cane, golden butterflies took the shape of an envelope placed next to Shannon.`[\]
 
-
 *e31_727
 d `Inside was entrusted the first key, the key to the parlor.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_5
 lbg "c:efe",s0_3,"map10"
-
 flush 22
 
 *e31_728
 d `And so the closed room chain is complete.`[\]
 
-
 *e31_729
 d `The five people all with the their master keys and the keys to each successive room,`[@]` were all locked up in their own closed rooms.`[\]
-
+textoff2
 
 seplay 11,22,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"letter1"
-
 flush 22
 
 *e31_730
 d `With another wave of her cane, she left a letter inside the envelope.`[\]
 
-
 *e31_731
 d `It said something about Kanon's corpse being borrowed as another sacrifice for the ceremony.`[\]
 
-
 *e31_732
 d `And so they'll rush back to the parlor.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
-
 flush 28
 
 *e31_733
-d `But at that time the parlor will have long been completely empty.`[@]`They'll never be able to see the face of Kanon's corpse again......`[\]
-
+d `But at that time the parlor will have long been completely empty.`[@]` They'll never be able to see the face of Kanon's corpse again......`[\]
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_12
+rain_params s0_12,100,500,0
 lbg "c:backgrounds",s0_3,"cha_o2an"
-
 flush 22
 
 lss s0_9,"bea","a15_nayamu1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 23
 
+wait 400
 lss s0_9,"bea","va1_va1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6355,107 +6236,67 @@ flush 80
 msgwnd_bea
 *e31_734
 d [lv 0*"27"*"bea_05380"]`{qt}Now...`[@][lv 0*"27"*"bea_05390"]` with this, the epitaph murders are over.`[@][lv 0*"27"*"bea_05400"]` What do you think, Battleeer?`[@][lv 0*"27"*"bea_05410"]` I hope you enjoy my mystery.`[@][lv 0*"27"*"bea_05420"]`......*cackle*cackle* Hahhahhahahahahahahahaha!!!{qt}`[\]
-
+textoff2
 
 seplay 11,27,100
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_12
+lbg "c:colour",s0_3,"white"
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 2
+wait 1200
 
 seplay 11,1010,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"note1"
 
 lss s0_8,"kan","a12_defo1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"fla","a11_def1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 23
 
 msgwnd_non
 *e31_735
 d `For the story concerning the disappearance of Kanon's body, I'll attribute it to the already summoned Flauros.`[\]
 
-
 *e31_736
 d `Even after Kanon's death, his soul will battle against Beato and Flauros.`[\]
 
-
 *e31_737
 d `But it will be all useless. He'll lose, and what's more, his corpse will be swallowed up by Flauros. Something like that.`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
 *e31_738
 d `And with that, this game's epitaph serial murder incident comes to a close.`[\]
 
-
 *e31_739
 d `All that's left is to rewrite it into a fantasy story with Flauros as the culprit.`[\]
-
+textoff2
 
 seplay 11,1010,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
-
+vol_bgm -1,1600
+wait 2200
 meplay 1,15,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 lss s0_9,"bea","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 23
 
 lss s0_9,"bea","a11_warai2"
@@ -6466,7 +6307,6 @@ msgwnd_bea
 *e31_740
 d [lv 0*"27"*"bea_05430"]`{qt}That's what it is at present.`[@][lv 0*"27"*"bea_05440"]` I will arrange it into a proper story format, but that's the really tough part.`[@][lv 0*"27"*"bea_05450"]`...The displayed story and the undisplayed story.`[@][lv 0*"27"*"bea_05460"]` Matching them together as literature is truly an ordeal.`[@][lv 0*"27"*"bea_05470"]` It's like having to think up all the tricks, except I have to do even more.{qt}`[\]
 
-
 lss s0_10,"dla","am11_majime2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6474,8 +6314,10 @@ flush 80
 msgwnd_dla
 *e31_741
 d [lv 0*"47"*"dla_00360"]`{qt}...So by only letting the surface be read, your story reaches the height of EXTRAVAGANCE.{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"bea","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6483,7 +6325,6 @@ flush 80
 msgwnd_bea
 *e31_742
 d [lv 0*"27"*"bea_05480"]`{qt}Indeed it does.`[@][lv 0*"27"*"bea_05490"]` I'm constantly painting both a fantasy story and a mystery story.`[@][lv 0*"27"*"bea_05500"]` Nevertheless, I only release the one story.`[@][lv 0*"27"*"bea_05510"]` It's like the extravagance of cutting out just a little bit of the best part of a cow and cooking it, and throwing out all the rest.{qt}`[\]
-
 
 lss s0_10,"dla","am11_komaru1"
 spt_mem "a2","xpos",s0_10,550
@@ -6499,7 +6340,6 @@ msgwnd_dla
 *e31_743
 d [lv 0*"47"*"dla_00370"]`{qt}An extravagant COMPARISON.`[@][lv 0*"47"*"dla_00380"]`...However, ...do you not have REGRETS?{qt}`[\]
 
-
 lss s0_8,"bea","a11_fukigen3"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6507,47 +6347,35 @@ flush 80
 msgwnd_bea
 *e31_744
 d [lv 0*"27"*"bea_05520"]`{qt}Regrets... you say?{qt}`[\]
+textoff2
 
-
+vol_mix_fade 650
+wait 1000
 bgmplay 190,70,0
 
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mlib_1ep"
-
 flush 22
 
 msgwnd_non
 *e31_745
 d `Dlanor had returned the bundled manuscript to Beato.`[\]
 
-
 *e31_746
 d `Beato had replied back as she was arranging it on the desk.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"mlib_1ap"
-
 flush 22
 
 lss s0_9,"dla","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_dla
 *e31_747
 d [lv 0*"47"*"dla_00390"]`{qt}......You paint twice the story, and then you only cook the surface HALF.`[@][lv 0*"47"*"dla_00400"]` Those who would know of the remaining half, so extravagantly discarded, would surely sing praise and astonishment at its taste and bold CUTS.`[@][lv 0*"47"*"dla_00410"]`...However, among all the humans in the world, there aren't many that are as discerning as you DESIRE.{qt}`[\]
-
 
 lss s0_10,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_10,550
@@ -6556,8 +6384,10 @@ flush 80
 msgwnd_bea
 *e31_748
 d [lv 0*"27"*"bea_05530"]`{qt}Sometimes there are such fellows.{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"dla","a11_defo2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6565,27 +6395,20 @@ flush 80
 msgwnd_dla
 *e31_749
 d [lv 0*"47"*"dla_00420"]`{qt}You wrote that it was for 1 in 1000 people, but I think it's the OPPOSITE.`[@][lv 0*"47"*"dla_00430"]` Although you want all the other people beyond that 1 in 1000 to truly read your story,`[@][lv 0*"47"*"dla_00440"]` there is no doubt they won't be able to grasp the half that is stripped down and buried AWAY.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 flush 22
 
 lss s0_9,"bea","a11_akuwarai2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_bea
 *e31_750
 d [lv 0*"27"*"bea_05540"]`{qt}*cackle*...`[@][lv 0*"27"*"bea_05550"]` But isn't that just fine?`[@][lv 0*"27"*"bea_05560"]` It's extravagant literature where only the surface is preserved as story.`[@][lv 0*"27"*"bea_05570"]` And is not casting aside all those readers beyond the 1 in 1000 itself so very delightfully extravagant?{qt}`[\]
-
 
 lss s0_8,"dla","a11_majime1"
 spt_mem "a2","xpos",s0_8,-549
@@ -6594,8 +6417,10 @@ flush 80
 msgwnd_dla
 *e31_751
 d [lv 0*"47"*"dla_00450"]`{qt}......Are you happy with THAT?`[@][lv 0*"47"*"dla_00460"]` People paint stories to be READ.`[@][lv 0*"47"*"dla_00470"]`......To paint a story not to be read by anyone, to cast it into darkness by one's own will, is beyond extravagance, it can even be thought to be FOOLISH.{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_10,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6604,7 +6429,6 @@ msgwnd_bea
 *e31_752
 d [lv 0*"27"*"bea_05580"]`{qt}*cackle*...`[@][lv 0*"27"*"bea_05590"]` Isn't it fine that way?`[@][lv 0*"27"*"bea_05600"]` If things written so that the 999 of 1000 people can understand them can be called 'civilization's' writings,`[@][lv 0*"27"*"bea_05610"]` then it would be most fitting if my story, written so that only 1 in 1000 can understand it, could be called an 'oddity' writing.`[@][lv 0*"27"*"bea_05620"]`......It's a story painted by a witch,`[@][lv 0*"27"*"bea_05630"]` so if it has an 'odd' taste then should it not be called an 'oddity' writing?{qt}`[\]
 
-
 lss s0_8,"dla","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6612,8 +6436,10 @@ flush 80
 msgwnd_dla
 *e31_753
 d [lv 0*"47"*"dla_00480"]`{qt}......My duty is to, using the commandments, make that 'odd' tale understandable to all PEOPLE.{qt}`[\]
+textoff2
 
-
+csp_slot s0_10
+flush 80
 lss s0_9,"bea","a11_majime1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6622,7 +6448,6 @@ msgwnd_bea
 *e31_754
 d [lv 0*"27"*"bea_05640"]`{qt}Indeed.`[@][lv 0*"27"*"bea_05650"]`...That's exactly why I don't want to entrust it to you.{qt}`[\]
 
-
 lss s0_8,"dla","a11_defo2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6630,23 +6455,19 @@ flush 80
 msgwnd_dla
 *e31_755
 d [lv 0*"47"*"dla_00490"]`{qt}However, I understand your REASONS.`[@][lv 0*"47"*"dla_00500"]` I can't make it understandable to 999 people, but... I might be able to help at least one more person UNDERSTAND.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 flush 22
 
 lss s0_10,"bea","a11_nayamu1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
-
+wait 600
+csp_slot s0_10
+flush 80
 lss s0_9,"bea","a11_futeki1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6655,7 +6476,6 @@ msgwnd_bea
 *e31_756
 d [lv 0*"27"*"bea_05660"]`{qt}What do you mean by 'help'?{qt}`[\]
 
-
 lss s0_10,"dla","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6663,8 +6483,10 @@ flush 80
 msgwnd_dla
 *e31_757
 d [lv 0*"47"*"dla_00510"]`{qt}I want to some day release this incomplete MANUSCRIPT.{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"bea","a11_futeki2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6672,7 +6494,6 @@ flush 80
 msgwnd_bea
 *e31_758
 d [lv 0*"27"*"bea_05670"]`{qt}So you intend to drag out from the trash can the uncooked guts I threw away?{qt}`[\]
-
 
 lss s0_10,"dla","a11_komaru1"
 spt_mem "a2","xpos",s0_10,550
@@ -6682,7 +6503,6 @@ msgwnd_dla
 *e31_759
 d [lv 0*"47"*"dla_00520"]`{qt}......You may... not be understood by ANYONE.`[@][lv 0*"47"*"dla_00530"]` However, I cannot think that that is your true DESIRE.`[@][lv 0*"47"*"dla_00540"]` You do not seek understanding from those 999 PEOPLE.`[@][lv 0*"47"*"dla_00550"]` However, you are still seeking understanding from 1 single INDIVIDUAL.{qt}`[\]
 
-
 lss s0_8,"bea","a11_fuman3"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6690,8 +6510,10 @@ flush 80
 msgwnd_bea
 *e31_760
 d [lv 0*"27"*"bea_05680"]`{qt}There is a possibility that not even that 1 person will appear.`[@][lv 0*"27"*"bea_05690"]`......It's not just young girls in love who wish for someone to understand their inner heart.`[@][lv 0*"27"*"bea_05700"]`......Even witches who have experienced over a thousand years want it.{qt}`[\]
+textoff2
 
-
+csp_slot s0_10
+flush 80
 lss s0_9,"dla","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6699,7 +6521,7 @@ flush 80
 msgwnd_dla
 *e31_761
 d [lv 0*"47"*"dla_00560"]`{qt}The young girl tells of this using cryptic words, and awaits a single PRINCE......{qt}`[\]
-
+textoff2
 
 lss s0_8,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_8,-549
@@ -6708,23 +6530,20 @@ flush 80
 msgwnd_bea
 *e31_762
 d [lv 0*"27"*"bea_05710"]`{qt}Yes.`[@][lv 0*"27"*"bea_05720"]` *cackle* I, too, am one who has spent long years writing a very intricate story.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mlib_1ap"
-
 flush 23
 
 lss s0_9,"dla","a11_majime3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 23
+wait 600
 
+csp_slot s0_9
+flush 80
 lss s0_10,"dla","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6732,7 +6551,6 @@ flush 80
 msgwnd_dla
 *e31_763
 d [lv 0*"47"*"dla_00570"]`{qt}If the time comes that the prince does not appear...`[@][lv 0*"47"*"dla_00580"]` I shall serve as the guidepost that leads him to YOU.{qt}`[\]
-
 
 lss s0_8,"bea","a11_futeki2"
 spt_mem "a2","xpos",s0_8,-549
@@ -6742,7 +6560,6 @@ msgwnd_bea
 *e31_764
 d [lv 0*"27"*"bea_05730"]`{qt}......Knox's 10 commandments guarantee that it's a mystery...?`[@][lv 0*"27"*"bea_05740"]` *cackle* Could a thing like that really guide him to me......?{qt}`[\]
 
-
 lss s0_10,"dla","a11_majime3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6750,8 +6567,10 @@ flush 80
 msgwnd_dla
 *e31_765
 d [lv 0*"47"*"dla_00590"]`{qt}If it's not enough...`[@][lv 0*"47"*"dla_00600"]` I will release this incomplete manuscript to be the key to your WORLD.{qt}`[\]
+textoff
 
-
+csp_slot s0_8
+flush 80
 lss s0_9,"bea","a11_fukigen3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6760,7 +6579,6 @@ msgwnd_bea
 *e31_766
 d [lv 0*"27"*"bea_05750"]`{qt}What a disgraceful notion.`[@][lv 0*"27"*"bea_05760"]` Isn't it like a girl with no courage to confess having her friend do it for her?{qt}`[\]
 
-
 lss s0_10,"dla","a11_majime2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6768,23 +6586,20 @@ flush 80
 msgwnd_dla
 *e31_767
 d [lv 0*"47"*"dla_00610"]`{qt}That, too, is a way love is REALIZED.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 flush 22
 
 lss s0_10,"bea","a11_iiwake1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
+csp_slot s0_10
+flush 80
 lss s0_9,"bea","a11_akuwarai2"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6792,47 +6607,32 @@ flush 80
 msgwnd_bea
 *e31_768
 d [lv 0*"27"*"bea_05770"]`{qt}Fu......*cackle* Hahhahahahahahahahahahaha.`[@][lv 0*"27"*"bea_05780"]`.......Very well.`[@][lv 0*"27"*"bea_05790"]` I shall give you this manuscript.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mlib_1ep"
-
 flush 22
 
 msgwnd_non
 *e31_769
 d `Beato faced this way and, leaving a trail of smoke with it, tapped the bundled manuscript with her pipe.`[\]
 
-
 *e31_770
 d `When she did, the manuscript bundle curled up and a bottle blinked into existence around it, sealing it inside.`[\]
 
-
 *e31_771
 d `She tossed it to Dlanor.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"mlib_1bp"
 
 lss s0_8,"bea","a11_futeki2"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 msgwnd_bea
 *e31_772
 d [lv 0*"27"*"bea_05800"]`{qt}Do with it as you please.`[@][lv 0*"27"*"bea_05810"]` Except I have just one condition.{qt}`[\]
-
 
 lss s0_10,"dla","a11_defo2"
 spt_mem "a2","xpos",s0_10,550
@@ -6842,7 +6642,6 @@ msgwnd_dla
 *e31_773
 d [lv 0*"47"*"dla_00620"]`{qt}......YES?{qt}`[\]
 
-
 lss s0_8,"bea","a11_nayamu1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6850,8 +6649,10 @@ flush 80
 msgwnd_bea
 *e31_774
 d [lv 0*"27"*"bea_05820"]`{qt}As long as I have life,`[@][lv 0*"27"*"bea_05830"]` I shall not suffer that seal's removal.{qt}`[\]
+textoff2
 
-
+csp_slot s0_10
+flush 80
 lss s0_9,"dla","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6859,7 +6660,6 @@ flush 80
 msgwnd_dla
 *e31_775
 d [lv 0*"47"*"dla_00630"]`{qt}......But then people who reach the truth by this manuscript cannot tell you of IT.{qt}`[\]
-
 
 lss s0_8,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_8,-549
@@ -6869,7 +6669,6 @@ msgwnd_bea
 *e31_776
 d [lv 0*"27"*"bea_05840"]`{qt}The only prince I await is the one who arrives without reading the manuscript.`[@][lv 0*"27"*"bea_05850"]`......One cannot love a cat after tearing out its guts.`[@][lv 0*"27"*"bea_05860"]` That is, opening that bottle is the same as tearing out my guts.{qt}`[\]
 
-
 lss s0_9,"dla","a11_komaru1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6878,7 +6677,6 @@ msgwnd_dla
 *e31_777
 d [lv 0*"47"*"dla_00640"]`{qt}............UNDERSTOOD.`[@][lv 0*"47"*"dla_00650"]` I will do as you WISH.`[@][lv 0*"47"*"dla_00660"]` You have my heartfelt hope that this manuscript brings a visitor to your GRAVE.{qt}`[\]
 
-
 lss s0_8,"bea","a11_akuwarai5"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6886,8 +6684,10 @@ flush 80
 msgwnd_bea
 *e31_778
 d [lv 0*"27"*"bea_05870"]`{qt}I don't know...`[@][lv 0*"27"*"bea_05880"]`......The great witches of the Sea of Fragments are truly quite cold.`[@][lv 0*"27"*"bea_05890"]` Even if we suppose there was a person who'd visit my grave, they'd probably just come to spit on it.{qt}`[\]
+textoff2
 
-
+csp_slot s0_9
+flush 80
 lss s0_10,"dla","a11_majime3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6899,12 +6699,16 @@ flush 80
 msgwnd_dla
 *e31_779
 d [lv 0*"47"*"dla_00670"]`{qt}......If you painted a story that can be seen by those with love......`[@][lv 0*"47"*"dla_00680"]` then you should love those witches in TURN.`[@][lv 0*"47"*"dla_00690"]` Because even the prince you seek will be unable to see it without love for YOU.{qt}`[\]
+textoff2
 
+csp_slot s0_8
+csp_slot s0_10
+flush 80
 
 lss s0_9,"bea","a11_odoroki1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
+wait 850
 lss s0_9,"bea","a11_akuwarai3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6912,21 +6716,13 @@ flush 80
 msgwnd_bea
 *e31_780
 d [lv 0*"27"*"bea_05900"]`{qt}......Fu, ......fuffufufufu.`[@][lv 0*"27"*"bea_05910"]`......You've got me.`[@][lv 0*"27"*"bea_05920"]` You win.`[@][lv 0*"27"*"bea_05930"]` Alright, take that bottle with you.`[@][lv 0*"27"*"bea_05940"]` I'm not going to die just yet.`[@][lv 0*"27"*"bea_05950"]` I still have much story-writing to finish, after all.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"mlib_1bp"
-
 flush 22
 
 lss s0_9,"dla","a11_majime3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_9,"dla","a11_warai1"
@@ -6936,36 +6732,30 @@ flush 80
 msgwnd_dla
 *e31_781
 d [lv 0*"47"*"dla_00700"]`{qt}Then I shall take my LEAVE.`[@][lv 0*"47"*"dla_00710"]`......Lady {f:5:Beatrice}, be WELL.`[@][lv 0*"47"*"dla_00720"]` Please do not forget the many love-filled witches that wait for YOU.{qt}`[\]
+textoff2
 
+csp_slot s0_9
+flush 80
 
 lss s0_10,"dla","a11_majime3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
+wait 500
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mlib_1ap"
-
 flush 22
 
 lss s0_8,"bea","a11_futeki2"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 msgwnd_bea
 *e31_782
 d [lv 0*"27"*"bea_05960"]`{qt}.........Yes, of course.`[@][lv 0*"27"*"bea_05970"]` I leave it to you and your parting gift.`[@][lv 0*"27"*"bea_05980"]` Ronove, the guest is taking her leave.`[@][lv 0*"27"*"bea_05990"]` See her to the door.`[@][lv 0*"27"*"bea_06000"]` Then get more tea for me...`[@][lv 0*"27"*"bea_06010"]` It's been a while, but I've a craving for sweet milk tea.{qt}`[\]
-
+textoff2
 
 lss s0_10,"ron","a11_akuwarai1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 24
 
 lss s0_10,"ron","a11_warai2"
@@ -6975,34 +6765,29 @@ flush 80
 msgwnd_ron
 *e31_783
 d [lv 0*"31"*"ron_01870"]`{qt}......Yes, Milady.{qt}`[\]
+textoff2
 
+csp_slot s0_8
+flush 80
 
 lss s0_9,"bea","a11_warai4"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"ron","a11_warai1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
+wait 3000
 seplay 11,1010,100
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 1
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+vol_bgm -1,3000
+wait 4000
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 23
 
 bgmplay 198,70,0
@@ -7011,252 +6796,185 @@ msgwnd_non
 *e31_784
 d `As a result of Lady {f:5:Beatrice}'s death, I am releasing this incomplete tale in accordance with her will.`[\]
 
-
 *e31_785
 d `In reading this work, I was reminded of her long years of sadness, and couldn't hold back my tears.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"beach_l2a"
-
 flush 22
 
 *e31_786
 d `But at the same time, I felt pity for her.`[\]
 
-
 *e31_787
 d `Although she was searching for someone who had love, I am sad to say that ironically, her heart was filled with anger at those who did not.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"moon_1a"
-
 flush 22
 
 *e31_788
 d `She once told me that it was fine if her story only reached one person in a thousand.`[\]
 
-
 *e31_789
 d `However, that was wrong.`[\]
-
 
 *e31_790
 d `Out of those thousand people, she wished her story would reach even one more person.`[\]
 
-
 *e31_791
-d `If you asked her, she would surely laugh and deny it.`[@]`But those were, without question, her true feelings.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `If you asked her, she would surely laugh and deny it.`[@]` But those were, without question, her true feelings.`[\]
+textoff2
 
 lbg "c:backgrounds",s0_3,"portrait1"
-
+spt_mem "a2","ypos",s0_3,1100
+spt_mem "a2","scalex",s0_3,120
+spt_mem "a2","scaley",s0_3,120
 flush 22
 
 *e31_792
 d `In the beginning, I was uncertain about releasing this manuscript.`[\]
 
-
 *e31_793
-d `I thought that I should hide it,`[@]`so as to preserve her mystery for the one-in-a-thousand savior she spoke so often about.`[\]
-
+d `I thought that I should hide it,`[@]` so as to preserve her mystery for the one-in-a-thousand savior she spoke so often about.`[\]
 
 *e31_794
-d `But as I read and reread it...`[@]`I began to realize that the manuscript was a message with no destination address.`[\]
-
+d `But as I read and reread it...`[@]` I began to realize that the manuscript was a message with no destination address.`[\]
 
 *e31_795
 d `It was a wish that even she never realized she had.`[\]
 
-
 *e31_796
 d `But now I understand it, and I think it should be granted.`[\]
 
-
 *e31_797
 d `That is the reason I decided to release this incomplete manuscript.`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"rose_2ap"
-
 flush 22
 
 lss s0_9,"bea","a15_1_hoshin1star"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e31_798
-d `After you read this, it doesn't matter what your feelings toward the woman named {f:5:Beatrice} are.`[@]`Whether it's love or anger.`[\]
-
+d `After you read this, it doesn't matter what your feelings toward the woman named {f:5:Beatrice} are.`[@]` Whether it's love or anger.`[\]
 
 *e31_799
 d `But if you can...`[\]
-
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 22
-
-flush 1
-
+lbg "c:locale_lan",s0_3,"ep4last02"
+flush 80
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+flush 1
+lbg "c:locale_lan",s0_3,"ep4last01"
+flush 80
+csp_slot s0_3
+flush 1
+lbg "c:locale_lan",s0_3,"ep4last03"
+flush 80
+csp_slot s0_3
+flush 1
+lbg "c:locale_lan",s0_3,"ep4last04"
+flush 80
+csp_slot s0_3
+flush 1
+lbg "c:locale_lan",s0_3,"ep4last05"
+flush 80
+csp_slot s0_3
+flush 1
+lbg "c:locale_lan",s0_3,"ep4last06"
+flush 80
+wait 500
+lbg "c:colour",s0_3,"white"
 flush 2
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 2
 
 *e31_800
 d `Try to reach her feelings, buried in the deepest part of the story.`[\]
 
-
 *e31_801
 d `She said that she wrote two stories and revealed one.`[\]
-
 
 *e31_802
 d `However, that was also wrong.`[\]
 
-
 *e31_803
 d `She wrote three stories and revealed one.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"rose_1ep"
-
 flush 22
 
 *e31_804
 d `By reading this incomplete manuscript, you will know two of those stories.`[\]
 
-
 *e31_805
 d `I would like you to reach the third and final one with your own power.`[\]
 
-
 *e31_806
 d `As another woman, I strongly wish that of those reading this work.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:efe",s0_3,"butterfly_2a"
-
 flush 22
 
 *e31_807
 d `{qt}Without love, it cannot be seen.{qt}`[\]
 
-
 *e31_808
 d `Those are her words.`[\]
-
 
 *e31_809
 d `But I shall repeat them.`[\]
 
-
 *e31_810
 d `Love exists in everyone's hearts.`[\]
 
-
 *e31_811
 d `Her true tragedy was that she couldn't see that.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 2
 
 seplay 11,1010,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"note1"
-
 flush 23
 
+set_window_simple 80,430
 *e31_812
-d2 `My deepest thanks go out to everyone who helped with the compilation of this book.`[@]`
-
+d2 `My deepest thanks go out to everyone who helped with the compilation of this book.`[@]` {n}Especially to my assistant, {p:0:{ruby:An Zuu:アン・ズー}}.`[@][#][*]` {n}--- Dlanor A. Knox`[\]
+wait_on_d 0
 lss s0_9,"dla","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
+d_continue
+wait_on_d -1
+set_name_window_non
+wait 1600
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 22
-
 seplay 11,82,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"book1"
-
 flush 2
+wait 2000
+break_glass3
 
-return
 
 
 *OCend
 ;END
-*umiextra2_11_end
-gosub *end_game
+*umiextra3_1_end
+goto *end_game

@@ -32418,6 +32418,7 @@ if $cur_character = "s556" gosub *msgwnd_s556 : jumpf
 if $cur_character = "bbt" gosub *msgwnd_bbt : jumpf
 if $cur_character = "whm" gosub *msgwnd_whm : jumpf
 if $cur_character = "fla" gosub *msgwnd_fla : jumpf
+if $cur_character = "wel" gosub *msgwnd_wel : jumpf
 ;End Custom
 
 ~
@@ -32975,6 +32976,14 @@ return
 mov $cur_character,"fla"
 jnskip_s return ~
 if %vv_fla = 0 mov %vv_fla,1
+gosub *get_name 0
+if %cur_wndmode == off d_name $tmp5
+return
+
+*msgwnd_wel
+mov $cur_character,"wel"
+jnskip_s return ~
+if %vv_wel = 0 mov %vv_wel,1
 gosub *get_name 0
 if %cur_wndmode == off d_name $tmp5
 return

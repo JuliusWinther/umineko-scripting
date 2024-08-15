@@ -33,8 +33,8 @@
 	if %cfg_mouse_click = 0 if %BtnRes = -10  seplay 9,1005,100 : goto *save_exit             	;Exit by ESC
 	if %BtnRes = -81 goto *save_exit
 
-	if %cfg_mouse_click = 0 if %BtnRes = -80  gosub *savemode_save : goto *savemode_btn_loop
-	if %cfg_mouse_click = 0 if %BtnRes = -11  gosub *savemode_save : goto *savemode_btn_loop
+	if %cfg_mouse_click = 0 if %BtnRes = -80  goto *savemode_save : goto *savemode_btn_loop
+	if %cfg_mouse_click = 0 if %BtnRes = -11  goto *savemode_save : goto *savemode_btn_loop
 	if %cfg_mouse_click = 0 if %BtnRes = 0    goto *savemode_btn_loop
 
 	if %cfg_mouse_click = 0 if %BtnRes = -12 scrollable_scroll 320,-10 : goto *savemode_btn_loop  ;Page up with scroll
@@ -79,6 +79,8 @@ goto *save_exit
 
 *loadmode_btn_loop
 
+	btndef ""
+
 	spbtn 311,5 ;Up
 	spbtn 312,6 ;Down
 	spbtn 304,4 ;Exit Button
@@ -98,8 +100,8 @@ goto *save_exit
 	if %cfg_mouse_click = 0 if %BtnRes = -10  seplay 9,1005,100 : goto *save_exit             	;Exit by ESC
 	if %BtnRes = -81 goto *save_exit
 
-	if %cfg_mouse_click = 0 if %BtnRes = -80  gosub *loadmode_load : goto *loadmode_btn_loop
-	if %cfg_mouse_click = 0 if %BtnRes = -11  gosub *loadmode_load : goto *loadmode_btn_loop
+	if %cfg_mouse_click = 0 if %BtnRes = -80  goto *loadmode_load : goto *loadmode_btn_loop
+	if %cfg_mouse_click = 0 if %BtnRes = -11  goto *loadmode_load : goto *loadmode_btn_loop
 	if %cfg_mouse_click = 0 if %BtnRes = 0    goto *loadmode_btn_loop
 
 	if %cfg_mouse_click = 0 if %BtnRes = -12 scrollable_scroll 320,-10 : goto *loadmode_btn_loop  ;Page up with scroll
@@ -132,7 +134,7 @@ goto *save_exit
 ;***************************************************************
 
 *save_load_init
-	gosub *save_load_cleanup
+	if %first_save_opening = 1 gosub *save_load_cleanup
 
 	mov %Free1,0
 	mov %Free2,0
@@ -145,29 +147,25 @@ goto *save_exit
 	mov %saveTimesp,11
 	mov %saveTextsp,21
 
-	;Default to page 1
-	if %savemodePage = 0 mov %savemodePage,1
-	mov %savemodePageNow,%savemodePage
-
-	_csp t_logo_lsp
-	_csp t_btn_start_lsp
-	_csp t_btn_ep1_lsp : _csp t_btn_ep2_lsp : _csp t_btn_ep3_lsp : _csp t_btn_ep4_lsp : _csp t_btn_ep5_8_lsp
-	_csp t_btn_ep2_unlock_lsp : _csp t_btn_ep3_unlock_lsp : _csp t_btn_ep4_unlock_lsp : _csp t_btn_ep5_8_unlock_lsp 
-	_csp t_btn_load_lsp
-    _csp t_txt_ep1_lsp
-    _csp t_txt_ep2_lsp
-    _csp t_txt_ep3_lsp
-    _csp t_txt_ep4_lsp
-    _csp t_txt_ep5_lsp
-    _csp t_txt_ep6_lsp
-    _csp t_txt_ep7_lsp
-    _csp t_txt_ep8_lsp
-    _csp t_txt_load_lsp
-    _csp t_txt_lock_lsp
-    _csp t_txt_unlock_lsp
-    _csp t_txt_ep1_4_lsp
-    _csp t_txt_ep5_8_lsp
-	_csp t_txt_bg_lsp
+	if %first_save_opening = 1 _csp t_logo_lsp
+	if %first_save_opening = 1 _csp t_btn_start_lsp
+	if %first_save_opening = 1 _csp t_btn_ep1_lsp : _csp t_btn_ep2_lsp : _csp t_btn_ep3_lsp : _csp t_btn_ep4_lsp : _csp t_btn_ep5_8_lsp
+	if %first_save_opening = 1 _csp t_btn_ep2_unlock_lsp : _csp t_btn_ep3_unlock_lsp : _csp t_btn_ep4_unlock_lsp : _csp t_btn_ep5_8_unlock_lsp 
+	if %first_save_opening = 1 _csp t_btn_load_lsp
+    if %first_save_opening = 1 _csp t_txt_ep1_lsp
+    if %first_save_opening = 1 _csp t_txt_ep2_lsp
+    if %first_save_opening = 1 _csp t_txt_ep3_lsp
+    if %first_save_opening = 1 _csp t_txt_ep4_lsp
+    if %first_save_opening = 1 _csp t_txt_ep5_lsp
+    if %first_save_opening = 1 _csp t_txt_ep6_lsp
+    if %first_save_opening = 1 _csp t_txt_ep7_lsp
+    if %first_save_opening = 1 _csp t_txt_ep8_lsp
+    if %first_save_opening = 1 _csp t_txt_load_lsp
+    if %first_save_opening = 1 _csp t_txt_lock_lsp
+    if %first_save_opening = 1 _csp t_txt_unlock_lsp
+    if %first_save_opening = 1 _csp t_txt_ep1_4_lsp
+    if %first_save_opening = 1 _csp t_txt_ep5_8_lsp
+	if %first_save_opening = 1 _csp t_txt_bg_lsp
 
 	lsp 451,":c;graphics\menu\save\save_load_menu_bg.png"
 	if %Free21 = on write_special_text 105,"config_title",0,15," " + "Save" + " {n}"
@@ -175,9 +173,6 @@ goto *save_exit
 
 	lsp 304,set_exit,0,0
 	align_buttons_r 304
-
-	mov %tmp,150
-	;lsp 41,saveload_area,169,%tmp : add %tmp,173+5	
 
 	;Scroll Menu Sprites
 
@@ -189,30 +184,34 @@ goto *save_exit
 	lsph2 318,saveload_area,0,0,0,0,0
 	;lsph2 31,":c;screenshot/ss1.bmp",0,0,91,91
 
-	for %for_index1 = 1 to 10
+	if %first_save_opening != 1 jumpf
 
-		;Obtain (first) save index
-		mov %Free3,%for_index1
-		mul %Free3,4
-		sub %Free3,4
+		for %for_index1 = 1 to 5
 
-		for %for_index2 = 0 to 3
+			;Obtain (first) save index
+			mov %Free3,%for_index1
+			mul %Free3,4
+			sub %Free3,4
 
-			inc %Free3
+			for %for_index2 = 0 to 3
 
-			gosub *save_load_build
-			tree_seta %Free1,2,"auto","text",$saveTextsp2
-			tree_set 2,%Free1,"saves",%Free3
-			
-			lsph2 30+%Free3,$Free1,0,0,91,91
-			itoa $Free3,30+%Free3
+				inc %Free3
 
-			tree_set 2,%Free1,"bg","318"
-			tree_set 2,%Free1,"img",$Free3
+				gosub *save_load_build
+				tree_seta %Free1,2,"auto","text",$saveTextsp2
+				tree_set 2,%Free1,"saves",%Free3
+				
+				lsph2 30+%Free3,$Free1,0,0,91,91
+				itoa $Free3,30+%Free3
+
+				tree_set 2,%Free1,"bg","318"
+				tree_set 2,%Free1,"img",$Free3
+
+			next
 
 		next
 
-	next
+	~
 
 	;Arguments: sprite number (int), tree number (int), X position (int), Y position (int), width (int), height (int)
 	scrollable 320,2,169,125,1600,833
@@ -233,10 +232,10 @@ goto *save_exit
 	scrollable_cfg scrollbar,320,313,255,785
 	scrollable_display 320
 
-	debug_var %last_save
+	;debug_var %last_save
 
+	if %first_save_opening = 0 aspt scroll_y,320,%last_save*(173+5)-(((173+5)*3)/2),400
 	if %first_save_opening = 1 aspt scroll_y,320,%last_save*(173+5) : mov %first_save_opening,0
-	if %first_save_opening = 0 aspt scroll_y,320,%last_save*(173+5)-(((173+5)*3)/2)
 
 return
 
@@ -444,8 +443,6 @@ return
 	;For screenshot index
 	;if %CHIRU_MODE = 1 add %Free3,100 - ;Original Edited - saves unified - W_CUSTOM
 
-	btndef ""
-
 		if %%Free1 = 0 jumpf
 
 			;Screenshot of the save data
@@ -453,6 +450,7 @@ return
 			itoa $Free2,%Free3
 			add $Free1,$Free2
 			add $Free1,".bmp"
+			;debug_str $Free1
 
 			;Date and time of the save data
 			mov $saveTimesp2,":s;#FFFFFF`{p:31:" + $%savedataTime + "}"
@@ -478,12 +476,11 @@ return
 return
 
 *save_load_cleanup
-
 	_csp 320
 
 	tree_clear 2
 
-	_csp 29,71
+	csp2 29,71
 	_csp 304
 	_csp 311
 	_csp 312
@@ -501,13 +498,12 @@ return
 	;_csp Page_line_up
 	;_csp saveload_Load_button
 	;_csp saveload_Exit_button
-	;_csp Save
+	_csp Save
 	;_csp rmenu_btn_Exit
 
 	;checkme from savemode
-	;_csp 302
-	;_csp 303
-
+	_csp 302
+	_csp 303
 return
 
 *savemode_save
@@ -516,7 +512,7 @@ return
 	atoi %save_index,$save_index
 
 	mov %last_save,%save_index-1
-	debug_var %last_save
+	;debug_var %last_save
 
 	;gosub *save_load_index
 	
@@ -530,6 +526,9 @@ return
 	add $Free1,$Free2
 	add $Free1,".bmp"
 	savescreenshot2 $Free1
+
+	;Update Image Tree
+	lsph2 30+%save_index,$Free1,0,0,91,91
 
 	time %Hour,%Minute
 	date %Year,%Month,%Day
@@ -560,7 +559,14 @@ return
 	mov $Free2,$name_chapter_save
 	mov $%Free2,$Free2
 
+	;Update Tree
+	mov %Free3,%save_index
+	gosub *save_load_build
+	tree_set 2,%last_save,"text",$saveTextsp2
+
 	;Save game
+	_csp 320
+	_csp Save
 	savegame %save_index
 	seplay 9,1030,100
 
@@ -571,7 +577,6 @@ return
 
 *loadmode_load
 	scrollable_get_hovered_elem %save_index,320
-
 	tree_get $save_index,2,%save_index,"saves"
 	atoi %save_index,$save_index
 

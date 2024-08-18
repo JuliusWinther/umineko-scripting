@@ -201,8 +201,8 @@ goto *save_exit
 				inc %Free3
 
 				gosub *save_load_build
-				if %Free3-1 != %last_save tree_seta %Free1,2,"auto","text","{p:30:"+$saveTextsp2+"}"
-				if %Free3-1 == %last_save tree_seta %Free1,2,"auto","text","{p:61:"+$saveTextsp2+"}"
+				if %Free3-1 != %last_save tree_seta %Free1,2,"auto","text","{p:30:"+$saveTextsp2+"{n}"+$saveTimesp2+"}"
+				if %Free3-1 == %last_save tree_seta %Free1,2,"auto","text","{p:61:"+$saveTextsp2+"{n}"+$saveTimesp2+"}"
 				tree_set 2,%Free1,"saves",%Free3
 				
 				lsph2 30+%Free3,$Free1,0,0,91,91
@@ -466,7 +466,8 @@ return
 			;debug_str $Free1
 
 			;Date and time of the save data
-			mov $saveTimesp2,":s;#FFFFFF`{p:31:" + $%savedataTime + "}"
+			;mov $saveTimesp2,":s;#FFFFFF`{p:31:" + $%savedataTime + "}"
+			mov $saveTimesp2,$%savedataTime
 
 			;Comment of the save data
 			gosub *save_load_chapter
@@ -482,6 +483,7 @@ return
 
 		mov $Free1,blank
 
+		mov $saveTimesp2,""
 		mov $saveTextsp2,""
 
 		return
@@ -530,9 +532,8 @@ return
 	;Reset last last-save formatting
 	if %last_save < 0 jumpf 
 		tree_get $saveTextsp2,2,%last_save,"text"
-		debug_str $saveTextsp2
-		split $saveTextsp2,":",$Free11,$Free11,$saveTextsp2
-		tree_set 2,%last_save,"text","{p:30:"+$saveTextsp2+"}"
+		split $saveTextsp2,"61:",$Free11,$saveTextsp2 ;In game hours also have "":""
+		tree_set 2,%last_save,"text","{p:30:"+$saveTextsp2 ;The ending } is already included in the string, as is the save date
 		tree_set 2,%last_save,"bg","318"
 		if %last_save+1 == 20 tree_set 2,%last_save,"bg","319"
 	~
@@ -588,7 +589,7 @@ return
 	;Update Tree
 	mov %Free3,%save_index
 	gosub *save_load_build
-	tree_set 2,%last_save,"text","{p:61:"+$saveTextsp2+"}"
+	tree_set 2,%last_save,"text","{p:61:"+$saveTextsp2+"{n}"+$saveTimesp2+"}"
 	tree_set 2,%last_save,"bg","316"
 	if %save_index == 20 tree_set 2,%last_save,"bg","317"
 
@@ -612,7 +613,7 @@ return
 
 	sub %save_index,1
 	tree_get $Free15,2,%save_index,"text"
-	if $Free15 = "{p:30:}" goto *loadmode_btn_loop : return
+	if $Free15 = "{p:30:{n}}" goto *loadmode_btn_loop : return
 	add %save_index,1
 
 	;gosub *save_load_index

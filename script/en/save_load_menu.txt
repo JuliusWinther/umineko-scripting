@@ -181,7 +181,10 @@ goto *save_exit
 	lsp 313,dragbar_cursor,1832,255
 	lsp 314,dragbar,1832,242
 
+	lsph2 316,saveload_area_recent,0,0,0,0,0
+	lsph2 317,saveload_area_recent_last,0,0,0,0,0
 	lsph2 318,saveload_area,0,0,0,0,0
+	lsph2 319,saveload_area_last,0,0,0,0,0
 	;lsph2 31,":c;screenshot/ss1.bmp",0,0,91,91
 
 	if %first_save_opening != 1 jumpf
@@ -198,13 +201,17 @@ goto *save_exit
 				inc %Free3
 
 				gosub *save_load_build
-				tree_seta %Free1,2,"auto","text",$saveTextsp2
+				if %Free3-1 != %last_save tree_seta %Free1,2,"auto","text","{p:30:"+$saveTextsp2+"}"
+				if %Free3-1 == %last_save tree_seta %Free1,2,"auto","text","{p:61:"+$saveTextsp2+"}"
 				tree_set 2,%Free1,"saves",%Free3
 				
 				lsph2 30+%Free3,$Free1,0,0,91,91
 				itoa $Free3,30+%Free3
 
-				tree_set 2,%Free1,"bg","318"
+				if %Free3-1 == %last_save tree_set 2,%Free1,"bg","316"
+				if %Free3-1 != %last_save tree_set 2,%Free1,"bg","318"
+				if %Free3-1 == %last_save if %Free3 == 20 tree_set 2,%Free1,"bg","317"
+				if %Free3-1 != %last_save if %Free3 == 20 tree_set 2,%Free1,"bg","319"
 				tree_set 2,%Free1,"img",$Free3
 
 			next
@@ -220,22 +227,28 @@ goto *save_exit
 	scrollable_cfg cols,320,1
 	scrollable_cfg elembg,320,318
 	scrollable_cfg elemwidth,320,1600
-	scrollable_cfg elemheight,320,173+5
+	scrollable_cfg elemheight,320,173+14
 	scrollable_cfg textmarginwidth,320,350
 	scrollable_cfg textmargintop,320,15
 
-	scrollable_cfg imgmarginleft,320,-6
-	scrollable_cfg imgmargintop,320,-1
-	scrollable_cfg imgscalex,320,92 
-	scrollable_cfg imgscaley,320,91 
+	scrollable_cfg imgmarginleft,320,42
+	scrollable_cfg imgmargintop,320,2
+	scrollable_cfg imgscalex,320,75 
+	scrollable_cfg imgscaley,320,70
+
+	;Without frame
+	;scrollable_cfg imgmarginleft,320,42
+	;scrollable_cfg imgmargintop,320,-12
+	;scrollable_cfg imgscalex,320,87 
+	;scrollable_cfg imgscaley,320,86
 
 	scrollable_cfg scrollbar,320,313,255,785
 	scrollable_display 320
 
 	;debug_var %last_save
 
-	if %first_save_opening = 0 aspt scroll_y,320,%last_save*(173+5)-(((173+5)*3)/2),400
-	if %first_save_opening = 1 aspt scroll_y,320,%last_save*(173+5) : mov %first_save_opening,0
+	if %first_save_opening = 0 aspt scroll_y,320,%last_save*(173+5)-(((173+5)*2)/2)-37,400
+	if %first_save_opening = 1 aspt scroll_y,320,%last_save*(173+5)-(((173+5)*2)/2)-37 : mov %first_save_opening,0
 
 return
 
@@ -446,7 +459,7 @@ return
 		if %%Free1 = 0 jumpf
 
 			;Screenshot of the save data
-			mov $Free1,":c;screenshot\ss"
+			mov $Free1,":c/1,0,3;screenshot\ss"
 			itoa $Free2,%Free3
 			add $Free1,$Free2
 			add $Free1,".bmp"
@@ -469,7 +482,7 @@ return
 
 		mov $Free1,blank
 
-		mov $saveTextsp2,"{p:31:}"
+		mov $saveTextsp2,""
 
 		return
 
@@ -486,7 +499,10 @@ return
 	_csp 312
 	_csp 313
 	_csp 314
+	_csp 316
+	_csp 317
 	_csp 318
+	_csp 319
 	csp_text 105
 
 	_csp 451 ;bg
@@ -511,11 +527,21 @@ return
 	tree_get $save_index,2,%save_index,"saves"
 	atoi %save_index,$save_index
 
+	;Reset last last-save formatting
+	if %last_save < 0 jumpf 
+		tree_get $saveTextsp2,2,%last_save,"text"
+		debug_str $saveTextsp2
+		split $saveTextsp2,":",$Free11,$Free11,$saveTextsp2
+		tree_set 2,%last_save,"text","{p:30:"+$saveTextsp2+"}"
+		tree_set 2,%last_save,"bg","318"
+		if %last_save+1 == 20 tree_set 2,%last_save,"bg","319"
+	~
+
 	mov %last_save,%save_index-1
 	;debug_var %last_save
 
 	;gosub *save_load_index
-	
+
 	mov %savedataflg,savedataflg
 	add %savedataflg,%save_index
 	mov %%savedataflg,1
@@ -562,7 +588,9 @@ return
 	;Update Tree
 	mov %Free3,%save_index
 	gosub *save_load_build
-	tree_set 2,%last_save,"text",$saveTextsp2
+	tree_set 2,%last_save,"text","{p:61:"+$saveTextsp2+"}"
+	tree_set 2,%last_save,"bg","316"
+	if %save_index == 20 tree_set 2,%last_save,"bg","317"
 
 	;Save game
 	_csp 320
@@ -580,9 +608,10 @@ return
 	tree_get $save_index,2,%save_index,"saves"
 	atoi %save_index,$save_index
 
+	sub %save_index,1
 	tree_get $Free15,2,%save_index,"text"
-	if $Free15 = "{p:31:}" goto *loadmode_btn_loop : return
-
+	if $Free15 = "{p:30:}" goto *loadmode_btn_loop : return
+	add %save_index,1
 
 	;gosub *save_load_index
 

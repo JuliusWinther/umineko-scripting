@@ -1786,7 +1786,7 @@ if %init_done = 1 jumpf
 
 	#locale_import "prefs.txt"
 
-	mov %last_save,0
+	mov %last_save,-1
 
 	mov %old_wording,1 ;This shouldn't have any use, so better not touch it
 	mov %video_res,0
@@ -27763,12 +27763,12 @@ return
 *text_cw_rclk
 	gosub *trophy_session_reset
 	;Get a screenshot image for savedata before entering the Bookmark unless we already have one
-	if %disallow_saving == off gosub *textoff2 : getscreenshot 309,174
+	if %disallow_saving == off _csp 748 : gosub *textoff2 : getscreenshot 309,174
 
 	vsp TextCC1SpNum,0 : vsp TextCC2SpNum,0
 	print 1
 
-	;texthide   ;Hide the text
+	;texthide   ;Hide the text+
 	textoff2 	;We need to hide the textbox either
 
 	gosub *rmenu_custom

@@ -1,34 +1,32 @@
 *umi2_14
 ;10/5（日）13:17 悪魔の証明
 log_reset
-mov $name_chapter_r_click,r_click_chapters_2_14
-mov $name_chapter_r_click_l2,r_click_chapters_2_14_l2
-mov $name_chapter_r_click_l3,r_click_chapters_2_14_l3
+mov $name_chapter_r_click,r_click_chapters_2_14+"|"+r_click_chapters_2_14_l2+"|"+r_click_chapters_2_14_l3
 mov $name_chapter_save, "2_14"
 new_chapter date_scenario_2_14,scenario_2_14
 gstc 106
-textoff
+textoff2
 waits 167
 meplay 1,13,70
 rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1a"
 flush 2
 wait 3000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1c"
 lss s0_10,"ros","a34_aseru1" ;1
@@ -56,7 +54,7 @@ flush 10,167
 msgwnd_ros
 *d12568
 d [lv 0*"12"*"21400651"]`「譲治くん、少し静かにして！`[@][lv 0*"12"*"21400652"]`　あなたたちの目の前で殺人が行なわれたんでしょう？！`[@][lv 0*"12"*"21400653"]`　犯人を見たの！`[@][lv 0*"12"*"21400654"]`　見ないの！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -87,7 +85,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -111,7 +109,7 @@ spt_mem "a2","xpos",s0_10,550
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -129,14 +127,14 @@ flush 10,167
 msgwnd_geo
 *d12575
 d [lv 0*"07"*"20300578"]`「…………………………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 22
@@ -145,7 +143,7 @@ msgwnd_non
 d `南條先生と熊沢さんが殺された。`[@]`{n}それだけはわかった。`[\]
 *d12577
 d `…そしてそれは彼らの眼前で行なわれたらしい。`[@]`{n}にもかかわらず、彼らの歯切れは悪い。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -153,7 +151,7 @@ flush 22
 d `目の前で犯行を確かに見たと認めている。`[@]`{n}なのに、何を見たのか説明を求めると急に口を閉ざしてしまうのだ。`[\]
 *d12579
 d `それがもどかしく、楼座叔母さんが短気になるのもわからなくはなかった…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1c"
 flush 22
@@ -181,7 +179,7 @@ flush 10,167
 msgwnd_sha
 *d12583
 d [lv 0*"15"*"20500732"]`「………………勝手口に、…………。`[@][lv 0*"15"*"20500733"]`……来たんです」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -204,7 +202,7 @@ flush 10,167
 msgwnd_but
 *d12586
 d [lv 0*"10"*"20100874"]`「最後まで言わせてやれ！`[@][lv 0*"10"*"20100875"]`　それから？！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -218,7 +216,7 @@ d [lv 0*"17"*"21700237"]`「………そいつは、…血塗れで、大怪我�
 msgwnd_ros
 *d12588
 d [lv 0*"12"*"21400662"]`「だからそれは誰のことなのッ？！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -231,7 +229,7 @@ msgwnd_non
 d `郷田はその巨体に似合わず頭を抱え掻き毟る…。`[\]
 *d12591
 d `それは思い出せなくて混乱しているのか、`[@]`何か恐ろしいものを見て、それが受け容れられなくて混乱しているのか、…見当もつかなかった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1c"
 lss s0_10,"sha","a11_komaru1" ;1
@@ -243,7 +241,7 @@ d `そして、それは紗音も同じに見えた。`[\]
 d `ほんの少し気を許せば、ついさっき見たばかりのことが、すぐに白昼夢と溶け込んでしまって、`[@]`自分が何を見たのかも思い出せなくなってしまう。`[\]
 *d12594
 d `……そんな風に見えた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_1,"m1f_s1a_bg"
@@ -286,7 +284,7 @@ flush 10,167
 msgwnd_geo
 *d12601
 d [lv 0*"07"*"20300585"]`「……初めは、ってことは、後にその認識は変わる、ってこと……？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -310,7 +308,7 @@ flush 10,167
 msgwnd_goh
 *d12603
 d [lv 0*"17"*"21700245"]`「そう！`[@][lv 0*"17"*"21700246"]`　そうなんです！`[@][lv 0*"17"*"21700247"]`　源次さんの言う通りなんですよ！！`[@][lv 0*"17"*"21700248"]`　口ではとても説明できない！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -336,7 +334,7 @@ flush 10,167
 msgwnd_but
 *d12606
 d [lv 0*"10"*"20100876"]`「………………………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -347,14 +345,14 @@ flush 22
 msgwnd_non
 *d12607
 d `…彼らの言っていることを、好意的に解釈すると、`[@]`……それは楼座叔母さんが最初に断じているのと同じ意味になる。`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,2000
 vol_me 2,-1,2000
 vol_me 3,-1,2000
 wait 2000
 rain_pause s0_11
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mkit_1a_bg"
 lbg "a:backgrounds",s0_3,"mkit_1a"
@@ -363,7 +361,7 @@ color_mod2 s0_3,#ffffff
 flush 2
 *d12608
 d `厨房の勝手口に大怪我をした嘉音くんが現れた。`[@]`{n}そして使用人室に運び手当てした。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -378,7 +376,7 @@ d `つまりそれは、……嘉音くんが現れたということだ。`[@]`
 d `やはり嘉音くんがあの部屋を施錠したまま抜け出すトリックがあるということなのか？！`[@]`　いや、今そんなことはどうでもいい。`[\]
 *d12613
 d `南條先生と熊沢さんが殺されたことの方が重要な問題だ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1d"
 flush 26
@@ -393,16 +391,16 @@ d `……しかしそれでも、なぜか彼らの歯切れの悪さは、混�
 d `……彼らは何を見たんだ？`[\]
 *d12618
 d `彼らが言うように、本当に、{i:口で説明できない何かを見たのか}…？`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 vol_bgm -1,3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1c"
 lss s0_9,"ros","a11_komaru4" ;1
@@ -415,7 +413,7 @@ d `これ以上は何を聞いても埒が明かないだろうと判断した�
 d `それは俺も関心のあることだった。`[\]
 *d12621
 d `混乱した彼らには何が何だかわからなくても、`[@]`…その現場に居合わせなかった俺たちは冷静に遺体を見て、何かを気がつけるかもしれない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -428,7 +426,7 @@ d `俺はこの期に及んでも、何かの手掛かりがあれば、犯人�
 d `しかし楼座叔母さんは違ったはずだ。`[@]`……楼座叔母さんは確か、犯人探しよりも身の安全が最優先の方針だったはず。`[\]
 *d12625
 d `その楼座叔母さんが、わざわざ篭城の客間を出てまで遺体を確認したい理由が少し見えなかった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_s1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_s1a"
@@ -466,7 +464,7 @@ d [lv 0*"07"*"20300587"]`「…楼座叔母さん。真里亞ちゃんも、…�
 msgwnd_non
 *d12630
 d `譲治の兄貴は、血生臭い現場に真里亞を連れて行くことに抵抗があるようだった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -478,37 +476,37 @@ flush 22
 d `…だが、真里亞だけ残していくことを考えたら、一緒に連れて行く方がはるかに安全に違いない。`[\]
 *d12632
 d `……結局、兄貴の無責任なヒューマニズムってことになる。`[@]`{n}俺たちは真里亞も含め、全員で使用人室へ行くことになった。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_p1b_bg"
 lbg "a:backgrounds",s0_3,"m1f_p1b"
 flush 24
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2a_bg"
 lbg "a:backgrounds",s0_3,"mhal_2a"
 flush 24
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"ment_1b_bg"
 lbg "a:backgrounds",s0_3,"ment_1b"
 flush 24
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -517,14 +515,14 @@ seplay 1,25,71
 wait 1000
 seplay 2,17,71
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
 flush 23
 meplay 2,13,40
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 2
@@ -535,12 +533,12 @@ d `使用人室のベッドは、真っ赤な血で染まっていた。`[\]
 d `…いや、ベッドだけじゃない。`[@]`部屋中がおびただしい血痕で凄惨なペイントを施されていた。`[\]
 *d12635
 d `その凄まじい光景だけで、彼らが語ろうとした何かのおぞましき輪郭を知るのだった…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door1h"
 flush 22
@@ -560,7 +558,7 @@ msgwnd_non
 d `譲治の兄貴は、真里亞の目を塞ぎ、入り口のところで部屋に背を向けていた。`[\]
 *d12639
 d `……この部屋のおぞましき赤で、無垢な少女の網膜を汚したくないのだろう。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -572,7 +570,7 @@ d `きっとそれは正しい判断だ。`[\]
 d `……今の俺は強がっているから気にならないが、`[@]`……俺は今後の人生において、赤いペンキが散らばっているのを見る度に、`[@]`この部屋を思い出して吐き気を催し続けるのだろう。`[\]
 *d12642
 d `……もう俺の網膜にこの部屋は焼き付いてしまった。`[@]`{n}…つまり俺は手遅れだった…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -610,13 +608,13 @@ d [lv 0*"12"*"21400672"]`「どうしたの？`[@][lv 0*"12"*"21400673"]`　何�
 msgwnd_non
 *d12648
 d `楼座叔母さんも戦慄し、銃を高く構えて、彼らが動揺する何かを探した。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -648,7 +646,7 @@ flush 10,167
 msgwnd_sha
 *d12653
 d [lv 0*"15"*"20500737"]`「……そ、そんなはずないんです…！`[@][lv 0*"15"*"20500738"]`　確かにお二人は、ここに……！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -696,7 +694,7 @@ flush 10,167
 msgwnd_geo
 *d12661
 d [lv 0*"07"*"20300589"]`「……紗音…。`[@][lv 0*"07"*"20300590"]`僕は紗音を信じるよ。`[@][lv 0*"07"*"20300591"]`嘉音くんは犯人なんかじゃない。`[@][lv 0*"07"*"20300592"]`きっとこれは、彼によく似た何者かの仕業なんだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -726,7 +724,7 @@ msgwnd_non
 d `そうだ。`[@]`確かにあの時、南條先生が朱志香の服を探り、マスターキーを見つけた…！`[\]
 *d12665
 d `なら、南條先生の死体を物色する機会があったなら、マスターキーを取り返すことは容易…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -737,7 +735,7 @@ flush 25
 d `楼座叔母さんはベッドの下や、ロッカーの中などを調べている。`[\]
 *d12667
 d `…もう、俺にもその意味が理解できた。`[@]`{n}犯人は二人いたと考えると、簡単に説明できる。`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"kan","a11_nayamu1" ;1
 spt_mem "a2","xpos",s0_10,370
@@ -745,12 +743,12 @@ color_mod2 s0_10,#ffffff
 flush 8
 *d12668
 d `一人目は、嘉音くん、もしくは彼に酷似した何者かの仕業。`[@]`{n}彼は南條先生を葬り、どこかへ逃げ去った。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait3"
 flush 22
@@ -762,12 +760,12 @@ d `ヤツは、予め使用人室のベッドの下に隠れ、ここに南條�
 d `そしてその後に這い出て、南條先生のポケットからマスターキーを取り返し、何かの理由で二人の遺体を運び去った。`[\]
 *d12672
 d `そしてマスターキーで施錠すれば、この密室の出来上がりってわけだ。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,56,71
 vol_me 1,-1,1000
 vol_me 2,-1,1000
-textoff
+textoff2
 waits 167
 rain_pause s0_11
 lbg "c:colour",s0_21,"black"
@@ -853,7 +851,7 @@ flush 10,167
 msgwnd_bea
 *d12690
 d [lv 0*"27"*"20701247"]`「楼座が今からお前の前提を崩す。`[@][lv 0*"27"*"20701248"]`…くっくっくっく！`[@][lv 0*"27"*"20701249"]`　まぁ耳を傾けてみよ」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,56,71
 csp_slot s0_21
@@ -862,7 +860,7 @@ csp_slot s0_25
 csp_slot s0_23
 rain_resume s0_11
 flush 8
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
@@ -870,7 +868,7 @@ vol_mix_fade 2000
 vol_bgm -1,2000
 wait 2000
 meplay 1,13,40
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -881,7 +879,7 @@ seplay 2,21,71
 msgwnd_goh
 *d12691
 d [lv 0*"17"*"21700253"]`「信じてください、楼座さま…！！`[@][lv 0*"17"*"21700254"]`　確かにここに二人の遺体を安置したんです！`[@][lv 0*"17"*"21700255"]`　この床の真っ赤な血は彼らのものなのです…！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
@@ -916,7 +914,7 @@ bgmplay 26,71,0
 msgwnd_non
 *d12696
 d `楼座が肩越しに一枚の便箋を見せる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -936,7 +934,7 @@ msgwnd_ros
 *d12698
 d [lv 0*"12"*"21400682"]`「……えぇ、そうよ。`[@][lv 0*"12"*"21400683"]`ここに堂々と置いてあったわ。`[@][lv 0*"12"*"21400684"]`読むわね」`[\]
 seplay 1,1010,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -946,7 +944,7 @@ flush 22
 gstc 107
 seplay 9,1060,71
 gstt 7
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 66
@@ -958,15 +956,15 @@ d [lv 0*"27"*"20701249_1"]`{e:070:“右代宮家の皆様。`[@]`{n}`[|][lv 0*"
 d [lv 0*"27"*"20701249_4"]`{e:070:それ以外の如何なる方法を以ってしても、私と儀式を止めることはできません。`[@]`{n}`[|][lv 0*"27"*"20701249_5"]`くれぐれも皆さんの目的をお間違いなきよう、よろしくお願い申し上げます。}`[\]
 *d12701
 d [lv 0*"27"*"20701249_6"]`{e:070:私を探そうとも、無駄。`[@]`{n}`[|][lv 0*"27"*"20701249_7"]`私から逃れようとも、無駄。`[@]`{n}`[|][lv 0*"27"*"20701249_8"]`私を否定しようとも、無駄なのです。`[@]`{n}{n}`[|][lv 0*"27"*"20701249_9"]`――黄金のベアトリーチェ。”}`[\]
-textoff
+textoff2
 waits 167
 set_name_window_non
 seplay 1,37,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -979,21 +977,21 @@ d [lv 0*"12"*"21400685"]`「……追伸。`[@][lv 0*"12"*"21400686"]`二人の�
 msgwnd_non
 *d12703
 d `楼座はそれを読み上げると、封筒の中身を手の平の上に晒した。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 1,31,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"key2"
 flush 23
 *d12704
 d `それは二つのマスターキー。`[@]`{n}朱志香のポケットから南條が見つけた、本来は嘉音が持っていたマスターキーと、熊沢のマスターキーの二つだった。`[\]
 seplay 1,56,71
-textoff
+textoff2
 waits 167
 rain_pause s0_11
 lbg "c:colour",s0_21,"black"
@@ -1122,7 +1120,7 @@ spt_mem "a2","xpos",s0_23,370
 flush 10,167
 *d12717
 d [lv 0*"10"*"20100926"]`「………くそッ、そんな方法はあるのか？！`[@][lv 0*"10"*"20100927"]`　扉と窓以外からは外に出られないと赤で言われちまってる…！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_27,"black"
 flush 1
@@ -1136,7 +1134,7 @@ d `……その時、……閃く。`[@]`そうだ。`[\]
 d `……死体を運び、手紙を残し。`[@]`{n}……そして「隠し扉」に頼らず、{i:つまり脱出もできない}。`[\]
 *d12721
 d `…そうだ。`[@]`これは疑問なんじゃなく、答えだったんだ……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_27
 flush 26
@@ -1177,7 +1175,7 @@ flush 10,167
 msgwnd_but
 *d12726
 d [lv 0*"10"*"20100932"]`「俺は、犯人は密室から抜け出したものだとばかり思っていた」`[\]
-textoff
+textoff2
 waits 167
 lss s0_23,"but","b22_oyaa1" ;1
 spt_mem "a2","xpos",s0_23,370
@@ -1196,7 +1194,7 @@ d `……しかし、“嘉音くんは殺された”と赤で言われたの�
 d `そして次に、部屋に３人目の人物がいたなら、隠し扉で脱出することも可能だと推理した。`[\]
 *d12731
 d `そしてここで初めて、“隠し扉は存在しない”と赤で断言されたのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_27,"black"
 flush 22
@@ -1222,7 +1220,7 @@ d `この使用人室には未だ犯人が隠れて息を潜めていること�
 d `ってことは、………何てこった…。`[\]
 *d12742
 d `俺たちは三度密室を与えられて苦しめられたってのに、`[@]`……実は今この瞬間、俺たちは犯人を、チェックメイトしているッ！！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_27
 csp_slot s0_25
@@ -1262,7 +1260,7 @@ d_continue
 wait_on_d -1
 csp_slot s0_25
 csp_slot s0_23
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_26,"black"
 flush 22
@@ -1275,12 +1273,12 @@ d `でも、それが事実であるならば、第二の密室、朱志香の�
 d `ようやく尻尾を掴んだ！`[@]`{n}これで全てを説明できる！`[@]`{n}魔女なんかいないッ、誰も疑わなくていい！！`[\]
 *d12750
 d `よし、ここから引っ繰り返すぞ！`[@]`　次に求める復唱は、`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 csp_slot s0_26
 csp_slot s0_21
@@ -1395,7 +1393,7 @@ rumble 63,500
 gptwait quakexamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_26,"black"
 csp_slot s0_25
@@ -1409,7 +1407,7 @@ d `駄目だ駄目だ駄目だ全然駄目だッ！！`[@]`{n}一瞬、閃いた
 d `ベアトリーチェのヤツめ、`[@]`赤をうまく使った言葉遊びで煙に巻き、`[!w500]`俺をうまく騙せたに違いないと看破したはずだった…！！`[\]
 *d12763
 d `……やっと暗闇に光が見えたと思ったのに、`[!w500]`…………消えた、`[!w667]`………消えちまった………、`[!w667]`真っ赤な海に、`[!w417]`……飲み込まれちまった………ッ！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_26,"red_b"
 flush 2
@@ -1424,11 +1422,11 @@ d `悪魔の証明を、`[!w333]`……正攻法で、`[!w417]`……成し遂�
 *d12768
 d `ありえねぇ、`[!w500]`……ありえねぇよ、こんなのッ！！`[\]
 csp_slot s0_21
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_26,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_26
 csp_slot s0_22
@@ -1447,7 +1445,7 @@ spt_mem "a2","xpos",s0_23,370
 flush 10,167
 *d12770
 d [lv 0*"27"*"20701295"]`「あぁそれはとってもステキな方法。`[@][lv 0*"27"*"20701296"]`妾を笑い転げさせて笑い涙の海で溺れ殺してやろうというのは確かにステキ。`[@][lv 0*"27"*"20701297"]`実はそうなんだろォ？`[@][lv 0*"27"*"20701298"]`　妾を笑って笑って笑い殺してやろうって手なんだろォ、`[|][lv 0*"27"*"20701299"]`右`[!w417]`代`[!w583]`宮`[!w1333]`戦`[!w1083]`人`[!w83]`ァ`[!w833]`ア`[!w417]`？？？」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,37,100
 wait 1000
@@ -1502,12 +1500,12 @@ csp_slot s0_23
 csp_slot s0_21
 csp_slot s0_22
 rain_resume s0_11
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
 seplay 1,21,90
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map08"
 flush 22
@@ -1518,7 +1516,7 @@ d `朱志香が犯人だったなら、……こんな茶番は簡単に構築�
 d `嘉音くんを殺し、どこかへ運び出す！`[@]`{n}そして、殺されたフリをしてやり過ごす！`[\]
 *d12779
 d `でも馬鹿な！！`[@]`　南條先生が死亡をちゃんと確認してくれた！`[@]`　なら南條先生もグルだってのか？！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 22
@@ -1526,7 +1524,7 @@ flush 22
 d `違う！！`[@]`　朱志香が本当に死んでいるのは俺も確認した！`[@]`　確かに俺は検死なんかしたことないけど、確かに死んでた！`[\]
 *d12781
 d `死んでたと思う！！`[@]`　いや多分きっと絶対とは思うけれども必ずいやいや……、`[!w500]`…死んでた！！`[@]`　死んでたんだッ！！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1ar"
 flush 80
@@ -1543,13 +1541,13 @@ msgwnd_non
 d `あぁ、なら簡単だ。`[@]`南條先生はグルなんだからつまり、犯人側なんだからつまりつまり、`[@]`元々殺されてなんかいない？！`[\]
 *d12784
 d `殺された上に遺体が消えたということになっているだけで、元から使用人室にはいない？！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 lbg "c:colour",s0_21,"red_b"
 spt_mem "a2","alpha",s0_21,180
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 28
@@ -1567,7 +1565,7 @@ meplay 4,16,70
 d `ちょっと待てちょっと待ってくれッ、狼だらけ…。`[@]`{n}狼だらけッ！！`[\]
 *d12790
 d `真っ赤な血の海に溺れている上に、`[@]`さらに岸には狼がぎっしりひしめいて、俺が這い上がってきたら食い殺してやろうと目を爛々と輝かせているッ！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"red2"
 flush 28
@@ -1576,17 +1574,17 @@ meplay 5,14,60
 d `俺はどっちで死ねばいい？！`[@]`{n}全てを否定され真っ赤な海に溺れ死ぬのか？！`[@]`{n}真実を知り、狼たちに全身を食い千切られるのか？！`[\]
 *d12792
 d `地獄と地獄しかない！！`[@]`　選べないッ！`[@]`{n}ひぃいいいいぃいいいいいいいいい！！！`[\]
-textoff
+textoff2
 waits 167
 seplay 1,27,100
 vol_bgm 90
 csp_slot s0_21
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 seplay 2,56,100
-textoff
+textoff2
 waits 167
 rain_pause s0_11
 lbg "c:colour",s0_21,"black"
@@ -1641,7 +1639,7 @@ wait_on_d 0
 seplay 1,37,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 2,37,100
 lss s0_23,"bea","a11_futeki1" ;1
@@ -1677,7 +1675,7 @@ wait 5000
 wait 2000
 meplay 1,5,55
 meplay 2,12,40
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -1701,18 +1699,18 @@ wait_on_d 0
 vol_mix_fade 0
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 bgmplay 37,71,0
 seplay 1,30,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"white"
 flush 10,83
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -1728,13 +1726,13 @@ msgwnd_non
 d `楼座叔母さんはそう叫ぶと、一同を険しい表情でぐるりと見渡す。`[\]
 csp_slot s0_26
 csp_slot s0_27
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 10,500
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -1745,13 +1743,13 @@ msgwnd_sha
 *d12802
 d [lv 0*"15"*"20500741"]`「ちゃ、`[|][lv 0*"15"*"20500742"]`……茶番って、`[|][lv 0*"15"*"20500743"]`……どういう意味ですか…！」`[\]
 seplay 1,30,71
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"white"
 flush 10,83
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -1822,13 +1820,13 @@ d_continue
 wait_on_d -1
 csp_slot s0_26
 csp_slot s0_27
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 10,500
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -1844,7 +1842,7 @@ flush 10,167
 msgwnd_ros
 *d12814
 d [lv 0*"12"*"21400715"]`「黙りなさい！`[@][lv 0*"12"*"21400716"]`　そして紗音、それ以上近付かないでッ！！`[@][lv 0*"12"*"21400717"]`　１０年も恩を受けながらそれを仇で返すなんて！！`[@][lv 0*"12"*"21400718"]`　容赦なく引き金を引くわよ！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1871,7 +1869,7 @@ d `１０年の月日を右代宮家に捧げた。`[@]`{n}人生でもっとも
 d `………そして楼座とも友好な関係を築けていると信じていた。`[\]
 *d12821
 d `…その仕打ちが、これッ！！`[@]`{n}人は刃物なんか使わなくたって殺せる…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -1895,7 +1893,7 @@ flush 10,167
 *d12825
 d [lv 0*"17"*"21700267"]`「この郷田を信じろとは申しません…！`[@][lv 0*"17"*"21700268"]`　せめてッ、紗音さんだけでも信じてやっていただくわけには参りませんか…！！」`[\]
 meplay 2,18,60
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
@@ -1912,7 +1910,7 @@ d `あぁあぁ、だんだんわかって来たよ…。`[\]
 d `……答えなんか求めるから、…どんどんおかしくなっていっちまうんだ…。`[\]
 lbg "c:colour",s0_21,"red_b"
 spt_mem "a2","alpha",s0_21,180
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 22
@@ -1922,17 +1920,17 @@ d `答えなんか、いらない。`[@]`全ては、１９人目の魔女ベア
 d `…………それで、……いいじゃねぇか………。`[\]
 *d12832
 d `もう俺は、…誰も、…疑いたくねぇ………。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_21
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 vol_me 1,-1,2000
 vol_me 2,-1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -1951,13 +1949,13 @@ msgwnd_non
 d `そうだ。`[@]`……楼座さんの論法によるならば、死体が見付かればその人物の無実だけは証明できる。`[\]
 *d12837
 d `でも、死体の人物だけだ。`[@]`彼らが屋敷内を探し回り、死体を見つけたとしても、結局、彼らの無実は証明されない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door2"
 flush 22
@@ -1967,13 +1965,13 @@ d `彼らが南條先生たちを拉致して他所で殺し、密室は彼ら�
 d `これ以外の方法で密室を打ち破らない限り、`[!w500]`……彼らの無実は証明できないのだ…。`[\]
 *d12840
 d `……だが、………それができないッ！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d12841
 d `彼らが無実を証明できる機会はひとつしかない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1b"
 flush 1
@@ -1983,7 +1981,7 @@ d `……彼らが犯人の手に掛けられ、死体となって楼座叔母�
 d `そんなのおかしいだろ！！`[@]`　死ねば無罪、生きてる限り有罪なんて、まるで魔女裁判だ！`[\]
 *d12844
 d `…あぁ、そっか、敵は魔女だもんな。`[@]`{n}それでもＯＫってわけかよ…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -1991,7 +1989,7 @@ vol_mix_fade 4000
 vol_bgm -1,4000
 wait 4000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -2034,7 +2032,7 @@ bgmplay 51,71,0
 msgwnd_gen
 *d12850
 d [lv 0*"14"*"21600156"]`「……私は、信頼の証としてこれを預かっていると信じています。`[@][lv 0*"14"*"21600157"]`それを失ったなら、これをお返しするのは当然かと思います」`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,3000
 vol_me 2,-1,3000
@@ -2066,14 +2064,14 @@ seplay 1,31,71
 *d12855
 d `そこへ、楼座叔母さんが封筒から出てきた二つのマスターキーを重ね置く。`[\]
 seplay 2,31,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"key2"
 flush 22
@@ -2081,11 +2079,11 @@ flush 22
 d `これで五つの、全てのマスターキーがこの場所に集まった。`[\]
 *d12857
 d `それはつまり、使用人全員の、今日までの労を全て否定し、`[@]`彼らに許されたはずの最後の名誉までを毟り取った証…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -2111,7 +2109,7 @@ msgwnd_non
 d `楼座叔母さんは真里亞の手提げを引っ手繰ると、その中にマスターキーをざらざらと放り込み、その内の一本を掲げて誇示した。`[\]
 *d12861
 d `マスターキーを全て自分が手にしたという、宣言だ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2147,10 +2145,10 @@ wait_on_d 0
 seplay 1,37,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 wait 3000
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
@@ -2164,7 +2162,7 @@ msgwnd_non
 d `その時、ひとりだけ傍観しているように見えた真里亞が、母を嘲笑った。`[\]
 *d12867
 d `…その笑いに楼座叔母さんは過敏に反応して振り返る。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -2191,7 +2189,7 @@ wait_on_d -1
 msgwnd_non
 *d12870
 d `…俺は、つい二人の間に割り込んでしまう。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2203,11 +2201,11 @@ flush 25
 d `……いや違う。`[\]
 *d12872
 d `…膝を付いて、真里亞の頭を抱いてしまう。`[@]`{n}……俺は、……泣いていた。`[\]
-textoff
+textoff2
 waits 167
 vol_bgm 90,3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -2245,7 +2243,7 @@ msgwnd_but
 d [lv 0*"10"*"20100966"]`「全部、`[|][lv 0*"10"*"20100967"]`……魔女の仕業だったんだ…。`[@][lv 0*"10"*"20100968"]`……魔女の、`[|][lv 0*"10"*"20100969"]`……仕業だったんだよ……。`[@][lv 0*"10"*"20100970"]`…トリックとか密室とかどうでも良かったんだ…」`[\]
 *d12878
 d [lv 0*"10"*"20100971"]`「………ただ、ただ、`[|][lv 0*"10"*"20100972"]`…………ベアトリーチェっていう魔女が実在して、`[|][lv 0*"10"*"20100973"]`………本当に魔女だっただけなんだ…。`[@][lv 0*"10"*"20100974"]`……それを、俺は信じなかったから、`[|][lv 0*"10"*"20100975"]`…………こんなにも苦しくて、`[|][lv 0*"10"*"20100976"]`…………悲しくて…………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2271,7 +2269,7 @@ d [lv 0*"13"*"20400436"]`「……それでいいんだよ、戦人。`[@][lv 0*
 d [lv 0*"13"*"20400442"]`「………戦人はベアトを信じてくれたから、きっと黄金郷へ招かれるよ。`[@][lv 0*"13"*"20400443"]`……もうすぐ。`[@][lv 0*"13"*"20400444"]`……もうすぐだから。`[@][lv 0*"13"*"20400445"]`もう、何も怖くない」`[\]
 *d12885
 d [lv 0*"13"*"20400446"]`「…………怖くないよ？`[@][lv 0*"13"*"20400447"]`　真里亞と一緒に、おててを繋いで、…ずっと一緒にいよ…？`[@][lv 0*"13"*"20400448"]`　一緒に碑文の謎を考えよ。`[@][lv 0*"13"*"20400449"]`ベアトの問題を考えよ。`[@][lv 0*"13"*"20400450"]`………ベアトは最初から言ってるよ。`[@][lv 0*"13"*"20400451"]`この問題を解いて遊ぼうとしか言ってないよ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -2289,7 +2287,7 @@ msgwnd_non
 d `涙を零し続ける俺の頬をそっと撫でた後、`[@]`……真里亞は羽のような軽さで、俺の額にキスをする。`[\]
 *d12888
 d `その瞬間だけ、……薄気味悪いとさえ思っていた真里亞の笑顔が、天使に見えた…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2298,7 +2296,7 @@ lbg "c:colour",s0_3,"black"
 flush 2
 vol_bgm 70,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -2328,7 +2326,7 @@ flush 10,167
 msgwnd_ros
 *d12892
 d [lv 0*"12"*"21400742"]`「そうね。`[@][lv 0*"12"*"21400743"]`……私たちは、必ずわかりあえるわ。`[@][lv 0*"12"*"21400744"]`……うみねこのなく頃に」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,43,71
 lss s0_8,"ros","a11_defo1" ;1
@@ -2364,7 +2362,7 @@ flush 10,167
 msgwnd_ros
 *d12897
 d [lv 0*"12"*"21400750"]`「…………………。`[@][lv 0*"12"*"21400751"]`できることならば、あなたたちが、台風が過ぎ去るまで元気でいることを願っています。`[@][lv 0*"12"*"21400752"]`これは全て台風が奏でる暴風と降雨の狂想曲。`[@][lv 0*"12"*"21400753"]`……演奏が終われば幕が下り、`[|][lv 0*"12"*"21400754"]`……私たちは再び手を取り合えるに違いない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2375,7 +2373,7 @@ set_window_simple 80
 *d12898
 d [lv 0*"12"*"21400755"]`「……うみねこの、なく頃に」`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -2400,7 +2398,7 @@ lss s0_9,"goh","a11_warai1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
@@ -2429,7 +2427,7 @@ flush 10,167
 msgwnd_ros
 *d12906
 d [lv 0*"12"*"21400761"]`「ありがとう。`[@][lv 0*"12"*"21400762"]`…………紗音ちゃんも。`[@][lv 0*"12"*"21400763"]`明日の朝に、…おいしい珈琲を飲みながら、仲直りをしましょう」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2442,7 +2440,7 @@ d [lv 0*"07"*"20300607_1"]`「…………」`[\]
 msgwnd_ros
 *d12908
 d [lv 0*"12"*"21400764"]`「……？`[@][lv 0*"12"*"21400765"]`　譲治くん？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -2458,7 +2456,7 @@ flush 10,167
 msgwnd_sha
 *d12910
 d [lv 0*"15"*"20500751"]`「…いいんです、譲治さま…。`[@][lv 0*"15"*"20500752"]`どうか客間にお戻りになって下さい。`[@][lv 0*"15"*"20500753"]`もうマスターキーは他にありません。`[@][lv 0*"15"*"20500754"]`だから楼座さまとご一緒に客間にいれば、誰にも脅かされません」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2509,7 +2507,7 @@ flush 10,167
 msgwnd_geo
 *d12918
 d [lv 0*"07"*"20300616"]`「うん。`[@][lv 0*"07"*"20300617"]`戦人くんの心が美しいことは、僕が一番知っている。`[@][lv 0*"07"*"20300618"]`……誰も君を責めない。`[@][lv 0*"07"*"20300619"]`誰も」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2519,7 +2517,7 @@ flush 22
 msgwnd_but
 *d12919
 d [lv 0*"10"*"20100994"]`「………………兄貴ィ…」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -2529,7 +2527,7 @@ flush 80
 msgwnd_mar
 *d12920
 d [lv 0*"13"*"20400452"]`「…大丈夫。`[@][lv 0*"13"*"20400453"]`戦人は真里亞が守る。`[@][lv 0*"13"*"20400454"]`……真里亞と一緒なら、ベアトリーチェでも手出しできない。`[@][lv 0*"13"*"20400455"]`だって真里亞は、ちっちゃくても、魔女だもの」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
@@ -2577,7 +2575,7 @@ meplay 2,5,55
 d `源次さんが消え、郷田さんが消え、譲治の兄貴と紗音ちゃんが消えるまで、俺たちは呆然と立ち尽くしていた…。`[\]
 *d12928
 d `彼らの気配と足音が完全に消えた後、楼座叔母さんは、まるで愉快なことでも思い出したように、くすりと笑い捨てた。`[\]
-textoff
+textoff2
 waits 167
 vol_bgm -1,1000
 wait 2000
@@ -2593,7 +2591,7 @@ d [lv 0*"12"*"21400776"]`「………何も信用できないわよ。`[@][lv 0*
 msgwnd_non
 *d12930
 d `その一言に、`[!w500]`……俺は窒息する。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
@@ -2604,7 +2602,7 @@ flush 24
 msgwnd_but
 *d12931
 d [lv 0*"10"*"20100995"]`「…な、`[|][lv 0*"10"*"20100996"]`………何で、`[|][lv 0*"10"*"20100997"]`………そんなことを、`[|][lv 0*"10"*"20100998"]`…言うんだよ……」`[\]
-textoff
+textoff2
 waits 167
 bgmplay 41,0,0
 vol_bgm 60,3000
@@ -2645,7 +2643,7 @@ d_continue
 wait_on_d -1
 seplay 1,56,71
 vol_bgm 70
-textoff
+textoff2
 waits 167
 rain_pause s0_11
 lbg "c:colour",s0_21,"black"
@@ -2740,9 +2738,9 @@ flush 10,167
 meplay 3,18,90
 *d12948
 d [lv 0*"27"*"20701349"]`「ザマァねぇ顔だよ、鏡で見てみろよ、`[@][lv 0*"27"*"20701350"]`裸になって靴を舐めてる最低なお前が映ってるぜェエエ？`[@][lv 0*"27"*"20701351"]`　見えるかよ右代宮戦人ァアアァアアァアァアアアァアッ？？？」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_26,"black"
 flush 1

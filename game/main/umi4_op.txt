@@ -1,28 +1,26 @@
 *umi4_op
 ;オープニング
 log_reset
-mov $name_chapter_r_click,r_click_chapters_4_op
-mov $name_chapter_r_click_l2,r_click_chapters_4_op_l2
-mov $name_chapter_r_click_l3,r_click_chapters_4_op_l3
+mov $name_chapter_r_click,r_click_chapters_4_op+"|"+r_click_chapters_4_op_l2+"|"+r_click_chapters_4_op_l3
 mov $name_chapter_save, "4_op"
 new_episode 4
 gstc 203
 flush 10,167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 seplay 1,28,100
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"text001"
 flush 1
 wait 6000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -35,28 +33,28 @@ vol_me 1,70,4000
 vol_me 2,40,4000
 wait 4000
 seplay 1,28,100
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"oct_4_1986"
 flush 80
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 42
 vol_bgm 70,7000
 vol_me 2,0,7000
 wait 7000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"airp_w1d"
 flush 22
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"airp_w1j"
 flush 22
@@ -80,7 +78,7 @@ seplay 2,3,71
 vol_bgm -1,1000
 vol_me 1,-1,1000
 vol_me 2,-1,1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
@@ -91,7 +89,7 @@ rumble 63,500
 gptwait quakeyamp
 wait 1000
 bgmplay 2,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_in1e"
 lss s0_10,"hid","a21_warai1" ;1
@@ -103,7 +101,7 @@ flush 10,167
 msgwnd_hid
 *d21584
 d [lv 0*"06"*"41100001"]`「わっはっはっは、大丈夫か、戦人くん…！`[@][lv 0*"06"*"41100002"]`　もう地上やで、これ以上は落ちへんでぇ、わっはっはっは…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"air_in1e"
@@ -166,7 +164,7 @@ flush 10,167
 msgwnd_but
 *d21589
 d [lv 0*"10"*"40100001"]`「うるへー…。`[@][lv 0*"10"*"40100002"]`人間誰しも苦手なモンの一つや二つ、あるもんだぜ…」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -240,13 +238,13 @@ flush 10,167
 msgwnd_kir
 *d21597
 d [lv 0*"09"*"41300004"]`「…そうね、ごめんなさい」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_in1e"
 lss s0_10,"hid","a21_warai2" ;1
@@ -306,7 +304,7 @@ rumble 63,500
 gptwait quakeyamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_in1e"
 lss s0_10,"eva","a11_defo1" ;1
@@ -327,14 +325,14 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 24
 meplay 1,5,40
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_out2b"
 lss s0_9,"mar","a22_warai2" ;1
@@ -354,7 +352,7 @@ d `楼座叔母さんの声色が、ちょっぴり怖くなる。`[\]
 *d21606
 d `戦人も、さすがにはしゃぎ過ぎたかなと思ったら、案の定、人に肩をぶつけた。`[\]
 seplay 1,13,71
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -365,7 +363,7 @@ agpt quakeyamp,30
 agpt quakeyamp,0,667,1
 rumble 63,500
 gptwait quakeyamp
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_out2b"
 lss s0_8,"but","b22_odoroki2" ;1
@@ -383,7 +381,7 @@ d [lv 0*"07"*"40300005"]`「戦人くんたちはあっちの車だよ。`[@][lv
 msgwnd_non
 *d21609
 d `譲治に急かされ、戦人はぶつかった人に拝む仕草を送りながら、早く来いと呼ぶ両親のもとへ駆けていく。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -391,12 +389,12 @@ lbg "c:colour",s0_3,"black"
 flush 2
 *d21610
 d `３台のタクシーは、次々にバンバンっと扉を閉め、港へ向けて出発していった……。`[\]
-textoff
+textoff2
 waits 167
 vol_bgm 0,4000
 vol_me 1,70,4000
 wait 4000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_out2b"
 flush 2
@@ -404,7 +402,7 @@ flush 2
 d `……彼らのタクシーが走り去ると。`[\]
 *d21612
 d `世界の全てが急に鈍りだし、`[!w583]`……緩やかに停止した。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 vol_bgm -1,3000
@@ -412,7 +410,7 @@ wait 3000
 wait 1000
 bgmplay 49,71,0
 gstc 204
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_out2b"
 color_mod2 s0_3,#ffffff
@@ -423,7 +421,7 @@ d `声も風も、音も。`[@]`……何もかもが止み、動き動こうと
 d `人も機械も時計の針も、風に舞う砂埃も、凍り付いている。`[@]`{n}歩いてる途中の人が、片足を上げたまま、凍り付いている。`[@]`{n}風に舞う紙くずが、空中に縫い止められ、凍り付いている。`[\]
 *d21615
 d `……その、止まってしまった世界に立ち尽くすはずの人影がひとつ、動く。`[\]
-textoff
+textoff2
 waits 167
 wait 2000
 lss s0_23,"enj","a11_komaru1" ;1
@@ -441,7 +439,7 @@ d `普通の世界でだったら、動いた内にも入らないだろうそ�
 d `…すると、今度は別のものが動く。`[@]`{n}タクシー乗り場の近くの影でまどろんでいた黒猫だった。`[\]
 *d21621
 d `それは女のすぐ後までやってくると、`[@]`……ゆるりと、ニンゲンの姿を模して形を変えた。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,52,40
 lss s0_25,"ber","a11_defo1" ;1
@@ -480,7 +478,7 @@ flush 10,167
 msgwnd_ber
 *d21627
 d [lv 0*"28"*"42100003"]`「６歳の女の子が、どう立ち回れば彼らを引き返させることが出来るのか、`[@][lv 0*"28"*"42100004"]`私には想像もつかないけれど。`[@][lv 0*"28"*"42100005"]`……そうね。`[@][lv 0*"28"*"42100006"]`もしこの場に居たなら、確率はゼロではなかったわ。`[@][lv 0*"28"*"42100007"]`ゼロでない確率ならば、私は奇跡を探し出せる」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_25
 csp_slot s0_23
@@ -493,18 +491,18 @@ msgwnd_non
 *d21629
 d `俯いた魔女は、両手の握り拳を固くする…。`[@]`{n}…それは少しだけ震えていた。`[\]
 meplay 1,16,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 8
 msgwnd_ber
 *d21630
 d [lv 0*"28"*"42100008"]`「あなたが寝込んだのは１９８６年１０月３日。`[@][lv 0*"28"*"42100009"]`そしてベアトのゲーム盤は１０月４日から切り取られている。`[@][lv 0*"28"*"42100010"]`……あなたには体調を崩さない可能性が与えられていない。`[@][lv 0*"28"*"42100011"]`…つまり、あなたは本来、絶対にゲーム盤に上がれない存在なのよ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sky_1a"
 color_mod2 s0_3,#ffffff
@@ -521,13 +519,13 @@ d `…しかし、１９８６年１０月４日に存在し得ない彼女に�
 d `兄に肩をぶつけられ、謝罪の言葉をもらえただけでも。`[\]
 *d21635
 d `…そして自分が妹だとわかってもらえなくても、`[!w583]`……涙が溢れるほどの、`[!w500]`……奇跡……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 5
 vol_bgm -1,3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_out2b"
 color_mod2 s0_3,#ffffff
@@ -544,7 +542,7 @@ msgwnd_ber
 *d21637
 d [lv 0*"28"*"42100012"]`「頼もしいわね。`[@][lv 0*"28"*"42100013"]`……さぁ、彼らと一緒に行きましょう。`[@][lv 0*"28"*"42100014"]`六軒島へ。`[@][lv 0*"28"*"42100015"]`駒たちがもうすぐ全て揃う。`[@][lv 0*"28"*"42100016"]`……第４のゲームが幕を開けるわ。`[@][lv 0*"28"*"42100017"]`ベアトも戦人も、もう席についてる頃よ」`[\]
 seplay 1,21,50
-textoff
+textoff2
 waits 167
 csp_slot s0_25
 csp_slot s0_23
@@ -557,25 +555,25 @@ msgwnd_non
 *d21639
 d `…あの日に、何があったというの？`[@]`{n}私はそれを暴く。`[@]`知る。`[@]`そして取り戻す…！`[\]
 meplay 2,5,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sky_1a"
 color_mod2 s0_3,#ffffff
 flush 26
 *d21640
 d `縁寿は両拳を握り締めたまま、きっと天を仰ぐ。`[@]`{n}瞳の淵に溜まった涙の雫が一粒、宙に零れ落ちる。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,52,50
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 spriteset_enable 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s1_3,"sky_1a"
 color_mod2 s1_3,#ffffff
@@ -588,7 +586,7 @@ csp -11
 flush 1
 *d21641
 d `そして二人の魔女の姿は、時が動き出す時に吹く暴風に飲み込まれて瞬時に消え去った。`[\]
-textoff
+textoff2
 waits 167
 meplay 3,17,0
 meplay 4,14,0
@@ -602,12 +600,12 @@ wait 6000
 wait 1000
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 skip_off
 pam 749,"op",0
 skip_on
-textoff
+textoff2
 waits 167
 wait 2000
 ch_done flag_scenario_4_op

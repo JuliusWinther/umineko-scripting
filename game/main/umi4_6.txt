@@ -1,28 +1,26 @@
 *umi4_6
 ;マリアージュ・ソルシエール
 log_reset
-mov $name_chapter_r_click,r_click_chapters_4_6
-mov $name_chapter_r_click_l2,r_click_chapters_4_6_l2
-mov $name_chapter_r_click_l3,r_click_chapters_4_6_l3
+mov $name_chapter_r_click,r_click_chapters_4_6+"|"+r_click_chapters_4_6_l2+"|"+r_click_chapters_4_6_l3
 mov $name_chapter_save, "4_06"
 new_chapter date_scenario_4_6,scenario_4_6
 gstc 233
 meplay 1,29,71
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"oct_1998"
 flush 22
 wait 4000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cit_1a"
 flush 6
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
@@ -31,7 +29,7 @@ bgmplay 1,0,0
 vol_bgm 70,2000
 vol_me 1,0,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"res_i4a"
 flush 24
@@ -51,13 +49,13 @@ flush 10,167
 msgwnd_non
 *d23576
 d [lv 0*"23"*"44400007"]`「左様です。`[@][lv 0*"23"*"44400008"]`それらの蔵書は、六軒島での難を逃れたものと説明されていました。`[@][lv 0*"23"*"44400009"]`それを、島の所有者である右代宮絵羽氏が競売に出したというのです」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"res_i4a"
 flush 2
@@ -89,7 +87,7 @@ flush 10,167
 msgwnd_pro
 *d23585
 d [lv 0*"23"*"44400010"]`「まず、蔵書を鑑定してわかったことは、右代宮絵羽氏には民俗学的な教養はまったくなく、`[@][lv 0*"23"*"44400011"]`そしてその蔵書の本来の持ち主である右代宮金蔵氏は、日本で五指に入る悪魔学の権威であったことは、間違いないということです」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -101,7 +99,7 @@ d `１９８７年４月。`[\]
 d `都内の大手古物商が、歴史的価値が高いと思われる大量の古文書を入手する。`[\]
 *d23588
 d `これは、右代宮絵羽が競売に掛けるよう依頼して預けたものであった。`[\]
-textoff
+textoff2
 waits 167
 lss s0_9,"eva","a11_defo1" ;1
 color_mod2 s0_9,#ffffff
@@ -115,17 +113,17 @@ d `その為、絵羽は家族の生命保険さえ降りず、経済的にか�
 *d23592
 d `絵羽は金目のものは何でも売り払おうとしたらしく、`[@]`彼女が難を逃れた時に所在していた九羽鳥庵に収められていた蔵書も、この対象となったのだ。`[\]
 csp_slot s0_9
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 22
 *d23593
 d `そして、後に「右代宮蔵書」と呼ばれるそれら古文書は、古物商によって鑑定のために集められた権威たちの度肝を抜いた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 28
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"res_i4a"
 lss s0_9,"pro","a11_majime1" ;1
@@ -148,7 +146,7 @@ d `好事家の中でもとりわけ人気の高い、レオナルド・ダ・�
 d `手稿は約五千枚が現存し、一万枚以上が紛失していると言われるが、`[@]`この紛失分の数割が、特定の大富豪や好事家によって独占されている可能性があると一部の研究者は見ている。`[\]
 *d23600
 d `その為、今もなお、求めて止まない好事家が、`[@]`死蔵されて眠っている未公開手稿を求め、金に糸目をつけずに探し回っているという…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -159,7 +157,7 @@ d `右代宮金蔵もまた、そんな類の好事家であったことは、�
 d `金蔵がどのようにしてそれらを収集したかはわかっていないが、`[@]`その莫大な富を湯水のように使い、同じ趣味を持つ同士の大富豪から買い取ったことは間違いあるまい。`[\]
 *d23603
 d `そんな、好事家たちが死蔵して独占欲を満たしたくなるほどに価値ある蔵書が２０世紀末に大量に発見、`[@]`公開されたことは、全世界に大きな衝撃を与えた…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"res_i4a"
 lss s0_9,"pro","a11_majime1" ;1
@@ -179,12 +177,12 @@ msgwnd_non
 d `……我々にとって。`[@]`その我々とはつまり、金蔵と同じ趣味のオカルト界隈のことだろう。`[\]
 *d23607
 d `この一件により、六軒島の名は、オカルトの世界で重要な意味を持っていくことになる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sea_1cf"
 flush 8
@@ -192,7 +190,7 @@ flush 8
 d `六軒島の事故は、確かに大きく報道されたが国際的なものではなかった。`[\]
 *d23609
 d `しかし、この一件は世界を駆け巡り、`[@]`六軒島のイメージを、伊豆諸島の小さな島から、謎と疑惑とミステリーとオカルトの入り混じった悪魔的な島へと塗り替えていった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -200,7 +198,7 @@ flush 2
 d `つまり、絵羽によって金蔵の蔵書が世間に流出されるまでは、`[@]`六軒島は、誰の記憶にも留まらない無名の島に過ぎず、`[@]`……そこは断じて、魔女の島ではなかったのである。`[\]
 *d23611
 d `しかし、右代宮蔵書が世界的に知れ渡り、六軒島のイメージは一気にオカルト的になる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"res_i4a"
 lss s0_9,"pro","a11_majime1" ;1
@@ -215,7 +213,7 @@ lss s0_9,"pro","a11_defo1" ;1
 flush 10,167
 *d23613
 d [lv 0*"23"*"44400022"]`「右代宮蔵書とメッセージボトル、このどちらが欠けても、六軒島魔女伝説は成り立たなかったと言えます」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -223,7 +221,7 @@ flush 22
 msgwnd_enj
 *d23614
 d [lv 0*"11"*"42000580"]`「……メッセージボトル」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sea_3af"
 flush 22
@@ -232,14 +230,14 @@ msgwnd_pro
 d [lv 0*"23"*"44400023"]`「はい。`[@][lv 0*"23"*"44400024"]`空の瓶に手紙を封印し海に投じるという、不特定対象への通信方法です」`[\]
 *d23616
 d [lv 0*"23"*"44400025"]`「無人島からＳＯＳを発信する、というのが有名ですが、海外の有名推理小説の影響で、`[@][lv 0*"23"*"44400026"]`自らの死後に真実を告白するという、時間差的な遺書としても知られるようになりました。`[@][lv 0*"23"*"44400027"]`六軒島メッセージボトル事件は、まさにこの後者だったのです」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 msgwnd_enj
 *d23617
 d [lv 0*"11"*"42000581"]`「……近くの島の漁師が拾っていた、というやつですね？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_p1a"
 flush 22
@@ -252,7 +250,7 @@ d [lv 0*"11"*"42000582"]`「その漁師による捏造の可能性は？」`[\]
 msgwnd_pro
 *d23620
 d [lv 0*"23"*"44400032"]`「もちろんその可能性も否定できませんでした。`[@][lv 0*"23"*"44400033"]`ワインボトル内のノート片には、右代宮家のとある人物の署名がされていました。`[@][lv 0*"23"*"44400034"]`右代宮真里亞という少女です。`[@][lv 0*"23"*"44400035"]`しかし、彼女の遺品の肉筆から、別人の筆跡であることが確認されました」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -262,11 +260,11 @@ d [lv 0*"11"*"42000583"]`「………別人の筆跡……？」`[\]
 msgwnd_pro
 *d23622
 d [lv 0*"23"*"44400036"]`「左様です。`[@][lv 0*"23"*"44400037"]`少なくとも、少女より達筆で年齢のある人物によって書かれたことは疑いようがないでしょう。`[@][lv 0*"23"*"44400038"]`彼女の名を騙った、何者かが執筆した可能性が極めて高かったのです。`[@][lv 0*"23"*"44400039"]`よって、この時点ではノート片の内容の信憑性は薄いと考えられました」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 8
@@ -275,7 +273,7 @@ msgwnd_non
 d `ところが。`[\]
 *d23624
 d `後に、同様のメッセージボトルが、事故当日に警察による遺留品捜索で周辺海域から回収されていたことが判明し、センセーションを巻き起こす。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"res_i4a"
 lss s0_8,"pro","a11_majime2" ;1
@@ -295,13 +293,13 @@ flush 10,167
 msgwnd_enj
 *d23627
 d [lv 0*"11"*"42000584"]`「……いいえ。`[@][lv 0*"11"*"42000585"]`一応、知っていますので」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"note1"
 flush 2
@@ -312,11 +310,11 @@ d `２つのワインボトルの中には、ノート片が何枚もぎっし�
 d `それは、右代宮真里亞を名乗る本人以外の何者かによる、事故前日から当日を日記風に記した膨大な手記だった。`[\]
 *d23630
 d `そしてこの内容こそが、「魔女伝説連続殺人事件」、`[@]`そして「黄金の魔女ベアトリーチェの謎」の始まりだったのである。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mhal_2c"
 color_mod2 s0_3,#ffffff
@@ -324,25 +322,25 @@ flush 8
 msgwnd_pro
 *d23631
 d [lv 0*"23"*"44400045"]`「この奇妙な日記風手記には、台風で島に釘付けにされた右代宮家の親族たちが、`[@][lv 0*"23"*"44400046"]`魔女復活の儀式に巻き込まれ、次々に不可解な方法で殺されていく様子が記されていました」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 color_mod2 s0_3,#ffffff
 flush 22
 *d23632
 d [lv 0*"23"*"44400047"]`「そして最後に黄金の魔女ベアトリーチェが蘇り、全てを黄金郷に飲み込む。`[@][lv 0*"23"*"44400048"]`……まるで、それこそが当日の全容であるかのように記されていました」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1a"
 color_mod2 s0_3,#ffffff
 flush 22
 *d23633
 d [lv 0*"23"*"44400049"]`「また、当時の島の状況についても非常に詳しく描写されており、`[@][lv 0*"23"*"44400050"]`右代宮家に勤務したことがある元の使用人たちは、間違いなく内部に詳しい人間が書いたに違いないと証言しました」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"res_i4a"
 lss s0_10,"enj","a11_defo1" ;1
@@ -375,13 +373,13 @@ flush 10,167
 msgwnd_enj
 *d23640
 d [lv 0*"11"*"42000588"]`「……確か、漁師のノート片と、警察のノート片で、内容がまったく違うと聞きましたが」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"note1"
 flush 22
@@ -392,7 +390,7 @@ d [lv 0*"23"*"44400058"]`「左様です。`[@][lv 0*"23"*"44400059"]`このせ�
 d [lv 0*"23"*"44400062"]`「まるで、どちらかが真実で、どちらかが虚偽のように。`[@][lv 0*"23"*"44400063"]`あるいは両方とも虚偽なのかもしれない。`[@][lv 0*"23"*"44400064"]`…しかし、始まりと終わりだけは一致するのです」`[\]
 *d23643
 d [lv 0*"23"*"44400065"]`「始まりは、親族たち１８人は台風で島に閉じ込められた。`[@][lv 0*"23"*"44400066"]`そして終わりは、全員が死に、黄金の魔女が蘇り、全ては黄金郷に飲み込まれる」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -401,7 +399,7 @@ msgwnd_non
 d `２つのメッセージボトルの中身は、共に事故前日から当日を記したものだった。`[\]
 *d23645
 d `しかし、その内容がまったく異なったのである。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait3"
 color_mod2 s0_3,#ffffff
@@ -410,11 +408,11 @@ flush 22
 d `２つの日記は、どちらも魔女の碑文に沿った連続殺人を描いているのだが、犠牲者の順番も死に方も、“二日間の物語”さえも違う。`[\]
 *d23647
 d `しかし、どちらも最後は全員が死亡し、魔女が復活するという同じ顛末を描いている。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"res_i4a"
 lss s0_10,"pro","a11_majime2" ;1
@@ -481,14 +479,14 @@ d `……もう説明はいらないだろうが、彼は、日本でもっと�
 d `あとは聞いてもないのに、興奮しながら話を勝手に続ける。`[\]
 *d23663
 d `私は、ポタージュに張った薄膜をスプーンでぐちゃぐちゃにしながら、肩を竦めてため息を漏らすのだった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 22
 *d23664
 d `……やはり、メッセージボトルのことを調べても時間の無駄だったろうか。`[\]
-textoff
+textoff2
 waits 167
 lss s0_9,"mar","a22_defo1" ;1
 color_mod2 s0_9,#ffffff
@@ -510,7 +508,7 @@ d `メッセージボトルでは、それが確実に人の手に渡る保証�
 d `下手をすれば、海に沈んで誰の目にもつかないかもしれない。`[\]
 *d23671
 d `あるいは、誰かが拾ったとしても、気にも留めずに捨ててしまうことだってあるかもしれない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 22
@@ -528,7 +526,7 @@ d `謎の二日間を、魔女の仕業にしたい何者かの仕組んだこ�
 d `そして、２つ存在するということは、未発見の３つ目、あるいはそれ以上がある可能性すら示唆する。`[\]
 *d23678
 d `……つまり、２つの内容をますますに鵜呑みに出来なくしているわけだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 22
@@ -542,7 +540,7 @@ d `……魔女幻想を生み出したい何者かの、愉快犯的犯行と�
 d `しかし、絵羽伯母さんを除く１７人もの人命が失われ、莫大な遺産と、あるいは１０ｔもの黄金さえもが闇で動いたのだ。`[\]
 *d23683
 d `その結末の告白が、こんな魔女の幻想だなんて、どうしても腑に落ちない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"note1"
 flush 22
@@ -554,14 +552,14 @@ d `……何しろ、文章量が膨大だ。`[@]`実際に連続殺人の渦中
 d `だとすると、この日記は、事故前日までにゆっくり時間を掛けて執筆されたという方が現実的だろう。`[\]
 *d23687
 d `だとしたら、………六軒島の全ては、長い時間を掛けて準備された「計画的犯行」ということになるのだろうか…？`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d23688
 d `…絵羽伯母さんが、何も語らずにこの世を去ったことが、恨めしい。`[\]
 vol_me 1,-1,1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hos_r1cm"
 color_mod2 s0_3,#ffffff
@@ -570,7 +568,7 @@ flush 6
 d `死の床で彼女は確かに言った。`[\]
 *d23690
 d `私に真相を語らないことが、最大の嫌がらせである旨、確かに言った。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -584,7 +582,7 @@ d `……………しかし、こう考えると、絵羽伯母さんが本当�
 d `もちろん、メッセージボトルの筆跡が絵羽伯母さんと違うから、などというわけではない。`[\]
 *d23695
 d `……発見された２つの物語は、どちらも絵羽伯母さんが犠牲者の中に含まれているからだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 22
@@ -598,7 +596,7 @@ d `それが、{i:どこかでくるい}、絵羽伯母さんは生き残った�
 d `………私は絵羽伯母さんを憎悪していたから、彼女こそが犯人に違いないと信じてきた。`[\]
 *d23700
 d `しかし、メッセージボトルの存在は、`[@]`………彼女よりさらに深遠の、未知なる人物こそが黒幕なのではないかと疑わせるのだ…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -607,7 +605,7 @@ vol_bgm 0,4000
 vol_me 1,50,4000
 wait 4000
 vol_bgm -1,1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"res_i4a"
 flush 26
@@ -710,13 +708,13 @@ flush 10,167
 msgwnd_pro
 *d23718
 d [lv 0*"23"*"44400101"]`「もちろん。`[@][lv 0*"23"*"44400102"]`その道の専門家ではありませんが、メッセージボトルの筆跡に関してだけは、日本でもっとも詳しいと自負していますとも」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"book1"
 flush 80
@@ -734,7 +732,7 @@ d `六軒島に関する全ての文献を知り尽くすと自負する彼は�
 *d23722
 d `縁寿はそれに構わず、無言でページをめくり、その内の１ページを開いて示した。`[\]
 seplay 1,1010,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 64
@@ -742,7 +740,7 @@ flush 64
 d `そのページには、“親愛なる見習い魔女へ”から始まる手書きの文書が記されていた。`[\]
 *d23724
 d `……そして末尾には、カタカナでベアトリーチェとのサインが。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"res_i4a"
 lss s0_8,"pro","a11_komaru1" ;1
@@ -772,7 +770,7 @@ flush 10,167
 msgwnd_non
 *d23729
 d `男は手を伸ばすが、縁寿はひょいとそれを引っ込める。`[@]`{n}…汚い手で触るなとでも言う風に。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_3,"res_i4a"
@@ -797,7 +795,7 @@ flush 10,167
 msgwnd_pro
 *d23734
 d [lv 0*"23"*"44400109"]`「お、お願いだ…！！`[@][lv 0*"23"*"44400110"]`　その本は一体ッ？！`[@][lv 0*"23"*"44400111"]`　謝礼はいらない、その本を見せてくれ…！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -813,7 +811,7 @@ d [lv 0*"23"*"44400112"]`「ま、待ってくれ…！！`[@][lv 0*"23"*"444001
 msgwnd_non
 *d23738
 d `その声は届かない。`[@]`もう、天草と合流し、車に乗り込んでいた……。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 vol_bgm -1,3000
@@ -821,7 +819,7 @@ wait 3000
 wait 1000
 meplay 1,29,71
 meplay 2,30,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"car_i3c"
 flush 26
@@ -830,7 +828,7 @@ msgwnd_ama
 d [lv 0*"20"*"43000039"]`「収穫はありましたか？」`[\]
 spriteset_enable 2
 aspritesetpt xpos,2,-1920
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s2_3,"car_i3b2"
 lss s2_8,"enj","a11_nayamu1" ;1
@@ -845,7 +843,7 @@ msgwnd_enj
 d [lv 0*"11"*"42000616"]`「……最後の最後にね。`[@][lv 0*"11"*"42000617"]`やっぱりそうだった。`[@][lv 0*"11"*"42000618"]`…メッセージボトルを記したのは、ベアトリーチェ本人だった」`[\]
 spriteset_enable 1
 aspritesetpt xpos,1,1920
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s1_3,"car_i3b2"
 lss s1_10,"ama","a11_akuwarai1" ;1
@@ -875,7 +873,7 @@ csp msk2
 csp -12
 csp msk1
 meplay 3,30,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"car_i3c"
 flush 22
@@ -889,21 +887,21 @@ d `須磨寺家は、縁寿がコンタクトを取りそうな人物に予め�
 d `もしも右代宮縁寿が現れたら身柄を確保してほしい、謝礼を払うと。`[\]
 *d23747
 d `それを先読みして、{i:掻っ攫った}。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d23748
 d `自分が須磨寺だと名乗り、自分の部下が待ち伏せるからとまんまと騙し、男を連れ出したのだ。`[\]
-textoff
+textoff2
 waits 167
 wait 1000
 vol_me 1,-1,1000
 vol_me 2,-1,1000
 vol_me 3,-1,1000
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"pro_o1a"
 flush 25
@@ -938,9 +936,9 @@ wait_on_d -1
 msgwnd_non
 *d23755
 d `霞は、般若のような形相をしながら踵を乱暴に踏み鳴らす。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -959,11 +957,11 @@ d `いいえ、教えたことがあったはず。`[@]`{n}そしてあなたに
 *d23758
 d `縁寿だって、マリアージュ・ソルシエールに名を連ねる、魔女の見習いだったでしょう……？`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1c"
 flush 22
@@ -984,7 +982,7 @@ d `その為、追っ手から逃亡している縁寿にとってはとても�
 d `逃亡者は隠れるように安宿に泊まる、というのは庶民の考えだ。`[\]
 *d23765
 d `……右代宮家の財産の全てを持つ縁寿にとっては、実に快適な逃亡生活だった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -992,7 +990,7 @@ flush 22
 d `もちろん、護衛とはいえ、男の天草は別室。`[@]`スイートルームの寝室を縁寿が使い、居間のソファーに天草は横になっている。`[\]
 *d23767
 d `…天草曰く、今の自分のベッドより、ここのソファーの方が快適だとか。`[@]`気の毒な話だ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 flush 26
@@ -1002,7 +1000,7 @@ d `時計を見ると、`[!w500]`……深夜の２時を間近にしている�
 d `まだ眠くならない。`[@]`…………はぁ、っとため息を漏らす。`[\]
 *d23770
 d `その時、風もないのに、真里亞お姉ちゃんの日記が、ぱらりと捲れた気がした。`[\]
-textoff
+textoff2
 waits 167
 lss s0_9,"mar","b11_niyari1" ;1
 spt_mem "a2","breakup",s0_9,1000
@@ -1075,7 +1073,7 @@ d [lv 0*"13"*"40400614"]`「うん。`[@][lv 0*"13"*"40400615"]`縁寿がもう�
 msgwnd_non
 *d23782
 d `…………………………。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1092,7 +1090,7 @@ d `……魔法を使うのは、ずいぶん久し振り。`[\]
 d `一時、真里亞お姉ちゃんの手解きで、……その一端に触れ、扉をわずかに開けたことがある。`[\]
 *d23785
 d `だから、……まだあの感覚は覚えているはず。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_10,"mar","b11_defo1" ;1
@@ -1119,7 +1117,7 @@ flush 10,167
 msgwnd_enj
 *d23789
 d [lv 0*"11"*"42000635"]`「…………………。`[@][lv 0*"11"*"42000636"]`…………寝てるわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1128,7 +1126,7 @@ flush 23
 msgwnd_non
 *d23790
 d `居間の扉を細く開けると、ソファーで毛布の芋虫が、ごろりと寝返りを打つのが見えた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_8,"mar","b11_fukigen2" ;1
@@ -1157,7 +1155,7 @@ flush 10,167
 msgwnd_mar
 *d23795
 d [lv 0*"13"*"40400624"]`「………次に、依り代。`[@][lv 0*"13"*"40400625"]`…今の縁寿には自転車の補助輪、…いえ、チェーンくらい大事」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1173,7 +1171,7 @@ d `縁寿は、自分の頭を撫でる。`[\]
 d `…そこには、ピンクの珠のついたヘアアクセサリーがあった。`[\]
 *d23799
 d `縁寿のセンスにしては、少々幼過ぎるように感じるそれを、彼女は一日たりとも外したことはない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_10,"mar","b11_defo1" ;1
@@ -1215,13 +1213,13 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1c"
 flush 22
@@ -1233,11 +1231,11 @@ d `そして、ごそごそとナップザックの中身を漁る。`[@]`{n}…
 msgwnd_enj
 *d23807
 d [lv 0*"11"*"42000647_1"]`「？　あっ……」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_10,"enj","a11_defo1" ;1
@@ -1255,7 +1253,7 @@ msgwnd_non
 *d23810
 d `依り代になりそうなものの中で、もっとも強い魔力を有するだろうと思うそれを、`[@]`ゴトリと、ベッド脇のサイドテーブルに置く。`[\]
 meplay 1,5,70
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1269,11 +1267,11 @@ d `“煉獄の七杭”と呼ばれる、魔女が生贄を捧げるための�
 d `警察は遺留品捜索の際、大量のガラクタを収集。`[@]`{n}それらは律儀にも捜査終了後、右代宮家に返却された。`[\]
 *d23814
 d `……その中に、真里亞の日記に記されていた挿絵で見たことのあるものを見つけ、持ち帰ったのだ。`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_9,"mar","b11_defo1" ;1
@@ -1286,12 +1284,12 @@ d [lv 0*"13"*"40400639"]`「………煉獄の七杭は、元々、７本で一�
 msgwnd_non
 *d23816
 d `お姉ちゃんは寂しそうに微笑む…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 26
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"book1"
 flush 2
@@ -1311,7 +1309,7 @@ d `でも、ベアトリーチェは、マリアージュ・ソルシエール�
 d `その為、真里亞お姉ちゃんの魔導書に、煉獄の七杭たちの召喚方法や、その取り扱いなどが事細かに記されているのだ…。`[\]
 *d23824
 d `そして。`[@]`…同じ同盟に名を連ねる私にも、使役は許されているのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_10,"enj","a11_defo1" ;1
@@ -1326,13 +1324,13 @@ flush 10,167
 msgwnd_mar
 *d23826
 d [lv 0*"13"*"40400642"]`「真里亞の魔導書に、彼女らの特徴がよく記されてるよ。`[@][lv 0*"13"*"40400643"]`…七杭の姉妹は、名前を間違えられることをとても嫌う。`[@][lv 0*"13"*"40400644"]`召喚する前に、よく彼女らの名前を思い出して」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 26
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"book1"
 flush 22
@@ -1343,7 +1341,7 @@ d `煉獄の七杭のことを記した膨大なページ。`[@]`{n}…七人の
 d `……そう。`[@]`ずいぶん昔には、このページのことをほとんど丸暗記していたような気がする。`[\]
 *d23829
 d `読めば読むほどに、思い出されていく…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1353,7 +1351,7 @@ d `魔導書に記された挿絵と特徴から、私の手元にある杭は�
 d `かつての私は、杭を持ったことがないから、彼女らを依り代なしで呼び出していた。`[\]
 *d23832
 d `……だから、マモンに限らず、しっかりと七杭を見るのは初めてなのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_9,"enj","a11_fuman1" ;1
@@ -1372,7 +1370,7 @@ flush 10,167
 msgwnd_enj
 *d23835
 d [lv 0*"11"*"42000655"]`「……そうね。`[@][lv 0*"11"*"42000656"]`欲がないってことはつまり、生きてる理由がないってことだし」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1385,7 +1383,7 @@ d `しばらくの間、集中力を高めて、マモンについて記され�
 d `……召喚者は、呼び出す対象について詳しく知れば知るほどに良い…。`[@]`知識は魔力に結びつく。`[\]
 *d23838
 d `……マモンの知識を頭に満たし、召喚に必要な魔力を高めていく。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_10,"enj","a11_defo1" ;1
@@ -1429,7 +1427,7 @@ msgwnd_non
 d `煉獄の七杭は、生贄の儀式用の家具で、武具よりは劣る存在とされている。`[\]
 *d23846
 d `しかしそれは、悪魔たちの間での話。`[@]`{n}ニンゲンにとっては、家具とて恐ろしい存在だ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -1439,7 +1437,7 @@ flush 26
 d `私は再びナップザックを漁り、`[@]`真里亞お姉ちゃんに昔もらった、サソリのメダルのついたブレスレットのお守りを取り出し、それを腕に付ける。`[\]
 *d23848
 d `……昔はこんなもの、必要なかった。`[@]`{n}でも、保険は必要だ…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_9,"mar","b11_warai1" ;1
@@ -1452,7 +1450,7 @@ msgwnd_non
 d `真里亞お姉ちゃんの、特にお守りに込められる魔力はベアトリーチェが感嘆するほど。`[\]
 *d23851
 d `……魔法のことが理解できない人間が見たなら、`[@]`安っぽいものにしか見えないに違いないそれの魔法的価値は、計り知れない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -1472,19 +1470,19 @@ wait_on_d -1
 msgwnd_non
 *d23853
 d `…………………。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 42
 *d23854
 d `精神を集中する。`[@]`{n}自分の体内に満たされた反魔力の毒素をゼロにする。`[\]
-textoff
+textoff2
 waits 167
 vol_bgm 70,3000
 vol_me 1,100,3000
 wait 3000
 vol_me 1,-1,1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 80
@@ -1493,14 +1491,14 @@ d `穢れなき広大な空間をイメージ。`[@]`{n}……疑いと常識は
 *d23856
 d `抵抗をゼロにし、魔力に対する負荷を消し去る……。`[\]
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 8
 *d23857
 d `…………………………。`[@]`{n}……頭の中に、広大な空間のイメージが。`[\]
 meplay 1,16,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cit_2a"
 flush 2
@@ -1511,11 +1509,11 @@ d `天を覆うべき星は地上の明かりに掻き消され、大地を覆�
 *d23860
 d `遮られるもののない広大な夜景の世界の空で、`[!w583]`……自由に吹き抜ける風をイメージ。`[\]
 seplay 1,52,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 8
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 flush 22
@@ -1536,7 +1534,7 @@ msgwnd_mar
 *d23865
 d [lv 0*"13"*"40400662"]`「…………見事だよ。`[@][lv 0*"13"*"40400663"]`…ブランクは君から才能を奪わなかったね」`[\]
 vol_me 2,80
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"hot_r1a"
@@ -1550,18 +1548,18 @@ msgwnd_non
 d `私がかざす手を徐々に高め、頭より高く掲げると、`[@]`まるでそれに吸い寄せられるように、マモンの杭もまた、宙高く浮かび上がり、……徐々に震え始める。`[\]
 *d23868
 d `その振るえが次第に早くなり、`[!w583]`………弾けた。`[\]
-textoff
+textoff2
 waits 167
 csp -10
 lbg "c:efe",s0_3,"no59_00073"
 pam 749,"no59",0
 seplay 3,58,100
 seplay 2,58,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1569,17 +1567,17 @@ flush 22
 d `目にも留まらぬ速度で室内の壁を乱反射しながら飛び回る。`[@]`{n}……跳ね回る凄まじい音が、私を怯ませようと威圧する。`[\]
 *d23870
 d `……しかし、精神の集中を乱してはならない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"no59_00073"
 pam 749,"no59",0
 seplay 3,58,100
 seplay 2,58,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 lbg "a:efe",s0_17,"barrier1p"
@@ -1587,11 +1585,11 @@ z_order_override2 s0_17,s0_6
 flush 2
 wait 1000
 seplay 2,55,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 spriteset_enable 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s1_3,"black"
 lbg "a:efe",s1_17,"barrier1p"
@@ -1618,17 +1616,17 @@ d `……サソリのお守りのお陰で助かったと言えるだろう。`[
 *d23877
 d `これがなかったら今頃、眠気が訪れるまでの暇潰しが、永遠の暇潰しに変わるところだった。`[\]
 csp_slot s0_17
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 vol_bgm 0,3000
 vol_me 2,0,3000
 vol_me 3,0,3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 flush 24
@@ -1647,7 +1645,7 @@ seplay 9,1060,71
 d `マモンの杭は、私をえぐることが出来ないと悟ると、素直に降参し、杭から人に姿を変えた。`[\]
 *d23879
 d `相変わらずの、私じゃとても表を歩けないすごい格好で。`[@]`{n}悪魔的という意味では、らしくて良いのかもしれないが。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
@@ -1677,7 +1675,7 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1760,7 +1758,7 @@ flush 10,167
 msgwnd_rg5
 *d23895
 d [lv 0*"42"*"42700025"]`「………それで？`[@][lv 0*"42"*"42700026"]`　私は何をすれば？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"hot_r1a"
@@ -1811,7 +1809,7 @@ d `……どうやら、依り代なしで他の姉妹も呼び出して欲し�
 d `なるほど。`[@]`自分だけが呼び出されただけでは満足できず、他の姉妹の召喚までも願うわけか。`[\]
 *d23903
 d `…なるほど、強欲だ。`[@]`そう、確かに彼女はそうだったっけ……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1825,7 +1823,7 @@ d `むしろ逆に、どんなに丁寧であろうとも、仕事を与えら�
 d `マモンは、挑発するような口ぶりでいるが、他の姉妹を何とか呼び出し、虚無の世界から救ってやりたいと思っているのだ。`[\]
 *d23907
 d `………なら、素直にそうして下さいと言えりゃいいのに。`[@]`{n}悪魔って連中は本当に素直じゃない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_10,"enj","a11_komaru1" ;1
@@ -1871,7 +1869,7 @@ d `ぴょんぴょん飛び跳ねながら、縁寿に他の姉妹たちの召�
 d `……マモンを呼ぶだけで、体力と魔力の消耗は著しい。`[@]`{n}…さらに６人は、かなり難しいだろう。`[\]
 *d23914
 d `……こんな姉妹を、指一つ鳴らすだけで自在に呼び出せるのだから、魔女と呼ばれる域の連中の魔力は恐れ入る。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1901,7 +1899,7 @@ flush 10,167
 msgwnd_enj
 *d23919
 d [lv 0*"11"*"42000688"]`「いいわよ。`[@][lv 0*"11"*"42000689"]`どうせ暇潰し。`[@][lv 0*"11"*"42000690"]`ばったり寝込めるくらいに疲れさせてもらうわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1920,7 +1918,7 @@ d `虚空に両手をかざし、マモンを呼び出した時の感触を再�
 d `七姉妹とは全員と面識があるじゃないか。`[@]`……かつて、言葉を交わした時のことを、`[!w500]`……思い出せ………。`[\]
 vol_bgm -1,1000
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 8
@@ -1928,11 +1926,11 @@ bgmplay 88,90,0
 *d23924
 d `再び、……魔法の力が満ち始める。`[@]`それは両手からほのかに、そしてはっきりと青白い光となって放たれる……。`[\]
 seplay 2,56,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_10,"rg5","d21_warai2" ;1
@@ -1966,7 +1964,7 @@ msgwnd_rg5
 *d23927
 d [lv 0*"42"*"42700045"]`「縁寿さまなら出来ますって…！`[@][lv 0*"42"*"42700046"]`　縁寿さま、お願い…！`[@][lv 0*"42"*"42700047"]`　末っ子の、アスモから…！」`[\]
 meplay 1,5,50
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1976,22 +1974,22 @@ msgwnd_enj
 *d23928
 d [lv 0*"11"*"42000691"]`「………アスモデウス。`[@][lv 0*"11"*"42000692"]`７女。`[@][lv 0*"11"*"42000693"]`……………わかった。`[@][lv 0*"11"*"42000694"]`末っ子から順番に呼ぶわ」`[\]
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 8
 msgwnd_non
 *d23929
 d `額から、熱い汗がどろりと一筋、零れ落ちる。`[@]`{n}……やはり、かなりの負担が掛かる。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 8
 wait 1000
 seplay 1,52,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_12,"rg7","a11_defo1" ;1
@@ -2007,10 +2005,10 @@ msgwnd_non
 d `依り代はない。`[@]`……しかし、そこに間違いなく存在するのだという、強い信念を核とし、……そこに姿を結晶させる…。`[\]
 *d23933
 d `輪郭がはっきりとし、………七姉妹の末っ子、アスモデウスの姿をついに生み出す。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,22,90
-textoff
+textoff2
 waits 167
 csp_slot s0_12
 lbg "c:colour",s0_3,"white"
@@ -2018,7 +2016,7 @@ lss s0_12,"rg7","a11_defo1" ;1
 spt_mem "a2","alpha",s0_12,200
 flush 2
 csp_slot s0_12
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 seplay 2,52,71
@@ -2066,13 +2064,13 @@ flush 10,167
 msgwnd_rg7
 *d23939
 d [lv 0*"44"*"42900007"]`「縁寿さま、ありがとう！`[@][lv 0*"44"*"42900008"]`　次はベルゼを…！！`[@][lv 0*"44"*"42900009"]`　ベルゼをお願いします…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_9,"enj","a11_nayamu1" ;1
@@ -2088,16 +2086,16 @@ wait_on_d -1
 msgwnd_non
 *d23941
 d `この流れで、……どこまで呼び出せるか。`[@]`{n}集中を欠いたら、`[!w500]`…多分もう無理。`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,70
 seplay 1,22,90
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 8
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_9,"rg6","a11_defo1" ;1
@@ -2137,7 +2135,7 @@ meplay 2,18,50
 d `……３人同時召喚。`[@]`…ずきりと頭が痛む。`[\]
 *d23948
 d `休まず、次を呼び出す。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2147,15 +2145,15 @@ flush 22
 msgwnd_enj
 *d23949
 d [lv 0*"11"*"42000701"]`「……さぁさ、お出でなさい。`[@][lv 0*"11"*"42000702"]`煉獄の七杭が一つ、怠惰のベルフェゴール…」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 8
 seplay 1,52,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_9,"rg4","a11_defo1" ;1
@@ -2202,7 +2200,7 @@ msgwnd_rg5
 *d23953
 d [lv 0*"42"*"42700053"]`「この調子で次はサタン姉を！`[@][lv 0*"42"*"42700054"]`　レヴィア姉もルシ姉も…！！」`[\]
 meplay 3,16,70
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2212,7 +2210,7 @@ flush 22
 msgwnd_enj
 *d23954
 d [lv 0*"11"*"42000703"]`「……えぇ、`[|][lv 0*"11"*"42000704"]`…わかってるわ。`[@][lv 0*"11"*"42000705"]`……だからお願い、あまりうるさくしないで。`[@][lv 0*"11"*"42000706"]`……４人同時は、`[|][lv 0*"11"*"42000707"]`……結構、きつい…」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 lss s0_9,"mar","b11_komaru1" ;1
@@ -2220,7 +2218,7 @@ flush 22
 msgwnd_mar
 *d23955
 d [lv 0*"13"*"40400683"]`「縁寿、もうそれ以上、無理をしないで。`[@][lv 0*"13"*"40400684"]`これだけ久し振りなのに、よく４人も召喚できたよ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"hot_r1a"
@@ -2275,7 +2273,7 @@ msgwnd_rg5
 *d23962
 d [lv 0*"42"*"42700062"]`「だから守って！`[@][lv 0*"42"*"42700063"]`　じゃないと、私は今日までそれを忘れていた縁寿さまを許さない…！」`[\]
 meplay 4,17,70
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2292,11 +2290,11 @@ d `忘れてしまった日々だけど。`[@]`{n}悲しさと寂しさしかな
 *d23966
 d `……確かに、彼女らと過ごしたわずかな時間は、`[@]`……紛れもなく、楽しい時間だったのだから。`[\]
 seplay 1,22,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 8
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"hot_r1a"
 seplay 2,52,90
@@ -2333,7 +2331,7 @@ flush 10,167
 msgwnd_rg4
 *d23971
 d [lv 0*"41"*"42600006"]`「うん、サタン姉の言う通りだ。`[@][lv 0*"41"*"42600007"]`姿を消す。`[@][lv 0*"41"*"42600008"]`お前たちも姿を消せ。`[@][lv 0*"41"*"42600009"]`それがこの瞬間、一番、縁寿さまのお役に立てる」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -2407,13 +2405,13 @@ msgwnd_non
 d `５人も召喚し、彼女らが好き勝手に騒ぎ合うという状況は、`[@]`貧弱な魔力しか持たない今の私には、あまりに負荷が重過ぎる……。`[\]
 *d23980
 d `……もう、……………駄目……。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
 wait 1000
 seplay 1,13,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_3,"hot_r1c"
@@ -2427,7 +2425,7 @@ gptwait quakeyamp
 d `私は意識を遠退かせながら、ベッドに倒れこむ。`[\]
 meplay 1,11,70
 meplay 2,5,50
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 45
@@ -2439,17 +2437,17 @@ d `姉妹たちは、まだ好き放題に罵り合っているようだ。`[\]
 d `……睡魔が迎えに来てくれるまでの暇潰しには、`[!w583]`……充分…………。`[\]
 *d23985
 d `私は、姉妹たちの賑やかさに、どこか懐かしい温かさを感じながら、深い眠りの世界へ沈んでいく………。`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 2
 *d23986
 d `そんな私を夢の世界の入り口で、真里亞お姉ちゃんと、`[!w500]`……さくたろうが受け止めてくれた気がした。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 wait 2000
@@ -2477,10 +2475,10 @@ msgwnd_non
 d `……お帰り、か。`[@]`じゃあ返事はこうだわ。`[\]
 *d23990
 d `…………ただいま………。`[\]
-textoff
+textoff2
 waits 167
 meplay 1,16,50
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10

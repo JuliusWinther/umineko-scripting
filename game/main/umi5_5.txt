@@ -1,13 +1,11 @@
 *umi5_5
 ;10/4（土）19:00 奇跡の魔女
 log_reset
-mov $name_chapter_r_click,r_click_chapters_5_5
-mov $name_chapter_r_click_l2,r_click_chapters_5_5_l2
-mov $name_chapter_r_click_l3,r_click_chapters_5_5_l3
+mov $name_chapter_r_click,r_click_chapters_5_5+"|"+r_click_chapters_5_5_l2+"|"+r_click_chapters_5_5_l3
 mov $name_chapter_save, "5_05"
 new_chapter date_scenario_5_5,scenario_5_5
 gstc 8
-textoff
+textoff2
 waits 167
 meplay 1,13,70
 meplay 2,5,70
@@ -15,14 +13,14 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_cy1ar"
 flush 6
 wait 2000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 6
@@ -32,7 +30,7 @@ bgmplay 7,71,0
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1fr"
 flush 24
@@ -40,7 +38,7 @@ flush 24
 d `ヱリカの席は、序列で言うと一番の末席。`[@]`つまり、下手の正面席。`[\]
 *d36893
 d `上手の正面席である金蔵の席は不在であるため、`[@]`引っ繰り返して見たならまるで、ヱリカがこの晩餐の主催のようにさえ見えた…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1ar"
 flush 23
@@ -58,7 +56,7 @@ d `いよいよ、指揮者トシロー・ゴーダによる、ディナーオ�
 d `このような豪華な晩餐の席は、蔵臼一家を除けば、決して一般的なものではない。`[\]
 *d36898
 d `しかし、彼らは慣れているから当たり前のように振舞える。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"mdin_1fr"
@@ -70,12 +68,12 @@ d `……驚くべきは、またしてもヱリカだった。`[\]
 d `彼女はこのような晩餐であっても、何も驚かず、`[@]`周りに合わせて落ち着きある振る舞いを見せている。`[\]
 *d36901
 d `……迷い込んだ子犬のような怯えは、微塵も感じられなかった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mdin_1cr_bg"
 lbg "a:backgrounds",s0_3,"mdin_1cr"
@@ -96,7 +94,7 @@ flush 10,167
 msgwnd_nan
 *d36904
 d [lv 0*"19"*"51900027"]`「古戸さんは、こういう食事にはなれているのですか…？`[@][lv 0*"19"*"51900028"]`　大した落ち着きようだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -119,7 +117,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_3,"mdin_1er"
@@ -188,7 +186,7 @@ flush 10,167
 msgwnd_non
 *d36918
 d `ヱリカは肩を竦める真似をしながら、一同にウィンクしてみせる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -211,7 +209,7 @@ d `フルコースで、オードブルの次に来るのはスープだと彼�
 d `そして、少し完璧に振舞い過ぎ、緊張感を持たれてしまっていることも、`[@]`また逆に、自分が緊張しているだろうと思って、秀吉が気を利かせて話し掛けてきたことまで、`[@]`彼女はわかっていた。`[\]
 *d36923
 d `だからこそ、少し子どもっぽく振舞っておどけて見せて、`[@]`和やかな晩餐を客人の立場から演出して見せたのだ……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1fr"
 flush 26
@@ -219,12 +217,12 @@ flush 26
 d `霧江だけに限らず、すぐにそれを一同も見抜く。`[\]
 *d36925
 d `招かれざる客だったとしても、やはり彼女は右代宮家の晩餐に着席するに相応しい人間のようだった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1er"
 lss s0_10,"eva","b25_warai1" ;1
@@ -245,7 +243,7 @@ flush 10,167
 msgwnd_cla
 *d36927
 d [lv 0*"02"*"50800197"]`「賢く、場を和ますセンスもあるようだ。`[@][lv 0*"02"*"50800198"]`マナーも見事じゃないか。`[@][lv 0*"02"*"50800199"]`あんな子が娘だったら、悪くはないね」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -263,14 +261,14 @@ flush 10,167
 msgwnd_ros
 *d36929
 d [lv 0*"12"*"51400028"]`「くす。`[@][lv 0*"12"*"51400029"]`ひどいわ、留弗夫兄さん」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1ar"
 lss s0_8,"jes","a11_komaru1starkohen" ;1
@@ -340,7 +338,7 @@ flush 10,167
 msgwnd_non
 *d36941
 d `真っ赤になる朱志香。`[@]`……あぁ、悪ィ、俺は無理だ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -356,7 +354,7 @@ d `でも、その笑いのお陰で俺たちもリラックスできたのは�
 d `客人が緊張していないか気遣うあまり、一番緊張していたのは自分たちだったのだ。`[\]
 *d36946
 d `長い食卓の真ん中に座る俺たちの騒ぎは両端に広がり、`[@]`やがていつも以上に、和やかな晩餐となるのだった…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -367,21 +365,21 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1an"
 flush 6
 wait 2000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1er"
 flush 22
@@ -395,7 +393,7 @@ d `食後の団欒のひと時を経て、俺たちはゲストハウスへ戻�
 d `普段なら、晩餐の空気は大抵気まずく、`[@]`その気まずさの延長のような感じで、大人たちはそのまま親族会議に入ることが多い。`[\]
 *d36951
 d `しかし、珍しく今年の晩餐は和やかだったせいもあってか、大人たちも含め、一度散会することになった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1ar"
 flush 26
@@ -403,7 +401,7 @@ flush 26
 d `晩飯を食って、風呂に入ってテレビ見てくつろいだら、`[@]`まさかこの雨の中、また屋敷に集まりなおして、ギスギスした親族会議を再開…、`[@]`というのはちょっと考えたくない話だ。`[\]
 *d36953
 d `絵羽伯母さんは、すぐにも親族会議を開催しようと息巻いてるようだが、あまり同調者は多くないようだ。`[@]`多分、今夜はこれでお開きになるだろう。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -417,7 +415,7 @@ d `あのすごい晩餐を作って後片付けをして、さらにゲスト�
 d `熊沢さんは、さすがに老人なので、もう休むことになっているという。`[\]
 *d36958
 d `ゲストハウスの控え室が割り当てられてるそうだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mdin_1cr_bg"
 lbg "a:backgrounds",s0_3,"mdin_1cr"
@@ -433,7 +431,7 @@ flush 23
 msgwnd_eri
 *d36960
 d [lv 0*"46"*"54500027"]`「…………ありがとうございます」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -487,9 +485,9 @@ flush 10,167
 msgwnd_mar
 *d36969
 d [lv 0*"13"*"50400027"]`「うーうーうー！！　やったー！！」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -500,18 +498,18 @@ flush 23
 vol_bgm -1,3000
 wait 3000
 meplay 2,5,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_p1dr_bg"
 lbg "a:backgrounds",s0_3,"m1f_p1dr"
 flush 23
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
 lbg "a:backgrounds",s0_3,"mhal_2ar"
@@ -523,7 +521,7 @@ msgwnd_eri
 *d36970
 d [lv 0*"46"*"54500032"]`「………………あれは、どちら様ですか？」`[\]
 seplay 1,21,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_3,"mhal_2cr"
@@ -543,7 +541,7 @@ flush 10,167
 msgwnd_eri
 *d36973
 d [lv 0*"46"*"54500033"]`「…………黄金の、`[|][lv 0*"46"*"54500034"]`……魔女」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -567,10 +565,10 @@ d `親父と霧江さん、絵羽伯母さんに秀吉伯父さん、楼座叔�
 d `ゲストハウスご一行様はこれで全員集合だ。`[\]
 *d36977
 d `しかしヱリカは、魔女の肖像画に瞳を奪われ、しばらくの間、じっと眺めているのだった……。`[\]
-textoff
+textoff2
 waits 167
 seplay 3,27,50
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -578,7 +576,7 @@ csp_slot s0_10
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 2
 wait 3000
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -591,14 +589,14 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1en"
 flush 24
 wait 2000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
@@ -606,21 +604,21 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g_o1ar"
 flush 24
 wait 2000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"glob_1er"
 flush 24
@@ -635,7 +633,7 @@ msgwnd_non
 d `ゲストハウスに戻った親族たちは、各々の部屋に散会するのはまだ早かったのか、`[@]`１階に集まり、おしゃべりを続けていた。`[\]
 *d36980
 d `話題は、……ヱリカが興味を持った、魔女の碑文である。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -663,7 +661,7 @@ flush 10,167
 msgwnd_eri
 *d36983
 d [lv 0*"46"*"54500038"]`「……面白そうじゃないですか。`[@][lv 0*"46"*"54500039"]`そういう挑戦。`[@][lv 0*"46"*"54500040"]`…………多分、金蔵さんは、あの碑文によって、跡継ぎを選ぼうというつもりに違いありませんね」`[\]
-textoff
+textoff2
 waits 167
 vol_bgm -1,1000
 wait 1000
@@ -688,7 +686,7 @@ d `何をもって、そうだと言い切ったのか。`[@]`{n}いや、……
 d `それを、希望的憶測ではなく、……確実なものとしたいのだ。`[\]
 *d36991
 d `だから、ヱリカにどうしてそう言い切れるのかと、詰め寄るのだ。`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"eri","a11_warai3" ;1
 spt_mem "a2","xpos",s0_10,550
@@ -720,7 +718,7 @@ msgwnd_non
 d `最初、古戸ヱリカという少女は、口数が少ないような印象を持っていたが、`[@]`……それはどうやら勘違いらしい。`[\]
 *d36996
 d `知的ゲームに挑戦すると意気込む彼女は、想像よりはるかに饒舌だった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -755,14 +753,14 @@ flush 10,167
 msgwnd_kir
 *d37000
 d [lv 0*"09"*"51300038"]`「そうよね。`[@][lv 0*"09"*"51300039"]`隠された黄金の価値は２００億。`[@][lv 0*"09"*"51300040"]`……それはまさに右代宮家の財産そのものだわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 26
@@ -776,7 +774,7 @@ d `……碑文を解けば次期当主に選ばれる、という憶測は、`[
 d `しかし、そう明記されていない以上、都合の良い想像でしかない。`[\]
 *d37004
 d `……そう思い、グレーのまま考えることを放置してきた部分だった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -788,7 +786,7 @@ d `親族の誰かが言ったなら、やはり都合の良い想像としか�
 d `しかし、古戸ヱリカというまったくの部外者がそう断じることで、`[@]`その言葉には一層の信憑性が帯びるのだ……。`[\]
 *d37008
 d `しばらくの間、一同は黙り込み、その言葉の意味することを、じっと噛み締めていた…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1dr_bg"
 lbg "a:backgrounds",s0_3,"glob_1dr"
@@ -803,7 +801,7 @@ lss s0_9,"eri","a13_warai3" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
@@ -839,7 +837,7 @@ flush 10,167
 msgwnd_eri
 *d37015
 d [lv 0*"46"*"54500057"]`「………莫大な財産を持つ右代宮家の当主なら、政治的な意味で様々な影響力を持つことになるでしょう。`[@][lv 0*"46"*"54500058"]`……ならば本来、その継承は厳格であり、一切の紛れが入るべきではありません」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -857,7 +855,7 @@ flush 10,167
 msgwnd_hid
 *d37017
 d [lv 0*"06"*"51100052"]`「…そやな……。`[@][lv 0*"06"*"51100053"]`だからトラブルを未然に防ぐために、しっかりと後継者を指名しておくのが大切なんや。`[@][lv 0*"06"*"51100054"]`時には、競合する後継者を粛清することさえあるんやで」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 22
@@ -866,10 +864,10 @@ msgwnd_non
 d `秀吉が憧れる戦国武将、豊臣秀吉も、養子の秀次を切腹させているが、`[@]`これは、秀次より後に生まれた実子、秀頼を真の後継者とするためだったのではないかと囁かれている。`[\]
 *d37019
 d `……つまり、後継者指名とは、後継者は誰もが認める唯一無二の一人であると全体に知らしめ、`[@]`それ以外の人物が対立候補となる要素全てを排除することも意味する。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_22
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -941,7 +939,7 @@ d `…対するヱリカは、真実ですが何か？`[@]`　とでも言うよ
 d `………なるほど。`[@]`このヱリカという少女が、右代宮家に相応しいのはどうやら、テーブルマナーだけじゃないらしい。`[\]
 *d37030
 d `…相応しくなくてもいいところまで、……実に右代宮家らしいようだ…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -951,7 +949,7 @@ flush 2
 vol_me 1,-1,1000
 vol_me 2,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1dr_bg"
 lbg "a:backgrounds",s0_3,"glob_1dr"
@@ -988,7 +986,7 @@ msgwnd_non
 d `秀吉伯父さんは、なおもげらげらと無理に笑い転げ、無理やり空気を変えようとする。`[\]
 *d37035
 d `周りもそれに同調するが、朱志香の機嫌が直ることはなかった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -996,7 +994,7 @@ csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -1022,7 +1020,7 @@ flush 10,167
 msgwnd_eva
 *d37040
 d [lv 0*"05"*"51000045"]`「くすくすくす。`[@][lv 0*"05"*"51000046"]`気に入ったわ。`[@][lv 0*"05"*"51000047"]`………せっかくヱリカちゃんが面白がってくれてるんだし。`[@][lv 0*"05"*"51000048"]`また去年みたいに、みんなで謎解きをしてみましょうよ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1030,7 +1028,7 @@ csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1dr_bg"
 lbg "a:backgrounds",s0_3,"glob_1dr"
@@ -1052,14 +1050,14 @@ flush 10,167
 msgwnd_mar
 *d37042
 d [lv 0*"13"*"50400031"]`「うーうー！！`[@][lv 0*"13"*"50400032"]`　真里亞もブラック飲むー飲むー！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -1080,13 +1078,13 @@ msgwnd_non
 d `ヱリカは、そう言って微笑む…。`[\]
 *d37046
 d `朱志香を不機嫌にさせ、空気を悪くしたことを自覚しているはずなのに、`[@]`……けろりとして、そう微笑む…。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
 wait 2000
 seplay 1,56,71
-textoff
+textoff2
 waits 167
 rain_pause s0_11
 lbg "c:colour",s0_21,"black"
@@ -1179,7 +1177,7 @@ flush 10,167
 msgwnd_ber
 *d37060
 d [lv 0*"28"*"52100266"]`「………安心なさい。`[@][lv 0*"28"*"52100267"]`あなたと同じ、プレイヤーとしてのルールに則ってよ。`[@][lv 0*"28"*"52100268"]`……じゃあ、始めようかしら。`[@][lv 0*"28"*"52100269"]`………ここじゃ狭いわ。`[@][lv 0*"28"*"52100270"]`海の上で話しましょう？」`[\]
-textoff
+textoff2
 waits 167
 meplay 1,16,0
 vol_bgm 0,2000
@@ -1214,7 +1212,7 @@ rain_resume s0_11
 lips_sprite s0_8_b,"eri"
 lips_sprite s0_10_b,"but"
 seplay 1,52,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1230,10 +1228,10 @@ agpt quakeycycle,1333
 agpt quakeyamp,30,500
 agpt quakexcycle,2000
 agpt quakexamp,10,500
-textoff
+textoff2
 seplay 1,52,71
 seplay 2,52,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2a"
 spriteset_enable 1
@@ -1250,7 +1248,7 @@ seplay 1,52,71
 seplay 3,52,71
 lss s0_10,"ber","a21_defo1" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -1261,7 +1259,7 @@ seplay 1,52,71
 seplay 2,52,71
 lss s0_8,"lam","a11_akuwarai1" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -1274,7 +1272,7 @@ d `見れば、`[!w500]`……俺と二人の魔女は、`[!w667]`……真っ�
 *d37066
 d `全方向が果て無き闇で覆われ、無数の輝く何かが満たされた無限の広さを感じさせる空間。`[\]
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1282,7 +1280,7 @@ lbg "c:backgrounds",s0_3,"different_space_2b"
 flush 22
 *d37067
 d `……人によってはそれを宇宙でなく、光り輝くたくさんの何かのカケラが漂う深海と例えるかもしれない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2a"
 show_whirl
@@ -1292,7 +1290,7 @@ d [lv 0*"10"*"50100340"]`「う、……わ、わ……………、」`[\]
 seplay 1,52,71
 lss s0_8,"ber","a21_defo2" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -1303,13 +1301,13 @@ msgwnd_ber
 *d37069
 d [lv 0*"28"*"52100271"]`「…………酔うなと言ったのに」`[\]
 seplay 2,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"lam","a11_warai1" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -1332,7 +1330,7 @@ d `……二人が平然としている様子を見ている内に、怯える�
 *d37074
 d `そして、ラムダデルタが言ったように、`[@]`ここには足場がある、落ち着け落ち着けと、歯を食い縛りながら自分に言い聞かせる……。`[\]
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1375,7 +1373,7 @@ msgwnd_non
 d `ラムダデルタが何を言ってるかわからないが、とにかく、落ち着こう。`[\]
 *d37080
 d `落ち着けば落ち着くほどに体は安定するようだ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1385,7 +1383,7 @@ flush 2
 d `次第に、どこまでも落下するような、気持ち悪い浮遊感は少しずつなくなる。`[\]
 *d37082
 d `……まだ、深いプールの底で直立しようともがくような不快感はあるが、さっきよりははるかにマシだった。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
@@ -1393,7 +1391,7 @@ wait 2000
 wait 1000
 seplay 1,52,71
 lss s0_9,"ber","a21_defo1" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,1000
 spt_mem "a2","alpha",s0_9,0
 flush 1
@@ -1405,12 +1403,12 @@ msgwnd_ber
 d [lv 0*"28"*"52100272"]`「………では、始めるわ。`[@][lv 0*"28"*"52100273"]`………碑文の謎を解くためのカケラを紡ぐ……」`[\]
 bgmplay 88,71,0
 seplay 1,56,71
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 10
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2c"
 flush 2
@@ -1420,7 +1418,7 @@ d `ベルンカステルが、両手を左右に開く。`[\]
 *d37085
 d `すると、まるでプラネタリウムのように、`[@]`………全宇宙のカケラが、尾を引いて回り始めた…。`[\]
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2d"
 show_whirl
@@ -1431,7 +1429,7 @@ d `……なぜなら、複数のカケラが金色の線で結ばれた、`[@]`
 *d37088
 d `それはまるで、俺たち３人がものすごい速度で、宇宙を駆け抜けているかのようだった…。`[\]
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2a"
 show_whirl
@@ -1443,26 +1441,26 @@ d `それはまるで、彼女が太陽で自らの太陽系を生み出すよ�
 d `その、ベルンカステルを中心にした太陽系は、俺たちを飲み込むほどに大きな半径となる。`[\]
 seplay 1,22,71
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 29
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d37092
 d `そして時折、その衛星であるカケラが俺のすぐ近くを駆け抜けた。`[\]
-textoff
+textoff2
 waits 167
 seplay 3,56,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 29
 wait 1000
 seplay 1,22,50
-textoff
+textoff2
 waits 167
 lbg s0_3,"kakera_memory3"
 aspritesetpt pixelate,0,255
@@ -1471,7 +1469,7 @@ aspritesetpt pixelate,0,0,1000
 spritesetptwait pixelate,0
 wait 1333
 seplay 2,22,70
-textoff
+textoff2
 waits 167
 lbg s0_3,"kakera_memory2"
 aspritesetpt pixelate,0,255
@@ -1480,7 +1478,7 @@ aspritesetpt pixelate,0,0,1000
 spritesetptwait pixelate,0
 wait 1333
 seplay 3,22,90
-textoff
+textoff2
 waits 167
 lbg s0_3,"kakera_memory1"
 aspritesetpt pixelate,0,255
@@ -1488,13 +1486,13 @@ flush 1
 aspritesetpt pixelate,0,0,1000
 spritesetptwait pixelate,0
 wait 1333
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 18,1000,msk_c
 seplay 1,22,71
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2b"
 show_whirl
@@ -1505,13 +1503,13 @@ d `だから直感する。`[\]
 *d37095
 d `……多分、このカケラというものは、記憶の結晶のようなものなのだ。`[\]
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"lam","a11_akuwarai3" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -1521,7 +1519,7 @@ d [lv 0*"29"*"52200220"]`「記憶じゃないわ。`[@][lv 0*"29"*"52200221"]`�
 seplay 1,52,71
 lss s0_8,"ber","a21_defo2" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -1533,7 +1531,7 @@ msgwnd_ber
 d [lv 0*"28"*"52100274"]`「…………では、始めるわ。`[@][lv 0*"28"*"52100275"]`…まずは、このカケラから」`[\]
 seplay 1,22,100
 seplay 2,56,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1550,22 +1548,22 @@ d `太陽系の衛星のひとつが、中心のベルンカステルに、す�
 d `ぐるぐると渦を描きながら近付き、ベルンカステルが差し出した手の平の上に、すっと載った…。`[\]
 *d37100
 d `するとそれは眩しく輝き、世界を真っ白に塗り潰す……。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 8
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 3,56,71
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"text011_r"
 lss s0_10,"ev2","b11_ikari1" ;1
@@ -1587,13 +1585,13 @@ spt_mem "a2","xpos",s0_10,550
 flush 10,167
 *d37101
 d [lv 0*"34"*"53300001"]`「…“懐かしき故郷”は、私たちの想像をきっと裏切らないわ。`[@][lv 0*"34"*"53300002"]`……お父様が唯一懐かしむ過去は少年時代だけだもの」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2c"
 lss s0_10,"but","a21_nayamu4" ;1
@@ -1621,14 +1619,14 @@ msgwnd_ber
 *d37105
 d [lv 0*"28"*"52100280"]`「………そういうこと。`[@][lv 0*"28"*"52100281"]`そして少なくとも、それは小田原ではないわ」`[\]
 seplay 1,56,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 29
 wait 500
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"text011_r"
 lss s0_10,"eva","b25_ikari1" ;1
@@ -1654,14 +1652,14 @@ flush 10,167
 msgwnd_ros
 *d37107
 d [lv 0*"12"*"51400035"]`「…そうね。`[@][lv 0*"12"*"51400036"]`多分、小田原じゃないわね。`[@][lv 0*"12"*"51400037"]`聞いた話では、とても楽しい少年時代だったそうよ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 2
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2d"
 lss s0_10,"but","b11_nayamu1_chiru" ;1
@@ -1676,7 +1674,7 @@ flush 10,167
 msgwnd_ber
 *d37109
 d [lv 0*"28"*"52100282"]`「……そう。`[@][lv 0*"28"*"52100283"]`そして意地悪なことに、それが何処なのかは、どのカケラでも語っていない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1691,7 +1689,7 @@ lss s0_9,"lam","a11_akuwarai1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"different_space_2c"
@@ -1732,14 +1730,14 @@ flush 10,167
 msgwnd_ber
 *d37114
 d [lv 0*"28"*"52100287"]`「…………そうしてもいいけれど、それじゃあ、時間がいくらあっても足りないわ。`[@][lv 0*"28"*"52100288"]`だから、さらにヒントを加味して、答えを絞る必要があった」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 28
 seplay 1,56,71
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"text011_r"
 lss s0_10,"ev2","b11_defo1" ;1
@@ -1767,13 +1765,13 @@ spt_mem "a2","xpos",s0_10,550
 flush 10,167
 *d37116
 d [lv 0*"34"*"53300006"]`「川で考えるの。`[@][lv 0*"34"*"53300007"]`川で。`[@][lv 0*"34"*"53300008"]`“家系図”という連想は悪くないわ。`[@][lv 0*"34"*"53300009"]`その要領で川から連想するものを、他にも考えてみて……」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2a"
 lss s0_8,"but","b11_odoroki3" ;1
@@ -1812,13 +1810,13 @@ flush 10,167
 msgwnd_ber
 *d37121
 d [lv 0*"28"*"52100296"]`「………懐かしき、故郷を貫く鮎の川。`[@][lv 0*"28"*"52100297"]`……絵羽は、故郷がどこかわかってたから、鮎というヒントを切り捨てて考えたけど。`[@][lv 0*"28"*"52100298"]`……故郷を知らない私たちにはヒントになり得るかもしれないわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 29
 seplay 1,56,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_sta1a"
 lss s0_8,"ros","b26_akuwarai1" ;1
@@ -1850,14 +1848,14 @@ flush 10,167
 msgwnd_eva
 *d37123
 d [lv 0*"05"*"51000051"]`「そんなことないわよ。`[@][lv 0*"05"*"51000052"]`立派なヒントだったじゃない。`[@][lv 0*"05"*"51000053"]`まぁ確かに、鮎である必要はなかったかもね」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2d"
 lss s0_9,"but","b11_komaru3" ;1
@@ -1865,7 +1863,7 @@ show_whirl
 msgwnd_but
 *d37124
 d [lv 0*"10"*"50100361"]`「…………鮎って何なんだ…。`[@][lv 0*"10"*"50100362"]`……川が、言葉通りの川でない以上、鮎だってもちろん、泳ぐ魚を意味したりはしないはずだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"different_space_2c"
@@ -1906,14 +1904,14 @@ flush 10,167
 msgwnd_ber
 *d37133
 d [lv 0*"28"*"52100302"]`「………良い思考よ。`[@][lv 0*"28"*"52100303"]`……碑文は、“川を下れば、やがて里あり”と続く。`[@][lv 0*"28"*"52100304"]`絵羽はその時点では、そこから始まる三行の謎を解けてはいなかった」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 29
 seplay 1,56,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"glib_1a"
 agpt onionalpha,192
@@ -1941,7 +1939,7 @@ wait_on_d -1
 msgwnd_non
 *d37135
 d `全然意味のわからなかったピースが、`[!w500]`……目の前で勝手に、`[!w417]`……ぱちり、`[!w500]`ぱちりと組み合わさっていく……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -1951,7 +1949,7 @@ d `開いた口を閉じることも思い出せない。`[@]`{n}…喉がから
 *d37137
 d `これ、……本当にこれが答えでいいの？`[@]`{n}ほ、本当に？`[@]`　本当になのッ…？！`[\]
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2c"
 lss s0_10,"but","b11_majime7" ;1
@@ -1972,14 +1970,14 @@ flush 10,167
 msgwnd_but
 *d37140
 d [lv 0*"10"*"50100367"]`「くそ…。`[@][lv 0*"10"*"50100368"]`……その書物って何なんだ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 29
 seplay 1,56,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"glib_1a"
 lss s0_23,"eva","b25_ikari2" ;1
@@ -2003,7 +2001,7 @@ seplay 2,21,71
 seplay 1,56,71
 lss s0_25,"ev2","b11_ikari1" ;1
 spt_mem "a2","xpos",s0_25,-370
-textoff
+textoff2
 waits 167
 rain_pause s0_11
 lbg "c:colour",s0_21,"black"
@@ -2022,7 +2020,7 @@ spt_mem "a2","xpos",s0_25,-370
 flush 10,167
 *d37144
 d [lv 0*"34"*"33300124_fb"]`それが信じられないなら、とっとと泣き寝入りでもして、ヘソでも噛んで死んじゃえば…？`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_25
 csp_slot s0_23
@@ -2042,15 +2040,15 @@ wait_on_d 1
 seplay 2,27,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2b"
 lss s0_10,"ber","a21_defo2" ;1
@@ -2086,14 +2084,14 @@ wait_on_d -1
 msgwnd_non
 *d37151
 d `つまり、第一の晩に、鍵の選びし６文字を生贄に捧げよ、……という意味だ…！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 29
 seplay 1,56,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1d_bg"
 lbg "a:backgrounds",s0_3,"glob_1d"
@@ -2120,7 +2118,7 @@ flush 10,167
 msgwnd_cla
 *d37153
 d [lv 0*"02"*"50800200"]`「アナグラム？`[@][lv 0*"02"*"50800201"]`　文字遊びのことかね…？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2128,7 +2126,7 @@ csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 2
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2c"
 lss s0_9,"but","b11_majime4" ;1
@@ -2136,13 +2134,13 @@ show_whirl
 msgwnd_non
 *d37154
 d `そうさ、霧江さんはあの時からそう推理している…！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 28
 seplay 1,56,71
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"text012_r"
 lss s0_10,"kir","a27_majime1" ;1
@@ -2162,13 +2160,13 @@ spritesetptwait warp_amp,0
 msgwnd_kir
 *d37155
 d [lv 0*"09"*"51300048"]`「…第二の晩に、“残されし者は”とある。`[@][lv 0*"09"*"51300049"]`……ということは、少なくともその“何か”は有限の文字数なのよ。`[@][lv 0*"09"*"51300050"]`そこから６文字を抜いて残った文字で話を進めろと読み解けるわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 2
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2a"
 lss s0_10,"but","a11_niramu4" ;1
@@ -2198,7 +2196,7 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2209,7 +2207,7 @@ vol_bgm -1,1000
 wait 1000
 seplay 1,27,71
 wait 500
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
@@ -2217,7 +2215,7 @@ csp_slot s0_11
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -2236,7 +2234,7 @@ flush 10,167
 msgwnd_kir
 *d37161
 d [lv 0*"09"*"51300051"]`「アナグラムの可能性は、私も考えてたの」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2259,7 +2257,7 @@ flush 10,167
 msgwnd_ros
 *d37164
 d [lv 0*"12"*"51400040"]`「お父様のセンスなら、…やっぱり英語なのかしら…」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2272,19 +2270,19 @@ flush 23
 msgwnd_eri
 *d37165
 d [lv 0*"46"*"54500079"]`「………行き詰るようなら、先に第二の晩に進み、ヒントを探してみましょう」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"text012_r"
 flush 22
 *d37166
 d [lv 0*"46"*"54500080"]`「……残されし者は寄り添う二人を引き裂け。`[@][lv 0*"46"*"54500081"]`……残されし者は、“６文字を抜いた後に残った文字”だと考えて良いでしょう」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -2300,7 +2298,7 @@ flush 10,167
 msgwnd_but
 *d37168
 d [lv 0*"10"*"50100384"]`「………そうか。`[@][lv 0*"10"*"50100385"]`……わかったぜ、つまりはこういうことだ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2312,7 +2310,7 @@ msgwnd_non
 *d37169
 d `例えば、１２３４５６７８９という、９文字の文字列があるとする。`[@]`{n}そこで、仮に生贄に捧げる６文字が、１、３、６、７、８、９だったとする。`[@]`{n}こうなると、１２３４５６７８９は前述の６文字を消して、×２×４５××××、となる。`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1dr_bg"
 lbg "a:backgrounds",s0_3,"glob_1dr"
@@ -2338,7 +2336,7 @@ msgwnd_non
 *d37173
 d `{a:c:×２×４５××××。}`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2363,7 +2361,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2381,7 +2379,7 @@ flush 10,167
 msgwnd_eri
 *d37177
 d [lv 0*"46"*"54500086"]`「………文字遊びである可能性が高い以上、それもまた、言葉遊びの可能性があります。`[@][lv 0*"46"*"54500087"]`……“残された文字は、誉れ高き我が名を、讃えよ”」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2404,7 +2402,7 @@ flush 10,167
 msgwnd_eva
 *d37180
 d [lv 0*"05"*"51000079"]`「え？`[@][lv 0*"05"*"51000080"]`　何よ、教えなさいよ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2423,7 +2421,7 @@ flush 10,167
 msgwnd_eri
 *d37182
 d [lv 0*"46"*"54500090"]`「………またしてもグッド。`[@][lv 0*"46"*"54500091"]`…戦人さんはなかなか発想が柔軟です」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2466,7 +2464,7 @@ flush 10,167
 msgwnd_hid
 *d37187
 d [lv 0*"06"*"51100063"]`「ど、どうしてや？`[@][lv 0*"06"*"51100064"]`　どうして１１文字なんて言えるんや？！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2507,7 +2505,7 @@ flush 10,167
 msgwnd_but
 *d37193
 d [lv 0*"10"*"50100397"]`「へ、よせやい。`[@][lv 0*"10"*"50100398"]`適当だぜ、適当」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,56,71
 agpt onionalpha,192
@@ -2516,7 +2514,7 @@ aspritesetpt warp_amp,0,20,833
 flush 1 ;flush2: 1 frames
 spritesetptwait warp_amp,0
 wait 1667
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2526,7 +2524,7 @@ wait 1000
 aspritesetpt warp_amp,0,0
 agpt onionalpha,0
 spritesetptwait warp_amp,0
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -2535,7 +2533,7 @@ vol_mix_fade 3000
 vol_bgm -1,3000
 wait 3000
 bgmplay 112,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2a"
 lss s0_9,"but","b11_nayamu1_chiru" ;1
@@ -2544,7 +2542,7 @@ lss s0_9,"but","b11_nayamu2_chiru" ;1
 flush 10,167
 *d37194
 d [lv 0*"10"*"50100399"]`「…………おいおい、何だよこれ。`[@][lv 0*"10"*"50100400"]`……駒の俺は、ずいぶんと頭がキレるじゃねぇか。`[@][lv 0*"10"*"50100401"]`お陰で俺の推理する出番がねぇぜ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"different_space_2c"
@@ -2552,7 +2550,7 @@ flush 24
 seplay 1,52,71
 lss s0_10,"ber","a21_warai4" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -2563,13 +2561,13 @@ msgwnd_ber
 *d37195
 d [lv 0*"28"*"52100314"]`「あぁ、ごめんなさい。`[@][lv 0*"28"*"52100315"]`……戦人はこの時、不在だったから、私の方で勝手に駒を操らせてもらったわ。`[@][lv 0*"28"*"52100316"]`………切れ者っぽくていいでしょう…？」`[\]
 seplay 2,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_8,"lam","a11_akuwarai3" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -2585,7 +2583,7 @@ d `だから、そこまでの“俺”という駒は、プレイヤーのベ�
 d `なので、ベルンカステルの推理を、“俺”の口を通して披露することも可能、ってわけだ…。`[\]
 *d37200
 d `……今の俺にとって、現在見ているこのゲームは、すでに終わっている部分のリプレイに過ぎない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2605,7 +2603,7 @@ d `…今はじっくりと拝見しよう。`[\]
 *d37204
 d `………そして、……その意味を探るんだ。`[@]`{n}さっきラムダデルタは、ぽろりと言った。`[\]
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2b"
 color_mod2 s0_3,#ffffff
@@ -2619,7 +2617,7 @@ spritesetptwait pixelate,0
 msgwnd_lam
 *d37205
 d [lv 0*"29"*"52200234"]`「そりゃそーでしょ。`[@][lv 0*"29"*"52200235"]`それを教えてあげちゃったら、ヒントが過ぎちゃうわ。`[@][lv 0*"29"*"52200236"]`………難易度の高い謎でなきゃ、{i:意味がないんだから}。`[@][lv 0*"29"*"52200237"]`……あらいけない。これもヒントになっちゃうわね。くすくす……」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -2631,24 +2629,24 @@ d `……祖父さまが、後継者を選ぶために碑文を出題した、�
 d `ヱリカこと、ベルンカステルの推理は、極めて妥当なものだ。`[\]
 *d37208
 d `しかしそれは、祖父さまが出題者なら、だ。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 2
 bgmplay 30,71,0
 *d37209
 d `碑文が掲示された当時は生きていただろうが、`[@]`言うに及ばず、……１９８６年の時点では、祖父さまはすでに死亡している。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 22
 *d37210
 d `そして、これまでのゲームで何度も、ベアトリーチェは手紙で、`[@]`碑文を解く以外に生き残る道はない、というような脅迫を繰り返し、謎解きに挑戦しろと強要してくる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2660,7 +2658,7 @@ d `あまりに難解で、少なくとも脅迫状が届くまでは、`[@]`多
 d `だからベアトリーチェが、挑めと発破を掛けるわけだ。`[\]
 *d37214
 d `……………………………。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait3"
 flush 22
@@ -2670,11 +2668,11 @@ d `………どうしてベアトリーチェは、祖父さまの遺志を継�
 d `一番最初のゲームで出た推理のように、……ベアトリーチェはやはり、祖父さまの腹心で、`[@]`その死後も言い付けを守り、祖父さまに代わって碑文の謎で後継者を選び出そうとしているのだろうか…？`[\]
 *d37217
 d `確かにそれは、手紙の中でベアトリーチェが自己紹介するように、`[@]`まさに顧問錬金術師という名の、腹心の部下そのものだ…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold2"
 flush 22
@@ -2684,7 +2682,7 @@ d `祖父さま亡き後、１０ｔの黄金を管理し、錬金術師を名�
 d `……その黄金を着服することもなく、`[@]`碑文の謎に託し、後継者に相応しい人間が現われ、解いてくれるのを待つ……。`[\]
 *d37220
 d `その人間が、定めた時間内に現われないなら、`[@]`……ゲームオーバー？`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold3"
 flush 22
@@ -2694,7 +2692,7 @@ d `確かに、第３のゲームで謎を解いた絵羽伯母さんは、最�
 d `これまでのところ、謎を解いた絵羽伯母さん以外に、１０月５日から生還した例は存在しない……。`[\]
 *d37223
 d `常に誰一人生かして帰さないベアトリーチェが、唯一生還を許したケースなのだ……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2713,7 +2711,7 @@ d `上辺の謎ではなく、……その意味を考えるんだ。`[\]
 *d37230
 d `……………………………。`[\]
 meplay 1,11,90
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mhal_2c"
 flush 2
@@ -2725,7 +2723,7 @@ d `なぜベアトリーチェは、{i:あんな難解な}碑文を俺たちに�
 d `……ベアトリーチェにとって、解けるはずもない碑文に挑戦させ、`[@]`………万一、誰かがそれを解くという“奇跡”を起こしたなら……、`[@]`………それが彼女にとって、どんな意味を持つというのだろう………。`[\]
 *d37234
 d `ベアトにとっての、奇跡の価値が、……わからない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -2735,7 +2733,7 @@ vol_me 1,0,3000
 vol_me 2,50,3000
 wait 3000
 vol_bgm -1,1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -2748,7 +2746,7 @@ d [lv 0*"10"*"50100402"]`「いずれにせよ、……第一の晩がわから�
 msgwnd_non
 *d37236
 d `色々な角度から検討したが、結局、そこで行き詰ったまま、それ以上の進展はなかった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
@@ -2759,7 +2757,7 @@ wait 1000
 vol_mix_fade 1000
 wait 1000
 bgmplay 111,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"glob_1er"
 flush 25
@@ -2773,11 +2771,11 @@ d `真里亞が、特大のあくびをする。`[\]
 d `それにつられ、他の何人かもあくびをする。`[@]`{n}…頭を使ったので、みんな少し眠くなってしまったのだ。`[\]
 *d37240
 d `不愉快そうに、ずっと沈黙していた朱志香は、さっさと立ち上がる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -2798,7 +2796,7 @@ flush 10,167
 msgwnd_non
 *d37243
 d `譲治がそう提案すると、真里亞はさっきの大あくびも忘れ、トランプやるやるーと元気に騒ぎ出す。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2813,7 +2811,7 @@ d `そろそろ、お風呂に入ったりして、寝支度を始めても良�
 d `大人たちも、多少の旅疲れはある。`[\]
 *d37247
 d `続きはまた今度にしようということになり、ばらばらと解散することになった…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -2831,7 +2829,7 @@ flush 10,167
 msgwnd_eri
 *d37249
 d [lv 0*"46"*"54500101"]`「………お気持ちだけで結構です。`[@][lv 0*"46"*"54500102"]`客人の分も弁えず、ちょっと仕切り過ぎました。`[@][lv 0*"46"*"54500103"]`今夜は大人しく休もうと思います。`[@][lv 0*"46"*"54500104"]`………自分が遭難者であることを、すっかり忘れていましたから」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2854,7 +2852,7 @@ flush 10,167
 msgwnd_hid
 *d37252
 d [lv 0*"06"*"51100065"]`「わっはははは！`[@][lv 0*"06"*"51100066"]`　せめて気前良く１億くらいドーン！　とは言えんのか。`[@][lv 0*"06"*"51100067"]`うはははは！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2872,7 +2870,7 @@ flush 10,167
 msgwnd_eri
 *d37253
 d [lv 0*"46"*"54500105"]`「結構です。`[@][lv 0*"46"*"54500106"]`私に興味があるのは謎解きだけですので。`[@][lv 0*"46"*"54500107"]`……それではこれで失礼します。`[@][lv 0*"46"*"54500108"]`……お休みなさい」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 flush 3
@@ -2901,14 +2899,14 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"glob_1er"
 flush 22
@@ -2921,13 +2919,13 @@ d `楼座叔母さんだけは残って、みんなが飲んだコーヒーカ�
 d `霧江さんたちも手伝うと申し出てくれたが、`[@]`楼座叔母さんが大丈夫と断ったため、彼女ひとりで洗っている。`[\]
 *d37260
 d `美味しいコーヒーをご馳走になったので、自分も手伝うことにする。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d37261
 d `……義理で手伝うわけじゃない。`[@]`{n}俺はまだ誰かと、碑文の推理を続けたかったのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -2955,7 +2953,7 @@ flush 10,167
 msgwnd_but
 *d37264
 d [lv 0*"10"*"50100410"]`「第十の晩…？`[@][lv 0*"10"*"50100411"]`　何ですか」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2970,7 +2968,7 @@ d [lv 0*"10"*"50100412"]`「出てきますね」`[\]
 msgwnd_ros
 *d37267
 d [lv 0*"12"*"51400048"]`「なぜか、……第十の晩だけ、旅は終わり、黄金のキョウ、いえ、サトね。`[@][lv 0*"12"*"51400049"]`黄金の郷へ至るだろうって書かれているの。`[@][lv 0*"12"*"51400050"]`…どうしてここだけ、“黄金の郷”と書かれているのか、気になってね」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -3016,7 +3014,7 @@ flush 10,167
 msgwnd_but
 *d37276
 d [lv 0*"10"*"50100419"]`「……何すか、それ。`[@][lv 0*"10"*"50100420"]`面白そうだから聞かせてくれませんか」`[\]
-textoff
+textoff2
 waits 167
 meplay 1,13,0
 vol_bgm 0,2000
@@ -3041,14 +3039,14 @@ flush 10,167
 msgwnd_but
 *d37278
 d [lv 0*"10"*"50100421"]`「……旅…。`[@][lv 0*"10"*"50100422"]`………確かに。`[@][lv 0*"10"*"50100423"]`………………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"glob_1er"
 flush 22
@@ -3057,7 +3055,7 @@ msgwnd_ros
 d [lv 0*"12"*"51400063"]`「それで、旅を始めて、最初の一晩目のキャンプで、６人を生贄に捧げて。`[@][lv 0*"12"*"51400064"]`……ならその場所ってどこだろう。`[@][lv 0*"12"*"51400065"]`スタート地点から何キロ目…？`[@][lv 0*"12"*"51400066"]`　何てね…。`[@][lv 0*"12"*"51400067"]`内緒よ？`[@][lv 0*"12"*"51400068"]`　叔母さん、バカだから、黄金の郷のこと、ずっと黄金のキョウって読んじゃってて」`[\]
 *d37280
 d [lv 0*"12"*"51400069"]`「……ほら、キョウって言うと、京都みたいでしょ？`[@][lv 0*"12"*"51400070"]`　だから、お父様の故郷から京都までの旅路の、最初の十分の一の地点に、何か秘密が隠されてるんじゃないかって思って…」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"glob_1ar_bg"
 lbg "a:backgrounds",s0_3,"glob_1ar"
@@ -3107,7 +3105,7 @@ msgwnd_non
 d `叔母のはずなのに、思わずドキッとしてしまうような笑顔でウィンクをくれる。`[\]
 *d37287
 d `俺はコーヒーカップの洗い物を手伝いながら、`[@]`……無言で、碑文の謎をずっと検討し続けるのだった………。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3121,14 +3119,14 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g_o1ar"
 flush 22
 wait 3000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -3142,13 +3140,13 @@ wait 1000
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_p1c"
 flush 3
 *d37288
 d `……楼座叔母さんの手伝いを終え、お手洗いに行こうと廊下に出ると、`[@]`途中の部屋の鍵を開けているヱリカの姿があった。`[\]
-textoff
+textoff2
 waits 167
 lss s0_8,"eri","a11_defo1" ;1
 spt_mem "a2","xpos",s0_8,-370
@@ -3170,12 +3168,12 @@ flush 10,167
 msgwnd_but
 *d37291
 d [lv 0*"10"*"50100433"]`「探し物……？」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,31,71
 wait 1000
 seplay 1,17,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3188,7 +3186,7 @@ wait 2000
 msgwnd_non
 *d37292
 d `鍵が開き、ヱリカは扉を開ける。`[@]`{n}むわっと溢れ出す、埃の臭い…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"glib_1a"
 flush 22
@@ -3232,7 +3230,7 @@ msgwnd_non
 d `……好きなのは謎解きで、黄金にはまったく興味がないと、さらりと言い捨てる。`[\]
 *d37302
 d `どこか変わり者だとは思ってたが、どうやらその第一印象は間違っていなかったらしい。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3249,7 +3247,7 @@ d [lv 0*"46"*"54500117"]`「…………うかがいます」`[\]
 msgwnd_non
 *d37306
 d `ヱリカは本探しを中断せず、顔も向けないで聞いてくる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"text012_r"
 flush 22
@@ -3265,7 +3263,7 @@ d [lv 0*"10"*"50100441"]`「ひゅう…。`[@][lv 0*"10"*"50100442"]`もう暗�
 msgwnd_eri
 *d37310
 d [lv 0*"46"*"54500119"]`「それがどうかしたんですか？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"glib_1a"
 lss s0_8,"but","b11_defo2" ;1
@@ -3299,7 +3297,7 @@ flush 10,167
 msgwnd_but
 *d37315
 d [lv 0*"10"*"50100452"]`「あんた、………探し物は何なんだ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 22
@@ -3310,7 +3308,7 @@ d `そこでヱリカはぴたりと手を止め、……ゆっくりと、そ�
 *d37317
 d `そして、埃を吹き払いながら、ようやく俺を見て言った。`[\]
 seplay 1,1010,71
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 65
@@ -3320,7 +3318,7 @@ flush 10,167
 msgwnd_eri
 *d37318
 d [lv 0*"46"*"54500126"]`「地図帳です」`[\]
-textoff
+textoff2
 waits 167
 seplay 2,21,71
 wait 2000

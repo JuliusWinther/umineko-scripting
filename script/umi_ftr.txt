@@ -4178,12 +4178,12 @@ return
 	;lsp name_chapter_r_click,$name_chapter_r_click,0,0 ;Original Edited - substituted with text generation - W_CUSTOM
 	;Text Generator - generating chapter name - W_CUSTOM
 	lsp gen_txt_10,blank,0,0
-	write_special_text gen_txt_10,"ch_name",960,740,$name_chapter_r_click,$name_chapter_r_click_l2,$name_chapter_r_click_l3
+	write_special_text gen_txt_10,"ch_name",960,740,$name_chapter_r_click
 	;End Custom
 
 	gosub *rmenu_draw_time 
 	print 1
-	
+
 	gosub *menu_rain_pause
 	
 	; Flag abuse to prevent time displaying in "Clear" mode
@@ -33035,6 +33035,7 @@ return
 		return
 	~
 	if $lsp_type != "ch_name" jumpf
+		split $lsp_text1,"|",$lsp_text1,$lsp_text2,$lsp_text3
 		lsp %lsp_slot,":s;#FFFFFF`{w:900:{a:r:{p:46:"+$lsp_text1+"}}  {n}{a:r:{p:46:"+$lsp_text2+"}}  {n}{a:r:{p:46:"+$lsp_text3+"}}  {n}}",%lsp_x,%lsp_y
 		lsp %lsp_slot+1,":s;#000000`{w:900:{a:r:{p:86:"+$lsp_text1+"}}  {n}{a:r:{p:86:"+$lsp_text2+"}}  {n}{a:r:{p:86:"+$lsp_text3+"}}  {n}}",%lsp_x,%lsp_y
 		spt blur,%lsp_slot+1,500

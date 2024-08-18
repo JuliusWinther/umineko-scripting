@@ -1,24 +1,22 @@
 *umi5_7
 ;10/4（土）22:47 黄金狂乱劇
 log_reset
-mov $name_chapter_r_click,r_click_chapters_5_7
-mov $name_chapter_r_click_l2,r_click_chapters_5_7_l2
-mov $name_chapter_r_click_l3,r_click_chapters_5_7_l3
+mov $name_chapter_r_click,r_click_chapters_5_7+"|"+r_click_chapters_5_7_l2+"|"+r_click_chapters_5_7_l3
 mov $name_chapter_save, "5_07"
 new_chapter date_scenario_5_7,scenario_5_7
 gstc 10
-textoff
+textoff2
 waits 167
 seplay 1,19,100
 waits 167
 seplay 2,19,80
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door1k"
 flush 22
 *d37578
 d `ドンドンドンドン！！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -28,7 +26,7 @@ seplay 2,19,80
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mlib_1e"
 flush 9
@@ -45,7 +43,7 @@ waits 167
 seplay 2,19,70
 *d37581
 d `しかし、何事…？`[@]`　このような時間に。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s0_3,"mlib_1cr"
@@ -61,13 +59,13 @@ lss s0_9,"nat","a12_nayamu3" ;1
 flush 10,167
 *d37585
 d `何かおかしな事態が起こりつつあることを気取り、`[@]`夏妃はもう一度頭を振って、眠気を完全に振り払った。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door2k"
 flush 24
@@ -82,7 +80,7 @@ d [lv 0*"05"*"51000086"]`「お父様、お父様…！！`[@][lv 0*"05"*"510000
 msgwnd_non
 *d37587
 d `それは絵羽の声だった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -93,18 +91,18 @@ d `……どういうこと？`[\]
 d `彼女らがゲストハウスへ行った後、屋敷は厳重に戸締りをさせたはず。`[\]
 *d37590
 d `それなのに、どうして絵羽がこんなところへ…？！`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door3k"
 spt_mem "a2","flip",s0_3,1
 flush 24
 spriteset_enable 1
 aspritesetpt xpos,1,-1920
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s1_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s1_3,"mlib_1cr"
@@ -174,7 +172,7 @@ d `もはや、ここを開けることさえままならない…！`[\]
 csp -11
 csp msk1
 meplay 1,22,90
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -189,7 +187,7 @@ seplay 1,53,90
 *d37605
 d `夏妃は、恐る恐る扉から離れ、受話器を取る…。`[\]
 meplay 1,12,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"tel1a"
 flush 22
@@ -204,7 +202,7 @@ msgwnd_non
 d `蔵臼からだった。`[@]`その声色は、緊迫している。`[\]
 *d37609
 d `……一体何が起こったのか…？！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
@@ -215,7 +213,7 @@ msgwnd_nat
 *d37611
 d [lv 0*"03"*"50900466"]`「え、……………………。`[@][lv 0*"03"*"50900467"]`…そ、…それは、本当に？！」`[\]
 meplay 2,5,70
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_s1ar_bg"
 lbg "a:backgrounds",s0_3,"m1f_s1ar"
@@ -235,7 +233,7 @@ msgwnd_cla
 *d37614
 d [lv 0*"02"*"50800209"]`「…わ、わかった。`[@][lv 0*"02"*"50800210"]`私もそこに行く。`[@][lv 0*"02"*"50800211"]`絵羽には構うな。`[@][lv 0*"02"*"50800212"]`何もせずにそこにいるんだ…！`[@][lv 0*"02"*"50800213"]`　扉の前から絵羽を追い払ったら合図するから、すぐに出て来たまえ。`[@][lv 0*"02"*"50800214"]`いいな…！」`[\]
 seplay 1,53,90
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
@@ -244,7 +242,7 @@ flush 1
 vol_me 1,-1,2000
 vol_me 2,-1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s0_3,"mlib_1cr"
@@ -259,12 +257,12 @@ seplay 1,19,71
 d `その最中、小さくノックの合図がある。`[\]
 *d37618
 d `……うまいこと、蔵臼が絵羽を扉の前から押しのけ、気を引いたのだ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door1k"
 lss s0_10,"nat","a12_nayamu3" ;1
@@ -279,7 +277,7 @@ wait_on_d 0
 seplay 2,44,80
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_1,"m2f_p1cr_bg"
@@ -312,7 +310,7 @@ flush 10,167
 msgwnd_eva
 *d37624
 d [lv 0*"05"*"51000100"]`「それも時と場合によるでしょうが…！！`[@][lv 0*"05"*"51000101"]`　だって、碑文が解けたのよ？！`[@][lv 0*"05"*"51000102"]`　お父様には真っ先に知る権利があるわ！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -399,7 +397,7 @@ d `黄金の発見をこの目で確認してからでも遅くはない。`[@]`
 d `何とか夏妃たちは急場を凌ぐ。`[\]
 *d37636
 d `……しかし、夏妃たちの努力を嘲笑おうとする悪魔たちの一手は、もう始まっているのだ…。`[\]
-textoff
+textoff2
 waits 167
 rain_pause s0_11
 lbg "c:colour",s0_21,"black"
@@ -437,7 +435,7 @@ flush 23
 msgwnd_wal
 *d37640
 d [lv 0*"30"*"53200063"]`「どうするのです、ベアト。`[@][lv 0*"30"*"53200064"]`……碑文の謎を解く者が現われたなら、儀式は取り止める約束ですよ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_25
 csp_slot s0_24
@@ -545,7 +543,7 @@ spt_mem "a2","xpos",s0_23,550
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_21
 csp_slot s0_25
@@ -556,7 +554,7 @@ lips_sprite s0_8_b,"eva"
 lips_sprite s0_9_b,"gen"
 lips_sprite s0_10_b,"cla"
 flush 8
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -569,22 +567,22 @@ vol_bgm -1,2000
 wait 2000
 wait 1000
 meplay 1,27,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_sta1a"
 flush 8
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_d1a"
 flush 24
 wait 3000
 seplay 1,17,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 10
@@ -593,7 +591,7 @@ vol_mix_fade 1000
 wait 1000
 seplay 1,2,100
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold2"
 flush 1
@@ -604,7 +602,7 @@ msgwnd_non
 d `黄金の山に、誰もが絶句した。`[\]
 *d37654
 d `その存在を、どれほど固く信じていたとしても、`[!w500]`……この実物の黄金を見て、驚かぬ者はいない…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r1b"
 lss s0_10,"nat","a12_odoroki2" ;1
@@ -619,7 +617,7 @@ flush 10,167
 msgwnd_cla
 *d37656
 d [lv 0*"02"*"50800220"]`「信じられん……。`[@][lv 0*"02"*"50800221"]`……親父め………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -632,7 +630,7 @@ d `誰もがその黄金に絶句する。`[\]
 d `最初に堰を破り、狂喜したのは秀吉だった。`[\]
 *d37659
 d `上擦った笑い声を上げながら、黄金の壁にしがみ付く。`[@]`{n}そしてその冷たく硬い感触を頬いっぱいで感じ取った。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold3"
 flush 26
@@ -648,7 +646,7 @@ d [lv 0*"05"*"51000113"]`「これだけあれば、`[|][lv 0*"05"*"51000114"]`�
 msgwnd_ros
 *d37663
 d [lv 0*"12"*"51400083"]`「姉さん……、姉さん……。`[@][lv 0*"12"*"51400084"]`これで、私たちは幸せになれるよね……？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
@@ -663,7 +661,7 @@ gptwait quakeyamp
 msgwnd_non
 *d37664
 d `絵羽と楼座は、どちらからともなく歩み寄り、肩を抱き合いながら泣き崩れる…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold2"
 flush 23
@@ -687,7 +685,7 @@ flush 10,167
 msgwnd_eri
 *d37669
 d [lv 0*"46"*"54500187"]`「………一日で解けないなら、何日を掛けようとも解けません。`[@][lv 0*"46"*"54500188"]`灰色の脳細胞は、閃きを与えるのに、瞬きする以上の時間を必要としませんので。`[@][lv 0*"46"*"54500189"]`……そして、私一人ではこの謎を解くことは出来ませんでした。`[@][lv 0*"46"*"54500190"]`戦人さんの功績も、どうか讃えて上げて下さい、皆さん」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -706,7 +704,7 @@ d [lv 0*"46"*"54500191"]`「……私は、この発見を放棄します。`[@]
 meplay 1,16,50
 *d37672
 d [lv 0*"46"*"54500194"]`「……私はここにおりますが、以後はいないものとして、どうぞお話をお続け下さい。`[@][lv 0*"46"*"54500195"]`戦人さんは、いとこの皆さんに気付かれぬように、大人の皆さんだけを呼び出しました。`[@][lv 0*"46"*"54500196"]`それが意味するところはただひとつ。`[@][lv 0*"46"*"54500197"]`……皆さんに、本当の親族会議を開いていただきたいからに他なりません」`[\]
-textoff
+textoff2
 waits 167
 vol_bgm -1,1000
 wait 1000
@@ -722,7 +720,7 @@ flush 10,167
 msgwnd_eri
 *d37674
 d [lv 0*"46"*"54500198"]`「これは失礼しました。`[@][lv 0*"46"*"54500199"]`…………それでは議事の進行役を譲ります。`[@][lv 0*"46"*"54500200"]`では、誰に？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -733,9 +731,9 @@ msgwnd_non
 d `ヱリカが肩を竦めながら、一同を見回す。`[\]
 *d37676
 d `……しばらくの沈黙の末、絵羽が最初の口火を切った。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r1b"
 lss s0_10,"eva","a11_akire1" ;1
@@ -758,7 +756,7 @@ flush 10,167
 msgwnd_nat
 *d37679
 d [lv 0*"03"*"50900473"]`「………お、お待ちなさい！`[@][lv 0*"03"*"50900474"]`　黄金の発見が次期当主を決めるなどと、誰が決めたのですか？！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -798,7 +796,7 @@ rumble 63,500
 gptwait quakeyamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -827,7 +825,7 @@ gptwait quakeyamp
 msgwnd_nat
 *d37686
 d [lv 0*"03"*"50900475"]`「当主様の碑文を勝手に解釈されるのは困ります！！`[@][lv 0*"03"*"50900476"]`　黄金を見つけたら、その者が次期当主になると、どこに記されているというのです？！`[@][lv 0*"03"*"50900477"]`　当主様の碑文は当主様が決めたもの。`[@][lv 0*"03"*"50900478"]`皆さんに決め付ける権利などありませんッ！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -845,7 +843,7 @@ msgwnd_nat
 *d37688
 d [lv 0*"03"*"50900479"]`「これが落ち着けるというのですか？！`[@][lv 0*"03"*"50900480"]`　確かに碑文を解いた功績は素晴らしいと思います！`[@][lv 0*"03"*"50900481"]`　戦人くんにも何かの見返りがあっても良いとは思います。`[@][lv 0*"03"*"50900482"]`しかし、それが半分というのは明らかに逸脱していますし、`[@][lv 0*"03"*"50900483"]`それ以上に、発見者だから次期当主という論法はなおまかり通りません…！！」`[\]
 meplay 1,17,70
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -886,7 +884,7 @@ gptwait quakeyamp
 d_continue
 wait_on_d -1
 meplay 2,16,50
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -904,7 +902,7 @@ seplay 1,21,100
 msgwnd_eva
 *d37693
 d [lv 0*"05"*"51000122"]`「多数決で決めればいいのよぅ！！`[@][lv 0*"05"*"51000123"]`　黄金を発見した戦人くんが次期当主！`[@][lv 0*"05"*"51000124"]`　私も夫も異議はないわ！！`[@][lv 0*"05"*"51000125"]`　留弗夫たちは？`[@][lv 0*"05"*"51000126"]`　楼座は？！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -937,7 +935,7 @@ lss s0_9,"kir","a23_futeki1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -965,7 +963,7 @@ flush 10,167
 msgwnd_eva
 *d37699
 d [lv 0*"05"*"51000127"]`「楼座と霧江さんの言うとおりだわ。`[@][lv 0*"05"*"51000128"]`お父様に聞きましょうよ、お父様に！！`[@][lv 0*"05"*"51000129"]`　もはやね、兄さんたちの出番じゃないのよ！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -984,7 +982,7 @@ rumble 63,500
 gptwait quakeyamp
 *d37701
 d [lv 0*"06"*"51100085"]`「おう、聞いとるんかぃ！！`[@][lv 0*"06"*"51100086"]`　お前らじゃ話にならんゆうとるんや！！`[@][lv 0*"06"*"51100087"]`　とっととお父さん、連れて来んかいぃいいッ！！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -992,7 +990,7 @@ vol_me 1,-1,1000
 vol_me 2,-1,1000
 vol_me 3,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold2"
 lss s0_9,"eri","a11_defo1" ;1
@@ -1013,13 +1011,13 @@ msgwnd_eri
 d [lv 0*"46"*"54500202"]`「腹の中では、いつもこうなのでしょうね。`[@][lv 0*"46"*"54500203"]`………うふふふふ。`[@][lv 0*"46"*"54500204"]`どうも、この場は金蔵さんじゃないと収められなくなるみたい」`[\]
 *d37705
 d [lv 0*"46"*"54500205"]`「……子どもの喧嘩に、余命あとわずかと宣告されてる今になっても、まだ呼び出されるなんて。`[@][lv 0*"46"*"54500206"]`……どういう気持ちかしらね、金蔵さん。`[@][lv 0*"46"*"54500207"]`……くすくす。`[@][lv 0*"46"*"54500208"]`それを想像、…いいえ、推理するのも乙なものです」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r1b"
 flush 22
@@ -1034,7 +1032,7 @@ d `６年前から勘付いていたし、`[@]`この時期が近付くと暗く
 d `しかし、目の当たりにする親族たちの罵り合いは、`[!w500]`……想像を超えてあまりに、`[@]`……醜いものだった…。`[\]
 *d37710
 d `だから、いとこたちに内緒で大人たちをここへ連れ出して、本当に良かったと思った……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 5
@@ -1044,7 +1042,7 @@ vol_me 1,50,3000
 wait 3000
 vol_bgm -1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r1a"
 flush 2
@@ -1056,11 +1054,11 @@ d `黄金郷での親族会議は、場を屋敷に移すこととなった…�
 d `確かに貴賓室のように煌びやかではあるが、空調はなく、少し寒い。`[\]
 *d37714
 d `長話をするには向かなかったためだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold3"
 flush 23
@@ -1070,9 +1068,9 @@ d `目を離している間に、黄金を誰かが持ち去るのでは、と�
 d `むしろ、黄金の山という異常な光景が、彼らから冷静な判断を奪っているのではないかとさえ思えた。`[\]
 *d37717
 d `だから彼らは、冷静さを取り戻し、より冷酷に会議を続けるためにも、屋敷に戻ることに同意した……。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 5
@@ -1087,14 +1085,14 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"moon_1bn"
 flush 10
 wait 2000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
@@ -1102,14 +1100,14 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"forest_p3bn"
 flush 24
 wait 2000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
@@ -1117,7 +1115,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1an"
 flush 24
@@ -1210,7 +1208,7 @@ d `……黄金を見られて眼福？`[@]`　そんなはずない。`[@]`{n}�
 d `さっさと行っちまえと思ったが、俺もこの場はもう遠慮させてもらいたい…。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1223,7 +1221,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1an"
 lss s0_9,"kir","a11_warai2" ;1
@@ -1273,7 +1271,7 @@ spt_mem "a2","darken_b",s0_10,160
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1307,12 +1305,12 @@ d `ならいっそのこと、ゲストハウスに帰らせてくれりゃい�
 d `俺は、親父にがっちりと肩を組まれ、暑苦しいから離せよと文句を言う。`[\]
 *d37743
 d `だが、聞き入れてはくれなかった…。`[\]
-textoff
+textoff2
 waits 167
 seplay 3,18,71
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -1321,7 +1319,7 @@ vol_mix_fade 2000
 wait 2000
 wait 2000
 bgmplay 25,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
 lss s0_9,"but","b11_nayamu1_chiru" ;1
@@ -1329,7 +1327,7 @@ flush 2
 msgwnd_but
 *d37744
 d [lv 0*"10"*"50100507"]`「………碑文、解けたな。`[@][lv 0*"10"*"50100508"]`お前のお望み通りに」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
@@ -1351,7 +1349,7 @@ flush 22
 msgwnd_bea
 *d37747
 d `「……………………………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1360,7 +1358,7 @@ flush 2
 msgwnd_non
 *d37748
 d `………どうしてこいつは、碑文の謎を俺たちに解かせたかったのだろう。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold3"
 flush 2
@@ -1372,7 +1370,7 @@ d `そしてベアトは？`[\]
 d `……黄金を俺たちに見つけられて、……何かを得するのか？`[\]
 *d37752
 d `あるいは損をするのか…？`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
 lss s0_10,"but","b11_nayamu1_chiru" ;1
@@ -1384,7 +1382,7 @@ d [lv 0*"10"*"50100512"]`「…チェス盤思考に則る限り、……人は�
 seplay 1,52,71
 lss s0_8,"wal","a11_defo1" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -1432,7 +1430,7 @@ wait_on_d 1
 seplay 2,59,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1449,7 +1447,7 @@ d `しかし、だからこそ一層わからない。`[\]
 d `……碑文の謎を誰かが暴いたとて、ベアトには何も得るものがない。`[\]
 *d37764
 d `いや、それどころか、自分の黄金を奪われてしまうかもしれない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 lss s0_9,"but","b11_majime6" ;1
@@ -1457,7 +1455,7 @@ flush 26
 msgwnd_but
 *d37765
 d [lv 0*"10"*"50100519"]`「なら、ますますにわからない。`[@][lv 0*"10"*"50100520"]`………碑文殺人はわかる。`[@][lv 0*"10"*"50100521"]`右代宮家に対する復讐とか、あるいは魔女としての力を復活させるための儀式とか。`[@][lv 0*"10"*"50100522"]`…こいつなりの理由や目的があって、やってるんだろうからな」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
@@ -1473,7 +1471,7 @@ flush 10,167
 msgwnd_but
 *d37767
 d [lv 0*"10"*"50100523"]`「だが、“碑文の謎を解け”というのにはどんな意味があるんだ。`[@][lv 0*"10"*"50100524"]`俺たちが解いても解かなくても、こいつに得るものは何もない。`[@][lv 0*"10"*"50100525"]`……つまり、ベアトにとって、碑文の謎が解ける解けないという問題は、無価値なものなんだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1498,7 +1496,7 @@ msgwnd_but
 d [lv 0*"10"*"50100526"]`「解けても解けなくても、何の意味もない。`[@][lv 0*"10"*"50100527"]`……それはつまり、碑文の謎自体が、ベアトにとって無価値だということになるんじゃないのか…？」`[\]
 csp_slot s0_10
 flush 24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
@@ -1552,7 +1550,7 @@ set_name_window_non
 d `何も得ることのない、ベアトにとって無意味、無価値な…、碑文の謎。`[\]
 *d37783
 d `なら、天秤のもう一方にあり、それと価値を等しくする碑文殺人は、`[@]`………どういう価値なんだ…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -1564,7 +1562,7 @@ d `……考えろ、思考を止めるな……。`[\]
 d `碑文殺人と、碑文の謎が解けることには、同等の価値がある。`[\]
 *d37786
 d `ベアトの毎回の目的である碑文殺人を、こいつが自発的に中止する唯一の方法である限り、その価値は同等なのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
 flush 8
@@ -1573,20 +1571,20 @@ set_window_simple 80
 *d37787
 d `Ｘ＝Ｙ。`[@]`{n}そして、碑文の謎が解けても、あるいは解けなくても、ベアトに得るものはない。`[@]`{n}Ｙ＝０。`[@]`{n}じゃあ、この時、……Ｘは……？`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 10,1667
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 vol_mix_fade 1000
 vol_bgm -1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 lss s0_9,"be2","a15_1_hoshin1star" ;1
@@ -1606,13 +1604,13 @@ spt_mem "a2","xpos",s0_10,550
 flush 10,167
 *d37790
 d [lv 0*"10"*"50100530"]`「……こいつは、ご丁寧に予告状を出し、`[@][lv 0*"10"*"50100531"]`碑文に沿うように順番に、バレないように次々殺していくという、めちゃくちゃ面倒な手間を払ってまで、`[@][lv 0*"10"*"50100532"]`毎度あのおかしな連続殺人を起こしてるんだぜ。`[@][lv 0*"10"*"50100533"]`その意味が、なくなっちまうじゃねぇか…」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"chess1"
 flush 22
@@ -1621,7 +1619,7 @@ msgwnd_non
 d `チェス盤を引っ繰り返し、何度もベアトの指し手を探った。`[@]`{n}その一番最初の躓きが、いつもここだった。`[\]
 *d37792
 d `碑文殺人の、その意味。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1629,7 +1627,7 @@ flush 22
 d `なぜ、魔女の碑文を再現するように連続殺人を犯さなければならないのか。`[\]
 *d37794
 d `右代宮家を復讐のために皆殺しにする、というなら、晩餐の料理に毒でも盛るか、`[@]`寝静まった深夜にひとりずつ殺して回る方が、よっぽど簡単で安全、確実だ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 22
@@ -1643,16 +1641,16 @@ d `最初の殺人が起こった時点で、篭城を開始し次なる殺人�
 d `また、内部犯行を早くから疑い、相互のアリバイを検証し始める。`[\]
 *d37799
 d `犠牲者が増えれば増えるほど、自動的に容疑者の数は減り、`[@]`ベアトが連続殺人を完遂できる成功率は、ゼロに近付いていく…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d37800
 d `碑文殺人の全てが、……連続殺人を遂行する上で自ら首を絞めるような、`[@]`……無駄な装飾、……虚飾に満ちている。`[\]
-textoff
+textoff2
 waits 167
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
 lss s0_10,"but","b22_niramu4" ;1
@@ -1691,27 +1689,27 @@ flush 10,167
 msgwnd_wal
 *d37806
 d [lv 0*"30"*"53200087"]`「なるほど。`[@][lv 0*"30"*"53200088"]`碑文に沿って儀式的に殺していると見せかけて、……実は自分に利するように誘導しているわけですね。`[@][lv 0*"30"*"53200089"]`面白いと思います」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 26
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"chess1"
 flush 22
 msgwnd_but
 *d37807
 d [lv 0*"10"*"50100541"]`「………だが、俺たちのゲームでは、死者が赤でトドメを刺されちまう。`[@][lv 0*"10"*"50100542"]`…ゲーム盤の世界では誤魔化せても、ここから俯瞰する俺たちは誤魔化せない。`[@][lv 0*"10"*"50100543"]`……だから、このもっとも王道となる目的は、違うってことになる」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 msgwnd_wal
 *d37808
 d [lv 0*"30"*"53200090"]`「となると、見立て殺人を行う、あと２つの理由は？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 lss s0_9,"but","b11_defo2" ;1
@@ -1721,7 +1719,7 @@ flush 10,167
 msgwnd_but
 *d37809
 d [lv 0*"10"*"50100544"]`「１つは偶然。`[@][lv 0*"10"*"50100545"]`……意図せずして行なった連続殺人が、たまたま碑文をなぞる形になり、`[@][lv 0*"10"*"50100546"]`目撃者たちが勝手に見立て殺人だと誤解するケース。`[@][lv 0*"10"*"50100547"]`人間はどのような事象にも因果性を求めてしまう。`[@][lv 0*"10"*"50100548"]`……きっとそうに違いないと思ったら、そう見えてしまう生き物だ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
@@ -1755,7 +1753,7 @@ flush 10,167
 msgwnd_but
 *d37813
 d [lv 0*"10"*"50100555"]`「最後の１つは、………見せ付けること。`[@][lv 0*"10"*"50100556"]`つまり恐怖だ。`[@][lv 0*"10"*"50100557"]`…碑文に沿うということは、殺人が連続するという明白な予告だ。`[@][lv 0*"10"*"50100558"]`生存者たちは、続くに違いない殺人に、ずっと怯えさせられることになる」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1774,7 +1772,7 @@ flush 10,167
 msgwnd_wal
 *d37815
 d [lv 0*"30"*"53200097"]`「つまりこの子は、`[|][lv 0*"30"*"53200098"]`……死の恐怖を味わわせるために、碑文殺人を？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1803,7 +1801,7 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1815,7 +1813,7 @@ d `ワルギリアの何気ない一言に、……俺の思考が再び霧に�
 *d37820
 d `俺たちを怖がらすため、`[@]`…と、抽象的な言い方で逃れていいのか……？`[\]
 meplay 1,5,30
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 8
@@ -1831,7 +1829,7 @@ d `……その一方で、せいぜい年に一度しか訪れない、未成�
 d `……俺たち全員を恨んでいるとしても、`[@]`……その恨みの強さには、明白な違いがあるはず。`[\]
 *d37826
 d `つまり、俺たちの中の、特に誰に復讐を、恐怖を与えたいのか、はっきりしててもいいはずなのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1841,11 +1839,11 @@ d `子どものデザートの話に例えると……。`[\]
 d `ショートケーキのイチゴってのは、最後のお楽しみじゃないのか？`[\]
 *d37829
 d `最初に食べちゃいけないとは言わないが、なるべく後に取っておくのが心理ってもんだ。`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
 lss s0_9,"but","b11_nayamu4" ;1
@@ -1858,7 +1856,7 @@ lss s0_9,"but","b11_nayamu5" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
@@ -1880,7 +1878,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1889,7 +1887,7 @@ flush 22
 vol_mix_fade 2000
 vol_bgm -1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 lss s0_9,"be2","a15_1_hoshin2star" ;1
@@ -1923,7 +1921,7 @@ flush 10,167
 msgwnd_but
 *d37836
 d [lv 0*"10"*"50100576"]`「ならなおのこと、………俺ってことになる。`[@][lv 0*"10"*"50100577"]`…こいつが碑文殺人を起こす唯一の理由は、…俺に見せ付けるためってことになる」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1938,16 +1936,16 @@ d `ベアトは毎回、誰から今度は殺そうかと、殺人順序をル�
 d `しかし、そのベアトが、いつも俺だけは殺さない。`[@]`{n}……最後には殺すにせよ、一番最後まで残す。`[\]
 *d37839
 d `気まぐれなはずの全てのゲームにおいて、それだけは不変にして普遍……。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
 lss s0_9,"but","b11_nayamu1_chiru" ;1
@@ -1983,7 +1981,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 *d37843
 d [lv 0*"10"*"50100585"]`「無意味なことと同価値の何を、俺に求めているんだ？！`[@][lv 0*"10"*"50100586"]`　……わからねぇ！！`[@][lv 0*"10"*"50100587"]`　考えれば考えるほどに、こいつが何を考えてるのか、俺にはわからねぇ！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2005,7 +2003,7 @@ d `その魔女が連続殺人を中止する条件とする碑文の謎も、`[
 d `そして、その無意味、無価値を、……俺に突き付ける。`[\]
 *d37848
 d `……お前は、……俺に何を求めているんだ…？`[@]`{n}……あるいは、何を与えているんだ……？`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -2018,7 +2016,7 @@ d `ＸにもＹにも。`[@]`{n}碑文殺人にも碑文の謎にも、ベアト
 d `Ｘ＝Ｙ＝０。`[\]
 *d37852
 d `しかし、それを俺に突き付ける以上、`[!w500]`……意味が、`[!w500]`……きっとある。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 28
@@ -2028,7 +2026,7 @@ d `“碑文の謎が解けなければ、碑文殺人を実行する”とい�
 d `つまり、碑文殺人も碑文の謎も、個々では確かに意味がない。`[\]
 *d37855
 d `しかし、天秤の両端に乗せて俺たちに、………いや、俺に突き付けることで、初めて意味が現れる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2038,7 +2036,7 @@ d `……つまり、正しくはこうだ。`[\]
 d `Ｘ＝０。`[@]`{n}Ｙ＝０。`[@]`{n}Ｘ＋Ｙ＞０。`[\]
 *d37858
 d `両端に、重みを持たぬ無意味が乗せられた天秤。`[@]`{n}しかし、それ自体が重みを伴い、意味を、成す。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
 lss s0_9,"but","b11_nayamu1_chiru" ;1
@@ -2068,7 +2066,7 @@ flush 10,167
 msgwnd_but
 *d37867
 d [lv 0*"10"*"50100590"]`「それじゃベアトにとって碑文殺人は、……成功してもしなくてもいいもの、ってことになっちまう。`[@][lv 0*"10"*"50100591"]`……まるで、その過程そのものを楽しんでいるかのようにさえ、思える」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
@@ -2101,7 +2099,7 @@ d `快楽目的でもなく、恐怖を味わわせるためでもない。`[\]
 d `碑文殺人に得るものはなく、`[@]`完遂できようが、失敗しようが、構わない。`[\]
 *d37873
 d `それはまるで、気まぐれな子どもの遊びのよう……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2126,7 +2124,7 @@ d `こいつは前回のゲームで俺に、６年前の罪を思い出せと�
 d `……あれも無意味だったというのか？`[\]
 *d37880
 d `違う。`[@]`絶対にそんなことはない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -2139,7 +2137,7 @@ d `残念ながら俺に、その心当たりはなかった。`[@]`{n}……す
 d `そうなんだ。`[\]
 *d37884
 d `こいつはあの時、俺が来なければ事件は起こらなかったとまで言い切ったはずだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
 lss s0_9,"be2","a15_1_hoshin1star" ;1
@@ -2172,7 +2170,7 @@ flush 10,167
 msgwnd_but
 *d37888
 d [lv 0*"10"*"50100604"]`「……ラブレターには、次からは“好きです”と短く書くことを勧めるぜ。`[@][lv 0*"10"*"50100605"]`…あまり回りくどくて難解だと、意味が伝わらねぇぞ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -2195,9 +2193,9 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10

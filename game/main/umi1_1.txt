@@ -1,19 +1,17 @@
 *umi1_1
 ;10/4（土）8:00 新島空港到着
 log_reset
-mov $name_chapter_r_click,r_click_chapters_1_1
-mov $name_chapter_r_click_l2,r_click_chapters_1_1_l2
-mov $name_chapter_r_click_l3,r_click_chapters_1_1_l3
+mov $name_chapter_r_click,r_click_chapters_1_1+"|"+r_click_chapters_1_1_l2+"|"+r_click_chapters_1_1_l3
 mov $name_chapter_save, "1_01"
 new_chapter date_scenario_1_1,scenario_1_1
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_out2a"
 flush 8
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_in1e"
 flush 2
@@ -38,7 +36,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 *d322
 d [lv 0*"12"*"11400025"]`「……でも意外ねぇ。`[@][lv 0*"12"*"11400026"]`戦人くん、てっきり怖い物なしだと思ってたから」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -73,7 +71,7 @@ lss s0_9,"kir","a13_warai1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -110,21 +108,21 @@ wait_on_d -1
 msgwnd_non
 *d330
 d `畜生畜生！`[@]`　飛行機が苦手なのがそんなに悪いかよ。`[@]`{n}みんなが俺のことをウドの大木とか思ってるのが丸わかりだぜ…。`[@]`ちぇ！`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"car_i1a"
 flush 24
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 24
@@ -132,7 +130,7 @@ vol_mix_fade 2000
 vol_bgm -1,2000
 wait 2000
 meplay 1,2,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_p1a"
 flush 26
@@ -142,7 +140,7 @@ d `空港からタクシーに分乗し、俺たちは港にやって来た。`[
 d `すぐ隣の島だから大した距離じゃない。`[@]`{n}船でのんびり３０分くらいってとこだ。`[\]
 *d333
 d `島へ向かう船が停泊している埠頭へ行くと、手を振っている人影が見えた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_p1a"
 flush 24
@@ -242,7 +240,7 @@ d `だから、こうして俺の方が大柄になったことがはっきり�
 msgwnd_but
 *d353
 d [lv 0*"10"*"10100090_1"]`「ふんっ！　くぬぬ……！！」`[\]
-textoff
+textoff2
 waits 167
 lss s0_9,"jes","a11_odoroki1" ;1
 flush 10,167
@@ -262,7 +260,7 @@ flush 10,167
 msgwnd_jes
 *d356
 d [lv 0*"04"*"10200017"]`「う、うるせーぜ。`[@][lv 0*"04"*"10200018"]`こちとら女やってんだ。`[@][lv 0*"04"*"10200019"]`いつまでも腕力で男に勝てるわけねーだろ！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"sky_1a"
@@ -290,7 +288,7 @@ d `もっとも、それは朱志香もだろうよ。`[@]`{n}腕力じゃ未だ
 d `それがあっさりと負けちまったもんだから、向こうも俺がこの６年であまりに成長したことに驚いてるはずだ。`[\]
 *d365
 d `………６年か。`[@]`改めて俺は、短くない年月の空白を思い知る。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_p1a"
 lss s0_9,"jes","b21_odoroki1" ;1
@@ -336,7 +334,7 @@ msgwnd_non
 *d374
 d `兄貴のにやにや笑う意味を、俺はこの時点では理解できずにいるのだった…。`[\]
 vol_bgm -1,1000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -353,7 +351,7 @@ d [lv 0*"18"*"11800001"]`「これはこれは……、はぁー！`[@][lv 0*"18
 msgwnd_non
 *d376
 d `今度は誰だ。`[@]`割烹着姿の婆さんだった。`[@]`{n}………お、おうおう、懐かしいぜ、思い出した！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"ship_p1a"
@@ -398,7 +396,7 @@ d [lv 0*"10"*"10100109"]`「ひょお、勘弁してくれよー！`[@][lv 0*"10
 msgwnd_non
 *d383
 d `朱志香との悪ふざけをすっかりなぞり返されてしまった。`[@]`そういや、昔っからよくからかう人だったっけなぁ！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -495,13 +493,13 @@ flush 10,167
 msgwnd_kum
 *d406
 d [lv 0*"18"*"11800015"]`「薬を飲んでも、ちーっともよくなりませんで。`[@][lv 0*"18"*"11800016"]`こればかりはお医者さまではどうにもなりません。`[@][lv 0*"18"*"11800017"]`不治の病ちゅーもんですわ、ほっほっほ！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_p1a"
 lss s0_10,"rud","a11_warai1" ;1
@@ -551,7 +549,7 @@ flush 10,167
 msgwnd_rud
 *d413
 d [lv 0*"08"*"11200057"]`「おいおい、そりゃねぇだろ…。`[@][lv 0*"08"*"11200058"]`俺のどこが親父に似てるってんだぁ？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -569,7 +567,7 @@ flush 10,167
 msgwnd_ros
 *d415
 d [lv 0*"12"*"11400032"]`「えぇまったく。`[@][lv 0*"12"*"11400033"]`蔵臼兄さんも留弗夫兄さんも、信じられないくらいお父様にそっくり」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -586,7 +584,7 @@ flush 10,167
 msgwnd_hid
 *d417
 d [lv 0*"06"*"11100037"]`「いやいやぁ、留弗夫くんはいっつも女性にモテてるなぁ。`[@][lv 0*"06"*"11100038"]`羨ましいでぇ！`[@][lv 0*"06"*"11100039"]`　わっはっはっは！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -602,7 +600,7 @@ flush 10,167
 msgwnd_mar
 *d419
 d [lv 0*"13"*"10400035"]`「一緒にお船に乗る。`[@][lv 0*"13"*"10400036"]`うー！`[@][lv 0*"13"*"10400037"]`　みんなも一緒に乗る。`[@][lv 0*"13"*"10400038"]`うー！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -657,7 +655,7 @@ msgwnd_non
 d `…ちょ、超高速改造艇ぇ…？`[\]
 *d430
 d `……最初はいつ沈没するかもわからねぇボロ船よりはマシだろうと歓迎してたんだが……、`[!w500]`何だか嫌な予感がしてくるぜ…。`[@]`……まさか。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -672,7 +670,7 @@ bgmplay 3,71,0
 wait 500
 meplay 1,4,71
 meplay 2,3,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sea_1a"
 flush 22
@@ -687,7 +685,7 @@ agpt quakeyamp,50,500
 agpt quakexcycle,67
 agpt quakexamp,10,500
 rumble 100,1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_s2b"
 lss s0_10,"rud","a11_warai1" ;1
@@ -696,7 +694,7 @@ flush 6
 msgwnd_rud
 *d431
 d [lv 0*"08"*"11200061"]`「おい戦人ぁ、島までは泳いで行った方がいいんじゃねぇかぁ？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"ship_s2a"
@@ -723,7 +721,7 @@ agpt quakeyamp,50,500
 agpt quakexcycle,33
 agpt quakexamp,10,500
 rumble 100,1000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -766,7 +764,7 @@ msgwnd_but
 d [lv 0*"10"*"10100136"]`「うおおおお、絵羽伯母さんの意地悪ぅうううぅ！`[@][lv 0*"10"*"10100137"]`　あぁダメ落ちるぅううぅ！！`[@][lv 0*"10"*"10100138"]`　ライフジャケットぉおおぉ、パラシュートぉおおぉ！！`[@][lv 0*"10"*"10100139"]`　ふおおおおおおおぉおおぉおおおおおおおぉおぉぉ……！！！」`[\]
 *d448
 d [lv 0*"10"*"10100140"]`「い、いや、ひっくり返して考えるんだ！`[@][lv 0*"10"*"10100141"]`　敵の狙いは何だ？！`[@][lv 0*"10"*"10100142"]`　俺をこうして怖がらせることか？！`[@][lv 0*"10"*"10100143"]`　そいつが狙いなら甘いぜ、びびってなんかやるもんかぁああぁぁああぁ！！`[@][lv 0*"10"*"10100144"]`　でもらめぇえぇ、落ちるゥウウゥゥウゥ！！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 5
@@ -779,7 +777,7 @@ agpt quakeyamp,40,500
 agpt quakexcycle,1333
 agpt quakexamp,10,500
 rumble 39,1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_s2b"
 flush 6
@@ -798,7 +796,7 @@ d `俺にとって許容できるこの速度は、どうもかなりの鈍足�
 d `…でもさっきのは異常だったぜ…。`[\]
 *d453
 d `もう船がばっかんばっかん揺れて！`[@]`{n}海の上を滑るというか跳ねるというか！`[@]`{n}船ってより、トビウオに乗ってるような気分だったぜ…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"ship_s2a"
@@ -841,7 +839,7 @@ msgwnd_non
 d `真里亞が俺の背中をさするような仕草をしてくれたので、お返しに頭をぽんぽんと叩いてやった。`[\]
 *d461
 d `…表情は相変わらずの無表情だが、気遣いたい気持ちが伝わってくる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -849,7 +847,7 @@ csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
 flush 10,167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_s2b"
 lss s0_10,"geo","a11_hohoemi1" ;1
@@ -869,7 +867,7 @@ d `熊沢さんのニヤニヤ笑いを見る限り、船内では親たちが�
 d `くそ、恥ずかしくて親の誰とも顔を合わせたくねぇ…。`[\]
 *d466
 d `何か話題を切り返さないと、いつまでも俺がネタにされそうな気がしたので、何か無難な話題を切り出すことにする。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -907,7 +905,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -955,14 +953,14 @@ d [lv 0*"13"*"10400055"]`「うー！`[@][lv 0*"13"*"10400056"]`　船着場見�
 msgwnd_non
 *d480
 d `朱志香が気を利かせてくれたつもりらしい。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sea_1a"
 flush 22
@@ -980,7 +978,7 @@ d `言っとくが家出とかじゃないぜ。`[@]`{n}一方的に非がある
 d `……霧江さんのことはそんなに気にしてない。`[@]`{n}あのクソ親父の手綱を握ってうまく乗りこなせるなんて大したもんさ。`[\]
 *d487
 d `…だが、あのクソ親父が母さんに働いた裏切りだけは、`[@]`……悪ぃが、未だ心の整理がつかない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_s2a"
 flush 22
@@ -1010,7 +1008,7 @@ d [lv 0*"10"*"10100163"]`「へっへー！`[@][lv 0*"10"*"10100164"]`　気に�
 msgwnd_non
 *d492
 d `熊沢さんも迂闊なことを言ってしまったと後悔しているようだったが、`[@]`これ以上、変に気を遣われたくないので、俺は茶化すようにして立ち上がる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1030,13 +1028,13 @@ flush 10,167
 msgwnd_but
 *d495
 d [lv 0*"10"*"10100166"]`「どれどれ、おぉ、見えてきたな。`[@][lv 0*"10"*"10100167"]`６年ぶりでも記憶と寸分変わらない島影だぜ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sea_1c"
 flush 8
@@ -1063,7 +1061,7 @@ d `だから右代宮家だけが住んでいて、右代宮家の関係者し�
 d `船着場とお屋敷があるだけ。`[@]`{n}島のほとんどは未開の森林のまま残されている。`[\]
 *d506
 d `ゴルフコースでも作ればいいものを、勿体無い話さ。`[@]`{n}でも、浜辺は全てプライベートビーチだと考えれば、何とも豪勢な話かもしれない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sea_1a"
 flush 22
@@ -1091,14 +1089,14 @@ d `まぁ、生まれる親を選べないのと同じさ。`[@]`{n}狙って金
 d `何をやっても正当に評価されず、二言目にはお金持ちだからと僻まれるのも、結構堪えるもんさ…。`[\]
 *d518
 d `そんな感傷に浸っていると、真里亞が柵から身を乗り出しながら騒ぎ出した。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 vol_mix_fade 2000
 vol_bgm -1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_s2a"
 flush 6
@@ -1136,7 +1134,7 @@ lss s0_9,"geo","a11_majime2" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1162,7 +1160,7 @@ d [lv 0*"07"*"10300071"]`「あったね…！`[@][lv 0*"07"*"10300072"]`　僕�
 msgwnd_mar
 *d531
 d [lv 0*"13"*"10400066"]`「ない。`[@][lv 0*"13"*"10400067"]`ない。`[@][lv 0*"13"*"10400068"]`うーうーうー！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_s2a"
 lss s0_8,"but","b11_defo2" ;1
@@ -1177,7 +1175,7 @@ flush 10,167
 msgwnd_jes
 *d533
 d [lv 0*"04"*"10200060"]`「私もそうだと思ってるんだけどよ。`[@][lv 0*"04"*"10200061"]`なくなっちゃったのはこの夏のことなんだよ。`[@][lv 0*"04"*"10200062"]`何でもよぅ、」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1193,13 +1191,13 @@ msgwnd_non
 d `熊沢さんはからかうように悪戯っぽく笑いながら、両手を揉み合せるような仕草をする。`[\]
 *d536
 d `でも、真里亞は真に受けているようで、`[@]`真剣な顔をしながら、鎮守様が祀られていた岩があったと思われる洋上をじっと凝視しているのだった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 22
 vol_me 3,-1,2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_s2a"
 flush 23
@@ -1223,7 +1221,7 @@ d [lv 0*"07"*"10300076"]`「大丈夫だよ真里亞ちゃん。`[@][lv 0*"07"*"
 msgwnd_non
 *d540
 d `譲治の兄貴が、真里亞を安心させるように肩に手を置くが、真里亞の険しい表情は解れなかった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1238,11 +1236,11 @@ msgwnd_non
 d `真里亞はうわ言のようにその言葉を繰り返す。`[@]`{n}ひとつの単語を連呼するのは真里亞の昔からの癖らしい。`[\]
 *d543
 d `だが、口にする単語が、文字通り不吉なので少しだけ気味が悪い。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_s2a"
 lss s0_9,"mar","a11_fukigen2" ;1
@@ -1275,7 +1273,7 @@ d [lv 0*"10"*"10100178"]`「へぇ？`[@][lv 0*"10"*"10100179"]`　来るって�
 msgwnd_non
 *d549
 d `緊張を解してやろうと思って、俺は茶化したように応える。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -1285,7 +1283,7 @@ agpt quakeyamp,0
 agpt quakexamp,0
 gptwait quakexamp
 gptwait quakeyamp
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sky_1c"
 flush 22
@@ -1307,12 +1305,12 @@ d `…この曇り空に不吉な何かを感じているらしい。`[@]`{n}さ
 d `真里亞だって多感な年頃の女の子だ。`[@]`{n}よく女の子が、霊感が強いとか霊媒体質だとか騒ぎ出すのはちょうど真里亞くらいの年頃からのはず。`[\]
 *d557
 d `…子供らしい感受性と言えないこともなかった。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -1322,7 +1320,7 @@ agpt quakexcycle,2000
 agpt quakexamp,10,500
 rumble 39,1000
 meplay 1,4,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_s2b"
 lss s0_10,"geo","a11_defo1" ;1
@@ -1376,7 +1374,7 @@ d `……人には誰しも霊感があるというが、それは加齢に伴�
 d `だとすれば、真里亞は俺たちの中で一番幼く、俺たちが加齢によって失ってしまった何かの感覚を未だ持ち続けていることになる。`[\]
 *d569
 d `…その何かが、彼女に警告を与えているというのだろうか。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1419,7 +1417,7 @@ msgwnd_non
 d `おしゃべり好きにとって、しゃべるなと言われればその場にいる価値はない。`[\]
 *d579
 d `熊沢さんは、自分が出しゃばり過ぎたことにようやく気付くと、船内に戻っていくのだった。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 wait 2000
@@ -1463,7 +1461,7 @@ flush 10,167
 msgwnd_jes
 *d585
 d [lv 0*"04"*"10200067"]`「あはは、もっと言ってやってくださいー。`[@][lv 0*"04"*"10200068"]`ったく、戦人のせいで時間掛かりすぎだぜ〜！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1501,7 +1499,7 @@ d [lv 0*"07"*"10300088"]`「うん。`[@][lv 0*"07"*"10300089"]`一緒だと、�
 msgwnd_mar
 *d593
 d [lv 0*"13"*"10400090"]`「…………うー」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1518,7 +1516,7 @@ flush 10,167
 msgwnd_jes
 *d595
 d [lv 0*"04"*"10200069"]`「ああ、間違いないぜ。`[@][lv 0*"04"*"10200070"]`譲治兄さんの言うことはいつも本当だよ、真里亞」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1586,7 +1584,7 @@ flush 10,167
 msgwnd_mar
 *d604
 d [lv 0*"13"*"10400101"]`「……うー！`[@][lv 0*"13"*"10400102"]`　真里亞、偉い！」`[gstg 7][\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -1610,7 +1608,7 @@ agpt quakeyamp,0,3000
 agpt quakexamp,0,3000
 gptwait quakexamp
 gptwait quakeyamp
-textoff
+textoff2
 waits 167
 wait 3000
 break_glass

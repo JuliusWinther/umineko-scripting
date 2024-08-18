@@ -1,27 +1,25 @@
 *umi4_14
 ;私の使命
 log_reset
-mov $name_chapter_r_click,r_click_chapters_4_14
-mov $name_chapter_r_click_l2,r_click_chapters_4_14_l2
-mov $name_chapter_r_click_l3,r_click_chapters_4_14_l3
+mov $name_chapter_r_click,r_click_chapters_4_14+"|"+r_click_chapters_4_14_l2+"|"+r_click_chapters_4_14_l3
 mov $name_chapter_save, "4_14"
 new_chapter date_scenario_4_14,scenario_4_14
 gstc 264
-textoff
+textoff2
 waits 167
 meplay 1,2,71
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"oct_1998"
 flush 22
 wait 4000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 vol_mix_fade 2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 flush 2
@@ -64,20 +62,20 @@ d [lv 0*"25"*"43900006"]`「そうでしたね。`[@][lv 0*"25"*"43900007"]`こ�
 msgwnd_non
 *d27157
 d `医師はようやく、縁寿もまたそういった好奇の目に晒されてきた犠牲者であることを思い出す。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1c"
 flush 24
 msgwnd_na2
 *d27158
 d [lv 0*"25"*"43900008"]`「そんなあなたなら、当時の件にもうかかわりたくないという私どもの気持ちもおわかりでしょう。`[@][lv 0*"25"*"43900009"]`……あれは不幸な事故でした。`[@][lv 0*"25"*"43900010"]`それを事件だと騒ぎ立てたがるのは、無責任なテレビと雑誌だけです。`[@][lv 0*"25"*"43900011"]`彼らの態度には心底、うんざりさせられますよ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -88,7 +86,7 @@ d `………右代宮金蔵の数少ない友人ということで、南條は�
 d `その為、その遺族である息子にもウィッチハンターやマスコミの執拗な取材攻勢があったのだろう。`[\]
 *d27161
 d `……医師は、延々とマスコミ批判を口にし、ひとり憤慨するのだった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 lss s0_8,"enj","a11_nayamu1" ;1
@@ -153,13 +151,13 @@ flush 10,167
 msgwnd_enj
 *d27177
 d [lv 0*"11"*"42001367"]`「ありがとう、先生。`[@][lv 0*"11"*"42001368"]`……ではお願いします。`[@][lv 0*"11"*"42001369"]`何でも結構です、話して下さい」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 5
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1c"
 flush 22
@@ -174,11 +172,11 @@ msgwnd_na2
 d [lv 0*"25"*"43900020"]`「相当、だったようです。`[@][lv 0*"25"*"43900021"]`チェスの縁で、先方の屋敷に厄介になることも少なくなかったようです」`[\]
 *d27181
 d [lv 0*"25"*"43900022"]`「……私の口から言うのも何だが、右代宮氏は非常に気難しい方でした。`[@][lv 0*"25"*"43900023"]`そして父はそんな人間と付き合うのに長けた、非常に大らかな人だった。`[@][lv 0*"25"*"43900024"]`孤独な右代宮氏にとって、稀な友人であったことは想像に難しくないでしょう」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1a"
 color_mod2 s0_3,#ffffff
@@ -186,7 +184,7 @@ flush 8
 msgwnd_enj
 *d27182
 d [lv 0*"11"*"42001371"]`「当日は親族会議でした。`[@][lv 0*"11"*"42001372"]`……右代宮家の親族会議は、資産やその運用などについて厳しく問われる、`[@][lv 0*"11"*"42001373"]`さながら経営会議のようなものだったとされています。`[@][lv 0*"11"*"42001374"]`そのような席にまで出席を求められるほどに、南條先生は信頼を得ていたわけですね…？」`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"nan","a1_defo1" ;1
 spt_mem "a2","xpos",s0_10,370
@@ -197,12 +195,12 @@ msgwnd_na2
 d [lv 0*"25"*"43900025"]`「父は純朴な医師であり、`[@][lv 0*"25"*"43900026"]`右代宮家のような富豪の財産運用について助言できるような立場にあったとは思えません」`[\]
 *d27184
 d [lv 0*"25"*"43900027"]`「恐らく、当時の右代宮氏は健康状態が優れられなかったでしょうから、その介添えとして呼ばれていたのでしょう。`[@][lv 0*"25"*"43900028"]`……親友の父なら、おそらく口も硬く、親族会議上の秘密もきっと漏らさないと信頼されていたに違いない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 lss s0_10,"enj","a11_nayamu1" ;1
@@ -239,7 +237,7 @@ flush 10,167
 msgwnd_enj
 *d27189
 d [lv 0*"11"*"42001379"]`「……何ですか？`[@][lv 0*"11"*"42001380"]`　それを教えて下さい」`[\]
-textoff
+textoff2
 waits 167
 lss s0_8,"na2","a21_defo2" ;1
 spt_mem "a2","xpos",s0_8,-370
@@ -254,7 +252,7 @@ msgwnd_non
 d `医師はしばらくの間、もったいぶったが、`[@]`そこまで口にしてしまった以上、縁寿はどんなはぐらかしにも誤魔化されない。`[\]
 *d27191
 d `やがて根負けし、他言無用をもう一度誓わせた後、それを教えてくれた……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -267,7 +265,7 @@ d [lv 0*"25"*"43900035"]`「実は、あの事故の数日後に、私の自宅�
 msgwnd_enj
 *d27193
 d [lv 0*"11"*"42001381"]`「………郵便？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 2
@@ -295,7 +293,7 @@ d `つまり、何者かが彼の名を騙って郵送したことになる。`[
 d `そして宛て先は、北海道礼文島の“南條輝正”。`[\]
 *d27201
 d `しかし存在しない地番が記されており、`[@]`現地の郵便局は配達できず郵便物を“差出人である南條の息子”に返送してきたわけだ……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -305,11 +303,11 @@ d [lv 0*"11"*"42001382"]`「……中身は何だったんですか？」`[\]
 msgwnd_na2
 *d27203
 d [lv 0*"25"*"43900045"]`「………………………。`[@][lv 0*"25"*"43900046"]`……本当に他言無用でお願いします。`[@][lv 0*"25"*"43900047"]`私も、非常に迷惑しているんです。`[@][lv 0*"25"*"43900048"]`かといって、捨てるわけにも行かず……」`[\]
-textoff
+textoff2
 waits 167
 vol_me 2,-1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1c"
 flush 24
@@ -324,11 +322,11 @@ d `その内の中ほどから何冊かを抜き出すと、その奥に大判�
 d `それを取り出し、机の上に放る。`[\]
 *d27208
 d `セロハンテープで厳重に封印されており、`[@]`その変色と乾き具合から、１２年間封印されてきたことをうかがわせた……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 lss s0_9,"na2","a11_komaru1" ;1
@@ -343,13 +341,13 @@ d `しつこいくらいに念を押しながら、医師は高級なペーパ�
 d `……そして封筒を傾けると、なかから開封済みの郵便封筒が滑り出してきた。`[\]
 *d27212
 d `封筒には重みがあり、手紙以外のものが入っていることを想像させた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 26
 meplay 1,11,90
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 22
@@ -359,7 +357,7 @@ d `………宛て先人は、確かに南條輝正。`[@]`{n}これだけを見
 d `あの事件で、南條は死体が発見されず、危難失踪によって死亡の扱いになっている。`[\]
 *d27215
 d `……にもかかわらず存在する、北海道の南條に宛てた手紙。`[@]`{n}それはまるで彼が、自らを死んだと偽って、北海道に逃亡したという風にさえ読み取れる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 lss s0_10,"enj","a11_defo1" ;1
@@ -391,13 +389,13 @@ flush 10,167
 msgwnd_na2
 *d27220
 d [lv 0*"25"*"43900055"]`「もちろん否定はできません。`[@][lv 0*"25"*"43900056"]`ですが、住所の番地を見る限り、どうもそうは思えないのです」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 26
@@ -411,7 +409,7 @@ d `礼文町まではいい。`[\]
 d `…しかしその後の数字は、１２３４５６７と連番で、少々の不真面目感は拭えない。`[\]
 *d27224
 d `まるで、子どもがでたらめな住所をでっちあげたかのような、そんな印象を持った。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 lss s0_10,"na2","a11_defo1" ;1
@@ -427,12 +425,12 @@ d `送付先住所が存在しなければ、郵便物は通常、差出人に�
 d `ただ、不完全な住所ではあっても、現地の郵便局の好意的努力により、`[@]`可能な限り、差出人が意図した送付先が存在しないか調査されることが多い。`[\]
 *d27228
 d `それでも見つからない場合、数日の調査を経て返送されるケースもある。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 22
@@ -442,7 +440,7 @@ d `この封筒もそうだったらしく、切手の消印は、１０月３�
 d `消印は新島内だ。`[@]`{n}新島から礼文島は遠く離れている。`[\]
 *d27231
 d `その上、住所もでたらめ。`[@]`{n}……返送には１週間以上の期間を経ていた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -452,11 +450,11 @@ d `……つまりこの封筒は、不定期間を経て差出人に返送さ�
 d `何のためにそんなことを………？`[\]
 *d27234
 d `何が送られてきたのかを問う以前の段階でさえ、この封筒は謎に包まれている……。`[\]
-textoff
+textoff2
 waits 167
 vol_bgm -1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 lss s0_8,"enj","a11_fuman2" ;1
@@ -474,7 +472,7 @@ d [lv 0*"25"*"43900059"]`「どうぞ」`[\]
 msgwnd_non
 *d27237
 d `医師に許可をもらい、すでに口の開いている封筒を傾ける。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -494,15 +492,15 @@ d `……しかしもちろん、それだけでは何のカードなのか見�
 seplay 1,1010,50
 *d27243
 d `……折り畳まれた手紙を広げる。`[@]`{n}そこには非常に簡潔に、以下のことだけが記されていた。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"number"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -513,7 +511,7 @@ bgmplay 20,71,0
 d `そして、誰もが知る日本の某巨大銀行の名が記され、本店とも書かれていた。`[\]
 *d27246
 d `……それだけだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 lss s0_10,"enj","a31_komaru3" ;1
@@ -529,7 +527,7 @@ msgwnd_na2
 *d27248
 d [lv 0*"25"*"43900060"]`「……………。`[@][lv 0*"25"*"43900061"]`………貸し金庫のカードと鍵、そして暗証番号でした。`[@][lv 0*"25"*"43900062"]`それも普通の貸し金庫ではない。`[@][lv 0*"25"*"43900063"]`特別な顧客のみに許されているらしい、不気味な貸し金庫でした」`[\]
 meplay 1,16,50
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -548,7 +546,7 @@ d `勇気を出して行員にカードを見せると、明らかに格のあ�
 d `そこに至るまでのセキュリティは厳重。`[\]
 *d27254
 d `医師も、不動産の謄本などの重要なものを貸し金庫に預けた経験があるが、`[@]`ここのそれはまったく格が違っていた……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 lss s0_8,"na2","a21_defo1" ;1
@@ -576,7 +574,7 @@ msgwnd_na2
 d [lv 0*"25"*"43900068"]`「カードをリーダーに通すと、暗証番号の入力を求められました。`[@][lv 0*"25"*"43900069"]`そして、そこにある８桁の数字を入力すると認証され、金庫室への入室が認められました」`[\]
 *d27259
 d [lv 0*"25"*"43900070"]`「……すごい光景でしたよ。`[@][lv 0*"25"*"43900071"]`まるでＳＦ映画のような世界だった。`[@][lv 0*"25"*"43900072"]`薄暗い銀色の広大な部屋に、びっしりと金庫の扉が埋め尽くされているのです」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -588,7 +586,7 @@ msgwnd_non
 d `その部屋に、行員を伴い入場した。`[\]
 *d27261
 d `カード認証の時点で、権利のある金庫は確定しているらしく、`[@]`開けられる金庫には緑ランプ、開けられない金庫には赤ランプが点灯していた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 lss s0_10,"na2","a11_defo1" ;1
@@ -599,7 +597,7 @@ msgwnd_na2
 d [lv 0*"25"*"43900073"]`「Ａ１１２は、それらの金庫のうちの１つを示すものでした。`[@][lv 0*"25"*"43900074"]`……ちなみに、それ以外の金庫にもずらりと緑ランプが点灯していました。`[@][lv 0*"25"*"43900075"]`２０個以上はあったと思います」`[\]
 *d27263
 d [lv 0*"25"*"43900076"]`「あるいは他の一角にももっとあったのかも。`[@][lv 0*"25"*"43900077"]`……いずれにせよ、私の鍵はＡ１１２のみ。`[@][lv 0*"25"*"43900078"]`他の金庫の中身を確かめる術はありませんでしたが」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -608,11 +606,11 @@ msgwnd_non
 *d27264
 d `医師は行員が立ち会う中、開錠し扉を開く。`[\]
 seplay 1,44,90
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 10
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -645,7 +643,7 @@ d `１億ものかさばる現金を、そのままカバンごと金庫に預�
 d `……口座に入金して、数字に変えてしまった方がはるかに取り扱いが楽だ。`[\]
 *d27274
 d `それが出来ない時点で、何か良からぬ事情のある現金であることは明白だった……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"nan_r1a"
 lss s0_10,"na2","a11_defo3" ;1
@@ -684,14 +682,14 @@ flush 10,167
 msgwnd_enj
 *d27280
 d `「…………………。`[@][lv 0*"11"*"42001402"]`……わかりました。`[@][lv 0*"11"*"42001403"]`ではちょっと失礼します。`[@][lv 0*"11"*"42001404"]`調べ物を」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 25
 seplay 1,13,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"book1"
 flush 22
@@ -703,7 +701,7 @@ d `……そしてベアトリーチェがお姉ちゃんに記した文章の�
 msgwnd_enj
 *d27283
 d [lv 0*"11"*"42001405"]`「……………………………………………」`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
@@ -715,19 +713,19 @@ wait_on_d 0
 bgmplay 36,71,0
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d27285
 d `でも、………何だろう。`[@]`何かが引っ掛かる……。`[@]`{n}何だろう………。`[@]`何だろう………。`[\]
-textoff
+textoff2
 waits 167
 gstc 266
-textoff
+textoff2
 waits 167
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kum_r1a"
 lss s0_10,"ku2","a12_defo1" ;1
@@ -748,14 +746,14 @@ d `ただ、日々が忙しく、ばたばたとしているうちに、その�
 d `しかし、その奇妙な中身は記憶に留まっていたらしく、縁寿がそれを告げるとすぐに思い出してくれた……。`[\]
 *d27290
 d `しばらく待っていると、`[@]`お前さんはすぐにしまった場所を忘れる、と愚痴を言いながらへの字口の奥さんが、例の封筒を探し出してきてくれた……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 25
 seplay 1,28,100
 seplay 2,28,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 42
@@ -767,7 +765,7 @@ d `そして送付先住所は沖縄県。`[@]`{n}沖縄県八重山郡与那国
 d `与那国島は日本の最西端。`[@]`{n}そして地番はまったく同じ、適当そうな連番。`[\]
 *d27294
 d `……これで確信する。`[@]`確実にこの封筒は、差出人に返送されることを目論んでいるのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
@@ -779,13 +777,13 @@ d `暗証番号と銀行の本店を記した手紙。`[@]`{n}磁気カード。
 d `ナンバープレートの刻印はＡ１１３。`[@]`{n}……南條の息子に送られた鍵と連番になる。`[\]
 *d27298
 d `恐らく、金庫の中には同じようにジュラルミンケースがあり、１億円の現金が詰められているのだろう……。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 vol_bgm -1,3000
 wait 3000
 meplay 1,5,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kum_r1a"
 lss s0_8,"enj","a11_defo1" ;1
@@ -816,7 +814,7 @@ msgwnd_enj
 *d27301
 d [lv 0*"11"*"42001406"]`「…………………………………ぅ」`[\]
 seplay 1,52,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_21,"black"
 spt_mem "a2","alpha",s0_21,150
@@ -857,7 +855,7 @@ flush 10,167
 msgwnd_rg5
 *d27306
 d [lv 0*"42"*"42700324"]`「まさか、`[|][lv 0*"42"*"42700325"]`……この封筒、……縁寿さまのところにも…？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_24
 csp_slot s0_23
@@ -879,12 +877,12 @@ d `私のところにもおかしな封筒が届いたんだ…、１２年前�
 *d27309
 d `家族を全て失い、塞ぎこんでいた。`[@]`…でも、本当におかしな郵便物だったので、わずかに記憶に残っていたのだ。`[\]
 csp_slot s0_25
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"letter1"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_26,"letter1"
 flush 2
@@ -900,7 +898,7 @@ d `私はがっかりし、それをどこかに放り出してしまったは�
 d `あの封筒はどこにやってしまっただろう？`[@]`{n}あの後のゴタゴタでどこかに紛失してしまっているだろう。`[\]
 *d27315
 d `今となっては、その内容を確かめる術もない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_26,"black"
 flush 22
@@ -908,7 +906,7 @@ flush 22
 d `しかし、何となく察しはつく。`[\]
 *d27317
 d `……きっと中身は同じ。`[@]`暗証番号のメモと鍵とカードが入っていたに違いないのだ……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_26
 csp_slot s0_21
@@ -965,7 +963,7 @@ msgwnd_non
 d `さくたろが、私のお腹に顔を埋めながら、冷静になるよう促す。`[\]
 *d27326
 d `……私はもう一度深く深呼吸し、思考を働かせた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_25
 csp_slot s0_24
@@ -1052,7 +1050,7 @@ flush 10,167
 d [lv 0*"11"*"42001432"]`「……確かにね。`[@][lv 0*"11"*"42001433"]`あれは驚くし、嫌な気持ちになるわよ。`[@][lv 0*"11"*"42001434"]`……死んだ家族の名前が表に大きく書かれている郵便物が、`[@][lv 0*"11"*"42001435"]`物々しい付箋付きで郵便受けに放り込まれているんだから」`[\]
 *d27337
 d [lv 0*"11"*"42001436"]`「……でも、私は何か腑に落ちないわ。`[@][lv 0*"11"*"42001437"]`私だったら期日指定郵便にする。`[@][lv 0*"11"*"42001438"]`ひょっとしたら、想定しない日に届くかもしれないという不安定さが、私にはどうしても理解できないの」`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
@@ -1074,7 +1072,7 @@ flush 10,167
 msgwnd_sak
 *d27340
 d [lv 0*"33"*"44200488"]`『……ちょっとしかお話したことないけど。`[@][lv 0*"33"*"44200489"]`……でも、ベアトならこういうことをするかなぁってのが、何となくわかるの』`[\]
-textoff
+textoff2
 waits 167
 lss s0_24,"sak","a11_warai1" ;1
 flush 10,167
@@ -1111,11 +1109,11 @@ csp_slot s0_22
 csp_slot s0_25
 csp_slot s0_24
 csp_slot s0_23
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 5
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"book1"
 flush 2
@@ -1129,11 +1127,11 @@ d `しかしその悪戯は、いつもちょっとした魔女の美学があ�
 *d27348
 d `それは、………不確実である方が面白い、というものだ。`[\]
 seplay 1,1010,40
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 64
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_s1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_s1a"
@@ -1144,12 +1142,12 @@ flush 22
 d `ある日、真里亞お姉ちゃんたちは、持参したゼンマイ式の小さなミニカーを悪戯に使うことにした。`[\]
 *d27350
 d `ミニカーをバックさせると車輪のゼンマイが巻かれ、放すと勢い良く走り出すという、当時流行った玩具だ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1d"
 color_mod2 sepia,s0_3
@@ -1158,7 +1156,7 @@ flush 22
 d `そのミニカーを、ゼンマイを巻いた状態でミルクポットの影に置いた。`[\]
 *d27352
 d `……つまり、ミルクポットを持ち上げると、勢い良くミニカーが走って飛び出し、相手は驚くという悪戯だ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1c"
 color_mod2 sepia,s0_3
@@ -1185,7 +1183,7 @@ color_mod2 sepia,s0_10
 flush 10,167
 *d27356
 d `「誰が引っ掛かるかわからず、引っ掛かるかどうかさえわからない罠の方が、ハラハラして面白い」`[@]`と言うのだ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1197,7 +1195,7 @@ d `……絶対に引っ掛かる罠では、確かにそういう興奮はな�
 d `……そういう記述は複数箇所あり、`[@]`ベアトリーチェという魔女は、わりとランダムなスリルを好む気まぐれな性分があることが推察できた……。`[\]
 *d27359
 d `気まぐれとは、何とやりにくい相手なのか。`[@]`１２年前の魔女が何を企んでいたのか、……チェス盤が引っ繰り返せない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -1206,7 +1204,7 @@ vol_bgm -1,3000
 wait 3000
 wait 1000
 meplay 1,2,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kum_r1a"
 flush 2
@@ -1241,11 +1239,11 @@ d [lv 0*"11"*"42001443"]`「…………？`[@][lv 0*"11"*"42001444"]`　……�
 msgwnd_non
 *d27368
 d `たくさんの額の中に、人物写真ではないものが含まれていた。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1258,12 +1256,12 @@ d `それは洋館か何かの扉かレリーフを拡大して撮影したも�
 d `……特に面白い被写体にも見えず、むしろなぜわざわざ撮影したのかが気になった。`[\]
 *d27371
 d `近付いてみると、ペンで何か文字が記されているのに気付く。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_o2a"
 color_mod2 s0_3,#ffffff
@@ -1279,7 +1277,7 @@ msgwnd_non
 d `洋館風の扉の上にアーチがあり、そこにレリーフがある。`[@]`そこに英文が刻まれていて、写真はそれを捉えたものらしい。`[\]
 *d27375
 d `ペン書きは、それを訳したもののようだった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kum_r1a"
 lss s0_9,"enj","a11_nayamu1" ;1
@@ -1289,7 +1287,7 @@ flush 10,167
 msgwnd_enj
 *d27376
 d [lv 0*"11"*"42001450"]`「…………………。`[@][lv 0*"11"*"42001451"]`“この扉は千兆分の一の確率でしか開かない。`[@][lv 0*"11"*"42001452"]`あなたは千兆分の一の確率でしか祝福されない”。`[@][lv 0*"11"*"42001453"]`………知らないわ。`[@][lv 0*"11"*"42001454"]`こんな文章、碑文にもお姉ちゃんの日記にも出てこない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"kum_r1a"
@@ -1304,12 +1302,12 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 *d27378
 d [lv 0*"26"*"44000014"]`「お袋も案外、そういうのが好きだったんだなぁ。`[@][lv 0*"26"*"44000015"]`何でも１０ｔの金塊が隠されてたって噂だ。`[@][lv 0*"26"*"44000016"]`そりゃあ、お袋も夢中になるはずですわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"book1"
 flush 22
@@ -1322,11 +1320,11 @@ d `曰く、黄金郷の扉を開く儀式であり、ベアトリーチェ復�
 d `興味深いのは最後の、継承の儀式、という行だったろうか。`[\]
 *d27382
 d `ベアトリーチェが言うには、`[@]`もし魔女の碑文を解き明かすことが出来たなら、`[@]`１０ｔの黄金と右代宮家の家督だけでなく、`[@]`自らの魔法の力と名前、黄金の魔女の称号までもを引き継ぐという。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mhal_2c"
 flush 2
@@ -1336,7 +1334,7 @@ d `魔女の碑文は、当時の右代宮家では、解けた者を次期当�
 d `しかしマリアージュ・ソルシエールの解釈では、その出題者はベアトリーチェ自身で、`[@]`自らの後継者を選び出すための出題でもあったという。`[\]
 *d27385
 d `……両者の解釈は細部で微妙に食い違っている。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1350,7 +1348,7 @@ d `私も何度か挑戦したが、さっぱり意味がわからなかった�
 d `私の読んだ本にも、江之浦漁港説とか、ラプラタ川説とかが登場する。`[\]
 *d27390
 d `しかし、いずれの説も決定的ではない……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kum_r1a"
 lss s0_10,"enj","a11_defo1" ;1
@@ -1382,13 +1380,13 @@ flush 10,167
 msgwnd_ku2
 *d27395
 d [lv 0*"26"*"44000020"]`「さぁ。`[@][lv 0*"26"*"44000021"]`いずれにせよ、六軒島の屋敷のどこかでしょうな。`[@][lv 0*"26"*"44000022"]`……お袋の預金口座には、残念だが、黄金を発見したと思えるようなお金は入ってませんでしたよ。`[@][lv 0*"26"*"44000023"]`うはははは、さすがに見つからんかったんでしょうなぁ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 2
@@ -1403,11 +1401,11 @@ d `右代宮家の莫大な財産の全ては、ベアトリーチェこそが�
 d `その莫大な富を持つ魔女が、あの日の六軒島の人間を皆殺しにし、`[@]`…戯れかのように遺族に大金を送りつける。`[\]
 *d27400
 d `……何が死者からの手紙だ。`[@]`これは、死者への冒涜。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kum_r1a"
 flush 22
@@ -1415,9 +1413,9 @@ flush 22
 d `私は再び確信する。`[@]`……あの日に島で死んだ家族は、死んで成仏などしていない。`[\]
 *d27402
 d `今も魔女に捕らわれ、永遠に冒涜されながら苛まれ続けているのだ……。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 5
@@ -1428,12 +1426,12 @@ wait 1000
 meplay 1,12,50
 *d27403
 d `縁寿が最後に訪れたのは、`[@]`住宅地と小売店が混在する地域の、マルフク寝具店という看板を掲げた一軒の店だった……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 23
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r1an"
 flush 2
@@ -1463,12 +1461,12 @@ d `記憶も鮮明らしく、１０年以上前のことをよく覚えてお�
 *d27409
 d `話が弾み、縁寿としてはとても助かったが、`[@]`……同時に、最後の親族会議のこともよく覚えていて、`[@]`船上の戦人の“落ちる落ちる騒ぎ”のことまでも詳細に記憶していたことは、逆に縁寿には辛かった。`[\]
 meplay 2,16,50
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sea_1cf"
 flush 22
@@ -1478,13 +1476,13 @@ d `当時もだが、現在も六軒島に渡る公的移動手段は存在し�
 d `渡航には、船の所有者に個人的に頼む必要があった。`[\]
 *d27412
 d `六軒島への船は今だ手配が出来ず、`[@]`彼に断られたら、六軒島への渡航はもはや絶望的と思われた……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 vol_me 2,0,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r1an"
 lss s0_10,"kaw","a11_defo2" ;1
@@ -1516,7 +1514,7 @@ flush 10,167
 msgwnd_enj
 *d27419
 d [lv 0*"11"*"42001460"]`「………船は、出してもらえるでしょうか」`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"kaw","a11_warai1" ;1
 spt_mem "a2","xpos",s0_10,370
@@ -1537,7 +1535,7 @@ d `元船長は、明日、前職に復帰し、六軒島まで船を出して�
 d `これで、六軒島への渡航手段は確保できた。`[@]`{n}新島で出来ることは、これで全てだろう。`[\]
 *d27423
 d `あとは、明日。`[@]`六軒島で、……１２年前に遡る旅は、終点を迎える。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_21,"black"
 spt_mem "a2","alpha",s0_21,150
@@ -1587,7 +1585,7 @@ flush 10,167
 msgwnd_sak
 *d27429
 d [lv 0*"33"*"44200499"]`『うりゅ…、そんなこと言っちゃ駄目だよ…。`[@][lv 0*"33"*"44200500"]`船長さんもそれを今日まで、ずっと苦しんできたはずだよ……』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_21
 csp_slot s0_22
@@ -1597,7 +1595,7 @@ lips_sprite s0_8_b,"enj"
 lips_sprite s0_10_b,"kaw"
 flush 8
 meplay 1,12,50
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1618,7 +1616,7 @@ d `台風が近付いているから翌週に変更、と簡単には言えな�
 d `……船長の責任ではない。`[\]
 *d27436
 d `しかし、台風のせいにしてしまえるほど、彼は無責任ではなかった、ということかもしれない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r1an"
 flush 22
@@ -1636,7 +1634,7 @@ lss s0_9,"kaw","a11_nayamu1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"kaw_r1an"
@@ -1659,13 +1657,13 @@ flush 10,167
 msgwnd_kaw
 *d27441
 d [lv 0*"24"*"43800019"]`「うむ、すまんな。`[@][lv 0*"24"*"43800020"]`わしが船を手放していなければ、ケチなことを言わず、好きなだけ島へ案内してやれるんだが…」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r1cn"
 flush 22
@@ -1676,7 +1674,7 @@ d `六軒島で何かをしたいという目的があるわけじゃない。`[
 d `……昼と夜という異なる世界を跨ぐ夕方は、まるでこの世とあの世、`[@]`もしくは、１９９８年と１９８６年の境目のような気がして、六軒島を訪れる時間としてもっとも相応しいようにも感じられた。`[\]
 *d27444
 d `……島で何かをするわけじゃない。`[@]`ほんの数時間の滞在でも、私の心の整理がつくならば充分だろう。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r1an"
 flush 24
@@ -1705,7 +1703,7 @@ flush 10,167
 msgwnd_kaw
 *d27448
 d [lv 0*"24"*"43800021"]`「おう、任せておけ！`[@][lv 0*"24"*"43800022"]`　お前さんたちの難儀な事情も聞いとる。`[@][lv 0*"24"*"43800023"]`わしも、当時のワイドショーを見ていて、面白半分に事件を掻き回す連中に虫唾が走っとったもんだ。`[@][lv 0*"24"*"43800024"]`協力は惜しまんよ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1725,12 +1723,12 @@ msgwnd_non
 d `縁寿は懐より帯封付きの壱万円札の束を取り出す。`[\]
 *d27451
 d `その厚みは、確かに船長にも見えたはずだ。`[@]`しかし船長はまったく興味を示さず、首を横に振った。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r1cn"
 flush 22
@@ -1739,18 +1737,18 @@ msgwnd_kaw
 d [lv 0*"24"*"43800025"]`「……わしはお前さんに感謝しとるよ。`[@][lv 0*"24"*"43800026"]`これは天のお導きだ。`[@][lv 0*"24"*"43800027"]`あんたを、六軒島へ連れて行き、そして無事に連れ帰る最後のチャンスを下さったんだ」`[\]
 *d27453
 d [lv 0*"24"*"43800028"]`「わしは金蔵さんに任されていた最後の仕事を、今、ようやく終えることが出来る。`[@][lv 0*"24"*"43800029"]`だからあんたには感謝してる。`[@][lv 0*"24"*"43800030"]`カネは、当時の金蔵さんからたらふくもらってる。`[@][lv 0*"24"*"43800031"]`あんたから取れんよ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 msgwnd_enj
 *d27454
 d [lv 0*"11"*"42001470"]`「…………………ありがとうございます」`[\]
-textoff
+textoff2
 waits 167
 vol_bgm -1,3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r2a"
 lss s0_10,"kaw","a12_nayamu1" ;1
@@ -1764,12 +1762,12 @@ msgwnd_non
 d `……バリアフリーという言葉と確実に対極にある、急勾配の階段を下る。`[\]
 *d27457
 d `上の部屋にあった、テレビやタンスの存在が信じられなくなる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r3bn"
 flush 23
@@ -1849,7 +1847,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_26,"black"
 flush 2
@@ -1866,7 +1864,7 @@ d `それを船長も察している。`[@]`{n}だからこそ、死ぬなと重
 lss s0_8,"enj","a31_komaru3" ;1
 spt_mem "a2","xpos",s0_8,-370
 flush 10,167
-textoff
+textoff2
 waits 167
 csp_slot s0_26
 flush 2
@@ -1897,7 +1895,7 @@ flush 10,167
 msgwnd_enj
 *d27477
 d [lv 0*"11"*"42001483"]`「………そうかも、知れませんね。`[@][lv 0*"11"*"42001484"]`…私は、……呼ばれたのかもしれない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1908,20 +1906,20 @@ msgwnd_non
 d `呼ばれた。`[@]`何のために？`[@]`　彼らのために。`[@]`{n}お父さん。`[@]`お母さん。`[@]`戦人お兄ちゃん。`[@]`{n}……そして、真里亞お姉ちゃん。`[\]
 *d27479
 d `………あるいは、黄金の魔女。`[@]`ベアトリーチェ。`[\]
-textoff
+textoff2
 waits 167
 wait 1000
 *d27480
 d `六軒島で、何があるんだろう。`[@]`{n}そして私は何を成すんだろう。`[\]
 *d27481
 d `いよいよ明日を控えているのに、私は未だに自らの使命を理解できていなかった……。`[\]
-textoff
+textoff2
 waits 167
 meplay 1,12,0
 vol_bgm 0,3000
 vol_me 1,50,3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r3bn"
 flush 26
@@ -1939,7 +1937,7 @@ flush 10,167
 msgwnd_kaw
 *d27484
 d [lv 0*"24"*"43800050"]`「うむ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1948,7 +1946,7 @@ flush 24
 msgwnd_non
 *d27485
 d `狭い店内の布団の山を抜け、私は店を出ようとする。`[@]`{n}…………その時、足が止まった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r3bn"
 lss s0_9,"kaw","a12_defo2" ;1
@@ -1957,7 +1955,7 @@ msgwnd_kaw
 *d27486
 d [lv 0*"24"*"43800051"]`「……どうしたね？」`[\]
 seplay 1,21,71
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -1968,7 +1966,7 @@ d [lv 0*"11"*"42001487"]`「………………………あ、`[|][lv 0*"11"*"420
 msgwnd_kaw
 *d27488
 d [lv 0*"24"*"43800052"]`「うん？`[@][lv 0*"24"*"43800053"]`　あれ？`[@][lv 0*"24"*"43800054"]`　はて？`[@][lv 0*"24"*"43800055"]`　何の話だね？」`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
@@ -1981,7 +1979,7 @@ d `私はわなわなと震えながら、………それを指差す。`[\]
 d `しかし船長はいくら目を凝らしても、私が驚くような何が指の先にあるのか、さっぱり理解できなかった。`[\]
 *d27491
 d `……そんなことって、`[@]`…………そ、……そんなことって…………。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_21,"black"
 spt_mem "a2","alpha",s0_21,150
@@ -2023,7 +2021,7 @@ flush 10,167
 msgwnd_rg5
 *d27497
 d [lv 0*"42"*"42700347"]`「私には、………何が何だか…………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_21
 csp_slot s0_22
@@ -2035,7 +2033,7 @@ msgwnd_non
 *d27498
 d `私は震えながら、店内の薄暗がりを指差し、固まっている……。`[\]
 meplay 1,12,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r3bn"
 flush 23
@@ -2073,7 +2071,7 @@ spt_mem "a2","xpos",s0_10,550
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -2083,7 +2081,7 @@ meplay 2,16,50
 msgwnd_kaw
 *d27502
 d [lv 0*"24"*"43800060"]`「わ、わしにもさっぱりわからん…！`[@][lv 0*"24"*"43800061"]`　お嬢ちゃんが暗がりを指差したまま、固まっちまったんだ…！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"kaw_r3bn"
 lss s0_10,"ama","a12_majime1" ;1
@@ -2114,7 +2112,7 @@ flush 10,167
 msgwnd_ama
 *d27505
 d [lv 0*"20"*"43000095"]`「見えるのは、ただの陳列棚です。`[@][lv 0*"20"*"43000096"]`誰もいやしませんぜ…？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_21,"black"
 spt_mem "a2","alpha",s0_21,150
@@ -2164,7 +2162,7 @@ flush 10,167
 msgwnd_non
 *d27512
 d `これが、…………魔法なのね…………。`[\]
-textoff
+textoff2
 waits 167
 wait 1000
 lss s0_25,"enj","a11_naku1" ;1

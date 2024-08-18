@@ -1,40 +1,38 @@
 *umi8_9
 ;ベルンの出題
 log_reset
-mov $name_chapter_r_click,r_click_chapters_8_9
-mov $name_chapter_r_click_l2,r_click_chapters_8_9_l2
-mov $name_chapter_r_click_l3,r_click_chapters_8_9_l3
+mov $name_chapter_r_click,r_click_chapters_8_9+"|"+r_click_chapters_8_9_l2+"|"+r_click_chapters_8_9_l3
 mov $name_chapter_save, "8_09"
 mov %bern_game_mode,0
 new_chapter date_scenario_8_9,scenario_8_9
 gstc 129
 seplay 1,61,71
-textoff
+textoff2
 waits 167
 lbg "c:dai",s0_3,"dai_1"
 flush 2
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *bern_session_start
 bgmplay 144,71,0
-textoff
+textoff2
 waits 167
 meplay 1,13,71
 rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_cy1a"
 flush 22
 wait 2000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -46,7 +44,7 @@ wait 1000
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1er"
 flush 22
@@ -54,7 +52,7 @@ flush 22
 d `第一の晩の惨劇は、翌朝の午前６時に発覚した。`[\]
 *d60180
 d `朝食の準備のため、起き出して来た郷田は、親族会議で前夜からずっと食堂に篭っている親族兄弟たちの様子を見に行ったのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1c"
 lss s0_9,"but","b11_majime2" ;1
@@ -62,7 +60,7 @@ flush 24
 msgwnd_but
 *d60181
 d [lv 0*"10"*"80100579"]`「死体発見時のことを話してくれ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_1,"m1f_s1a_bg"
@@ -89,7 +87,7 @@ flush 80
 msgwnd_kum
 *d60185
 d [lv 0*"18"*"81800075"]`「{p:42:絵羽さま、秀吉さま、留弗夫さま、霧江さま、楼座さま、そして源次さんの、`[@][lv 0*"18"*"81800076"]`計６人が血塗れになって倒れていたのでございます……}」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -106,7 +104,7 @@ msgwnd_nat
 *d60187
 d [lv 0*"03"*"80900079"]`「思い出したくもありません…。`[@][lv 0*"03"*"80900080"]`それぞれの親の亡骸にすがり、泣き叫ぶ子供たち…」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_1,"m1f_s1a_bg"
@@ -123,7 +121,7 @@ flush 23
 msgwnd_sha
 *d60189
 d [lv 0*"15"*"80500141"]`「しかし、駄目でした…。`[@][lv 0*"15"*"80500142"]`{p:42:お子様方はそれぞれ、自分の親が間違いなく死んでいることを確認なさいました…}」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -146,7 +144,7 @@ msgwnd_mar
 *d60192
 d [lv 0*"13"*"80400176"]`「{p:42:犠牲者はみんな、即死}だったろうね。`[@][lv 0*"13"*"80400177"]`……きひひひひひ」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -174,7 +172,7 @@ flush 80
 msgwnd_cla
 *d60196
 d [lv 0*"02"*"80800095"]`「隠れるも何も。`[@][lv 0*"02"*"80800096"]`私たちは今ここに全員がいるではないかね。`[@][lv 0*"02"*"80800097"]`{p:42:誰も隠れていないことは明白だ}」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -182,7 +180,7 @@ csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1c"
 lss s0_8,"jes","a11_komaru3" ;1
@@ -205,7 +203,7 @@ flush 24
 msgwnd_cla
 *d60199
 d [lv 0*"02"*"80800098"]`「６人を殺し、マスターキーで施錠して食堂を出た。`[@][lv 0*"02"*"80800099"]`……妥当な推理だ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -222,13 +220,13 @@ gptwait quakeyamp
 msgwnd_goh
 *d60200
 d [lv 0*"17"*"81700086"]`「ひ、ひぃ！`[@][lv 0*"17"*"81700087"]`　と、とんでもありませんっ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1fr"
 color_mod2 s0_3,#ffffff
@@ -242,9 +240,9 @@ d `マスターキーを持つ使用人たちが疑われるのは当然のこ�
 d `そして気の毒なことに、使用人たちの誰にもアリバイは存在しなかった。`[\]
 *d60204
 d `もっとも、使用人に限らず、誰にもアリバイは存在しなかったのだが。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -252,7 +250,7 @@ vol_me 1,-1,1000
 vol_me 2,-1,1000
 vol_me 3,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_10,"but","d11_oya1" ;1
@@ -267,7 +265,7 @@ flush 80
 msgwnd_ber
 *d60206
 d [lv 0*"28"*"82100111"]`「存在しないわ。`[@][lv 0*"28"*"82100112"]`………うぅん、これじゃ駄目ね。`[@][lv 0*"28"*"82100113"]`赤き真実で語るわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -281,7 +279,7 @@ seplay 1,59,71
 d_continue
 wait_on_d -1
 set_name_window_non
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"lam","a11_majime1" ;1
@@ -296,7 +294,7 @@ flush 24
 msgwnd_bea
 *d60209
 d [lv 0*"27"*"80700401"]`「マスターキーの他にも、各部屋固有の鍵があるはずでは？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -317,7 +315,7 @@ flush 23
 msgwnd_but
 *d60211
 d [lv 0*"10"*"80100582"]`「つまり。`[@][lv 0*"10"*"80100583"]`このゲームに登場する全ての施錠は、マスターキーでしか開け閉めが出来ないってわけか」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -334,13 +332,13 @@ flush 23
 msgwnd_bea
 *d60213
 d [lv 0*"27"*"80700402"]`「となれば、次はマスターキーの本数と所持者を確定せねばな」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_9,"ber","a21_defo2" ;1
@@ -355,7 +353,7 @@ wait_on_d 1
 seplay 1,59,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"different_space_1a"
@@ -371,17 +369,17 @@ flush 23
 msgwnd_bea
 *d60216
 d [lv 0*"27"*"80700403"]`「面白い例えよ。`[@][lv 0*"27"*"80700404"]`……つまり、このゲームの世界では、マスターキー云々ではなく、使用人５人にしか、開閉は出来ぬというわけだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 wait 1000
 meplay 1,13,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1a"
 lss s0_10,"cla","a11_majime1" ;1
@@ -396,7 +394,7 @@ flush 23
 msgwnd_nat
 *d60218
 d [lv 0*"03"*"80900083"]`「後のトラブルを予防するため、{p:42:源次のマスターキーを破壊しておきました}」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -414,7 +412,7 @@ msgwnd_non
 d `これが、第一の晩の事件。`[@]`{n}犯行現場は、施錠された密室の食堂。`[\]
 *d60220
 d `マスターキーを持つ使用人たちは全員、アリバイがない。`[@]`{n}しかし、使用人以外の誰にも、アリバイはない……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -428,12 +426,12 @@ wait 1000
 if %bern_game_mode != 0 jumpf
 gstc 130
 seplay 1,61,71
-textoff
+textoff2
 waits 167
 lbg "c:dai",s0_3,"dai_2"
 flush 2
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -450,7 +448,7 @@ csp_slot s0_11
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_s1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_s1a"
@@ -464,7 +462,7 @@ flush 22
 d `一同は客間に戻り、今後をどうするか議論した。`[\]
 *d60222
 d `電話は不通で警察に連絡は出来ない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -472,7 +470,7 @@ csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1d"
 flush 22
@@ -482,11 +480,11 @@ d `謎の犯人は、今もどこかに隠れて、次の犠牲者を狙って�
 d `あるいは、この中に犯人がいて、心の中で舌を出しながら、次の獲物を吟味しているのだろうか。`[\]
 *d60225
 d `全員にアリバイがなく、誰にも犯人の可能性がある…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 meplay 1,13,71
 csp_slot s0_11
@@ -494,14 +492,14 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1a"
 flush 22
 wait 2000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -511,7 +509,7 @@ wait 1000
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_s1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_s1a"
@@ -520,12 +518,12 @@ flush 22
 d `しかし、そんな緊張感も、長くは続かない。`[\]
 *d60227
 d `お昼頃には皆、腹の探り合いに疲れ果て、小休止のような状態になった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2b_bg"
 lbg "a:backgrounds",s0_3,"mhal_2b"
@@ -541,7 +539,7 @@ flush 2
 d `蔵臼夫妻は、二人で相談をすると告げ、２階へ上がる。`[\]
 *d60229
 d `それを皮切りに、一同もトイレに行ったり、止まない雨を眺めに行ったりと、皆、それぞれに散っていった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -552,37 +550,37 @@ d `しかし、いつまで経っても、蔵臼夫妻だけが戻ってこな�
 d `内線電話を蔵臼と夏妃の部屋にそれぞれ掛けるが、返事はない。`[\]
 *d60232
 d `何かあったのかもしれない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2a_bg"
 lbg "a:backgrounds",s0_3,"mhal_2a"
 flush 22
 wait 667
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m2f_p1a_bg"
 lbg "a:backgrounds",s0_3,"m2f_p1a"
 flush 22
 wait 667
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 1,33,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 1
 *d60233
 d `一同は全員で蔵臼と夏妃の部屋に向かい、……夏妃の部屋で、蔵臼と夏妃が倒れているのを発見する。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 wait 667
 vol_se 1,-1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mnat_1a_bg"
 lbg "a:backgrounds",s0_3,"mnat_1a"
@@ -653,7 +651,7 @@ flush 24
 msgwnd_kan
 *d60243
 d [lv 0*"16"*"80600086"]`「{p:42:僕たち使用人全員は、それぞれが使用人全員のアリバイを証明できます}」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -661,9 +659,9 @@ csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_10,"but","d11_futeki3" ;1
@@ -684,17 +682,17 @@ msgwnd_bea
 *d60246
 d [lv 0*"27"*"80700405"]`「この世界では、使用人たちそのものが、生きたマスターキーとなっている。`[@][lv 0*"27"*"80700406"]`その使用人たちのアリバイが完璧である以上、夏妃の部屋の施錠は不可能だぞ…」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 seplay 1,15,71
 seplay 2,31,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door1"
 lss s0_10,"geo","a11_majime5" ;1
@@ -709,7 +707,7 @@ flush 23
 msgwnd_mar
 *d60248
 d [lv 0*"13"*"80400178"]`「{p:42:外からガムテープでベタベタと、窓や扉を封印したよ！}」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -721,13 +719,13 @@ flush 24
 msgwnd_jes
 *d60249
 d [lv 0*"04"*"80200103"]`「きっとこの部屋に、犯人の何かの手掛りが残ってるはず！`[@][lv 0*"04"*"80200104"]`　{p:42:警察が来るまで絶対、誰の出入りも出来ないようにした！}」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1fr"
 lss s0_9,"but","b11_majime1" ;1
@@ -735,9 +733,9 @@ flush 23
 msgwnd_but
 *d60250
 d [lv 0*"10"*"80100590"]`「となりゃ、食堂も同じだ。`[@][lv 0*"10"*"80100591"]`{p:42:俺たちはさらに食堂も同様に封印した}」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -748,7 +746,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g_o1a"
 lss s0_8,"jes","a11_naki1" ;1
@@ -766,22 +764,22 @@ msgwnd_nan
 d [lv 0*"19"*"81900054"]`「そもそも、屋敷自体を保全するべきではということになりましてな。`[@][lv 0*"19"*"81900055"]`{p:42:屋敷自体にも封印をし、私たちは全員、ゲストハウスへ避難しました}」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
 vol_me 1,-1,667
 wait 667
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_8,"but","d11_niramu3" ;1
@@ -809,13 +807,13 @@ flush 80
 msgwnd_but
 *d60254
 d [lv 0*"10"*"80100595"]`「なるほどな、そりゃ簡単だ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"bea","a11_majime2" ;1
@@ -848,16 +846,16 @@ flush 80
 msgwnd_bea
 *d60259
 d [lv 0*"27"*"80700410"]`「食堂で死んでいた６人の誰かが生きていて犯行を、ということか？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 flush 23
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_9,"but","d11_futeki1" ;1
@@ -882,7 +880,7 @@ flush 80
 msgwnd_bea
 *d60263
 d [lv 0*"27"*"80700412"]`「ふむ、筋の通った推理であるぞ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -921,7 +919,7 @@ wait_on_d 0
 seplay 1,59,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -938,7 +936,7 @@ flush 24
 msgwnd_but
 *d60268
 d [lv 0*"10"*"80100606"]`「……面白ぇ。`[@][lv 0*"10"*"80100607"]`なかなかだぜ、ベルンカステル」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -948,7 +946,7 @@ flush 23
 msgwnd_ber
 *d60269
 d [lv 0*"28"*"82100136"]`「どうも」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -958,7 +956,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_g1a"
 flush 22
@@ -971,11 +969,11 @@ d `今度は、マスターキーを持つ使用人たちは全員、アリバ�
 d `屋敷内に危険を察した一同は、ゲストハウスへ避難する……。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
@@ -986,12 +984,12 @@ vol_mix_fade 1000
 wait 1000
 if %bern_game_mode != 0 jumpf
 seplay 1,61,71
-textoff
+textoff2
 waits 167
 lbg "c:dai",s0_3,"dai_4"
 flush 2
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1003,13 +1001,13 @@ vol_mix_fade 1000
 wait 1000
 ~
 bgmplay 96,71,0
-textoff
+textoff2
 waits 167
 meplay 1,12,71
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "a:backgrounds",s0_1,"g_o1d_bg"
 lbg "a:backgrounds",s0_3,"g_o1d"
@@ -1022,10 +1020,10 @@ d `そこで全員が、互いが互いを監視しあっていれば、内部�
 d `しかし、台風が過ぎ去るまでを、ずっと間断なくそうしていることは出来ない。`[\]
 *d60276
 d `再び、彼らの行動には隙が生じ、新しい惨劇を迎えることになる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_11
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -1034,21 +1032,21 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"garden_1c"
 flush 22
 wait 1000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"garden_r1a_bg"
 lbg "a:backgrounds",s0_3,"garden_r1a"
@@ -1111,7 +1109,7 @@ flush 24
 msgwnd_mar
 *d60284
 d [lv 0*"13"*"80400179"]`「うん。`[@][lv 0*"13"*"80400180"]`譲治お兄ちゃんには殺せないね、うー」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1119,7 +1117,7 @@ csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"garden_r1a_bg"
 lbg "a:backgrounds",s0_3,"garden_r1a"
@@ -1142,7 +1140,7 @@ msgwnd_goh
 d [lv 0*"17"*"81700094"]`「犯人に悪用されるのを防ぐため、`[@][lv 0*"17"*"81700095"]`{p:42:紗音さんの持ってたマスターキーは、その場で破壊しました}」`[\]
 csp_slot s0_11
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1151,9 +1149,9 @@ lbg "c:colour",s0_3,"black"
 flush 2
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_10,"ber","a21_defo2" ;1
@@ -1171,7 +1169,7 @@ flush 23
 msgwnd_lam
 *d60289
 d [lv 0*"29"*"82200113"]`「まぁ、無粋だから割愛するけど、`[@][lv 0*"29"*"82200114"]`紗音が死んだんだから、そういうことになるわよねぇ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -1194,20 +1192,20 @@ msgwnd_but
 *d60292
 d [lv 0*"10"*"80100611"]`「……ふむ。`[@][lv 0*"10"*"80100612"]`順調に事件が進んでいくな」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 meplay 1,12,71
 rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1a"
 flush 22
@@ -1222,11 +1220,11 @@ d `鍵も扉も存在しない。`[@]`密室ではないのだ。`[@]`{n}よっ�
 d `そして、事件は加速していく……。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
@@ -1238,12 +1236,12 @@ wait 1000
 if %bern_game_mode != 0 jumpf
 gstc 131
 seplay 1,61,71
-textoff
+textoff2
 waits 167
 lbg "c:dai",s0_3,"dai_56"
 flush 2
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1255,7 +1253,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 137
 ~
-textoff
+textoff2
 waits 167
 bgmplay 55,71,0
 meplay 1,13,71
@@ -1263,7 +1261,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,100
 rain_params s0_7,400,500,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g_o1cr"
 flush 22
@@ -1277,35 +1275,35 @@ d `しかし、すでにいくつもの密室殺人が起きている。`[\]
 d `自らを密室へ閉ざす行為は、新しい惨劇を自ら招く行為に他ならないのか。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
 vol_bgm 70,1000
 vol_me 1,50,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_p1e"
 flush 22
 *d60301
 d `いとこ部屋で犯人探しの議論を過熱させていた彼らは、南條や熊沢たちの証言を再確認するべく、使用人室に彼らを訪ねた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_r1ar"
 flush 22
 seplay 1,33,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 1
 *d60302
 d `そして、……そこで再び惨劇が起こっていることを知る。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_r1ar"
 lss s0_10,"nan","a1_komaru3" ;1
@@ -1399,7 +1397,7 @@ wait_on_d 0
 seplay 1,37,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1411,7 +1409,7 @@ msgwnd_non
 d `これが、第五、第六の晩の事件。`[@]`{n}犯行現場は、ゲストハウスという名の密室。`[\]
 *d60316
 d `郷田と熊沢のマスターキーも破壊され、これで全てのマスターキーが失われた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
 flush 22
@@ -1419,7 +1417,7 @@ flush 22
 d `もう誰にも、ゲストハウスの密室を破ることは出来ない。`[\]
 *d60318
 d `そのはずだった……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -1431,12 +1429,12 @@ wait 1000
 if %bern_game_mode != 0 jumpf
 gstc 132
 seplay 1,61,71
-textoff
+textoff2
 waits 167
 lbg "c:dai",s0_3,"dai_7"
 flush 2
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1450,19 +1448,19 @@ gstc 138
 ~
 bgmplay 142,71,0
 seplay 1,33,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 1
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_p1e"
 flush 22
@@ -1472,11 +1470,11 @@ d `そして、今度は南條先生が殺された。`[\]
 d `殺されたのはゲストハウス内の玄関。`[\]
 *d60321
 d `戸締りの確認に、一人でここに訪れたのは、あまりに無用心が過ぎた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_p1c"
 lss s0_8,"jes","a11_odoroki1" ;1
@@ -1537,7 +1535,7 @@ d [lv 0*"13"*"80400186"]`「じゃあ南條先生は殺せないってことに�
 msgwnd_non
 *d60330
 d `誰にも、その無垢な問い掛けに答えることは出来ない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -1550,7 +1548,7 @@ d `犯行現場は、またしてもゲストハウスという密室。`[\]
 d `数々の状況から、またしても不可能犯罪の様相を深める。`[\]
 *d60334
 d `そして、惨劇は最後の第八の晩を迎える。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
@@ -1560,12 +1558,12 @@ wait 1000
 if %bern_game_mode != 0 jumpf
 gstc 133
 seplay 1,61,71
-textoff
+textoff2
 waits 167
 lbg "c:dai",s0_3,"dai_8"
 flush 2
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1578,7 +1576,7 @@ wait 1000
 gstc 139
 ~
 bgmplay 147,71,0
-textoff
+textoff2
 waits 167
 meplay 1,13,71
 csp_slot s0_11
@@ -1586,7 +1584,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g_o1ar"
 flush 22
@@ -1598,7 +1596,7 @@ d `恐怖を忘れるための麻酔として、朱志香は怒りを選んだ�
 d `彼女は、屋外に潜むに違いない殺人犯を求め、激高しながらゲストハウスを飛び出していく。`[\]
 *d60338
 d `慌てて朱志香を追う、譲治、戦人、真里亞の３人。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"garden_1cn"
 flush 22
@@ -1608,7 +1606,7 @@ d `そして３人は屋外にて、倒れている朱志香を見つける。`[
 d `それは誰が見ても一目でわかる、無残な死体だった……。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1616,7 +1614,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1ar"
 lss s0_9,"geo","b21k_naku1k" ;1
@@ -1647,7 +1645,7 @@ msgwnd_but
 d [lv 0*"10"*"80100621"]`「俺たちは３人でずっと一緒だった！`[@][lv 0*"10"*"80100622"]`　{p:42:俺も譲治の兄貴も真里亞も、朱志香は殺せねぇぞ！}」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1658,7 +1656,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"garden_1cn"
 lss s0_10,"mar","a11_akuwarai1" ;1
@@ -1698,7 +1696,7 @@ msgwnd_but
 d [lv 0*"10"*"80100623"]`「あぁ、何が何だかさっぱりわからねぇぜ…！！`[@][lv 0*"10"*"80100624"]`　一体、何がどうなってやがるんだ…！！」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1709,7 +1707,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1ar"
 flush 22
@@ -1724,11 +1722,11 @@ d `やはり、この島には、右代宮家以外の何者かが潜んでい�
 d `物語の幕は、ここで一度下りる……。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
@@ -1739,9 +1737,9 @@ vol_mix_fade 1000
 wait 1000
 if %bern_game_mode = 1 goto *bern_session_end
 gstc 134
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_8,"ber","a21_shian1" ;1
@@ -1756,20 +1754,20 @@ msgwnd_ber
 *d60352
 d [lv 0*"28"*"82100141"]`「……これで、私の物語はおしまいよ」`[\]
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"lam","a11_futeki2" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
 msgwnd_lam
 *d60353
 d [lv 0*"29"*"82200115"]`「なかなかよく出来てるじゃない。`[@][lv 0*"29"*"82200116"]`ちゃんと朗読したなら、ベアトのゲームに混じってても不思議じゃない物語だったわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1798,13 +1796,13 @@ flush 80
 msgwnd_bea
 *d60357
 d [lv 0*"27"*"80700420"]`「それは魔女を認めるも同じだ。`[@][lv 0*"27"*"80700421"]`……他にも、犯人に協力する共犯者の存在などが疑えるだろうな」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_8,"but","d11_oya1" ;1
@@ -1825,13 +1823,13 @@ flush 80
 msgwnd_but
 *d60360
 d [lv 0*"10"*"80100631"]`「ほう……。`[@][lv 0*"10"*"80100632"]`そりゃ親切な話だな」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"bea","a11_majime2" ;1
@@ -1863,7 +1861,7 @@ msgwnd_ber
 *d60365
 d [lv 0*"28"*"82100150"]`「えぇ、そうよ。`[@][lv 0*"28"*"82100151"]`………私のゲームの、ルールの前提を説明するわ」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1902,7 +1900,7 @@ seplay 1,61,71
 d_continue
 wait_on_d -1
 set_name_window_non
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"ber","a21_defo2" ;1
@@ -1910,7 +1908,7 @@ flush 22
 msgwnd_ber
 *d60367
 d [lv 0*"28"*"82100152"]`「以上よ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"different_space_1c"
@@ -1939,12 +1937,12 @@ msgwnd_bea
 *d60371
 d [lv 0*"27"*"80700427"]`「“犯人でない人物は、真実のみを語る”。`[@][lv 0*"27"*"80700428"]`ありがたい話であるな！」`[\]
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_24,"lam","a11_futeki3" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -1964,7 +1962,7 @@ msgwnd_but
 *d60374
 d [lv 0*"10"*"80100639"]`「やられたな。`[@][lv 0*"10"*"80100640"]`犯人を庇って、アリバイを捏造しているヤツがいると疑ってたんだが…」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1981,7 +1979,7 @@ flush 24
 msgwnd_bea
 *d60376
 d [lv 0*"27"*"80700430"]`「“犯人は全ての殺人を、自らの手で直接行なう”。`[@][lv 0*"27"*"80700431"]`……つまり、トラップなどの遠距離殺人、間接殺人はないというわけだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2008,14 +2006,14 @@ flush 80
 msgwnd_but
 *d60380
 d [lv 0*"10"*"80100643"]`「“犯人は登場人物の中にいる”。`[@][lv 0*"10"*"80100644"]`……未知の人物が島に紛れ込んで、ってのはなしってわけだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"ber","a21_defo1" ;1
@@ -2026,7 +2024,7 @@ flush 80
 msgwnd_ber
 *d60381
 d [lv 0*"28"*"82100154"]`「登場人物は、金蔵を除いた、いつものお約束の１７人よ。`[@][lv 0*"28"*"82100155"]`それ以外は登場しないし、関係もない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"different_space_1c"
@@ -2069,18 +2067,18 @@ msgwnd_ber
 *d60387
 d [lv 0*"28"*"82100159"]`「私からは以上で全てよ。`[@][lv 0*"28"*"82100160"]`……これ以上は、何の質問もヒントも出すつもりはないわ」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"different_space_1c"
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"lam","a11_warai1" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -2091,12 +2089,12 @@ wait_on_d 0
 seplay 1,59,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_10,"but","d11_futeki3" ;1
@@ -2117,13 +2115,13 @@ flush 80
 msgwnd_but
 *d60391
 d [lv 0*"10"*"80100650"]`「あぁ。`[@][lv 0*"10"*"80100651"]`楽しませてもらおうぜ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2a"
 flush 22
@@ -2131,26 +2129,26 @@ set_window_simple 80
 msgwnd_non
 *d60392
 d `……これは、私とあなたの、本当のゲーム。`[@]`{n}紙と筆記用具を用意することをお奨めするわ。`[@]`{n}私と、本当に戦う気があるのならね。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2b"
 flush 22
 *d60393
 d `もしどうしても行き詰まるなら、戦人とベアトの推理に耳を傾けるのもいいかもね。`[@]`{n}それが、あなたがどうしても困った時の、“ヒント”。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2c"
 flush 22
 *d60394
 d `でも、私はあなたと一騎打ちが楽しみたいの。`[@]`{n}あなたも、私との一騎打ちを楽しんでくれるなら。`[@]`{n}ヒントなんて頼らずに、あなたの力だけで私に打ち勝ってみて。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2d"
 flush 22
 *d60395
 d `さぁ、……楽しみましょう？`[@]`{n}あなたのためだけに、生み出した私のゲームを……。`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -2160,41 +2158,41 @@ wait 1000
 vol_mix_fade 1000
 wait 1000
 seplay 3,27,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 wait 1500
 seplay 2,56,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
 flush 8
 wait 667
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 2
 wait 1000
 seplay 3,80,71
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"red_b"
 flush 1
 seplay 1,55,71
-textoff
+textoff2
 seplay 3,80,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 spriteset_enable 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s1_3,"red_b"
 aspritesetpt breakup,1,0
@@ -2204,13 +2202,13 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 seplay 2,80,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2d"
 spriteset_enable 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s1_1,"white"
 lbg "c:colour",s1_3,"white"
@@ -2225,10 +2223,10 @@ csp -11
 flush 1
 seplay 1,52,71
 *uu_uu_0x61551d
-textoff
+textoff2
 waits 167
 csp -10
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2d"
 vol_mix_fade 1000
@@ -2276,7 +2274,7 @@ gstc 135
 goto *bern_session_start
 *bern_session_end
 goto *uu_uu_0x61551d
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -2286,7 +2284,7 @@ flush 2
 ;Set switch from 6 to reg0, default ハニャーン
 ;Set switch from 6 to reg0, default ハニャーン
 *uu_uu_0x620d86
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -2294,7 +2292,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 140
 bgmplay 27,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_10,"bea","a11_majime2" ;1
@@ -2310,12 +2308,12 @@ msgwnd_but
 *d60570
 d [lv 0*"10"*"80100652"]`「赤き真実並に重要な発言だってことはわかってるんだ。`[@][lv 0*"10"*"80100653"]`だが、犯人のウソが混じってる」`[\]
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_24,"lam","a11_majime1" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -2341,13 +2339,13 @@ msgwnd_bea
 *d60574
 d [lv 0*"27"*"80700444"]`「この大量の紫の中の、どれが一体ウソなのか。`[@][lv 0*"27"*"80700445"]`……考えるだけで頭が痛くなるというものよ」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_10,"but","d24_futeki1" ;1
@@ -2392,13 +2390,13 @@ flush 80
 msgwnd_but
 *d60581
 d [lv 0*"10"*"80100663"]`「そういうことさ。`[@][lv 0*"10"*"80100664"]`必ずいるはずだ。丹念に探してみよう」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"lam","a11_majime1" ;1
@@ -2416,7 +2414,7 @@ flush 24
 msgwnd_ber
 *d60583
 d [lv 0*"28"*"82100161"]`「………お手並み拝見と行くわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2429,7 +2427,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x621d2c
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -2437,7 +2435,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 141
 bgmplay 32,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_10,"bea","a11_1_majime3star" ;1
@@ -2458,13 +2456,13 @@ flush 80
 msgwnd_bea
 *d60586
 d [lv 0*"27"*"80700453"]`「ほう、それはわかりやすい！`[@][lv 0*"27"*"80700454"]`　ほとんどの人物は殺された。`[@][lv 0*"27"*"80700455"]`それらの人物の紫は全て信用できるというわけか！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_9,"but","d11_majime6" ;1
@@ -2496,7 +2494,7 @@ flush 23
 msgwnd_but
 *d60591
 d [lv 0*"10"*"80100672"]`「とにかく、犠牲者全員の検死を、もう一度見直すんだ。`[@][lv 0*"10"*"80100673"]`紫発言なんてあやふやなものじゃなくて、絶対確実に死んだ人間を探すんだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2509,7 +2507,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x6226c0
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -2517,7 +2515,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 142
 bgmplay 29,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_10,"bea","a13_futeki1" ;1
@@ -2532,13 +2530,13 @@ flush 23
 msgwnd_but
 *d60593
 d [lv 0*"10"*"80100674"]`「おう、俺も今、気付いたとこだ。`[@][lv 0*"10"*"80100675"]`ベルンカステルは赤き真実で、ト書き部分にはウソがないことを宣言している」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_8,"lam","a11_akuwarai2" ;1
@@ -2553,13 +2551,13 @@ flush 24
 msgwnd_ber
 *d60595
 d [lv 0*"28"*"82100162"]`「……気付かなくちゃ始まらないわよ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"bea","a13_1_majime5star" ;1
@@ -2594,7 +2592,7 @@ msgwnd_bea
 *d60600
 d [lv 0*"27"*"80700465"]`「うむッ、頭からもう一度探すぞ！」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -2606,7 +2604,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x623179
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -2614,7 +2612,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 143
 bgmplay 27,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"bea","a11_warai2" ;1
@@ -2666,12 +2664,12 @@ msgwnd_bea
 *d60607
 d [lv 0*"27"*"80700471"]`「うむ！！　そういうことだ！」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 flush 22
@@ -2680,11 +2678,11 @@ msgwnd_non
 d `二人はパンと手を打ち合わせる。`[\]
 *d60609
 d `ようやく、最初の大きな手掛りが見つかった。`[@]`{n}針の混じったパンの、安全な一切れ。`[@]`{n}信頼できる紫の発言の一部を見つける。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_10,"bea","a11_1_majime6" ;1
@@ -2715,13 +2713,13 @@ flush 80
 msgwnd_bea
 *d60614
 d [lv 0*"27"*"80700476"]`「つまり、南條と朱志香が死亡を確認した人物もまた、犯人ではないことが確実になるというわけだ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_8,"lam","a11_futeki2" ;1
@@ -2736,13 +2734,13 @@ flush 24
 msgwnd_ber
 *d60616
 d [lv 0*"28"*"82100163"]`「……不思議なものね。`[@][lv 0*"28"*"82100164"]`順調だと悔しいけれど、……行き詰られても、それはそれで退屈だわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"but","d11_defo1" ;1
@@ -2757,7 +2755,7 @@ flush 23
 msgwnd_bea
 *d60618
 d [lv 0*"27"*"80700477"]`「うむ！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2770,7 +2768,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x624406
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -2778,7 +2776,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 144
 bgmplay 71,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 flush 22
@@ -2823,7 +2821,7 @@ flush 80
 msgwnd_but
 *d60624
 d [lv 0*"10"*"80100693"]`「第五、第六の晩の、郷田さんと熊沢さんの死亡も確認している」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2845,13 +2843,13 @@ flush 80
 msgwnd_bea
 *d60627
 d [lv 0*"27"*"80700483"]`「南條、朱志香、蔵臼、`[@][lv 0*"27"*"80700484"]`夏妃、紗音、嘉音、`[@][lv 0*"27"*"80700485"]`郷田、熊沢。`[@][lv 0*"27"*"80700486"]`この８人は犯人ではない！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_10,"lam","a11_odoroki3" ;1
@@ -2866,13 +2864,13 @@ flush 24
 msgwnd_ber
 *d60629
 d [lv 0*"28"*"82100165"]`「……ここまでは順当でしょ。`[@][lv 0*"28"*"82100166"]`ここからよ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_10,"bea","a11_1_warai1" ;1
@@ -2890,7 +2888,7 @@ flush 23
 msgwnd_but
 *d60631
 d [lv 0*"10"*"80100697"]`「あぁ！`[@][lv 0*"10"*"80100698"]`　新しく犯人でないことがわかった人物の紫発言も確認するぞ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2903,7 +2901,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x625351
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -2911,7 +2909,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 145
 bgmplay 78,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_8,"bea","a11_defo2" ;1
@@ -2947,13 +2945,13 @@ d [lv 0*"27"*"80700494"]`「そうそう、紗音と熊沢の紫発言で、第�
 lss s0_10,"but","d22_nayamu1" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 80
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"but","d22_niramu1" ;1
@@ -2969,12 +2967,12 @@ msgwnd_bea
 *d60638
 d [lv 0*"27"*"80700495"]`「なぜか？`[@][lv 0*"27"*"80700496"]`　紗音と熊沢の発言は信用できるのではないか？」`[\]
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_24,"lam","a11_akuwarai3" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -3011,13 +3009,13 @@ msgwnd_but
 *d60644
 d [lv 0*"10"*"80100709"]`「そういうことだ。`[@][lv 0*"10"*"80100710"]`子供が嘘をついている可能性が、否定できない以上、まだ食堂の連中全員を疑いから外すわけにはいかない」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_9,"bea","a11_fukigen1" ;1
@@ -3064,7 +3062,7 @@ flush 80
 msgwnd_bea
 *d60651
 d [lv 0*"27"*"80700508"]`「うむ。`[@][lv 0*"27"*"80700509"]`ようやくミステリーらしくなってきたというところよ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -3077,7 +3075,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x6268bc
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -3085,7 +3083,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 146
 bgmplay 52,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"but","d11_majime4" ;1
@@ -3106,24 +3104,24 @@ flush 80
 msgwnd_but
 *d60654
 d [lv 0*"10"*"80100719"]`「マスターキーは使用人にしか使えない。`[@][lv 0*"10"*"80100720"]`渡せもしない。`[@][lv 0*"10"*"80100721"]`そして犯人でない人物は犯人に協力しないのだから、犯行にマスターキーを用いることは出来ないんだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"key2"
 flush 22
 msgwnd_non
 *d60655
 d `使用人５人全員がシロであることが保証されている以上、`[@]`マスターキーは、事件には絡まないということになる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"bea","a11_1_odoroki3" ;1
@@ -3151,7 +3149,7 @@ flush 24
 msgwnd_but
 *d60659
 d [lv 0*"10"*"80100725"]`「もう一度、じっくりと読み直してみよう。`[@][lv 0*"10"*"80100726"]`……使用人は全員シロなんだ。`[@][lv 0*"10"*"80100727"]`マスターキーは使えない。`[@][lv 0*"10"*"80100728"]`そこを念頭に、もう一度考えるんだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -3164,7 +3162,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x627403
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -3172,7 +3170,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 147
 bgmplay 6,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"bea","a11_majime1" ;1
@@ -3223,13 +3221,13 @@ flush 80
 msgwnd_but
 *d60667
 d [lv 0*"10"*"80100735"]`「この赤き真実がある以上、やはり食堂の６人は死んでいたってことになる。`[@][lv 0*"10"*"80100736"]`なら、外部の人間がどうやって食堂に施錠を。`[@][lv 0*"10"*"80100737"]`マスターキーを使わずに……」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"bea","a11_futeki2" ;1
@@ -3269,13 +3267,13 @@ flush 80
 msgwnd_but
 *d60673
 d [lv 0*"10"*"80100743"]`「もう一度その部分を読み直したい。`[@][lv 0*"10"*"80100744"]`探してみよう。`[@][lv 0*"10"*"80100745"]`不自然なタイミングで言われたような、そんな違和感を覚えるんだ…」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_10,"ber","a21_warai3" ;1
@@ -3290,7 +3288,7 @@ flush 23
 msgwnd_lam
 *d60675
 d [lv 0*"29"*"82200133"]`「この二人、さすがね。`[@][lv 0*"29"*"82200134"]`勘も実に冴えてるわ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3303,7 +3301,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x62852f
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -3311,7 +3309,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 148
 bgmplay 17,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_8,"bea","a11_majime1" ;1
@@ -3345,13 +3343,13 @@ flush 80
 msgwnd_bea
 *d60680
 d [lv 0*"27"*"80700538"]`「“蔵臼夫妻だけが戻ってこない”ということはつまり、………それ以外の人間は全員、客間に戻ってきたということか」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"but","d11_nayamu4" ;1
@@ -3372,7 +3370,7 @@ flush 24
 msgwnd_but
 *d60683
 d [lv 0*"10"*"80100756"]`「……そういえば。`[@][lv 0*"10"*"80100757"]`……その推理を口にしたら、俺は赤き真実を食らったんだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3383,7 +3381,7 @@ msgwnd_non
 d `食堂の誰かが生きていて、蔵臼夫妻を殺した、という俺の推理。`[\]
 *d60685
 d `それに対し、赤き真実で、“第一の晩の犯人は確実に６人を殺してる”と反論されたんだ……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_10,"bea","a11_majime2" ;1
@@ -3406,7 +3404,7 @@ wait_on_d 1
 meplay 1,17,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -3418,7 +3416,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x6292e3
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -3426,7 +3424,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 149
 bgmplay 29,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"but","d11_majime4" ;1
@@ -3458,7 +3456,7 @@ flush 23
 msgwnd_but
 *d60692
 d [lv 0*"10"*"80100769"]`「そういうことだ！`[@][lv 0*"10"*"80100770"]`　やはり、食堂の６人の中に犯人が混じって死んだフリをしていたんだ！`[@][lv 0*"10"*"80100771"]`　そしてそいつは食堂を抜け出し、夏妃伯母さんの部屋で２人を殺して、内側から施錠して室内に隠れたんだ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3469,7 +3467,7 @@ msgwnd_non
 d `犯人は食堂では５人しか殺せなかったろう。`[\]
 *d60694
 d `しかし、第二の晩の犠牲者を足せば、確実に６人は殺していることになると言い切れる…！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_9,"bea","a11_iiwake3" ;1
@@ -3521,7 +3519,7 @@ flush 80
 msgwnd_but
 *d60702
 d [lv 0*"10"*"80100778"]`「この推理で間違っていないはずなんだが……。`[@][lv 0*"10"*"80100779"]`……もう一捻り………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3534,7 +3532,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x62a1c6
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -3542,7 +3540,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 150
 bgmplay 68,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"but","d11_futeki2" ;1
@@ -3570,13 +3568,13 @@ flush 80
 msgwnd_bea
 *d60706
 d [lv 0*"27"*"80700558"]`「確かに…！`[@][lv 0*"27"*"80700559"]`　犯人でない者は犯人に協力しないことになっているからな…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_8,"but","d11_futeki3" ;1
@@ -3628,7 +3626,7 @@ flush 24
 msgwnd_bea
 *d60714
 d [lv 0*"27"*"80700565"]`「よし……。`[@][lv 0*"27"*"80700566"]`その３人に注目して、以後の事件を追ってみようではないか…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -3641,7 +3639,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x62af80
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -3649,7 +3647,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 151
 bgmplay 95,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"but","d24_komaru2" ;1
@@ -3694,7 +3692,7 @@ flush 80
 msgwnd_but
 *d60721
 d [lv 0*"10"*"80100806"]`「ここからは事件のペースが早い。`[@][lv 0*"10"*"80100807"]`これだけに固執せず、次の第五の晩の事件も見てみようぜ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3707,7 +3705,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x62b8a8
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -3715,7 +3713,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 152
 bgmplay 71,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_10,"bea","a11_1_majime5star" ;1
@@ -3780,13 +3778,13 @@ msgwnd_non
 d `戦人たちはニヤリと笑い合う。`[\]
 *d60733
 d `数々の知的ゲームにて死線を潜った。`[@]`{n}これくらいの謎で、へこたれるわけにはいかない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"but","d11_oya1" ;1
@@ -3801,7 +3799,7 @@ flush 80
 msgwnd_bea
 *d60735
 d [lv 0*"27"*"80700587"]`「そうだな、気を引き締めて行こう！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3814,7 +3812,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x62c61e
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -3822,7 +3820,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 153
 bgmplay 39,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_8,"but","d24_komaru2" ;1
@@ -3852,13 +3850,13 @@ d [lv 0*"27"*"80700592"]`「つまりこれは、`[@][lv 0*"27"*"80700593"]`…�
 lss s0_8,"but","d11_futeki2" ;1
 spt_mem "a2","xpos",s0_8,-370
 flush 80
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"but","d11_futeki2" ;1
@@ -3891,7 +3889,7 @@ flush 80
 msgwnd_but
 *d60744
 d [lv 0*"10"*"80100833"]`「この、食堂の犠牲者５人の中の、何人が死んだフリをしていたかって問題なわけか。`[@][lv 0*"10"*"80100834"]`……いよいよだな。`[@][lv 0*"10"*"80100835"]`面白くなってきたぜ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -3904,7 +3902,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x62d2fb
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -3912,7 +3910,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 154
 bgmplay 32,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_10,"but","d11_oya1" ;1
@@ -3950,13 +3948,13 @@ flush 80
 msgwnd_bea
 *d60750
 d [lv 0*"27"*"80700607"]`「ではあるが、どちらもシロであると確定できぬ…」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"but","d11_nayamu2" ;1
@@ -3977,24 +3975,24 @@ flush 24
 msgwnd_but
 *d60753
 d [lv 0*"10"*"80100845"]`「そうだな。`[@][lv 0*"10"*"80100846"]`いよいよ最後の詰めに入ってきたようだぜ！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 flush 22
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"lam","a11_akuwarai3" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -4007,7 +4005,7 @@ flush 22
 msgwnd_ber
 *d60755
 d [lv 0*"28"*"82100168"]`「…………まな板の上の何とやらの心境よ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -4020,7 +4018,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x62e0c7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -4028,7 +4026,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 155
 bgmplay 19,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"but","d11_majime1" ;1
@@ -4059,13 +4057,13 @@ flush 80
 msgwnd_but
 *d60760
 d [lv 0*"10"*"80100852"]`「……そうだな。`[@][lv 0*"10"*"80100853"]`絵羽伯母さんたち４人の誰かが死んだフリをするためには、それを検死する子供も犯人でなくてはならない。`[@][lv 0*"10"*"80100854"]`つまり、真里亞が犯人である時点で、犯人は４人にまで膨れ上がるわけだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 lss s0_9,"bea","a11_majime2" ;1
@@ -4115,7 +4113,7 @@ flush 23
 msgwnd_bea
 *d60768
 d [lv 0*"27"*"80700624"]`「真里亞が犯人である時点で、楼座以外にもう１人大人が必要になる。`[@][lv 0*"27"*"80700625"]`だが、その検死を偽れるもう１人の子供の犯人は、存在できないのだ。`[@][lv 0*"27"*"80700626"]`……つまり、真里亞が犯人であることはありえない…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -4128,7 +4126,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x62efd9
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -4136,7 +4134,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 156
 bgmplay 112,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"but","d11_nayamu4" ;1
@@ -4146,13 +4144,13 @@ msgwnd_but
 *d60769
 d [lv 0*"10"*"80100862"]`「次に、譲治犯人説を検証してみよう。`[@][lv 0*"10"*"80100863"]`子供の犯人は１人しか存在できない。`[@][lv 0*"10"*"80100864"]`よって、譲治の兄貴が犯人である時点で、絵羽伯母さんと秀吉伯父さん以外に、死んだフリが出来る人物は存在しない」`[\]
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"lam","a11_akuwarai4" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -4194,7 +4192,7 @@ msgwnd_bea
 *d60776
 d [lv 0*"27"*"80700630"]`「つまり、譲治はシロということだ…！`[@][lv 0*"27"*"80700631"]`　となれば、譲治の紫発言は全て信頼できるものになるということだな…！」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -4207,7 +4205,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x62f8bc
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -4215,7 +4213,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 157
 bgmplay 124,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"bea","a11_1_majime6" ;1
@@ -4250,7 +4248,7 @@ d [lv 0*"27"*"80700636"]`「もう、ほとんど絞り込まれたな……。`
 lss s0_10,"but","d11_futeki1" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 80
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -4263,7 +4261,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x62ff77
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -4271,7 +4269,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 158
 bgmplay 125,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_9,"but","d11_majime2" ;1
@@ -4316,7 +4314,7 @@ flush 80
 msgwnd_but
 *d60788
 d [lv 0*"10"*"80100886"]`「大人２人、子供１人。`[@][lv 0*"10"*"80100887"]`これが犯人グループの構成ってわけだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -4329,7 +4327,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x63079d
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -4337,7 +4335,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 159
 bgmplay 126,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"bea","a11_defo2" ;1
@@ -4370,7 +4368,7 @@ flush 80
 msgwnd_bea
 *d60793
 d [lv 0*"27"*"80700649"]`「犯人は誰と誰と誰か。`[@][lv 0*"27"*"80700650"]`これ以上、もったいぶることもあるまい？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -4383,7 +4381,7 @@ vol_mix_fade 1000
 wait 1000
 goto *uu_uu_0x61551d
 *uu_uu_0x630d78
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -4391,7 +4389,7 @@ vol_mix_fade 1000
 wait 1000
 gstc 160
 bgmplay 127,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1a"
 lss s0_8,"but","d11_futeki5" ;1
@@ -4424,24 +4422,24 @@ flush 23
 msgwnd_but
 *d60798
 d [lv 0*"10"*"80100897"]`「もう、これ以上の議論もヒントも必要ないな。`[@][lv 0*"10"*"80100898"]`ズバリ、解答と行こう…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_1c"
 flush 22
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"lam","a11_akuwarai1" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -4454,7 +4452,7 @@ flush 22
 msgwnd_ber
 *d60800
 d [lv 0*"28"*"82100169"]`「……見事だわ。`[@][lv 0*"28"*"82100170"]`……やっぱり、この程度のミステリーじゃ、この二人には通用しなかったわね」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10

@@ -1,15 +1,13 @@
 *umi4_9
 ;さくたろ
 log_reset
-mov $name_chapter_r_click,r_click_chapters_4_9
-mov $name_chapter_r_click_l2,r_click_chapters_4_9_l2
-mov $name_chapter_r_click_l3,r_click_chapters_4_9_l3
+mov $name_chapter_r_click,r_click_chapters_4_9+"|"+r_click_chapters_4_9_l2+"|"+r_click_chapters_4_9_l3
 mov $name_chapter_save, "4_09"
 new_chapter date_scenario_4_9,scenario_4_9
 gstc 242
 wait 2000
 bgmplay 91,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_m1ar"
 flush 42
@@ -28,13 +26,13 @@ flush 10,167
 msgwnd_mar
 *d24962
 d [lv 0*"13"*"40400878"]`「………………………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:cg/sak",s0_3,"sakutaro2bb"
 flush 2
@@ -46,7 +44,7 @@ msgwnd_non
 d `さくたろが悲しそうに真里亞を見上げる。`[\]
 *d24965
 d `真里亞の表情は、泣き腫らし、悲しみの感情さえ失ったように見えた…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_m1ar"
 lss s0_9,"mar","c12_komaru1" ;1
@@ -70,7 +68,7 @@ msgwnd_non
 d `さくたろは後悔する。`[@]`真里亞は心を凍らせることで、ようやく悲しみから逃れられていたのだ。`[\]
 *d24969
 d `…それを、声を掛けて呼び戻してしまったから、また悲しみに囚われてしまった…。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,3,71
 csp_slot s0_8
@@ -144,7 +142,7 @@ flush 10,167
 msgwnd_mar
 *d24981
 d [lv 0*"13"*"40400892"]`「……さくたろ、大きいから見つかっちゃうね」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -162,7 +160,7 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"ros_m1ar"
@@ -225,7 +223,7 @@ wait_on_d -1
 msgwnd_non
 *d24991
 d `真里亞の表情がようやく、わずかに明るさを取り戻す。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -239,7 +237,7 @@ d `縁寿がいなくても、みんなが一緒で楽しかった。`[\]
 d `なのに、最後に入ってきた縁寿が抜けただけで、急に悲しくなるのはおかしい。`[\]
 *d24995
 d `…縁寿が入る直前の世界に戻っただけじゃないか。`[@]`{n}……なら、悲しいわけなんかないんだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_m1ar"
 lss s0_9,"mar","c11_fukigen2" ;1
@@ -281,7 +279,7 @@ flush 10,167
 msgwnd_sak
 *d25000
 d [lv 0*"33"*"44200340"]`『……縁寿のことは、また仲良しになれるまで、当分は忘れていていいと思うよ。`[@][lv 0*"33"*"44200341"]`真里亞がまた元気を取り戻せたら、一緒に遊べばいいよ。`[@][lv 0*"33"*"44200342"]`それまで、ボクたちみんなが、ずっと側にいるからね』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -290,12 +288,12 @@ flush 5
 msgwnd_mar
 *d25001
 d [lv 0*"13"*"40400909"]`「………ありがと。`[@][lv 0*"13"*"40400910"]`……さくたろ、……みんな」`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 vol_bgm -1,3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sky_1a"
 flush 22
@@ -309,7 +307,7 @@ d `学校では相変わらず、ニンゲンの友達はいないけれど、�
 d `ポケットに忍ばせたうさぎの音楽隊は、授業中にもポケットの中でくすくすと楽しそうにお話をしている。`[\]
 *d25005
 d `それに耳を傾けるだけで、寂しい授業時間がとても彩られた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_r1a"
 flush 22
@@ -317,11 +315,11 @@ flush 22
 d `ママと先生にさえ見つからないなら、他の友達とも常に一緒にいるようにした。`[\]
 *d25007
 d `ママに、お外で遊んできなさいと言われた時は、こっそりカバンにさくたろやさくすけたちを詰めて行って、図書館とかで一緒に遊んだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"moon_2a"
 flush 6
@@ -335,7 +333,7 @@ d `ママにそれを見つかると、さくたろたちを連れてきちゃ�
 d `先生にそれを見つかると、おもちゃを学校に持ってきちゃ駄目と怒られる。`[\]
 *d25012
 d `きっと、ママと先生は毒素が強いんだ。`[@]`だからさくたろたちが、ただのぬいぐるみに見えちゃうんだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -343,7 +341,7 @@ flush 22
 d `だって、コンビニのおじさんたちは、さくたろにも挨拶してくれるよ。`[\]
 *d25014
 d `………ニンゲンみんなが駄目なんじゃない。`[@]`縁寿やママや先生と違って、私みたいに魔法の友達と挨拶が出来る人だって大勢いるんだ……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"con_i1a"
 flush 6
@@ -379,7 +377,7 @@ d [lv 0*"13"*"40400914"]`「今日はね、森の音楽隊のうさぎさんた�
 msgwnd_non
 *d25020
 d `真里亞は、陶製のうさぎの人形を４つ、レジの上に並べ始める。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -391,7 +389,7 @@ d `店長のおじさんはそれを微笑ましそうに見ると、アルバ�
 d `すると、もうひとつのレジの、準備中という札が下げられ、お待ちの方こちらにどうぞーと声が掛けられた。`[\]
 *d25023
 d `真里亞の後に並んでいた人たちは全員、そちらに並び直す…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"con_i1a"
 flush 26
@@ -427,7 +425,7 @@ d [lv 0*"99"*"shopma4013"]`「うさぎの鳴き声って、きゅーきゅー�
 d `真里亞は、ナップザックから顔をのぞかせるさくたろに微笑みかけながら、`[@]`レジの上のうさぎの音楽隊を、戯れあうようにいじって遊ぶのだった。`[\]
 *d25031
 d `店長はその様子を微笑ましく眺めながらも、少しだけ気の毒そうな表情を浮かべる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -441,7 +439,7 @@ d `その上、友達もいる様子がない。`[\]
 d `なのに、こうしてぬいぐるみたちと楽しく遊んで、寂しくないと言い張る少女に、`[@]`ささやかな同情を感じずにはいられなかった。`[\]
 *d25035
 d `実はこれは、彼に限ったことではない。`[@]`この商店街では、真里亞のことはとても有名になっていたのだ…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"con_i1a"
 flush 2
@@ -491,13 +489,13 @@ d `メニューを人に決めてもらうと、意外な食事になって、�
 *d25046
 d `……真里亞は自分ひとりで夕食を決めなければならないことが多かったので、メニューも偏りやすい。`[@]`だから、そういう予期せぬ食事に楽しさを感じるのだった…。`[\]
 meplay 1,30,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cit_3a"
 lss s0_9,"sak","a11_warai1" ;1
@@ -523,28 +521,28 @@ d [lv 0*"13"*"40400932"]`「うー！`[@][lv 0*"13"*"40400933"]`　おじさん�
 msgwnd_non
 *d25050
 d `真里亞は、おでんの容器の入ったレジ袋を高々と上げるのだった……。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 5
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"moon_2a"
 flush 2
 vol_bgm 0,4000
 vol_me 1,50,4000
 wait 4000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 seplay 1,32,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_o1an"
 lss s0_9,"mar","c12_odoroki1" ;1
@@ -588,7 +586,7 @@ flush 10,167
 msgwnd_mar
 *d25053
 d [lv 0*"13"*"40400936"]`「………ポケットに鍵がない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -601,11 +599,11 @@ d `自宅の扉の前で、真里亞はぱたぱたと全身を探る。`[@]`{n}
 d `いつも几帳面に同じポケットに入れる。`[@]`だから他のポケットに入れてしまったわけはないのだが、念のため全身を探る。`[\]
 *d25056
 d `……やっぱりなかった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_o1an"
 lss s0_10,"sak","a11_komaru1" ;1
@@ -660,7 +658,7 @@ msgwnd_non
 d `あるはずのものが、あるべきところにない。`[@]`{n}自分は悪くないのに、なぜか鍵がない。`[\]
 *d25065
 d `……何でないの？！`[@]`{n}どうしてッ！`[@]`　どうして…ッ！！！`[\]
-textoff
+textoff2
 waits 167
 seplay 1,11,71
 agpt quakeycycle,50
@@ -678,7 +676,7 @@ gptwait quakeyamp
 d `真里亞は寒くて悔しくて腹立たしくて、地団太を踏む…。`[@]`{n}足の裏がジンジンするが、それでも悔しいのが収まることはない。`[\]
 *d25067
 d `……その内、ぽろぽろと悔し涙まで零れ出す。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
@@ -767,14 +765,14 @@ flush 10,167
 msgwnd_sak
 *d25073
 d [lv 0*"33"*"44200361"]`『…真里亞……、悔しいけど探そ…？`[@][lv 0*"33"*"44200362"]`　誰も悪くないよ…、探そ…』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 2
 meplay 2,30,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"moon_2a"
 flush 22
@@ -792,31 +790,31 @@ d [lv 0*"13"*"40400952"]`「………うー。`[@][lv 0*"13"*"40400953"]`……�
 msgwnd_non
 *d25078
 d `さくたろに励まされながら、鍵を探す真里亞…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cit_3a"
 flush 6
 *d25079
 d `しかし、おでんを買ったコンビニまで戻ってきてしまう。`[@]`{n}……見つからなかったのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"con_i1a"
 flush 24
 *d25080
 d `念のため、コンビニのおじさんに、鍵の落し物がなかったか聞くが、`[@]`見つかっていないとのことだった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"moon_2a"
 flush 2
@@ -839,7 +837,7 @@ d [lv 0*"13"*"40400956"]`「………何で見つからないの…。`[@][lv 0*
 msgwnd_sak
 *d25088
 d [lv 0*"33"*"44200371"]`『真里亞、泣かないで…！`[@][lv 0*"33"*"44200372"]`　頑張って探そ…！`[@][lv 0*"33"*"44200373"]`　………真里亞……』`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 26
@@ -850,18 +848,18 @@ d `真里亞はもう、涙を堪えることは出来なかった。`[\]
 d `しくしくと泣きながら、さくたろを抱いて、おでんの袋を持って、もう一度来た道を戻る。`[\]
 *d25091
 d `深夜になり、灯りを消した家や店が増えたせいか、より暗くなり、探しにくかった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cit_3a"
 flush 2
 *d25092
 d `……そして、また鍵を見つけられないまま、コンビニに戻ってきてしまう。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
 vol_me 2,-1,1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"con_i1a"
 flush 24
@@ -900,7 +898,7 @@ flush 10,167
 msgwnd_mar
 *d25100
 d [lv 0*"13"*"40400963"]`「……………………………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
@@ -914,7 +912,7 @@ d `だから真里亞に、大人に目を付けられないよう、買い物�
 d `真里亞は、それらに素直に従った。`[\]
 *d25104
 d `どうしてそうしなくてはならないかを考えるよりは、`[@]`母がそう言うのだから従わねばならないという素直さの方がはるかに上回った。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"moon_2a"
 flush 26
@@ -922,7 +920,7 @@ flush 26
 d `だが、それを聞いたコンビニの店長はそうは思わなかっただろう。`[\]
 *d25106
 d `……元々、このような幼い子が、ひとりで留守番を強いられ、`[@]`しかもそれが頻繁にあることが気になるのは、当然のことだった……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cit_3a"
 flush 6
@@ -999,7 +997,7 @@ d `……自分がどうしてお巡りさんに怒られているのかわか�
 d `いや、怒られているわけではないだろうが、母の耳に入ればきっと怒られるに違いないのだ。`[\]
 *d25122
 d `どうして怒られるのかという理由はわからなくても、それだけは理解できた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -1008,7 +1006,7 @@ flush 25
 d `しかし、お巡りさんは真里亞を解放してはくれなかった。`[@]`{n}それに空腹で頭もくらくらしてきた。`[\]
 *d25124
 d `それにお巡りさんも気付き、交番で食事をしながら話を聞こうということになった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"moon_2a"
 flush 25
@@ -1022,7 +1020,7 @@ d `…それに、このままじゃお家に帰れないし、どうすれば�
 d `………誰にも教えちゃいけなくて、本当の本当に大変な時にしか掛けちゃ駄目だよと言われた、`[@]`……ママの仕事先の電話番号を教えてしまう。`[\]
 *d25129
 d `交番の奥の畳の部屋で、火傷しそうなくらい熱くなったおでんを食べながら、`[@]`お巡りさんが電話するのを見て、……あぁ、私は怒られるだろうなとぼんやり考えていた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1032,12 +1030,12 @@ d [lv 0*"13"*"40400970"]`「…………真里亞、…ママに怒られるか�
 msgwnd_sak
 *d25131
 d [lv 0*"33"*"44200374"]`『……うりゅ………』`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"off_1a"
 flush 22
@@ -1049,7 +1047,7 @@ d `だいぶ長くコール音を聞いているのだろうか。`[@]`お巡り
 d [lv 0*"99"*"polima4010"]`「…………営業時間終えちゃってるから出ないのかなぁ。`[@][lv 0*"99"*"polima4011"]`……んーー。`[@][lv 0*"99"*"polima4012"]`……あ？`[@][lv 0*"99"*"polima4013"]`　もしもし？`[@][lv 0*"99"*"polima4014"]`　もしもし？`[@][lv 0*"99"*"polima4015"]`　有限会社アンチローザさんで？」`[\]
 *d25134
 d [lv 0*"99"*"polima4016"]`「こちら、小松川警察署千本桜駅前交番でございます。`[@][lv 0*"99"*"polima4017"]`えぇっと、ウダイカン、…じゃないや、右代宮社長さんはいらっしゃいますか？`[gstg 6][@][lv 0*"99"*"polima4018"]`　…………はい。`[@][lv 0*"99"*"polima4019"]`……えぇ？`[@][lv 0*"99"*"polima4020"]`　休暇中ぅ？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1064,21 +1062,21 @@ d [lv 0*"99"*"staffa4004"]`「あー、……ちょっとお待ちいただい�
 d [lv 0*"99"*"staffb4001"]`「彼氏と札幌カニ食い放題って聞きましたァ。`[@][lv 0*"99"*"staffb4002"]`いいなァ、寒いとこだと、自然と二人の距離も縮まるのよねェ〜。`[@][lv 0*"99"*"staffb4003"]`連絡先は聞いてないよォ」`[\]
 *d25139
 d [lv 0*"99"*"staffa4007"]`「うん、了解ー。`[@][lv 0*"99"*"staffa4008"]`……あー、もしもしー。`[@][lv 0*"99"*"staffa4009"]`札幌に行ってるそうですけど、連絡先まではちょっとわかりません。`[@][lv 0*"99"*"staffa4010"]`……ご伝言しますかー？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"off_1a"
 flush 22
 *d25140
 d [lv 0*"99"*"polima4024"]`「んー、そうですかぁ、参ったなぁ。`[@][lv 0*"99"*"polima4025"]`じゃあ、もし連絡がつきましたら、こちらから電話があったとお伝えできますか。`[@][lv 0*"99"*"polima4026"]`えぇ、はい」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"moon_2a"
 flush 6
@@ -1091,7 +1089,7 @@ d `そして、私のことを色々と聞かれた。`[\]
 d `民生委員のおばさんと名乗る人がやって来て、色々と話を聞かれた。`[\]
 *d25144
 d `そして、可哀想にね、と言われた。`[@]`{n}それを聞いて初めて、私は知った。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1105,28 +1103,28 @@ msgwnd_mar
 *d25147
 d [lv 0*"13"*"40400972"]`「……………うー…」`[\]
 gstc 243
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 vol_bgm -1,3000
 wait 3000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"beach_l1a"
 flush 6
 bgmplay 91,71,0
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"beach_l2a"
 flush 2
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_r1ar"
 lss s0_9,"ros","c11_ikari3" ;1
@@ -1136,7 +1134,7 @@ msgwnd_non
 d `そして、……楼座は帰ってきた。`[\]
 *d25149
 d `真里亞は部屋にいなさいと言われていたが、`[@]`……トイレに行った帰りに、居間の入り口の脇に隠れ、そのやり取りに耳を傾けていた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"ros_r1ar"
@@ -1158,7 +1156,7 @@ rumble 63,500
 gptwait quakeyamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_3,"ros_r1ar"
@@ -1218,7 +1216,7 @@ msgwnd_ros
 d [lv 0*"12"*"41400147"]`「ラ、ライオンのぬいぐるみなんてどこにでもあります！！`[@][lv 0*"12"*"41400148"]`　自宅まで送るなんて余計なお世話ですッ！！`[@][lv 0*"12"*"41400149"]`　真里亞を誘拐するつもり？！」`[\]
 *d25160
 d [lv 0*"12"*"41400150"]`「真里亞に構わないで！！`[@][lv 0*"12"*"41400151"]`　真里亞は私の子です。`[@][lv 0*"12"*"41400152"]`私が育ててます！`[@][lv 0*"12"*"41400153"]`　おかしな施設に入れるつもりもまるでありません！！`[@][lv 0*"12"*"41400154"]`　余計なお節介は止めて！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"ros_p1ar"
@@ -1237,13 +1235,13 @@ d [lv 0*"13"*"40400973"]`「……大丈夫だよ。`[@][lv 0*"13"*"40400974"]`�
 msgwnd_non
 *d25163
 d `真里亞はさくたろを抱き締め、怯えながら母の様子をうかがい続ける…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_r1ar"
 lss s0_9,"ros","c11_ikari3" ;1
@@ -1342,18 +1340,18 @@ rumble 63,500
 gptwait quakexamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,1006,100
 seplay 2,1006,71
 seplay 3,12,71
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 1
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_r1ar"
 flush 22
@@ -1364,7 +1362,7 @@ d `楼座は髪を振り乱しながら激昂する。`[\]
 d `立ち上がった時の勢いでティーカップが倒れ、`[@]`その音よりも遥かに大きい音で何度もテーブルを両手で叩いた。`[\]
 *d25175
 d `白目を剥いて錯乱している、という表現すらも充分に妥当と思えるその激昂ぶりに、`[@]`民生委員の女性は仰け反らずにはいられない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
@@ -1376,12 +1374,12 @@ d `母が激昂するところを何度も見てきた。`[@]`{n}でも、こん
 d `それを見て真里亞は確信する。`[@]`{n}……それはもはや、母親ではない。`[\]
 *d25179
 d `母親の体に憑依した、邪悪なる別の存在だ…。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_p1ar"
 lss s0_9,"mar","c12_odoroki1" ;1
@@ -1428,7 +1426,7 @@ flush 10,167
 msgwnd_mar
 *d25187
 d [lv 0*"13"*"40400979"]`「さくたろは悪くないよ！！`[@][lv 0*"13"*"40400980"]`　さくたろは悪くないよ！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1444,11 +1442,11 @@ d `……ライオンのぬいぐるみをいつも持ち歩く子が、深夜�
 d `そのせいで、商店街では有名だったのだ…。`[\]
 meplay 1,17,71
 seplay 1,20,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_p1ar"
 lss s0_9,"ros","c11_ikari2" ;1
@@ -1499,7 +1497,7 @@ d `それらの一言一言の度に踵を踏み鳴らし、壁をバンバン�
 d `……確かにそれは、真里亞に対し直接は振るわれなかったろう。`[\]
 *d25195
 d `しかし、激しい音は、確実に音の暴力となって真里亞を打ち付けた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"ros_r1ar"
@@ -1526,7 +1524,7 @@ d `我に返った民生委員の女性が楼座を羽交い絞めにする。`[
 *d25199
 d `しかし、触れられた途端、電気が走ったかのように楼座は暴れ、彼女を激しく突き飛ばす。`[\]
 seplay 1,13,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"white"
@@ -1537,14 +1535,14 @@ agpt quakeyamp,0,667,1
 rumble 63,500
 gptwait quakeyamp
 seplay 2,1006,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d25200
 d `……テーブルにぶつかり、床に転げた。`[@]`テーブルの上のティーカップが激しい音を立てて床に散らばった…。`[\]
 meplay 2,5,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_r1ar"
 lss s0_9,"sak","a11_odoroki1" ;1
@@ -1569,7 +1567,7 @@ flush 10,167
 msgwnd_sak
 *d25203
 d [lv 0*"33"*"44200387"]`『真里亞を叱らないで…！`[@][lv 0*"33"*"44200388"]`　真里亞を叱らないで…！！`[@][lv 0*"33"*"44200389"]`　うりゅーー！！！』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -1621,7 +1619,7 @@ lss s0_9,"ros","c32_ikari4" ;1
 flush 10,167
 *d25207
 d [lv 0*"12"*"41400198"]`「正直に仰いな。`[@][lv 0*"12"*"41400199"]`お外でお買い物をする時、ママに内緒でいつもそのぬいぐるみを持ち歩いてたのね？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"ros_r1ar"
@@ -1680,7 +1678,7 @@ flush 10,167
 msgwnd_ros
 *d25215
 d [lv 0*"12"*"41400204"]`「さくたろうだけ？`[@][lv 0*"12"*"41400205"]`　他には？`[@][lv 0*"12"*"41400206"]`　……まさか、学校にも何か変なのを持っていってるんじゃないでしょうね…？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1728,7 +1726,7 @@ flush 10,167
 msgwnd_mar
 *d25220
 d [lv 0*"13"*"40400994"]`「うー………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1760,7 +1758,7 @@ d `……だからこそ、あえて見て見ぬふりをするつもりだっ�
 d `しかし、他の生徒の目に触れてしまったため、`[@]`玩具を持ち込んでずるいずるいと一部の男子が騒ぎ始め、収拾に苦慮していたのだ……。`[\]
 *d25232
 d `それをやんわりと母親経由で注意したつもりだったが、`[@]`楼座が過剰に反応したため、それ以後は先生も見て見ぬふりをしていたのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 8
@@ -1772,7 +1770,7 @@ d `間違っていたのは自分の方で、…娘は本当に玩具を学校�
 d `………学校に玩具を持ち込んで、`[@]`それだけを唯一の友人として寂しく一人遊びする醜態を、学校側に知られてしまっていたのだ。`[\]
 *d25236
 d `楼座にとって、一般の子たちと少し違う自分の娘が、`[@]`その特異な面を晒し、それを見咎められることが何よりも耐えられなかった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_r1ar"
 lss s0_9,"ros","c11_ikari2" ;1
@@ -1792,7 +1790,7 @@ flush 10,167
 msgwnd_ros
 *d25241
 d [lv 0*"12"*"41400212"]`「……………………。`[@][lv 0*"12"*"41400213"]`……真里亞。`[@][lv 0*"12"*"41400214"]`そのうさぎの音楽隊は、真里亞の大切なお友達？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"ros_r1ar"
@@ -1819,13 +1817,13 @@ d `……可愛らしい、トランペットを持ったうさぎの、駒の�
 d `それがゆっくりと、掲げるように高く上げられる。`[\]
 *d25248
 d `……もちろん、真里亞とさくたろの目はそれを追う……。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
 wait 1000
 seplay 2,20,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1834,7 +1832,7 @@ flush 1
 *d25249
 d `そしてそれは、目で追えない速度で壁に叩き付けられた。`[\]
 seplay 2,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_r1ar"
 lss s0_10,"sak","a11_odoroki1" ;1
@@ -1854,13 +1852,13 @@ msgwnd_non
 d `半ば、その最悪の想像はしていた。`[@]`{n}だから、何をされたのかすぐに理解できた。`[\]
 *d25253
 d `……だから真里亞は短く、絶望の悲鳴を上げた…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 22
@@ -1868,7 +1866,7 @@ flush 22
 d `粉々だった。`[\]
 *d25255
 d `小さく頑丈だったそれは、激昂する母の怒りを受け止められるほどではなかった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_r1ar"
 lss s0_9,"ros","c11_warai1" ;1
@@ -1940,7 +1938,7 @@ gptwait quakexamp
 meplay 2,5,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:cg/sak",s0_3,"sakutaro2bb"
@@ -1955,12 +1953,12 @@ flush 10,167
 msgwnd_sak
 *d25264
 d [lv 0*"33"*"44200395"]`『うりゅ……、`[|][lv 0*"33"*"44200396"]`うりゅ………』`[\]
-textoff
+textoff2
 waits 167
 vol_bgm 85
 seplay 1,20,100
 seplay 2,20,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
@@ -1968,7 +1966,7 @@ flush 1
 msgwnd_ros
 *d25265
 d [lv 0*"12"*"41400237"]`「だからそのぬいぐるみごっこを止めろって言ってるでしょおおおおおぉおおぉ！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:cg/sak",s0_3,"sakutaro2ab"
 flush 22
@@ -1993,48 +1991,48 @@ rumble 63,500
 gptwait quakeyamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,12,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_26,"red_b"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_26
 flush 22
 wait 667
 seplay 2,12,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_26,"red_b"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_26
 flush 22
 wait 667
 seplay 3,12,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_26,"red_b"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_26
 flush 2
 msgwnd_non
 *d25268
 d `ママがさくたろの頭を鷲掴みにして、私から奪い取る…。`[@]`{n}そして………、何度も何度も、壁に打ち付けて。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:cg/sak",s0_3,"sakutaro2bb"
 flush 22
 msgwnd_sak
 *d25269
 d [lv 0*"33"*"44200400"]`『うりゅー！！`[@][lv 0*"33"*"44200401"]`　痛いよ痛いよ、痛い痛い痛い痛い…！！』`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ros_r1ar"
 lss s0_9,"ros","c11_ikari2" ;1
@@ -2098,7 +2096,7 @@ d [lv 0*"13"*"40401005"]`「さくたろ返してッ、さくたろ返してッ�
 msgwnd_non
 *d25274
 d `……その、私の必死の頼みは、なぜかむしろ、ママの怒りに油を注いだ……。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,20,100
 wait 1000
@@ -2113,18 +2111,18 @@ gptwait quakeyamp
 *d25275
 d `ママは、さくたろを奪い返そうとさくたろを引っ張る私の腕を振り払い、`[@]`異様な感じで両手の爪を立ててさくたろをぐしゃぐしゃに捻りあげる……。`[\]
 meplay 3,18,71
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 2
 *d25276
 d `毎日、丁寧に巻きなおしてあげていた赤いマフラーが解けて床に落ちる…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:cg/sak",s0_3,"sakutaro2bb"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:cg/sak",s0_3,"sakutaro1bb"
 flush 2
@@ -2138,21 +2136,21 @@ d `痛そうに歪んでる…、`[!w500]`表情を歪めて、`[!w333]`悲し�
 d `そしてママの爪が、`[!w500]`……首の縫い目の部分を`[!w500]`……裂いて…。`[\]
 *d25281
 d `……両手の爪で`[!w500]`……引き裂いて…………。`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,1000
 vol_me 2,-1,1000
 vol_me 3,-1,1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
 vol_bgm 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1b"
 flush 2
@@ -2189,7 +2187,7 @@ d [lv 0*"13"*"40401015"]`「………た…ろ………、」`[\]
 msgwnd_non
 *d25292
 d `『』`[\]
-textoff
+textoff2
 waits 167
 wait 3000
 *d25293
@@ -2198,7 +2196,7 @@ d `ずい、っと。`[\]
 d `………黄色いぐしゃぐしゃの布地と溢れ出た綿飴が、私の眼前いっぱいに突きつけられる。`[\]
 *d25295
 d `そして、……ママの表情を通して、邪悪な存在が、はっきりと断言した。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1ar"
 flush 2
@@ -2212,7 +2210,7 @@ gstc 244
 seplay 9,1061,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,37,100
 seplay 2,37,100
@@ -2223,7 +2221,7 @@ wait 1000
 meplay 5,17,90
 lbg "c:colour",s0_21,"red_b"
 spt_mem "a2","alpha",s0_21,180
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 42
@@ -2240,7 +2238,7 @@ d `うわあああああううぅうぅうぅ……。`[@]`{n}うわああああ
 *d25301
 d `ぐだろ……、`[@]`さぐだろ……、`[@]`……うわああぁああああぁあうううぅうぅぅぅ……………。`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_21,"black"
 spt_mem "a2","alpha",s0_21,150
@@ -2397,7 +2395,7 @@ d [lv 0*"13"*"40401038"]`「なのに何で、ママは自分で作って、自�
 meplay 2,17,71
 csp_slot s0_22
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 8
@@ -2405,7 +2403,7 @@ flush 8
 d [lv 0*"13"*"40401041"]`「ママが憎いよ、ママが憎い…！！`[@][lv 0*"13"*"40401042"]`　悔しい悔しい悲しい悲しい…！！`[@][lv 0*"13"*"40401043"]`　さくたろがそうされたように、ママをねじり上げてやりたい…！`[@][lv 0*"13"*"40401044"]`　爪を立てて引き裂いて、布地と綿にしてやりたい！！」`[\]
 *d25320
 d [lv 0*"13"*"40401045"]`「わあああああああああぁあああぁあん！！`[@][lv 0*"13"*"40401046"]`　悔しいよ、悔しいよベアトリーチェええぇ！！`[@][lv 0*"13"*"40401047"]`　わあああああああああぁあああん、さくたろおおぉおおおおお！！！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 9
@@ -2414,7 +2412,7 @@ msgwnd_non
 d `真里亞の背後の暗闇より、巨大な漆黒の二本の腕がぬうっと現れ、`[@]`怒りに泣きじゃくる真里亞に絡みつく。`[\]
 *d25322
 d `そして巨大な爪を真里亞の胸と腹に突き立てる……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 2
@@ -2469,7 +2467,7 @@ flush 10,167
 msgwnd_bea
 *d25335
 d [lv 0*"27"*"40700318"]`「……………………。`[@][lv 0*"27"*"40700319"]`……良かろう。`[@][lv 0*"27"*"40700320"]`その力を、そなたに与えよう。`[@][lv 0*"27"*"40700321"]`……心美しきそなたが自らに引き裂かれるくらいならば。`[@][lv 0*"27"*"40700322"]`……そなたにその苦しみを与えた、心無き母こそがよほど引き裂かれるに値する」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2480,7 +2478,7 @@ d [lv 0*"27"*"40700323"]`「……………教えようぞ、そなたに。`[@]
 msgwnd_mar
 *d25337
 d [lv 0*"13"*"40401061"]`「ううぅううぅ、さくたろさくたろ…！！`[@][lv 0*"13"*"40401062"]`　みんな嫌い嫌い大ッ嫌い！！`[@][lv 0*"13"*"40401063"]`　ママも嫌い、縁寿も嫌い！！`[@][lv 0*"13"*"40401064"]`　みんなみんな大ッ嫌い！！`[@][lv 0*"13"*"40401065"]`　うぅううぅううわああああぁああああぁあああぁ……！！」`[\]
-textoff
+textoff2
 waits 167
 meplay 1,5,0
 vol_bgm 90,5000

@@ -1,26 +1,24 @@
 *umi7_5
 ;海から来た魔女
 log_reset
-mov $name_chapter_r_click,r_click_chapters_7_5
-mov $name_chapter_r_click_l2,r_click_chapters_7_5_l2
-mov $name_chapter_r_click_l3,r_click_chapters_7_5_l3
+mov $name_chapter_r_click,r_click_chapters_7_5+"|"+r_click_chapters_7_5_l2+"|"+r_click_chapters_7_5_l3
 mov $name_chapter_save, "7_05"
 new_chapter date_scenario_7_5,scenario_7_5
 gstc 65
-textoff
+textoff2
 waits 167
 meplay 1,5,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p2a"
 flush 6
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 1,15,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 22
@@ -34,12 +32,12 @@ d [lv 0*"58"*"75600157"]`「中尉。`[@][lv 0*"58"*"75600158"]`イタリア人�
 msgwnd_non
 *d51732
 d [lv 0*"99"*"75700020"]`「………ふふん。`[@][lv 0*"99"*"75700021"]`我が国に横領されたくないからであろうな」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 lss s0_9,"bea","c11_fukigen3" ;1
@@ -63,13 +61,13 @@ msgwnd_non
 d `敵の手に黄金を渡さないために、彼らはここまでやって来たのだ。`[\]
 *d51737
 d `彼らの真の祖国が復興する日まで、`[@]`この黄金を傀儡の祖国の手から、彼らは隠さなくてはならない…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 23
@@ -90,12 +88,12 @@ flush 80
 msgwnd_kin
 *d51741
 d [lv 0*"58"*"75600161"]`「そうなります。`[@][lv 0*"58"*"75600162"]`……つまり、あの黄金は、もう六軒島からは運び出せない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold3"
 flush 8
@@ -112,7 +110,7 @@ d `黄金を極秘に輸送する手段は、もはや存在しないのだ。`[
 d `それはつまり、彼らの任務がこの極東の地で、失敗に終わったことを示していた。`[\]
 *d51747
 d `その上で、山本中尉は何の協力を申し出ようと言うのか……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -121,7 +119,7 @@ vol_bgm -1,1000
 wait 1000
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 22
@@ -147,7 +145,7 @@ msgwnd_non
 d `ベアトリーチェはすぐにそれを翻訳し、アンジェロ少尉に伝える。`[\]
 *d51752
 d `少尉は下士官たちと早口に議論を始める。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
@@ -158,7 +156,7 @@ d `表情は苦々しい。`[\]
 d `同盟国とはいえ、祖国再建の大切な黄金を、東洋人の手に委ねたくはないのだろう。`[\]
 *d51755
 d `しかし、選択の余地が残されているとは思えない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 23
@@ -176,12 +174,12 @@ d `本土や祖国に知られれば、彼らの望まぬ人間たちに接収�
 d `彼らが祖国の命令を忠実に実行しようとするなら、`[@]`………山本中尉の、この島に隠せばいいという提案は、極めて妥当なものだ…。`[\]
 *d51760
 d `たとえ言葉が理解できなくても、彼らが悩んでいることは、山本中尉にもわかっているようだった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 23
@@ -208,12 +206,12 @@ d_continue
 wait_on_d -1
 csp_slot s0_10
 flush 23
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 23
@@ -225,7 +223,7 @@ d [lv 0*"58"*"75600167"]`「……議論が難航しているようです」`[\]
 msgwnd_non
 *d51765
 d [lv 0*"99"*"75700034"]`「くっくっく。`[@][lv 0*"99"*"75700035"]`議論の余地などあるのか、イタリア人。`[@][lv 0*"99"*"75700036"]`我々の協力なくば、あの黄金は隠せんぞ？`[@][lv 0*"99"*"75700037"]`　まさか、いつまでも波打ち際に積み上げて置く訳にも行くまい？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"sub_r2a"
@@ -254,7 +252,7 @@ flush 80
 msgwnd_be4
 *d51768
 d [lv 0*"59"*"70700116"]`『１０ｔの黄金を隠すという労力の提供と守秘義務を、彼らが本当に無償で提供してくれるのかと、ね……』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -264,7 +262,7 @@ meplay 2,17,50
 msgwnd_non
 *d51769
 d [lv 0*"99"*"75700038"]`「五分と五分だ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 lss s0_10,"ki2","a11_aseru1" ;1
@@ -285,7 +283,7 @@ flush 24
 msgwnd_kin
 *d51772
 d [lv 0*"58"*"75600170"]`『……は、半分を寄越せと言ってる』`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
@@ -300,7 +298,7 @@ gptwait quakeyamp
 msgwnd_non
 *d51773
 d `ベアトリーチェがそれを通訳した途端、アンジェロ少尉はバンと机を叩いて立ち上がる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -312,7 +310,7 @@ d `山本中尉は、乱暴者と恐れられていたと自ら言うだけあ�
 d [lv 0*"99"*"75700041"]`「本来なら断りようのない話だ。`[@][lv 0*"99"*"75700042"]`８割を要求してもおかしくない。`[@][lv 0*"99"*"75700043"]`それを、敬意を表して五分と五分にしようと提案しているのだ」`[\]
 *d51776
 d [lv 0*"99"*"75700044"]`「……これは我々だけに優位な話ではない。`[@][lv 0*"99"*"75700045"]`イタリア人たちが外部にこのことを漏らせば、全ての黄金は日本かイタリアに接収されるだろう。`[@][lv 0*"99"*"75700046"]`我々には１円たりとも転がり込んで来ない。`[@][lv 0*"99"*"75700047"]`我々は全員が共犯でなくてはならないのだ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 lss s0_10,"bea","c11_odoroki5" ;1
@@ -330,7 +328,7 @@ flush 80
 msgwnd_be4
 *d51778
 d [lv 0*"59"*"70700117"]`『何てこと……。`[@][lv 0*"59"*"70700118"]`黄金に目が眩んだのね…』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -343,7 +341,7 @@ d `山本中尉はにやにやと笑う。`[\]
 d `ベアトリーチェの言う通り、その目は黄金に眩んでいるようだった…。`[\]
 *d51781
 d [lv 0*"99"*"75700048"]`「あのまま山積みにしていれば、やがて本土から来る迎えの連中の目に、否応なく入るだろう。`[@][lv 0*"99"*"75700049"]`そうなれば、ここにいる誰もが得をしないぞ。`[@][lv 0*"99"*"75700050"]`我々の申し出を受けて、早急に黄金を隠すべきだ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 lss s0_8,"bea","c11_nayamu3" ;1
@@ -364,13 +362,13 @@ flush 23
 msgwnd_be4
 *d51784
 d [lv 0*"59"*"70700121"]`『何割かを口止め料として与えてでも、島内に地中深く埋めることを望んでるわ。`[@][lv 0*"59"*"70700122"]`……もちろん、下士官たちには異論もあるみたい。`[@][lv 0*"59"*"70700123"]`５割は問題外だと憤慨してるわ』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 23
@@ -398,7 +396,7 @@ msgwnd_kin
 *d51789
 d [lv 0*"58"*"75600176"]`「……１割なら検討すると」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -420,7 +418,7 @@ meplay 2,16,50
 d `しかし、イタリア人たちも気圧されはしない。`[\]
 *d51792
 d `……狭い室内を、火薬の臭いのする緊迫感が満たしていく…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 22
@@ -436,12 +434,12 @@ rumble 63,500
 gptwait quakeyamp
 *d51795
 d [lv 0*"99"*"75700055"]`「１割！`[@][lv 0*"99"*"75700056"]`　１割か、それは慎ましやかな提案だ。`[@][lv 0*"99"*"75700057"]`……いいだろう、なら１割を譲ってやろう。`[@][lv 0*"99"*"75700058"]`四分六だ。`[@][lv 0*"99"*"75700059"]`これ以上は譲らんと伝えろ！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 meplay 3,28,70
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold3"
 flush 22
@@ -451,7 +449,7 @@ d `日本側４割。`[@]`イタリア側６割。`[\]
 d `中尉は強気に出ているが、実際は決して互角の交渉ではない。`[\]
 *d51798
 d `イタリア人たちが、自分たちもこの黄金を横領しようという考えでいるなら、大した問題ではない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 28
@@ -465,7 +463,7 @@ d `イタリア政府はやがて連合国を通じてそれの返還を求め�
 d `……全てがイタリアには戻らないだろうが、荒れ果てた街並みの再建に、その黄金は有効に利用されるかもしれない。`[\]
 *d51803
 d `そうなれば山本中尉たちは、せいぜい数本のインゴットを誤魔化せるかどうかだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -473,13 +471,13 @@ flush 22
 d `欲深な彼は、この島を自分たちだけの宝島にして、巨万の富を独り占めしようと企んでいるのだ。`[\]
 *d51805
 d `……その野望のためには、イタリア人たちが黄金のことを、秘匿しなくてはならない。`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,1000
 vol_me 2,-1,1000
 vol_me 3,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 lss s0_10,"ki2","a11_nayamu1" ;1
@@ -499,7 +497,7 @@ flush 80
 msgwnd_be4
 *d51807
 d [lv 0*"59"*"70700126"]`『……考えたくはないけれど。`[@][lv 0*"59"*"70700127"]`……命令が遂行不能になった時点で、少尉はこの黄金を横領することを考え始めたのかも。`[@][lv 0*"59"*"70700128"]`彼は今、下士官たちに、軍人としての意見と、`[@][lv 0*"59"*"70700129"]`祖国に家族が待つ一個人としての意見を聞きたいと言っているわ。`[@][lv 0*"59"*"70700130"]`……堅物の下士官たちが激高してる』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -520,12 +518,12 @@ d `アンジェロ少尉は下士官たちの想像以上の激高に、なだ�
 d `……やはり、黄金は彼らをも惑わせているのだ。`[\]
 *d51814
 d `誰もが、本音と建前を交錯し、どうすればいいのか戸惑っている……。`[\]
-textoff
+textoff2
 waits 167
 seplay 2,20,71
 wait 667
 seplay 1,12,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 1
@@ -552,13 +550,13 @@ msgwnd_be4
 d [lv 0*"59"*"70700131"]`『………考える時間がほしいと言ってるわ。`[@][lv 0*"59"*"70700132"]`私はあなたと話せたから、気が紛れて良かったけれど、他の人たちはそうじゃないの』`[\]
 *d51818
 d [lv 0*"59"*"70700133"]`『……とても長い航海の果てに、大勢の仲間を失って、極限状態でここにいるわ。`[@][lv 0*"59"*"70700134"]`唯一の心の拠り所だった任務ももはや喪失してる。`[@][lv 0*"59"*"70700135"]`どうすればいいのか、彼らもわかってないの…』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 23
@@ -572,12 +570,12 @@ msgwnd_non
 *d51820
 d [lv 0*"99"*"75700062"]`「くっくっく、いいとも、大いに議論したらいい。`[@][lv 0*"99"*"75700063"]`しかし時間はないぞ。`[@][lv 0*"99"*"75700064"]`隠すとなったら、時間と手間がかかる。`[@][lv 0*"99"*"75700065"]`……明日の正午までに結論しろ。`[@][lv 0*"99"*"75700066"]`以上だ、イタリア人ども！」`[\]
 seplay 1,12,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2a"
 flush 2
@@ -624,9 +622,9 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -636,7 +634,7 @@ vol_bgm -1,2000
 wait 2000
 wait 2000
 meplay 2,13,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_r2a"
 lss s0_8,"rio","a11_komaru1" ;1
@@ -680,9 +678,9 @@ flush 80
 msgwnd_wil
 *d51832
 d [lv 0*"54"*"75400496"]`「損得勘定で言えばそうなる。`[@][lv 0*"54"*"75400497"]`…………そうならねぇのが、男ってもんだがな」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -692,7 +690,7 @@ vol_mix_fade 1000
 wait 1000
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r3b"
 flush 23
@@ -713,7 +711,7 @@ d [lv 0*"99"*"itheb7001"]`“黄金を荷揚げして日本人たちに見られ
 d [lv 0*"99"*"75800006"]`“日本人の基地で沈めてどうする？！`[@][lv 0*"99"*"75800007"]`　やがていつかは引き上げられる。`[@][lv 0*"99"*"75800008"]`隠したことにはならない！”`[\]
 *d51839
 d [lv 0*"99"*"75800009"]`“いずれにせよ、この島から黄金を誰にも知られずに運び出す方法はない”`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2d"
 flush 25
@@ -723,7 +721,7 @@ d [lv 0*"99"*"itheb7003"]`“洋上で名誉ある自沈を選んでいたらこ
 d [lv 0*"99"*"ithea7006"]`“艦のダメージが致命的だったことが、あの時点でわかっていたら……”`[\]
 *d51842
 d [lv 0*"99"*"ithea7007"]`“どうしてあの時、少佐は日本軍に救援要請を？`[@][lv 0*"99"*"ithea7008"]`　日本軍にこの黄金のことを知られたら、少佐はどう任務を遂行するつもりだったんだ？”`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r3b"
 flush 24
@@ -731,25 +729,25 @@ flush 24
 d [lv 0*"99"*"75800010"]`“少佐が救援要請を出した時点で、我々の任務はもう、失敗していたんだ！”`[\]
 *d51844
 d [lv 0*"99"*"75800011"]`“諸君にも、祖国で待つ家族がいるはずだ。`[@][lv 0*"99"*"75800012"]`そして極東の島国まで、よく航海に耐えた。`[@][lv 0*"99"*"75800013"]`それに対する、これは正当な報酬なのだという、考え方もあるっ”`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d51845
 d [lv 0*"00"*"awase7001"]`“ざわざわざわ！`[@][lv 0*"00"*"awase7002"]`　ざわざわざわざわ！！”`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 wait 1000
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r3b"
 flush 23
 *d51846
 d [lv 0*"99"*"itag7003"]`“少尉。`[@][lv 0*"99"*"itag7004"]`……日本人が友好的でない場合、我々は最終的解決手段を辞さない覚悟が必要です”`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -761,7 +759,7 @@ d `ごくりと、誰かの喉が鳴る。`[\]
 *d51849
 d `重苦しい緊張感が部屋を支配する…。`[\]
 meplay 1,5,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r3b"
 flush 26
@@ -785,11 +783,11 @@ d [lv 0*"99"*"itag7017"]`“彼らに黄金を運ばせ、地中に埋めまし�
 d [lv 0*"99"*"75800017"]`“日本人たちを、皆殺しにするということか……”`[\]
 *d51858
 d [lv 0*"99"*"itag7019"]`“殺しましょう。`[@][lv 0*"99"*"itag7020"]`全員殺せば、黄金のことは誰にも知られずに済むのです”`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2d"
 flush 22
@@ -799,7 +797,7 @@ wait 1000
 seplay 1,25,71
 *d51859
 d `その時、施錠していたはずの鍵が開き、扉がわずかに開き、何かの金属物が放り込まれた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -808,7 +806,7 @@ set_window_simple 80
 *d51860
 d `{a:c:`[lv 0*"99"*"ithea7011"]`{e:120:“手榴弾！！！”}}`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r3b"
 flush 22
@@ -816,7 +814,7 @@ flush 22
 d `その絶叫に、机を跳ね飛ばして楯にし、全員が一斉に床に伏せる。`[\]
 *d51862
 d `しかしこの狭い室内では、それは恐らく無駄なことだ。`[@]`イタリア人たちは全員が死を覚悟する。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -826,11 +824,11 @@ d [lv 0*"99"*"ithea7012"]`“……………？”`[\]
 d [lv 0*"99"*"itheb7006"]`“不発！　不発！！”`[\]
 *d51865
 d `粗悪な手榴弾は、幸運なことに不発だった。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,12,100
 seplay 2,16,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r3b"
 flush 1
@@ -845,9 +843,9 @@ d `再び扉が荒々しく開き、拳銃を構えた日本人が３人飛び�
 d [lv 0*"99"*"heisa7006"]`「クソッタレ、不発だ！！`[@][lv 0*"99"*"heisa7007"]`　イタリア人どもを殺せ殺せ殺せ！！」`[\]
 *d51868
 d [lv 0*"99"*"itag7021"]`“応戦しろ！！　各自自由発砲ッ！！”`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
@@ -866,7 +864,7 @@ waits 167
 seplay 3,12,71
 wait 50
 seplay 1,46,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r3b"
 flush 2
@@ -877,10 +875,10 @@ d `この狭い室内では、どこをどう撃っても、どう跳ねても�
 d `鉛弾の応酬は、瞬く間に血飛沫を飛び散らせ、双方に犠牲者を出す。`[\]
 *d51871
 d `飛び込んできた３人は全身に何発も鉛弾を浴びて倒れ、呻きながら痙攣している…。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,13,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2d"
 flush 1
@@ -901,7 +899,7 @@ d `投げ込まれた手榴弾は、まだころころと、床の上を転が�
 d `奇襲だった。`[@]`……恐らく山本中尉は、アンジェロ少尉たちとの交渉で、彼らが言いなりにならないとの感触を得て先手を打ってきたのだ。`[\]
 *d51877
 d `いや、ひょっとすると、全員で決を採らねばならないように仕向け、`[@]`集まったところを一網打尽にしようと、初めから狙っていたのかもしれない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -909,9 +907,9 @@ flush 22
 d `六軒島は彼らの島だ。`[@]`イタリア人を皆殺しにすれば、黄金は五分五分どころか、その全てが日本人のものなのだ。`[\]
 *d51879
 d `手榴弾が遅れて爆発しないとも限らない。`[@]`{n}彼らは廊下へ飛び出る。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3b"
 flush 22
@@ -929,7 +927,7 @@ d `彼方より銃声が聞こえる。`[@]`潜水艦ドックの方だ。`[@]`�
 d [lv 0*"99"*"itag7022"]`“少尉ッ！！　ご命令を！！”`[\]
 *d51882
 d [lv 0*"99"*"75800018"]`“やむを得ん！！`[@][lv 0*"99"*"75800019"]`　日本人は殺せッ！！”`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
@@ -944,11 +942,11 @@ seplay 3,46,70
 wait 500
 seplay 1,46,100
 seplay 2,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"submarine_o1a"
 flush 2
@@ -956,131 +954,131 @@ flush 2
 d [lv 0*"99"*"heisb7004"]`「ちゅ、中尉！`[@][lv 0*"99"*"heisb7005"]`　あいつら出来ます！！`[@][lv 0*"99"*"heisb7006"]`　この連中、ただの船乗りじゃねぇ！」`[\]
 *d51884
 d [lv 0*"99"*"75700067"]`「くっくっく、なるほど、黄金の番人を任されるだけの兵士ということか。`[@][lv 0*"99"*"75700068"]`人数はこちらが上だ。`[@][lv 0*"99"*"75700069"]`焦らず、囲んで殺せ！！　イタリア人狩りだ！！」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,46,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 333
 seplay 2,46,50
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 100
 seplay 1,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 waits 167
 seplay 2,46,50
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 waits 167
 seplay 1,46,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 333
 seplay 2,46,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
 seplay 1,46,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 333
 seplay 2,46,50
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 100
 seplay 1,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 waits 167
 seplay 2,46,70
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 waits 167
 seplay 1,46,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 333
 seplay 2,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p1a"
 flush 24
@@ -1097,7 +1095,7 @@ d `中尉たちが黄金を見る目は、尋常ではなかった。`[@]`そう
 d `イタリア人たちも、重責から心がはちきれそうになっていた。`[\]
 *d51889
 d `遠い異国の地で、言葉も文字もわからない世界に取り残されたら、おかしくならない方がおかしい。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
@@ -1107,7 +1105,7 @@ d `とにかく、何とかしなくてはならないと思い、発砲音の�
 *d51891
 d `……今にして思えば、それはとても愚かしいことだ。`[\]
 meplay 1,5,70
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 28
@@ -1115,14 +1113,14 @@ flush 28
 d `それは銃撃戦を意味する音。`[@]`殺し合いを意味する音。`[\]
 *d51893
 d `なのに私は丸腰で、まるで喧嘩の仲裁にでも行くようなつもりで、駆けている。`[@]`……それが如何に愚かしく、この戦時に浮世離れしたものか、すぐに思い知る。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 msgwnd_kin
 *d51894
 d [lv 0*"58"*"75600188"]`「……ひ、平岡兵曹？！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 22
@@ -1139,14 +1137,14 @@ d `……しかし、医者などいないこの島で、`[!w333]`……いや�
 *d51899
 d `這い出てきたに違いない室内を見ると、荒れ果て、`[@]`他にも２人の日本人の血塗れの死体があった。`[\]
 meplay 3,16,70
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1ar"
 flush 1
 msgwnd_kin
 *d51900
 d [lv 0*"58"*"75600189"]`「うッ、うわ、……わ、……ッ。`[@][lv 0*"58"*"75600190"]`し、……死ん……、」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_d1a"
 flush 22
@@ -1163,7 +1161,7 @@ d `情けなく尻餅を付き、口を閉じることさえ忘れ、呆然と�
 d `……思えばそれが、生まれて初めて知る、人の死というものだった。`[\]
 *d51903
 d `世界中が戦争をしている。`[@]`洋の東西で、大勢の人が死んでいるこの戦時下でありながらも、`[@]`……それが初めて直面する人の死だったのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 22
@@ -1175,7 +1173,7 @@ d `死にたくて、戦地に送られなかったことを嘆いたのでは�
 d `あぁ、なら喜べ、金蔵。`[@]`これが、私の望んだ死ではないか…！`[\]
 *d51907
 d `なぜ両手を広げてこう叫べない？`[@]`　来たれ、偉大なる死よッ、と！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1183,7 +1181,7 @@ vol_me 1,-1,1000
 vol_me 2,-1,1000
 vol_me 3,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p1b"
 flush 64
@@ -1200,7 +1198,7 @@ d [lv 0*"99"*"tajim7001"]`「にッ、ににッ、にぃッ…！！」`[\]
 d `顔面を蒼白にしながら、ものすごい形相で駆けて来る。`[\]
 *d51911
 d `くしゃくしゃに歪んだ酷い顔だった。`[@]`そしてそれが、きっと自分の顔でもあるのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_d1a"
 lss s0_8,"ki2","a11_odoroki1" ;1
@@ -1212,18 +1210,18 @@ d [lv 0*"58"*"75600191"]`「田島くん…、な、何があったんだ……�
 msgwnd_non
 *d51913
 d [lv 0*"99"*"tajim7002"]`「に、逃げろ…。`[@][lv 0*"99"*"tajim7003"]`こ、殺、殺されるぅうぅうッ！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
 flush 1
 seplay 1,46,100
 seplay 2,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"red_b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1232,7 +1230,7 @@ seplay 3,13,100
 d `イタリア語の怒声と共に、田島くんが爆ぜた悲鳴をあげる…。`[\]
 *d51915
 d `そしてそのまま、腰を落として取っ組みかかってくるかのように、私に飛び込んできた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2a"
 flush 1
@@ -1241,7 +1239,7 @@ d `彼の背中から血が噴き出て、みるみる真っ赤に染まって�
 msgwnd_kin
 *d51917
 d [lv 0*"58"*"75600192"]`「田島く、ん……ッ、」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2b"
 flush 80
@@ -1257,26 +1255,26 @@ meplay 1,17,70
 d `……生きとし生けるものは、本来、他人の死など関心はないのだ。`[@]`その唯一の関心は、自分が死ぬかどうかにだけ、割かれるのだ。`[\]
 *d51922
 d `イタリア人が見せる、銃口の奥底だけが、私の心を奪っていた……。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,46,71
 seplay 3,12,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2c"
 flush 22
 wait 1000
 seplay 2,46,100
 seplay 3,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2e"
 flush 2
@@ -1292,7 +1290,7 @@ d `喜べ、金蔵！！`[@]`　私が望んだものが、今、初めて与え
 *d51927
 d `イタリア人はとどめを刺すために撃ったのではない。`[@]`重なり合って倒れている、この、右代宮金蔵を狙って撃ったのだ。`[\]
 seplay 1,13,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p1b"
 flush 1
@@ -1314,7 +1312,7 @@ msgwnd_non
 *d51929
 d `彼の死体を跳ね除け、私は床を掻きながら、転げるように走り出す。`[\]
 seplay 1,35,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -1322,26 +1320,26 @@ flush 1
 d `床を掻いた時、それだけのことで左手の薬指の爪が剥げた。`[@]`{n}どれだけ、人は死に対し、全身全霊で抗うというのか。`[\]
 meplay 3,5,70
 seplay 1,20,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p1a"
 flush 64
 *d51931
 d `床を転げ、体を削り取りながら走る。`[@]`痛かった、熱かった。`[@]`でも、そんなことはどうでも良かった！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p1b"
 flush 64
 *d51932
 d `後ろからイタリア語の怒鳴り声が何度も聞こえた。`[@]`それが走り、自分を追ってくるように感じられた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 64
 *d51933
 d `振り返りたくもなかった。`[@]`だからずっとイタリア人が追ってきているように思えて、どこまでも滅茶苦茶に、ぐちゃぐちゃに逃げた。`[\]
 meplay 4,18,70
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
 flush 28
@@ -1349,7 +1347,7 @@ flush 28
 d `これが、……死……！！`[@]`{n}死にたかったんじゃないのか？`[\]
 *d51935
 d `嫌だ、死にたくないッ！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 28
@@ -1363,7 +1361,7 @@ d `彼女と話している時だけ解放された。`[@]`違う！`[@]`{n}彼�
 d `生きたいッ。`[@]`生きたい生きたい生きたいッ！！`[@]`　死にたくない！！`[\]
 *d51940
 d `生きて彼女と会いたい、今すぐに！！`[@]`　会わなきゃ死ぬ、殺される！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1378,7 +1376,7 @@ vol_me 2,-1
 vol_me 3,-1
 vol_me 4,-1
 seplay 1,13,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p1a"
 flush 1
@@ -1396,7 +1394,7 @@ seplay 1,46,30
 msgwnd_non
 *d51946
 d `発砲音は、まだ断続的に聞こえる。`[\]
-textoff
+textoff2
 waits 167
 seplay 2,46,50
 waits 167
@@ -1407,11 +1405,11 @@ d `銃撃戦は続いている。`[@]`そしてそれは、基地中に広がっ
 d `……ビーチェ。`[@]`……君は、無事なのか……。`[\]
 *d51949
 d `彼女を探し、安全な場所に匿おう。`[@]`……中尉たちは黄金を奪うために、イタリア人たちを皆殺しにするだろう。`[@]`ビーチェも例外にはなるまい。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p1b"
 flush 24
@@ -1430,11 +1428,11 @@ d `だが、私はもう、死にたくはないのだ。`[@]`真の意味で。
 msgwnd_kin
 *d51955
 d [lv 0*"58"*"75600198"]`「……ビーチェぇえええぇええ！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1444,7 +1442,7 @@ wait 2000
 vol_mix_fade 1000
 wait 1000
 bgmplay 121,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r3b"
 flush 64
@@ -1459,7 +1457,7 @@ msgwnd_non
 *d51957
 d [lv 0*"99"*"75900003"]`“君は知らなくていい。`[@][lv 0*"99"*"75900004"]`そこにじっと隠れていろ。`[@][lv 0*"99"*"75900005"]`同胞が呼び掛けるまで出てくるんじゃない！”`[\]
 seplay 2,16,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_3,"sub_r2d"
@@ -1468,40 +1466,40 @@ flush 63
 d [lv 0*"99"*"heisb7007"]`「イタリア人の声が聞こえたッ！！`[@][lv 0*"99"*"heisb7008"]`　そこにいるぞ！！」`[\]
 *d51959
 d [lv 0*"99"*"75900006"]`“くそったれ、東洋人め！！”`[\]
-textoff
+textoff2
 waits 167
 seplay 1,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 waits 167
 seplay 2,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 *d51960
 d `ルーベンスはベアトリーチェを背中で庇い、ベレッタＭ１９３４の９ｍｍ弾を正確に１発ずつ、飛び込んできた２人に撃ち込む。`[\]
 seplay 1,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 *d51961
 d `しかし彼らも九四式自動拳銃の８ｍｍ弾を正確に１発、ルーベンスの胸に撃ち込む。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,13,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2a"
 flush 1
@@ -1520,7 +1518,7 @@ msgwnd_be4
 *d51963
 d [lv 0*"59"*"70700149"]`“し、しっかりしてッ！！`[@][lv 0*"59"*"70700150"]`　ルーベンス！！”`[\]
 seplay 1,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2b"
 flush 1
@@ -1540,7 +1538,7 @@ wait_on_d -1
 msgwnd_be4
 *d51965
 d [lv 0*"59"*"70700152"]`“ルーベーンス！！！”`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3c"
 flush 6
@@ -1568,15 +1566,15 @@ d_continue
 wait_on_d -1
 *d51971
 d `山本は唾を吐き捨てる。`[@]`その隙をついてベアトリーチェは素早くルーベンスの銃を拾う。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,20,71
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2d"
 flush 80
@@ -1589,7 +1587,7 @@ gptwait quakexamp
 msgwnd_be4
 *d51972
 d [lv 0*"59"*"70700153"]`“きゃッ……！！！”`[\]
-textoff
+textoff2
 waits 167
 seplay 1,13,71
 agpt quakeycycle,50
@@ -1616,7 +1614,7 @@ d [lv 0*"99"*"75700074"]`「躊躇なく銃を拾おうとするとは！`[@][lv
 d `足元に転がり、苦しそうに呻いて最期の時を待つ二人に、憎々しげにそう言い放つ。`[\]
 *d51975
 d `しかし、無理もないことだった。`[@]`そしてそれは、ここの撃ち合いだけではない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3c"
 flush 24
@@ -1627,14 +1625,14 @@ seplay 1,46,71
 d `だから、人の気配さえ感じたら直ちに引き金を引いた方が早い。`[@]`それが唯一、自分の胸に鉛弾を喰らわない生き残りの方法だ。`[\]
 *d51978
 d `そんなだから、日本人もイタリア人も、異邦人を容赦なく殺したし、時に出会い頭の同胞にさえ引き金を引いた。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,46,71
 wait 100
 seplay 1,46,71
 *d51979
 d `そんな中に、何事か何事かと、突然の騒ぎに駆けつけた大勢の日本人たちは次々に巻き込まれていった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1b"
 flush 25
@@ -1644,9 +1642,9 @@ d `相手が銃を持っていようと持っていまいと関係ない。`[\]
 d `自分が生きるために自分以外の人影に対し、反射的に引き金を引く。`[\]
 *d51982
 d `そんな殺人劇が、基地内を飲み込んでいった……。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1654,60 +1652,60 @@ vol_me 1,-1,1000
 vol_me 2,-1,1000
 wait 1000
 seplay 1,46,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 waits 167
 seplay 1,46,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 *d51983
 d `潜水艦ドックでは激しい銃撃戦が。`[@]`そして基地内では狩猟のような惨劇が繰り広げられた。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"submarine_o1a"
 lbg "a:efe",s0_17,"cg_1a"
 seplay 1,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 100
 lbg "a:efe",s0_17,"cg_1b"
 seplay 1,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 100
 lbg "a:efe",s0_17,"cg_1c"
 seplay 1,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
@@ -1726,12 +1724,12 @@ d `軍属の非戦闘員のほとんどは、何事かもわからない内に�
 d `イタリア人は確かに精兵揃いだったが、少しずつ犠牲者を増やしていった。`[\]
 *d51986
 d `基地内のそこかしこに、血塗れの死体がごろごろと横たわった……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
 meplay 1,16,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p2c"
 flush 24
@@ -1748,7 +1746,7 @@ d_continue
 wait_on_d -1
 *d51990
 d `だからそれはもうとっくに、ただの殺人劇と成り果てていたのだ……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_d1a"
 flush 26
@@ -1757,33 +1755,33 @@ d `そうして死者の数が生きた人間を上回り、……次第に基�
 seplay 1,46,71
 *d51992
 d `荒涼とした風の音が聞こえ、全ての人間が死に絶えたかと思った頃に、`[@]`唐突に悲鳴が聞こえては、乾いた銃声が、まだ惨劇が終わっていないことを思い出させる。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 1,46,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 1000
 seplay 1,46,50
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p2a"
 flush 6
@@ -1791,13 +1789,13 @@ flush 6
 d `そんなことが、何度も繰り返し、`[!w667]`………やがて、本当の静寂を迎えた。`[\]
 *d51994
 d `……黄金に惑わされた者たちの、哀れな最期だった。`[\]
-textoff
+textoff2
 waits 167
 vol_bgm -1,3000
 wait 3000
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 42
@@ -1805,7 +1803,7 @@ wait 2000
 meplay 2,27,50
 *d51995
 d `イタリア人たちの指揮官、アンジェロは、何とか生き残っていた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p1a"
 flush 24
@@ -1817,11 +1815,11 @@ d `基地内はシンと静まりかえっている。`[\]
 d `迂闊に大声を出せば、物影から撃たれるかもしれない。`[\]
 *d51999
 d `……だからこうして息を殺しながら、残敵を探して、豹のように徘徊する…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_d1a"
 flush 24
@@ -1829,13 +1827,13 @@ flush 24
 d `生きた者の姿も、気配も、何もない。`[\]
 *d52001
 d `……この基地にいる全ての人間がもう、死に絶えたかもしれない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d52002
 d [lv 0*"99"*"75800020"]`“……日本人め、おのれ……”`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3b"
 flush 22
@@ -1849,18 +1847,18 @@ d `迎えの船が来たところで、自分たちにはもう名誉など与�
 d `死んだ戦友たちに顔向け出来ない、哀れな任務失敗を思い知るだけ。`[\]
 *d52007
 d `この極東の地で銃を抱いて死ねるのは、………軍人として本懐かもしれないのだ。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 *d52008
 d `曲がり角の向こうに、足を引き摺る音を聞き、耳をそばだてる。`[\]
 meplay 1,28,70
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
 flush 28
@@ -1874,14 +1872,14 @@ d `曲がり角より飛び出して、素早く相手を確認し、……日�
 d `自分はずっと足音を殺していた。`[@]`こちらは気取られていないはず。`[\]
 *d52013
 d `引き摺る足音が、充分な間合いまで近付いてきてから、アンジェロは身を乗り出し、銃を構える。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,20,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 64
@@ -1890,7 +1888,7 @@ wait 0
 *d52014
 d `そんな彼を迎えたのは、イタリア語だった。`[\]
 seplay 1,20,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3b"
 lss s0_9,"bea","c11_aseru1" ;1
@@ -1911,12 +1909,12 @@ msgwnd_non
 d [lv 0*"99"*"75800021"]`“……？！`[@][lv 0*"99"*"75800022"]`　き、貴様……！！”`[\]
 seplay 1,46,100
 seplay 2,1006,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -1925,7 +1923,7 @@ wait 1000
 bgmplay 24,71,0
 *d52017
 d [lv 0*"99"*"75700077"]`「くっくっく、貴様を探していたぞ、アンジェロ少尉…。`[@][lv 0*"99"*"75700078"]`これで全員だな。`[@][lv 0*"99"*"75700079"]`俺はしっかり、貴様らの死体を数えて回ってたんだからな…！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 22
@@ -1954,7 +1952,7 @@ d `山本の銃の腕は決していい方ではない。`[\]
 d `しかし、アンジェロが充分に間合いを詰めてから飛び出してくれたので、当てることが出来た。`[\]
 *d52022
 d `銃身の短い拳銃を片手で構え、……女を人質に取りながらでも、当てることが出来た。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3b"
 flush 24
@@ -1969,15 +1967,15 @@ flush 26
 msgwnd_be4
 *d52024
 d [lv 0*"59"*"70700157"]`“女を楯に取らなきゃ戦えない、人でなし！！`[@][lv 0*"59"*"70700158"]`　離してッ！”`[\]
-textoff
+textoff2
 waits 167
 seplay 1,12,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3b"
 flush 22
@@ -1998,10 +1996,10 @@ d `イタリア人たちは敵に内通したスパイで、銃撃戦になり�
 d `そういう筋書きにしたい山本にとって、イタリア人生存者は不都合なのだ。`[\]
 *d52029
 d `もはや黄金の山を丸ごと手に入れることは出来ないが、`[@]`自分で持ち運べる程度の、インゴット数本をくすねることは出来るはず。`[@]`そしてそれだけでも、十分な大金になるはず。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,12,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3c"
 flush 1
@@ -2030,7 +2028,7 @@ rumble 63,500
 gptwait quakeyamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2044,7 +2042,7 @@ seplay 1,30,71
 d `転んで仰向けになった彼女の腹を、山本は容赦なく踏みつけて、銃を構える。`[\]
 *d52035
 d [lv 0*"99"*"75700088"]`「くっくっく、じゃじゃ馬を飼い慣らす趣味はないのでな…！`[@][lv 0*"99"*"75700089"]`　貴様は死ねッ！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3b"
 lss s0_9,"ki2","a11_odoroki2" ;1
@@ -2080,12 +2078,12 @@ flush 80
 msgwnd_kin
 *d52041
 d [lv 0*"58"*"75600202"]`「何の話だ…？！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_r2d"
 flush 24
@@ -2094,12 +2092,12 @@ msgwnd_non
 d `山本は手榴弾が不発だったことを知らない。`[\]
 *d52043
 d `絶対にうまく行くと思っていた奇襲が失敗したため、`[@]`金蔵が密告したからに違いないと決め付けていたのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 meplay 2,17,70
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3c"
 flush 26
@@ -2111,7 +2109,7 @@ d [lv 0*"58"*"75600203"]`「あなたが黄金に目が眩んだから、この�
 msgwnd_be4
 *d52046
 d [lv 0*"59"*"70700161"]`『逃げて、金蔵！`[@][lv 0*"59"*"70700162"]`　この男は命乞いしてる人も撃ったわ！`[@][lv 0*"59"*"70700163"]`　あなたも撃たれる！』`[\]
-textoff
+textoff2
 waits 167
 seplay 2,12,71
 agpt quakexcycle,50
@@ -2128,7 +2126,7 @@ d [lv 0*"59"*"70700164"]`『い、……痛い、…ぐぐ、……ぐッ、』`
 msgwnd_non
 *d52049
 d `山本の踵が、容赦なくベアトリーチェの仰向けの腹を踏み躙る。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3b"
 lss s0_8,"ki2","a11_niramu1" ;1
@@ -2166,12 +2164,12 @@ msgwnd_non
 *d52053
 d [lv 0*"99"*"75700106"]`「ちっ。`[@][lv 0*"99"*"75700107"]`右代宮、`[|][lv 0*"99"*"75700108"]`どうやら貴様は、黄金より鉛の方がお好みらしいなぁ？！」`[\]
 seplay 1,46,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2182,7 +2180,7 @@ d `まったく何の躊躇もなく、山本はその銃口を上げて、金�
 d `それは金蔵の右耳をわずかにかすめる。`[\]
 *d52056
 d `もうわずかに、山本の銃の腕が確かだったら、その銃弾は確実に金蔵の顔面に叩き込まれていた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3c"
 flush 23
@@ -2192,7 +2190,7 @@ d [lv 0*"59"*"70700165"]`『金蔵ッ？！`[@][lv 0*"59"*"70700166"]`　よ、�
 msgwnd_non
 *d52058
 d [lv 0*"99"*"75700109"]`「貴様ッ、……ぬごッ？！？！」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,11,71
 agpt quakexcycle,67
@@ -2210,7 +2208,7 @@ gptwait quakeyamp
 d `山本の注意が逸れたのを見過ごさず、ベアトリーチェが暴れ、突き上げた右足で山本の股間を強打する。`[\]
 *d52060
 d `一瞬、呻いた山本は、鬼のような形相を浮かべて激しく彼女の胸を踏みつける。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -2220,16 +2218,16 @@ d [lv 0*"58"*"75600207"]`『ビーチェ！！』`[\]
 msgwnd_non
 *d52062
 d [lv 0*"99"*"75700110"]`「このクソアマがぁああぁあ！！　死ねぇええええええええぇええ！！」`[\]
-textoff
+textoff2
 waits 167
 vol_bgm 90
 seplay 1,46,100
 seplay 2,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3b"
 flush 22
@@ -2237,7 +2235,7 @@ flush 22
 d `ベアトリーチェはぎゅっと目を瞑り、それが耐えられる痛みであることを祈った。`[\]
 *d52064
 d `誰だって、自分が撃たれる瞬間に、目を開けていたいとは思わない……。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
@@ -2245,35 +2243,35 @@ wait 2000
 vol_mix_fade 1000
 wait 1000
 meplay 1,17,70
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 6
 wait 2000
 seplay 1,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2a"
 flush 1
 wait 2000
 seplay 2,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2b"
 flush 1
 *d52065
 d [lv 0*"99"*"75700112"]`「ぎ、`[|][lv 0*"99"*"75700113"]`……貴`[|][lv 0*"99"*"75700114"]`…様`[|][lv 0*"99"*"75700115"]`……………」`[\]
 seplay 3,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2c"
 flush 1
 *d52066
 d `ぼろ、`[!w500]`……ぼろぼろっと、`[!w417]`…山本の胸から、転がり出るように血の塊が溢れ出す。`[\]
 seplay 2,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2e"
 flush 1
@@ -2287,11 +2285,11 @@ d `金蔵の言葉を、山本は聞き届けられただろうか。`[\]
 d `山本は、多分、最期にニヤリと笑った。`[\]
 *d52070
 d `そして、ゆっくりと、一筋の血を迸らせながら、`[!w500]`……大きく後ろへ倒れて行った。`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,100,3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 65
@@ -2299,7 +2297,7 @@ vol_mix_fade 1000
 wait 1000
 seplay 1,13,90
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p3b"
 flush 23
@@ -2361,7 +2359,7 @@ flush 80
 msgwnd_be4
 *d52076
 d [lv 0*"59"*"70700173"]`『これくらいで折れるほど、イタリア女はヤワじゃないの。`[@][lv 0*"59"*"70700174"]`……でも、ありがとう。`[@][lv 0*"59"*"70700175"]`あなたは命の恩人だわ。`[@][lv 0*"59"*"70700176"]`あなたが来なければ、私はきっとそこに転がっていたわ。`[@][lv 0*"59"*"70700177"]`……、ぐ………』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2377,7 +2375,7 @@ d `私は、彼女をこの島から運び出す決意をした。`[\]
 *d52080
 d `秘密基地だから外部との交流を禁ずる云々を叫ぶ当の本人は、もうそこで息絶えている。`[\]
 meplay 1,2,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p2a"
 flush 4
@@ -2389,7 +2387,7 @@ flush 24
 msgwnd_kin
 *d52082
 d [lv 0*"58"*"75600215"]`『君を病院へ運ばなければならない。`[@][lv 0*"58"*"75600216"]`……君が思っているより、傷が深かったらいけない』`[\]
-textoff
+textoff2
 waits 167
 lss s0_9,"bea","c11_aseru2" ;1
 flush 4
@@ -2413,7 +2411,7 @@ flush 80
 msgwnd_kin
 *d52086
 d [lv 0*"58"*"75600221"]`『どうして…』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -2428,7 +2426,7 @@ d [lv 0*"58"*"75600222"]`『……………………』`[\]
 msgwnd_be4
 *d52089
 d [lv 0*"59"*"70700185"]`『もう、私の帰るべき祖国はないの。`[@][lv 0*"59"*"70700186"]`ここが私の終点。`[@][lv 0*"59"*"70700187"]`だからもう、私はどこへも行きたくないの。`[@][lv 0*"59"*"70700188"]`……私にやさしくしてくれたアンジェロ少尉も、`[|][lv 0*"59"*"70700189"]`ルーベンスも、`[|][lv 0*"59"*"70700190"]`みんなみんな、`[|][lv 0*"59"*"70700191"]`……死んでしまった』`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p2a"
 lss s0_10,"bea","c11_fuman2" ;1
@@ -2492,7 +2490,7 @@ flush 80
 msgwnd_be4
 *d52101
 d [lv 0*"59"*"70700214"]`『お願い、金蔵。`[@][lv 0*"59"*"70700215"]`……迎えが来るまでの数日間でいいから。`[@][lv 0*"59"*"70700216"]`……私をさらって』`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -2506,7 +2504,7 @@ d [lv 0*"58"*"75600228"]`『………その願いは、`[|][lv 0*"58"*"75600229"
 msgwnd_non
 *d52103
 d `金蔵は残念そうにそう言いながら、ベアトを抱え上げ、やさしく船に寝せる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"submarine_o1a"
 flush 22
@@ -2516,7 +2514,7 @@ d [lv 0*"59"*"70700217"]`『……意気地なし。`[@][lv 0*"59"*"70700218"]`�
 msgwnd_kin
 *d52105
 d [lv 0*"58"*"75600230"]`『そうだな。`[@][lv 0*"58"*"75600231"]`……私は意気地なしだ。`[@][lv 0*"58"*"75600232"]`だから君の願いは、片方しか叶えられない』`[\]
-textoff
+textoff2
 waits 167
 seplay 1,13,71
 agpt quakeycycle,50
@@ -2530,7 +2528,7 @@ d `ゴトリと、重い音をさせて、上着に包んだそれを船に積�
 msgwnd_be4
 *d52107
 d [lv 0*"59"*"70700219"]`『片方とは……？』`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sub_p2a"
 lss s0_9,"ki2","a11_futeki1" ;1
@@ -2543,7 +2541,7 @@ bgmplay 64,71,0
 msgwnd_kin
 *d52108
 d [lv 0*"58"*"75600233"]`『迎えが来るまでの数日間でいいから。`[@][lv 0*"58"*"75600234"]`……の方は、叶えられないということさ』`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"bea","c11_odoroki4" ;1
 spt_mem "a2","xpos",s0_10,370
@@ -2575,7 +2573,7 @@ d `要人護送の船が、敵潜に沈められてボートで云々と、い�
 d `その医者が欲深であったなら、さらに好都合だ。`[\]
 *d52116
 d `……ここには、相手を言い成りに出来る、黄金の魔法があるのだから。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 28
@@ -2590,7 +2588,7 @@ agpt quakeyamp,30,500
 agpt quakexcycle,2000
 agpt quakexamp,10,500
 rumble 39,1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sea_4a"
 flush 22
@@ -2650,13 +2648,13 @@ flush 80
 msgwnd_be4
 *d52126
 d [lv 0*"59"*"70700229"]`『取ってね、責任。`[@][lv 0*"59"*"70700230"]`………だってあなたは、私をさらったんだから』`[\]
-textoff
+textoff2
 waits 167
 agpt quakeyamp,0,3000
 agpt quakexamp,0,3000
 gptwait quakexamp
 gptwait quakeyamp
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -2673,7 +2671,7 @@ vol_bgm 70,2000
 vol_me 1,0,2000
 vol_me 2,0,2000
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -2689,7 +2687,7 @@ bgmplay 167,71,0
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"cha_r1b_bg"
 lbg "a:backgrounds",s0_3,"cha_r1b"
@@ -2714,7 +2712,7 @@ flush 24
 msgwnd_wil
 *d52129
 d [lv 0*"54"*"75400498"]`「驚くに値しねェ。`[@][lv 0*"54"*"75400499"]`新島の医者って時点でピンと来る」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2738,7 +2736,7 @@ flush 80
 msgwnd_nan
 *d52132
 d [lv 0*"19"*"71900006"]`「……そうです。`[@][lv 0*"19"*"71900007"]`それが、金蔵さんと初めての対面でした」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2774,7 +2772,7 @@ spt_mem "a2","xpos",s0_10,550
 flush 80
 *d52137
 d [lv 0*"19"*"71900015"]`「コホン。`[@][lv 0*"19"*"71900016"]`……もちろん、インゴットに目が眩まなかったと言えば、嘘が過ぎますがな。`[@][lv 0*"19"*"71900017"]`私も、今よりは若かったものですから」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2867,14 +2865,14 @@ flush 80
 msgwnd_wil
 *d52151
 d [lv 0*"54"*"75400507"]`「……九羽鳥庵のベアトリーチェの誕生、か。」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 csp_slot s0_1
 meplay 1,12,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_r1d"
 flush 22
@@ -2884,7 +2882,7 @@ d [lv 0*"19"*"71900027"]`「出産が、うまく行かなかったそうで…�
 msgwnd_rio
 *d52154
 d [lv 0*"53"*"75300250"]`「まさか、……亡くなったんですか？！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"cha_r1b_bg"
 lbg "a:backgrounds",s0_3,"cha_r1b"
@@ -2924,7 +2922,7 @@ flush 24
 msgwnd_wil
 *d52159
 d [lv 0*"54"*"75400511_UP_MODIFIED"]`「そして、娘のために九羽鳥庵を作ったというわけか……」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2934,18 +2932,18 @@ lbg "c:colour",s0_3,"black"
 flush 22
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold2"
 flush 2
 msgwnd_nan
 *d52160
 d [lv 0*"19"*"71900032"]`「金蔵さんは、潜水艦の黄金を元手に巧みに立ち回り、たちまちのうちに財産を築き上げていきました。`[@][lv 0*"19"*"71900033"]`また、持ち前の英語力を生かし、ＧＨＱに強いコネクションを作って、見る見るうちに大富豪となられたのです。`[@][lv 0*"19"*"71900034"]`この辺は、理御さんに説明する必要はありますまい」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sea_1cf"
 flush 22
@@ -2958,7 +2956,7 @@ d [lv 0*"54"*"75400512"]`「１０ｔの黄金がポケットに収まる大き�
 msgwnd_non
 *d52163
 d `六軒島の何処かに黄金を隠し、`[@]`持ち出したインゴットで財を築いて、……宝島を丸ごと買い取ったわけだ…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2966,7 +2964,7 @@ meplay 1,12,50
 msgwnd_nan
 *d52164
 d [lv 0*"19"*"71900035"]`「ですな。`[@][lv 0*"19"*"71900036"]`………そして、右代宮家の黄金伝説が始まるのです」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold1"
 flush 22
@@ -2985,7 +2983,7 @@ d [lv 0*"19"*"71900038"]`「ヨーロッパに多いでしょう。`[@][lv 0*"19
 msgwnd_wil
 *d52169
 d [lv 0*"54"*"75400514"]`「刻印が薄かった、……あるいは粗雑だったということか」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold3"
 flush 22
@@ -2995,11 +2993,11 @@ d [lv 0*"19"*"71900042"]`「そうです。`[@][lv 0*"19"*"71900043"]`………�
 msgwnd_rio
 *d52171
 d [lv 0*"53"*"75300259"]`「翼を広げた鷲が半分消えて、……それが、片翼の鷲に見えた？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"cha_r1b_bg"
 lbg "a:backgrounds",s0_3,"cha_r1b"
@@ -3040,7 +3038,7 @@ flush 80
 msgwnd_nan
 *d52177
 d [lv 0*"19"*"71900052"]`「無論、大富豪になった後、金蔵さんは再び私の元へ訪れ、未払いだった治療費をしっかり払ってくれましたとも。`[@][lv 0*"19"*"71900053"]`治療費には、ちと多過ぎましたのでな。`[@][lv 0*"19"*"71900054"]`ちゃんとお釣りを払いましたが」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3076,7 +3074,7 @@ flush 80
 msgwnd_nan
 *d52181
 d [lv 0*"19"*"71900057"]`「私にも多少の異国趣味と、チェスの趣味がありましてな。`[@][lv 0*"19"*"71900058"]`金蔵さんとは以来、意気を投合しまして。`[@][lv 0*"19"*"71900059"]`こうして細々と、しかし気付けばずいぶんと。`[@][lv 0*"19"*"71900060"]`長くお付き合いをさせてもらっています……」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -3100,14 +3098,14 @@ d [lv 0*"54"*"75400523"]`「世辞じゃねェ」`[\]
 msgwnd_rio
 *d52187
 d [lv 0*"53"*"75300264"]`「………？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 28
@@ -3118,7 +3116,7 @@ d `……金蔵の死後、少なくとも１年以上にもわたって、そ�
 d `もちろん夏妃から少なくない口止め料をもらってはいただろう。`[\]
 *d52190
 d `だが、カネの亡者の息子兄弟たちに迫られても、最後までボロを出さない程度の肝っ玉が、確かにあるのは間違いない……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"cha_r1b_bg"
 lbg "a:backgrounds",s0_3,"cha_r1b"
@@ -3142,7 +3140,7 @@ flush 24
 msgwnd_rio
 *d52193
 d [lv 0*"53"*"75300265"]`「お祖父さまは、良い友人に恵まれたと思います」`[\]
-textoff
+textoff2
 waits 167
 wait 2000
 break_glass3

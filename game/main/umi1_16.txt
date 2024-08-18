@@ -1,12 +1,10 @@
 *umi1_16
 ;10/5（日）23:30 黄金の魔女
 log_reset
-mov $name_chapter_r_click,r_click_chapters_1_16
-mov $name_chapter_r_click_l2,r_click_chapters_1_16_l2
-mov $name_chapter_r_click_l3,r_click_chapters_1_16_l3
+mov $name_chapter_r_click,r_click_chapters_1_16+"|"+r_click_chapters_1_16_l2+"|"+r_click_chapters_1_16_l3
 mov $name_chapter_save, "1_16"
 new_chapter date_scenario_1_16,scenario_1_16
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -15,7 +13,7 @@ wait 3000
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mlib_1e"
 flush 6
@@ -29,7 +27,7 @@ d `……互いを疑い合わなくてよい楽園から、`[@]`彼らを追放
 d `しかし、彼らの追放の動機は人が人を疑うという、人として最低の罪によるもの。`[\]
 *d6736
 d `……もし、１９人目の存在として、魔女の存在を受け容れられたなら、`[@]`……自分たちは今も、互いを信じあってこの部屋で膝を寄せ合えたのではないだろうか。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
@@ -40,7 +38,7 @@ d `あの瞬間。`[@]`疑わしきを全て追放することに、自分たち
 d `……しかし、それが正しかったのかどうか。`[\]
 *d6739
 d `……いくら過ごせども尽きぬ沈黙の時間は、ただただ静かにその罪を苛み続ける……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1ar_bg"
 lbg "a:backgrounds",s0_3,"mlib_1ar"
@@ -50,7 +48,7 @@ flush 6
 d `夏妃伯母さんはライフル銃を片時も手放さず、扉を正面にしながら、ソファーに深く腰をかけていた。`[\]
 *d6741
 d `……多分、今夜は一睡もせず扉を見張り続けるだろう。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
@@ -62,7 +60,7 @@ flush 4
 d `譲治の兄貴は、カーテンを閉じた窓の隙間から、`[@]`中庭と、それを囲む屋敷を眺めている。`[\]
 *d6743
 d `……不審者の影が窓に映らないか確認しているのか、`[@]`…何かに対し自問自答しているのか、…わからない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_1,"mlib_1br_bg"
@@ -74,7 +72,7 @@ flush 3
 d `朱志香は、夏妃伯母さんの脇のソファーに斜めに腰掛け、…死んだような表情を浮かべていた。`[\]
 *d6745
 d `……そして、時折思い出したように、あの喘息の発作の時に使っていた吸入器を取り出し、くわえていた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
@@ -92,7 +90,7 @@ d `…だとしたら、`[!w500]`……想い人の死で初めて、自分の�
 d `………それは、とても気の毒で悲しいことに違いなかった。`[\]
 *d6751
 d `そういえば、…あの吸入器は嘉音くんが差し出してた。`[@]`……それを思い出しているのだろうか。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s0_3,"mlib_1cr"
@@ -112,13 +110,13 @@ d `…意味不明だし、わかったところで、余計に不快な思い�
 d `……それについては俺も同意する。`[\]
 *d6758
 d `…だが、だからと言って放置もできず、こうして調べ物のふりをしながら時間を潰している…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s0_3,"mlib_1cr"
@@ -180,7 +178,7 @@ flush 10,167
 msgwnd_but
 *d6766
 d [lv 0*"10"*"10101372"]`「安心しろよ。`[@][lv 0*"10"*"10101373"]`俺は真里亞にお墨付きをもらってるぜ。`[@][lv 0*"10"*"10101374"]`…俺には霊的才能はからっきしなんだとよ。`[@][lv 0*"10"*"10101375"]`いっひっひ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -190,7 +188,7 @@ flush 2
 vol_me 1,-1,3000
 vol_me 2,-1,3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mlib_1e"
 flush 2
@@ -203,7 +201,7 @@ d [lv 0*"03"*"10900590"]`「…………朱志香。`[@][lv 0*"03"*"10900591"]`�
 msgwnd_jes
 *d6769
 d [lv 0*"04"*"10200759"]`「でも母さん…。`[@][lv 0*"04"*"10200760"]`もしも真里亞が無関係で、犯人が他にいたなら、`[|][lv 0*"04"*"10200761"]`……犯人は襲いやすい相手を狙うに決まってる。`[@][lv 0*"04"*"10200762"]`……それで殺されたなら、`[|][lv 0*"04"*"10200763"]`………私たちは、…見殺しにしたことになるよ…」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1ar_bg"
 lbg "a:backgrounds",s0_3,"mlib_1ar"
@@ -288,7 +286,7 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -319,7 +317,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 *d6788
 d [lv 0*"07"*"10300760"]`「……知ってるかい？`[@][lv 0*"07"*"10300761"]`　真里亞ちゃんにとって、魔女のイメージは決してネガティブなものじゃないんだよ。`[@][lv 0*"07"*"10300762"]`…ほら、昨日、海岸で、真里亞ちゃんのノートを見せてもらわなかったかい…？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -337,7 +335,7 @@ d `そして開いたページには、醜悪な姿をした魔女の絵は一�
 d `色とりどりに描かれた美しく、可愛らしく、楽しそうな魔女たち。`[\]
 *d6793
 d `男が想像するような禍々しさはまったくなく、`[@]`…美しいドレスを着飾って、人の夢を何でも叶えてくれる、不思議な魔法でみんなを幸せにしてくれる存在。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -352,7 +350,7 @@ d `いつか魔女がやってきて、素敵な魔法で自分を幸せにし�
 d `……そう信じても、成長と共に淡い夢が少しずつ引き裂かれていく現実。`[\]
 *d6798
 d `………そんな彼女の前に、`[@]`六軒島の魔女を名乗る存在が現れて、`[@]`幸せになれる黄金郷へ連れて行ってあげようと囁いてくれたら。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1ar_bg"
 lbg "a:backgrounds",s0_3,"mlib_1ar"
@@ -372,7 +370,7 @@ d [lv 0*"04"*"10200769"]`「……………気まずくは、`[|][lv 0*"04"*"102
 msgwnd_non
 *d6801
 d `面と向かって拒絶の声をぶつけた朱志香だからこそ、`[@]`…今、呵責に強く苛まれているに違いない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -415,7 +413,7 @@ meplay 2,11,90
 msgwnd_but
 *d6807
 d [lv 0*"10"*"10101389"]`「あぁ。`[@][lv 0*"10"*"10101390"]`………もう今さら何の役にも立たないかも知れねぇが、またチェス盤をひっくり返させてくれ。`[@][lv 0*"10"*"10101391"]`…つまり、あの４人が本当に犯人だってんならよ、おかしいんだよ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -453,7 +451,7 @@ msgwnd_non
 d `俺の言った言葉の意味を、夏妃さんは真っ先に察する。`[\]
 *d6814
 d `……いや、あるいは、俺が思いつくずっと前からもう気付いていて、口に出さなかっただけなのか…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -464,17 +462,17 @@ flush 25
 msgwnd_but
 *d6815
 d [lv 0*"10"*"10101398"]`「……この部屋の外に犯人がいて、…俺たちが外からは手出しをできない密室に立て篭もっちまったらお手上げだ。`[@][lv 0*"10"*"10101399"]`………そうだよ。`[@][lv 0*"10"*"10101400"]`この部屋から祖父さまがいなくなったって話の時、俺が披露した説じゃねぇか」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map03"
 flush 22
 *d6816
 d [lv 0*"10"*"10101401"]`「……祖父さまが、自分から出て行くという説。`[@][lv 0*"10"*"10101402"]`…自分から出て行くような、何かの細工を犯人がして、まんまと外へ誘き出していたのだとしたら…」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door1k"
 color_mod2 s0_3,#ffffff
@@ -491,12 +489,12 @@ flush 10,167
 d `……ベアトリーチェはこの扉を破れない。`[\]
 *d6819
 d `でも、自分から書斎を出てくるように仕向けることはできるかもって。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s0_3,"mlib_1cr"
@@ -554,7 +552,7 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 *d6830
 d [lv 0*"10"*"10101410"]`「…………俺は別にそれを責めてぇわけじゃねぇ。`[@][lv 0*"10"*"10101411"]`ただ、その。`[@][lv 0*"10"*"10101412"]`………朱志香はいいお袋を持ったなって、そう思ったのさ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -605,7 +603,7 @@ msgwnd_jes
 d [lv 0*"04"*"10200782"]`「……私、`[|][lv 0*"04"*"10200783"]`………真里亞のことを、実の妹みたいだとずっと思って可愛がってきた。`[@][lv 0*"04"*"10200784"]`………なのに、`[|][lv 0*"04"*"10200785"]`……色んなことがあって、ちょっと混乱しちゃって…。`[@][lv 0*"04"*"10200786"]`……酷いことをたくさん言って傷つけてしまった…」`[\]
 *d6837
 d [lv 0*"04"*"10200787"]`「………………母さん、`[|][lv 0*"04"*"10200788"]`…お願いだよ。`[@][lv 0*"04"*"10200789"]`………真里亞も、`[|][lv 0*"04"*"10200790"]`………うぅん、みんなも、一緒にいようよ…。`[@][lv 0*"04"*"10200791"]`………私たちの中に、`[|][lv 0*"04"*"10200792"]`…犯人なんていなかったんだよ……。`[@][lv 0*"04"*"10200793"]`この事件の犯人は、`[|][lv 0*"04"*"10200794"]`………魔女の、ベアトリーチェでいいじゃないか…。`[@][lv 0*"04"*"10200795"]`だから、もう、……疑い合うのはやめようよ……」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -617,7 +615,7 @@ msgwnd_non
 d `夏妃伯母さんは少しだけ目を閉じた。`[\]
 *d6839
 d `…再び疼き出した頭痛に耐えているのか、…それとも何かに思いを馳せているのか…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mlib_1e"
 flush 5
@@ -633,7 +631,7 @@ d `…………しかしそれは、罪の意識に苛むからゆえのもの�
 d `………何て長い一日なんだ。`[@]`{n}…今日の一日で、どれだけのことが起こって、…俺たちはどれだけ追い詰められちまったってんだ…。`[\]
 *d6844
 d `……今の俺たちに、明日を迎える資格などあるのだろうか……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -649,7 +647,7 @@ msgwnd_non
 d `俺はずっと捲り続けていた本から、ついに、２枚目の手紙に書かれた魔法陣と同じものを見つける。`[\]
 *d6848
 d `譲治の兄貴も覗き込んでくる。`[\]
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_3,"magicsquare_mars3"
 flush 22
@@ -661,7 +659,7 @@ d `ヘブライ語で書かれているのは、旧約聖書の詩篇、第７�
 d `“あなたのように偉大なる神が、他におりましょうか”。`[\]
 *d6852
 d `魔法陣の意味するところは、`[@]`………“不和”。`[@]`{n}…内部分裂を煽り、敵を自ずから瓦解させる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s0_3,"mlib_1cr"
@@ -677,7 +675,7 @@ msgwnd_non
 d `今の俺たちの状況や心境に、これ以上相応しいものがあるだろうか。`[\]
 *d6855
 d `俺たちは絶句する他ない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
@@ -702,7 +700,7 @@ flush 10,167
 msgwnd_geo
 *d6858
 d [lv 0*"07"*"10300774"]`「だとしたら…、狙いは、外へ出された人たちだ……！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -720,7 +718,7 @@ msgwnd_non
 d `夏妃伯母さんが苦々しく沈黙するのは当然だ。`[@]`{n}…仮に全てが犯人の罠で、さっき部屋から追放した４人が危ないとしても、`[@]`今ここにいる４人の安全とは関係がない。`[\]
 *d6862
 d `しかも追放した４人の潔白を証明する方法はない。`[@]`{n}……彼らを見殺しにする覚悟があるのなら、何があろうともこの部屋を出るべきではないのだ。`[@]`…それが、一番安全！！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -738,7 +736,7 @@ d `……こんな話をしていてすぐに鳴ったのだ。`[@]`{n}その電
 seplay 1,21,71
 *d6866
 d `だが夏妃伯母さんは言った。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s0_3,"mlib_1cr"
@@ -770,7 +768,7 @@ msgwnd_non
 d `その一言で、助けを求める悲鳴のように聞こえた電話の呼び出し音は、正体不明の何者かからの不気味な呼び出し音に変わる…！`[\]
 *d6871
 d `夏妃伯母さんは受話器を取るべきかどうか躊躇した。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -797,7 +795,7 @@ flush 10,167
 msgwnd_but
 *d6874
 d [lv 0*"10"*"10101422"]`「……伯母さんが取らないなら、`[|][lv 0*"10"*"10101423"]`……俺が取るぜ……！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -837,7 +835,7 @@ wait 3000
 d_continue
 wait_on_d -1
 bgmplay 15,71,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s0_3,"mlib_1cr"
@@ -867,7 +865,7 @@ lss s0_9,"but","b22_odoroki1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -894,7 +892,7 @@ d `少なくとも、電話を掛けてきたのは真里亞じゃない。`[@]`
 d `……なら、電話を掛けたのは、源次さんか熊沢さんか南條先生の中の誰かのはず。`[\]
 *d6895
 d `…………なのに、何もしゃべってくれない。`[@]`…なぜ…。`[@]`どうして…。`[@]`…………この電話を掛けてきたのは、誰なんだッ……？！？！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s0_3,"mlib_1cr"
@@ -919,7 +917,7 @@ msgwnd_but
 *d6898
 d [lv 0*"10"*"10101432"]`「わからねぇ…！`[@][lv 0*"10"*"10101433"]`　ひとつ言えることは、`[|][lv 0*"10"*"10101434"]`…多分、これは罠で、……そして真里亞が危険だってことだけだ…」`[\]
 vol_me 5,-1,1000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -932,7 +930,7 @@ d `夏妃伯母さんは再び受話器を取り、何度呼びかけても埒�
 d `そして素早くダイヤルする。`[@]`……そして舌打ちした。`[\]
 *d6901
 d `そうか、電話が回復したなら警察にだって通報できるはず。`[@]`{n}……しかし、伯母さんの反応を見る限り、外線電話は相変わらずつながらないようだった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1br_bg"
 lbg "a:backgrounds",s0_3,"mlib_1br"
@@ -951,7 +949,7 @@ d [lv 0*"10"*"10101435"]`「あぁ、まったくだぜ！！`[@][lv 0*"10"*"101
 msgwnd_non
 *d6904
 d `俺と兄貴が駆け出そうとすると、夏妃伯母さんが制した。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -968,7 +966,7 @@ flush 10,167
 msgwnd_jes
 *d6906
 d [lv 0*"04"*"10200808"]`「私だけ除け者かよ？！`[@][lv 0*"04"*"10200809"]`　冗談じゃない、私も行くぜ…！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -986,7 +984,7 @@ flush 10,167
 msgwnd_geo
 *d6908
 d [lv 0*"07"*"10300781"]`「議論する暇も惜しい。`[@][lv 0*"07"*"10300782"]`みんなで行こう！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1001,7 +999,7 @@ d `俺も素手というわけには行かない。`[\]
 d `怪しげな儀式に使いそうな三叉の燭台を見つけ、得物とした。`[\]
 *d6912
 d `蝋燭を挿すトゲが短いながらもついているそれは、さながら三叉の槍のようだった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -1011,7 +1009,7 @@ vol_bgm -1,3000
 wait 3000
 seplay 1,17,71
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m2f_p1cr_bg"
 lbg "a:backgrounds",s0_3,"m2f_p1cr"
@@ -1030,7 +1028,7 @@ d [lv 0*"04"*"10200810"]`「真里亞ー！！`[@][lv 0*"04"*"10200811"]`　ど�
 msgwnd_non
 *d6916
 d `耳を澄ますが、何も聞こえない…。`[@]`{n}屋敷は狭くないし、過ぎ去ろうとしている台風は最後の足掻きとばかりに、雨音を一層騒がせる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"m_door1k"
@@ -1052,7 +1050,7 @@ flush 10,167
 msgwnd_but
 *d6919
 d [lv 0*"10"*"10101439"]`「おうッ！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1060,7 +1058,7 @@ csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 28
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m2f_p1cr_bg"
 lbg "a:backgrounds",s0_3,"m2f_p1cr"
@@ -1072,7 +1070,7 @@ d `ライフル銃を構え、引き金に指を掛ける夏妃伯母さんを�
 d `さっきの不和を目論むという魔法陣が、まるでその魔力で成したように。`[@]`…俺たちは分裂し、しかもその上、危険地帯へ引きずり出されている。`[\]
 *d6922
 d `……ということはつまり、今この瞬間、犯人のシナリオに乗っかっているということになる。`[@]`…ここからは突然何が起きてもおかしくない異空間なのだ…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -1084,7 +1082,7 @@ d `夏妃伯母さんは物陰や暗がりがある度に神経質に銃口を�
 d `その動きは警戒よりも怯えを強く感じさせる…。`[\]
 *d6925
 d `しかし、手にするライフル銃は、きっと犯人を恐れさせる切り札でもあるはずなのだ…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m2f_p1br_bg"
 lbg "a:backgrounds",s0_3,"m2f_p1br"
@@ -1122,14 +1120,14 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2br_bg"
 lbg "a:backgrounds",s0_3,"mhal_2br"
@@ -1145,7 +1143,7 @@ d `最初の殺人で犯人は、多分、食堂で遺産問題を話し合っ�
 d `……同じことを考えてるのは、俺だけではないようだった。`[\]
 *d6934
 d `……譲治の兄貴も、`[@]`朱志香も、`[@]`…そして当然、夏妃伯母さんも、`[@]`……神経を極限まで研ぎ澄まし、最高最悪の緊張状態を維持しながら、一歩、一歩と、じりじりと歩を進めていく…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -1154,14 +1152,14 @@ flush 2
 d `………あぁ、俺たちは何と罪深いことか。`[\]
 *d6936
 d `…これほどの恐ろしき世界に、……あの手紙一通によって蒔かれた疑心暗鬼によって、真里亞たち４人を突き落としたのだから…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
 lbg "a:backgrounds",s0_3,"mhal_2ar"
 flush 6
 *d6937
 d `一階にたどり着く。`[@]`………客間は、廊下の向こう、すぐだ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -1180,7 +1178,7 @@ d `………それはまるで、学校の授業などで、歌うことを命�
 d `…歌っている歌は、誰もが学校で一度は歌ったことがあるに違いない平凡な民謡。`[\]
 *d6942
 d `……しかし、それを、なぜ、こんな深夜に、ひとりで、一生懸命に、ずっと、どうして…？！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_p1br_bg"
 lbg "a:backgrounds",s0_3,"m1f_p1br"
@@ -1191,7 +1189,7 @@ d `書斎を出たばかりの時、俺たちは大声をあげ、真里亞は�
 d `…しかし、今度は誰も何も、一言も発しない。`[\]
 *d6945
 d `……息と足音を殺し、神経を研ぎ澄ましながら、神経質なくらいに辺りをうかがいつつ、……歩を進める…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door2"
 flush 22
@@ -1200,7 +1198,7 @@ vol_me 5,20
 d `客間の扉は閉まっていた。`[@]`{n}だが、真里亞の歌声はその中から聞こえてくる…。`[\]
 *d6947
 d `夏妃伯母さんが扉の取っ手状のドアノブに手を掛ける…。`[@]`それを譲治の兄貴が制した。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door1"
 flush 22
@@ -1226,7 +1224,7 @@ flush 10,167
 msgwnd_jes
 *d6950
 d [lv 0*"04"*"10200813"]`「開けると同時に攻撃してくるかもしれないぜ…。`[@][lv 0*"04"*"10200814"]`譲治兄さん、注意して…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1257,7 +1255,7 @@ d `今朝からずっとこの部屋の中にいた。`[@]`{n}…いつも恐ろ
 *d6960
 d `………その、根拠なき思い込みが、あっさりと崩れ去っていく……。`[\]
 vol_me 5,0
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -1269,7 +1267,7 @@ seplay 1,25,71
 msgwnd_geo
 *d6961
 d [lv 0*"07"*"10300795"]`「…………ん、………開いた」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door1"
 lss s0_10,"nat","a16_majime1" ;1
@@ -1306,7 +1304,7 @@ flush 10,167
 msgwnd_nat
 *d6967
 d [lv 0*"03"*"10900647"]`「……行きますッ！！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1317,27 +1315,27 @@ wait 1000
 seplay 1,16,71
 waits 167
 seplay 2,15,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 30
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1cr"
 flush 22
 msgwnd_non
 *d6968
 d `俺と夏妃伯母さんは、扉に体当たりをするようにして客間に飛び込み、`[@]`左右に素早くわかれ、客間の中で待ち受けているかもしれない何者かを探した。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 seplay 1,45,71
 *d6969
 d `しかし、俺たちの目に飛び込んできたのは、`[@]`…………あまりに、`[!w500]`………異様な光景だった…。`[\]
-textoff
+textoff2
 waits 167
 meplay 1,19,90
 lbg "c:cg_box",s0_17,"g0103"
@@ -1347,10 +1345,10 @@ flush 22
 d `客間は、………血で染まっていた。`[\]
 *d6971
 d `俺たちが今日の一日のほとんどを過ごし、`[@]`何者かの悪意から身を守るために身を寄せ合っていたその場所が、`[@]`鮮血で染められていたッ、血の海になっていたッ…！！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_17
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1b"
 flush 22
@@ -1367,7 +1365,7 @@ wait_on_d -1
 d `………しかし、彼らを彼らだと識別できたのは、あくまでも服装からだ。`[\]
 *d6974
 d `……なぜなら、……あぁ、そうさ、そもそも今日一日の惨劇はこいつから始まったんだ…！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1ar"
 flush 22
@@ -1384,7 +1382,7 @@ d `そしてそれだけじゃない。`[@]`{n}彼ら３人の体はまだ傷つ
 d `……それは、あの、“悪魔のアイスピック”！`[@]`{n}それが、……源次さんは腹、南條先生は腿…、いや、膝？`[@]`{n}そうさ、膝だろうさ…！　碑文にゃ、第六の晩には腹を！`[@]`{n}第七の晩には膝を抉れって書いてあるッ！`[\]
 *d6979
 d `だから熊沢の婆ちゃんのふくらはぎの辺りにも突き立てられているのを見て、あぁそうだろうよと自虐的に笑わざるを得なかった…！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1394,7 +1392,7 @@ d `第六の晩に、腹を抉りて殺せ。`[@]`{n}第七の晩に、膝を抉
 set_name_window_non
 *d6981
 d `あああぁ、……これで第八の晩までが終わってしまった。`[@]`そして迎える第九の晩は、……何だったっけ…？`[\]
-textoff
+textoff2
 waits 167
 lbg "c:cg_box",s0_17,"g0103"
 spt_mem "a2","xpos",s0_17,400
@@ -1402,7 +1400,7 @@ flush 22
 meplay 1,5,40
 *d6982
 d `真里亞は……、いた。`[\]
-textoff
+textoff2
 waits 167
 meplay 5,1054,40
 spt_mem "a2","xpos",s0_17,-400,26667,1
@@ -1436,14 +1434,14 @@ d `俺たちは、真里亞に迫っているだろう危機から、救い出�
 d `…だから、真里亞の姿を認めたなら、その無事を喜び、駆け寄って肩を抱くべきなのだ。`[@]`……なのに、それが誰もできない…！`[\]
 *d6995
 d `誰もが思った。でも口にできなかった。`[@]`なぜならだってだって、そうさ馬鹿なでもどうせ、いやそんなはずは………！！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_17
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 22
@@ -1459,7 +1457,7 @@ d `……俺は乱暴な声で真里亞に叫ぶ。`[@]`{n}……しかし、反
 d `燭台を構えたまま駆け寄り、俺は力強く、……いや、むしろ暴力的にその肩を叩く。`[@]`真里亞を振り返らそうと、無理やり肩を引っ張る！`[\]
 vol_me 5,-1,1000
 seplay 1,12,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -1479,7 +1477,7 @@ d `真里亞の小柄な体はあっさり引き倒されて転んだ。`[\]
 d `…そして、歌うことを邪魔されたことを不愉快に思うように、……いつもの真里亞の表情で俺を見つめる。`[\]
 *d7003
 d `このような、凄惨な状況下で、`[!w500]`{i:いつものように}！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_s1ar_bg"
 lbg "a:backgrounds",s0_3,"m1f_s1ar"
@@ -1496,7 +1494,7 @@ flush 10,167
 msgwnd_mar
 *d7005
 d [lv 0*"13"*"10400862"]`「………うー。`[@][lv 0*"13"*"10400863"]`ベアトリーチェ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1510,7 +1508,7 @@ d [lv 0*"10"*"10101451"]`「い、いい加減にしろッ！！！」`[\]
 msgwnd_non
 *d7007
 d `持っていた燭台を壁に投げつける。`[@]`{n}それは乱暴な、音の暴力となって真里亞の心にぶつかった。`[@]`{n}……しかし、真里亞の表情はまったく歪まない！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_s1ar_bg"
 lbg "a:backgrounds",s0_3,"m1f_s1ar"
@@ -1617,7 +1615,7 @@ flush 10,167
 msgwnd_geo
 *d7025
 d [lv 0*"07"*"10300806"]`「そ、それで？！　現れたベアトリーチェは、そしてみんなはどうしたの？！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1640,7 +1638,7 @@ lss s0_9,"mar","a22_niyari1" ;1
 flush 10,167
 *d7029
 d [lv 0*"13"*"10400894"]`「だから、生贄は真里亞じゃない３人に決まったの。`[@][lv 0*"13"*"10400895"]`そしたらね、ベアトリーチェはね、言ったの」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
@@ -1652,7 +1650,7 @@ msgwnd_non
 *d7030
 d [lv 0*"27"*"10700008"]`{e:070:“さぁさ、壁に向かって、お歌を歌って聞かせなさい。`[@]`{n}`[|][lv 0*"27"*"10700009"]`……あなたはたくさんたくさんお歌を歌うから、何が起こっても何が聞こえても、聞こえない聞こえないわからない。`[@]`{n}`[|][lv 0*"27"*"10700010"]`さぁさ、楽しいお歌を妾にたくさん聞かせておくれ”}`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m1f_s1cr"
 lss s0_8,"mar","a11_akuwarai2" ;1
@@ -1689,7 +1687,7 @@ flush 10,167
 msgwnd_jes
 *d7036
 d [lv 0*"04"*"10200817"]`「よせよ戦人…！！`[@][lv 0*"04"*"10200818"]`　真里亞が殺したわけでも見殺しにしたわけでもない！`[@][lv 0*"04"*"10200819"]`　ベ、ベアトリーチェが来て、真里亞は抵抗できず従わざるを得なかっただけだぜ…！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1718,7 +1716,7 @@ flush 10,167
 msgwnd_jes
 *d7039
 d [lv 0*"04"*"10200820"]`「か、母さん？　どこ行ったの……？！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1737,7 +1735,7 @@ d `手紙ッ？！`[@]`　そ、そりゃそうだろうな、第八の晩まで
 d `また能書きのひとつもタレたくて手紙を残してただろうよ。`[\]
 *d7043
 d `俺たちは真里亞に詰問することに夢中で、手紙を探そうなんて忘れてた…！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
@@ -1747,7 +1745,7 @@ flush 23
 d `でも、それを読んだら、どうしてこの危険な屋敷の中で、いくら武装してるとは言え、たったひとりで部屋を出るんだッ？！`[\]
 *d7045
 d `朱志香が後を追おうと扉の取っ手を引っ張ろうとすると、妙な手応えで開かない…！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door2h"
 flush 22
@@ -1785,13 +1783,13 @@ d `無理もない。`[@]`……さっき、戦人が壁に投げつけて床に
 d `………そしてそれで観音扉が開かないよう、うまく取っ手の間に挟んでかんぬきとしたのだ。`[\]
 *d7050
 d `…燭台の複雑な意匠がうまい形に引っかかり、それは実に頑丈に扉を封印していた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d7051
 d `母を呼ぶ娘の悲壮な叫び…。`[@]`{n}それは、夏妃の耳に、届いていたのか、いないのか…。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 wait 3000
@@ -1802,19 +1800,19 @@ csp_slot s0_11
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"ment_1br_bg"
 lbg "a:backgrounds",s0_3,"ment_1br"
 flush 2
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
 lbg "a:backgrounds",s0_3,"mhal_2ar"
 flush 2
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mhal_2cr"
 flush 2
@@ -1833,7 +1831,7 @@ msgwnd_nat
 *d7055
 d [lv 0*"03"*"10900648"]`「……右代宮家代表、右代宮夏妃ですッ！！！`[@][lv 0*"03"*"10900649"]`　姿を見せなさい、`[|][lv 0*"03"*"10900650"]`…黄金の魔女、ベアトリーチェッ！！！」`[\]
 csp_slot s0_11
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_1
@@ -1842,7 +1840,7 @@ flush 2
 msgwnd_non
 *d7056
 d `玄関ホールは薄暗い。`[@]`わずかな灯りで中央が照らし出される以外は、漆黒の闇で塗りつぶされている。`[\]
-textoff
+textoff2
 waits 167
 meplay 1,21,10
 anim s0_17,"no82",1
@@ -1868,11 +1866,11 @@ lbg "a:cg/nat",s0_28,"c_e0101_c"
 flush 10,167
 *d7061
 d [lv 0*"03"*"10900659"]`「……………さぁ、`[|][lv 0*"03"*"10900660"]`…決着をつけましょう。`[@][lv 0*"03"*"10900661"]`…右代宮家を真に引き継ぐ者はどちらか。`[@][lv 0*"03"*"10900662"]`…この右代宮夏妃か、`[@][lv 0*"03"*"10900663"]`…………貴女、`[|][lv 0*"03"*"10900664"]`……ベアトリーチェかッ！！`[@][lv 0*"03"*"10900665"]`　貴女の決闘の申し出、謹んでお引き受けさせていただきます…！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_26
 csp_slot s0_28
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 2
@@ -1888,22 +1886,22 @@ vol_me 1,60
 wait 1167
 vol_me 1,70
 wait 1167
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"butterfly_3a"
 color_mod2 nega1,s0_3
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 48
 vol_me 1,-1,1000
 seplay 1,27,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 10,167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mhal_2c"
 flush 2
@@ -1917,21 +1915,21 @@ d `魔女が、黄金の杖を振り上げ、`[!w500]`…笑う。`[\]
 meplay 1,17,70
 *d7065
 d `夏妃の指が、引き金をゆっくりと、`[!w667]`絞り込んでいく………。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door2h"
 flush 1
 msgwnd_but
 *d7066
 d [lv 0*"10"*"10101474"]`「せぇのぉおおぉおおおおお！！！」`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,1000
 seplay 1,12,71
@@ -1940,7 +1938,7 @@ agpt quakexamp,30
 agpt quakexamp,0,500,1
 rumble 63,500
 gptwait quakexamp
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -1949,7 +1947,7 @@ msgwnd_non
 d `戦人が思い切り助走をつけてから体当たりすると、かんぬきになっていた燭台はひしゃげて壊れ、扉に大きな隙間を作ることを許してくれた。`[\]
 *d7068
 d `その隙間から燭台に何度も蹴りを加え、ついに扉を開放する。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -1963,7 +1961,7 @@ d `その時、確かに聞いた。`[@]`{n}…乾いた銃声が一度、確か
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_p1br_bg"
 lbg "a:backgrounds",s0_3,"m1f_p1br"
@@ -1993,7 +1991,7 @@ d [lv 0*"10"*"10101475"]`「今のは銃声だぜ？！`[@][lv 0*"10"*"10101476"
 msgwnd_non
 *d7073
 d `誰を？`[@]`　犯人をだッ！！！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2001,7 +1999,7 @@ csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 24
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
 lbg "a:backgrounds",s0_3,"mhal_2ar"
@@ -2010,7 +2008,7 @@ flush 6
 d `音がしたのは玄関ホールだった。`[@]`{n}そして、玄関ホールは、……まるで舞台の上のようだった。`[\]
 *d7075
 d `悲劇のヒロインが、ライトを浴びて横たわっているかのように、`[@]`………そんな静寂の美しさをまとい、`[@]`……夏妃伯母さんが、仰向けになって倒れていた……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -2024,7 +2022,7 @@ seplay 9,1061,71
 gstc 26
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2b"
 flush 2
@@ -2038,7 +2036,7 @@ d `…………え？`[@]`　じゃ、`[!w583]`………じゃあ、`[!w500]`…
 msgwnd_jes
 *d7081
 d [lv 0*"04"*"10200826"]`「母さん、母さん母さんッ！！！`[@][lv 0*"04"*"10200827"]`　うわあああぁあああぁああぁあああぁん！！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
 lbg "a:backgrounds",s0_3,"mhal_2ar"
@@ -2080,7 +2078,7 @@ wait_on_d -1
 msgwnd_non
 *d7086
 d `朱志香は母の屍にすがり付いてひたすらに泣き続ける…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
@@ -2090,7 +2088,7 @@ flush 22
 d `俺はどこへぶつければいいのかもわからぬ怒りに身を焦がし、夏妃伯母さんの手よりライフル銃を奪って、`[@]`全方位の暗闇に銃口をぐるぐると、まるで灯台のように向けては犯人の姿を探す。`[\]
 *d7088
 d `譲治の兄貴は、この状況においても、冷静に何かを理解しようと努めていたが、それは実るわけのない努力だったかもしれない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
 lbg "a:backgrounds",s0_3,"mhal_2ar"
@@ -2138,7 +2136,7 @@ msgwnd_mar
 *d7098
 d [lv 0*"13"*"10400914"]`「…………きひひひひひ。`[@][lv 0*"13"*"10400915"]`よしなよ戦人。`[@][lv 0*"13"*"10400916"]`…ベアトリーチェに銃なんて意味ないよ。`[@][lv 0*"13"*"10400917"]`それに、生き残るも何も、もうおしまいなんだよ。`[@][lv 0*"13"*"10400918"]`{i:もう、旅は終わったんだよ}。`[|][lv 0*"13"*"10400919"]`……ほら、時計を見てごらん」`[\]
 csp_slot s0_11
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2164,7 +2162,7 @@ d `真里亞が突然、嬉しそうに叫び、暗がりへ駆けて行く。`[
 d `それはまるで、……その暗がりの中に、ベアトリーチェがいて、駆け寄っていくみたいじゃないか。`[\]
 *d7106
 d `俺は銃口越しに、`[@]`朱志香は母の屍を抱きながら、`[@]`譲治の兄貴は呆然としながら、`[@]`……その闇の向こうを見る…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mhal_2cr"
 flush 42
@@ -2205,12 +2203,12 @@ flush 10,167
 msgwnd_but
 *d7117
 d [lv 0*"10"*"10101488"]`「俺は魔女なんて認めねぇぞッ！！`[@][lv 0*"10"*"10101489"]`　貴様は誰だ！！`[@][lv 0*"10"*"10101490"]`　一歩でも動いてみろ、指一本でも動かしてみろ！！`[@][lv 0*"10"*"10101491"]`　こいつをブチ込んでやるッ！！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 22
@@ -2240,7 +2238,7 @@ d `そして、{i:誰も生き残れはしない}。`[\]
 vol_me 1,-1,1000
 vol_me 3,-1,1000
 vol_me 4,-1,1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -2249,9 +2247,9 @@ set_window_simple 80
 *d7127
 d `{e:070:魔女は賢者を讃え、四つの宝を与えるだろう。`[@]`{n}{n}一つは、黄金郷の全ての黄金。`[@]`{n}一つは、全ての死者の魂を蘇らせ。`[@]`{n}一つは、失った愛すらも蘇らせる。`[@]`{n}一つは、魔女を永遠に眠りにつかせよう。`[@]`{n}{n}安らかに眠れ、我が最愛の魔女ベアトリーチェ。}`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 42

@@ -1,9 +1,7 @@
 *umi1_9
 ;10/4（土）--:-- 嵐の夜
 log_reset
-mov $name_chapter_r_click,r_click_chapters_1_9
-mov $name_chapter_r_click_l2,r_click_chapters_1_9_l2
-mov $name_chapter_r_click_l3,r_click_chapters_1_9_l3
+mov $name_chapter_r_click,r_click_chapters_1_9+"|"+r_click_chapters_1_9_l2+"|"+r_click_chapters_1_9_l3
 mov $name_chapter_save, "1_09"
 new_chapter date_scenario_1_9,scenario_1_9
 meplay 1,12,40
@@ -12,7 +10,7 @@ seplay 1,17,71
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2ar_bg"
 lbg "a:backgrounds",s0_3,"mhal_2ar"
@@ -23,7 +21,7 @@ d `紗音は、ふらついた足取りで屋敷の玄関を入る。`[\]
 d `高揚感と不安感の入り混じった一言では言い表せない気持ちで胸が膨らみ、はち切れそうだった。`[\]
 *d3764
 d `使用人室の前で一度だけ深呼吸をし、心を落ち着かせてから扉を開いた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1ar_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1ar"
@@ -71,13 +69,13 @@ csp_slot s0_8
 flush 10,167
 *d3774
 d `しかも、それを一方的に押し付けると、郷田は再び雑誌に没頭して、クロスワードパズルに浸りこむ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 4
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_p1cr_bg"
 lbg "a:backgrounds",s0_3,"m1f_p1cr"
@@ -88,7 +86,7 @@ d `一応、年長者に対する礼儀として頭を下げてから、紗音�
 d `ちょっとカチンと来たお陰で、さっきまでのふわふわした感覚が、少し治まることができたのだった。`[\]
 *d3777
 d `それに、こんな顔を源次や嘉音には見せられない。`[@]`{n}心が落ち着きを取り戻すまで、少し時間がほしかったから、見回りもそう悪いものではなかったかもしれない…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -107,11 +105,11 @@ d `自分はゲストハウスに行けと言われているのだから、蔵�
 d `紗音はそう思い、食堂の前を足早に抜ける。`[\]
 *d3783
 d `そして、暗闇に支配された屋敷の中を、決められたルートに従いながら戸締りの確認をしていく。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 4
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m2f_p1br_bg"
 lbg "a:backgrounds",s0_3,"m2f_p1br"
@@ -122,7 +120,7 @@ d `廊下を歩き、その窓ひとつひとつの戸締りを確認した。`[
 d `六軒島には右代宮家以外の人間はいないのだから、本来、戸締りにはそれほど重要な意味があるわけではない。`[\]
 *d3786
 d `夏妃がそれを無用心だと叱るまで、右代宮本家には戸締りの習慣はなかったのである。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -132,7 +130,7 @@ d `冷え切った窓の金具は冷たく、それらの確認をひとつず�
 msgwnd_sha
 *d3788
 d [lv 0*"15"*"10500243"]`「…………………？」`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 wait 1000
@@ -141,7 +139,7 @@ anim s0_17,"no81",1
 flush 1
 waitvideo
 csp_slot s0_17
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 4
@@ -153,7 +151,7 @@ msgwnd_non
 d `その時、廊下の向こうに何かが瞬いたのを見た気がした。`[\]
 *d3790
 d `……瞬き？`[@]`{n}そんなものが廊下の闇の向こうに見えるわけがない…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_p1dr_bg"
 lbg "a:backgrounds",s0_3,"m1f_p1dr"
@@ -166,7 +164,7 @@ d `しかし、時折轟く雷鳴が廊下を照らし出す以外には、二�
 d `……やっぱり気のせいだろう。`[@]`{n}心が落ち着かないので、ありもしないものを見てしまったのかもしれない。`[\]
 *d3794
 d `紗音は再び戸締りの確認を再開する…。`[@]`{n}しかし、その脳裏には、ある薄気味悪い想像が蘇っていた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -181,7 +179,7 @@ d `……そう言えば、嘉音くんが前に見たことがあるなんて�
 d `私は何かの見間違いだろうと信じてあげなくて、不貞腐れていたけど…。`[\]
 *d3799
 d `………まさか、…本当に……………？`[@]`{n}轟く雷鳴は、それに答えてはくれなかった…。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 5000
 vol_bgm -1,5000
@@ -194,22 +192,22 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"garden_1cn"
 flush 2
 wait 5000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1an"
 flush 2
 wait 5000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"garden_1an"
 flush 2
 wait 5000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1an"
 flush 2
@@ -221,18 +219,18 @@ csp_slot s0_11
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"ment_1br_bg"
 lbg "a:backgrounds",s0_3,"ment_1br"
 flush 2
 wait 6000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mhal_2cr"
 flush 2
 wait 13000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 2
@@ -241,12 +239,12 @@ vol_me 1,-1,2000
 vol_me 2,-1,2000
 wait 2000
 bgmplay 23,71,0
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mdin_1er"
 lss s0_10,"rud","a11_majime2" ;1
@@ -257,7 +255,7 @@ lss s0_8,"cla","a11_akuwarai2" ;1
 spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -268,7 +266,7 @@ lss s0_8,"ros","a11_komaru1" ;1
 spt_mem "a2","xpos",s0_8,-370
 flush 22
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -280,7 +278,7 @@ lss s0_10,"eva","a11_ikari2" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 23
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -288,7 +286,7 @@ csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 3
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m2f_p1cr_bg"
 lbg "a:backgrounds",s0_3,"m2f_p1cr"
@@ -296,7 +294,7 @@ lss s0_8,"sha","a11_komaru1" ;1
 spt_mem "a2","xpos",s0_8,-370
 flush 8
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_1,"m1f_r1ar_bg"
@@ -305,7 +303,7 @@ lss s0_10,"goh","a11_defo1" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 2
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"g1f_r1ar"
@@ -317,21 +315,21 @@ lss s0_10,"gen","a11_defo1" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 10,167
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_p1c"
 lss s0_10,"kum","a11_defo1" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 22
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -343,12 +341,12 @@ spt_mem "a2","darken_g",s0_8,156
 spt_mem "a2","darken_b",s0_8,160
 flush 10,167
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
 flush 3
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"g2f_r1ar_bg"
 lbg "a:backgrounds",s0_3,"g2f_r1ar"
@@ -356,7 +354,7 @@ lss s0_10,"geo","a11_hohoemi1" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 22
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_1,"g2f_r1ar_bg"
@@ -367,7 +365,7 @@ lss s0_10,"but","b11_warai1" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 24
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -375,26 +373,26 @@ csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 5
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1cr_bg"
 lbg "a:backgrounds",s0_3,"mlib_1cr"
 lss s0_9,"kin","a11_fumu1" ;1
 flush 2
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 5
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mhal_2cr"
 flush 2
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 2

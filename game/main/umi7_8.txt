@@ -1,48 +1,46 @@
 *umi7_8
 ;こいつが、犯人だ
 log_reset
-mov $name_chapter_r_click,r_click_chapters_7_8
-mov $name_chapter_r_click_l2,r_click_chapters_7_8_l2
-mov $name_chapter_r_click_l3,r_click_chapters_7_8_l3
+mov $name_chapter_r_click,r_click_chapters_7_8+"|"+r_click_chapters_7_8_l2+"|"+r_click_chapters_7_8_l3
 mov $name_chapter_save, "7_08"
 new_chapter date_scenario_7_8,scenario_7_8
 gstc 68
 meplay 1,13,70
-textoff
+textoff2
 waits 167
 rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_o1a"
 flush 22
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_o2a"
 flush 6
 wait 2000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
 vol_bgm 0,1000
 vol_me 1,50,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1l"
 flush 22
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1n"
 lss s0_9,"rio","a11_majime1" ;1
@@ -50,7 +48,7 @@ flush 24
 msgwnd_rio
 *d53027
 d [lv 0*"53"*"75300332"]`「わかったんですか。`[@][lv 0*"53"*"75300333"]`ベアトリーチェを、誰が殺したのか」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"cha_i1i"
@@ -82,7 +80,7 @@ flush 80
 msgwnd_rio
 *d53031
 d [lv 0*"53"*"75300336"]`「……その、今年のベアトリーチェという意味がわかりません。`[@][lv 0*"53"*"75300337"]`魔女のベアトリーチェとは何の話なんです？`[@][lv 0*"53"*"75300338"]`　さっきの話といい、碑文とやらの話といい。`[@][lv 0*"53"*"75300339"]`そろそろ教えてくれませんか」`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"wil","a11_majime1" ;1
 spt_mem "a2","xpos",s0_10,370
@@ -96,13 +94,13 @@ wait_on_d 0
 bgmplay 166,71,0
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 22
@@ -121,7 +119,7 @@ d [lv 0*"54"*"75400747"]`「さらに厳密には、怪談さえも概念を生�
 msgwnd_rio
 *d53037
 d [lv 0*"53"*"75300343"]`「話がさっぱりです」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 22
@@ -131,7 +129,7 @@ d [lv 0*"54"*"75400748"]`「怪談は本来、三人称や二人称で語るべ�
 msgwnd_rio
 *d53039
 d [lv 0*"53"*"75300344"]`「自分がベアトリーチェだと、誰かが自称し始めた…？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
 flush 28
@@ -142,11 +140,11 @@ wait_on_d 0
 seplay 1,2,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1n"
 flush 22
@@ -157,7 +155,7 @@ flush 80
 msgwnd_rio
 *d53041
 d [lv 0*"53"*"75300345"]`「………さっぱりな話ですが、腰を折らずに相槌を打ちましょう。`[@][lv 0*"53"*"75300346"]`……応えたとは、どういう意味です？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"cha_i1i"
@@ -167,12 +165,12 @@ flush 24
 msgwnd_wil
 *d53042
 d [lv 0*"54"*"75400755"]`「右代宮真里亞は気の毒な生い立ちにより、オカルトに執着するようになった。`[@][lv 0*"54"*"75400756"]`……その彼女に同情したヤツが、ベアトリーチェに扮して、真里亞と遊んでやったということだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 28
@@ -185,11 +183,11 @@ d `同じ母親であっても、暴力的な時は黒い魔女と呼び、決�
 d `即ち。`[@]`視覚的には同一人物であっても、内面が異なれば、別の人間だと認識する傾向があるということだ。`[\]
 *d53046
 d `真里亞が初めてベアトリーチェに出会った時のエピソードは、以上から簡単に読み解ける。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1af"
 color_mod2 s0_3,#ffffff
@@ -212,14 +210,14 @@ d `外見的には、それはベアトリーチェではない。`[\]
 d `しかし真里亞は、喋り方や振る舞いが急に変わった時点で、その人物を別の人間だと認識する。`[\]
 *d53052
 d `だからそれは、唐突に現れたのだ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 22
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1n"
 lss s0_10,"wil","a11_nayamu1" ;1
@@ -228,7 +226,7 @@ flush 26
 msgwnd_wil
 *d53053
 d [lv 0*"54"*"75400757"]`「真里亞にとっての魔女やオカルトは、ある種の現実逃避と見ていい。`[@][lv 0*"54"*"75400758"]`……彼女は、満たされない現状が、魔女の力で打ち破られると信じていたんだ。`[@][lv 0*"54"*"75400759"]`だから、魔女の存在を信じたかった。`[@][lv 0*"54"*"75400760"]`それを信じれば、自分が幸せになれると信じられるから」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"cha_i1i"
@@ -258,14 +256,14 @@ flush 80
 msgwnd_wil
 *d53057
 d [lv 0*"54"*"75400766"]`「そうだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
 meplay 1,17,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 22
@@ -282,13 +280,13 @@ d `古戸ヱリカの推理通り、２つの怪談が融合したものだ。`[
 d `誰かが、２つを融合し、それを演じた。`[\]
 *d53063
 d `だからベアトリーチェは、屋敷の夜の主であると同時に、蜘蛛の糸を恐れるという、２つの怪談の特徴を兼ね備える。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1n"
 lss s0_9,"rio","a11_komaru1" ;1
@@ -299,7 +297,7 @@ flush 80
 msgwnd_rio
 *d53064
 d [lv 0*"53"*"75300350"]`「ではつまり、ベルンカステルの問う、ベアトリーチェを殺したのは誰か、というのは、`[@][lv 0*"53"*"75300351"]`そのベアトリーチェを演じた心優しい誰かを殺したのは誰か？、という話なのですか」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"cha_i1i"
@@ -315,7 +313,7 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"book1"
@@ -333,24 +331,24 @@ d [lv 0*"53"*"75300352"]`「つまり、演じた役を殺しても、それは�
 msgwnd_wil
 *d53070
 d [lv 0*"54"*"75400772"]`「依り代が失われただけでは、ベアトリーチェが殺されたことにはならないってことだ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"tel1a"
 flush 2
 *d53071
 d [lv 0*"54"*"75400773"]`「……電話で例えるとわかりやすい。`[@][lv 0*"54"*"75400774"]`俺とお前が電話で話しているとする。`[@][lv 0*"54"*"75400775"]`その時、俺にとって電話は、話し掛ける対象でありお前そのものだ」`[\]
-textoff
+textoff2
 waits 167
 seplay 2,12,50
 seplay 3,53,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 wait 500
 *d53072
 d [lv 0*"54"*"75400776"]`「しかしもし、電話を壊したなら？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1i"
 lss s0_9,"rio","a11_defo2" ;1
@@ -361,7 +359,7 @@ flush 80
 msgwnd_rio
 *d53073
 d [lv 0*"53"*"75300353"]`「……なるほど。`[@][lv 0*"53"*"75300354"]`電話を殺せば、私と話すことは出来なくなりますが、しかしそれは、私を殺したことにはならない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"cha_i1n"
@@ -420,7 +418,7 @@ flush 80
 msgwnd_wil
 *d53082
 d [lv 0*"54"*"75400788"]`「まず最初の１人。`[@][lv 0*"54"*"75400789"]`死んだ猫」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -429,12 +427,12 @@ flush 22
 msgwnd_rio
 *d53083
 d [lv 0*"53"*"75300364"]`「誰です？」`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1i"
 lss s0_10,"wil","a11_nayamu1" ;1
@@ -485,7 +483,7 @@ flush 80
 msgwnd_wil
 *d53090
 d [lv 0*"54"*"75400795"]`「真里亞は、楼座と共に六軒島を訪れた。`[@][lv 0*"54"*"75400796"]`そして、隣の席には楼座がいた。`[@][lv 0*"54"*"75400797"]`ありえない。`[@][lv 0*"54"*"75400798"]`………お前がいるならば、楼座の次の序列は、理御になり、そして朱志香になり、次が真里亞になるはず」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -498,13 +496,13 @@ d `楼座と真里亞の序列の間には、理御と朱志香が二人入る�
 d `二人入ったら、席は右斜め前になる。`[\]
 *d53093
 d `……つまり、真里亞の隣に楼座が座ることは、理御の存在する世界では、ありえない。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1l"
 flush 22
@@ -512,18 +510,18 @@ meplay 1,16,50
 msgwnd_wil
 *d53094
 d [lv 0*"54"*"75400799"]`「朱志香の話も同じだ。`[@][lv 0*"54"*"75400800"]`お前が序列に加わっているなら、金蔵の席を正面に、左列に理御、右列に朱志香。`[@][lv 0*"54"*"75400801"]`そして左列に譲治、右列に縁寿となる。`[@][lv 0*"54"*"75400802"]`……朱志香と縁寿は、理御がいてもいなくても隣り合う。`[@][lv 0*"54"*"75400803"]`しかし、理御がいるかいないかで、その席が、右になるか左になるかが異なる」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 msgwnd_non
 *d53095
 d `理御がいる世界ならば、朱志香の左が、縁寿の席となる。`[@]`{n}しかし、理御がいない序列だと、縁寿の席は、朱志香の右になる。`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1n"
 lss s0_9,"wil","a11_nayamu1" ;1
@@ -534,7 +532,7 @@ flush 80
 msgwnd_wil
 *d53096
 d [lv 0*"54"*"75400804"]`「１９８６年の魔女ベアトリーチェを語る人間は、皆、お前のいない世界を語っている。`[@][lv 0*"54"*"75400805"]`そして、お前の世界では、魔女の怪談が存在しない。`[@][lv 0*"54"*"75400806"]`お前にとってベアトリーチェは、金蔵の愛人、もしくは恩人であって、化けて出る亡霊ではない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"cha_i1i"
@@ -568,7 +566,7 @@ flush 80
 msgwnd_rio
 *d53101
 d [lv 0*"53"*"75300375"]`「裏を返せば？`[@][lv 0*"53"*"75300376"]`　私とベアトリーチェが、コインの裏表とでも仰るので？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -611,11 +609,11 @@ flush 80
 msgwnd_rio
 *d53108
 d [lv 0*"53"*"75300380"]`「なるほど…。`[@][lv 0*"53"*"75300381"]`それで、私が１９歳だと、何の仮説が立つというんです？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 flush 23
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
@@ -626,7 +624,7 @@ wait 1000
 msgwnd_wil
 *d53109
 d [lv 0*"54"*"75400821"]`「お前が右代宮夏妃の子ではない、という仮説だ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1i"
 lss s0_9,"rio","a11_majime1" ;1
@@ -640,7 +638,7 @@ lss s0_9,"rio","a11_ikari1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"cha_i1n"
@@ -697,7 +695,7 @@ flush 80
 msgwnd_rio
 *d53119
 d [lv 0*"53"*"75300396"]`「わかるわけもありません。`[@][lv 0*"53"*"75300397"]`………また、心を蔑ろにするんじゃないと仰るので？`[@][lv 0*"53"*"75300398"]`　当主様のお心から、何が推理できると仰るんですか？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -708,19 +706,19 @@ wait 1000
 msgwnd_wil
 *d53120
 d [lv 0*"54"*"75400828"]`「お前が、ベアトリーチェと金蔵の、子供だからだ」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
 seplay 1,54,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1l"
 flush 22
 seplay 3,52,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1lp"
 show_whirl
@@ -732,7 +730,7 @@ seplay 2,37,71
 msgwnd_non
 *d53122
 d `乾いた拍手と、小馬鹿にした笑い声。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1np"
 lss s0_10,"wil","a11_ikari1" ;1
@@ -741,14 +739,14 @@ flush 24
 msgwnd_wil
 *d53123
 d [lv 0*"54"*"75400829"]`「ベルンカステルか」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"cha_i1ep"
 flush 24
 seplay 1,52,71
 lss s0_9,"ber","a21_warai1" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,1000
 spt_mem "a2","alpha",s0_9,0
 flush 1
@@ -766,7 +764,7 @@ flush 80
 msgwnd_ber
 *d53126
 d [lv 0*"28"*"72100089"]`「いつ、理御がベアトリーチェの血を引くと？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"cha_i1np"
@@ -788,7 +786,7 @@ flush 80
 msgwnd_wil
 *d53129
 d [lv 0*"54"*"75400832"]`「夏妃に受け入れられ、崖から落ちなかった１９年前の赤ん坊が、理御だ。`[@][lv 0*"54"*"75400833"]`裏を返せば、夏妃に拒絶されれば、理御は存在しない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -808,7 +806,7 @@ wait_on_d -1
 seplay 1,52,71
 lss s0_8,"ber","a21_warai4" ;1
 spt_mem "a2","xpos",s0_8,-550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -837,7 +835,7 @@ flush 80
 msgwnd_rio
 *d53133
 d [lv 0*"53"*"75300402"]`「この指輪があると、どうして私がベアトリーチェの血を引くと？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -847,7 +845,7 @@ flush 22
 msgwnd_wil
 *d53134
 d [lv 0*"54"*"75400837"]`「数多の世界で、お前にしか与えられない。`[@][lv 0*"54"*"75400838"]`それは、全ての世界の中で、金蔵にとってお前は、ベアトリーチェの次に最も重要な人間であることを示している。`[@][lv 0*"54"*"75400839"]`そしてそれは、実の息子の蔵臼や、孫の朱志香を遥かに超えている。`[@][lv 0*"54"*"75400840"]`そしてさらに、お前の年齢である１９。`[@][lv 0*"54"*"75400841"]`……即ち、１９年前に何があったかを遡れば、導き出される一つの推理がある」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1ap"
 flush 26
@@ -874,9 +872,9 @@ flush 24
 msgwnd_wil
 *d53138
 d [lv 0*"54"*"75400842"]`「そうだ。`[@][lv 0*"54"*"75400843"]`第３のゲームで楼座の話が出て、第５のゲームでの赤ん坊の年齢が時間軸で一致した時、一つの推理が生まれた。`[@][lv 0*"54"*"75400844"]`あの金蔵が、どこからともなく赤ん坊を連れてきて、自分の血族に加えろというのは、`[@][lv 0*"54"*"75400845"]`その赤ん坊が特別な存在であることの証拠だ」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -892,7 +890,7 @@ gptwait quakeyamp
 msgwnd_rio
 *d53139
 d [lv 0*"53"*"75300407"]`「私が、`[|][lv 0*"53"*"75300408"]`……九羽鳥庵のベアトリーチェの、`[|][lv 0*"53"*"75300409"]`……子供……」`[\]
-textoff
+textoff2
 waits 167
 lss s0_8,"rio","a11_komaru1" ;1
 spt_mem "a2","xpos",s0_8,-370
@@ -903,7 +901,7 @@ flush 24
 msgwnd_wil
 *d53140
 d [lv 0*"54"*"75400846"]`「九羽鳥庵のベアトリーチェは、潜水艦で来たベアトリーチェの娘だ。`[@][lv 0*"54"*"75400847_UP_MODIFIED"]`……しかし金蔵は娘と思わなかった。`[|][lv 0*"54"*"75400848"]`生き写しの、生まれ変わりと信じた。`[@][lv 0*"54"*"75400849"]`……その生まれ変わりが、かつての年齢にまで成長し、まさに生き写しとなった時。`[@][lv 0*"54"*"75400850_UP_MODIFIED"]`金蔵は過ちを犯したんだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -920,7 +918,7 @@ d [lv 0*"53"*"75300410"]`「………き、聞きたくありませんっ」`[\]
 seplay 1,52,71
 lss s0_8,"ber","a21_warai4" ;1
 spt_mem "a2","xpos",s0_8,-550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -935,7 +933,7 @@ flush 80
 msgwnd_rio
 *d53143
 d [lv 0*"53"*"75300411"]`「………………………ッ…」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -955,7 +953,7 @@ flush 22
 msgwnd_ber
 *d53145
 d [lv 0*"28"*"72100103"]`「……夏妃はほとんどの場合、プライドを酷く傷つけられ、理御の育児を拒否するわ。`[@][lv 0*"28"*"72100104"]`その結果、あんたは必然として崖から落ちて消える」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -971,7 +969,7 @@ flush 23
 msgwnd_wil
 *d53147
 d [lv 0*"54"*"75400853"]`「もしお前が今日まで、自分が夏妃の子であることに疑問を感じたことがないのなら。`[@][lv 0*"54"*"75400854"]`……お前はこの世界の母に感謝すべきだ。`[@][lv 0*"54"*"75400855"]`お前にそれを悟らせずに今日まで、朱志香と平等に愛情を注いだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1028,7 +1026,7 @@ flush 80
 msgwnd_wil
 *d53155
 d [lv 0*"54"*"75400858"]`「………そうだな」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1041,12 +1039,12 @@ d `理御は大きく溜息を漏らしながら、何かを見上げる仕草�
 d `……蔵臼たちを実の両親だと信じていたのに、それが違ったのだから、`[@]`少なからぬショックもあるだろう。`[\]
 *d53158
 d `しかし、理御は感謝していい。`[@]`今日まで何不自由なく育ててくれた家族に感謝していい…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 meplay 1,12,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1np"
 flush 6
@@ -1062,7 +1060,7 @@ flush 23
 msgwnd_ber
 *d53160
 d [lv 0*"28"*"72100112"]`「でしょう？`[@][lv 0*"28"*"72100113"]`　こういう時、私はとても笑えると思うのよ……」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1070,7 +1068,7 @@ lbg "c:colour",s0_3,"black"
 flush 22
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 22
@@ -1081,7 +1079,7 @@ d `ウィルは、はっきりと断言する。`[\]
 d `右代宮理御は、……異なる世界での、黄金の魔女ベアトリーチェの姿なのだ。`[\]
 *d53163
 d `夏妃が育児を拒否する１９年前の赤ん坊。`[\]
-textoff
+textoff2
 waits 167
 lss s0_9,"rio","a11_majime1" ;1
 flush 3
@@ -1089,7 +1087,7 @@ flush 3
 d `それが、夏妃に受け入れられれば、このような未来があったのだ…。`[\]
 *d53165
 d `しかし、受け入れられなければ、……魔女が、生まれる。`[\]
-textoff
+textoff2
 waits 167
 spt_mem "a2","breakup",s0_9,0
 spt_mem "a2","breakup",s0_9,800,2000
@@ -1105,12 +1103,12 @@ spt_mem "a2","alpha",s0_9,255,2000
 sptwait2 breakup,s0_9
 *d53166
 d `その生まれを祝福されなかった赤ん坊は、魔女となるのだ…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1ip"
 lss s0_10,"wil","a11_nayamu1" ;1
@@ -1143,13 +1141,13 @@ flush 80
 msgwnd_wil
 *d53169
 d [lv 0*"54"*"75400865"]`「面白ぇのはお前だけだ。`[@][lv 0*"54"*"75400866"]`……ここに閉じ込められてなけりゃ、俺もこんな推理はわざわざしない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1dp"
 lss s0_9,"rio","a11_fuman1" ;1
@@ -1164,7 +1162,7 @@ d_continue
 wait_on_d -1
 vol_me 1,-1,1000
 seplay 1,37,90
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"cha_i1ip"
@@ -1184,7 +1182,7 @@ flush 23
 msgwnd_rio
 *d53172
 d [lv 0*"53"*"75300423"]`「私は、……どうやら異なる世界では、魔女と呼ばれる存在になるらしい。`[@][lv 0*"53"*"75300424"]`そしてどうやら、何かの事件を引き起こすらしい。`[@][lv 0*"53"*"75300425"]`それは、私の罪なのですか？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1203,9 +1201,9 @@ flush 24
 msgwnd_rio
 *d53174
 d [lv 0*"53"*"75300426"]`「ありがとう。`[@][lv 0*"53"*"75300427"]`しかし、異なる運命の世界では、お前は何らかの迷惑を掛けていたと言われて、`[@][lv 0*"53"*"75300428"]`心穏やかになる人間はいないと思います。`[@][lv 0*"53"*"75300429"]`……教えて下さい。`[@][lv 0*"53"*"75300430"]`私は、異なる世界で何を？」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1226,7 +1224,7 @@ flush 80
 msgwnd_ber
 *d53176
 d [lv 0*"28"*"72100120"]`「カケラを、その子に見せたら？」`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"wil","a12_majime2" ;1
 spt_mem "a2","xpos",s0_10,370
@@ -1236,13 +1234,13 @@ msgwnd_wil
 *d53177
 d [lv 0*"54"*"75400871"]`「……………」`[\]
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:efe",s0_3,"efe1b"
 flush 8
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1252,7 +1250,7 @@ msgwnd_non
 d `ウィルが手の平を開くと、`[!w500]`……そこに青白く光る、水晶片のようなものが現れる。`[\]
 *d53179
 d `これまでのゲームの、全ての記憶、……いや、棋譜だ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1ap"
 lss s0_8,"wil","a12_komaru1" ;1
@@ -1289,13 +1287,13 @@ flush 80
 msgwnd_wil
 *d53184
 d [lv 0*"54"*"75400876"]`「……お前には知る権利も、知らぬ権利もどちらもある。`[@][lv 0*"54"*"75400877"]`お前があくまで、自分と連なりつつも異なる誰か、他人のことと割り切れるなら、……触れてみるといい」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1ep"
 lss s0_10,"ber","a21_warai1" ;1
@@ -1304,7 +1302,7 @@ flush 24
 msgwnd_ber
 *d53185
 d [lv 0*"28"*"72100121"]`「知りたいわよねぇ…？`[@][lv 0*"28"*"72100122"]`　自分が、あるいはひょっとしたら、辿ったかもしれない運命なんて」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"cha_i1ip"
@@ -1329,7 +1327,7 @@ flush 80
 msgwnd_rio
 *d53188
 d [lv 0*"53"*"75300437"]`「残念。`[@][lv 0*"53"*"75300438"]`私は友人ではありませんので」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1341,7 +1339,7 @@ d [lv 0*"54"*"75400880"]`「俺も、相棒として一つ聞きたい」`[\]
 msgwnd_rio
 *d53190
 d [lv 0*"53"*"75300439"]`「何です？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1351,7 +1349,7 @@ d [lv 0*"54"*"75400881"]`「お前、…………。`[@][lv 0*"54"*"75400882"]`�
 msgwnd_rio
 *d53192
 d [lv 0*"53"*"75300440"]`「………………唐突なことを聞きますね」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1ip"
 lss s0_9,"wil","a11_defo1" ;1
@@ -1368,7 +1366,7 @@ flush 22
 msgwnd_ber
 *d53194
 d [lv 0*"28"*"72100123"]`「……くすくす。`[@][lv 0*"28"*"72100124"]`本当に勘のいい男」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1387,11 +1385,11 @@ msgwnd_wil
 d [lv 0*"54"*"75400887"]`「………第５のゲームでは、お前は男ということになっている。`[@][lv 0*"54"*"75400888"]`しかし数多のゲームでは、女だと考えられてる」`[\]
 *d53197
 d [lv 0*"54"*"75400889"]`「……右代宮戦人がマスターを務めた第６のゲームでは、性別を違えつつも確定しない二人組の悪魔が登場し、それを暗示した。`[@][lv 0*"54"*"75400890"]`……いや、厳密には、一番最初のゲームからだな。`[@][lv 0*"54"*"75400891"]`………お前の性別は、ゲームの外側の、隠れた謎の一つだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 flush 23
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_3,"cha_i1ip"
@@ -1432,7 +1430,7 @@ flush 80
 msgwnd_rio
 *d53202
 d [lv 0*"53"*"75300449"]`「私も、マナーのない方は男女平等に抓りますので」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lss s0_9,"rio","a11_defo1" ;1
@@ -1440,20 +1438,20 @@ flush 3
 wait 500
 vol_me 1,-1,1000
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:efe",s0_3,"efe1b"
 flush 8
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 msgwnd_non
 *d53203
 d `理御はゆっくりと……、カケラに触れる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1np"
 flush 22
@@ -1472,7 +1470,7 @@ wait_on_d -1
 d `無理もない。`[@]`平行世界について理解のない人間が、異なる運命を無理やり理解させられたら、`[@]`脳が膨張して自我を失うような錯覚を味わうだろう。`[\]
 *d53206
 d `……理御はしゃがみ込んだまま、意識を失っているようだった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -1481,7 +1479,7 @@ vol_bgm -1,2000
 wait 2000
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1ip"
 lss s0_8,"wil","a11_nayamu1" ;1
@@ -1543,7 +1541,7 @@ flush 80
 msgwnd_wil
 *d53215
 d [lv 0*"54"*"75400904"]`「……動機だ。`[@][lv 0*"54"*"75400905"]`……ベアトリーチェが、１９８６年１０月５日に、自らの運命さえ賭す、ゲームのような事件を起こさねばならなかった、`[@][lv 0*"54"*"75400906"]`動機だ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1555,7 +1553,7 @@ d [lv 0*"28"*"72100131"]`「さすがだわ。`[@][lv 0*"28"*"72100132"]`第４�
 msgwnd_wil
 *d53217
 d [lv 0*"54"*"75400907"]`「犯人が誰であるかわかれば、それを推理することは不可能じゃない。`[@][lv 0*"54"*"75400908"]`……第３のゲームの連鎖密室は、なかなか器用にやったもんだと拍手さえしたくならァ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1565,11 +1563,11 @@ d [lv 0*"28"*"72100134"]`「第４のゲームラストの、`[@][lv 0*"28"*"721
 msgwnd_wil
 *d53219
 d [lv 0*"54"*"75400909"]`「１０月５日２４時に必ず、場所を問わずに、殺せる“犯人”。`[@][lv 0*"54"*"75400910"]`その時点である種の仮定は可能だ。`[@][lv 0*"54"*"75400911"]`……それこそ、黄金郷のもう一つのお宝、ってわけだ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1np"
 lss s0_10,"ber","a21_warai4" ;1
@@ -1591,15 +1589,15 @@ meplay 1,16,50
 msgwnd_ber
 *d53222
 d [lv 0*"28"*"72100139"]`「くすくすくす……。`[@][lv 0*"28"*"72100140"]`……それでは、そろそろ、はぐらかすのは終わりにして、教えてちょうだい？`[@][lv 0*"28"*"72100141"]`　………犯人は、`[|][lv 0*"28"*"72100142"]`だぁれ……？」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_p1bp"
 flush 25
@@ -1613,11 +1611,11 @@ d `その時、………彼ら以外、誰もいないはずの礼拝堂に、�
 vol_se 1,-1
 *d53224
 d `その人影は、ゆっくりとウィルたちの前に来て、小さく会釈をした。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1ap"
 lss s0_9,"wil","a11_majime2" ;1
@@ -1654,7 +1652,7 @@ d [lv 0*"54"*"75400921"]`「こいつは、もうそんなことは望んでな�
 msgwnd_non
 *d53230
 d `その人物は、小さく頷く。`[\]
-textoff
+textoff2
 waits 167
 agpt centrey,540
 agpt ypos,40,667
@@ -1671,7 +1669,7 @@ msgwnd_wil
 *d53233
 d [lv 0*"54"*"75400922"]`「俺はお前の動機を、`[|][lv 0*"54"*"75400923"]`……心を理解したつもりでいる。`[@][lv 0*"54"*"75400924"]`……それをこれから、話す。`[@][lv 0*"54"*"75400925"]`お前を呼んだのは、`[|][lv 0*"54"*"75400926"]`それを聞き、`[|][lv 0*"54"*"75400927"]`……間違いがあったら、お前の言葉で正して欲しいからだ」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -1681,7 +1679,7 @@ d [lv 0*"54"*"75400928"]`「………………………………」`[\]
 msgwnd_non
 *d53235
 d `ウィルたちは、……互いにもう一度、小さく頷き合う。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1ep"
 flush 22
@@ -1697,7 +1695,7 @@ d `しかし、それでもそれが、………何かの救いになると、�
 d `人は、誰かに理解されて初めて、救われる。`[\]
 *d53240
 d `死後も、何年経っても、……そして、一番わかって欲しかった男に、理解されることなく生を終えた哀れな魔女を、`[@]`…………もう誰かが赦してもいい。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1709,7 +1707,7 @@ d `……しかしそれは、`[!w333]`………遅く、`[!w167]`間に合わ�
 d `だから、今ここで生きている彼女を、戦人は救えないのだ。`[\]
 *d53244
 d `だから、戦人は、ベアトリーチェの葬儀に、いない。来ない。`[@]`……間に合わない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cha_i1np"
 lss s0_10,"wil","a11_nayamu1" ;1
@@ -1746,7 +1744,7 @@ flush 80
 msgwnd_wil
 *d53249
 d [lv 0*"54"*"75400941"]`「いいなら、始めよう。`[@][lv 0*"54"*"75400942"]`……誰も急かさない。`[@][lv 0*"54"*"75400943"]`………お前の葬儀が終わるまで、ベルンカステルは永遠に時間を閉ざしてる。`[@][lv 0*"54"*"75400944"]`心の整理に必要な時間は、無限にある…」`[\]
-textoff
+textoff2
 waits 167
 agpt centrex,960
 agpt xpos,-40,667
@@ -1764,7 +1762,7 @@ d `その覚悟がもうあるからこそ、ここにやって来たのだ。`[
 d `わかったと、ウィルも頷いて答える。`[\]
 *d53253
 d `……そして、二人でベルンカステルの目を見ながら。`[@]`……ウィルは、きっぱりと告げる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1775,7 +1773,7 @@ msgwnd_wil
 *d53254
 d `{a:c:`[lv 0*"54"*"75400945"][text_fade_t 1667]`「こいつが、犯人だ」}`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 wait 2000
 break_glass3

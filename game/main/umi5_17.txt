@@ -1,31 +1,29 @@
 *ura_teatime_5
 log_reset
-mov $name_chapter_r_click,r_click_chapters_5_ura
-mov $name_chapter_r_click_l2,r_click_chapters_5_ura_l2
-mov $name_chapter_r_click_l3,r_click_chapters_5_ura_l3
+mov $name_chapter_r_click,r_click_chapters_5_ura+"|"+r_click_chapters_5_ura_l2+"|"+r_click_chapters_5_ura_l3
 mov $name_chapter_save, "5_ura"
 new_ura 5
 gstc 180
 flush 10,167
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 wait 1000
 meplay 1,16,0
 vol_me 1,50,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 8
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 8
 wait 500
 seplay 1,17,71
-textoff
+textoff2
 waits 167
 lbg "c:cg_box",s0_3,"ep505"
 flush 50
@@ -45,7 +43,7 @@ d `……真実を巡る戦いに敗れ、屈服した彼にもはや、抗う�
 d `だから、…死んでいる。`[\]
 *d67786
 d `墓標の代わりに残されたドラノールの巨大な太刀は、`[@]`……死してなお戦人を、この場に繋ぎ止めているのだ…。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,14,20
 spt_mem "a2","ypos",s0_3,1100,6667,1
@@ -54,10 +52,10 @@ sptwait2 ypos,s0_3
 d `それは高い高い天窓から漏れる、わずかの光りに照らされていた。`[\]
 *d67788
 d `静かな足音が、そんな静寂の大聖堂に響き渡る……。`[\]
-textoff
+textoff2
 waits 167
 vol_se 1,-1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 lss s0_10,"be2","a15_1_hoshin3star" ;1
@@ -74,21 +72,21 @@ d `……ベアトリーチェだった。`[\]
 d `その瞳は、……黄金郷でずっとそうだったように、光を宿さず、`[@]`灰色に濁ったままだった。`[\]
 *d67792
 d `自らの意思で、紅茶も満足に飲めなかった彼女が、`[@]`……こうして、ゆっくりではあっても、…そして瞳に生気を宿していなくても、`[@]`……歩いているのは驚きだった。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
 seplay 1,14,40
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 2
 *d67793
 d `そして、ゆっくりと踏みしめながら、`[!w500]`貫かれ絶命した戦人のもとまで、`[!w583]`……辿り着いた……。`[\]
-textoff
+textoff2
 waits 167
 vol_se 1,-1
 lss s0_9,"be2","a15_1_hoshin3star" ;1
@@ -106,7 +104,7 @@ flush 10,167
 msgwnd_bea
 *d67798
 d `「……………。`[@][lv 0*"27"*"50700982"]`…………うそ`[|][lv 0*"27"*"50700983"]`……つき………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -117,7 +115,7 @@ d `ベアトは、`[!w500]`……そっと、戦人に触れる………。`[@]`
 *d67800
 d `鼓動は……、`[!w667]`……すでにない。`[\]
 meplay 1,16,50
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 2
@@ -129,7 +127,7 @@ d `……だからもう。`[@]`{n}……戦人が戻ってくることは、…
 d `だからもう。`[@]`{n}………黄金の魔女、ベアトリーチェには。`[\]
 *d67804
 d `存在する理由が、`[!w500]`………なくなった…………。`[\]
-textoff
+textoff2
 waits 167
 lss s0_9,"be2","a15_1_hoshin3star" ;1
 flush 2
@@ -153,9 +151,9 @@ flush 42
 d_continue
 wait_on_d -1
 set_name_window_non
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -167,13 +165,13 @@ flush 42
 lss s0_9,"be2","a15_1_naku1_kohen" ;1
 color_mod2 s0_9,#ffffff
 flush 2
-textoff
-textoff
+textoff2
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 spriteset_enable 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s1_1,"black"
 lbg "c:colour",s1_3,"black"
@@ -187,16 +185,16 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"efe1"
 flush 42
-textoff
-textoff
+textoff2
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 spriteset_enable 1
-textoff
+textoff2
 waits 167
 lbg "c:efe",s1_3,"efe1"
 aspritesetpt breakup,1,0
@@ -208,19 +206,19 @@ csp -11
 flush 1
 *d67806
 d `そして、`[!w583]`……黄金の魔女は、`[!w333]`…その役目を、`[!w500]`……終えて、`[@]`…黄金の飛沫と、`[!w500]`散った。`[\]
-textoff
+textoff2
 waits 167
 vol_bgm -1,3000
 wait 3000
 vol_mix_fade 2000
 wait 2000
 seplay 1,52,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 8
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 8
@@ -235,7 +233,7 @@ rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
 rain_pause s0_11
 rain_pause s0_7
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 color_mod2 s0_3,#ffffff
@@ -249,7 +247,7 @@ flush 22
 d `ぼんやりと紅茶の液面をじっと眺めるベアト。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -260,7 +258,7 @@ rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
 rain_pause s0_11
 rain_pause s0_7
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 color_mod2 s0_3,#ffffff
@@ -282,14 +280,14 @@ wait_on_d -1
 bgmplay 38,71,0
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
@@ -307,7 +305,7 @@ rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
 rain_pause s0_11
 rain_pause s0_7
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 color_mod2 s0_3,#ffffff
@@ -316,7 +314,7 @@ spt_mem "a2","xpos",s0_8,-370
 color_mod2 s0_8,#ffffff
 flush 6
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_3,"rose_3ap"
@@ -351,11 +349,11 @@ d `……ドラノールか。`[\]
 d `心のない、冷酷な殺人人形みたいなヤツだと思ってたんだが、`[@]`…案外、話せるヤツなのかもしれないな。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 80
@@ -367,7 +365,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -400,7 +398,7 @@ msgwnd_but
 d [lv 0*"10"*"50101259"]`「隠し扉は存在してはならない。`[@][lv 0*"10"*"50101260"]`ノックス第３条だっけか？`[@][lv 0*"10"*"50101261"]`　だから探偵は、隠し扉を捜す必要さえないわけだ。`[@][lv 0*"10"*"50101262"]`……なかなかの暴論だな」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -410,7 +408,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1cp"
 flush 22
@@ -429,7 +427,7 @@ d `余談だが、隠し扉が登場し、`[@]`それをテーマにした素晴
 d `……もちろんそれは、隠し扉が存在するという“前提”において、書かれた作品に限定されるのだが。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -441,7 +439,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1ep"
 flush 22
@@ -467,7 +465,7 @@ d `俺の戦いはとても単純だ。`[\]
 d `魔女が行なったとする犯罪を、ニンゲンに実行可能だったと説明するだけの戦いだ。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -479,7 +477,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 flush 2
@@ -517,7 +515,7 @@ msgwnd_dla
 d [lv 0*"47"*"54600368"]`「お気になさらズニ。`[@][lv 0*"47"*"54600369"]`……戯れに過ぎないと仰る方も、いらっしゃいますノデ」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -527,7 +525,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_8,"wal","a11_warai1" ;1
@@ -570,7 +568,7 @@ msgwnd_dla
 d [lv 0*"47"*"54600373"]`「手掛かりや伏線のある隠し扉ではありマセン。`[@][lv 0*"47"*"54600374"]`…隠しなのですから無論、探偵にも発見できない隠し扉デス」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -580,7 +578,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_10,"wal","a11_defo1" ;1
@@ -648,7 +646,7 @@ msgwnd_wal
 d [lv 0*"30"*"53200280"]`「推理可能。`[@][lv 0*"30"*"53200281"]`……即ち、頑張れば解けますよという、励ましが必要なのです」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -659,7 +657,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2ap"
 flush 22
@@ -674,7 +672,7 @@ d `校庭を１０周しろと言われりゃ、頑張りようもある。`[\]
 d `しかし、何周すればいいかもわからずに走らされたら、`[@]`３周もしないうちに疲れてきて、馬鹿馬鹿しくなるだろう。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -686,7 +684,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_9,"wal","a11_majime1" ;1
@@ -699,7 +697,7 @@ lss s0_9,"wal","a11_warai1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"rose_3ap"
@@ -728,7 +726,7 @@ msgwnd_but
 d [lv 0*"10"*"50101283"]`「………………………………」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -752,11 +750,11 @@ d `だから、手掛かりが足りないから推理不能、戦いには応�
 d `……そうしたらベアトは、それを永遠にいつまでも繰り返し、`[@]`千日手とする気なのかと嘲笑ったんじゃなかったっけ……。`[\]
 *d67882
 d `ベアトはあの時、こう言った。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map05"
 color_mod2 s0_3,#ffffff
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_21,"black"
 spt_mem "a2","alpha",s0_21,150
@@ -789,7 +787,7 @@ csp_slot s0_21
 csp_slot s0_22
 lips_sprite s0_8_b,"bea"
 lips_sprite s0_10_b,"but"
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -804,7 +802,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_9,"but","b11_majime5" ;1
@@ -814,7 +812,7 @@ flush 80
 msgwnd_but
 *d67886
 d [lv 0*"10"*"50101284"]`「……俺はベアトに、……この物語は、挑めば解けるという保証をもらって、`[@][lv 0*"10"*"50101285"]`……初めて同じ土俵に上がったというわけか……？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"rose_2bp"
@@ -832,7 +830,7 @@ d_continue
 wait_on_d -1
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -850,7 +848,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_9,"but","b11_oya2" ;1
@@ -860,7 +858,7 @@ msgwnd_but
 d [lv 0*"10"*"50101286"]`「これではまるで、`[|][lv 0*"10"*"50101287"]`………ベアト自身が、`[|][lv 0*"10"*"50101288"]`…自分は本当は魔女じゃないって、`[@][lv 0*"10"*"50101289"]`……自分で認めてるようなものじゃないか…」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -869,7 +867,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_10,"be2","a15_1_hoshin3star" ;1
@@ -896,7 +894,7 @@ d `ベアトは、何も答えない。`[\]
 d `灰色の瞳で、……ぼんやりと紅茶の湯気を眺めているだけだ…。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -906,7 +904,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_9,"dla","a11_defo1" ;1
@@ -947,7 +945,7 @@ msgwnd_but
 d [lv 0*"10"*"50101291"]`「……つまり、`[|][lv 0*"10"*"50101292"]`……十戒に従うなら。`[@][lv 0*"10"*"50101293"]`……全ての謎には必ずヒントがあり、`[|][lv 0*"10"*"50101294"]`……よって、必ず解決は可能だと保証されてることになるわけか」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -958,7 +956,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1ep"
 flush 22
@@ -969,7 +967,7 @@ d `なるほど、……それが思考する力に杖を、という意味に�
 d `解けると信じることが出来れば、謎に対する挑戦意欲も湧く。`[\]
 *d67904
 d `ヒントがあると信じられるなら、それを捜そうと読み返しにも熱が入るというものだ……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_9,"but","b11_majime6" ;1
@@ -977,7 +975,7 @@ flush 22
 msgwnd_but
 *d67905
 d [lv 0*"10"*"50101295"]`「確かに、……推理しようとする人間にとって、勇気を与える力はあるかもしれないな」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"rose_2bp"
@@ -1006,14 +1004,14 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 22
 msgwnd_non
 *d67908
 d `だとするなら。`[@]`ノックス十戒は、堅苦しい制限や傲慢ではなく。`[@]`……推理に挑む者たちへの、必ず解けるから頑張れという、応援だとも受け取れるのだ…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -1037,7 +1035,7 @@ d_continue
 wait_on_d -1
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1047,7 +1045,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2ap"
 flush 22
@@ -1060,7 +1058,7 @@ d `あの名作推理小説は、（ノックス十戒に則った）フェア�
 d `そういう議論はもはや、ミステリー界の永遠のテーマだ。`[\]
 *d67914
 d `実際のところ、ミステリー談義とは、`[@]`トリックの云々よりも、そちらの方が白熱することが多いという……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_10,"but","b11_futeki1" ;1
@@ -1100,7 +1098,7 @@ flush 10,167
 msgwnd_but
 *d67924
 d [lv 0*"10"*"50101310"]`「…………お前は十戒を武器に、さっきベアトと戦ったわけだが。`[@][lv 0*"10"*"50101311"]`……それはつまり、このベアトのゲームの世界が、ノックス十戒に則っているという証なのか……？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1111,7 +1109,7 @@ flush 2
 msgwnd_bea
 *d67925
 d `「…………………………………」`[\]
-textoff
+textoff2
 waits 167
 wait 2000
 msgwnd_non
@@ -1121,7 +1119,7 @@ d `俺のその問いに、……不思議な沈黙が訪れる。`[\]
 d `ワルギリアもドラノールも、`[!w500]`……そして当然、ベアトも、`[!w500]`……しばらくの間、沈黙した……。`[\]
 *d67928
 d `まるで俺の問いが、何かの核心に触れたかのように…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"rose_2bp"
@@ -1159,9 +1157,9 @@ flush 10,167
 msgwnd_but
 *d67934
 d [lv 0*"10"*"50101313"]`「即ち、`[|][lv 0*"10"*"50101314"]`……………推理は可能だって、そう言いたいのか」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1185,7 +1183,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1200,7 +1198,7 @@ d `……しかし、出された相手が、和英辞典片手の外国人だ�
 d `……つまり、出題者には簡単な問題でも、解答者にはあまりに難解な、`[@]`一方的な形での“推理可能な問題”となりうるわけだ…。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1214,7 +1212,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 flush 22
@@ -1247,7 +1245,7 @@ d_continue
 wait_on_d -1
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1260,7 +1258,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 flush 22
@@ -1274,7 +1272,7 @@ lss s0_9,"dla","a11_defo2" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"rose_3ap"
@@ -1304,7 +1302,7 @@ d_continue
 wait_on_d -1
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1314,7 +1312,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1ep"
 flush 22
@@ -1337,7 +1335,7 @@ d `それは他でもない、……推理が可能だという保証ではな�
 d `……もちろん、それはベアトにとってという意味で、`[@]`……俺にとって推理が可能という意味になるとは、もちろん限らないのだが……。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1345,7 +1343,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 flush 22
@@ -1371,7 +1369,7 @@ flush 10,167
 msgwnd_wal
 *d67959
 d [lv 0*"30"*"53200313"]`「えぇ。`[@][lv 0*"30"*"53200314"]`………自分のことを、愛してくれると相手が先に証明しない限り、自分も相手を愛したくない。`[@][lv 0*"30"*"53200315"]`……でしょう？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 22
@@ -1386,10 +1384,10 @@ d `……自分が愛したら、相手も同じように愛してくれると�
 d `なぜなら、片思いほど辛いものはなく、`[!w583]`……それが破綻した心の傷は、長く尾を引く。`[\]
 *d67964
 d `その痛みに怯えるからこそ、`[@]`……必ず相手に愛してもらえるという保証が、先にどうしても欲しい…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_22
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1418,7 +1416,7 @@ d `力作と思って執筆して、誰にも読まれずに傷つきたくな�
 d `力作と思って推理して、無駄だったと知り傷つきたくないから。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
@@ -1427,7 +1425,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_9,"but","b11_futeki1" ;1
@@ -1487,7 +1485,7 @@ msgwnd_wal
 d [lv 0*"30"*"53200319"]`「えぇ。`[@][lv 0*"30"*"53200320"]`互いが信頼しあった上でしか成立しない、`[@][lv 0*"30"*"53200321"]`……愛ある関係なのですよ」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1498,7 +1496,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_8,"be2","a15_1_hoshin3star" ;1
@@ -1516,7 +1514,7 @@ flush 2
 msgwnd_bea
 *d67985
 d `「……………………………」`[\]
-textoff
+textoff2
 waits 167
 wait 1000
 lss s0_10,"but","b11_warai3" ;1
@@ -1535,7 +1533,7 @@ msgwnd_non
 d `ワルギリアが、年増っぽく茶化す。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1546,7 +1544,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1ep"
 flush 22
@@ -1558,7 +1556,7 @@ d `ベアトは俺に、自分という魔女の存在を認めさせたくて�
 d `だから俺もそれに応えて、全力で魔女の存在を否定して、正面からぶつかり合ってる。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1566,7 +1564,7 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_10,"dla","a11_defo1" ;1
@@ -1621,16 +1619,16 @@ spt_mem "a2","xpos",s0_8,-550
 flush 10,167
 *d67999
 d `……おいおい、最悪のおちょくられフォーメーションじゃねぇか。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 22
 *d68000
 d `俺は何とか話をはぐらかし、`[@]`雨の黄金郷のお茶会に相応しい雰囲気を取り戻そうと、ぎこちなく高尚な話題を切り出しては、`[@]`それを看破されてワルギリアに笑われるのだった……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_22
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1645,7 +1643,7 @@ d `…………………………。`[\]
 d `そんな中でも、ベアトはずっと灰色の瞳で俯き、`[@]`紅茶の液面を覗き込んでいるだけだった………。`[\]
 rain_pause s0_11
 rain_pause s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"rose_3ap"
@@ -1669,7 +1667,7 @@ d `ワルギリアとドラノールに、………俺はこんなにもヒン�
 d `なのに、俺はろくろく考えなかった…。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -1691,7 +1689,7 @@ rain_params s0_11,200,800,0
 rain_params s0_7,200,500,0
 rain_pause s0_11
 rain_pause s0_7
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 color_mod2 s0_3,#ffffff
@@ -1703,7 +1701,7 @@ flush 22
 d `ワルギリアは赤き真実で、`[@]`………少なくともベアトがこの物語を、俺に勝利できる余地を残していたことを保証した。`[\]
 *d68012
 d `……その赤き真実の保証が、俺にもう一度、`[!w500]`……鼓動する力を与える…。`[\]
-textoff
+textoff2
 waits 167
 lss s0_8,"dla","a11_defo2" ;1
 spt_mem "a2","xpos",s0_8,-370
@@ -1717,7 +1715,7 @@ d `ドラノール自身も、十戒は全ての謎を解明できるほど万�
 d `しかし、謎の解き方、`[!w500]`……いや、挑み方のひとつの糸口になる…みたいな感じで言ってた。`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1728,12 +1726,12 @@ d `……試そう。`[\]
 *d68017
 d `この、ミステリーかファンタジーかも保証されない物語を、`[@]`……それでもきっと必ず解けると信じて、`[@]`……解ける物語、`[@]`……ミステリーだと信じて、`[!w500]`……もう一度挑んでみよう……。`[\]
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 42
 seplay 2,52,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 agpt onionalpha,192
@@ -1750,7 +1748,7 @@ agpt onionalpha,0,1000
 spritesetptwait warp_amp,0
 *d68018
 d `気付くと、`[!w333]`……俺はいつの間にか、`[@]`あの、……ベアトと何度も、テーブルを挟んで激論を交し合った、`[!w333]`……あの不思議なお茶室にいた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
 flush 4
@@ -1771,7 +1769,7 @@ d `第１条は、……何だったっけ……。`[\]
 lss s0_10,"ger","a11_defo1" ;1
 spt_mem "a2","xpos",s0_10,370
 seplay 1,52,71
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -1803,7 +1801,7 @@ msgwnd_non
 d `それはつまり、………第１のゲームの時点から、もう犯人は登場済み、`[@]`……ということじゃないのか……？`[\]
 *d68032
 d `確かにそれは、ミステリーの基本も基本。`[@]`お約束だ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1813,7 +1811,7 @@ flush 22
 d `……お約束…？`[\]
 *d68034
 d `……本当に俺は、`[!w500]`……それを基本にしてたか……？`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"chess1"
 flush 22
@@ -1825,7 +1823,7 @@ d `そんなのは、クローズドサークルのルールに違反する行�
 d `その時点で、もう滅茶苦茶。`[\]
 *d68038
 d `きっと、真犯人や黒幕は、まだ未登場なのだろうから、推理しても無駄、`[@]`……なんて諦めが、俺の中になかっただろうか……？`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1833,7 +1831,7 @@ flush 22
 d `この物語をファンタジーだと読み解くなら、……どんどん新キャラが増えて、`[@]`しまいには、魔王だの神だの創造主だのが登場しても、何の不思議もないし。`[\]
 *d68040
 d `真の黒幕が、最後近くのエピソードで登場したとしても、そういうものだと納得してしまう。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"chess1"
 flush 22
@@ -1843,7 +1841,7 @@ d `しかし、……ミステリーだと読み解き、その信念を貫く�
 d `後に追加して登場する人物など、何も気にする必要はない。`[\]
 *d68043
 d `ノックス第１条が、後から登場する人物が犯人であることなどありえないと、`[@]`はっきり否定しているからだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1853,7 +1851,7 @@ d `…………もちろん、ドラノールやワルギリアも言ってる�
 d `この物語が、十戒のルールに則ってるとの保証はなく、`[@]`犯人が第２のゲーム以降から登場している可能性だって、もちろん否定してはいけない。`[\]
 *d68046
 d `でも、……これは思考の方法のひとつなんだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 flush 22
@@ -1886,7 +1884,7 @@ d [lv 0*"10"*"50101349"]`「……ノックスの、第２条は？」`[\]
 lss s0_8,"cor","a11_majime1" ;1
 spt_mem "a2","xpos",s0_8,-550
 seplay 1,52,71
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -1913,7 +1911,7 @@ msgwnd_but
 d [lv 0*"10"*"50101350"]`「そして、……………。`[@][lv 0*"10"*"50101351"]`……これがフェアな戦いであるならば。`[@][lv 0*"10"*"50101352"]`……探偵と同様に、`[|][lv 0*"10"*"50101353"]`……犯人もまた、魔法を使ってはならないということだよな……？」`[\]
 lss s0_9,"ger","a11_defo1" ;1
 seplay 1,52,71
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,1000
 spt_mem "a2","alpha",s0_9,0
 flush 1
@@ -1935,7 +1933,7 @@ spt_mem "a2","xpos",s0_10,550
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1947,7 +1945,7 @@ msgwnd_non
 d `これが、俺とベアトのフェアな戦いのゲームなのだとしたら。`[\]
 *d68061
 d `……この物語は推理可能である以上、`[@]`推理不可能な要素は登場しない。`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
@@ -1964,7 +1962,7 @@ d `即ち、魔法など、存在してはならないのだ。`[\]
 *d68063
 d `それが登場した時点で、ミステリーの破綻を疑うのではなく、`[@]`……どうしてそれが描写されてしまうのか、目撃者や観測者を疑うべきなのだ。`[\]
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"butterfly_3a"
 color_mod2 s0_3,#ffffff
@@ -1975,7 +1973,7 @@ d `そうさ、`[!w500]`……それこそが、`[!w500]`……第２のゲー�
 d `ミステリーにあってはならない、魔法の描写。`[\]
 *d68066
 d `それを見せ付けることで、この物語がミステリーではない、`[@]`即ち、推理不可能であると、まんまと思い込まされて、屈服した……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1983,7 +1981,7 @@ flush 22
 d `しかし、もしもミステリーであることを、揺ぎ無く信じていたのなら。`[\]
 *d68068
 d `……それを見たと主張する目撃者を疑うのが、一番当たり前なのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"note1"
 flush 2
@@ -1997,14 +1995,14 @@ d `つまりこの物語は全て、……メッセージボトルを執筆し�
 d `つまり、観測者は神ではない。`[@]`ニンゲンなのだ。`[\]
 *d68073
 d `よって、その記述の真の意味での公正は、保証されていない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d68074
 d `ミステリーでお約束とされている、`[@]`本文は神の目線でなければならないとする前提が破られていることが、`[@]`第１のゲームの時点で、……もうはっきりと明記されている。`[\]
 meplay 1,5,40
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 28
@@ -2016,7 +2014,7 @@ d `ここまでを疑うことが出来たなら、`[@]`……いくら推理不
 d `しかし、ならば襲われる疑問は、`[@]`………公正でない観測者が記した物語が、そもそも推理可能なのかということだ。`[\]
 *d68078
 d `………これに取り憑かれると、全ての推理はここまでで停滞して、終わる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2028,11 +2026,11 @@ d `ベアトが、`[!w500]`………この物語によって、俺と戦おう�
 d `戦うとは即ち、`[!w333]`……俺にも勝つ余地が与えられているということ。`[\]
 *d68082
 d `それを与えているということは、`[!w583]`………推理は可能という、`[!w333]`……意味なのではないか。`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 lss s0_9,"but","b11_nayamu1_chiru" ;1
@@ -2045,7 +2043,7 @@ d `あの残酷な魔女が、自らの敗北を賭して、`[@]`俺とフェア
 d `……ワルギリアの言うとおりだぜ、……まるで恋愛だ。`[\]
 *d68086
 d `ベアトは、俺と全力で、真正面から戦っていると信じられなきゃ、`[@]`……これ以上の推理には、至れない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -2066,7 +2064,7 @@ wait_on_d -1
 d `……何だよ、それ。`[\]
 *d68092
 d `Ａ組の佐藤さん、あんたのことが好きなんだってーって。`[@]`{n}友達経由で告白してきたみたいなもんじゃないかよ…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 28
@@ -2076,7 +2074,7 @@ d `………情けねぇな、`[!w500]`……俺。`[\]
 d `推理は、……恋愛だ。`[\]
 *d68095
 d `愛し合わなきゃ、`[!w667]`……推理は、開かれない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2092,11 +2090,11 @@ d `へへっ、今さら、あの残酷魔女が可愛らしく見えてきや�
 d `……次にどこかで会えたら、お前ってツンドラなんだろーってからかってやりたいぜ。`[\]
 *d68101
 d `次にどこかで、…………会えたらな…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
 lss s0_9,"but","b11_nayamu1_chiru" ;1
@@ -2110,7 +2108,7 @@ flush 10,167
 msgwnd_but
 *d68103
 d [lv 0*"10"*"50101357"]`「……他の十戒も、教えてくれ。`[@][lv 0*"10"*"50101358"]`順不同でいいぜ。`[@][lv 0*"10"*"50101359"]`……使えそうなヤツを頼む」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
@@ -2118,7 +2116,7 @@ flush 24
 seplay 1,52,71
 lss s0_10,"ger","a11_defo2" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -2135,7 +2133,7 @@ wait_on_d -1
 seplay 2,52,71
 lss s0_8,"cor","a11_majime1" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -2164,7 +2162,7 @@ d `ベアトがフェアな、推理可能なゲームを挑んでいると強�
 d `……それを確信することが出来る。`[\]
 *d68112
 d `つまり、……ベアトはこれまでの物語に、`[@]`手掛かり、ヒント、メッセージを、すでに残してるってことになる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2172,7 +2170,7 @@ lbg "c:colour",s0_3,"black"
 flush 22
 *d68113
 d `……十戒から少し離れるが、ヱリカ辺りが言っていた。`[@]`{n}ミステリーで暴くべき謎は３つあると。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1b"
 flush 28
@@ -2181,7 +2179,7 @@ d `１つは、フーダニット。`[@]`誰が犯人か。`[@]`{n}１つは、�
 *d68115
 d `その３つの謎に関する手掛かりが、……すでに物語には込められてるってことになる。`[\]
 meplay 1,16,40
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
 flush 28
@@ -2195,7 +2193,7 @@ d `俺がそれをキャッチできるかどうかは、また別の問題だ�
 d `簡単だと思って出題したものでも、相手によっては難解だと思われるだろう。`[\]
 *d68120
 d `そうなれば、両者にとっての難易度には食い違いが出て当たり前だ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2208,7 +2206,7 @@ rain_load s1_11
 z_order_override s1_11,s1_1
 rain_params s1_11,500,300,0
 rain_pause s1_11
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s1_1,"mlib_1br_bg"
 lbg "a:backgrounds",s1_3,"mlib_1br"
@@ -2224,8 +2222,8 @@ flush 22
 *d68123
 d `第２のゲームで俺が完全に屈服し、`[@]`難易度が高すぎたことを察したベアトは、内心、焦ったのだ。`[\]
 seplay 1,52,71
-textoff
-textoff
+textoff2
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 lss s0_10,"bea","a11_1_aseru2" ;1
@@ -2241,10 +2239,10 @@ flush 1
 d `俺が屈服し戦う気力を失えば、……ゲームという対等な関係は維持できなくなる。`[\]
 *d68125
 d `だから、俺に戦う気力を取り戻させるために、`[@]`……戦い方の指南や、ヒントを与え、第３のゲーム以降からは、`[@]`俺にも戦いやすいようなお膳立てがされていった。`[\]
-textoff
+textoff2
 waits 167
 flush 2
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"rose_1an"
@@ -2265,9 +2263,9 @@ color_mod2 s0_10,#ffffff
 flush 80
 *d68126
 d `ワルギリアやロノウェは、明らかに俺をサポートするために登場した。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2278,7 +2276,7 @@ flush 1
 waitvideo
 csp_slot s0_3
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 anim2 s0_17,"no31",1
@@ -2293,7 +2291,7 @@ color_mod2 s0_17,#ffffff
 flush 1
 waitvideo
 csp_slot s0_17
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2303,22 +2301,22 @@ d `そして、相変わらずの激しい魔法表現ながらも、`[@]`ブラ
 d `俺はようやく戦い方を理解し、`[!w500]`………第４のゲームの最後では恐らく。`[\]
 *d68129
 d `……ベアトがもっとも望んだだろう、俺との、全力での一騎打ちが出来たはずなのだ。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:cg_box",s0_3,"e0901_a"
 color_mod2 s0_3,#ffffff
 flush 2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:cg_box",s0_3,"e0901_b"
 color_mod2 s0_3,#ffffff
 flush 2
 *d68130
 d `……そしてベアトは、俺の力が今や一人前であることを認め、`[@]`………自らの心臓を、`[@]`……………この物語を解明してくれることを、俺に託したんじゃないか…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2336,7 +2334,7 @@ d `俺に必要なのは、ベアトのゲームで、真実を探すことだ�
 d `……むしろ、全てを託して退いたベアトに代わり、`[@]`それを引き継いでくれたあの魔女たちに、……俺はわずかに、感謝すべきなのかもしれない。`[\]
 *d68135
 d `もちろん、あの性悪魔女どもに、`[@]`そんなつもりはさらさらないだろうが……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 lss s0_10,"but","b22_kuyasigaru1" ;1
@@ -2349,7 +2347,7 @@ d `犯人。`[@]`犯行。`[@]`動機。`[\]
 d `この３つの究極の謎の答えは、ヒントは、………必ずこれまでの物語の中に散りばめられているのだ。`[\]
 *d68138
 d `それはきっと、か弱く光るもので、……砂浜に落ちているビーズを探すようなものだろう。`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"but","b22_nayamu1" ;1
 spt_mem "a2","xpos",s0_10,550
@@ -2363,7 +2361,7 @@ d `……だが、それを強く信じなければ、絶対に見つけられ�
 seplay 1,52,71
 lss s0_8,"ger","a11_defo2" ;1
 spt_mem "a2","xpos",s0_8,-550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -2394,7 +2392,7 @@ msgwnd_but
 d [lv 0*"10"*"50101361"]`「…………今こそ、`[|][lv 0*"10"*"50101362"]`…………物語を……」`[\]
 seplay 1,52,71
 lss s0_9,"cor","a11_majime1" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,1000
 spt_mem "a2","alpha",s0_9,0
 flush 1
@@ -2426,13 +2424,13 @@ flush 80
 msgwnd_but
 *d68148
 d [lv 0*"10"*"50101367"]`「……愛がなければ、`[|][lv 0*"10"*"50101368"]`……真実は、視えない……」`[\]
-textoff
+textoff2
 waits 167
 lss s0_8,"ger","a11_defo1" ;1
 spt_mem "a2","xpos",s0_8,-550
 flush 10,167
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2444,10 +2442,10 @@ flush 42
 msgwnd_non
 *d68149
 d `ゆっくりと、お茶室が闇に溶けていく……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_23
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -2455,30 +2453,30 @@ flush 2
 d `そして俺は、漆黒の海の中をゆっくりと沈んでいくように、`[@]`………ベアトと一緒に巡った、長かった物語の狭間を抜けて、`[@]`………どこまでも落ちていく……。`[\]
 *d68151
 d `それはまるで、意識を持ったまま、`[@]`夢現の境界に至ろうとするような、……不思議な体験。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2a"
 flush 22
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2c"
 flush 22
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 seplay 3,22,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2b"
 flush 22
@@ -2486,16 +2484,16 @@ flush 22
 d `それまでの数々の物語が、細かい泡、……いや、小さな輝くカケラ？`[@]`　…となって、漆黒の宇宙に、星のように散らばる。`[\]
 *d68153
 d `その海をどこまでも、`[!w500]`……俺はゆっくりと沈んでいく……。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 22
-textoff
+textoff2
 seplay 3,52,71
-textoff
+textoff2
 waits 167
 lbg s0_3,"kakera_memory4"
 color_mod2 s0_3,#ffffff
@@ -2509,13 +2507,13 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 seplay 2,52,71
-textoff
+textoff2
 waits 167
 lbg s0_3,"kakera_memory5"
 color_mod2 s0_3,#ffffff
@@ -2530,13 +2528,13 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 seplay 1,52,71
-textoff
+textoff2
 waits 167
 lbg s0_3,"kakera_memory6"
 color_mod2 s0_3,#ffffff
@@ -2551,13 +2549,13 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 seplay 2,52,71
-textoff
+textoff2
 waits 167
 lbg s0_3,"kakera_memory7"
 color_mod2 s0_3,#ffffff
@@ -2572,13 +2570,13 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 seplay 1,52,71
-textoff
+textoff2
 waits 167
 lbg s0_3,"kakera_memory8"
 color_mod2 s0_3,#ffffff
@@ -2592,13 +2590,13 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 seplay 2,52,71
-textoff
+textoff2
 waits 167
 lbg s0_3,"kakera_memory9"
 color_mod2 s0_3,#ffffff
@@ -2613,13 +2611,13 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 seplay 2,52,71
-textoff
+textoff2
 waits 167
 lbg s0_3,"kakera_memory10"
 color_mod2 s0_3,#ffffff
@@ -2634,13 +2632,13 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 seplay 2,52,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 spriteset_enable 1
@@ -2662,7 +2660,7 @@ d `ウェルギリアスはダンテを、煉獄山に案内し、`[@]`……山
 d `だから、`[!w583]`………その最深奥はきっと、底ではなく、`[@]`………煉獄山の、山頂。`[\]
 *d68157
 d `永遠の淑女は、`[!w333]`……そこでダンテを、`[@]`……ずっと待っている……。`[\]
-textoff
+textoff2
 waits 167
 set_window_simple 80
 *d68158
@@ -2740,7 +2738,7 @@ waits 333
 wait_on_d -1
 set_name_window_non
 csp_slot s0_11
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 10,1667
@@ -2751,14 +2749,14 @@ seplay 3,57,100
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 show_glass 0
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
 wait 2000
-textoff
+textoff2
 meplay 1,5,40
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"different_space_2b"
 spriteset_enable 1
@@ -2775,7 +2773,7 @@ flush 1
 d `……俺は真実に、…ついに辿り着く………。`[\]
 *d68160
 d `………深奥に、…いや、`[@]`………煉獄山の、山頂に……………。`[\]
-textoff
+textoff2
 waits 167
 bgmplay 132,80,0
 vol_me 1,-1,1000
@@ -2784,14 +2782,14 @@ wait 1000
 d `……………馬鹿だろ……………。`[\]
 *d68162
 d `……お前、`[!w500]`………本当に、`[!w417]`……馬鹿だろ……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 msgwnd_but
 *d68163
 d [lv 0*"10"*"50101369"]`「…う、`[|][lv 0*"10"*"50101370"]`……ぐぉ、`[|][lv 0*"10"*"50101371"]`…………痛ぇ…………」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 6
@@ -2800,7 +2798,7 @@ msgwnd_non
 d `死の眠りから醒め、`[@]`……少しずつ、……痛覚が戻ってくる……。`[\]
 *d68165
 d `天を見上げたまま、太刀に貫かれていた戦人の顔に、`[@]`……苦痛という、生きた表情が、少しずつ戻ってくる……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -2811,7 +2809,7 @@ d [lv 0*"10"*"50101372"]`「お前は、`[|][lv 0*"10"*"50101373"]`………本�
 set_name_window_non
 *d68167
 d `戦人は、気付く。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 lss s0_9,"be2","a15_1_arigatou" ;1
@@ -2820,11 +2818,11 @@ flush 2
 d `……ベアトがずっと、`[!w583]`………自分にしな垂れかかり、……眠っていた。`[\]
 *d68169
 d `そして、それを抱き締めた時、`[@]`………それがベアトでなく、`[!w583]`………朽ち果てた、`[!w333]`……ベアトの、`[!w500]`……残滓であったことを知る。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,22,70
 spt_mem "a2","breakupdir",s0_9,2
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,0
 spt_mem "a2","breakup",s0_9,1000,10000
 spt_mem "a2","alpha",s0_9,0,10000
@@ -2834,7 +2832,7 @@ flush 1 ;flush2: NO frames
 wait 1000
 *d68170
 d `だから、……灰のように脆いそれは、`[@]`……戦人が抱き締めようとしただけで、`[@]`………まるで、砂浜に作った、砂の城が、`[@]`……小さな波に、溶けて崩れるように、`[@]`……崩れて落ちて、その姿を、失った……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 6
@@ -2844,7 +2842,7 @@ d `戦人の足元に、……崩れて潰れた、ベアトのドレスの残�
 d `いや、……その灰の山の上に、……何か黄金に輝くものが見える。`[\]
 *d68173
 d `……それは、`[!w667]`…………ぼろぼろに千切れた、`[!w500]`……一匹の黄金の蝶の、`[!w417]`……骸だった……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 2
@@ -2852,11 +2850,11 @@ flush 2
 d `だから、………戦人は、`[@]`……知る……。`[@]`{n}俺は、……確かに真実に辿り着いた…。`[\]
 *d68175
 d `……でも、……ベアトがこの世に留まれる間に、`[@]`…………至ることが、`[@]`………出来なかった…………。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2870,7 +2868,7 @@ d [lv 0*"10"*"50101380"]`俺はようやく、……お前の出題した、`[@]
 d [lv 0*"10"*"50101383"]`……お前の、`[|][lv 0*"10"*"50101384"]`……お望みどおりに……！`[\]
 *d68179
 d [lv 0*"10"*"50101385"]`挫けずに、`[|][lv 0*"10"*"50101386"]`……とうとう、`[|][lv 0*"10"*"50101387"]`……最後まで、辿り着いたのに………。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 color_mod2 s0_3,#ffffff
@@ -2890,7 +2888,7 @@ d [lv 0*"10"*"50101393"]`なら、………どうして…………。`[\]
 d [lv 0*"10"*"50101394"]`どうして、`[|][lv 0*"10"*"50101395"]`…………それを俺と一緒に信じて、`[|][lv 0*"10"*"50101396"]`…………待てなかったんだよ…………。`[\]
 *d68183
 d [lv 0*"10"*"50101397"]`永遠の拷問を強いていたのはお前じゃない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -2901,7 +2899,7 @@ d [lv 0*"10"*"50101398"]`俺だ…！`[@][lv 0*"10"*"50101399"]`　俺がお前�
 d [lv 0*"10"*"50101400"]`そしてお前は最後まで抗い、俺に訴え続け……。`[@]`{n}`[|][lv 0*"10"*"50101401"]`………そして俺は、`[@][lv 0*"10"*"50101402"]`……ようやく今になって…、`[@][lv 0*"10"*"50101403"]`………辿り着いたってのに…。`[\]
 *d68186
 d [lv 0*"10"*"50101404"]`お前はもう、`[@][lv 0*"10"*"50101405"]`………待ってなくて、`[@][lv 0*"10"*"50101406"]`………手遅れになっちまったなんて………。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2a"
 flush 25
@@ -2921,7 +2919,7 @@ d `俺が、……悪い……。`[@]`俺が、強いた拷問なんだ。`[@]`{
 *d68189
 d `そして何度も何度も、何度も何度も俺に訴え、`[@]`………そして俺は無能だから、………まるで真実がわからなくて。`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 lss s0_9,"but","b11_naku2" ;1
@@ -2936,12 +2934,12 @@ lss s0_9,"but","b11_sakebu2a" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 2
@@ -2952,7 +2950,7 @@ d `悲痛の叫びが、`[!w500]`……悲しみの大聖堂を、`[!w583]`…�
 d `戦人に、真実を伝えることが出来なかった、悲しい魔女と。`[@]`{n}魔女の、真実を理解することが出来なかった、悲しい男と。`[\]
 *d68193
 d `その二人に、……戦人は怒りと悲しみの咆哮を繰り返す……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 6
@@ -2963,7 +2961,7 @@ d `大聖堂に掲げられた時計は、１９８６年１０月５日の２�
 d `全てが、`[!w500]`………時間切れ………。`[\]
 *d68196
 d `ふざけるなよ、……そんなに難解な自慢の謎なら、`[@]`…制限時間なんて設けるんじゃねぇよ……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 25
@@ -2983,7 +2981,7 @@ d `あとわずかでも、……俺が真実に辿り着くのが早かった�
 d `俺が、真実を視えていたならば……！！`[\]
 *d68203
 d `例え時間切れの直前であっても、`[!w583]`………俺はお前を、`[!w583]`………救えたかもしれない…ッ！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2e"
 flush 26
@@ -2991,11 +2989,11 @@ flush 26
 d `しかし、今の俺は、……こうして無様に貫かれていて。`[@]`{n}……お前の残骸さえ、……抱いてやることが出来ない……！`[\]
 *d68205
 d `……俺は、この太刀を引き抜こうと、`[@]`……あるいは手を伸ばし、せめて遺灰だけにでも触れようと足掻くが、……どちらも叶わない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2a"
 flush 22
@@ -3011,7 +3009,7 @@ rumble 63,500
 gptwait quakeyamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -3019,7 +3017,7 @@ meplay 1,16,50
 msgwnd_non
 *d68207
 d `…………その時、俺は自分の手の平に、黄金の輝きがあることに気付く。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"butterfly_2a"
 flush 8
@@ -3036,7 +3034,7 @@ d `そしてそれを胸に当て、`[@]`…………せめて、こんな形で
 *d68213
 d `胸に手を当てる時、……その胸を貫いている太刀が俺の手首を切り、血を滴らせた。`[\]
 seplay 1,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2a"
 flush 1
@@ -3045,14 +3043,14 @@ d `その血が、拳の中に染み、`[!w583]`………きっと黄金のカ�
 *d68215
 d `それがきっと、……ベアトが伝えたかった真実に辿り着いたことを、`[@]`彼女に伝える、……唯一の方法だったに違いない……。`[\]
 seplay 1,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2c"
 flush 1
 *d68216
 d `黄金の蝶の羽を、`[!w333]`……鮮血の手で握り締め、`[!w583]`………胸を貫く赤き太刀に押し当てる……。`[\]
 seplay 1,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2e"
 flush 1
@@ -3060,18 +3058,18 @@ flush 1
 d `右代宮戦人は、`[@]`……今こそ、知る。`[@]`そして理解する。`[\]
 *d68218
 d `……この物語の、`[!w583]`………全てに、`[!w500]`……至る……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,5000,msk_1
 *d68219
 d `その時、……握り締める拳の隙間から、`[@]`……黄金の光がわずかに零れた気がした。`[\]
-textoff
+textoff2
 waits 167
 vol_bgm -1,3000
 wait 3000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 6
@@ -3093,33 +3091,33 @@ flush 10,167
 d_continue
 wait_on_d -1
 bgmplay 119,71,0
-textoff
+textoff2
 waits 167
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:efe",s0_3,"efe1"
 flush 8
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 msgwnd_non
 *d68222
 d `その時、戦人の胸が、`[@]`……いや、`[!w583]`………戦人を貫いている赤き太刀が、胸の奥から、`[!w500]`……黄金に輝き出す……。`[\]
-textoff
+textoff2
 waits 167
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"sword_1ar2"
 set_scale_center s0_3,0,-540
 spt_mem "a2","flip",s0_3,3
 flush 22
 seplay 1,22,90
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"sword_1ag"
 set_scale_center s0_3,0,-540
@@ -3127,14 +3125,14 @@ spt_mem "a2","flip",s0_3,3
 flush 18,3333,msk_left
 *d68223
 d `その眩い黄金の光は、………赤き太刀の色を、`[@]`……黄金に染めていく……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 22
 vol_me 1,-1,1000
 seplay 1,52,71
 lss s0_9,"ber","a21_odoroki2" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,1000
 spt_mem "a2","alpha",s0_9,0
 flush 1
@@ -3158,13 +3156,13 @@ msgwnd_dla
 *d68226
 d [lv 0*"47"*"54600417"]`「………………ッ」`[\]
 csp_slot s0_25
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 64
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2d"
 flush 1
@@ -3183,13 +3181,13 @@ wait_on_d -1
 msgwnd_non
 *d68228
 d `戦人が血を吐いて呻く。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 2
 *d68229
 d `その意識が、蘇る。`[@]`生きる意志が、戦う意思が、蘇る…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"sword_1ag"
 set_scale_center s0_3,0,-540
@@ -3202,17 +3200,17 @@ d `…もはや、黄金の太刀となっている。`[\]
 *d68232
 d `そして、`[!w500]`………ゆっくりと、`[!w500]`……ゆっくりと、`[!w667]`………戦人の胸より、…自ら、抜けていく……。`[\]
 seplay 3,22,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 2
 wait 1000
 seplay 3,20,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 66
-textoff
+textoff2
 waits 167
 seplay 1,20,100
 waits 167
@@ -3222,7 +3220,7 @@ seplay 3,20,60
 wait 500
 seplay 1,57,71
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 1
@@ -3235,35 +3233,35 @@ gptwait quakeyamp
 d `とうとう戦人より自ら引き抜け、宙を舞ってから、`[@]`……自らの主が誰かを知るように、それは戦人の眼前に突き立つ。`[\]
 *d68234
 d `床を這って呻く戦人は、黄金の太刀を掴み、`[@]`……辛そうにしながらも、`[!w417]`……ゆっくりと自らの足で再び、`[!w500]`……立ち上がる。`[\]
-textoff
+textoff2
 waits 167
 lss s0_9,"but","b11_kuyasigaru1" ;1
 flush 6
 wait 1000
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_9,"but","b11_aseru5" ;1
 flush 22
 wait 500
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 63
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 63
 seplay 2,52,70
 lss s0_10,"ber","a21_warai3ase" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -3274,13 +3272,13 @@ msgwnd_ber
 *d68235
 d [lv 0*"28"*"52100863"]`「……手の込んだ演出ね。`[@][lv 0*"28"*"52100864"]`…これ、ラムダの隠し玉？」`[\]
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_8,"lam","a11_odoroki4" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -3302,14 +3300,14 @@ flush 24
 msgwnd_ber
 *d68239
 d [lv 0*"28"*"52100865"]`「……悪いわね。再審は却下よ。`[@][lv 0*"28"*"52100866"]`シエスタ姉妹、その復活幻想を削除しなさい」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"wclo_1a"
 flush 63
 seplay 3,52,71
 lss s0_24,"s00","a11_majime1" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_24,1000
 spt_mem "a2","alpha",s0_24,0
 flush 1
@@ -3319,7 +3317,7 @@ sptwait2 breakup,s0_24
 msgwnd_s00
 *d68240
 d [lv 0*"37"*"53600029"]`「了解であります。`[@][lv 0*"37"*"53600030"]`４５、４１０、発砲許可」`[\]
-textoff
+textoff2
 waits 167
 seplay 2,52,71
 wait 100
@@ -3342,49 +3340,49 @@ sptwait2 breakup,s0_10
 wait 500
 csp_slot s0_24
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"system1"
 flush 80
 wait 150
 seplay 2,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"system2"
 flush 80
 wait 150
 seplay 3,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"system3"
 flush 80
 wait 150
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:locale_lan",s0_3,"system4"
 flush 80
 wait 150
 seplay 1,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 lss s0_24,"s00","a11_majime1" ;1
@@ -3422,13 +3420,13 @@ msgwnd_non
 *d68244
 d `シエスタ姉妹は戸惑い、ベルンカステルの命令を実行できないでいる…。`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 lss s0_10,"ber","a21_odoroki1" ;1
@@ -3438,13 +3436,13 @@ msgwnd_ber
 *d68245
 d [lv 0*"28"*"52100867"]`「ラムダ。これはどういう茶番よ。`[@][lv 0*"28"*"52100868"]`……完全に魔女幻想は打ち破られて、法廷は私の勝利に終わったはずよ」`[\]
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_8,"lam","a11_warai1" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -3457,13 +3455,13 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 26
@@ -3477,22 +3475,22 @@ lss s0_9,"but","b11_majime2" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 22
 seplay 1,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"lam","a11_akuwarai3" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -3512,7 +3510,7 @@ wait_on_d -1
 seplay 1,52,71
 lss s0_10,"ber","a21_odoroki2" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -3525,12 +3523,12 @@ msgwnd_ber
 d [lv 0*"28"*"52100869"]`「い、異議提出。`[@][lv 0*"28"*"52100870"]`すでに裁判は結審し、判決は公示されている…！」`[\]
 seplay 1,57,100
 csp_slot s0_10
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"lam","a11_futeki1" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -3547,12 +3545,12 @@ d [lv 0*"28"*"52100871"]`「異議提出！！`[@][lv 0*"28"*"52100872"]`　戦�
 csp_slot s0_10
 seplay 1,57,100
 seplay 2,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"lam","a11_majime1" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -3570,16 +3568,16 @@ d_continue
 wait_on_d -1
 seplay 1,57,100
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 lss s0_10,"eri","a11_gaman2" ;1
@@ -3598,7 +3596,7 @@ d `ヱリカは納得できないと顔を真っ赤にする…。`[\]
 seplay 1,52,71
 lss s0_8,"ber","a21_akuwarai1" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -3611,11 +3609,11 @@ msgwnd_ber
 *d68257
 d [lv 0*"28"*"52100874"]`「………ふ、……うっふふっふっはっははははははっはァあ！！`[@][lv 0*"28"*"52100875"]`　最後の最後まで楽しませてくれるわ、あの子のゲームは…！`[@][lv 0*"28"*"52100876"]`　いいわ、付き合ってあげる…！」`[\]
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_8,"ber","a21_ikari1" ;1
@@ -3636,13 +3634,13 @@ flush 10,167
 d_continue
 wait_on_d -1
 meplay 3,5,60
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1a"
 lss s0_9,"s45","a11_majime1" ;1
@@ -3656,7 +3654,7 @@ flush 10,167
 msgwnd_s41
 *d68261
 d [lv 0*"36"*"53500023"]`「………にぇ。`[@][lv 0*"36"*"53500024"]`…だからあいつは、やると言ったにぇ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -3671,7 +3669,7 @@ d [lv 0*"46"*"54501351"]`「領主…？！　誰が？！`[@][lv 0*"46"*"545013
 vol_me 3,-1,1000
 seplay 1,52,71
 lss s0_9,"ber","a21_warai3ase" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,1000
 spt_mem "a2","alpha",s0_9,0
 flush 1
@@ -3681,7 +3679,7 @@ sptwait2 breakup,s0_9
 msgwnd_ber
 *d68263
 d [lv 0*"28"*"52100881"]`「………領主……。`[@][lv 0*"28"*"52100882"]`……まさか………、`[|][lv 0*"28"*"52100883"]`……戦人が………？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -3693,13 +3691,13 @@ msgwnd_s00
 *d68264
 d [lv 0*"37"*"53600032"]`「はい。`[@][lv 0*"37"*"53600033"]`右代宮戦人は、このカケラの正当な領主と認定されているであります…！」`[\]
 seplay 1,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"lam","a11_akuwarai4" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -3720,13 +3718,13 @@ spt_mem "a2","xpos",s0_8,-370
 flush 22
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 26
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 lss s0_10,"but","b11_majime3" ;1
@@ -3736,13 +3734,13 @@ msgwnd_but
 *d68266
 d `「……………………………………」`[\]
 seplay 1,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_8,"lam","a11_futeki3" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -3755,19 +3753,19 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 flush 23
 seplay 1,52,71
 lss s0_9,"ber","a21_akuwarai1" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,1000
 spt_mem "a2","alpha",s0_9,0
 flush 1
@@ -3793,13 +3791,13 @@ flush 10,167
 d_continue
 wait_on_d -1
 seplay 1,57,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
-textoff
+textoff2
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 lss s0_9,"ber","a21_ikari1" ;1
@@ -3816,7 +3814,7 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -3825,13 +3823,13 @@ lss s0_10,"eri","a11_niramu1a" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 23
 seplay 3,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_8,"lam","a11_futeki2" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -3856,13 +3854,13 @@ spt_mem "a2","xpos",s0_10,370
 flush 22
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 22
@@ -3870,11 +3868,11 @@ msgwnd_eri
 *d68271
 d [lv 0*"46"*"54501354"]`「ぅ、`[|][lv 0*"46"*"54501355"]`…うわぁあああああああああぁあああぁあああぁぁぁあ！！」`[\]
 seplay 1,27,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
@@ -3936,26 +3934,26 @@ rumble 63,500
 gptwait quakeyamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,2,100
 seplay 2,27,100
 seplay 3,27,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 wait 500
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 2
 seplay 1,20,80
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 25
@@ -3994,15 +3992,15 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 flush 23
@@ -4014,7 +4012,7 @@ seplay 1,43,71
 lss s0_10,"dla","a11_majime3" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 2
-textoff
+textoff2
 waits 167
 bgmplay 133,71,0
 msgwnd_non
@@ -4027,54 +4025,54 @@ d `戦人の手には、……黄金の太刀が。`[\]
 *d68280
 d `……両雄は、再び、`[!w583]`………いや、今度こそ、`[!w500]`……対峙する。`[\]
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"dla","a11b_majime3" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 wait 1000
 seplay 1,57,80
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"dla","a11b_warai1" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 seplay 1,57,90
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"dla","a11b_warai2" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 seplay 1,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"dla","b21b_akuwarai1" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 msgwnd_dla
 *d68281
 d [lv 0*"47"*"54600418"]`「……………戦人、待っていマシタ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"wclo_1a"
@@ -4084,7 +4082,7 @@ flush 23
 msgwnd_but
 *d68282
 d [lv 0*"10"*"50101438"]`「待たせたな」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:backgrounds",s0_3,"wclo_1c"
@@ -4111,45 +4109,45 @@ d `ドラノールの姿が、瞬時に消える。`[@]`{n}普段の、ゆっく
 meplay 1,17,70
 meplay 2,18,70
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 1,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 3,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 1,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
@@ -4158,14 +4156,14 @@ seplay 1,75,100
 seplay 2,57,100
 agpt onionalpha,0
 agpt onionscale,1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"red_b"
 lss s0_9,"dla","b21b_akuwarai1" ;1
@@ -4177,7 +4175,7 @@ flush 22
 d `……いや、赤き真実の太刀が描いた軌跡が網膜に焼きついている。`[\]
 *d68287
 d `その軌跡を辿る時間さえ与えず、……もう戦人の懐に…！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -4189,11 +4187,11 @@ vol_me 1,-1,1000
 vol_me 2,-1,1000
 seplay 1,72,100
 seplay 2,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -4207,11 +4205,11 @@ wait_on_d 1
 seplay 1,2,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -4222,9 +4220,9 @@ wait 1333
 waitvideo
 csp_slot s0_17
 flush 1
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 lss s0_10,"but","b11_majime4" ;1
@@ -4252,7 +4250,7 @@ d_continue
 wait_on_d -1
 meplay 1,16,50
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -4263,7 +4261,7 @@ d `閉ざされたこの世界では、異なる真実が同時に存在でき�
 seplay 1,75,70
 *d68291
 d `そして、異なる真実が存在する限り、どちらの真実も、唯一の真実を主張することは出来ない。`[\]
-textoff
+textoff2
 waits 167
 seplay 2,75,70
 waits 167
@@ -4274,7 +4272,7 @@ wait_on_d 0
 seplay 1,75,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 2,75,75
 waits 167
@@ -4283,16 +4281,16 @@ waits 167
 seplay 3,75,100
 waits 167
 seplay 1,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 lss s0_10,"lam","a11_akuwarai4" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -4309,7 +4307,7 @@ seplay 1,52,71
 seplay 2,37,100
 lss s0_8,"ber","a21_akuwarai1" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -4321,10 +4319,10 @@ seplay 1,37,100
 msgwnd_ber
 *d68294
 d [lv 0*"28"*"52100888"]`「………笑わせる脚本だわ…！！`[@][lv 0*"28"*"52100889"]`　悪魔の脚本はやはり、こうでなくっちゃ！！」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -4334,25 +4332,25 @@ agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 3,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 1,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 flush 1
@@ -4369,11 +4367,11 @@ gptwait quakexamp
 seplay 2,57,100
 agpt onionalpha,0
 agpt onionscale,1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_9,"dla","b22b_ikari1" ;1
@@ -4382,19 +4380,19 @@ msgwnd_dla
 *d68295
 d [lv 0*"47"*"54600423"]`「では問いまショウ！！`[@][lv 0*"47"*"54600424"]`　夏妃以外の誰が犯人という仮説デスカ！！」`[\]
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
 msgwnd_non
 *d68296
 d `戦人の黄金の太刀は、赤き軌跡も青き軌跡も自在に描く。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,20,71
 wait 150
@@ -4402,7 +4400,7 @@ seplay 2,20,100
 wait 150
 seplay 3,57,100
 seplay 1,74,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
@@ -4412,7 +4410,7 @@ flush 1
 waitvideo
 csp_slot s0_5
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 lss s0_10,"but","b11_futeki2" ;1
@@ -4435,14 +4433,14 @@ wait_on_d 0
 seplay 1,2,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_8,"dla","b22b_ikari1" ;1
@@ -4490,10 +4488,10 @@ flush 1
 seplay 3,2,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,20,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -4504,9 +4502,9 @@ seplay 2,73,100
 waitvideo
 csp_slot s0_17
 flush 1
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 anim2 s0_17,"no0017d_wh_s",1
@@ -4546,11 +4544,11 @@ lss s0_9,"dla","b22_ikari1" ;1
 flush 26
 wait 500
 seplay 2,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_9,"dla","b22b_majime2" ;1
@@ -4567,7 +4565,7 @@ d_continue
 wait_on_d -1
 meplay 1,28,100
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -4577,43 +4575,43 @@ agpt onionscale,1100
 gptwait onionalpha
 wait 100
 seplay 3,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 1,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 3,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 1,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 3,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 1
@@ -4632,7 +4630,7 @@ gptwait quakexamp
 seplay 1,74,100
 seplay 2,57,100
 seplay 3,1006,100
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -4657,7 +4655,7 @@ seplay 3,74,100
 d_continue
 wait_on_d -1
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -4672,7 +4670,7 @@ d `この世界の領主を継承し、無限の魔術師の位まで得た戦�
 d `もはや間合いなど瑣末なことかもしれない。`[\]
 *d68306
 d `戦人たちの俊敏すぎる戦いは、もはや距離という概念を超越しつつあるからだ。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,20,70
 waits 167
@@ -4682,7 +4680,7 @@ seplay 3,20,90
 waits 167
 seplay 2,20,100
 wait 333
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 1
@@ -4701,11 +4699,11 @@ spt_mem "a2","xpos",s0_10,370
 flush 6
 wait 1000
 seplay 2,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_10,"dla","b22b_warai1" ;1
@@ -4720,7 +4718,7 @@ flush 10,167
 msgwnd_but
 *d68308
 d [lv 0*"10"*"50101447"]`「あぁ、聞かせてやる。`[@][lv 0*"10"*"50101448"]`それでも説明がつくことを、`[@][lv 0*"10"*"50101449"]`……夏妃伯母さんが犯人だと決め付けることは出来ないことを、俺が証明してやる…！」`[\]
-textoff
+textoff2
 waits 167
 lss s0_8,"but","b11_futeki2" ;1
 spt_mem "a2","xpos",s0_8,-370
@@ -4736,38 +4734,38 @@ csp_slot s0_8
 csp_slot s0_10
 flush 18,1667,msk_1
 seplay 3,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 1,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 3,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 1,75,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
@@ -4777,7 +4775,7 @@ seplay 2,75,100
 seplay 3,72,100
 spriteset_enable 1
 aspritesetpt xpos,1,1920
-textoff
+textoff2
 waits 167
 lbg "c:cg/but",s1_3,"bac_ba2n"
 spt_mem "a2","xpos",s1_3,400
@@ -4789,7 +4787,7 @@ seplay 1,75,100
 seplay 3,74,100
 spriteset_enable 2
 aspritesetpt xpos,2,-1920
-textoff
+textoff2
 waits 167
 lbg "c:cg/dla",s2_3,"dlc_a1"
 spt_mem "a2","xpos",s2_3,-400
@@ -4806,7 +4804,7 @@ csp -11
 csp msk1
 csp -12
 csp msk2
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,167,msk_1
@@ -4819,7 +4817,7 @@ seplay 3,20,90
 waits 167
 seplay 2,20,100
 wait 333
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 1
@@ -4839,7 +4837,7 @@ lss s0_8,"dla","a11b_ikari1" ;1
 spt_mem "a2","xpos",s0_8,-370
 flush 80
 wait 500
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"black"
@@ -4852,7 +4850,7 @@ seplay 3,20,90
 waits 167
 seplay 2,20,100
 wait 333
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1a"
 flush 80
@@ -4869,7 +4867,7 @@ agpt quakeyamp,0,500,1
 rumble 63,500
 gptwait quakeyamp
 wait 1000
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"wclo_1c"
@@ -4881,11 +4879,11 @@ wait 1000
 seplay 1,57,100
 seplay 2,1006,100
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_9,"eri","a11_akuwarai2" ;1
@@ -4904,7 +4902,7 @@ wait_on_d -1
 msgwnd_non
 *d68310
 d `今度はヱリカが歩み出る。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,22,100
 lss s0_9,"eri","a11_akuwarai4" ;1
@@ -4926,14 +4924,14 @@ show_whirl
 seplay 3,57,100
 seplay 1,72,100
 lss s0_9,"eri","a16b_akuwarai2" ;1
-textoff
+textoff2
 waits 167
 flush 22
 meplay 1,21,80
 *d68311
 d `……その手には、死神を想起させる鎌が現れる。`[@]`{n}自らの推理を脅かす一切を刈り取る、無慈悲なる鎌…！`[\]
 seplay 1,75,90
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -4942,34 +4940,34 @@ agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 3,75,70
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 1,75,85
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 1
@@ -4977,17 +4975,17 @@ waits 167
 seplay 3,75,100
 seplay 1,1006,100
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 agpt onionalpha,0
 agpt onionscale,1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 lss s0_9,"eri","b12b_akuwarai2" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -5010,21 +5008,21 @@ seplay 2,1006,100
 seplay 3,75,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 3,75,100
 seplay 1,1006,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"wsan_2c"
 lss s0_9,"eri","b12b_akuwarai1" ;1
 wait 333
 agpt onionscale,1100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -5033,7 +5031,7 @@ agpt onionalpha,0
 agpt onionscale,1000
 seplay 3,75,100
 seplay 1,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2a"
 flush 10,100
@@ -5041,16 +5039,16 @@ wait 500
 seplay 2,57,100
 seplay 1,1006,100
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"eri","b12b_akuwarai2" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 2
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -5068,7 +5066,7 @@ csp_slot s0_17
 flush 1
 vol_me 1,-1,1000
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2a"
 lss s0_9,"eri","b14b_odoroki1" ;1
@@ -5080,7 +5078,7 @@ csp_slot s0_8
 flush 18,2000,msk_1
 seplay 1,75,100
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"wsan_2a"
@@ -5094,14 +5092,14 @@ spt_mem "a2","xpos",s0_10,550
 flush 22
 waits 167
 csp_slot s0_10
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"eri","b14b_odoroki2" ;1
 lss s0_23,"but","b25_odoroki1" ;1
 spt_mem "a2","xpos",s0_23,550
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -5119,10 +5117,10 @@ seplay 2,1006,100
 seplay 3,74,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_23
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"wsan_2a"
@@ -5145,7 +5143,7 @@ agpt quakeyamp,30
 agpt quakeyamp,0,500,1
 rumble 63,500
 gptwait quakeyamp
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 anim2 s0_17,"no0010",1
@@ -5223,11 +5221,11 @@ d_continue
 wait_on_d -1
 seplay 3,75,100
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_9,"eri","b13_gaman2" ;1
@@ -5235,7 +5233,7 @@ flush 80
 *d68315
 d [lv 0*"46"*"54501387"]`「ドラノール、今ですッ！！！」`[\]
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -5244,36 +5242,36 @@ agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 2,75,80
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 2,75,85
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 agpt onionalpha,0
 agpt onionscale,1000
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 1
@@ -5297,7 +5295,7 @@ lss s0_8,"eri","a11_akuwarai2" ;1
 spt_mem "a2","xpos",s0_8,-370
 flush 1
 wait 1000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -5334,13 +5332,13 @@ seplay 2,74,100
 seplay 3,75,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 lss s0_9,"but","b11_futeki1" ;1
@@ -5348,24 +5346,24 @@ agpt onionscale,1000
 flush 1
 wait 333
 agpt onionscale,1100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2b"
 flush 18,100,msk_1
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 agpt onionalpha,0
 agpt onionscale,1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 anim2 s0_5,"laser_b",1
@@ -5389,13 +5387,13 @@ seplay 2,1006,100
 seplay 3,36,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 vol_me 1,-1,1000
 seplay 1,36,100
 seplay 2,75,100
 seplay 3,74,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
@@ -5404,7 +5402,7 @@ agpt quakexamp,30
 agpt quakexamp,0,500,1
 rumble 63,500
 gptwait quakexamp
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 22
@@ -5428,13 +5426,13 @@ gptwait quakeyamp
 msgwnd_non
 *d68318
 d `ヱリカとドラノールの二人掛りで交差する赤き真実を、戦人は青き一閃でまとめて弾き飛ばす…！`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 26
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 26
@@ -5456,7 +5454,7 @@ wait_on_d 0
 seplay 2,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"wclo_1b"
@@ -5467,11 +5465,11 @@ msgwnd_but
 *d68323
 d [lv 0*"10"*"50101454"]`「なるほど、あの時点で死んでたと信じるお前にとっちゃ、まるで、`[@][lv 0*"10"*"50101455"]`死者が蘇らされるみたいに見えるだろうな…！`[@][lv 0*"10"*"50101456"]`　ならこれはお前にとって魔法になるだろうぜ」`[\]
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_10,"but","b25_majime4" ;1
@@ -5483,28 +5481,28 @@ agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 1,75,80
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"wsan_2b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 3,75,90
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 agpt onionalpha,0
 agpt onionscale,1000
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 lss s0_10,"eri","a11_niramu1a" ;1
@@ -5518,11 +5516,11 @@ gptwait quakeyamp
 msgwnd_eri
 *d68325
 d [lv 0*"46"*"54501391"]`「ほざけッ！！`[@][lv 0*"46"*"54501392"]`　何度でも繰り返します！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_10,"eri","b13_odoroki2" ;1
@@ -5549,25 +5547,25 @@ spt_mem "a2","xpos",s0_10,370
 flush 24
 *d68327
 d [lv 0*"46"*"54501396"]`「これでも食らいやがれ、死者どもめッ！！！」`[\]
-textoff
+textoff2
 waits 167
 seplay 3,66,100
 seplay 2,66,100
 seplay 1,66,100
 vol_bgm -1,1000
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 18,1500,msk_1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
-textoff
+textoff2
 waits 167
 anim2 s0_17,"no23",1
 blend_mode2 add,s0_17
@@ -5624,12 +5622,12 @@ d `ベアトが消失した今、彼ら悪魔に現世に顕現できる力は�
 *d68331
 d `しかし、……彼はここに“い”て、`[@]`……ヱリカの攻撃を涼しげにあしらう。`[\]
 seplay 3,75,70
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 waits 167
 seplay 1,75,85
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 1
@@ -5652,14 +5650,14 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 lss s0_8,"but","b11_majime3" ;1
@@ -5673,7 +5671,7 @@ flush 80
 msgwnd_but
 *d68333
 d [lv 0*"10"*"50101458"]`「………譲るぜ。`[@][lv 0*"10"*"50101459"]`一つの傲慢なる真実で、全てを支配などできないことを教えてやれ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 flush 22
@@ -5688,7 +5686,7 @@ flush 10,167
 d_continue
 wait_on_d -1
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -5698,43 +5696,43 @@ agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 agpt onionalpha,0
 agpt onionscale,1000
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2a"
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_10,"eri","b12b_odoroki2" ;1
@@ -5757,7 +5755,7 @@ seplay 1,75,100
 seplay 2,2,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_17,"barrier1"
 anim2 s0_18,"no0017b_wh_s",1
@@ -5772,18 +5770,18 @@ waitvideo
 csp_slot s0_18
 flush 1
 waits 167
-textoff
+textoff2
 csp_slot s0_17
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"wclo_1a"
 lss s0_9,"ron","a11_warai2" ;1
-textoff
+textoff2
 waits 167
 seplay 3,55,71
 spriteset_enable 1
-textoff
+textoff2
 waits 167
 lbg "c:efe",s1_22,"barrier1"
 aspritesetpt breakup,1,0
@@ -5817,57 +5815,57 @@ wait_on_d -1
 seplay 1,57,100
 seplay 2,1006,100
 seplay 3,36,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"barrier1"
 flush 18,2000,msk_1
 seplay 1,1006,100
 seplay 2,12,90
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 wait 150
 seplay 1,1006,100
 seplay 3,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 1,1006,100
 seplay 2,12,90
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 1,1006,100
 seplay 2,57,100
 seplay 3,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"barrier1"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 1,1006,100
 seplay 2,12,100
 seplay 3,13,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 1
@@ -5889,9 +5887,9 @@ seplay 2,2,100
 msgwnd_eri
 *d68337
 d [lv 0*"46"*"54501404"]`「では、あの時点で……犠牲者は生きていたと？！`[@][lv 0*"46"*"54501405"]`　首がばっくりと裂かれているのに？！」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -5906,7 +5904,7 @@ seplay 3,75,100
 waitvideo
 csp_slot s0_17
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 lss s0_9,"ron","a11_akuwarai1" ;1
@@ -5955,16 +5953,16 @@ wait_on_d -1
 msgwnd_non
 *d68339
 d `ヱリカはがむしゃらに鎌を振るうが、`[@]`ロノウェは優雅な仕草で、それを全て片手のシールドで捌いてしまう。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 1
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 22
@@ -5982,13 +5980,13 @@ msgwnd_eri
 d [lv 0*"46"*"54501406"]`「じゃ、……じゃあ、あの時点では、誰も死んでない？！`[@][lv 0*"46"*"54501407"]`　まさか、首に傷さえない？！`[@][lv 0*"46"*"54501408"]`　だって、…じゃあ、どうして戦人は悲鳴をあげたんですッ？！」`[\]
 vol_me 1,-1,1000
 seplay 1,52,90
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 28
 lss s0_10,"eri","b14b_odoroki1" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -6022,7 +6020,7 @@ seplay 1,52,100
 seplay 2,52,71
 seplay 3,75,100
 csp_slot s0_10
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 28
@@ -6033,16 +6031,16 @@ d `ヱリカの足元に開いた漆黒の穴が、彼女を飲み込んでし�
 d `彼女には穴の向こうが見えただろう。`[\]
 *d68345
 d `……それは、この大聖堂の天窓より眼下を見下ろすのと同じ光景だった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_8,"gap","a15_akuwarai1" ;1
@@ -6055,12 +6053,12 @@ meplay 2,28,100
 seplay 1,57,100
 seplay 2,75,100
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 lss s0_9,"wal","a13_ikari1" ;1
@@ -6071,9 +6069,9 @@ d [lv 0*"30"*"53200328"]`「えぇ」`[\]
 msgwnd_non
 *d68348
 d `大聖堂の宙には、すでにワルギリアの姿が。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -6083,7 +6081,7 @@ anim2 s0_17,"no38b",1,1
 blend_mode2 add,s0_17
 flush 1
 seplay 2,57,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"no38b_00149"
 waitvideo
@@ -6092,7 +6090,7 @@ flush 1
 seplay 1,57,100
 seplay 2,74,100
 seplay 3,72,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
@@ -6101,7 +6099,7 @@ agpt quakexamp,30
 agpt quakexamp,0,167,1
 rumble 63,500
 gptwait quakexamp
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"no38b_00149"
 flush 2
@@ -6153,17 +6151,17 @@ flush 63
 msgwnd_eri
 *d68352
 d [lv 0*"46"*"54501410"]`「ぐ、`[|][lv 0*"46"*"54501411"]`……ぎ、`[|][lv 0*"46"*"54501412"]`………ぐそぉおおおおおおぉ、この程度で、`[|][lv 0*"46"*"54501413"]`………ぐぎ…ぎ………！！」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,66,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 anim2 s0_17,"no39b",1,1
@@ -6176,14 +6174,14 @@ csp_slot s0_17
 flush 1
 seplay 3,1006,100
 seplay 2,74,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 seplay 3,72,100
 seplay 2,12,100
 seplay 1,36,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1a"
 flush 1
@@ -6197,18 +6195,18 @@ msgwnd_non
 d `ワルギリアの青き神槍が、ヱリカを串刺しにして宙に磔にする。`[\]
 *d68354
 d `ヱリカは憎々しげにもがくが、それは容易に抜けるものではない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 26
 *d68355
 d `そして、その彼女を取り囲むように、`[@]`……何か小さく素早いものが、大聖堂の壁を打ち鳴らして跳ね返りながら包囲する。`[\]
-textoff
+textoff2
 waits 167
 csp -10
 lbg "c:efe",s0_3,"no59_00073"
 pam 749,"no59",0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 1
@@ -6272,7 +6270,7 @@ flush 10,167
 msgwnd_rg1
 *d68357
 d [lv 0*"38"*"52300013"]`「我らは煉獄の七姉妹…！！`[@][lv 0*"38"*"52300014"]`　主の仇、思い知れッ！！」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,52,100
 wait 100
@@ -6315,7 +6313,7 @@ csp_slot s0_15
 csp_slot s0_16
 csp_slot s0_17
 flush 1 ;flush2: NO frames
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2a"
 lss s0_9,"eri","a11_odoroki2" ;1
@@ -6326,7 +6324,7 @@ d [lv 0*"46"*"54501414"]`「……こンの、………文鎮風情が………�
 seplay 1,52,100
 lss s0_8,"rg7","a12_akuwarai1" ;1
 spt_mem "a2","xpos",s0_8,-550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -6340,25 +6338,25 @@ wait_on_d 0
 seplay 2,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,36,100
 lss s0_8,"rg7","a12b_akuwarai1" ;1
 spt_mem "a2","xpos",s0_8,-550
 flush 10,167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 csp_slot s0_8
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
 seplay 2,52,100
 lss s0_10,"rg6","a12_akuwarai1" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -6372,26 +6370,26 @@ wait_on_d 0
 seplay 3,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 2,36,100
 lss s0_10,"rg6","a12b_akuwarai1" ;1
 spt_mem "a2","xpos",s0_10,550
 flush 10,167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 csp_slot s0_10
 lss s0_9,"eri","a11_odoroki2" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
 seplay 3,52,100
 lss s0_8,"rg5","a32_akuwarai4" ;1
 spt_mem "a2","xpos",s0_8,-550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -6405,25 +6403,25 @@ wait_on_d 0
 seplay 2,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,36,100
 lss s0_8,"rg5","a32b_akuwarai4" ;1
 spt_mem "a2","xpos",s0_8,-550
 flush 10,167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 csp_slot s0_8
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
 seplay 2,52,100
 lss s0_10,"rg4","a22_ikari1" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -6437,26 +6435,26 @@ wait_on_d 0
 seplay 3,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 2,36,100
 lss s0_10,"rg4","a22b_ikari1" ;1
 spt_mem "a2","xpos",s0_10,550
 flush 10,167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 csp_slot s0_10
 lss s0_9,"eri","a11_gaman2" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
 seplay 3,52,100
 lss s0_8,"rg3","a12_akuwarai2" ;1
 spt_mem "a2","xpos",s0_8,-550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -6470,26 +6468,26 @@ wait_on_d 0
 seplay 2,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,36,100
 lss s0_8,"rg3","a12b_akuwarai2" ;1
 spt_mem "a2","xpos",s0_8,-550
 flush 10,167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 csp_slot s0_8
 lss s0_9,"eri","a11_gaman1" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
 seplay 2,52,100
 lss s0_10,"rg2","a22_akuwarai3" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -6503,26 +6501,26 @@ wait_on_d 0
 seplay 3,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 2,36,100
 lss s0_10,"rg2","a22b_akuwarai3" ;1
 spt_mem "a2","xpos",s0_10,550
 flush 10,167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 csp_slot s0_10
 lss s0_9,"eri","a11_hanbeso2" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
 seplay 1,52,100
 lss s0_8,"rg1","a32_odoroki1" ;1
 spt_mem "a2","xpos",s0_8,-550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -6539,19 +6537,19 @@ wait_on_d 1
 seplay 1,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 1
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"red_b"
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_27,"cg_1a"
 set_scale_center s0_27,0,-540
@@ -6562,7 +6560,7 @@ seplay 1,57,100
 seplay 2,46,100
 seplay 3,1006,100
 wait 150
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_27,"cg_1b"
 set_scale_center s0_27,0,-540
@@ -6573,7 +6571,7 @@ seplay 1,57,100
 seplay 2,46,100
 seplay 3,1006,100
 wait 150
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_27,"cg_1c"
 set_scale_center s0_27,0,-540
@@ -6584,7 +6582,7 @@ seplay 1,57,100
 seplay 2,46,100
 seplay 3,1006,100
 wait 150
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_27,"cg_1d"
 set_scale_center s0_27,0,-540
@@ -6595,7 +6593,7 @@ seplay 1,57,100
 seplay 2,46,100
 seplay 3,1006,100
 wait 150
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_27,"cg_1e"
 set_scale_center s0_27,0,-540
@@ -6606,7 +6604,7 @@ seplay 1,57,100
 seplay 2,46,100
 seplay 3,1006,100
 wait 150
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_27,"cg_1f"
 set_scale_center s0_27,0,-540
@@ -6617,7 +6615,7 @@ seplay 1,57,100
 seplay 2,46,100
 seplay 3,1006,100
 wait 150
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_27,"cg_1g"
 set_scale_center s0_27,0,-540
@@ -6628,13 +6626,13 @@ seplay 1,57,100
 seplay 2,46,100
 seplay 3,1006,100
 wait 150
-textoff
+textoff2
 waits 167
 csp_slot s0_27
 seplay 1,57,100
 seplay 2,46,100
 seplay 3,36,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_1b"
 flush 1
@@ -6643,7 +6641,7 @@ agpt quakexamp,30
 agpt quakexamp,0,833,1
 rumble 63,500
 gptwait quakexamp
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 lss s0_9,"eri","a11_gaman1" ;1
@@ -6687,20 +6685,20 @@ set_name_window_non
 d `……ヱリカならば、たとえ金蔵の存在を否定されても、`[@]`多少、推理の構築を修正するだけで、この磔から逃れることも出来るだろう。`[\]
 *d68369
 d `しかし、`[@]`……彼女には、一度構築した推理を修正させられることが、`[@]`…………この上なく、……屈辱！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2a"
 flush 22
 vol_me 1,-1,1000
 vol_me 2,-1,1000
 seplay 2,52,80
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 28
 lss s0_8,"gap","a11_akuwarai1" ;1
 spt_mem "a2","xpos",s0_8,-550
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -6710,7 +6708,7 @@ d [lv 0*"32"*"53700196"]`「夏妃を追い詰めるためだけに、策を弄�
 seplay 1,52,80
 lss s0_10,"ron","a11_majime1" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -6722,7 +6720,7 @@ msgwnd_ron
 d [lv 0*"31"*"53100197"]`「推理を遊びすぎましたな。`[@][lv 0*"31"*"53100198"]`……金蔵の死を赤き真実で語れるのは、今やあなたの主だけではありませんよ」`[\]
 seplay 3,22,80
 lss s0_24,"wal","a13_ikari2" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_24,1000
 spt_mem "a2","alpha",s0_24,0
 flush 1
@@ -6736,20 +6734,20 @@ csp_slot s0_24
 seplay 1,57,100
 seplay 2,36,100
 seplay 3,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 lss s0_9,"eri","a11_gaman2" ;1
@@ -6764,7 +6762,7 @@ d `もちろん、ヱリカとて金蔵の存在は最初から疑っている�
 d `しかし、その存在の否定は、`[@]`あの法廷ではベルンカステルと、同調するラムダデルタの２人以外には不可能だった。`[\]
 *d68376
 d `そして、その２人が沈黙してくれるなら、金蔵の真実は、如何様にも変幻自在だったのだ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -6774,18 +6772,18 @@ d `なのに戦人が、……魔女に、……魔術師になって、`[@]`証
 *d68378
 d `でも、それを証拠不要で反論できる異端審問官だって、こっちにはいるッ！！`[\]
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 22
 msgwnd_eri
 *d68379
 d [lv 0*"46"*"54501424"]`「ドッ、ドラノぉおぉおぉおぉルッ！！！！」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,75,100
 wait 333
@@ -6808,12 +6806,12 @@ rumble 63,500
 gptwait quakeyamp
 seplay 2,57,100
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"dla","a11b_ikari1" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -6830,14 +6828,14 @@ wait_on_d 2
 seplay 2,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 lss s0_10,"kin","a11_fumu1" ;1
@@ -6862,7 +6860,7 @@ msgwnd_kin
 *d68382
 d [lv 0*"01"*"51500252"]`「越え行け、戦人。`[@][lv 0*"01"*"51500253"]`我が屍…！！」`[\]
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -6873,55 +6871,55 @@ agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 1
 wait 150
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 agpt onionalpha,0
 agpt onionscale,1000
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_10,"but","b25_odoroki1" ;1
@@ -6939,17 +6937,17 @@ seplay 2,2,100
 seplay 3,57,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 1
 wait 150
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 1
@@ -6972,11 +6970,11 @@ seplay 1,75,100
 seplay 2,57,100
 seplay 3,2,100
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_24,"dla","b23b_ikari1" ;1
@@ -7000,7 +6998,7 @@ wait_on_d 4
 seplay 2,59,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 vol_mix_fade 1000
 vol_bgm -1,1000
@@ -7008,41 +7006,41 @@ wait 1000
 meplay 1,28,85
 seplay 1,57,100
 seplay 2,72,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_22,"barrier1"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 80
 seplay 3,57,100
 seplay 1,72,100
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_22,"barrier1"
 flush 42
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_22
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 2
 seplay 1,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 lss s0_9,"lam","a11_futeki2" ;1
@@ -7053,7 +7051,7 @@ d [lv 0*"29"*"52200740"]`「……へぇ。`[@][lv 0*"29"*"52200741"]`赤き真�
 seplay 2,52,100
 lss s0_10,"ber","a21_akuwarai4" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -7067,13 +7065,13 @@ wait_on_d 0
 seplay 1,37,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 26
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 lss s0_8,"but","b11_niramu1" ;1
@@ -7104,11 +7102,11 @@ seplay 3,59,71
 d_continue
 wait_on_d -1
 seplay 1,57,85
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_24,"eri","b13_akuwarai4" ;1
@@ -7124,7 +7122,7 @@ seplay 3,2,85
 d_continue
 wait_on_d -1
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -7136,7 +7134,7 @@ msgwnd_non
 d `ドラノールは、遺体提示による証明に赤き真実を封じている。`[\]
 *d68391
 d `……魔女の力を得た戦人とて、反論は不可能……！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 lss s0_10,"ber","a21_odoroki2" ;1
@@ -7157,19 +7155,19 @@ flush 22
 msgwnd_lam
 *d68393
 d [lv 0*"29"*"52200743"]`「………赤と青なら、…ね……？」`[\]
-textoff
+textoff2
 waits 167
 lss s0_8,"lam","a11_akuwarai4" ;1
 spt_mem "a2","xpos",s0_8,-370
 flush 80
 wait 1000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 26
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 lss s0_8,"but","b11_majime5" ;1
@@ -7192,63 +7190,63 @@ csp_slot s0_8
 csp_slot s0_10
 wait 100
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 vol_me 1,-1,1000
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,100,msk_1
 agpt onionalpha,0
 agpt onionscale,1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 anim2 s0_5,"laser_g",1
@@ -7266,12 +7264,12 @@ msgwnd_but
 d [lv 0*"10"*"50101465"]`「{p:41:この死体が右代宮金蔵の死体であると保証する…！！}」`[\]
 set_name_window_non
 bgmplay 119,71,0
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 22
@@ -7299,12 +7297,12 @@ d `見紛う事なき、……直撃。`[\]
 *d68397
 d `小さな巨人のような重量感を持って感じられた彼女が、`[@]`初めて外見相応の華奢さで、吹き飛び、壁に叩きつけられる…！`[\]
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 26
 lbg "a:efe",s0_5,"butterfly_4sp2"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 26
@@ -7314,7 +7312,7 @@ flush 64
 msgwnd_eri
 *d68398
 d [lv 0*"46"*"54501427"]`「ド、……ドラノール？！　あ、あんた何やって……、」`[\]
-textoff
+textoff2
 waits 167
 seplay 2,43,71
 seplay 1,1006,71
@@ -7335,7 +7333,7 @@ msgwnd_eri
 d [lv 0*"46"*"54501428"]`「……お、……黄金の真実ッ……？！」`[\]
 seplay 1,22,90
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -7345,17 +7343,17 @@ msgwnd_non
 *d68401
 d `赤や青の軌跡を描いてきた黄金の太刀が初めて、`[@]`その神々しい黄金の輝きを、そのまま軌跡に描いたのだ。`[\]
 seplay 1,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 *d68402
 d `そして示される真実は、………赤でも青でもない。`[@]`{n}………黄金の、真実…！！！`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 lss s0_8,"lam","a11_odoroki1" ;1
@@ -7386,7 +7384,7 @@ d_continue
 wait_on_d -1
 meplay 1,16,50
 lbg "a:efe",s0_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -7397,7 +7395,7 @@ flush 22
 msgwnd_eri
 *d68405
 d [lv 0*"46"*"54501429"]`「な、……何ですって…………、」`[\]
-textoff
+textoff2
 waits 167
 lss s0_8,"dla","a11_majime1" ;1
 spt_mem "a2","xpos",s0_8,-370
@@ -7413,16 +7411,16 @@ d_continue
 wait_on_d -1
 seplay 1,57,100
 seplay 2,22,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 2
 lbg "a:efe",s0_5,"butterfly_4sp2"
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -7434,7 +7432,7 @@ flush 24
 msgwnd_wal
 *d68407
 d [lv 0*"30"*"53200334"]`「その輝きこそが、……戦人くんが、本当にベアトを理解した証」`[\]
-textoff
+textoff2
 waits 167
 lss s0_8,"but","b11_nayamu4" ;1
 spt_mem "a2","xpos",s0_8,-370
@@ -7446,14 +7444,14 @@ msgwnd_but
 *d68408
 d [lv 0*"10"*"50101466"]`「………示したぜ。`[@][lv 0*"10"*"50101467"]`この死体が祖父さまであることを」`[\]
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
 lbg "a:efe",s0_5,"butterfly_4sp2"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 lss s0_9,"dla","a11_majime2" ;1
@@ -7474,7 +7472,7 @@ flush 10,167
 meplay 2,17,80
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"black"
 flush 22
@@ -7483,11 +7481,11 @@ msgwnd_non
 d `ヱリカが痛みに絶叫する。`[@]`……体を貫かれる痛みではない。`[\]
 *d68412
 d `自らの推理を汚される痛みに…！`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lbg "a:efe",s0_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -7496,7 +7494,7 @@ flush 22
 seplay 1,52,71
 lss s0_10,"ber","a21_warai4" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -7519,13 +7517,13 @@ seplay 3,37,100
 d_continue
 wait_on_d -1
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_8,"lam","a11_majime1" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -7546,15 +7544,15 @@ seplay 1,2,100
 seplay 2,72,100
 seplay 3,37,100
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lbg "a:efe",s0_5,"butterfly_4sp2"
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -7570,13 +7568,13 @@ flush 10,167
 d_continue
 wait_on_d -1
 seplay 1,57,90
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"lam","a11_warai1" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -7593,17 +7591,17 @@ msgwnd_non
 d `普段、あれだけ知恵が回るはずのヱリカだけが、理解できない。`[\]
 *d68420
 d `……すでに戦人が、本当の真実に至っていることを、理解できない。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
 lbg "a:efe",s0_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 24
@@ -7611,12 +7609,12 @@ lss s0_9,"but","b11_komaru3" ;1
 flush 22
 wait 1000
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"but","b25_majime4" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -7631,12 +7629,12 @@ seplay 3,59,100
 d_continue
 wait_on_d -1
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"but","a11_majime4" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -7659,7 +7657,7 @@ gptwait quakeyamp
 d_continue
 wait_on_d -1
 lbg "a:efe",s0_5,"butterfly_4sp2"
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"wsan_1c"
@@ -7701,14 +7699,14 @@ gptwait quakeyamp
 d_continue
 wait_on_d -1
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
 lbg "a:efe",s0_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 flush 22
@@ -7727,11 +7725,11 @@ d `それが、完全に勝負があったことを物語ると、本人が自�
 *d68430
 d `ドラノールは職務を捨てない…！`[\]
 seplay 1,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_9,"dla","a11b_ikari1" ;1
@@ -7749,49 +7747,49 @@ wait_on_d 2
 seplay 2,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_5
 agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 1
 wait 150
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 agpt onionalpha,0
 agpt onionscale,1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 anim2 s0_5,"laser_r",1
@@ -7812,47 +7810,47 @@ wait_on_d 1
 seplay 1,59,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 agpt onionalpha,200
 agpt onionscale,1100
 gptwait onionalpha
 seplay 1,75,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 wait 150
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1c"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 3,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wclo_1b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,150,msk_1
 agpt onionalpha,0
 agpt onionscale,1000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 anim2 s0_17,"no0017d_w",1
@@ -7867,11 +7865,11 @@ seplay 3,74,100
 seplay 1,73,100
 seplay 2,2,100
 meplay 1,16,50
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_10,"dla","a11b_ikari1" ;1
@@ -7935,11 +7933,11 @@ flush 22
 d_continue
 wait_on_d -1
 seplay 2,73,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_10,"dla","a11b_majime2" ;1
@@ -7964,11 +7962,11 @@ d_continue
 wait_on_d -1
 seplay 2,1006,100
 seplay 3,74,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_8,"but","b11_odoroki1" ;1
@@ -7988,7 +7986,7 @@ wait_on_d 1
 seplay 2,57,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -8023,11 +8021,11 @@ d_continue
 wait_on_d -1
 seplay 1,72,100
 seplay 2,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_10,"but","b11_futeki3" ;1
@@ -8094,7 +8092,7 @@ flush 10,167
 msgwnd_dla
 *d68451
 d [lv 0*"47"*"54600476"]`「イイエ。良いのデス」`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,1000
 wait 1000
@@ -8108,7 +8106,7 @@ d [lv 0*"47"*"54600479"]`もっともらしい一つの真実が、か弱き真�
 set_name_window_non
 seplay 1,20,100
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -8166,10 +8164,10 @@ seplay 3,2,100
 seplay 1,75,100
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,20,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -8187,12 +8185,12 @@ wait 1000
 seplay 3,36,100
 seplay 1,72,100
 seplay 2,74,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
 lbg "a:efe",s0_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1a"
 flush 2
@@ -8207,7 +8205,7 @@ bgmplay 123,71,0
 d `戦人の青き軌跡は、ドラノールの脳天を捉えつつも、………紙一重で止められていた………。`[\]
 *d68460
 d `止めなければ、ドラノールは、肉片も残さずに消滅していただろう。`[\]
-textoff
+textoff2
 waits 167
 lss s0_8,"dla","a11_defo1" ;1
 spt_mem "a2","xpos",s0_8,-370
@@ -8219,7 +8217,7 @@ flush 10,167
 msgwnd_dla
 *d68461
 d [lv 0*"47"*"54600482"]`「………リザインデス。`[@][lv 0*"47"*"54600483"]`……あなたの真実の否定を、断念しマス…」`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"but","b11_nayamu4" ;1
 spt_mem "a2","xpos",s0_10,370
@@ -8234,7 +8232,7 @@ msgwnd_dla
 *d68463
 d [lv 0*"47"*"54600484"]`「ち、……父に、……敬意ヲ……………」`[\]
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -8245,7 +8243,7 @@ msgwnd_non
 *d68464
 d `ドラノールはぺたりと、……床にしゃがみ込み、`[@]`……完全に戦意を放棄する。`[\]
 lbg "a:efe",s0_5,"butterfly_4sp1r"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 lss s0_9,"eri","a11_odoroki2" ;1
@@ -8330,19 +8328,19 @@ msgwnd_but
 *d68471
 d [lv 0*"10"*"50101503"]`「……お前のその青い槍、まだ抜けないのか？」`[\]
 lbg "a:efe",s0_5,"butterfly_4sp2"
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"wsan_2b"
 flush 22
 seplay 1,57,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"lam","a11_majime1" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -8355,7 +8353,7 @@ flush 10,167
 d_continue
 wait_on_d -1
 lbg "a:efe",s0_5,"butterfly_4sp1r"
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"wsan_2c"
@@ -8373,7 +8371,7 @@ d `……深々と貫く青き槍と、７本の赤い杭が彼女の推理を�
 d `抜けない、………抜けない………！！`[\]
 seplay 1,52,71
 lss s0_9,"ber","a21_shian1" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,1000
 spt_mem "a2","alpha",s0_9,0
 flush 1
@@ -8396,7 +8394,7 @@ d `苦痛に表情を歪めながら、槍から逃れようともがく姿に�
 d `それは事実上、敗北を、ベルンカステル自らが認めたものだ。`[\]
 *d68480
 d `自分の勝利を確信してくれなかった主を、ヱリカは驚愕と絶望の眼差しで見上げる…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lss s0_8,"ber","a21_warai1" ;1
@@ -8432,11 +8430,11 @@ wait_on_d -1
 msgwnd_non
 *d68484
 d `ヱリカは屈辱に顔を歪め、ぼろぼろと涙を零しながら、`[@]`主の命に従い、自らの推理を撤回、修正する……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_5
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -8444,7 +8442,7 @@ lbg "c:efe",s0_3,"efe1b"
 flush 28
 seplay 2,1006,100
 seplay 3,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 show_glass 0
@@ -8452,7 +8450,7 @@ show_glass 0
 d `ぶつぶつと小声で、いくつかの推理修正を青き真実で行い、`[@]`それはラムダデルタに認められ、ようやく青き槍は砕かれて彼女を解放した……。`[\]
 *d68486
 d `その青き真実は、確かに一応、遺体の消失を説明はするが、`[@]`……苦し紛れであることが隠せない、推理としてみすぼらしいものだった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_2c"
 lss s0_10,"ber","a21_shian1" ;1
@@ -8486,7 +8484,7 @@ flush 10,167
 msgwnd_non
 *d68489
 d `主に醜い形相で嘲笑われるヱリカ。`[@]`{n}床を掻き毟りながら悔し涙を零す。`[\]
-textoff
+textoff2
 waits 167
 flush 24
 lss s0_24,"dla","a11_defo2" ;1
@@ -8499,7 +8497,7 @@ msgwnd_dla
 *d68491
 d [lv 0*"47"*"54600485"]`「……どれほどみすぼらしかろウト。`[@][lv 0*"47"*"54600486"]`……修正されたヱリカ卿の真実は、有効デス」`[\]
 csp_slot s0_24
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -8522,7 +8520,7 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -8544,7 +8542,7 @@ flush 10,167
 msgwnd_eri
 *d68496
 d [lv 0*"46"*"54501461"]`「ぅ、……うううぅううううううぅぅ！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 flush 25
@@ -8574,19 +8572,19 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 25
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_9,"lam","a11_warai1" ;1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -8597,11 +8595,11 @@ lss s0_9,"lam","a11_akuwarai4" ;1
 flush 10,167
 *d68501
 d [lv 0*"29"*"52200766"]`「ゲームはイーブンに戻るわ！！`[@][lv 0*"29"*"52200767"]`　そして、ゲームマスターは私から、黄金の魔術師、右代宮戦人に移るッ！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_9,"lam","a11_futeki1" ;1
@@ -8609,7 +8607,7 @@ flush 80
 seplay 1,2,100
 *d68502
 d [lv 0*"29"*"52200768"]`「右代宮戦人、前へッ！！`[@][lv 0*"29"*"52200769"]`　あんたを新しいゲームマスターに任命するわ！！`[@][lv 0*"29"*"52200770"]`　承諾する？`[@][lv 0*"29"*"52200771"]`　するわよねッ？！`[@][lv 0*"29"*"52200772"]`　しなさいッ、新しい無限の魔女ッ！！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"wsan_1a"
@@ -8626,7 +8624,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 *d68504
 d [lv 0*"10"*"50101522"]`「ヱリカ、今度こそ俺と決着をつけようじゃねぇかッ！！`[@][lv 0*"10"*"50101523"]`　立てッ！！」`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"eri","a11_gaman2" ;1
 spt_mem "a2","xpos",s0_10,370
@@ -8640,26 +8638,26 @@ spt_mem "a2","xpos",s0_10,370
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
 wait 2000
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 25
 lbg "a:efe",s0_5,"butterfly_4sp2r"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"wsan_1b"
 flush 22
 seplay 1,52,71
 lss s0_9,"ber","a21_warai4" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,1000
 spt_mem "a2","alpha",s0_9,0
 flush 1
@@ -8671,13 +8669,13 @@ msgwnd_ber
 *d68506
 d [lv 0*"28"*"52100920"]`「…………えぇ。`[@][lv 0*"28"*"52100921"]`もちろんよ、チャンスをあげる」`[\]
 seplay 1,57,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
 lss s0_10,"lam","a11_odoroki3" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 flush 22
@@ -8701,7 +8699,7 @@ flush 10,167
 d_continue
 wait_on_d -1
 lbg "a:efe",s0_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -8721,7 +8719,7 @@ d_continue
 wait_on_d -1
 seplay 1,52,71
 lss s0_9,"dla","a11_defo3" ;1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_9,1000
 spt_mem "a2","alpha",s0_9,0
 flush 1
@@ -8744,7 +8742,7 @@ msgwnd_eri
 *d68511
 d [lv 0*"46"*"54501469"]`「う、……うふふふふふふふ！！`[@][lv 0*"46"*"54501470"]`　もう客人のふりはしませんッ。`[@][lv 0*"46"*"54501471"]`……私とドラノールで、あなたのゲームを引き裂いて見せますッ！！」`[\]
 lbg "a:efe",s0_5,"butterfly_4sp2"
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -8785,7 +8783,7 @@ flush 10,167
 d_continue
 wait_on_d -1
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 csp_slot s0_25
 csp_slot s0_23
@@ -8802,18 +8800,18 @@ msgwnd_non
 d `見ていろベアト。`[@]`お前のゲームは、……俺が引き継ぐッ！！`[\]
 *d68517
 d `そして、お前の謎を全て完全に理解したことを、次のゲームで証明してやる…！！`[\]
-textoff
+textoff2
 waits 167
 spriteset_enable 1
 aspritesetpt xpos,1,1920
-textoff
+textoff2
 waits 167
 lbg "c:cg/but",s1_3,"bac_ga2n"
 spt_mem "a2","xpos",s1_3,400
 mask_set msk1,msk_cutb,1
 spriteset_enable 2
 aspritesetpt xpos,2,-1920
-textoff
+textoff2
 waits 167
 lbg "c:cg/eri",s2_3,"erc_ba"
 spt_mem "a2","xpos",s2_3,-400
@@ -8846,13 +8844,13 @@ csp -11
 csp msk1
 csp -12
 csp msk2
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 18,333,msk_c
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,333,msk_c
@@ -8868,18 +8866,18 @@ seplay 2,1006,100
 seplay 3,1006,100
 csp_slot s0_28
 csp_slot s0_29
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,2000,msk_1
 wait 1000
 skip_on
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22

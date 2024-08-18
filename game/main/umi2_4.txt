@@ -1,18 +1,16 @@
 *umi2_4
 ;1986 10/4 チェス盤の準備
 log_reset
-mov $name_chapter_r_click,r_click_chapters_2_4
-mov $name_chapter_r_click_l2,r_click_chapters_2_4_l2
-mov $name_chapter_r_click_l3,r_click_chapters_2_4_l3
+mov $name_chapter_r_click,r_click_chapters_2_4+"|"+r_click_chapters_2_4_l2+"|"+r_click_chapters_2_4_l3
 mov $name_chapter_save, "2_04"
 new_chapter date_scenario_2_4,scenario_2_4
 gstc 45
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 9
 meplay 1,25,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"tra_1b"
 flush 6
@@ -34,7 +32,7 @@ flush 10,167
 msgwnd_mar
 *d8674
 d [lv 0*"13"*"20400001"]`「うー！`[@][lv 0*"13"*"20400002"]`　ハロウィン祭りがしたいー！`[@][lv 0*"13"*"20400003"]`　こんなお洋服やだ、魔女の格好がいいー！`[@][lv 0*"13"*"20400004"]`　うーうー！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"tra_1a"
@@ -51,7 +49,7 @@ d `満員とは行かないまでも、車内は座席ほとんどが乗客で�
 d `そんな中、座席で足をばたばたさせながらわがままを騒ぐ真里亞に、楼座は顔をしかめている。`[\]
 *d8678
 d `さっきから楼座は声を潜めながら何度も注意しているのだが、真里亞は一向に聞き入れなかった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -69,7 +67,7 @@ d `幼い真里亞は駄々をこね続ければ母親は折れて自分の言�
 d `その過ちを教育書で気付かされた楼座は以来、愛娘を甘やかさないよう心を鬼にしているのだが…。`[\]
 *d8684
 d `真里亞との意思の疎通はますますに図れなくなり、楼座は自分の無力さに落胆することが少なくなくなっていた…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"tra_1b"
 lss s0_8,"mar","a11_fukigen2" ;1
@@ -114,13 +112,13 @@ rumble 63,500
 gptwait quakexamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"tra_1b"
 flush 24
@@ -128,7 +126,7 @@ meplay 1,25,71
 msgwnd_non
 *d8688
 d `足をばたばたとさせる真里亞の隣の座席に座っていた恰幅のいい老婦人が、ハンドバッグの中からのど飴を取り出し、差し出した。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"tra_1b"
 lss s0_10,"mar","a22_warai2" ;1
@@ -156,7 +154,7 @@ seplay 1,13,90
 msgwnd_ros
 *d8690
 d [lv 0*"12"*"21400005"]`「こら真里亞、勝手に人からお菓子をもらっちゃ駄目でしょ？！`[@][lv 0*"12"*"21400006"]`　返しなさい！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -167,7 +165,7 @@ msgwnd_non
 d [lv 0*"99"*"eldf2001"]`「いいんですよ、ホッホッホ。`[@][lv 0*"99"*"eldf2002"]`元気なお嬢さんですこと。`[@][lv 0*"99"*"eldf2003"]`おいくつです？」`[\]
 *d8692
 d `老婦人のその言葉に他意はなかったかもしれない。`[@]`{n}…でも、楼座には非常に屈辱的に聞こえたようだった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"tra_1b"
 lss s0_8,"mar","a11_fukigen2" ;1
@@ -200,7 +198,7 @@ wait_on_d 3
 seplay 1,8,71
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 flush 10,167
@@ -236,11 +234,11 @@ rumble 63,500
 gptwait quakexamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,20,71
 wait 1000
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -252,7 +250,7 @@ agpt quakexamp,30
 agpt quakexamp,0,500,1
 rumble 63,500
 gptwait quakexamp
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -265,7 +263,7 @@ d [lv 0*"13"*"20400024"]`「うーうーうーうーうーうーうーうー！�
 msgwnd_non
 *d8699
 d `楼座は反射的に真里亞の頬を激しく叩く。`[@]`{n}…間髪入れずに真里亞は大声で泣き始めた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"tra_1b"
 flush 26
@@ -284,13 +282,13 @@ d [lv 0*"99"*"eldf2004"]`「……………ご、…ごめんなさい」`[\]
 d `肩で息を切らせながら、楼座は飴玉をもう一度老婦人に突き出す。`[\]
 *d8704
 d `…老婦人は、何を口にすればいいか困惑した後、`[@]`多分自分のしたことはこの親子にとって迷惑だったのだろうと理解し、謝罪を口にして飴玉を受け取った…。`[\]
-textoff
+textoff2
 waits 167
 lss s0_9,"ros","a32_komaru4" ;1
 flush 42
 vol_me 1,-1,3000
 wait 3000
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"tra_1b"
@@ -303,7 +301,7 @@ d `着衣を乱し、鼻水を零しながらわんわんと泣き叫ぶ娘と�
 d `…列車の走行音を除けば完全に沈黙した車内に。`[\]
 *d8708
 d `その痛々しい沈黙は、幸いにもしばらくしか続かなかった。`[@]`{n}…だが代わりに、ヒソヒソというそれまで以上に居辛い空気を生み出すのだった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"tra_1a"
 flush 24
@@ -311,7 +309,7 @@ flush 24
 d `真里亞は、両隣に座っている人たちなどお構いなしに、わーわーと叫び、相変わらず足をじたばたさせている。`[\]
 *d8710
 d `…それを再び衝動的に平手で打とうとするが、`[@]`車内の人々の白い目に気付いてしまった楼座には、もうそれをすることはできなかった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
@@ -319,7 +317,7 @@ vol_mix_fade 2000
 wait 2000
 *d8711
 d `電車が停まると、楼座は真里亞の腕を強引に引っ張り、半ば引き摺るようにして降りる。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sta_1a"
 flush 24
@@ -379,7 +377,7 @@ rumble 63,500
 gptwait quakexamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -403,7 +401,7 @@ rumble 63,500
 gptwait quakeyamp
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sta_1a"
 flush 26
@@ -430,7 +428,7 @@ flush 10,167
 d `楼座は、次の電車に乗るからもう構うなと駅員に怒鳴りつける。`[\]
 *d8728
 d `…そしてようやく、あるいは再びというべきか、…ホームの乗客たちが遠くからジロジロと見ているのに気付くのだった。`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"ros","a25_komaru4" ;1
 spt_mem "a2","xpos",s0_10,370
@@ -440,7 +438,7 @@ meplay 1,5,40
 d `……楼座は自分がうっすらと汗をかき、風がそれを冷たくして苛むのを感じた。`[\]
 *d8730
 d `真里亞は自分の頭を庇いながら、まだ泣き続けている。`[@]`{n}……いや、…叩き続ける限り、ずっと泣き続けるだろう。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -457,7 +455,7 @@ d [lv 0*"12"*"21400026"]`「……………………、`[|][lv 0*"12"*"21400027"
 msgwnd_non
 *d8732
 d `楼座は頭の中の、悪い熱気が醒めるに従い、`[!w500]`…また自分が良からぬものに魂を明け渡していたことを知る。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sta_1a"
 lss s0_10,"mar","a22_naku1" ;1
@@ -474,7 +472,7 @@ flush 10,167
 msgwnd_ros
 *d8735
 d [lv 0*"12"*"21400029"]`「……真里亞…、ごめんなさい…、ごめんなさい…」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -500,7 +498,7 @@ d [lv 0*"12"*"21400034"]`「うん、……うん…。`[@][lv 0*"12"*"21400035"
 msgwnd_non
 *d8741
 d `抱き合う二人は、相手に許しを請い、あるいは相手を許す言葉を互いに掛け合いながら、長い時間をそうしているのだった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sta_1a"
 flush 6
@@ -520,13 +518,13 @@ flush 10,167
 msgwnd_mar
 *d8745
 d [lv 0*"13"*"20400045"]`「うん。`[@][lv 0*"13"*"20400046"]`…譲治お兄ちゃんや朱志香お姉ちゃんに、カボチャマシュマロを見せてあげたかった……」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sweet1"
 flush 22
@@ -537,7 +535,7 @@ d `それは、朝食を取った店のレジ脇で売っていたお菓子の�
 d `……スティックの先に、ジャックオーランタンを模った大きな橙色のマシュマロが付いているファンシーなお菓子だった。`[\]
 *d8748
 d `真里亞はそれを欲しいとしつこくねだったのだ。`[@]`{n}…楼座は食事をしたばかりなのにお菓子なんてとんでもないとそれを却下したのだった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -565,7 +563,7 @@ d `でも、母と一緒にお菓子を買いに行こうと手を固く結ぶ�
 d `…今の楼座にとって、真里亞との絆を取り戻すことの方が大事だった。`[\]
 *d8758
 d `……真里亞は自分にとって、愛しい娘であるだけでなく、…今の自分の全てなのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"cit_1a"
 flush 46
@@ -585,7 +583,7 @@ msgwnd_non
 d `二人は見知らぬ町の駅で改札を出る。`[@]`{n}真里亞は、母と渡る横断歩道を、まるで遊園地で歩くようにほくほくしながら歩む。`[\]
 *d8764
 d `まだ互いの顔は真っ赤だったけど、`[@]`……ぎこちなくも笑いあう二人の親子は温かに見えた…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 42
@@ -593,18 +591,18 @@ vol_mix_fade 4000
 vol_bgm -1,4000
 wait 4000
 gstc 46
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 42
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1ac"
 flush 6
 bgmplay 1,71,0
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_p1d_bg"
 lbg "a:backgrounds",s0_3,"m1f_p1d"
@@ -675,7 +673,7 @@ msgwnd_non
 d `夏妃はそっと蔵臼の肩に寄り添う。`[\]
 *d8776
 d `蔵臼の仕事の苦労を労う言葉を掛けるが、…順調でないことを一番知っているのが夏妃だった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -694,7 +692,7 @@ d `……もちろん、遠くない将来に、かさんだ投資が全て取�
 d `……しかし、蔵臼が選ぶシーソーは、いつも思い通りにならない。`[\]
 *d8782
 d `…先見性は間違っていないのだが、……時代が遅い。`[@]`{n}いつもついてこない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_p1c_bg"
 lbg "a:backgrounds",s0_3,"m1f_p1c"
@@ -711,7 +709,7 @@ d `しかし、…シーソーは反対側にも誰かが跨ってくれなか�
 d `そして、いつまで経ってもシーソーの反対側に誰も来てくれない。`[\]
 *d8788
 d `シーソーは人気のある遊具なんだから、待っていれば必ず相手は現れる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
@@ -726,7 +724,7 @@ d `でも、シーソーは人気のある遊具なんだから、必ず誰か�
 d `…天気が崩れそうだからとここを明け渡せば、必ず誰かがここを奪い、`[@]`自分はまたも楽しそうに遊ぶ誰かを遠くから指をくわえて眺めているだけになってしまう…。`[\]
 *d8793
 d `シーソーの片側で、たったひとりじっと待ち続ける…。`[@]`{n}それが今の蔵臼の事業、そして状況だった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_p1d_bg"
 lbg "a:backgrounds",s0_3,"m1f_p1d"
@@ -774,7 +772,7 @@ flush 10,167
 msgwnd_nat
 *d8800
 d [lv 0*"03"*"20900071"]`「………あなたが親族会議に専念できるよう、全ての手配を済ませています。`[@][lv 0*"03"*"20900072"]`…全て」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
@@ -787,27 +785,27 @@ msgwnd_nat
 *d8802
 d [lv 0*"03"*"20900073"]`「はい。`[@][lv 0*"03"*"20900074"]`……源次と南條先生は私たちの味方です。`[@][lv 0*"03"*"20900075"]`…あの強欲な兄弟たちを、決してお父様には会わせません」`[\]
 gstc 47
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 5
 vol_mix_fade 3000
 vol_bgm -1,3000
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_p1b_bg"
 lbg "a:backgrounds",s0_3,"m1f_p1b"
 flush 2
 wait 2000
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mkit_1a_bg"
 lbg "a:backgrounds",s0_3,"mkit_1a"
@@ -823,7 +821,7 @@ lss s0_9,"goh","a11_omakase1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"mkit_1c"
@@ -837,7 +835,7 @@ d `まだ午前中だというのに、夕食の食材が鍋に掛けられシ�
 d `普段は料理以外にも雑事をこなさなければならないが、親族会議の日は料理人として専念することができる。`[\]
 *d8807
 d `元料理人の郷田にとって、一年間で最高の晴れ舞台に違いなかった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mkit_1a_bg"
 lbg "a:backgrounds",s0_3,"mkit_1a"
@@ -851,7 +849,7 @@ msgwnd_non
 d `郷田が使用人仲間にこれだけ上機嫌なのは珍しい。`[\]
 *d8810
 d `右代宮家専属シェフを自負する郷田にとって、親族会議で自慢の料理を披露する資格を与えられているのは最高の栄誉なのだ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
@@ -869,12 +867,12 @@ d [lv 0*"14"*"21600009"]`「……また油を売っているのか。`[@][lv 0*
 msgwnd_goh
 *d8814
 d [lv 0*"17"*"21700010"]`「えぇ、万事、この郷田にお任せを…！」`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 2000
 vol_bgm -1,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
 lbg "a:backgrounds",s0_3,"m1f_r1a"
@@ -887,7 +885,7 @@ msgwnd_non
 d `源次は軽くため息をつきながら受話器を置く。`[\]
 *d8816
 d `この忙しいのに行方をくらませて一服しているに違いない熊沢と、`[@]`こういう見栄えのいい日にしかやる気を出さない見栄っ張りの郷田の二人に対し、もう一度ため息をつく。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
@@ -910,7 +908,7 @@ flush 10,167
 msgwnd_kan
 *d8818
 d [lv 0*"16"*"20600208"]`「……お嬢様より、お子様方が泊まれるよう４人分の用意をするようにとのご指示を賜りましたが、いかがいたしましょう？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -942,7 +940,7 @@ flush 10,167
 msgwnd_sha
 *d8822
 d [lv 0*"15"*"20500429"]`「そう言えば、台風が直撃するって天気予報で言っていますね…。`[@][lv 0*"15"*"20500430"]`大丈夫でしょうか」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -957,7 +955,7 @@ lss s0_9,"gen","a11_komaru1" ;1
 flush 10,167
 *d8824
 d [lv 0*"14"*"21600019"]`「…………紗音は焦らぬよう落ち着いて。`[@][lv 0*"14"*"21600020"]`嘉音は愛想よくご挨拶をするように」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_1,"m1f_r1a_bg"
@@ -1001,7 +999,7 @@ flush 10,167
 msgwnd_kan
 *d8830
 d [lv 0*"16"*"20600214"]`「……はい」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1042,7 +1040,7 @@ msgwnd_non
 d `紗音は頬をわずかにだけ赤らめると、時計から目を逸らす。`[\]
 *d8836
 d `……もう親族たちの飛行機は新島に着いたころだろうか。`[@]`{n}…譲治との久しぶりの再会に胸をときめかせているのを、少しは隠しているつもりなのだろうが、脇の嘉音には丸判りだった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1052,38 +1050,38 @@ flush 5
 vol_mix_fade 3000
 wait 3000
 gstc 48
-textoff
+textoff2
 waits 167
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 9
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"airp_out1a"
 flush 6
 bgmplay 2,71,0
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_out1a"
 flush 24
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_in1a"
 flush 24
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"toi_1a"
 flush 24
@@ -1115,7 +1113,7 @@ lss s0_9,"geo","a11k_ikari2k" ;1
 flush 10,167
 *d8841
 d [lv 0*"07"*"20300219"]`「あぁ、左手とちゃんと言わないと右手にされちゃうかもしれない！`[@][lv 0*"07"*"20300220"]`　い、いや、紗音もそこまでカマトトじゃないけど、`[@][lv 0*"07"*"20300221"]`あぁでも、少しは自由意志がないと何だかその、`[|][lv 0*"07"*"20300222"]`うううううううぅ、んーーーぅううううぅぅうぅ、むぅううううぅああああああぁ…！！　」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -1124,7 +1122,7 @@ seplay 1,19,71
 msgwnd_non
 *d8842
 d `腕を組み、うんうんうなっていると個室にノックがある。`[@]`{n}譲治はビク！　として現実に引き戻された。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_t1a"
 lss s0_9,"rud","a11_defo1" ;1
@@ -1147,11 +1145,11 @@ msgwnd_non
 d `留弗夫はからからと笑いながら手を洗うと、出て行くのだった。`[\]
 *d8847
 d `…譲治は恥ずかしい部分を聞かれていなかったと知り、ほっと胸を撫で下ろす…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_in1a"
 flush 26
@@ -1201,7 +1199,7 @@ flush 10,167
 msgwnd_kir
 *d8855
 d [lv 0*"09"*"21300006"]`「親子ってより、悪ガキ仲間って感じね。`[@][lv 0*"09"*"21300007"]`…ほら、いらしたわよ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1243,7 +1241,7 @@ lss s0_9,"hid","a11_aseri1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1269,7 +1267,7 @@ flush 10,167
 msgwnd_but
 *d8863
 d [lv 0*"10"*"20100003"]`「いやぁ〜、はっはっはぁ…。`[@][lv 0*"10"*"20100004"]`今日は会う度に言われてて恥ずかしいっすよ…！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1291,7 +1289,7 @@ flush 10,167
 msgwnd_eva
 *d8866
 d [lv 0*"05"*"21000093"]`「ボヤかないボヤかない。`[@][lv 0*"05"*"21000094"]`船で６時間も揺られるくらいなら、飛行機でほんの３０分の方がずっとマシよぅ。`[@][lv 0*"05"*"21000095"]`たとえ、１時間余計に待たされたって、全然早いんだからぁ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1318,7 +1316,7 @@ d [lv 0*"13"*"20400056"]`「……うー？」`[\]
 msgwnd_non
 *d8870
 d `親類たちの中に見覚えのない大男が混じっているのに気付き、真里亞が戦人を睨みながら楼座の背中に隠れる。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1336,7 +1334,7 @@ flush 10,167
 msgwnd_but
 *d8872
 d [lv 0*"10"*"20100008"]`「３歳じゃ覚えてねぇよなぁ！`[@][lv 0*"10"*"20100009"]`　よぅ真里亞、久しぶりぃ。`[@][lv 0*"10"*"20100010"]`大きくなったなぁ！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1371,7 +1369,7 @@ d `明らかに警戒されているようだった。`[@]`{n}大柄な戦人に
 d `戦人もそれに気付き、何とかアプローチしようと色々考える。`[\]
 *d8877
 d `すると、彼女が手に握っているお菓子に気がついた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1379,7 +1377,7 @@ lbg "c:colour",s0_3,"black"
 flush 22
 *d8878
 d `それは、楼座に買ってもらったジャックオーランタンのお菓子だった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"air_in1a"
 lss s0_8,"mar","a22_sakebu1" ;1
@@ -1399,7 +1397,7 @@ spt_mem "a2","xpos",s0_8,-370
 flush 10,167
 *d8881
 d `このやり方はよくないだろうと大人たちは思ったが、意外にも真里亞は嬉しそうに破顔した。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1472,7 +1470,7 @@ flush 10,167
 msgwnd_but
 *d8893
 d [lv 0*"10"*"20100020"]`「そっかそっか。今度俺と一緒にやろうな！`[@][lv 0*"10"*"20100021"]`　真里亞だったら何の仮装をして練り歩きたい？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -1481,34 +1479,34 @@ flush 22
 msgwnd_mar
 *d8894
 d [lv 0*"13"*"20400067"]`「魔女！！`[@][lv 0*"13"*"20400068"]`　ベアトリーチェ！」`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 vol_bgm -1,3000
 wait 3000
 gstc 49
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 9
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1ac"
 flush 26
 bgmplay 1,71,0
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 2
 wait 3000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mhal_2c"
 lss s0_10,"jes","b22_majime1" ;1
@@ -1544,13 +1542,13 @@ flush 10,167
 msgwnd_kum
 *d8899
 d [lv 0*"18"*"21800009"]`「ほぅ…。`[@][lv 0*"18"*"21800010"]`それはまたどうしてでございましょう…？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 22
@@ -1566,7 +1564,7 @@ d [lv 0*"04"*"20200341"]`「ベアトリーチェさまだよ。`[@][lv 0*"04"*"
 msgwnd_kum
 *d8903
 d [lv 0*"18"*"21800013"]`「ほっほっほっほ…。`[@][lv 0*"18"*"21800014"]`蔵臼さまたちは、お館様の遺産問題で今年も議論されるでしょうから。`[@][lv 0*"18"*"21800015"]`…こうも魔女の黄金の話で盛り上がっては、黄金を与えた魔女本人がそろそろおいでになってもおかしくありませんねぇ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2a_bg"
 lbg "a:backgrounds",s0_3,"mhal_2a"
@@ -1576,7 +1574,7 @@ flush 10,167
 msgwnd_jes
 *d8904
 d [lv 0*"04"*"20200345"]`「熊沢さんはさ、`[@][lv 0*"04"*"20200346"]`…辞めたり勤めたりと急がしいけど、源次さん並みに昔からここに出入りしてるわけでしょ？`[@][lv 0*"04"*"20200347"]`　……ベアトリーチェのこと、もっと知ってるんじゃないの？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"mhal_2c"
@@ -1622,14 +1620,14 @@ flush 10,167
 msgwnd_jes
 *d8910
 d [lv 0*"04"*"20200352"]`「…何？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sea_1bf"
 color_mod2 s0_3,#ffffff
@@ -1644,11 +1642,11 @@ d [lv 0*"04"*"20200353"]`「前にも聞いたよ。`[@][lv 0*"04"*"20200354"]`�
 msgwnd_kum
 *d8913
 d [lv 0*"18"*"21800026"]`「……悪食島には悪霊が住み着いていて、太古の昔から人々の魂を食らい続けてきました。`[@][lv 0*"18"*"21800026_1"]`…この島に関わり、命を奪われた人間はあまりにも多いのです」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"shr_1a"
 color_mod2 s0_3,#ffffff
@@ -1659,12 +1657,12 @@ d [lv 0*"04"*"20200355"]`「それを旅の修験者だか何だかが、例の�
 msgwnd_kum
 *d8915
 d [lv 0*"18"*"21800027"]`「その鎮魂の社はこの夏、暗き闇夜を引き裂く紫色の不気味な雷で打ち砕かれたとか…」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
 vol_me 1,-1,2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mhal_2a_bg"
 lbg "a:backgrounds",s0_3,"mhal_2a"
@@ -1691,7 +1689,7 @@ msgwnd_non
 d `そこで熊沢は一度沈黙を守る。`[@]`{n}…その先を促したい朱志香にとって、それは不気味な沈黙だった。`[\]
 *d8920
 d `熊沢は、その沈黙で充分に朱志香を怖がらせたことがわかると、にやりと笑っていった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1701,14 +1699,14 @@ flush 2
 msgwnd_kum
 *d8921
 d [lv 0*"18"*"21800030"]`「はてさて、どんなことになるやら。`[@][lv 0*"18"*"21800031"]`ほっほっほっほっほ…」`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 vol_bgm -1,3000
 wait 3000
 gstc 50
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"off_1a"
 flush 26
@@ -1729,11 +1727,11 @@ d [lv 0*"09"*"21300012"]`「わかったわ。`[@][lv 0*"09"*"21300013"]`絶対�
 msgwnd_rud
 *d8926
 d [lv 0*"08"*"21200024"]`「あぁ、よろしく頼む。`[@][lv 0*"08"*"21200025"]`愛してるぜ、霧江」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"bui_r1e"
 lss s0_9,"rud","a11_defo2" ;1
@@ -1771,12 +1769,12 @@ msgwnd_non
 d [lv 0*"99"*"exea2006"]`「わかりました。`[@][lv 0*"99"*"exea2007"]`すぐに」`[\]
 *d8935
 d `幹部は秘書室に外線をつなぐよう指示する。`[@]`{n}すぐに留弗夫の前の電話が鳴り響いた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 25
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"off_1a"
 flush 22
@@ -1798,7 +1796,7 @@ d_continue
 wait_on_d -1
 *d8940
 d [lv 0*"99"*"wata2008"]`「残念ながら、このまま法廷に臨めば、当方の主張はことごとく却下される可能性が極めて高いでしょう」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1824,7 +1822,7 @@ msgwnd_non
 d [lv 0*"99"*"wata2017"]`「先方は、近年、二代目社長に交代したばかりで、まだ足固めが終わっていません。`[@][lv 0*"99"*"wata2018"]`当方が徹底抗戦した場合、現社長に失点を与えたい勢力が何らかの利敵工作をしかねないと懸念しています」`[\]
 *d8948
 d [lv 0*"99"*"wata2019"]`「その為、先方トップも本件を速やかに解決したいという思惑があるようです。`[@][lv 0*"99"*"wata2020"]`その為、迅速な和解のために多少の条件緩和を引き出せる余地も残っているかもしれません」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"off_1a"
 flush 22
@@ -1837,7 +1835,7 @@ d [lv 0*"99"*"wata2021"]`「その覚悟は必要です。`[@][lv 0*"99"*"wata20
 msgwnd_rud
 *d8951
 d [lv 0*"08"*"21200046"]`「ありがとう先生。`[@][lv 0*"08"*"21200047"]`また進展があったら連絡してください。`[@][lv 0*"08"*"21200048"]`先生は高給取りだから、与太話もできねぇや。`[@][lv 0*"08"*"21200049"]`はっはっはっは。`[@][lv 0*"08"*"21200050"]`サンキューサンキュー、グッバーイ」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"bui_r1e"
 flush 26
@@ -1915,14 +1913,14 @@ lss s0_9,"rud","a11_warai2" ;1
 flush 10,167
 *d8968
 d [lv 0*"08"*"21200072"]`「見てろ、俺が全て解決する。`[@][lv 0*"08"*"21200073"]`お前らを路頭に迷わせなんかしねぇぞ。`[@][lv 0*"08"*"21200074"]`大船に乗った気でいろぃ！`[@][lv 0*"08"*"21200075"]`　無事に解決したら、お前ら全員をシャンパンタワーでねぎらってやるぜ。`[@][lv 0*"08"*"21200076"]`約束する。`[@][lv 0*"08"*"21200077"]`だから黙って俺についてこい。`[@][lv 0*"08"*"21200078"]`いいなッ！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 22
 vol_mix_fade 1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"airp_in1a"
 flush 1
@@ -1937,7 +1935,7 @@ msgwnd_non
 d `ガクンと飛行機が大きく揺れる。`[@]`気流のせいだろう。`[\]
 *d8970
 d `その衝撃で留弗夫は目を覚ます。`[@]`{n}朝が早かったせいもあり、座席に座って一息ついたらあっさり眠ってしまったのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"airp_in1a"
 flush 23
@@ -1959,13 +1957,13 @@ flush 10,167
 msgwnd_kir
 *d8973
 d [lv 0*"09"*"21300017"]`「そうね。`[@][lv 0*"09"*"21300018"]`戦人くんも帰ってきたんだから、二人で物乞いすればいいって問題じゃないわよ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"airp_w1j"
 flush 23
@@ -1977,7 +1975,7 @@ msgwnd_non
 d `窓の外を見ると、飛行機はもうだいぶ高度を下げ始めている。`[\]
 *d8976
 d `さっきまでは黒い粒にしか見えなかった漁船が、はっきり見えるようになっていた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -1987,21 +1985,21 @@ d [lv 0*"08"*"21200084"]`「………親父に土下座して、ゲンコツ一�
 *d8978
 d [lv 0*"08"*"21200086"]`「………さんざんスネをかじって、今度は遺産目当てか。`[@][lv 0*"08"*"21200087"]`…………俺は地獄行きだな。`[@][lv 0*"08"*"21200088"]`…そりゃあ、こんな俺に親父も会いたくはないだろうよ……」`[\]
 gstc 51
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 wait 3000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1ac"
 flush 9
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1b_bg"
 lbg "a:backgrounds",s0_3,"mlib_1b"
@@ -2016,7 +2014,7 @@ d [lv 0*"19"*"21900001"]`「……まさか今年も、親族会議にお出に�
 msgwnd_non
 *d8980
 d `南條はため息をつきながら金蔵の顔を見る。`[@]`{n}…金蔵の目は怪しげな魔法書に釘付けのままだった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_1,"mlib_1c_bg"
@@ -2057,13 +2055,13 @@ flush 10,167
 msgwnd_nan
 *d8988
 d [lv 0*"19"*"21900005"]`「………………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 26
@@ -2074,11 +2072,11 @@ d `金蔵の頭の中には、今日が親族会議の日で、懐かしい親�
 d `……頭の中には、肖像画の中でしか微笑まない、油彩画の魔女の面影があるだけだ…。`[\]
 *d8991
 d `金蔵がベアトリーチェの話をする時、余計な口を挟むことは、彼の逆鱗に触れることも同じであることを、誰もが知っていた…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1c_bg"
 lbg "a:backgrounds",s0_3,"mlib_1c"
@@ -2100,7 +2098,7 @@ flush 10,167
 msgwnd_kin
 *d8994
 d [lv 0*"01"*"21500037"]`「……儀式というよりは、博打に近い。`[@][lv 0*"01"*"21500038"]`…なぜなら、リスクを負わぬ魔法に奇跡は宿らぬからだ」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2112,7 +2110,7 @@ msgwnd_non
 d `その話を南條はもう何度も聞いている。`[@]`{n}金蔵の口癖といってもいい。`[\]
 *d8996
 d `……ある種のリスクある確率に自分の運命を賭す時、金蔵はそれに勝利することで魔法や奇跡を信じているようだった…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1a_bg"
 lbg "a:backgrounds",s0_3,"mlib_1a"
@@ -2122,13 +2120,13 @@ flush 26
 msgwnd_nan
 *d8997
 d [lv 0*"19"*"21900008"]`「かつて黄金のギャンブラーと言われた金蔵さんが、`[@][lv 0*"19"*"21900009"]`いつお迎えが来てもおかしくないそのご老体で、一体どんな博打に挑みますやら…。`[@][lv 0*"19"*"21900010"]`これは見物ですな…」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1c_bg"
 lbg "a:backgrounds",s0_3,"mlib_1c"
@@ -2199,7 +2197,7 @@ flush 10,167
 msgwnd_nan
 *d9008
 d [lv 0*"19"*"21900020"]`「金蔵さんにとっての６年など、この部屋で研究に没頭すればあっという間のことでしょうからな…」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_1,"mlib_1a_bg"
@@ -2213,7 +2211,7 @@ lss s0_9,"kin","a13_warai2" ;1
 flush 10,167
 *d9010
 d [lv 0*"01"*"21500057"]`「…………今宵、ルーレットがどんな奇跡を見せてくれるのか、楽しませてもらおうではないか。`[@][lv 0*"01"*"21500058"]`…配当は大きいぞ。`[@][lv 0*"01"*"21500059"]`そして負ける気はせぬ…。`[@][lv 0*"01"*"21500060"]`……ベアトリーチェよ、…我が賭けを受けるがいい………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
@@ -2224,7 +2222,7 @@ msgwnd_non
 d `その時、卓上の電話が鳴り響いた。`[\]
 *d9012
 d `金蔵はそのけたたましい音が気に入らなかったらしく、少しでも静けさを守るために受話器を取る。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"mlib_1e"
 flush 22
@@ -2240,11 +2238,11 @@ d [lv 0*"01"*"21500063"]`「だからどうしたというのだ。`[@][lv 0*"01
 msgwnd_gen
 *d9016
 d [lv 0*"14"*"21600031"]`「…かしこまりました。`[@][lv 0*"14"*"21600032"]`そのようにいたします」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"mlib_1c_bg"
 lbg "a:backgrounds",s0_3,"mlib_1c"
@@ -2261,19 +2259,19 @@ d `今の金蔵は、どんな来客が訪れようとも関心を持たない�
 d `…そんな金蔵に、出るべき時に出ると言わしめる来客などいるのだろうか。`[\]
 *d9021
 d `その心当たりがひとりいたが、それは絶対に現れるわけもない来客…。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 26
 *d9022
 d `南條は、笑っているのか、悲しんでいるのかすらも量れない淡白な表情を浮かべる肖像画の魔女を見やり、鉛色の空を見上げるのだった……。`[\]
 gstc 52
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 5
@@ -2297,16 +2295,16 @@ flush 1
 wait 1000
 seplay 1,17,71
 csp_slot s0_17
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 10
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1a"
 flush 22
 seplay 2,52,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 flush 42
@@ -2373,7 +2371,7 @@ meplay 1,16,10
 msgwnd_but
 *d9033
 d [lv 0*"10"*"20100025"]`「…………お前がどんな手で来ようが、俺はお前を信じない！`[@][lv 0*"10"*"20100026"]`　…その一点を俺が貫き通す限り、俺に負けはない。`[@][lv 0*"10"*"20100027"]`ってことはだ。`[@][lv 0*"10"*"20100028"]`このゲームはお前に勝てないように出来てるぜ…？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2387,7 +2385,7 @@ lss s0_9,"bea","a11_futeki1" ;1
 flush 10,167
 *d9035
 d [lv 0*"27"*"20700380"]`「つまりこれは苛みよ。`[@][lv 0*"27"*"20700381"]`そなたが妾に屈服するまで続く永遠の苛み…！`[@][lv 0*"27"*"20700382"]`　そなたが妾を、魔女の存在を認めるまで永遠に続く！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
@@ -2428,7 +2426,7 @@ flush 10,167
 msgwnd_bea
 *d9041
 d [lv 0*"27"*"20700389"]`「なんだ…？」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2442,7 +2440,7 @@ lss s0_9,"but","b22_odoroki1" ;1
 flush 10,167
 *d9043
 d [lv 0*"10"*"20100040"]`「貴様の魔法がどれほどのものだったとしても！`[@][lv 0*"10"*"20100041"]`　俺の魂は屈しない。`[@][lv 0*"10"*"20100042"]`これは俺への拷問だと？`[@][lv 0*"10"*"20100043"]`　違うね！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
@@ -2460,19 +2458,19 @@ flush 10,167
 msgwnd_but
 *d9045
 d [lv 0*"10"*"20100044"]`「これは、お前への拷問なのさ！！」`[\]
-textoff
+textoff2
 waits 167
 vol_mix_fade 500
 vol_bgm -1,500
 wait 500
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 1
 bgmplay 48,100,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 lss s0_10,"but","b25_odoroki1" ;1
@@ -2480,7 +2478,7 @@ spt_mem "a2","xpos",s0_10,370
 flush 22
 *d9046
 d [lv 0*"10"*"20100045"]`「お前がいつ俺に屈し、諦めるか！`[@][lv 0*"10"*"20100046"]`　それまで繰り返される拷問なのさ！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
@@ -2498,20 +2496,20 @@ lss s0_9,"bea","a14_akuwarai3" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
 lss s0_9,"bea","a14_futeki1" ;1
 flush 2
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"

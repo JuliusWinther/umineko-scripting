@@ -247,8 +247,8 @@ goto *save_exit
 
 	;debug_var %last_save
 
-	if %first_save_opening = 0 aspt scroll_y,320,%last_save*(173+5)-(((173+5)*2)/2)-37,400
-	if %first_save_opening = 1 aspt scroll_y,320,%last_save*(173+5)-(((173+5)*2)/2)-37 : mov %first_save_opening,0
+	if %first_save_opening = 0 aspt scroll_y,320,%cur_scroll_pos;%last_save*(173+5)-(((173+5)*2)/2)-37,400
+	if %first_save_opening = 1 aspt scroll_y,320,%last_save*(173+5)-(((173+5)*2)/2)-37 : mov %cur_scroll_pos,%last_save*(173+5)-(((173+5)*2)/2)-37 : mov %first_save_opening,0
 
 return
 
@@ -598,6 +598,8 @@ return
 	savegame %save_index
 	seplay 9,1030,100
 
+	getscrollpos 320,%cur_scroll_pos
+
 	goto *savemode1
 
 return
@@ -633,7 +635,7 @@ return
 	notif %load_for_title = 1 jumpf
 		E_A
 		seplay 9,17,100
-		bg white,10
+		bg black,10
 		delay 3000
 	~
 

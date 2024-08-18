@@ -1,9 +1,7 @@
 *umi1_17
 ;ワインボトルのノート片
 log_reset
-mov $name_chapter_r_click,r_click_chapters_1_17
-mov $name_chapter_r_click_l2,r_click_chapters_1_17_l2
-mov $name_chapter_r_click_l3,r_click_chapters_1_17_l3
+mov $name_chapter_r_click,r_click_chapters_1_17+"|"+r_click_chapters_1_17_l2+"|"+r_click_chapters_1_17_l3
 mov $name_chapter_save, "1_17"
 new_chapter date_scenario_1_17,scenario_1_17
 skip_off
@@ -18,7 +16,7 @@ spt_mem "a2","ypos",s0_4,17280
 spt_mem "a2","ypos",s0_5,17280
 flush 1
 bgmplay 1010,100,1
-textoff
+textoff2
 spt_mem "a2","ypos",s0_3,540,209170 ;-10260
 spt_mem "a2","ypos",s0_4,540,209170
 spt_mem "a2","ypos",s0_5,540,209170
@@ -26,7 +24,7 @@ sptwait2 ypos,s0_5
 spt_mem "a2","ypos",s0_5,0,10830,1
 sptwait2 ypos,s0_5
 wait 8000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_5,"black"
 flush 18,5000,msk_1

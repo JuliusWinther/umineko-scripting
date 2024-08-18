@@ -1,30 +1,28 @@
 *umi6_17
 ;恋人達の決闘
 log_reset
-mov $name_chapter_r_click,r_click_chapters_6_17
-mov $name_chapter_r_click_l2,r_click_chapters_6_17_l2
-mov $name_chapter_r_click_l3,r_click_chapters_6_17_l3
+mov $name_chapter_r_click,r_click_chapters_6_17+"|"+r_click_chapters_6_17_l2+"|"+r_click_chapters_6_17_l3
 mov $name_chapter_save, "6_17"
 new_chapter date_scenario_6_17,scenario_6_17
 gstc 55
 meplay 1,16,50
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2ap"
 flush 22
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1ep"
 flush 26
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 flush 22
@@ -48,11 +46,11 @@ d `互いの手には、悪魔たちが用意した、決闘用のピストル�
 d `その弾は、体のどこにかすろうと、……絶対の死を約束する。`[\]
 *d49280
 d `二人の、どちらかが死ぬまで、`[!w583]`……この決闘は終わらない……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 bgmplay 141,85,0
@@ -75,7 +73,7 @@ d `譲治も朱志香も、……ただ静かに、恋の相方を見守って�
 d `もはや、全ての思いも命運も、託した。`[\]
 *d49285
 d `それを静かに見守ることだけが、今や、信頼を示す唯一の方法だ。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -83,7 +81,7 @@ lbg "c:colour",s0_3,"black"
 flush 24
 spriteset_enable 1
 aspritesetpt xpos,1,1920
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s1_3,"rose_2bp"
 lss s1_10,"sha","b31_majime1" ;1
@@ -99,7 +97,7 @@ msgwnd_sha
 d [lv 0*"15"*"60500336"]`「………………………」`[\]
 spriteset_enable 2
 aspritesetpt xpos,2,-1920
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s2_3,"rose_2bp"
 lss s2_8,"kan","b32_nayamu1" ;1
@@ -120,7 +118,7 @@ csp -11
 csp msk1
 csp -12
 csp msk2
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -134,7 +132,7 @@ wait 1000
 d `すでに、……二人の、短からぬ日々の思いとは、決別している。`[\]
 *d49290
 d `次に二人が、互いの姿を瞳に収めた時。`[@]`{n}……それは引き金を引くこと以外を求めない。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 flush 22
@@ -156,7 +154,7 @@ d [lv 0*"27"*"60700969"]`「……わからないっ。`[@][lv 0*"27"*"60700970"
 seplay 1,52,50
 lss s0_10,"be3","b11_majime1" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -171,13 +169,13 @@ flush 80
 msgwnd_bea
 *d49297
 d [lv 0*"27"*"60700973"]`「ゼパルさん、フルフルさん…！`[@][lv 0*"27"*"60700974"]`　どうしてこんな、……こんな決闘を？！`[@][lv 0*"27"*"60700975"]`　こんなの恋の試練じゃない！`[@][lv 0*"27"*"60700976"]`　やっぱりあなたたちは悪魔なんです！`[@][lv 0*"27"*"60700977"]`　どちらかの恋人たちを破綻させて、それを見て喜びたいだけの悪魔なんです…！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_8,"zep","a11_majime3" ;1
@@ -227,7 +225,7 @@ flush 80
 msgwnd_bea
 *d49304
 d [lv 0*"27"*"60700982"]`「私は、……最初から納得できなかったんです…！！`[@][lv 0*"27"*"60700983"]`　魔法の奇跡がなければ恋って成し遂げられないんですか？！`[@][lv 0*"27"*"60700984"]`　恋って、愛し合う二人さえいれば、他に何もいらないんじゃないんですか？！`[@][lv 0*"27"*"60700985"]`　この決闘は無意味です！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -237,18 +235,18 @@ flush 22
 meplay 1,5,70
 *d49305
 d [lv 0*"27"*"60700986"]`「だからやめてッ、二人とも！！`[@][lv 0*"27"*"60700987"]`　紗音も、嘉音も！！`[@][lv 0*"27"*"60700988"]`　あんなにも、実の姉弟のように仲良しだったあなたたちが、どうして殺しあわなくちゃいけないの？！`[@][lv 0*"27"*"60700989"]`　私にはどうしても、………わからないッッ！！！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2ap"
 flush 22
 msgwnd_non
 *d49306
 d `ベアトの叫びは、全員の耳に届いたはずだ。`[@]`{n}……しかし誰も、表情を変えもしなかった。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 26
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_9,"zep","a11_majime1" ;1
@@ -268,7 +266,7 @@ flush 63
 msgwnd_bea
 *d49309
 d [lv 0*"27"*"60700990"]`「………何がですか…！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -285,13 +283,13 @@ flush 23
 msgwnd_fur
 *d49311
 d [lv 0*"52"*"65200200"]`「だから、それが“二人”でない時、`[@][lv 0*"52"*"65200201"]`……私たちは決闘で、その数を“二人”にしなくてはならない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_9,"bea","a15_komaru1" ;1
@@ -304,7 +302,7 @@ lss s0_9,"bea","a15_1_aseru3" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"rose_2bp"
@@ -361,11 +359,11 @@ msgwnd_bea
 d [lv 0*"27"*"60700997"]`「そんなのおかしいです！`[@][lv 0*"27"*"60700998"]`　愛し合う二人の身分なんて、関係ない！！」`[\]
 vol_me 1,-1,1000
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_8,"fur","a11_warai7" ;1
@@ -375,7 +373,7 @@ flush 22
 msgwnd_non
 *d49320
 d [lv 0*"00"*"awase6072"]`「「いいや、あるよ！！」」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -384,14 +382,14 @@ lbg "c:colour",s0_3,"black"
 flush 24
 vol_bgm 100,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 flush 24
 seplay 1,52,71
 lss s0_8,"zep","a11_majime1" ;1
 spt_mem "a2","xpos",s0_8,-550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -404,7 +402,7 @@ d [lv 0*"51"*"65100219"]`「本当に愛し合う二人の身分は関係ない�
 seplay 2,52,71
 lss s0_10,"fur","a11_akire1" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -426,11 +424,11 @@ msgwnd_bea
 *d49324
 d [lv 0*"27"*"60700999"]`「じゃ、じゃあ家具って何なんですかッ！！`[@][lv 0*"27"*"60701000"]`　どうして家具はッ、恋をしちゃいけないんですかッ！！！」`[\]
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_8,"zep","a11_warai7" ;1
@@ -442,7 +440,7 @@ msgwnd_non
 *d49325
 d [lv 0*"00"*"awase6073"]`「「魂が、一人に満たないからッ！」」`[\]
 meplay 1,16,70
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -483,7 +481,7 @@ flush 22
 msgwnd_be3
 *d49330
 d [lv 0*"60"*"60701001"]`「………あるわけがない。`[@][lv 0*"60"*"60701002"]`二人の女を愛せば、その愛情は一人分に満たない。`[@][lv 0*"60"*"60701003"]`……そのような男に、愛する資格はない」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -509,11 +507,11 @@ msgwnd_zep
 *d49332
 d [lv 0*"51"*"65100228"]`「僕たちはね、恋をする資格を偽る人間を、許さない！！`[@][lv 0*"51"*"65100229"]`　世界を生み出す最少人数を満たせない、ニンゲン以下の存在の恋を許さない！！」`[\]
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_10,"fur","a11_warai3" ;1
@@ -524,9 +522,9 @@ flush 22
 msgwnd_non
 *d49333
 d [lv 0*"00"*"awase6074_o"]`「「僕たちの試練は、そのためにある…！！`[@][lv 0*"00"*"awase6075"]`　罪深き魂たちに、１人分の魂を取り戻させ、本当の恋が出来るようにするためにッ！！」」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -535,7 +533,7 @@ flush 2
 meplay 5,16,0
 spriteset_enable 1
 aspritesetpt xpos,1,200
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s1_3,"rose_2bp"
 lss s1_10,"sha","b21_tokui1" ;1
@@ -544,7 +542,7 @@ spt_mem "a2","xpos",s1_3,400
 mask_set msk1,msk_cutb,1
 spriteset_enable 2
 aspritesetpt xpos,2,-200
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s2_3,"rose_2bp"
 lss s2_8,"kan","b21_nayamu1" ;1
@@ -580,14 +578,14 @@ csp -11
 csp msk1
 csp -12
 csp msk2
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_9,"zep","a11_majime4" ;1
 flush 24
 *d49338
 d `ゼパルは静かに頷き、二人を公平に見られる位置に歩み出た。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:backgrounds",s0_3,"rose_3ap"
@@ -640,7 +638,7 @@ flush 80
 msgwnd_fur
 *d49346
 d [lv 0*"52"*"65200225"]`「どちらが勝とうとも、……どうか祝福してあげて。`[@][lv 0*"52"*"65200226"]`……今、彼らの、………家具としての日々が、終わる」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -651,7 +649,7 @@ vol_bgm 70,2000
 vol_me 1,50,2000
 vol_me 5,0,2000
 wait 2000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_9,"zep","a11_defo1" ;1
@@ -661,7 +659,7 @@ msgwnd_zep
 d [lv 0*"51"*"65100232"]`「合図は簡単。`[@][lv 0*"51"*"65100233"]`……僕が、１、２の、３、を数える。`[@][lv 0*"51"*"65100234"]`３と同時に、決闘開始だ」`[\]
 spriteset_enable 2
 aspritesetpt xpos,2,-350
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s2_3,"rose_2bp"
 lss s2_8,"kan","b21_defo1" ;1
@@ -674,7 +672,7 @@ msgwnd_kan
 d [lv 0*"16"*"60600366"]`「承知してます」`[\]
 spriteset_enable 1
 aspritesetpt xpos,1,350
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s1_3,"rose_2bp"
 lss s1_10,"sha","b21_majime3" ;1
@@ -694,12 +692,12 @@ csp -11
 csp msk2
 csp -12
 csp msk1
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_9,"jes","a11_komaru3" ;1
@@ -715,7 +713,7 @@ flush 23
 msgwnd_geo
 *d49352
 d [lv 0*"07"*"60300491"]`「ゼパル。`[@][lv 0*"07"*"60300492"]`この決闘、……過去に何度も見てるのかい」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -750,7 +748,7 @@ msgwnd_geo
 *d49357
 d [lv 0*"07"*"60300494"]`「違うよ。`[@][lv 0*"07"*"60300495"]`……片方が外せば、残った方は悠々と追い詰めて撃つことが出来る。`[@][lv 0*"07"*"60300496"]`……初弾をもし外したら、……まず、勝ち目はないね」`[\]
 meplay 2,16,50
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -759,7 +757,7 @@ lbg "c:colour",s0_3,"black"
 flush 2
 spriteset_enable 2
 aspritesetpt xpos,2,-350
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s2_3,"rose_2bp"
 lss s2_8,"kan","b21_fuman1" ;1
@@ -772,7 +770,7 @@ msgwnd_kan
 d [lv 0*"16"*"60600367"]`「しかしぼんやりしていれば、引き金も引けずに負けることになる」`[\]
 spriteset_enable 1
 aspritesetpt xpos,1,350
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s1_3,"rose_2bp"
 lss s1_10,"sha","b21_tokui1" ;1
@@ -783,7 +781,7 @@ flush 64
 msgwnd_sha
 *d49359
 d [lv 0*"15"*"60500340"]`「………同じ負けるなら、せめて引き金を引いてから負けたい」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_9,"zep","a11_majime3" ;1
@@ -798,24 +796,24 @@ wait 1000
 d_continue
 wait_on_d -1
 bgmplay 148,100,0
-textoff
+textoff2
 waits 167
 csp -11
 csp msk2
 csp -12
 csp msk1
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 spriteset_enable 2
 aspritesetpt xpos,2,-350
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s2_3,"rose_2bp"
 lss s2_8,"kan","b21_nayamu1" ;1
@@ -827,11 +825,11 @@ spriteset_enable 1
 csp -11
 csp -12
 csp msk1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 44
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_9,"jes","a11_odoroki1" ;1
@@ -842,13 +840,13 @@ lss s0_9,"jes","a11_komaru3" ;1
 lss s0_10,"geo","a11_majime3" ;1
 spt_mem "a2","xpos",s0_10,550
 flush 2
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 43
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_8,"bea","a15_komaru4" ;1
@@ -861,7 +859,7 @@ spt_mem "a2","xpos",s0_8,-370
 lss s0_10,"be3","b11_majime4" ;1
 spt_mem "a2","xpos",s0_10,370
 flush 2
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -869,7 +867,7 @@ lbg "c:colour",s0_3,"black"
 flush 43
 spriteset_enable 1
 aspritesetpt xpos,1,350
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s1_3,"rose_2bp"
 lss s1_10,"sha","b21_fuman1" ;1
@@ -885,35 +883,35 @@ csp msk1
 spriteset_enable 2
 csp -12
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 *d49361
 d [lv 0*"51"*"65100242"]`「１」`[\]
-textoff
+textoff2
 waits 167
 wait 1000
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1ep"
 flush 42
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
 msgwnd_fur
 *d49362
 d [lv 0*"52"*"65200227"]`「２の」`[\]
-textoff
+textoff2
 waits 167
 wait 1000
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1af"
 color_mod2 s0_3,#ffffff
@@ -923,13 +921,13 @@ color_mod2 s0_10,#ffffff
 lss s0_9,"jes","a11_warai1" ;1
 color_mod2 s0_9,#ffffff
 flush 10,1667
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 80
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"garden_1af"
 color_mod2 s0_3,#ffffff
@@ -940,13 +938,13 @@ lss s0_8,"sha","a11_warai1" ;1
 spt_mem "a2","xpos",s0_8,-370
 color_mod2 s0_8,#ffffff
 flush 10,1667
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 80
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_g1bf"
 color_mod2 s0_3,#ffffff
@@ -956,13 +954,13 @@ lss s0_8,"kan","a11_warai1" ;1
 spt_mem "a2","xpos",s0_8,-370
 color_mod2 s0_8,#ffffff
 flush 10,1667
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
 flush 80
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"ship_s1b"
 color_mod2 s0_3,#ffffff
@@ -972,13 +970,13 @@ color_mod2 s0_10,#ffffff
 lss s0_9,"geo","a11k_komaru2k" ;1
 color_mod2 s0_9,#ffffff
 flush 10,1667
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 80
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"garden_1af"
 color_mod2 s0_3,#ffffff
@@ -992,27 +990,27 @@ lss s0_8,"sha","a11_warai1" ;1
 spt_mem "a2","xpos",s0_8,-550
 color_mod2 s0_8,#ffffff
 flush 10,1667
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 80
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 color_mod2 s0_3,#ffffff
 flush 10,1667
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_8,"fur","a11_majime2" ;1
@@ -1023,9 +1021,9 @@ flush 22
 msgwnd_non
 *d49363
 d [lv 0*"00"*"awase6077"]`「「３」」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1034,7 +1032,7 @@ flush 2
 vol_mix_fade 1000
 vol_bgm -1,1000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gun_2a"
 flush 1
@@ -1042,11 +1040,11 @@ waits 167
 seplay 1,46,100
 seplay 2,36,100
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -1055,22 +1053,22 @@ meplay 1,16,70
 d `黄金の薔薇庭園に、`[!w333]`…その、３の声と同時に、`[!w333]`……一発の銃声が響き渡る……。`[\]
 *d49365
 d `それが一発の銃声なのか、……二人が同時に放って一つに聞こえたのかは、`[@]`目の前で見ていた者さえ、わからない……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 22
 meplay 2,17,50
-textoff
+textoff2
 waits 167
 lbg "c:cg_box",s0_3,"ep604_3"
 flush 2
 *d49366
 d `硝煙の臭いと、白煙の後には、`[!w583]`………銃を構え、`[!w333]`……銃口から煙を棚引かせている嘉音の姿と、`[@]`……………地面に、`[!w500]`……うつ伏せに倒れている紗音の姿があった……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_10,"bea","a15_komaru3" ;1
@@ -1099,18 +1097,18 @@ d [lv 0*"04"*"60200408"]`「う、…………………ぐ…………ッ、」`
 msgwnd_non
 *d49370
 d `朱志香の苦々しい表情が、それだけで、何があったのか説明する……。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 24
-textoff
+textoff2
 waits 167
 lbg "c:cg_box",s0_3,"ep604_3"
 flush 18,3333,msk_right
-textoff
+textoff2
 waits 167
 lbg "c:cg_box",s0_3,"ep604_2"
 flush 18,3333,msk_up
@@ -1133,7 +1131,7 @@ d `嘉音も賭けだった。`[\]
 d `彼は紗音の射撃の腕を決して侮っていなかった。`[\]
 *d49379
 d `紗音は臆病だろうから、先に引き金を引かせてもらえるという甘い思い込みが、`[@]`引き金さえ引かせずに決着をつけてしまう可能性を、充分に理解していた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1145,7 +1143,7 @@ d `そして自分が発砲すれば、紗音も反射的に引き金を引く�
 d `即座に撃つつもりでいる自分には心の準備がある分、……正確に撃てる自信があった。`[\]
 *d49383
 d `もし嘉音が慎重に振り返った時、`[@]`紗音が意志の強さそのままに即座に引き金を引いていたら、嘉音は引き金も引けなかったのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 flush 22
@@ -1153,9 +1151,9 @@ flush 22
 d `だから、嘉音が性急だったのではない。`[\]
 *d49385
 d `………ただ二人は、全力を尽くした上で、運命を天に預け、`[@]`……その結果が示されただけなのだ。`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:cg_box",s0_3,"ep604_2"
 flush 4
@@ -1172,7 +1170,7 @@ seplay 1,30,71
 msgwnd_non
 *d49389
 d `紗音は、静かに銃口を向けながら、ゆっくりと歩み寄る。`[@]`{n}より絶対的に命中できる距離まで、慎重に詰めるつもりなのだ。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1187,7 +1185,7 @@ msgwnd_sha
 d [lv 0*"15"*"60500344"]`「…………………ッ！！」`[\]
 seplay 1,75,100
 seplay 2,20,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -1198,7 +1196,7 @@ vol_me 1,-1,1000
 meplay 1,28,90
 seplay 1,20,100
 seplay 2,75,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 flush 1
@@ -1212,7 +1210,7 @@ spt_mem "a2","scalex",s0_3,400,500,1
 spt_mem "a2","scaley",s0_3,400,500,1
 sptwait2 scalex,s0_3
 sptwait2 scaley,s0_3
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 1
@@ -1237,7 +1235,7 @@ d `紗音の銃を奪い取れば、攻守は逆転する…！`[\]
 *d49398
 d `そして紗音は、その嘉音を冷静に撃ち抜ければ、決着する！`[\]
 meplay 2,17,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 lss s0_8,"kan","a11_ikari2" ;1
@@ -1266,13 +1264,13 @@ d `……それらをぎりぎりの瞬間まで吟味しながら、紗音は�
 d `引き金を引くのにかかる時間と、その間にすでに彼が移動している距離、誤差、先読みの銃口。`[\]
 seplay 1,75,100
 meplay 2,17,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -1288,7 +1286,7 @@ flush 1
 msgwnd_kan
 *d49405
 d [lv 0*"16"*"60600372"]`「……うおおおああああああああああああああぁああぁッ！！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -1311,7 +1309,7 @@ vol_me 2,-1,1000
 vol_me 3,-1,1000
 seplay 1,12,100
 seplay 2,20,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 flush 1
@@ -1330,7 +1328,7 @@ seplay 2,20,70
 waits 167
 seplay 3,20,60
 meplay 4,16,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
@@ -1342,7 +1340,7 @@ d `その拍子で、嘉音の銃も手を離れ、天空へ舞い上げる。`[
 d `二人の銃がロンドを踊るように舞いながら天に至り、………そして、降りてくる。`[\]
 *d49412
 d `その時、二人の銃は、どちらがどちらのものかわからなくなっていた。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1ep"
 flush 22
@@ -1353,13 +1351,13 @@ d `しかし一点だけ異なる。`[\]
 *d49415
 d `………それは、弾が入っているか、否か。`[\]
 meplay 5,28,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 25
 seplay 1,22,71
 lbg "a:efe",s0_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"moon_1p"
 flush 25
@@ -1368,7 +1366,7 @@ d `運命を、`[!w500]`奇跡を、`[!w500]`……その手で掴もうと、�
 *d49417
 d `それはまるで、`[!w583]`……天より舞い降りる、奇跡を起こす天使の羽を掴み取ろうとするかのよう。`[\]
 lbg "a:efe",s0_5,"butterfly_4sp2"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 flush 80
@@ -1376,7 +1374,7 @@ flush 80
 d `眩しいばかりの天空を二人は見上げ、`[@]`…………幸運の女神に全てを預ける。`[\]
 *d49419
 d `そして二人は同時にそれぞれ一丁ずつ、銃を天に掴み、`[@]`そして二人でたった一度だけロンドを踊って、…………互いの腕が交差する。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,20,40
 waits 167
@@ -1406,33 +1404,33 @@ csp_slot s0_5
 wait 500
 seplay 3,75,100
 seplay 1,31,71
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:backgrounds",s0_3,"gun_2a"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
 seplay 2,30,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gun_2b"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
 vol_me 4,-1,1000
 vol_me 5,-1,1000
 seplay 3,30,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -1440,7 +1438,7 @@ flush 2
 d `それすらもまるでダンス。`[\]
 *d49421
 d `そして、互いの銃口をびったりと、互いの額に押し付けあって、石のように静止した。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 lss s0_8,"sha","a11_majime3" ;1
@@ -1554,7 +1552,7 @@ msgwnd_sha
 d [lv 0*"15"*"60500351"]`「そうだね…。`[@][lv 0*"15"*"60500352"]`どうせ蘇る黄金郷の前には、本当にただの茶番」`[\]
 meplay 3,28,100
 meplay 4,28,100
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1568,9 +1566,9 @@ d [lv 0*"16"*"60600378"]`「うん。後ほど」`[\]
 msgwnd_sha
 *d49441
 d [lv 0*"15"*"60500354"]`「さようなら」`[\]
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gun_2b"
 flush 18,3000,msk_1
@@ -1580,11 +1578,11 @@ wait 1000
 seplay 1,46,100
 seplay 2,36,100
 seplay 3,46,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 18,5000,msk_1
@@ -1593,25 +1591,25 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,100
 rain_params s0_7,400,500,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g_o1cr"
 flush 2
 wait 1000
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
 rain_load s0_11
 z_order_override s0_11,s0_1
 rain_params s0_11,500,300,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"g2f_r1br_bg"
 lbg "a:backgrounds",s0_3,"g2f_r1br"
@@ -1624,12 +1622,12 @@ agpt quakeyamp,30
 agpt quakeyamp,0,667,1
 rumble 63,500
 gptwait quakeyamp
-textoff
+textoff2
 waits 167
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"g2f_r1ar_bg"
 lbg "a:backgrounds",s0_3,"g2f_r1ar"
@@ -1646,7 +1644,7 @@ msgwnd_rud
 *d49443
 d [lv 0*"08"*"61200092"]`「おいッ、どうしたッ？！`[@][lv 0*"08"*"61200093"]`　しっかりしろッ！！」`[\]
 meplay 1,16,70
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
@@ -1659,13 +1657,13 @@ d `嘉音が突然、`[@]`……貧血でも起こしたかのように、……
 *d49445
 d `何の予兆もなく突然だったので、驚き、みんなが駆け寄る。`[\]
 seplay 1,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2a"
 flush 1
 *d49446
 d `見て驚く。`[@]`彼の額が割れたかのように、血が一筋、尾を引いていた…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"g2f_r1ar_bg"
 lbg "a:backgrounds",s0_3,"g2f_r1ar"
@@ -1682,7 +1680,7 @@ flush 23
 msgwnd_cla
 *d49448
 d [lv 0*"02"*"60800065"]`「どうしたんだ？`[@][lv 0*"02"*"60800066"]`　……ど、……どういうことだ、これは……ッ、」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1695,14 +1693,14 @@ d `傷口を見ようと思って、ハンカチで郷田は嘉音の額の血�
 *d49450
 d `……しかし、そこには綺麗な額があるだけで何の傷口もなかった。`[\]
 seplay 1,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2a"
 flush 1
 *d49451
 d `なのに、……まるで染み出してくるように、血が溢れ出して来るのだ……。`[\]
 seplay 1,35,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"blood_2b"
 flush 1
@@ -1726,7 +1724,7 @@ lbg "c:efe",s0_3,"blood_2c"
 flush 1
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"g2f_r1ar_bg"
 lbg "a:backgrounds",s0_3,"g2f_r1ar"
@@ -1741,7 +1739,7 @@ gptwait quakexamp
 msgwnd_jes
 *d49454
 d [lv 0*"04"*"60200410"]`「嘉音くんしっかりッ！！`[@][lv 0*"04"*"60200411"]`　嘉音くん！！`[@][lv 0*"04"*"60200412"]`　……よ、……嘉哉くぅううううん！！！」`[\]
-textoff
+textoff2
 waits 167
 lss s0_10,"gen","a11_majime1" ;1
 spt_mem "a2","xpos",s0_10,550
@@ -1759,22 +1757,22 @@ d `嘉音の顔は真っ白で、……目は開かれていたが、すでに�
 *d49457
 d `……まるで、`[!w333]`……操り人形の糸が、ぷつんと切れるように、`[!w583]`………彼は絶命しているのだ……。`[\]
 seplay 2,22,71
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"white"
 flush 2
-textoff
+textoff2
 seplay 1,52,71
 lbg "a:efe",s0_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_9,"jes","a11_naki1" ;1
 spriteset_enable 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s1_1,"white"
 lbg "c:colour",s1_3,"white"
@@ -1797,12 +1795,12 @@ flush 22
 msgwnd_sha
 *d49459
 d [lv 0*"15"*"60500355"]`「………さようなら、嘉音くん。`[@][lv 0*"15"*"60500356"]`………そして、……ありがとう」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 flush 2
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -1811,7 +1809,7 @@ msgwnd_non
 *d49460
 d `朱志香は嘉音の亡骸に駆け寄り、`[!w583]`………抱いて、`[!w333]`……その額に自分の額を押し当てて、`[@]`自らの額も、まだ温もりの残った血で汚しながら、`[!w333]`……泣き叫んだ……。`[\]
 lbg "a:efe",s0_5,"butterfly_4sp2"
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_10,"geo","a21_majime4" ;1
@@ -1827,7 +1825,7 @@ msgwnd_sha
 *d49462
 d [lv 0*"15"*"60500357"]`「……譲治さん。`[@][lv 0*"15"*"60500358"]`……私が、……勝ちました。`[@][lv 0*"15"*"60500359"]`………これで、`[|][lv 0*"15"*"60500360"]`……私には、`[|][lv 0*"15"*"60500361"]`………あなたを愛する資格が、`[|][lv 0*"15"*"60500362"]`…………やっと………」`[\]
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -1836,7 +1834,7 @@ flush 25
 seplay 1,13,71
 vol_me 1,-1,500
 wait 500
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1cp"
 flush 22
@@ -1845,7 +1843,7 @@ msgwnd_non
 d `紗音もまた、……自らを吊る糸が千切れたかのように、……譲治の胸にしな垂れかかる。`[\]
 *d49464
 d `譲治はそれを、黙って抱き締めた……。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_1ep"
 flush 2
@@ -1855,7 +1853,7 @@ d [lv 0*"04"*"60200415"]`「嘉哉くん、嘉哉くんッ！！`[@][lv 0*"04"*"
 msgwnd_non
 *d49466
 d `黄金の薔薇庭園にあるのは、黄金の花びらを乗せた風と、`[@]`……悲痛な朱志香の泣き声だけだった……。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,22,71
 anim2 s0_5,"no83",1
@@ -1865,7 +1863,7 @@ lbg "a:efe",s0_5,"no83_0051"
 flush 1
 csp_slot s0_5
 flush 44
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2
@@ -1873,7 +1871,7 @@ meplay 1,16,50
 vol_bgm 0,3000
 wait 3000
 wait 1000
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 flush 22
@@ -1885,7 +1883,7 @@ d [lv 0*"07"*"60300498"]`「……これで、僕たちへの試練は、もう�
 seplay 1,52,71
 lss s0_8,"zep","a11_defo1" ;1
 spt_mem "a2","xpos",s0_8,-550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -1898,7 +1896,7 @@ d [lv 0*"51"*"65100244"]`「充分さ。`[@][lv 0*"51"*"65100245"]`……おめ�
 seplay 1,52,71
 lss s0_10,"fur","a11_warai1" ;1
 spt_mem "a2","xpos",s0_10,550
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -1919,7 +1917,7 @@ flush 80
 msgwnd_geo
 *d49471
 d [lv 0*"07"*"60300499"]`「…………もちろんさ。`[@][lv 0*"07"*"60300500"]`……彼女と、君たちにかけて誓う」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -1938,11 +1936,11 @@ msgwnd_zep
 *d49473
 d [lv 0*"51"*"65100248"]`「今こそ、君の魂を、ニンゲンに。`[@][lv 0*"51"*"65100249"]`一人分に満たそう」`[\]
 seplay 1,2,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_22
 lss s0_8,"fur","a12_warai8" ;1
@@ -1953,7 +1951,7 @@ flush 22
 msgwnd_non
 *d49474
 d [lv 0*"00"*"awase6078_o"]`「「集え、満たぬ魂よ…！！`[@][lv 0*"00"*"awase6079"]`　一なる魂となりて、愛を知り給え…！！」」`[\]
-textoff
+textoff2
 waits 167
 vol_me 1,-1,1000
 seplay 1,22,71
@@ -1965,7 +1963,7 @@ flush 1
 *d49475
 d `ゼパルとフルフルがそれを天に向かって叫ぶと、`[!w500]`……愛の奇跡が、`[!w583]`……紗音に、魂を集める。`[\]
 seplay 1,52,71
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_22,"efe1"
 flush 8
@@ -1975,20 +1973,20 @@ vol_bgm 60,2000
 wait 2000
 vol_bgm 90,2000
 wait 2000
-textoff
+textoff2
 seplay 2,55,71
 csp_slot s0_5
-textoff
+textoff2
 waits 167
 csp_slot s0_22
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 spriteset_enable 1
 lbg "a:efe",s1_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 lbg "c:efe",s1_22,"efe1"
 aspritesetpt breakup,1,0
@@ -2002,7 +2000,7 @@ flush 1
 d `それは、試練の敗者たちから。`[@]`{n}敗れた嘉音から。`[@]`{n}そして脱落したベアトから。`[\]
 *d49477
 d `二人の体は、ゆっくりと、………細かな砂金のように散り始める…。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_3ap"
 lss s0_9,"bea","a15_odoroki2" ;1
@@ -2013,7 +2011,7 @@ spt_mem "a2","alpha",s0_9,180
 z_order_override2 s0_9,s0_24
 lss s0_24,"bea","a15_odoroki2" ;1
 flush 10,167
-textoff
+textoff2
 spt_mem "a2","breakup",s0_24,0
 spt_mem "a2","breakup",s0_24,1000,2000
 spt_mem "a2","alpha",s0_24,0,2000
@@ -2032,13 +2030,13 @@ d [lv 0*"60"*"60701013"]`「こ、これはどういうことだ…？！`[@][lv
 msgwnd_non
 *d49480
 d `姉ベアトは、薄れ行く妹の体を支えながら叫ぶ。`[@]`{n}しかし、二人の悪魔は、静かに微笑んでいた。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 23
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"rose_2bp"
 lss s0_10,"fur","a11_warai1" ;1
@@ -2060,7 +2058,7 @@ msgwnd_fur
 d [lv 0*"52"*"65200235"]`「……これはとても公平。`[@][lv 0*"52"*"65200236"]`あなたが生き残ったなら、他の二人が消え去ったのだから」`[\]
 meplay 1,17,90
 lbg "a:efe",s0_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2082,7 +2080,7 @@ lss s0_9,"bea","a15_1_hanbeso3star" ;1
 spt_mem "a2","alpha",s0_9,150
 z_order_override2 s0_9,s0_24
 flush 1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_24,0
 spt_mem "a2","breakup",s0_24,1000,2000
 spt_mem "a2","alpha",s0_24,0,2000
@@ -2110,7 +2108,7 @@ lss s0_9,"bea","a15_hanbeso6" ;1
 spt_mem "a2","alpha",s0_9,100
 z_order_override2 s0_9,s0_24
 flush 1
-textoff
+textoff2
 spt_mem "a2","breakup",s0_24,0
 spt_mem "a2","breakup",s0_24,1000,2000
 spt_mem "a2","alpha",s0_24,0,2000
@@ -2136,23 +2134,23 @@ spt_mem "a2","xpos",s0_10,550
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 seplay 1,22,71
 csp_slot s0_9
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_22,"white"
 flush 2
-textoff
-textoff
+textoff2
+textoff2
 waits 167
 csp_slot s0_22
 seplay 2,55,100
 seplay 3,22,100
 spriteset_enable 1
 lbg "a:efe",s1_5,"butterfly_4sp1"
-textoff
+textoff2
 waits 167
 lbg "c:colour",s1_22,"white"
 aspritesetpt breakup,1,0
@@ -2162,7 +2160,7 @@ spritesetptwait breakup,1
 reset_set 1
 csp -11
 flush 1
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
@@ -2179,13 +2177,13 @@ set_window_simple 80
 *d49489
 d `{a:c:`[lv 0*"27"*"60701044"]`……“お母様”。}`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 48
-textoff
+textoff2
 waits 167
 lbg "c:cg_box",s0_3,"ex01"
 flush 2
@@ -2195,20 +2193,20 @@ d [lv 0*"10"*"60100972"]`「あー、俺ってさ。`[@][lv 0*"10"*"60100973"]`�
 d [lv 0*"10"*"60100977"]`「……そうだな、朱志香みたいなタイプの女なら結構好きかもな。`[@][lv 0*"10"*"60100978"]`俺がガサツなように、向こうもガサツが丁度いいんだ。`[@][lv 0*"10"*"60100979"]`……お互いよ、汚ぇ言葉遣いで気疲れなく、男女とか気にしないでバカがやれる、ラフな関係が理想かもな…！」`[\]
 *d49492
 d [lv 0*"10"*"60100980"]`「だからもしも俺に彼女が出来るとしたら、`[@][lv 0*"10"*"60100981"]`……いつも俺が朱志香とバカやってるみたいに、ハチャメチャな関係がいいよな…！」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:cg_box",s0_3,"ex02"
 flush 2
 *d49493
 d [lv 0*"10"*"60100982"]`「え？`[@][lv 0*"10"*"60100983"]`　容姿の好み？`[@][lv 0*"10"*"60100984"]`　別にそんなのは気にしねーけどよ。`[@][lv 0*"10"*"60100985"]`まぁ、洋画とかに出てくる、金髪ボイン、蒼眼のグラマラスな彼女だったら、`[@][lv 0*"10"*"60100986"]`いっひひひひひひ、最高だぜぇ。`[@][lv 0*"10"*"60100987"]`乳揉ませろぉいってなぁ。`[@][lv 0*"10"*"60100988"]`わっはっはっはっは…！」`[\]
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 10,500
-textoff
+textoff2
 waits 167
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_o1a"
 color_mod2 s0_3,#ffffff
@@ -2217,7 +2215,7 @@ color_mod2 s0_9,#ffffff
 flush 10,1500
 wait 1000
 seplay 2,1006,71
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 lbg "c:colour",s0_3,"black"
@@ -2230,7 +2228,7 @@ d `{a:c:――ベアトリーチェ。`[@]`{n}お聞きなさい。`[@]`{n}私�
 d `{a:c:あなたに、彼が望む、黄金の髪を。`[@]`{n}あなたに、彼が望む、蒼い瞳を。`[@]`{n}あなたに、彼が望む、彼に相応しい性格を。`[@]`{n}そして、……私の代わりに恋をしなさい。`[@]`{n}そして、許されるなら、彼に恋されなさい。}`[\]
 *d49496
 d `{a:c:私には、………もう彼を愛することが、出来ないのです。`[@]`{n}どうか、私には遂げられなかった想いを、`[@]`{n}……私には堪えられなかった想いを、`[!w583]`……あなたが遂げて。}`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait3"
 flush 22
@@ -2244,7 +2242,7 @@ d `{a:c:あなたは今日より、それを私より引き継ぐのです。`[@
 d `{a:c:あなたに、私の苦悩を全て押し付けて、{n}……私だけ幸せになろうとすることを、許して下さい。}`[\]
 *d49501
 d `{a:c:あなたは今日より、全てを憎む資格があります。`[@]`{n}あなたは今日より、黄金の魔女、ベアトリーチェ。}`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -2256,40 +2254,40 @@ d `{a:c:その時。`[@]`{n}……私もあなたも、ともに幸せになれ�
 d `{a:c:あなたは今日より、私ではなくなります。`[@]`{n}私は今日より、あなたではなくなります。`[@]`{n}私たちは一つの魂を割いて、分け合おう。`[@]`{n}それは一つの魂には当然満たないけれど。`[@]`{n}きっと人より多くの夢を見させてくれる。}`[\]
 *d49505
 d `{a:c:私たちに、祝福あれ………。`[@]`{n}私の可愛い、ベアトリーチェ………。}`[\]
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 22
 *d49506
 d `{a:c:誰にもあなたの姿は見えないけれど。`[@]`{n}でも私にだけはあなたが見えるよ。`[@]`{n}そしてあなたも色々な人に愛されれば。`[@]`{n}きっとみんなにも姿が見えるようになっていく。}`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 *d49507
 d `{a:c:愛があれば、私たちは視えるよ……。}`[\]
 set_name_window_non
-textoff
+textoff2
 waits 167
 vol_mix_fade 3000
 vol_bgm -1,3000
 wait 3000
 wait 2000
 seplay 1,22,71
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 2
-textoff
+textoff2
 seplay 2,55,71
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"g2f_r1br_bg"
 lbg "a:backgrounds",s0_3,"g2f_r1br"
 lss s0_10,"jes","a11_naku2" ;1
 spt_mem "a2","xpos",s0_10,370
 spriteset_enable 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s1_1,"white"
 lbg "c:colour",s1_3,"white"
@@ -2308,13 +2306,13 @@ bgmplay 150,71,0
 msgwnd_jes
 *d49508
 d [lv 0*"04"*"60200418"]`「………嘉哉……くん………………、」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"g2f_r1ar_bg"
 lbg "a:backgrounds",s0_3,"g2f_r1ar"
@@ -2336,7 +2334,7 @@ flush 24
 msgwnd_goh
 *d49511
 d [lv 0*"17"*"61700028"]`「ななッ、南條先生を！！`[@][lv 0*"17"*"61700029"]`　南條先生を呼んできます…！！」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_9
@@ -2344,7 +2342,7 @@ csp_slot s0_10
 csp_slot s0_1
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"g2f_r1br_bg"
 lbg "a:backgrounds",s0_3,"g2f_r1br"
@@ -2363,7 +2361,7 @@ msgwnd_non
 d `終始冷静で、一言も発しなかった源次が、ようやく口にした言葉が、それだった。`[\]
 *d49514
 d `そしてそれが、……一番、的確な言葉だった。`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_1
@@ -2380,7 +2378,7 @@ d `……もう、跡形さえ、`[!w583]`………何も。`[\]
 *d49519
 d `彼の姿は、`[!w417]`……黄金の飛沫を輝かせながら、`[!w500]`……完全に、消え去った……。`[\]
 meplay 2,11,90
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_1,"g2f_r1ar_bg"
 lbg "a:backgrounds",s0_3,"g2f_r1ar"
@@ -2395,11 +2393,11 @@ lss s0_9,"jes","a11_naki1" ;1
 flush 10,167
 d_continue
 wait_on_d -1
-textoff
+textoff2
 waits 167
 lss s0_9,"jes","a11_naku3" ;1
 flush 80
-textoff
+textoff2
 waits 167
 csp_slot s0_9
 csp_slot s0_1
@@ -2414,14 +2412,14 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,100
 rain_params s0_7,400,500,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g_o1cr"
 flush 2
 seplay 1,22,71
 lss s0_10,"kan","a11_majime1" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -2434,7 +2432,7 @@ d [lv 0*"16"*"60600379"]`「………さよなら。`[@][lv 0*"16"*"60600380"]`�
 seplay 2,22,71
 lss s0_8,"bea","a15_1_hanbeso3star" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -2533,7 +2531,7 @@ msgwnd_bea
 d [lv 0*"27"*"60701054"]`「ど、どうして笑うんですか…。`[@][lv 0*"27"*"60701055"]`私には大切なことなんですっ…」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
@@ -2543,14 +2541,14 @@ rain_load s0_11
 rain_load s0_7
 rain_params s0_11,400,800,0
 rain_params s0_7,400,500,0
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"g_o1ar"
 flush 23
 seplay 1,22,71
 lss s0_10,"kan","a11_warai1" ;1
 spt_mem "a2","xpos",s0_10,370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_10,1000
 spt_mem "a2","alpha",s0_10,0
 flush 1
@@ -2563,7 +2561,7 @@ d [lv 0*"16"*"60600397"]`「だって密室なんて。`[@][lv 0*"16"*"60600398"
 seplay 2,22,71
 lss s0_8,"bea","a15_odoroki2" ;1
 spt_mem "a2","xpos",s0_8,-370
-textoff
+textoff2
 spt_mem "a2","breakup",s0_8,1000
 spt_mem "a2","alpha",s0_8,0
 flush 1
@@ -2667,13 +2665,13 @@ msgwnd_bea
 d [lv 0*"27"*"60701066"]`「私は、……魔女ですけれど、…………その…。`[@][lv 0*"27"*"60701067"]`魔法どころか、密室トリックもわからない、……ただの…、」`[\]
 csp_slot s0_11
 csp_slot s0_7
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"black"
 flush 22
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
@@ -2693,11 +2691,11 @@ msgwnd_bea
 d [lv 0*"27"*"60701068"]`「魔女ってのは………？」`[\]
 bgmplay 151,90,0
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 2
@@ -2715,101 +2713,101 @@ d [lv 0*"27"*"60701069"]`「……謎を、解かされる側じゃ、……な�
 msgwnd_kan
 *d49558
 d [lv 0*"16"*"60600421"]`「あぁ、そうさ。`[@][lv 0*"16"*"60600422"]`どうして魔女が、誰かの謎で頭を抱えてるんだい？`[@][lv 0*"16"*"60600423"]`　……頭を抱えるのは、魔女の仕事じゃないだろう？」`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
 msgwnd_bea
 *d49559
 d [lv 0*"27"*"60701070"]`「じゃ、……じゃあ、……魔女の……仕事は……？」`[\]
-textoff
+textoff2
 waits 167
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"key1"
 flush 1
 waits 167
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door1"
 flush 1
 waits 167
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 1
 waits 167
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold1"
 flush 1
 wait 150
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_3,"magicsquare_sun7"
 flush 1
 wait 100
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"key2"
 flush 1
 wait 100
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door2"
 flush 1
 wait 100
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 1
 wait 50
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"note1"
 flush 1
 wait 50
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"sweet1"
 flush 1
 wait 50
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"key1"
 flush 1
 wait 50
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"m_door1"
 flush 1
 wait 50
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"letter1"
 flush 1
 wait 50
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"gold1"
 flush 1
 wait 50
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_3,"magicsquare_sun7"
 flush 1
@@ -2817,11 +2815,11 @@ wait 50
 wait 500
 seplay 1,37,100
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 flush 2
@@ -2872,13 +2870,13 @@ flush 80
 msgwnd_bea
 *d49567
 d [lv 0*"27"*"60701074"]`「最…悪……の、………密…室………」`[\]
-textoff
+textoff2
 waits 167
 csp_slot s0_8
 csp_slot s0_10
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 80
@@ -2888,153 +2886,153 @@ d `{a:c:`[lv 0*"27"*"60701075"]`………ぁ…。}`[\]
 set_name_window_non
 *d49569
 d `ベアトの脳裏に、`[!w500]`………屋敷の、ゲストハウスの、薔薇庭園の、`[!w500]`……図面が次々に蘇っていく……。`[\]
-textoff
+textoff2
 waits 167
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map01"
 flush 1
 waits 167
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map03"
 flush 1
 waits 167
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map04"
 flush 1
 waits 167
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map06"
 flush 1
 wait 150
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map07"
 flush 1
 wait 100
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map10"
 flush 1
 wait 100
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map11"
 flush 1
 wait 100
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map02"
 flush 1
 wait 50
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map09"
 flush 1
 wait 50
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map10c"
 flush 1
 wait 50
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map01"
 flush 1
 wait 50
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map03"
 flush 1
 wait 50
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map04"
 flush 1
 wait 50
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map06"
 flush 1
 wait 50
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map07"
 flush 1
 wait 50
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map10"
 flush 1
 wait 50
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map11"
 flush 1
 wait 50
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map02"
 flush 1
 wait 50
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map09"
 flush 1
 wait 50
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map10c"
 flush 1
 wait 50
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map13c"
 flush 1
 wait 50
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "a:efe",s0_3,"magicsquare_moon1"
 flush 1
 wait 50
 seplay 3,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map12c"
 flush 1
 wait 50
 seplay 1,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map08"
 flush 1
 wait 50
 seplay 2,2,100
-textoff
+textoff2
 waits 167
 lbg "c:efe",s0_3,"map10"
 flush 1
@@ -3043,11 +3041,11 @@ waits 167
 seplay 1,2,100
 seplay 2,2,100
 seplay 3,37,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"book1"
 flush 22
@@ -3059,7 +3057,7 @@ d `からかう。`[@]`引っ掛ける。`[@]`一緒に笑う。`[\]
 d `……こんなトリックを知ってますか…？`[@]`{n}前に読んだ本に、こんなトリックが……。`[\]
 seplay 1,66,100
 seplay 2,22,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 2
@@ -3067,7 +3065,7 @@ flush 2
 d `ベアトの瞳が、どんどん見開かれていく……。`[\]
 *d49574
 d `そこには無数の光が、渦を巻いて飲み込まれていく。`[\]
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 22
@@ -3092,15 +3090,15 @@ d [lv 0*"16"*"60600441"]`「妾でなくっちゃ」`[\]
 seplay 1,2,100
 seplay 2,57,100
 seplay 3,1006,100
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"white"
 flush 1
-textoff
+textoff2
 waits 167
 lbg "c:backgrounds",s0_3,"portrait2"
 show_glass 0
-textoff
+textoff2
 waits 167
 lbg "c:colour",s0_3,"black"
 flush 2

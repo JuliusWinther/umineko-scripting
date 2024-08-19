@@ -1116,10 +1116,6 @@ rumble 23,150
 gptwait quakeyamp
 
 
-
-
-
-
 msgwnd_pie
 *e32_94
 d2 [lv 0*"65"*"pie_00310"]`{qt}*giggle*`[@][#][*][lv 0*"65"*"pie_00320"]` Then, I'll raise the curtain, piece!{qt}`[\]
@@ -1130,6 +1126,7 @@ spt_mem "a2","ypos",s0_8,-100,200,0
 sptwait2 ypos,s0_8
 spt_mem "a2","ypos",s0_8,0,200,0
 sptwait2 ypos,s0_8
+;la sprite sotto è troppo a destra
 lss s0_8,"pie","b11_14"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -1343,6 +1340,7 @@ csp_slot s0_12
 lbg "a:backgrounds",s0_1,"mhal_h1a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h1a"
 lss s0_9,"bea","a11_warai2"
+lsl s0_9,"bea","a11_warai2",1
 spt_mem "a2","xpos",s0_9,0
 flush 22
 
@@ -1372,7 +1370,7 @@ flush 80
 
 msgwnd_bea
 *e32_107
-d [lv 0*"27"*"bea_06510"]`{qt}Is that so?`[@][lv 0*"27"*"bea_06520"]` Ange didn't fall ill with stomach pain, so she was able to attend the family conference in 1986.{qt}`[\]
+d [lv 0*"27"*"bea_06510"]`{qt}I see...`[@][lv 0*"27"*"bea_06520"]` Ange didn't fall ill with stomach pain, so she was able to attend the family conference in 1986.{qt}`[\]
 
 lss s0_25,"but","b11_nayamu2_chiru"
 spt_mem "a2","xpos",s0_25,550
@@ -2440,7 +2438,8 @@ lbg "c:efe",s0_30,"homing6bs2"
 flush 1
 csp_slot s0_30
 flush 62
-lbg "a:efe",s0_30,"homing7bs"
+;lbg "a:efe",s0_30,"homing7bs"
+lbg "a:efe",s0_30,"homing7bs2"
 flush 1
 csp_slot s0_30
 flush 62
@@ -2460,7 +2459,8 @@ lbg "c:efe",s0_30,"homing6bs2"
 flush 1
 csp_slot s0_30
 flush 62
-lbg "a:efe",s0_30,"homing7bs"
+;lbg "a:efe",s0_30,"homing7bs"
+lbg "a:efe",s0_30,"homing7bs2"
 flush 1
 csp_slot s0_30
 flush 62
@@ -2470,7 +2470,8 @@ csp_slot s0_30
 flush 1
 lbg "c:efe",s0_30,"homing6bs2"
 flush 1
-lbg "a:efe",s0_30,"homing7bs"
+;lbg "a:efe",s0_30,"homing7bs"
+lbg "a:efe",s0_30,"homing7bs2"
 flush 1
 lbg "c:efe",s0_30,"homing4bs"
 flush 1
@@ -2867,6 +2868,7 @@ lbg "c:colour",s0_21,"black"
 aspt2 alpha,s0_21,150
 lbg "a:clock",s0_22,"hana1"
 aspt2 alpha,s0_22,150
+lsl s0_9,"pie","a11_10",1
 flush 28
 
 lss s0_30,"enj","a31_komaru3"
@@ -3427,7 +3429,6 @@ msgwnd_pie
 *e32_304
 d [lv 0*"65"*"pie_01030"]`{qt}Battler, are you still talking with your friends over there?{qt}`[\]
 
-
 lss s0_10,"but","b11_futeki1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3452,6 +3453,7 @@ lbg "c:colour",s0_21,"black"
 aspt2 alpha,s0_21,150
 lbg "a:clock",s0_22,"hana1"
 aspt2 alpha,s0_22,150
+lsl s0_10,"but","b11_futeki1",1
 flush 28
 
 bgmplay 114,70,0
@@ -3629,26 +3631,19 @@ d `No.`[@]` They wouldn't show any feelings, and wouldn't even realize anything 
 
 *e32_332
 d `The two people who were left would think there had only been two people from the beginning, and that only two people had challenged {f:5:Piece}......`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 22
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+vol_mix_fade 1000
+wait 3000
 
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 lss s0_9,"bea","a11_majime1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 meplay 1,11,100
@@ -3661,16 +3656,16 @@ msgwnd_bea
 *e32_333
 d [lv 0*"27"*"bea_07100"]`{qt}...Are you threatening us,`[@][lv 0*"27"*"bea_07110"]` Lady {f:5:Piece}?{qt}`[\]
 
-
 msgwnd_non
 *e32_334
 d `Beato's manner of speaking to {f:5:Piece} had clearly changed.`[\]
 
-
 *e32_335
 d `Battler and Ange were still unable to loosen their clenched fists on their knees.`[\]
 
-
+csp_slot s0_9
+flush 80
+wait 10
 lss s0_8,"bea","a11_1_majime3star"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -3679,7 +3674,6 @@ msgwnd_bea
 *e32_336
 d [lv 0*"27"*"bea_07120"]`{qt}...If our warm welcome has caused offense to you in any way, let me apologize.`[@][lv 0*"27"*"bea_07130"]`...We are shallow and unrefined,`[@][lv 0*"27"*"bea_07140"]` and don't know how to behave any better...`[\]
 
-
 lss s0_10,"pie","a11_3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3687,36 +3681,33 @@ flush 80
 msgwnd_pie
 *e32_337
 d [lv 0*"65"*"pie_01140"]`{qt}Respect is important, piece.`[@][lv 0*"65"*"pie_01150"]`...So long as everybody shows the highest respect to me, I can be quite generous, piece...{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 1
 
 msgwnd_non
 *e32_338
-d2 `*thump*`[#][*][@]`Battler, Ange and Beato all crossed their legs in unison, as if to show that they were all on the same page.`[\]
-
+d2 `*thump*`[#][*][@]` Battler, Ange and Beato all crossed their legs in unison, as if to show that they were all on the same page.`[\]
 wait_on_d 0
-
+seplay 11,6,100
+seplay 12,7,100
+seplay 13,8,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
 d_continue
 wait_on_d -1
-
-seplay 11,6,100
-
-seplay 11,7,100
-
-seplay 11,8,100
 
 *e32_339
 d `However, it was the opposite of an elegant gesture, as they were too careless when they crossed them.`[\]
 
-
 *e32_340
-d `{f:5:Piece} wasn't able to understand what happened in front of her,`[@]`and forgot to even close her mouth...`[\]
+d `{f:5:Piece} wasn't able to understand what happened in front of her,`[@]` and forgot to even close her mouth...`[\]
 
 
 lss s0_9,"pie","a21_3a"
@@ -3724,20 +3715,12 @@ spt_mem "a2","xpos",s0_9,0
 flush 80
 
 *e32_341
-d `...Eh?`[@]`...Right now, those three people... finally understood my terribleness,`[@]`and improved their behavior...?`[@]`...Huh...?`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `...Eh?`[@]` ...Right now, those three people... finally understood how terrifying I am... and improved their behavior...?`[@]`...Right...?`[\]
+textoff2
 
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 lss s0_9,"bea","a11_nayamu1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 lss s0_9,"bea","a15_nayamu1"
@@ -3748,7 +3731,6 @@ msgwnd_bea
 *e32_342
 d [lv 0*"27"*"bea_07150"]`{qt}I'm tired of acting well-behaved.`[@][lv 0*"27"*"bea_07160"]` So... want me to make this easier to understand?{qt}`[\]
 
-
 lss s0_8,"but","b11_komaru2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -3756,7 +3738,6 @@ flush 80
 msgwnd_but
 *e32_343
 d [lv 0*"10"*"bat_06070"]`{qt}I don't care what you do with the pieces in the game.`[@][lv 0*"10"*"bat_06080"]` That's what these games are all about.{qt}`[\]
-
 
 lss s0_10,"enj","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
@@ -3766,56 +3747,45 @@ msgwnd_enj
 *e32_344
 d [lv 0*"11"*"enj_01080"]`{qt}We thought that since our guest here was trying her best, we should entertain them a little.`[@][lv 0*"11"*"enj_01090"]` But... we just can't take it anymore.{qt}`[\]
 
-
 msgwnd_non
 *e32_345
-d `At their limit?`[@]`Of what emotion?`[@]`Anger?`[\]
+d `At their limit?`[@]` Of what emotion?`[@]` Anger?`[\]
+textoff2
 
-
+vol_mix_fade 600
+wait 900
 seplay 11,60,100
-
-seplay 11,37,100
-
+seplay 12,37,100
+lbg "c:colour",s0_30,"white"
 flush 1
 
 bgmplay 69,70,0
-
+csp_slot s0_30
 lss s0_8,"but","b11_futeki1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"enj","a11_nayamu2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_9,"bea","a11_akuwarai2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 msgwnd_bea
 *e32_346
 d [lv 0*"27"*"bea_07170"]`{qt}It's hilarious!!!`[@][lv 0*"27"*"bea_07180"]` You're the most interesting visitor in a long while, coming in and trying to kill a witch with laughter!`[@][lv 0*"27"*"bea_07190"]` *cackle*{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
-
 lss s0_9,"pie","a21_11a"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 msgwnd_pie
 *e32_347
 d [lv 0*"65"*"pie_01160"]`{qt}.........?!`[@][lv 0*"65"*"pie_01170"]`........?!?!`[@][lv 0*"65"*"pie_01180"]`......Huh????!!??{qt}`[\]
-
 
 lss s0_8,"enj","a11_nayamu2"
 spt_mem "a2","xpos",s0_8,-549
@@ -3823,13 +3793,11 @@ flush 80
 
 msgwnd_enj
 *e32_348
-d [lv 0*"11"*"enj_01100"]`{qt}Do you.... not know why she's laughing at you?`[@][lv 0*"11"*"enj_01110"]`...Come on now.`[@][lv 0*"11"*"enj_01120"]`......You thought that if you showed us your power,`[@][lv 0*"11"*"enj_01130"]` we'd all cringe in fear and show respect to you, right?{qt}`[\]
-
+d [lv 0*"11"*"enj_01100"]`{qt}Do you.... not know why she's laughing at you?`[@][lv 0*"11"*"enj_01110"]`...Come on now.`[@][lv 0*"11"*"enj_01120"]`......You thought that if you showed us your power,`[@][lv 0*"11"*"enj_01130"]` we'd all cringe in fear and show respect to you?{qt}`[\]
 
 msgwnd_non
 *e32_349
-d `Bull's eye.`[@]`That was right.`[@]`But if that was the case, why was she finding it so funny...?!?!`[\]
-
+d `Bullseye.`[@]` That was right.`[@]` But if that was the case, why did they find it so funny...?!?!`[\]
 
 lss s0_10,"but","b11_futeki2"
 spt_mem "a2","xpos",s0_10,550
@@ -3837,20 +3805,14 @@ flush 80
 
 msgwnd_but
 *e32_350
-d [lv 0*"10"*"bat_06090"]`{qt}That's a terrifying power.`[@][lv 0*"10"*"bat_06100"]` It's enough to fill us with dread.`[@][lv 0*"10"*"bat_06110"]` But...you're just so over the top.`[@][lv 0*"10"*"bat_06120"]` *laugh*{qt}`[\]
+d [lv 0*"10"*"bat_06090"]`{qt}That's a terrifying power.`[@][lv 0*"10"*"bat_06100"]` It's enough to fill us with dread.`[@][lv 0*"10"*"bat_06110"]` But...you're just too over the top.`[@][lv 0*"10"*"bat_06120"]` *laugh*{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 lss s0_9,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_9,"bea","a11_akuwarai3"
@@ -3859,25 +3821,17 @@ flush 80
 
 msgwnd_bea
 *e32_351
-d [lv 0*"27"*"bea_07200"]`{qt}Hey, Great Lady {f:5:Piece}?`[@][lv 0*"27"*"bea_07210"]` What's so scary about yooooou....?`[@][lv 0*"27"*"bea_07220"]` It's like saying 'I've checkmated opponents before, are you scared?' right before you face off against your opponent in a boxing match. What the hellll......??{qt}`[\]
-
+d [lv 0*"27"*"bea_07200"]`{qt}Hey, Great Lady {f:5:Piece}?`[@][lv 0*"27"*"bea_07210"]` What's so scary about yooooou....?`[@][lv 0*"27"*"bea_07220"]` It's like saying {qt}I've checkmated opponents before, are you scared?{qt} right before you face off against your opponent in a boxing match.{qt}`[\]
 
 msgwnd_non
 *e32_352
 d `The analogy seemed to hit its mark, and Battler burst out laughing.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
-
 lss s0_8,"but","b11_futeki1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 lss s0_8,"but","b11_futeki3"
@@ -3888,7 +3842,6 @@ msgwnd_but
 *e32_353
 d [lv 0*"10"*"bat_06130"]`{qt}Hahahahaha!!`[@][lv 0*"10"*"bat_06140"]` You know, in this place.`[@][lv 0*"10"*"bat_06150"]` Mystery turns into fantasy.`[@][lv 0*"10"*"bat_06160"]` Or fantasy becomes mystery.`[@][lv 0*"10"*"bat_06170"]` The idea of a serious match, where the two sides are trying to get the best out of each other with a single blow, is a very interesting experience,`[@][lv 0*"10"*"bat_06180"]` And this is a social place for lords and ladies who love crazy games like that.{qt}`[\]
 
-
 lss s0_10,"enj","a11_fuman2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3897,7 +3850,6 @@ msgwnd_enj
 *e32_354
 d [lv 0*"11"*"enj_01140"]`{qt}There is only one thing those of us here are scared of.{qt}`[\]
 
-
 lss s0_8,"but","b25_odoroki1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -3905,18 +3857,15 @@ flush 80
 msgwnd_but
 *e32_355
 d [lv 0*"10"*"bat_06190"]`{qt}Hypothesis, inquiry, flair, bluff!`[@][lv 0*"10"*"bat_06200"]` When the theory you've finally whittled away to a deduction is smashed to smithereens!{qt}`[\]
-
+textoff2
 
 lss s0_9,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 msgwnd_bea
 *e32_356
 d [lv 0*"27"*"bea_07230"]`{qt}Certainly, this 'power to swallow an existence whole' is interesting!`[@][lv 0*"27"*"bea_07240"]` One of our rare visitors went to great pains to create this gift.`[@][lv 0*"27"*"bea_07250"]` And I was willing to feign awe out of respect for it.{qt}`[\]
-
 
 lss s0_8,"but","b11_futeki1"
 spt_mem "a2","xpos",s0_8,-549
@@ -3924,8 +3873,7 @@ flush 80
 
 msgwnd_but
 *e32_357
-d [lv 0*"10"*"bat_06210"]`{qt}If you keep acting so high and mighty, saying how scary you are, how tall you are, etc.,...`[@][lv 0*"10"*"bat_06220"]` I'm afraid we're going to lose our patience with your manners, you know?{qt}`[\]
-
+d [lv 0*"10"*"bat_06210"]`{qt}If you keep acting so high and mighty, saying how scary you are, how tall you are...`[@][lv 0*"10"*"bat_06220"]` I'm afraid we're going to lose our patience with your manners, you know?{qt}`[\]
 
 lss s0_10,"enj","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
@@ -3934,19 +3882,13 @@ flush 80
 msgwnd_enj
 *e32_358
 d [lv 0*"11"*"enj_01150"]`{qt}If you truly wanted to scare us, you should finish your question first.`[@][lv 0*"11"*"enj_01160"]` And then we'll decide if we want to be scared or to laugh at you.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 lss s0_9,"pie","a21_11a"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 lss s0_8,"bea","a11_akuwarai3"
@@ -3956,19 +3898,12 @@ flush 80
 msgwnd_bea
 *e32_359
 d [lv 0*"27"*"bea_07260"]`{qt}You know who you're dealing with?`[@][lv 0*"27"*"bea_07270"]` You're dealing with a bunch of crazy witches who can drink tea for a thousand years with some locked room murders as a little snack!{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
-
 lss s0_8,"but","b11_warai3"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 23
 
 lss s0_8,"but","b11_warai1"
@@ -3979,7 +3914,6 @@ msgwnd_but
 *e32_360
 d [lv 0*"10"*"bat_06230"]`{qt}By the way, I completely get your analogy.`[@][lv 0*"10"*"bat_06240"]`...I'm crazy about boxing and checkmating opponents... kuukuukukukukuku!!{qt}`[\]
 
-
 lss s0_10,"enj","a11_nayamu2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -3987,39 +3921,41 @@ flush 80
 msgwnd_enj
 *e32_361
 d [lv 0*"11"*"enj_01170"]`{qt}Fufufuufufufu...{qt}`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 lss s0_8,"pie","a21_16a"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"bea","a11_akuwarai2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 24
 
 msgwnd_bea
 *e32_362
-d2 [lv 0*"27"*"bea_07280"]`{qt}Uhyaahaahaahahahahaahaaaa,`[#][*]`gehahahahahahahaaaaaaaaa!!!!{qt}`[\]
-
+d2 [lv 0*"27"*"bea_07280"]`{qt}Uhyaahaahaahahahahaahaaaa,`[#][*]` gehahahahahahahaaaaaaaaa!!!!{qt}`[\]
 wait_on_d 0
-
+seplay 11,37,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
+wait 300
+seplay 12,37,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
+seplay 13,37,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 d_continue
 wait_on_d -1
-
-seplay 11,37,100
-
-seplay 11,37,100
-
-seplay 11,37,100
 
 lss s0_8,"pie","b21_14a"
 spt_mem "a2","xpos",s0_8,-549
@@ -4029,141 +3965,127 @@ msgwnd_pie
 *e32_363
 d [lv 0*"65"*"pie_01190"]`{qt}......Heh...`[@][lv 0*"65"*"pie_01200"]` haha...`[@][lv 0*"65"*"pie_01210"]` Uuuhahahahaahihihii!`[@][lv 0*"65"*"pie_01220"]` Pipipipipiipieeeeeece!!!!{qt}`[\]
 
-
 *e32_364
 d2 [lv 0*"65"*"pie_01230"]`{qt}Fuuuuuu!!!`[#][*][@][lv 0*"65"*"pie_01240"]`......Haahaahaa......{qt}`[\]
-
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
 seplay 11,57,100
-
+lbg "c:colour",s0_30,"white"
 flush 1
 
-csp_slot s0_3
+csp_slot s0_30
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lss s0_9,"pie","b21_19a"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
+d_continue
+wait_on_d -1
 
 lss s0_9,"pie","a21_5a"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
 *e32_365
-d [lv 0*"65"*"pie_01250"]`{qt}I have indeed been rude, piece.`[@][lv 0*"65"*"pie_01260"]` How comical it was that I looked down on you veterans of the Sea of Fragments.`[@][lv 0*"65"*"pie_01270"]` I apologize, piece.{qt}`[\]
-
+d [lv 0*"65"*"pie_01250"]`{qt}I have indeed been rude, piece.`[@][lv 0*"65"*"pie_01260"]` How silly it was for me to look down on you veterans of the Sea of Fragments.`[@][lv 0*"65"*"pie_01270"]` I apologize, piece.{qt}`[\]
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 2
 
 msgwnd_non
 *e32_366
 d `Well then, let us proceed with the game, piece.`[\]
 
-
 *e32_367
 d `But, everybody?`[\]
-
 
 *e32_368
 d `You said that you would be truly terrified if you were to have your well-thought-out reasoning shattered...?`[\]
 
-
 *e32_369
 d `Those words.`[@]`...Do you really understand what they entail...?`[\]
 
-
 *e32_370
 d `...Because then all the guts will be vomited out.`[@]`...Pieece...`[\]
-
+textoff2
 
 seplay 11,52,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_2
+rain_params s0_2,100,500,0
+lbg "c:colour",s0_21,"black"
+aspt2 alpha,s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2 alpha,s0_22,150
 lbg "a:backgrounds",s0_1,"mhal_h2a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h2a"
 lss s0_8,"pie","a11_1"
+lsl s0_8,"pie","a11_1",1
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"but","b11_futeki1"
+lsl s0_10,"but","b11_futeki1",1
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
-lss s0_9,"pie","a11_13"
-spt_mem "a2","xpos",s0_9,0
-flush 80
-
+flush 99,2000,"whirl.dll/r"
+lss s0_29,"pie","a11_13"
+spt_mem "a2","xpos",s0_29,0
 flush 22
 
 msgwnd_pie
 *e32_371
-d [lv 0*"65"*"pie_01280"]`{qt}Then,`[@][lv 0*"65"*"pie_01290"]` we'll fast-forward past this next burlesque.`[@][lv 0*"65"*"pie_01300"]` I think everyone wants the main course as soon as possible.{qt}`[\]
+d [lv 0*"65"*"pie_01280"]`{qt}Then,`[@][lv 0*"65"*"pie_01290"]` we'll fast-forward through the appetizers.`[@][lv 0*"65"*"pie_01300"]` I think everyone wants the main course as soon as possible.{qt}`[\]
 
-
-lss s0_8,"but","b11_futeki3"
-spt_mem "a2","xpos",s0_8,-549
+lss s0_28,"but","b11_futeki3"
+spt_mem "a2","xpos",s0_28,-549
 flush 80
 
 msgwnd_but
 *e32_372
 d [lv 0*"10"*"bat_06250"]`{qt}Are we going past the epitaph murders?{qt}`[\]
 
-
-lss s0_9,"pie","a11_4"
-spt_mem "a2","xpos",s0_9,0
+lss s0_29,"pie","a11_4"
+spt_mem "a2","xpos",s0_29,0
 flush 80
 
 msgwnd_pie
 *e32_373
 d [lv 0*"65"*"pie_01310"]`{qt}No, no.`[@][lv 0*"65"*"pie_01320"]` We will not go that far, piece.`[@][lv 0*"65"*"pie_01330"]` Right after this, I will be swallowing Ange whole, piece.{qt}`[\]
+textoff2
 
-
+csp_slot s0_29
+csp_slot s0_28
+csp_slot s0_22
+csp_slot s0_21
 flush 8
-
+vol_bgm -1,800
+wait 1500
 meplay 1,12,100
 
+csp_slot s0_8
+flush 80
 lss s0_9,"pie","a11_1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
 *e32_374
-d [lv 0*"65"*"pie_01340"]`{qt}Ange.`[@][lv 0*"65"*"pie_01350"]` Isn't it getting late?`[@][lv 0*"65"*"pie_01360"]` Let's finish talking and go back to your room, okay?{qt}`[\]
+d [lv 0*"65"*"pie_01340"]`{qt}Ange.`[@][lv 0*"65"*"pie_01350"]` Isn't it getting late?`[@][lv 0*"65"*"pie_01360"]` You should finish talking and go back to your room, okay?{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
+csp_slot s0_1
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mhal_h1c"
-
 lss s0_9,"en2","a11_defo2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 msgwnd_enj
 *e32_375
 d [lv 0*"11"*"enj_01180"]`{qt}........................{qt}`[\]
-
 
 lss s0_10,"but","b11_defo3"
 spt_mem "a2","xpos",s0_10,550
@@ -4173,7 +4095,6 @@ msgwnd_but
 *e32_376
 d [lv 0*"10"*"bat_06260"]`{qt}What is it, Ange?`[@][lv 0*"10"*"bat_06270"]` What's wrong all of a sudden...?{qt}`[\]
 
-
 lss s0_9,"en2","a11_defo2b"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -4182,7 +4103,6 @@ msgwnd_enj
 *e32_377
 d [lv 0*"11"*"enj_01190"]`{qt}...Onii-chan, that person isn't mom...{qt}`[\]
 
-
 lss s0_10,"but","b11_komaru1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -4190,25 +4110,18 @@ flush 80
 msgwnd_but
 *e32_378
 d [lv 0*"10"*"bat_06280"]`{qt}Huh?`[@][lv 0*"10"*"bat_06290"]` What are you talking about, all of a sudden?{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "a:backgrounds",s0_1,"mhal_h1a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h1a"
 lss s0_9,"pie","a11_4"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_pie
 *e32_379
 d [lv 0*"65"*"pie_01370"]`{qt}Oh, my...`[@][lv 0*"65"*"pie_01380"]` Ange, are you already half-asleep?`[@][lv 0*"65"*"pie_01390"]` Mom doesn't get what you're saying...?{qt}`[\]
-
 
 lss s0_10,"en2","a11_defo4a"
 spt_mem "a2","xpos",s0_10,550
@@ -4218,7 +4131,6 @@ msgwnd_enj
 *e32_380
 d [lv 0*"11"*"enj_01200"]`{qt}Who... are you...{qt}`[\]
 
-
 lss s0_9,"pie","a11_13"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -4227,69 +4139,90 @@ msgwnd_pie
 *e32_381
 d [lv 0*"65"*"pie_01400"]`{qt}Aren't I your mom, {f:5:Piece} Ushiromiya?`[@][lv 0*"65"*"pie_01410"]` The one who gave birth to you...{qt}`[\]
 
-
 msgwnd_non
 *e32_382
 d `...Huh?`[\]
 
-
 lss s0_10,"en2","a11_defo4b"
 spt_mem "a2","xpos",s0_10,550
 flush 80
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 
 msgwnd_enj
 *e32_383
 d [lv 0*"11"*"enj_01210"]`{qt}...L-liar!!!{qt}`[\]
-
+textoff2
 
 seplay 11,64,100
-
+lbg "c:colour",s0_30,"white"
 flush 1
-
+csp_slot s0_30
 lss s0_9,"pie","a14_13"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
-
+lbg "c:efe",s0_11,"pie_hair_efe1"
+aspt2 alpha,s0_11,100
 flush 24
-
+wait 400
+csp_slot s0_10
+flush 80
+lbg "c:efe",s0_12,"pie_hair_efe2"
+aspt2 alpha,s0_12,100
 flush 4
-
+wait 300
+lbg "c:efe",s0_13,"pie_hair_efe1"
+aspt2 alpha,s0_13,250
 flush 22
+wait 300
 
 msgwnd_non
 *e32_384
 d2 `*snap*`[#][*]`*crunch*`[#][*]`*thud*......!!!![#][*][\]
 
 wait_on_d 0
-
+seplay 11,93,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
+lbg "c:efe",s0_14,"pie_hair_efe2"
+aspt2 alpha,s0_14,250
+flush 22
+wait 300
 d_continue
 wait_on_d 1
-
+seplay 11,94,100
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 23,150
+gptwait quakexamp
+lbg "c:efe",s0_15,"pie_hair_efe1"
+aspt2 alpha,s0_15,250
+flush 22
+wait 300
 d_continue
 wait_on_d 2
-
-d_continue
-wait_on_d -1
-
-seplay 11,93,100
-
-flush 22
-
-seplay 11,94,100
-
-flush 22
-
 seplay 11,95,100
-
+lbg "c:colour",s0_30,"white"
 flush 1
-
+csp_slot s0_30
+csp_slot s0_11
+csp_slot s0_12
+csp_slot s0_13
+csp_slot s0_14
+csp_slot s0_15
 lss s0_9,"pie","a11_1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
+wait 300
+d_continue
+wait_on_d -1
 
 lss s0_9,"pie","a11_4"
 spt_mem "a2","xpos",s0_9,0
@@ -4298,25 +4231,18 @@ flush 80
 msgwnd_pie
 *e32_385
 d [lv 0*"65"*"pie_01420"]`{qt}Hey, Rudolf.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_1
+csp_slot s0_2
 lbg "c:backgrounds",s0_3,"mhal_h1c"
-
 lss s0_9,"rud","a11_warai1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_rud
 *e32_386
 d [lv 0*"08"*"rud_01260"]`{qt}Hm?`[@][lv 0*"08"*"rud_01270"]` What?{qt}`[\]
-
 
 lss s0_8,"pie","a11_10"
 spt_mem "a2","xpos",s0_8,-549
@@ -4326,7 +4252,8 @@ msgwnd_pie
 *e32_387
 d [lv 0*"65"*"pie_01430"]`{qt}Would you be interested in making a cute little sister for Battler, piece...?{qt}`[\]
 
-
+csp_slot s0_9
+flush 80
 lss s0_10,"rud","a11_akuwarai2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -4334,7 +4261,6 @@ flush 80
 msgwnd_rud
 *e32_388
 d [lv 0*"08"*"rud_01280"]`{qt}Hey, hey, save that talk for when it's just the two of us.{qt}`[\]
-
 
 lss s0_9,"but","b11_oya2"
 spt_mem "a2","xpos",s0_9,0
@@ -4344,7 +4270,6 @@ msgwnd_but
 *e32_389
 d [lv 0*"10"*"bat_06300"]`{qt}A sister...?{qt}`[\]
 
-
 lss s0_8,"pie","a11_9"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -4352,7 +4277,6 @@ flush 80
 msgwnd_pie
 *e32_390
 d [lv 0*"65"*"pie_01440"]`{qt}Yeah,`[@][lv 0*"65"*"pie_01450"]` a sister for you.`[@][lv 0*"65"*"pie_01460"]` After all, isn't being an only child boring, piece...?{qt}`[\]
-
 
 lss s0_9,"but","b11_majime5"
 spt_mem "a2","xpos",s0_9,0
@@ -4362,14 +4286,12 @@ msgwnd_but
 *e32_391
 d [lv 0*"10"*"bat_06310"]`{qt}........................{qt}`[\]
 
-
 lss s0_9,"but","b11_komaru1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
 *e32_392
-d [lv 0*"10"*"bat_06320"]`{qt}I can't imagine having a sister.`[@][lv 0*"10"*"bat_06330"]` I don't have any confidence we'd get along,`[@][lv 0*"10"*"bat_06340"]` hahaha.{qt}`[\]
-
+d [lv 0*"10"*"bat_06320"]`{qt}I can't imagine having a sister.`[|][lv 0*"10"*"bat_06330"]` I don't have any confidence we'd get along,`[@][lv 0*"10"*"bat_06340"]` hahaha.{qt}`[\]
 
 lss s0_10,"rud","a11_defo2"
 spt_mem "a2","xpos",s0_10,550
@@ -4379,7 +4301,9 @@ msgwnd_rud
 *e32_393
 d [lv 0*"08"*"rud_01290"]`{qt}If you, my only child, were a cute daughter, I would go straight home and wouldn't have damaged my liver.{qt}`[\]
 
-
+csp_slot s0_9
+csp_slot s0_8
+flush 80
 lss s0_8,"but","b11_aseru1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -4387,52 +4311,52 @@ flush 80
 msgwnd_but
 *e32_394
 d [lv 0*"10"*"bat_06350"]`{qt}Hahaha, shut up, you unhealthy dad.{qt}`[\]
+textoff2
 
-
-vol_bgm -1 500
-
-vol_mix_fade 500
-
+vol_mix_fade 1
 seplay 11,56,100
-
+lbg "c:colour",s0_21,"black"
+aspt2 alpha,s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2 alpha,s0_22,150
+lsl s0_8,"but","b11_aseru1",1
 flush 28
 
 bgmplay 39,70,0
 
-lss s0_9,"enj","a11_defo1"
-spt_mem "a2","xpos",s0_9,0
+lss s0_29,"enj","a11_defo1"
+spt_mem "a2","xpos",s0_29,0
 flush 80
 
 msgwnd_enj
 *e32_395
-d [lv 0*"11"*"enj_01220"]`{qt}She was eaten and forgotten.`[@][lv 0*"11"*"enj_01230"]`...Again, I'm reminded how awful this power is.{qt}`[\]
+d [lv 0*"11"*"enj_01220"]`{qt}Eaten and forgotten.`[@][lv 0*"11"*"enj_01230"]`...Again, I'm reminded how awful this power is.{qt}`[\]
 
-
-lss s0_8,"bea","a11_majime2"
-spt_mem "a2","xpos",s0_8,-549
+lss s0_28,"bea","a11_majime2"
+spt_mem "a2","xpos",s0_28,-549
 flush 80
 
 msgwnd_bea
 *e32_396
 d [lv 0*"27"*"bea_07290"]`{qt}What's interesting is, why did her existence erasure fail to work on Ange?{qt}`[\]
 
-
-lss s0_10,"but","b11_majime6"
-spt_mem "a2","xpos",s0_10,550
+lss s0_30,"but","b11_majime6"
+spt_mem "a2","xpos",s0_30,550
 flush 80
 
 msgwnd_but
 *e32_397
 d [lv 0*"10"*"bat_06360"]`{qt}I can't tell if it's something we should keep in mind,... or if it's just an embellishment of fantasy.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
+csp_slot s0_21
+csp_slot s0_22
+csp_slot s0_28
+csp_slot s0_29
+csp_slot s0_30
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
-
 flush 22
 
 lss s0_10,"enj","a11_fuman2"
@@ -4443,7 +4367,6 @@ msgwnd_enj
 *e32_398
 d [lv 0*"11"*"enj_01240"]`{qt}The goal of this game is just to determine {f:5:Piece}'s identity.`[@][lv 0*"11"*"enj_01250"]` It's a little different from Beato and Onii-chan's game.{qt}`[\]
 
-
 lss s0_8,"bea","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -4452,7 +4375,6 @@ msgwnd_bea
 *e32_399
 d [lv 0*"27"*"bea_07300"]`{qt}That's true.`[@][lv 0*"27"*"bea_07310"]`...In my game, I asked for the illusion of the witch smashed, as well as answering the question 'Who am I?'{qt}`[\]
 
-
 lss s0_10,"enj","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -4460,27 +4382,20 @@ flush 80
 msgwnd_enj
 *e32_400
 d [lv 0*"11"*"enj_01260"]`{qt}{f:5:Piece}.`[@][lv 0*"11"*"enj_01270"]`...In this game, do we also have to smash the illusion of the witch?{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 flush 22
 
 lss s0_9,"pie","a11_10"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_pie
 *e32_401
 d [lv 0*"65"*"pie_01470"]`{qt}.....................{qt}`[\]
-
 
 lss s0_10,"but","b11_nayamu2_chiru"
 spt_mem "a2","xpos",s0_10,550
@@ -4490,7 +4405,6 @@ msgwnd_but
 *e32_402
 d [lv 0*"10"*"bat_06370"]`{qt}The question you gave us of 'who am I' is just one question.`[@][lv 0*"10"*"bat_06380"]` Is there truly only one answer required?`[@][lv 0*"10"*"bat_06390"]` If that's the case, in the witch illusion you're showing us, the person called the witch of the piece`[@][lv 0*"10"*"bat_06400"]` is the culprit, right....?{qt}`[\]
 
-
 lss s0_9,"pie","a11_8"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -4499,7 +4413,8 @@ msgwnd_pie
 *e32_403
 d [lv 0*"65"*"pie_01480"]`{qt}...If the discussion starts to head in a meaningless direction, both me and my master will be bored.`[@][lv 0*"65"*"pie_01490"]` Therefore, we think it is fair to give proper directions, at least to the entrance of the labyrinth.`[@][lv 0*"65"*"pie_01500"]` So, allow me to state this clearly in red.{qt}`[\]
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"pie","a11_2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -4508,37 +4423,25 @@ seplay 11,59,100
 
 *e32_404
 d2 [lv 0*"65"*"pie_01510"]`{qt}{p:1:The only objective of this game is to determine who I am.`[@][#][*][lv 0*"65"*"pie_01520"]` I do not care if you affirm or deny fantasy.}{qt}`[\]
-
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
+textoff2
 
-seplay 11,59,100
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
-
 lss s0_10,"bea","a11_majime2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_bea
 *e32_405
 d2 [lv 0*"27"*"bea_07320"]`{qt}Then let's cut to the heart of the matter in the most simple way possible.`[@][lv 0*"27"*"bea_07330"]` Blue declaration.`[@][#][*][lv 0*"27"*"bea_07340"]` {p:2:You are {f:5:Piece},`[@][lv 0*"27"*"bea_07350"]` Witch of the Piece.}{qt}`[\]
-
 wait_on_d 0
-
+seplay 11,2,100
 d_continue
 wait_on_d -1
-
-seplay 11,2,100
 
 lss s0_9,"pie","a11_4"
 spt_mem "a2","xpos",s0_9,0
@@ -4547,13 +4450,10 @@ flush 80
 msgwnd_pie
 *e32_406
 d2 [lv 0*"65"*"pie_01530"]`{qt}Of course, that's not true.`[@][lv 0*"65"*"pie_01540"]` I'll declare it in red.`[@][#][*][lv 0*"65"*"pie_01550"]` {p:1:I am a person who has existed from Episode 1 through Episode 8}.{qt}`[\]
-
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
-
-seplay 11,59,100
 
 lss s0_8,"enj","a11_fuman1"
 spt_mem "a2","xpos",s0_8,-549
@@ -4562,25 +4462,18 @@ flush 80
 msgwnd_enj
 *e32_407
 d [lv 0*"11"*"enj_01280"]`{qt}That's impossible.`[@][lv 0*"11"*"enj_01290"]` Nobody who can swallow a human being whole and wipe them from existence has ever appeared.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 lss s0_8,"but","b11_komaru2"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 msgwnd_but
 *e32_408
 d [lv 0*"10"*"bat_06410"]`{qt}Or...`[@][lv 0*"10"*"bat_06420"]` are you saying that they had that power when they first appeared, but never demonstrated it?{qt}`[\]
-
 
 lss s0_9,"pie","a11_13"
 spt_mem "a2","xpos",s0_9,0
@@ -4589,18 +4482,13 @@ flush 80
 msgwnd_pie
 *e32_409
 d2 [lv 0*"65"*"pie_01560"]`{qt}That's correct.`[@][#][*][lv 0*"65"*"pie_01570"]` {p:1:I was present during Episodes 1 through 8 and had that power during that time.`[@][#][*][lv 0*"65"*"pie_01580"]` This is the first time that my master has allowed me to show it to you.}{qt}`[\]
-
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d 1
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
-
-seplay 11,59,100
-
-seplay 11,59,100
 
 lss s0_10,"enj","a11_ikari1"
 spt_mem "a2","xpos",s0_10,550
@@ -4610,7 +4498,6 @@ msgwnd_enj
 *e32_410
 d [lv 0*"11"*"enj_01300"]`{qt}If that's the case, I have more questions.`[@][lv 0*"11"*"enj_01310"]` So this person is...{qt}`[\]
 
-
 lss s0_8,"bea","a11_fukigen3"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -4619,7 +4506,6 @@ msgwnd_bea
 *e32_411
 d [lv 0*"27"*"bea_07360"]`{qt}Wait, Ange.`[@][lv 0*"27"*"bea_07370"]` It seems there is still more to this event.`[@][lv 0*"27"*"bea_07380"]` You'll still be able to ask questions even after {f:5:Piece} has exposed her hand.{qt}`[\]
 
-
 lss s0_10,"enj","a11_fuman2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -4627,27 +4513,21 @@ flush 80
 msgwnd_enj
 *e32_412
 d [lv 0*"11"*"enj_01320"]`{qt}...I guess that's true.`[@][lv 0*"11"*"enj_01330"]` Well?`[@][lv 0*"11"*"enj_01340"]` Now that I and mom have been killed and erased...`[@][lv 0*"11"*"enj_01350"]` who's next?{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
-
 flush 22
 
 lss s0_9,"but","b11_futeki1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_but
 *e32_413
 d [lv 0*"10"*"bat_06430"]`{qt}If, by some possibility, everyone on Rokkenjima is wiped out and the question is`[@][lv 0*"10"*"bat_06440"]` 'who am I?' wouldn't the answer be exactly the same as the one for Beato's game?{qt}`[\]
-
 
 lss s0_10,"bea","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
@@ -4657,7 +4537,6 @@ msgwnd_bea
 *e32_414
 d [lv 0*"27"*"bea_07390"]`{qt}No, it won't.`[@][lv 0*"27"*"bea_07400"]` She already said in red that she is one 'person' who exists from Episode 1 through Episode 8.{qt}`[\]
 
-
 lss s0_8,"enj","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -4665,27 +4544,21 @@ flush 80
 msgwnd_enj
 *e32_415
 d [lv 0*"11"*"enj_01360"]`{qt}...{f:5:Piece},`[@][lv 0*"11"*"enj_01370"]` please continue.`[@][lv 0*"11"*"enj_01380"]` While fast-forwarding, of course.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 flush 22
 
 lss s0_9,"pie","a11_1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
 
-flush 80
-
 msgwnd_pie
 *e32_416
-d [lv 0*"65"*"pie_01590"]`{qt}Of course, piece.`[@][lv 0*"65"*"pie_01600"]` Next, Kinzo, Beato, and the magic-savvy servants realized that somebody had gotten through their magic,`[@][lv 0*"65"*"pie_01610"]` and a fight ensued, piece.`[@][lv 0*"65"*"pie_01620"]` Whether it is reality or fantasy, a battle with Kinzo's incredible summoning magic, Beato's powerful witchcraft, Shannon and Kanon's furniture powers, and,`[@][lv 0*"65"*"pie_01630"]` for the first time, Genji's battle magic began to unfold.`[@][lv 0*"65"*"pie_01640"]` However, since you said you would like to fast-forward, we will do so, piece.{qt}`[\]
-
+d [lv 0*"65"*"pie_01590"]`{qt}Of course, piece.`[@][lv 0*"65"*"pie_01600"]` Next, Kinzo, Beato, and the magic-savvy servants realized that somebody had gotten through their magic,`[|][lv 0*"65"*"pie_01610"]` and a fight ensued, piece.`[@][lv 0*"65"*"pie_01620"]` Whether it is reality or fantasy, a battle with Kinzo's incredible summoning magic, Beato's powerful witchcraft, Shannon and Kanon's furniture powers, and,`[|][lv 0*"65"*"pie_01630"]` for the first time, Genji's battle magic began to unfold.`[@][lv 0*"65"*"pie_01640"]` However, since you said you would like to fast-forward, we will do so, piece.{qt}`[\]
 
 lss s0_8,"bea","a11_komaru1"
 spt_mem "a2","xpos",s0_8,-549
@@ -4695,15 +4568,13 @@ msgwnd_bea
 *e32_417
 d [lv 0*"27"*"bea_07410"]`{qt}Eh?`[@][lv 0*"27"*"bea_07420"]` Is my part of the show going to be cuuut?`[@][lv 0*"27"*"bea_07430"]` That's no fuuun.{qt}`[\]
 
-
 lss s0_10,"but","b11_warai3"
 spt_mem "a2","xpos",s0_10,550
 flush 80
 
 msgwnd_but
 *e32_418
-d [lv 0*"10"*"bat_06450"]`{qt}Huh.`[@][lv 0*"10"*"bat_06460"]` Come to think of it, Genji-san never had a single battle scene, even though he seemed pretty strong in the fantasy world, didn't he?{qt}`[\]
-
+d [lv 0*"10"*"bat_06450"]`{qt}That's true.`[@][lv 0*"10"*"bat_06460"]` Come to think of it, Genji-san never had a single battle scene, even though he seemed pretty strong in the fantasy world, didn't he?{qt}`[\]
 
 lss s0_8,"bea","a11_fukigen2"
 spt_mem "a2","xpos",s0_8,-549
@@ -4713,237 +4584,185 @@ msgwnd_bea
 *e32_419
 d [lv 0*"27"*"bea_07440"]`{qt}Genji and Ronove are two sides of the same coin.`[@][lv 0*"27"*"bea_07450"]` Fast-forwarding is a bit of a letdown.{qt}`[\]
 
-
-lss s0_10,"enj","a11_nayamu1"
-spt_mem "a2","xpos",s0_10,370
-flush 80
-
+lss s0_11,"enj","a11_nayamu1"
+spt_mem "a2","xpos",s0_11,300
 flush 22
 
 msgwnd_enj
 *e32_420
 d [lv 0*"11"*"enj_01390"]`{qt}Please, just keep it snappy and fast-forward, please, {f:5:Piece}.{qt}`[\]
 
-
-lss s0_8,"pie","a11_3"
-spt_mem "a2","xpos",s0_8,-369
+csp_slot s0_9
 flush 80
-
+lss s0_9,"pie","a11_3"
+spt_mem "a2","xpos",s0_9,-230
 flush 22
 
 msgwnd_pie
 *e32_421
 d [lv 0*"65"*"pie_01650"]`{qt}Uufufufu!`[@][lv 0*"65"*"pie_01660"]` Understood, piece!{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
+csp_slot s0_11
 flush 2
+wait 500
 
 msgwnd_non
 *e32_422
 d `As you wish, I will fast forward past the charades and the garbage delusions.`[\]
-
+textoff2
 
 bgmplay 41,70,0
 
 seplay 11,57,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:efe",s0_3,"blade1b"
-
 flush 1
-
-seplay 11,73,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 23,150
+gptwait quakexamp
+seplay 12,73,100
 
 lbg "c:efe",s0_3,"blade7_2r"
-
 flush 1
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 23,150
+gptwait quakexamp
 
-seplay 11,72,100
+seplay 13,72,100
+seplay 14,57,100
+seplay 15,36,100
 
-seplay 11,57,100
-
-seplay 11,36,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:efe",s0_3,"homing7bs2"
-
+lbg "a:efe",s0_3,"homing7bs2"
 flush 1
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 lbg "a:backgrounds",s0_1,"mhal_h1a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h1a"
 lss s0_9,"pie","b11_14"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 *e32_423
 d `{f:5:Piece}, an intruder from another realm who has blended into the Ushiromiya family.`[\]
-
+textoff2
 
 seplay 11,57,100
 
-csp_slot s0_3
-csp_slot s0_8
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:efe",s0_3,"blade1r"
-
 flush 1
+agpt quakeycycle,27
+agpt quakeyamp,10
+agpt quakeyamp,0,150,1
+rumble 23,150
+gptwait quakeyamp
+seplay 13,57,100
 
-seplay 11,72,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+seplay 12,72,100
 
 lbg "c:efe",s0_3,"blade2r"
-
 flush 1
-
-seplay 11,57,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 23,150
+gptwait quakexamp
+seplay 15,57,100
 
 lbg "c:efe",s0_3,"blade7_1r"
-
 flush 1
-
-seplay 11,57,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 23,150
+gptwait quakexamp
+seplay 14,57,100
 
 lbg "c:efe",s0_3,"blade7_2r"
-
 flush 1
-
-seplay 11,57,100
-
 seplay 11,2,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:efe",s0_3,"homing6bs2"
-
 flush 1
+agpt quakexcycle,27
+agpt quakexamp,10
+agpt quakexamp,0,150,1
+rumble 23,150
+gptwait quakexamp
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 80
 
-seplay 11,72,100
+seplay 12,72,100
 
-seplay 11,57,100
+seplay 13,57,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_30,"white"
 flush 1
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_30
 lbg "c:efe",s0_3,"blade7_2r"
-
 flush 2
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mhal_h1c"
-
 lss s0_8,"kin","a11_fukigen1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"bea","a11_1_majime6"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 *e32_424
-d `Although they couldn't prevent her invasion, Kinzo and Beato detected here because of a slight feeling of discomfort.`[\]
+d `Although they couldn't prevent her invasion, Kinzo and Beato detected her because of a slight feeling of discomfort.`[\]
+textoff2
 
+seplay 14,57,100
 
-seplay 11,57,100
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
 
 lbg "c:efe",s0_3,"blade7_1b"
-
 flush 1
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 
 seplay 11,57,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:efe",s0_3,"blade5b"
-
+flush 1
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
+lbg "c:colour",s0_30,"white"
 flush 1
 
-seplay 11,72,100
+seplay 13,72,100
+seplay 12,57,100
 
-seplay 11,57,100
-
-flush 1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_30
 lbg "c:efe",s0_3,"blade8_2b"
-
 flush 22
 
 csp_slot s0_3
@@ -4951,182 +4770,110 @@ csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
 
+rain_load s0_2
+rain_params s0_2,100,500,0
 lbg "a:backgrounds",s0_1,"mhal_h1a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h1a"
 lss s0_10,"gen","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_9,"kan","a12_odoroki2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_8,"sha","a11_ikari1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 flush 23
 
 *e32_425
 d `Kinzo and Beato, as well as Genji, Shannon, and Kanon, confronted the witch from another world who claimed the name {f:5:Piece} Ushiromiya.`[\]
 
-
 *e32_426
 d `However, while they realized {f:5:Piece} was an uninvited guest from another world, they didn't realize that there have already been two sacrifices.`[\]
-
 
 *e32_427
 d `Both Kyrie Ushiromiya and Ange Ushiromiya... have already been erased from this world, as well as the fact they existed.`[\]
 
-
 *e32_428
-d `When a powerful foreign body tries to unilaterally alter the world, or just a Fragment,...`[@]`it triggers a defensive antibody reaction.`[\]
-
+d `When a powerful foreign body tries to unilaterally alter the world, or just a Fragment,...`[@]` it triggers a defensive antibody reaction.`[\]
+textoff2
 
 seplay 11,57,100
 
-csp_slot s0_3
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:efe",s0_3,"blade1b"
-
 flush 1
-
-seplay 11,57,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 200
+seplay 12,57,100
 lbg "c:efe",s0_3,"blade2b"
-
 flush 1
-
-seplay 11,57,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 200
+seplay 13,57,100
 lbg "c:efe",s0_3,"blade3b"
-
 flush 1
-
-seplay 11,72,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 200
+seplay 14,72,100
 lbg "c:efe",s0_3,"blade7_2b"
-
 flush 1
-
-seplay 11,73,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 200
+seplay 15,73,100
 lbg "c:efe",s0_3,"blade6_2b"
-
 flush 1
-
-seplay 11,74,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+wait 200
+seplay 16,74,100
 lbg "c:efe",s0_3,"blade7_2b"
-
 flush 1
-
+wait 200
 seplay 11,57,100
-
-seplay 11,72,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:efe",s0_3,"homing7bs2"
-
+seplay 12,72,100
+lbg "a:efe",s0_3,"homing7bs2"
 flush 1
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 lbg "a:backgrounds",s0_1,"mhal_h1a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h1a"
 lss s0_9,"pie","a11_13"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 *e32_429
 d `But even then... it is difficult to fully convince them that {f:5:Piece} Ushiromiya was an enemy.`[\]
 
-
 *e32_430
-d `The strong barrier would alert them to any visitors from a different Fragment, alerting them to her.`[\]
-
+d `The strong barrier would alert them of any visitors from a different Fragment, including her.`[\]
 
 *e32_431
 d `...However, as everybody faced off against {f:5:Piece}.... they recognized her as a familiar relative, {f:5:Piece} Ushiromiya.`[\]
+textoff2
 
-
-seplay 11,72,100
-
-seplay 11,73,100
-
-csp_slot s0_3
-csp_slot s0_8
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_9
-csp_slot s0_10
+seplay 11,72,100
+seplay 12,73,100
 
+lbg "c:colour",s0_30,"white"
 flush 1
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_30
 lbg "c:efe",s0_3,"blade7_2r"
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mhal_h1c"
-
 lss s0_10,"bea","a11_1_majime5star"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_8,"pie","a11_4"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 *e32_432
-d `Beato immediately saw through this intense sense of discomfort.`[@]`It was a pest with the power to devour an opponent's existence and all traces of their story...`[\]
-
+d `Beato immediately saw through this intense sense of discomfort.`[@]` It was a pest with the power to devour an opponent's existence and all traces of their story...`[\]
 
 lss s0_8,"pie","a11_9"
 spt_mem "a2","xpos",s0_8,-549
@@ -5135,27 +4882,20 @@ flush 80
 msgwnd_pie
 *e32_433
 d [lv 0*"65"*"pie_01670"]`{qt}As you'd expect from somebody who just introduced herself as an advising alchemist, piece.`[@][lv 0*"65"*"pie_01680"]`...I am impressed that you have seen through my power.`[@][lv 0*"65"*"pie_01690"]` But is that the only thing you've noticed about it...?{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 lbg "a:backgrounds",s0_1,"mhal_h1a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h1a"
 lss s0_10,"gen","a21_kashikomari1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
 
 lss s0_9,"kan","a12_odoroki2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_8,"sha","a11_ikari1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 23
 
 lss s0_9,"kan","a12_komaru1"
@@ -5166,7 +4906,6 @@ msgwnd_kan
 *e32_434
 d [lv 0*"16"*"kan_00860"]`{qt}What is she.... talking about...?{qt}`[\]
 
-
 lss s0_8,"sha","a11_majime3"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5174,7 +4913,6 @@ flush 80
 msgwnd_sha
 *e32_435
 d [lv 0*"15"*"sha_01030"]`{qt}Kanon-kun.`[@][lv 0*"15"*"sha_01040"]`....Right now, there are five of us fighting.`[@][lv 0*"15"*"sha_01050"]`....Are you sure there were always five of us?{qt}`[\]
-
 
 lss s0_9,"kan","a12_komaru1"
 spt_mem "a2","xpos",s0_9,0
@@ -5184,7 +4922,6 @@ msgwnd_kan
 *e32_436
 d [lv 0*"16"*"kan_00870"]`{qt}Huh?{qt}`[\]
 
-
 lss s0_10,"gen","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -5193,33 +4930,26 @@ msgwnd_gen
 *e32_437
 d [lv 0*"14"*"gen_01020"]`{qt}...Perhaps.`[@][lv 0*"14"*"gen_01030"]` There may have been six of us.{qt}`[\]
 
-
 msgwnd_non
 *e32_438
 d `In addition to Shannon and Kanon, there could have been one more servant with the -on sound in their name.`[\]
 
-
 *e32_439
 d `Had somebody just been sacrificed as a lesson...?`[\]
+textoff2
 
-
-csp_slot s0_3
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mhal_h1c"
-
 lss s0_10,"bea","a11_futeki1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_bea
 *e32_440
 d [lv 0*"27"*"bea_07460"]`{qt}Whaaat?`[@][lv 0*"27"*"bea_07470"]` Isn't this similar to my golden magic?{qt}`[\]
-
 
 lss s0_8,"kin","a11_warai2"
 spt_mem "a2","xpos",s0_8,-549
@@ -5228,161 +4958,147 @@ flush 80
 msgwnd_kin
 *e32_441
 d [lv 0*"01"*"kin_00190"]`{qt}Fufufufufu.`[@][lv 0*"01"*"kin_00200"]` Now that you mention it, yes.`[@][lv 0*"01"*"kin_00210"]`...However, it's a stingy power that can't even give me a single gold coin.`[@][lv 0*"01"*"kin_00220"]` Fuuhaahaaha...!{qt}`[\]
-
+textoff2
 
 seplay 11,56,100
-
+lbg "c:colour",s0_21,"black"
+aspt2 alpha,s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2 alpha,s0_22,150
+lsl s0_10,"bea","a11_futeki1",1
 flush 28
 
-lss s0_8,"but","b11_majime1"
-spt_mem "a2","xpos",s0_8,-549
+lss s0_28,"but","b11_majime1"
+spt_mem "a2","xpos",s0_28,-549
 flush 80
 
 msgwnd_but
 *e32_442
 d [lv 0*"10"*"bat_06470"]`{qt}...I see.`[@][lv 0*"10"*"bat_06480"]` But is it really the same as golden magic?{qt}`[\]
 
-
-lss s0_10,"bea","a11_akuwarai1"
-spt_mem "a2","xpos",s0_10,550
+lss s0_30,"bea","a11_akuwarai1"
+spt_mem "a2","xpos",s0_30,550
 flush 80
 
 msgwnd_bea
 *e32_443
 d [lv 0*"27"*"bea_07480"]`{qt}If we're denying fantasy, that's probably the easiest way to explain it.{qt}`[\]
 
-
-lss s0_10,"enj","a11_nayamu1"
-spt_mem "a2","xpos",s0_10,550
+lss s0_30,"enj","a11_nayamu1"
+spt_mem "a2","xpos",s0_30,550
 flush 80
 
 msgwnd_enj
 *e32_444
 d [lv 0*"11"*"enj_01400"]`{qt}It's unpleasant.`[@][lv 0*"11"*"enj_01410"]` If six-year-old me got my existence erased from this farce from the beginning, why would Onii-chan be on good terms with my parents?{qt}`[\]
 
-
-lss s0_8,"but","b11_niramu2"
-spt_mem "a2","xpos",s0_8,-549
+lss s0_28,"but","b11_niramu2"
+spt_mem "a2","xpos",s0_28,-549
 flush 80
 
 msgwnd_but
 *e32_445
 d [lv 0*"10"*"bat_06490"]`{qt}That's a good point, too.`[@][lv 0*"10"*"bat_06500"]` The golden ingots are piling up.`[@][lv 0*"10"*"bat_06510"]` I'm absolutely not going to accept that my sister doesn't exist, especially while she's watching.{qt}`[\]
 
-
-lss s0_9,"enj","a11_warai3"
-spt_mem "a2","xpos",s0_9,0
+csp_slot s0_30
+flush 80
+lss s0_29,"enj","a11_warai3"
+spt_mem "a2","xpos",s0_29,0
 flush 80
 
 msgwnd_enj
 *e32_446
 d [lv 0*"11"*"enj_01420"]`{qt}Onii-chan....{qt}`[\]
 
-
-lss s0_10,"bea","a11_warai4"
-spt_mem "a2","xpos",s0_10,370
+csp_slot s0_28
+csp_slot s0_29
+flush 80
+lss s0_30,"bea","a11_warai4"
+spt_mem "a2","xpos",s0_30,370
 flush 80
 
 msgwnd_bea
 *e32_447
 d [lv 0*"27"*"bea_07490"]`{qt}Hey, {f:5:Piece}.`[@][lv 0*"27"*"bea_07500"]` If you want to swallow up this brocon, go for it.{qt}`[\]
 
-
-lss s0_8,"pie","a11_10"
-spt_mem "a2","xpos",s0_8,-369
+lss s0_28,"pie","a11_10"
+spt_mem "a2","xpos",s0_28,-369
 flush 80
 
 msgwnd_pie
 *e32_448
 d [lv 0*"65"*"pie_01700"]`{qt}I'm not going to try to checkmate in this boxing match, piece{p:0:♪}{qt}`[\]
+textoff2
 
-
+csp_slot s0_30
+csp_slot s0_28
+csp_slot s0_22
+csp_slot s0_21
 flush 8
 
 seplay 11,58,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
+csp_slot s0_8
+lbg "c:colour",s0_30,"white"
 flush 1
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_30
 lbg "c:efe",s0_3,"blade1r"
-
 flush 80
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"mhal_h1c"
+lss s0_10,"kan","a12b_ikari2"
+spt_mem "a2","xpos",s0_10,-549
 
-lss s0_8,"kan","a12b_ikari2"
-spt_mem "a2","xpos",s0_8,-549
-flush 80
-
-lss s0_9,"pie","a11_13"
-spt_mem "a2","xpos",s0_9,0
-flush 80
-
+lss s0_8,"pie","a11_13"
+spt_mem "a2","xpos",s0_8,0
 flush 2
 
 seplay 11,57,100
-
+lbg "c:colour",s0_9,"white"
 flush 1
 
-lss s0_8,"kan","a12b_odoroki1"
-spt_mem "a2","xpos",s0_8,-549
-flush 80
+csp_slot s0_9
+lss s0_10,"kan","a12b_odoroki1"
+spt_mem "a2","xpos",s0_10,-549
 
-lss s0_9,"pie","b14_19"
-spt_mem "a2","xpos",s0_9,0
-flush 80
-
+lss s0_8,"pie","b14_19"
+spt_mem "a2","xpos",s0_8,0
 flush 22
-
+lbg "c:efe",s0_15,"pie_hair_efe1"
+aspt2 alpha,s0_15,100
 flush 4
-
+lbg "c:efe",s0_16,"pie_hair_efe2"
+aspt2 alpha,s0_16,240
 flush 4
-
+lbg "c:efe",s0_17,"pie_hair_efe1"
+aspt2 alpha,s0_17,240
 flush 22
 
 msgwnd_non
 *e32_449
-d2 `In the meantime, the five people led by Kinzo and Beato quickly reduced in number.`[@][#][*]`Even though they couldn't remember how many people were originally in the group, a distorted, strange battle ensued.`[\]
-
+d2 `In the meantime, the five people led by Kinzo and Beato quickly reduced in number.`[@][#][*]` Even though they couldn't remember how many people were originally in the group, a distorted, strange battle ensued.`[\]
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
+csp_slot s0_15
+csp_slot s0_16
+csp_slot s0_17
+rain_load s0_2
+rain_params s0_2,100,500,0
 lbg "a:backgrounds",s0_1,"mhal_h1a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h1a"
 lss s0_10,"bea","a11_1_odoroki3"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 2
+d_continue
+wait_on_d -1
 
 *e32_450
 d `Beato, the last one left, is fighting to contain her bewilderment amidst a fierce sense of disorientation.`[\]
 
-
 *e32_451
-d `Was I really fighting this monster all by myself?`[@]`Didn't I have allies fighting alongside me?`[@]`Has she tampered with the world to make it as if I had been fighting alone from the beginning?`[\]
-
+d `Was I really fighting this monster all by myself?`[@]` Didn't I have allies fighting alongside me?`[@]` Has she tampered with the world to make it as if I had been fighting alone from the beginning?`[\]
 
 lss s0_10,"bea","a11_aseru1"
 spt_mem "a2","xpos",s0_10,550
@@ -5391,54 +5107,60 @@ flush 80
 msgwnd_bea
 *e32_452
 d [lv 0*"27"*"bea_07510"]`{qt}You...`[@][lv 0*"27"*"bea_07520"]` you monsteeeer......{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"mhal_h1c"
-
 lss s0_9,"pie","a14_6"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 msgwnd_pie
 *e32_453
 d [lv 0*"65"*"pie_01710"]`{qt}Thank you, piece{p:0:♪}`[@][lv 0*"65"*"pie_01720"]` That kind of praise pleases my master the most, piece.{qt}`[\]
 
-
-seplay 11,64,100
+seplay 13,64,100
 
 msgwnd_non
 *e32_454
 d2 `*whoosh*!!`[#][*]`*crack*......!!`[#][*]`......*snap*...`[#][*]`...*urk*......`[\]
-
 wait_on_d 0
-
+seplay 11,93,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
+wait 300
 d_continue
 wait_on_d 1
-
+seplay 12,94,100
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
+wait 500
 d_continue
 wait_on_d 2
-
-d_continue
-wait_on_d -1
-
-seplay 11,93,100
-
-seplay 11,94,100
-
 lss s0_9,"pie","a23_11a"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
-
+wait 400
 seplay 11,95,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
+d_continue
+wait_on_d -1
 
 lss s0_9,"pie","a23_15a"
 spt_mem "a2","xpos",s0_9,0
@@ -5448,38 +5170,43 @@ msgwnd_pie
 *e32_455
 d [lv 0*"65"*"pie_01730"]`{qt}...Huh...?{qt}`[\]
 
-
 msgwnd_non
 *e32_456
-d2 `*urk*...`[#][*]`*urk*`[#][*]`.........`[@][#][*]`...*ptoo*`[#][*][\]
-
+d2 `*urk*...`[#][*]`*urk*`[#][*]`.........`[#][*][@]`...*ptoo*`[#][*][\]
 wait_on_d 0
-
+seplay 11,93,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
 d_continue
 wait_on_d 1
-
-d_continue
-wait_on_d 2
-
-d_continue
-wait_on_d 3
-
-d_continue
-wait_on_d -1
-
-seplay 11,93,100
-
-;lss s0_9,"pie","a22_11a"
+;lss s0_9,"pie","pie_a22_extra2"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
+wait 400
 seplay 11,94,100
-
+agpt quakeycycle,67
+agpt quakeyamp,30
+agpt quakeyamp,0,250,1
+rumble 63,250
+gptwait quakeyamp
+d_continue
+wait_on_d 2
 lss s0_9,"pie","a21_1a"
 spt_mem "a2","xpos",s0_9,0
 flush 80
-
+d_continue
+wait_on_d 3
 seplay 11,47,100
+agpt quakexcycle,67
+agpt quakexamp,30
+agpt quakexamp,0,250,1
+rumble 63,250
+gptwait quakexamp
+d_continue
+wait_on_d -1
 
 lss s0_9,"pie","a21_16a"
 spt_mem "a2","xpos",s0_9,0
@@ -5487,17 +5214,14 @@ flush 80
 
 msgwnd_pie
 *e32_457
-d [lv 0*"65"*"pie_01740"]`{qt}What's this...`[@][lv 0*"65"*"pie_01750"]` thing...{qt}`[\]
-
+d [lv 0*"65"*"pie_01740"]`{qt}What's this...`[@][lv 0*"65"*"pie_01750"]` disgusting...{qt}`[\]
 
 msgwnd_non
 *e32_458
 d `PIECE's hair, which had gulped down 5 people, spit something out in digust.`[\]
 
-
 *e32_459
 d `That thing was invisible to the untrained eye.`[@]`...the {qt}existence{qt} of the swallowed victims.`[\]
-
 
 lss s0_9,"pie","a11_13"
 spt_mem "a2","xpos",s0_9,0
@@ -5507,15 +5231,12 @@ msgwnd_pie
 *e32_460
 d [lv 0*"65"*"pie_01760"]`{qt}I see.`[@][lv 0*"65"*"pie_01770"]` Unlike normal Humans, those versed in magic are not easily swallowed in their entirety... or so it seems, piece.`[@][lv 0*"65"*"pie_01780"]` Uuufufufuu... they were shrewd little rascals to the very end, piece!{qt}`[\]
 
-
 msgwnd_non
 *e32_461
 d `It seemed that she couldn't entirely erase the fact that Kyrie and Ange existed.`[\]
 
-
 *e32_462
 d `Ange and Kyrie's names and family names were erased, but it seems those five didn't lose that...`[\]
-
 
 lss s0_9,"pie","a11_3"
 spt_mem "a2","xpos",s0_9,0
@@ -5523,135 +5244,116 @@ flush 80
 
 msgwnd_pie
 *e32_463
-d [lv 0*"65"*"pie_01790"]`{qt}Well, it's fine, piece{p:0:♪}`[@][lv 0*"65"*"pie_01800"]` Now there are no more obstacles in my way, piece.`[@][lv 0*"65"*"pie_01810"]` But it is almost time for the fun-filled Halloween party to end.`[@][lv 0*"65"*"pie_01820"]`...The remaining servants were clueless.`[@][lv 0*"65"*"pie_01830"]` Now it seems that only Gohda and Kumasawa are tidying up after the party, piece.{qt}`[\]
-
+d [lv 0*"65"*"pie_01790"]`{qt}Well, it's fine, piece{p:0:♪}`[@][lv 0*"65"*"pie_01800"]` Now there are no more obstacles in my way, piece.`[@][lv 0*"65"*"pie_01810"]` But it is almost time for the fun-filled Halloween party to end.`[@][lv 0*"65"*"pie_01820"]`...The remaining servants are clueless.`[@][lv 0*"65"*"pie_01830"]` Now it seems that only Gohda and Kumasawa are tidying up after the party, piece.{qt}`[\]
+textoff2
 
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 flush 22
+vol_bgm -1 800
+wait 1500
 
 meplay 1,12,100
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 lbg "a:backgrounds",s0_1,"ment_1br_bg"
 lbg "a:backgrounds",s0_3,"ment_1br"
-
 flush 22
 
 msgwnd_non
 *e32_464
 d `Or so she thought.`[@]` A couple servants who she hadn't seen before materialized and began cleaning up the mess.`[\]
 
-
 *e32_465
 d `Since she ate three of the servants, Genji, Shanon, and Kanon, she thought the servants would have a difficult time tonight, but it doesn't seem to be a problem.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "a:backgrounds",s0_1,"mhal_h2a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h2a"
 flush 22
 
 *e32_466
-d `The lively and fun halloween party gradually became a relaxed and laid-back one.`[@]`In that way, the party came to an end as the night drew to a close.`[\]
-
+d `The lively and fun halloween party gradually became a relaxed and laid-back one.`[@]` In that way, the party came to an end as the night drew to a close.`[\]
 
 *e32_467
-d `Everybody was smiling.`[@]`Nobody was sad.`[@]`It was a night full of happiness for all...`[\]
+d `Everybody was smiling.`[@]` Nobody was sad.`[@]` It was a night full of happiness for all...`[\]
+textoff2
 
-
-vol_bgm -1 500
-
-vol_mix_fade 500
-
+vol_mix_fade 100
 seplay 11,56,100
-
+lbg "c:colour",s0_21,"black"
+aspt2 alpha,s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2 alpha,s0_22,150
 flush 28
 
 bgmplay 29,70,0
 
-lss s0_9,"pie","a11_2"
-spt_mem "a2","xpos",s0_9,0
+lss s0_29,"pie","a11_2"
+spt_mem "a2","xpos",s0_29,0
 flush 80
 
 msgwnd_pie
 *e32_468
 d [lv 0*"65"*"pie_01840"]`{qt}I had prepared a fun and exciting magic battle for you.`[@][lv 0*"65"*"pie_01850"]` But since you said you weren't fond of theatrics, I had to cut it down to the bare essentials, piece.`[@][lv 0*"65"*"pie_01860"]` Ehihihi, are you a little disappointed?{qt}`[\]
 
-
-lss s0_10,"bea","a11_futeki2"
-spt_mem "a2","xpos",s0_10,550
+csp_slot s0_29
+flush 80
+lss s0_28,"bea","a11_futeki2"
+spt_mem "a2","xpos",s0_28,550
 flush 80
 
 msgwnd_bea
 *e32_469
 d [lv 0*"27"*"bea_07530"]`{qt}I don't mind.`[@][lv 0*"27"*"bea_07540"]` If you spend too long describing the food, it'll get cold.{qt}`[\]
 
-
-lss s0_8,"but","b11_nayamu2_chiru"
-spt_mem "a2","xpos",s0_8,-549
+lss s0_30,"but","b11_nayamu2_chiru"
+spt_mem "a2","xpos",s0_30,-549
 flush 80
 
 msgwnd_but
 *e32_470
 d [lv 0*"10"*"bat_06520"]`{qt}You should quickly serve the food.`[@][lv 0*"10"*"bat_06530"]` I mean, that's the whole point of a restaurant, isn't it, to have the food fresh and hot?{qt}`[\]
 
-
-lss s0_9,"enj","a11_fuman2"
-spt_mem "a2","xpos",s0_9,0
+lss s0_29,"enj","a11_fuman2"
+spt_mem "a2","xpos",s0_29,0
 flush 80
 
 msgwnd_enj
 *e32_471
 d [lv 0*"11"*"enj_01430"]`{qt}On the other hand,`[@][lv 0*"11"*"enj_01440"]` it's bad manners to eat with your bare hands before the utensils are even ready.{qt}`[\]
 
-
-lss s0_9,"pie","a11_4"
-spt_mem "a2","xpos",s0_9,0
+csp_slot s0_28
+csp_slot s0_29
+csp_slot s0_30
+lss s0_29,"pie","a11_4"
+spt_mem "a2","xpos",s0_29,0
 flush 80
 
 msgwnd_pie
 *e32_472
 d [lv 0*"65"*"pie_01870"]`{qt}That's absolutely right.`[@][lv 0*"65"*"pie_01880"]` I am not going to make the uncivilized demand that you eat with your bare hands.`[@][lv 0*"65"*"pie_01890"]` Please, use your red fork and blue spoon to your heart's content, piece{p:0:♪}{qt}`[\]
+textoff2
 
-
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_21
+csp_slot s0_22
+csp_slot s0_29
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 flush 22
 
 lss s0_10,"enj","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_enj
 *e32_473
 d [lv 0*"11"*"enj_01450"]`{qt}First of all, about the answer you want from us.`[@][lv 0*"11"*"enj_01460"]` That is to say, the witch's identity.`[@][lv 0*"11"*"enj_01470"]` I just want to be a little more clear about that.{qt}`[\]
-
 
 lss s0_8,"bea","a11_majime2"
 spt_mem "a2","xpos",s0_8,-549
@@ -5660,61 +5362,45 @@ flush 80
 msgwnd_bea
 *e32_474
 d2 [lv 0*"27"*"bea_07550"]`{qt}As for you, `[#][*]`{p:1:a person that exists from Episode 1 to Episode 8} correct?`[@][lv 0*"27"*"bea_07560"]` Let me further clarify.`[@][lv 0*"27"*"bea_07570"]` Is that person a person all three of us all can recognize?{qt}`[\]
-
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
 
-seplay 11,59,100
-
-lss s0_9,"pie","a11_10"
-spt_mem "a2","xpos",s0_9,0
+lss s0_19,"pie","a11_10"
+spt_mem "a2","xpos",s0_19,0
 flush 80
 
 msgwnd_pie
 *e32_475
 d [lv 0*"65"*"pie_01900"]`{qt}Define recognize.{qt}`[\]
 
-
-lss s0_8,"but","b11_majime1"
-spt_mem "a2","xpos",s0_8,-549
+csp_slot s0_8
+flush 80
+lss s0_20,"but","b11_majime1"
+spt_mem "a2","xpos",s0_20,-549
 flush 80
 
 msgwnd_but
 *e32_476
 d [lv 0*"10"*"bat_06540"]`{qt}For example...{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
+csp_slot s0_20
+csp_slot s0_19
 csp_slot s0_10
-
 lbg "c:locale_lan",s0_3,"kaisou_ep8ber"
-
 flush 22
 
 *e32_477
 d2 [lv 0*"10"*"bat_06550"]`{qt}In episode 8, the expression 'many of {f:5:Lambdadelta}'s friends are terrifying monsters' was said.`[@][#][*][lv 0*"10"*"bat_06560"]` If, hypothetically, one of those monsters was the right answer,`[@][lv 0*"10"*"bat_06570"]` even though they existed throughout that Fragment, we wouldn't know any of their names.`[@][lv 0*"10"*"bat_06580"]` Therefore, it would be impossible for us to give you the correct answer.{qt}`[\]
-
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 lss s0_9,"but","b11_oya1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
+d_continue
+wait_on_d -1
 
 lss s0_10,"pie","a11_6"
 spt_mem "a2","xpos",s0_10,550
@@ -5723,18 +5409,13 @@ flush 80
 msgwnd_pie
 *e32_478
 d2 [lv 0*"65"*"pie_01910"]`{qt}Ohh, right.`[@][lv 0*"65"*"pie_01920"]` I understand.`[@][lv 0*"65"*"pie_01930"]` I'll say this in red, piece.`[@][#][*][lv 0*"65"*"pie_01940"]` {p:1:You three definitely know my name.`[@][#][*][lv 0*"65"*"pie_01950"]` In other words, my existence and name is one that exists within your memories}.{qt}`[\]
-
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d 1
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
-
-seplay 11,59,100
-
-seplay 11,59,100
 
 lss s0_8,"enj","a11_majime1"
 spt_mem "a2","xpos",s0_8,-549
@@ -5742,8 +5423,7 @@ flush 80
 
 msgwnd_enj
 *e32_479
-d [lv 0*"11"*"enj_01480"]`{qt}Memories?`[@][lv 0*"11"*"enj_01490"]` So, we've met them?{qt}`[\]
-
+d [lv 0*"11"*"enj_01480"]`{qt}Memories?`[@][lv 0*"11"*"enj_01490"]` So, we've met you before?{qt}`[\]
 
 lss s0_10,"pie","a11_5"
 spt_mem "a2","xpos",s0_10,550
@@ -5752,27 +5432,20 @@ flush 80
 msgwnd_pie
 *e32_480
 d [lv 0*"65"*"pie_01960"]`{qt}I will not answer that question.`[@][lv 0*"65"*"pie_01970"]` That would greatly reduce the number of possible answers, which would dampen the excitement, piece.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
-
 flush 22
-
 lss s0_10,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_bea
 *e32_481
 d [lv 0*"27"*"bea_07580"]`{qt}Kukuku.`[@][lv 0*"27"*"bea_07590"]` That's not surprising.`[@][lv 0*"27"*"bea_07600"]` We're three people,`[@][lv 0*"27"*"bea_07610"]` with varying life circumstances,`[@][lv 0*"27"*"bea_07620"]` who have met and haven't met different people.`[@][lv 0*"27"*"bea_07630"]` If she answers that, the scope of possible answers would be quite restricted.{qt}`[\]
-
 
 lss s0_8,"but","b11_niramu3"
 spt_mem "a2","xpos",s0_8,-549
@@ -5782,7 +5455,6 @@ msgwnd_but
 *e32_482
 d [lv 0*"10"*"bat_06590"]`{qt}However...`[@][lv 0*"10"*"bat_06600"]` humans, witches, furniture, weapons, and whatnot have appeared inside this catbox...`[@][lv 0*"10"*"bat_06610"]` how many names have even surfaced...?{qt}`[\]
 
-
 lss s0_9,"enj","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -5791,7 +5463,6 @@ msgwnd_enj
 *e32_483
 d [lv 0*"11"*"enj_01500"]`{qt}Just assuring us that it's possible to answer correctly doesn't mean the difficulty level has really dropped...{qt}`[\]
 
-
 lss s0_10,"bea","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -5799,27 +5470,21 @@ flush 80
 msgwnd_bea
 *e32_484
 d [lv 0*"27"*"bea_07640"]`{qt}However, there are three of us.`[@][lv 0*"27"*"bea_07650"]` Witch and Human.`[@][lv 0*"27"*"bea_07660"]` Inside and outside the catbox.`[@][lv 0*"27"*"bea_07670"]` We all have differing situations.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1ap"
-
 flush 22
 
 lss s0_9,"pie","a11_3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_pie
 *e32_485
 d [lv 0*"65"*"pie_01980"]`{qt}Even so, I can crush all three of you at once.`[@][lv 0*"65"*"pie_01990"]` My master has so much confidence that they told me to fight all three of you at once, piece.{qt}`[\]
-
 
 lss s0_9,"pie","a11_13"
 spt_mem "a2","xpos",s0_9,0
@@ -5827,7 +5492,6 @@ flush 80
 
 *e32_486
 d [lv 0*"65"*"pie_02000"]`{qt}That's right.`[@][lv 0*"65"*"pie_02010"]` I didn't mention one of the game's conditions.{qt}`[\]
-
 
 lss s0_8,"but","b11_futeki1"
 spt_mem "a2","xpos",s0_8,-549
@@ -5837,7 +5501,6 @@ msgwnd_but
 *e32_487
 d [lv 0*"10"*"bat_06620"]`{qt}Now here it comes.`[@][lv 0*"10"*"bat_06630"]` As far as I was concerned, it wasn't a worthwhile story yet.{qt}`[\]
 
-
 lss s0_10,"bea","a11_akuwarai2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -5845,7 +5508,6 @@ flush 80
 msgwnd_bea
 *e32_488
 d [lv 0*"27"*"bea_07680"]`{qt}You should give us at least one condition.`[@][lv 0*"27"*"bea_07690"]` Your side has one person.`[@][lv 0*"27"*"bea_07700"]` Our side has three.`[@][lv 0*"27"*"bea_07710"]` If you don't have a bit of a handicap, it won't be as much fun.{qt}`[\]
-
 
 lss s0_9,"pie","a11_4"
 spt_mem "a2","xpos",s0_9,0
@@ -5855,7 +5517,8 @@ msgwnd_pie
 *e32_489
 d [lv 0*"65"*"pie_02020"]`{qt}It's not anything significant.`[@][lv 0*"65"*"pie_02030"]` When everybody arrives at their final theory,`[@][lv 0*"65"*"pie_02040"]` I want you to agree upon it and announce it together, piece.`[@][lv 0*"65"*"pie_02050"]` Whatever you choose as your answer, if one of you doesn't agree, it won't be considered an answer, piece.{qt}`[\]
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"but","b11_majime2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5863,7 +5526,6 @@ flush 80
 msgwnd_but
 *e32_490
 d [lv 0*"10"*"bat_06640"]`{qt}......To confirm, is there a limit on the number of times we can declare an answer?{qt}`[\]
-
 
 lss s0_10,"bea","a11_majime2"
 spt_mem "a2","xpos",s0_10,550
@@ -5873,7 +5535,6 @@ msgwnd_bea
 *e32_491
 d [lv 0*"27"*"bea_07720"]`{qt}Hmm.`[@][lv 0*"27"*"bea_07730"]` If we say every single name we know, we'll get it right someday, won't we?`[@][lv 0*"27"*"bea_07740"]` If we don't have a limit on the number of answers we can declare, it's not really a game.{qt}`[\]
 
-
 lss s0_9,"enj","a11_fuman1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -5881,7 +5542,6 @@ flush 80
 msgwnd_enj
 *e32_492
 d [lv 0*"11"*"enj_01510"]`{qt}Idiot.`[@][lv 0*"11"*"enj_01520"]` Why are you proposing a rule that will strangle yourself?{qt}`[\]
-
 
 lss s0_10,"bea","a11_akuwarai2"
 spt_mem "a2","xpos",s0_10,550
@@ -5891,7 +5551,6 @@ msgwnd_bea
 *e32_493
 d [lv 0*"27"*"bea_07750"]`{qt}We're going to win regardless.`[@][lv 0*"27"*"bea_07760"]` The three of us will arrive at the same theory and trounce her in a single blow.{qt}`[\]
 
-
 lss s0_8,"but","b11_futeki3"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5900,7 +5559,6 @@ msgwnd_but
 *e32_494
 d [lv 0*"10"*"bat_06650"]`{qt}So this time around, it's not shotgun deductions, but more like a sniper rifle?{qt}`[\]
 
-
 lss s0_10,"bea","a11_akuwarai1"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -5908,15 +5566,12 @@ flush 80
 msgwnd_bea
 *e32_495
 d [lv 0*"27"*"bea_07770"]`{qt}Of course, you use the blue to set up a myriad of checks and balances.`[@][lv 0*"27"*"bea_07780"]` But once you've found the outline, you've got just one shot...!{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"g1f_s1bp"
-
 flush 22
 
 lss s0_9,"pie","a11_2"
@@ -5927,7 +5582,6 @@ msgwnd_pie
 *e32_496
 d [lv 0*"65"*"pie_02060"]`{qt}My master didn't order me to put a restriction on the number of times you could give an answer.`[@][lv 0*"65"*"pie_02070"]`....But if doing so will make you all more interested in the story and show us a heated logic battle, my master will be happy to oblige.{qt}`[\]
 
-
 lss s0_8,"enj","a11_nayamu1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -5935,7 +5589,6 @@ flush 80
 msgwnd_enj
 *e32_497
 d [lv 0*"11"*"enj_01530"]`{qt}....Good grief.`[@][lv 0*"11"*"enj_01540"]` Oh, well.`[@][lv 0*"11"*"enj_01550"]`...Thanks to that, it looks like it's no longer going to be a trival fight where we just have to name a few suspicious characters at random.{qt}`[\]
-
 
 lss s0_10,"but","b11_niramu2"
 spt_mem "a2","xpos",s0_10,550
@@ -5945,168 +5598,130 @@ msgwnd_but
 *e32_498
 d [lv 0*"10"*"bat_06660"]`{qt}Then, let's begin.`[@][lv 0*"10"*"bat_06670"]` let's take everybody's views into consideration{qt}`[\]
 
-
-lss s0_9,"pie","b11_14"
-spt_mem "a2","xpos",s0_9,0
+csp_slot s0_9
+lss s0_19,"pie","b11_14"
+spt_mem "a2","xpos",s0_19,0
 flush 80
 
 msgwnd_pie
 *e32_499
 d [lv 0*"65"*"pie_02080"]`{qt}With that, let's start, piece!!!{qt}`[\]
+textoff2
 
-
+vol_bgm -1,300
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
+csp_slot s0_19
 csp_slot s0_10
-
 flush 2
-
+wait 500
 bgmplay 107,70,0
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"chess2"
-
 flush 2
 
 msgwnd_non
 *e32_500
 d `Battler crossed his arms and looked up at the night sky...`[\]
 
-
 *e32_501
 d `Like I did in the game with Beato, I guess I'll step into the position of denying fantasy.`[\]
 
-
 *e32_502
 d `With magic, anything goes, and it makes my brain ache.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"garden_1ar"
-
+color_mod2 s0_3,#ffffff
 lss s0_9,"kir","a11_defo1"
-spt_mem "a2","xpos",s0_9,0
-flush 80
-
+color_mod2 s0_9,#ffffff
 flush 2
 
 *e32_503
-d `First...`[@]`Ange and Kyrie were eaten, and their entire existence was wiped out.`[\]
+d `First...`[@]` Ange and Kyrie were eaten, and their entire existence was wiped out.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"mhal_h1c"
-
+color_mod2 s0_3,#ffffff
 lss s0_10,"en2","a11_defo1"
+color_mod2 s0_10,#ffffff
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 2
 
 *e32_504
 d `Thus, they were never in this world from its beginning.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "a:backgrounds",s0_1,"mhal_h1a_bg"
+color_mod2 s0_1,#ffffff
 lbg "a:backgrounds",s0_3,"mhal_h1a"
+color_mod2 s0_3,#ffffff
 lss s0_8,"rud","a11_defo1"
+color_mod2 s0_8,#ffffff
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_9,"pie","a11_1"
+color_mod2 s0_9,#ffffff
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"but","b11_defo1"
+color_mod2 s0_10,#ffffff
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 2
 
 *e32_505
 d `Both the piece version of me and my old geezer believed that I had no younger sister.`[\]
+textoff2
 
-
+csp_slot s0_1
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 flush 2
 
 *e32_506
 d `To think about it in simple terms... this is like Beato's cherished golden magic.`[\]
 
-
 *e32_507
-d `Namely,`[@]`a false narrative that could be created in exchange for money and other rewards.`[\]
-
+d `Namely,`[@]` a false narrative that could be created in exchange for money and other rewards.`[\]
+textoff2
 
 lss s0_8,"kir","a11_defo1"
 spt_mem "a2","xpos",s0_8,-369
-flush 80
 
 lss s0_10,"en2","a11_defo1"
 spt_mem "a2","xpos",s0_10,370
-flush 80
-
 flush 2
 
 *e32_508
 d `If you had vast sums of money, you could get people to say that Ange and Kyrie were not in the family...`[\]
 
-
 *e32_509
 d `However, both my and my geezer believe in the idea of 'ladies first', and we're natural contrarians.`[\]
-
 
 *e32_510
 d `Whether it's by bribery or threats, I wonder if we'd submit to the request to behave as if Ange and Kyrie didn't exist......`[\]
 
-
 *e32_511
-d `...No.`[@]`Is it possible they were taken hostage or something?`[\]
-
+d `...No.`[@]` Is it possible they were taken hostage or something?`[\]
 
 *e32_512
 d `So Ange and Kyrie could have been taken hostage... and we were ordered to act as if they didn't exist...?`[\]
-
-
-csp_slot s0_3
+textoff2
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"different_space_2a"
-
 lss s0_9,"but","b22_niramu4"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_but
 *e32_513
 d [lv 0*"10"*"bat_06680"]`{qt}{f:5:Piece}`[@][lv 0*"10"*"bat_06690"]`...Just to clarify,`[@][lv 0*"10"*"bat_06700"]` what is the motive behind this strange event?{qt}`[\]
-
 
 lss s0_10,"bea","a11_1_warai1"
 spt_mem "a2","xpos",s0_10,550
@@ -6116,7 +5731,6 @@ msgwnd_bea
 *e32_514
 d [lv 0*"27"*"bea_07790"]`{qt}{qt}Hoh, as you'd expect from Battler.`[@][lv 0*"27"*"bea_07800"]` I was just about to ask the same thing.{qt}`[\]
 
-
 lss s0_8,"enj","a11_fuman2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6124,25 +5738,18 @@ flush 80
 msgwnd_enj
 *e32_515
 d [lv 0*"11"*"enj_01560"]`{qt}Me too.`[@][lv 0*"11"*"enj_01570"]` If some ridiculous whim caused this event, it'll break the immersion of this Fragment, and reasoning will be totally pointless.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_space_2b"
-
 lss s0_10,"pie","a11_4"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_pie
 *e32_516
 d [lv 0*"65"*"pie_02090"]`{qt}......So you're saying not to make light of the human heart?{qt}`[\]
-
 
 lss s0_8,"but","b11_futeki3"
 spt_mem "a2","xpos",s0_8,-549
@@ -6152,7 +5759,6 @@ msgwnd_but
 *e32_517
 d [lv 0*"10"*"bat_06710"]`{qt}The whodunnit, the howdunnit,`[@][lv 0*"10"*"bat_06720"]` and the whydunnit.`[@][lv 0*"10"*"bat_06730"]` Each is one of the three blades used to solve the mysteries of the witch, you know.`[@][lv 0*"10"*"bat_06740"]` At the same time, the quality of these also determines the standing of the witch.{qt}`[\]
 
-
 lss s0_9,"bea","a11_majime1"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6161,7 +5767,6 @@ msgwnd_bea
 *e32_518
 d [lv 0*"27"*"bea_07810"]`{qt}Hmm.`[@][lv 0*"27"*"bea_07820"]` The whydunnit is particularly important.`[@][lv 0*"27"*"bea_07830"]` That is what I think is the most important answer in a mystery.{qt}`[\]
 
-
 lss s0_10,"pie","a11_10"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6169,13 +5774,10 @@ flush 80
 msgwnd_pie
 *e32_519
 d2 [lv 0*"65"*"pie_02100"]`{qt}There is no reason to distrust the standing of the Fragment my master created.`[@][lv 0*"65"*"pie_02110"]` So I will state it in red.`[@][#][*][lv 0*"65"*"pie_02120"]` {p:1:There is motive and heart behind this incident.}{qt}`[\]
-
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
-
-seplay 11,59,100
 
 lss s0_8,"enj","a31_komaru3"
 spt_mem "a2","xpos",s0_8,-549
@@ -6184,21 +5786,17 @@ flush 80
 msgwnd_enj
 *e32_520
 d [lv 0*"11"*"enj_01580"]`{qt}Heart?{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_space_2c"
-
 lss s0_9,"pie","a11_4"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
-
+wait 300
+csp_slot s0_9
+flush 80
 lss s0_8,"pie","a11_3"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6206,7 +5804,6 @@ flush 80
 msgwnd_pie
 *e32_521
 d [lv 0*"65"*"pie_02130"]`{qt}You'll understand...`[@][lv 0*"65"*"pie_02140"]` it's a motive that any Human would understand.{qt}`[\]
-
 
 lss s0_10,"bea","a11_majime2"
 spt_mem "a2","xpos",s0_10,550
@@ -6216,16 +5813,16 @@ msgwnd_bea
 *e32_522
 d [lv 0*"27"*"bea_07840"]`{qt}In other words, it's not some paranoid, self-righteous motive that only the culprit can understand?{qt}`[\]
 
-
-lss s0_9,"but","b25_odoroki1"
-spt_mem "a2","xpos",s0_9,0
+lss s0_19,"but","b25_odoroki1"
+spt_mem "a2","xpos",s0_19,0
 flush 80
 
 msgwnd_but
 *e32_523
 d [lv 0*"10"*"bat_06750"]`{qt}Like where they say DIE while striking them with a coat hanger because they couldn't see Mt. Fuji.`[@][lv 0*"10"*"bat_06760"]` Not some unexpected reason that only the culprit would find important, but a third person would go 'you would take a person's life for that?', right?{qt}`[\]
 
-
+csp_slot s0_8
+flush 80
 lss s0_8,"enj","a11_fuman2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6234,55 +5831,45 @@ msgwnd_enj
 *e32_524
 d [lv 0*"11"*"enj_01590"]`{qt}Onii-chan, stop.`[@][lv 0*"11"*"enj_01600"]` You should apologize.`[@][lv 0*"11"*"enj_01610"]` If possible, rub your forehead against the ground.{qt}`[\]
 
+lss s0_19,"but","b11_naku1"
+spt_mem "a2","xpos",s0_19,0
+flush 80
 
-lss s0_9,"but","b11_naku1"
-spt_mem "a2","xpos",s0_9,0
+wait 300
+csp_slot s0_19
 flush 80
 
 msgwnd_but
 *e32_525
-d [lv 0*"10"*"bat_06770"]`{qt}Sorry. *scrape* *scrape*...{qt}`[\]
-
+d [lv 0*"10"*"bat_06770"]`{qt}Uhm. Sorry. *scrape* *scrape*...{qt}`[\]
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 flush 22
 
 msgwnd_non
 *e32_526
 d `...I think we just got a nice big hint.`[\]
 
-
 *e32_527
 d `By looking at the motive, that can be very useful in approaching the truth.`[\]
 
-
 *e32_528
 d `Let's make one more push to confirm this.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_space_2c"
-
 flush 22
 
 lss s0_8,"but","b11_oya1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 msgwnd_but
 *e32_529
 d [lv 0*"10"*"bat_06780"]`{qt}...Many people were sacrificed.`[@][lv 0*"10"*"bat_06790"]` Does the culprit hold a motive to kill all of them?{qt}`[\]
-
 
 lss s0_9,"pie","a11_2"
 spt_mem "a2","xpos",s0_9,0
@@ -6292,7 +5879,6 @@ msgwnd_pie
 *e32_530
 d [lv 0*"65"*"pie_02150"]`{qt}Of course, piece.{qt}`[\]
 
-
 lss s0_8,"but","b22_niramu4"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6301,7 +5887,9 @@ msgwnd_but
 *e32_531
 d [lv 0*"10"*"bat_06800"]`{qt}For Kyrie and Ange, it was clear you made a conscious decision to kill them.`[@][lv 0*"10"*"bat_06810"]` But what about Grandfather, Beato, Shannon, Kanon, and Genji?`[@][lv 0*"10"*"bat_06820"]` Were you just putting out sparks from the fire raining down on you?`[@][lv 0*"10"*"bat_06830"]` Or was there an obvious motive?{qt}`[\]
 
-
+csp_slot s0_9
+flush 80
+wait 50
 lss s0_10,"pie","a11_18"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6309,7 +5897,6 @@ flush 80
 msgwnd_pie
 *e32_532
 d [lv 0*"65"*"pie_02160"]`{qt}...There was.{qt}`[\]
-
 
 lss s0_8,"but","b11_oya2"
 spt_mem "a2","xpos",s0_8,-549
@@ -6319,60 +5906,44 @@ msgwnd_non
 *e32_533
 d `Eh?`[\]
 
-
 *e32_534
 d `...That was an honestly unexpected answer.`[\]
 
-
 *e32_535
-d `Her target was just Kyrie and Ange.`[@]`Everybody else was just her putting out the sparks.`[@]`If that's the case, I can follow the lines of the family tree.`[\]
-
+d `Her target was just Kyrie and Ange.`[@]` Everybody else was just her putting out the sparks.`[@]` If that's the case, I can follow the lines of the family tree.`[\]
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lss s0_9,"kas","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e32_536
 d `...For example, the first suspect is the person who bears the biggest grudge against Kyrie and Ange, Kyrie's younger sister.`[\]
 
-
 *e32_537
 d `Kasumi Sumadera.`[\]
 
-
 *e32_538
-d `We've already seen the depths of her grudge and madness in an earlier Fragment.`[@]`I'm not convinced it's her, but she has an understandable motive.`[\]
+d `We've already seen the depths of her grudge and madness in an earlier Fragment.`[@]` I'm not convinced it's her, but she has an understandable motive.`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lss s0_10,"kas","a11_defo1"
 spt_mem "a2","xpos",s0_10,370
-flush 80
 
 lss s0_8,"kir","a11_defo1"
 spt_mem "a2","xpos",s0_8,-369
-flush 80
-
 flush 22
 
 *e32_539
 d `However, if Kasumi was the culprit, she would only have a grudge against Kyrie, and she shouldn't meaningfully resent the other members of the family.`[\]
 
-
 *e32_540
 d `Going by the illusion of the witch, the murders of the other members were just her sweeping away sparks.....but that turned out to be wrong.`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
@@ -6380,65 +5951,55 @@ csp_slot s0_9
 csp_slot s0_10
 
 lbg "a:backgrounds",s0_1,"mhal_h1a_bg"
+color_mod2 s0_1,#ffffff
 lbg "a:backgrounds",s0_3,"mhal_h1a"
+color_mod2 s0_3,#ffffff
 lss s0_9,"kin","a11_defo1"
+color_mod2 s0_9,#ffffff
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 *e32_541
 d `If Kasumi is the culprit, Grandfather would just barely be her target.`[\]
+textoff2
 
-
-lss s0_8,"sha","a11_defo1"
-spt_mem "a2","xpos",s0_8,-739
-flush 80
-
-lss s0_8,"kan","a12_defo1"
-spt_mem "a2","xpos",s0_8,-369
-flush 80
-
-lss s0_10,"bea","a11_defo1"
-spt_mem "a2","xpos",s0_10,370
-flush 80
-
-lss s0_10,"gen","a11_defo1"
-spt_mem "a2","xpos",s0_10,740
-flush 80
-
+lss s0_11,"sha","a11_defo1"
+spt_mem "a2","xpos",s0_11,-739
+color_mod2 s0_11,#ffffff
+lss s0_10,"kan","a12_defo1"
+spt_mem "a2","xpos",s0_10,-369
+color_mod2 s0_10,#ffffff
+lss s0_12,"bea","a11_defo1"
+spt_mem "a2","xpos",s0_12,370
+color_mod2 s0_12,#ffffff
+lss s0_13,"gen","a11_defo1"
+spt_mem "a2","xpos",s0_13,740
+color_mod2 s0_13,#ffffff
 flush 22
 
 *e32_542
 d `It doesn't seem like she would expressly target Beato, Shannon, Kanon, or Genji...!`[\]
+textoff2
 
-
+csp_slot s0_1
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
+csp_slot s0_11
+csp_slot s0_12
+csp_slot s0_13
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_space_2c"
-
 flush 22
 
 lss s0_10,"but","b11_nayamu2_chiru"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_but
 *e32_543
 d [lv 0*"10"*"bat_06840"]`{qt}...This...You got me...`[@][lv 0*"10"*"bat_06850"]` I thought I found a line to follow, but...{qt}`[\]
-
 
 lss s0_9,"pie","a11_10"
 spt_mem "a2","xpos",s0_9,0
@@ -6451,21 +6012,21 @@ flush 80
 msgwnd_pie
 *e32_544
 d [lv 0*"65"*"pie_02170"]`{qt}I wish to be clear, so let me declare it in red, piece.{qt}`[\]
-
-
-vol_bgm -1 500
-
-vol_mix_fade 500
-
+textoff2
+set_window_simple 80,430
+vol_bgm -1 100
 seplay 11,59,100
 
+csp_slot s0_9
+flush 80
 lss s0_8,"pie","a11_13"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
 *e32_545
-d [lv 0*"65"*"pie_02171"]`{p:1:In regards to Beato, Kyrie, Ange, Kinzo, Kanon, Shannon and Genji,I have reasons to want them to disappear}`[\]
-
+d [lv 0*"65"*"pie_02171"]`{a:c:{p:1:In regards to Kyrie, Ange, Kinzo,{f:5:Beatrice} Kanon, Shannon and Genji, I have reasons to want them to disappear}}`[\]
+textoff2
+set_name_window_non
 bgmplay 146,70,0
 
 lss s0_10,"but","b11_aseru2"
@@ -6476,42 +6037,31 @@ msgwnd_but
 *e32_546
 d [lv 0*"10"*"bat_06860"]`{qt}Why?!{qt}`[\]
 
-
-lss s0_9,"bea","a11_majime1"
-spt_mem "a2","xpos",s0_9,0
+lss s0_7,"bea","a11_majime1"
+spt_mem "a2","xpos",s0_7,0
 flush 80
 
 msgwnd_bea
 *e32_547
 d [lv 0*"27"*"bea_07850"]`{qt}There's no way she'll answer that...{qt}`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
+csp_slot s0_7
 csp_slot s0_10
-
 flush 22
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_space_2d"
-
 flush 22
 
 lss s0_9,"pie","a11_4"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_pie
 *e32_548
 d [lv 0*"65"*"pie_02180"]`{qt}No,`[@][lv 0*"65"*"pie_02190"]` I'll answer.`[@][lv 0*"65"*"pie_02200"]` With the red truth.{qt}`[\]
-
 
 lss s0_10,"enj","a31_komaru3"
 spt_mem "a2","xpos",s0_10,550
@@ -6521,25 +6071,18 @@ msgwnd_enj
 *e32_549
 d [lv 0*"11"*"enj_01620"]`{qt}Huh?{qt}`[\]
 
-
 msgwnd_non
 *e32_550
 d `By the nature of the witch's game, you dont't give out unnecessary hints that could draw your opponent closer to yourself, much less state your motive in red.`[\]
 
-
 *e32_551
 d `But {f:5:Piece} was doing that.`[\]
 
-
 *e32_552
-d `She says this not in the comical way she has been showing us, but with eyes that have the eeriness of a doll's......`[\]
+d `She says this not with the comedic persona she's been putting up for us, but with eyes that have the eeriness of a doll's......`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lss s0_9,"pie","a11_16"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6550,83 +6093,55 @@ msgwnd_pie
 *e32_553
 d [lv 0*"65"*"pie_02210"]`{qt}{p:1:In order for me to enter this gameboard, they were pieces that should not exist}.{qt}`[\]
 
-
 seplay 11,59,100
 
 *e32_554
 d2 [lv 0*"65"*"pie_02220"]`{qt}{p:1:For several of the victims, I was originally going to allow them to live.`[@][#][*][lv 0*"65"*"pie_02230"]` However, because of their circumstances, they cannot stay on this game board.`[@][#][*][lv 0*"65"*"pie_02240"]` Therefore, I removed them.}{qt}`[\]
-
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d 1
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
-
-seplay 11,59,100
-
-seplay 11,59,100
 
 seplay 11,59,100
 
 *e32_555
 d2 [lv 0*"65"*"pie_02250"]`{qt}{p:1:Don't misunderstand.`[@][#][*][lv 0*"65"*"pie_02260"]` We did not remove them because we despised them.`[@][#][*][lv 0*"65"*"pie_02270"]`...However, for those I truly wanted to kill, I had no regards for their hearts and showed them no mercy or pity as I removed them from the gameboard.}{qt}`[\]
-
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d 1
-
+csp_slot s0_9
+lbg "c:colour",s0_30,"white"
+seplay 12,60,100
+seplay 13,37,100
+flush 1
+csp_slot s0_30
+lbg "c:efe",s0_3,"bite"
+flush 22
 d_continue
 wait_on_d -1
-
-seplay 11,59,100
-
-seplay 11,60,100
-
-seplay 11,37,100
-
-flush 1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
-lbg "c:efe",s0_3,"bite"
-
-flush 22
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_space_2a"
-
 lss s0_8,"but","b11_odoroki3"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_9,"enj","a31_komaru3"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"bea","a11_fukigen1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_non
 *e32_556
 d `...That calm intensity made everybody gulp.`[\]
 
-
 *e32_557
 d `Right now, she was not speaking as the witch of the gameboard. She was speaking from the heart of the culprit.`[@]`...This was a confession.`[\]
-
 
 lss s0_8,"but","b11_aseru3"
 spt_mem "a2","xpos",s0_8,-549
@@ -6636,81 +6151,64 @@ msgwnd_but
 *e32_558
 d [lv 0*"10"*"bat_06870"]`{qt}Who... is the one you really wanted to kill?!`[\]
 
-
-lss s0_10,"pie","a11_10"
-spt_mem "a2","xpos",s0_10,550
-flush 80
-
+lss s0_11,"pie","a11_10"
+spt_mem "a2","xpos",s0_11,350
 flush 22
 
 msgwnd_pie
 *e32_559
 d [lv 0*"65"*"pie_02280"]`{qt}....................................{qt}`[\]
 
-
 msgwnd_non
 *e32_560
 d `...I really thought that Kyrie was the main target, and killing everybody else was incidental or unavoidable.`[\]
 
-
 *e32_561
 d `But with this... I don't get it at all.`[\]
-
+textoff2
 
 csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
+csp_slot s0_11
 flush 22
 
 lss s0_9,"kin","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e32_562
-d `For example, Grandfather could be her main target.`[@]`In order to get a chance to kill him, she could've killed Kyrie and then impersonated her to get into the family conference, looking for an opportunity to assassinate him.`[\]
-
+d `For example, Grandfather could be her main target.`[@]` In order to get a chance to kill him, she could've killed Kyrie and then impersonated her to get into the family conference, looking for an opportunity to assassinate him.`[\]
+textoff2
 
 lss s0_9,"bea","a11_defo1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 2
 
 *e32_563
 d `Or, if we accept the illusion of the witch as truth, Beato was the main target, and the process of killing her led to the other victims unintentionally getting caught in the crossfire...`[\]
 
-
 *e32_564
-d `In particular, if you look at how people were killed, the way they were killed in the illusion's story is similar to the way the victims appear in previous stories......`[@]`For example, it would be similar to Beato's epitaph murders.....`[\]
-
+d `In particular, if you look at how people were killed, the way they were killed in the illusion's story is similar to the way the victims appear in previous stories......`[@]` For example, it would be similar to Beato's epitaph murders.....`[\]
 
 *e32_565
 d `No, no, in the first place, as far as the choice of victims goes, having a phony target in addition to a real target is so the whodunnit does not reach the culprit.`[\]
 
-
 *e32_566
 d `But in this case, she said, {p:1:they were all pieces that shouldn't exist}, so it's in conflict with what she said earlier.`[\]
+textoff2
 
-
+vol_bgm -1,1600
+wait 3000
 meplay 1,5,100
 
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_space_2b"
-
 flush 22
 
 lss s0_10,"bea","a11_majime1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 lss s0_10,"bea","a11_akuwarai1"
@@ -6721,7 +6219,6 @@ msgwnd_bea
 *e32_567
 d [lv 0*"27"*"bea_07860"]`{qt}...For the howdunnit, doesn't it seem like she's suspended a spider's thread and has now entangled it with our thought...?{qt}`[\]
 
-
 lss s0_8,"enj","a11_fuman1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6730,26 +6227,21 @@ msgwnd_enj
 *e32_568
 d [lv 0*"11"*"enj_01630"]`{qt}I think we've figured something important out......but at this point there's no use in being captives of our own thoughts.`[@][lv 0*"11"*"enj_01640"]` We need to approach it from other angles.{qt}`[\]
 
-
-lss s0_9,"but","b11_majime1"
-spt_mem "a2","xpos",s0_9,0
+lss s0_7,"but","b11_majime1"
+spt_mem "a2","xpos",s0_7,0
 flush 80
 
 msgwnd_but
 *e32_569
 d [lv 0*"10"*"bat_06880"]`{qt}...Ah...`[@][lv 0*"10"*"bat_06890"]` That's true....{qt}`[\]
 
-
-lss s0_9,"pie","a11_13"
-spt_mem "a2","xpos",s0_9,0
-flush 80
-
+lss s0_11,"pie","a11_13"
+spt_mem "a2","xpos",s0_11,350
 flush 22
 
 msgwnd_pie
 *e32_570
 d [lv 0*"65"*"pie_02290"]`{qt}Uuhihihihi pi-piece{p:0:♪}{qt}`[\]
-
 
 lss s0_8,"enj","a11_fuman2"
 spt_mem "a2","xpos",s0_8,-549
@@ -6758,18 +6250,17 @@ flush 80
 msgwnd_enj
 *e32_571
 d [lv 0*"11"*"enj_01650"]`{qt}That silly little laugh of yours...`[@][lv 0*"11"*"enj_01660"]` It reminds me of someone.{qt}`[\]
+textoff2
 
-
+csp_slot s0_7
+csp_slot s0_11
 lss s0_10,"but","b11_oya1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_but
 *e32_572
 d [lv 0*"10"*"bat_06900"]`{qt}Who?{qt}`[\]
-
 
 lss s0_8,"enj","a11_majime1"
 spt_mem "a2","xpos",s0_8,-549
@@ -6779,7 +6270,6 @@ msgwnd_enj
 *e32_573
 d [lv 0*"11"*"enj_01670"]`{qt}I don't have any line of motivation for her.`[@][lv 0*"11"*"enj_01680"]`...But I've been trying to think of what this witch's aura brings to mind.{qt}`[\]
 
-
 lss s0_9,"pie","b11_14"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6787,7 +6277,6 @@ flush 80
 msgwnd_pie
 *e32_574
 d [lv 0*"65"*"pie_02300"]`{qt}Whooo aaam I...?`[@][lv 0*"65"*"pie_02310"]` Uuhihihihihiihihihihihihihi...{qt}`[\]
-
 
 lss s0_8,"enj","a11_nayamu1"
 spt_mem "a2","xpos",s0_8,-549
@@ -6797,7 +6286,6 @@ msgwnd_enj
 *e32_575
 d [lv 0*"11"*"enj_01690"]`{qt}That haughtiness and laughter that delights in her intellectual overbearance.`[@][lv 0*"11"*"enj_01700"]`......It's just like my comrade.{qt}`[\]
 
-
 lss s0_10,"bea","a11_futeki2"
 spt_mem "a2","xpos",s0_10,550
 flush 80
@@ -6805,52 +6293,39 @@ flush 80
 msgwnd_bea
 *e32_576
 d [lv 0*"27"*"bea_07870"]`{qt}Hmm... that person?{qt}`[\]
+textoff2
 
-
+vol_mix_fade 1000
 seplay 11,22,100
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_spiral_1a"
-
 flush 22
-
+wait 1500
 seplay 11,56,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+lbg "c:colour",s0_3,"white"
 flush 48
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 22
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
 
 lbg "c:backgrounds",s0_3,"different_space_2a"
-
 flush 22
-
 bgmplay 192,70,0
-
 seplay 11,52,100
 
-lss s0_9,"eri","a11_majime4"
-spt_mem "a2","xpos",s0_9,0
-flush 80
+lss s0_10,"eri","a11_majime4"
+spt_mem "a2","xpos",s0_10,0
+spt_mem "a2","breakup",s0_10,1000
+spt_mem "a2","alpha",s0_10,0
+spt_mem "a2","breakupdir",s0_10,3
+flush 1
+seplay 11,52,90
+spt_mem "a2","breakup",s0_10,0,2000
+spt_mem "a2","alpha",s0_10,255
+sptwait2 breakup,s0_10
 
+csp_slot s0_10
 lss s0_9,"eri","a11_akuwarai3"
 spt_mem "a2","xpos",s0_9,0
 flush 80
@@ -6859,16 +6334,16 @@ msgwnd_eri
 *e32_577
 d [lv 0*"46"*"eri_00010"]`{qt}This is unexpected, Comrade Ange.`[@][lv 0*"46"*"eri_00020"]` As a witch of truth, it is only natural that I have both grace and intelligence.`[@][lv 0*"46"*"eri_00030"]`......So?`[@][lv 0*"46"*"eri_00040"]` How is this tacky witch of pieces similar to me?`[\]
 
-
-lss s0_10,"enj","a11_defo1"
-spt_mem "a2","xpos",s0_10,550
+lss s0_7,"enj","a11_defo1"
+spt_mem "a2","xpos",s0_7,550
 flush 80
 
 msgwnd_enj
 *e32_578
 d [lv 0*"11"*"enj_01710"]`{qt}I don't think you're the same.`[@][lv 0*"11"*"enj_01720"]` What do you think of this?{qt}`[\]
 
-
+csp_slot s0_9
+flush 80
 lss s0_8,"eri","a11_akuwarai2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6876,27 +6351,20 @@ flush 80
 msgwnd_eri
 *e32_579
 d [lv 0*"46"*"eri_00050"]`{qt}Show me, Comrade Ange.`[@][lv 0*"46"*"eri_00060"]` The truth you have spun!{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_space_2b"
-
 flush 22
 
 lss s0_8,"but","b11_nayamu2_chiru"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 msgwnd_but
 *e32_580
 d [lv 0*"10"*"bat_06910"]`{qt}I didn't expect her to show up...{qt}`[\]
-
 
 lss s0_10,"bea","a11_defo2"
 spt_mem "a2","xpos",s0_10,550
@@ -6906,7 +6374,6 @@ msgwnd_bea
 *e32_581
 d [lv 0*"27"*"bea_07880"]`{qt}Isn't your sister a witch that can revive the dead?`[@][lv 0*"27"*"bea_07890"]` If Ange wishes it, life and death don't matter.{qt}`[\]
 
-
 lss s0_8,"but","b11_komaru2"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -6914,7 +6381,6 @@ flush 80
 msgwnd_but
 *e32_582
 d [lv 0*"10"*"bat_06920"]`{qt}...But she doesn't call herself a witch that can revive the dead.{qt}`[\]
-
 
 lss s0_10,"bea","a11_futeki1"
 spt_mem "a2","xpos",s0_10,550
@@ -6924,74 +6390,69 @@ msgwnd_bea
 *e32_583
 d [lv 0*"27"*"bea_07900"]`{qt}Others don't understand it, but they still don't have reason to deny it.`[@][lv 0*"27"*"bea_07910"]` That's the power of the Witch of Resurrection.{qt}`[\]
 
-
-lss s0_9,"pie","a11_1"
-spt_mem "a2","xpos",s0_9,0
+lss s0_11,"pie","a11_1"
+spt_mem "a2","xpos",s0_11,0
 flush 80
 
 msgwnd_pie
 *e32_584
 d [lv 0*"65"*"pie_02320"]`{qt}To summarize, Ange's brain can call up virtual personalities at will, like parallel thought processing.`[@][lv 0*"65"*"pie_02330"]` It's a handy sort of magic, piece.{qt}`[\]
 
-
-lss s0_8,"enj","a11_fuman1"
-spt_mem "a2","xpos",s0_8,-549
-flush 80
-
+lss s0_12,"enj","a11_fuman1"
+spt_mem "a2","xpos",s0_12,-349
 flush 22
 
 msgwnd_enj
 *e32_585
 d [lv 0*"11"*"enj_01730"]`{qt}Erika Furudo was the only uninvited guest to drift ashore onto Rokkenjima.`[@][lv 0*"11"*"enj_01740"]` There was nobody else irregular who showed up at the halloween party.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
+csp_slot s0_11
+csp_slot s0_12
 
+rain_load s0_12
+rain_params s0_12,100,500,0
 lbg "c:backgrounds",s0_3,"rose_1ar"
-
 lss s0_9,"eri","a11_majime4"
+lsl s0_9,"eri","a11_majime4",1
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 seplay 11,56,100
-
+lbg "c:colour",s0_21,"black"
+aspt2 alpha,s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2 alpha,s0_22,150
 flush 28
 
-lss s0_10,"eri","a11_akuwarai5"
-spt_mem "a2","xpos",s0_10,370
+lss s0_30,"eri","a11_akuwarai5"
+spt_mem "a2","xpos",s0_30,370
 flush 80
 
 msgwnd_eri
 *e32_586
 d [lv 0*"46"*"eri_00070"]`{qt}I'm the great detective, loved by those who deny the Ushiromiya Family culprit theory.{qt}`[\]
+textoff2
 
-
+csp_slot s0_21
+csp_slot s0_22
+csp_slot s0_30
 flush 8
 
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_12
 lbg "c:backgrounds",s0_3,"different_space_2b"
-
 flush 22
 
 lss s0_9,"enj","a11_nayamu1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_enj
 *e32_587
 d [lv 0*"11"*"enj_01750"]`{qt}The nature of Erika Furudo's character has not been firmly established.`[@][lv 0*"11"*"enj_01760"]` All we know is that she is a klutz who fell off a cruise ship.{qt}`[\]
-
 
 lss s0_10,"eri","a11_warai4"
 spt_mem "a2","xpos",s0_10,550
@@ -7000,79 +6461,68 @@ flush 80
 msgwnd_eri
 *e32_588
 d [lv 0*"46"*"eri_00080"]`{qt}However!`[@][lv 0*"46"*"eri_00090"]` When I appeared on the witch's game board, I had one trait.{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:efe",s0_3,"bite"
-
 flush 22
 
 msgwnd_non
 *e32_589
 d `An intellectual rapist.`[\]
 
-
 *e32_590
-d `It was a disgusting nickname.`[@]`That was, an intellectual supremacist who looked down on others, and who got the greatest joy from intellectually violating people.`[\]
-
+d `It was a disgusting nickname.`[@]` That was, an intellectual supremacist who looked down on others, and who got the greatest joy from intellectually violating people.`[\]
+textoff
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 flush 2
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 lbg "a:backgrounds",s0_1,"mhal_h2a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h2a"
 lss s0_9,"eri","a11_defo2"
+lsl s0_9,"eri","a11_defo2",1
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 seplay 11,56,100
-
+lbg "c:colour",s0_21,"black"
+aspt2 alpha,s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2 alpha,s0_22,150
 flush 28
 
-lss s0_8,"enj","a11_nayamu1"
-spt_mem "a2","xpos",s0_8,-549
-flush 80
-
+lss s0_28,"enj","a11_nayamu1"
+spt_mem "a2","xpos",s0_28,-549
 flush 22
 
-lss s0_8,"enj","a11_fuman2"
-spt_mem "a2","xpos",s0_8,-549
+lss s0_28,"enj","a11_fuman2"
+spt_mem "a2","xpos",s0_28,-549
 flush 80
 
 msgwnd_enj
 *e32_591
 d [lv 0*"11"*"enj_01770"]`{qt}After she drifted ashore, they welcomed her as an overnight guest.`[@][lv 0*"11"*"enj_01780"]`...She acted superior and irritated them, so it's possible that the Ushiromiya family all conspired together to create a fake murder case and discredit her pretensions of being a detective.{qt}`[\]
 
-
-lss s0_10,"eri","a11_akuwarai2"
-spt_mem "a2","xpos",s0_10,550
+lss s0_30,"eri","a11_akuwarai2"
+spt_mem "a2","xpos",s0_30,550
 flush 80
 
 msgwnd_eri
 *e32_592
 d [lv 0*"46"*"eri_00100"]`{qt}Fuufuufuufu!!`[@][lv 0*"46"*"eri_00110"]` No amount of trickery will allow you to evade my 'perfect autopsy',`[@][lv 0*"46"*"eri_00120"]` so you can't wriggle out of being in the suspect list by playing dead.{qt}`[\]
+textoff2
 
-
+csp_slot s0_1
+csp_slot s0_2
 csp_slot s0_3
-csp_slot s0_8
 csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_21
+csp_slot s0_22
+csp_slot s0_28
+csp_slot s0_30
 flush 22
 
 lss s0_8,"enj","a11_nayamu1"
@@ -7082,137 +6532,104 @@ flush 80
 msgwnd_enj
 *e32_593
 d2 [lv 0*"11"*"enj_01790"]`{qt}What do you think of this scenario?`[@][#][*][lv 0*"11"*"enj_01800"]` During the halloween party, Erika drifted ashore and was welcomed as a guest.{qt}`[\]
-
 wait_on_d 0
-
-d_continue
-wait_on_d -1
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+rain_load s0_2
+rain_params s0_2,100,500,0
 lbg "a:backgrounds",s0_1,"mhal_h1a_bg"
 lbg "a:backgrounds",s0_3,"mhal_h1a"
 lss s0_9,"kin","a23_akuwarai2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
+d_continue
+wait_on_d -1
 
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
+csp_slot s0_1
+csp_slot s0_2
 lbg "c:backgrounds",s0_3,"mhal_h2c"
-
 lss s0_8,"eva","b25_warai1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_9,"en2","a11_defo1f"
+lsl s0_9,"en2","a11_defo1f",1
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"eri","a11_defo1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_non
 *e32_594
 d `During the party, the family was very excited from all the puzzles and quizzes.`[\]
-
+textoff2
 
 lss s0_10,"eri","a11_akuwarai5"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
+wait 400
 lss s0_8,"eva","b25_komaru4"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 lss s0_9,"en2","a11_defo2"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_enj
 *e32_595
-d @-`[|][lv 0*"11"*"enj_01810"]`{qt}Then the self-proclaimed great detective arrived there, couldn't read the room, and kept answering and answering, get carried away and making the adults fed up with her.{qt}`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d [lv 0*"11"*"enj_01810"]`{qt}Then the self-proclaimed great detective arrived there, couldn't read the room, and kept answering and answering, get carried away and making the adults fed up with her.{qt}`[\]
+textoff2
 
 lbg "c:backgrounds",s0_3,"mhal_h1c"
-
 lss s0_8,"eva","b25_futeki1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_9,"rud","a11_akuwarai1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
 
 lss s0_10,"kir","a11_warai2"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
+wait 300
 seplay 11,56,100
-
+lbg "c:colour",s0_21,"black"
+aspt2 alpha,s0_21,150
+lbg "a:clock",s0_22,"hana1"
+aspt2 alpha,s0_22,150
 flush 28
 
-lss s0_9,"eri","a11_majime3"
-spt_mem "a2","xpos",s0_9,0
-flush 80
-
+lss s0_29,"eri","a11_majime3"
+spt_mem "a2","xpos",s0_29,-350
 flush 22
 
-lss s0_9,"eri","a11_akuwarai2"
-spt_mem "a2","xpos",s0_9,0
-flush 80
-
+lss s0_29,"eri","a11_akuwarai2"
+spt_mem "a2","xpos",s0_29,-350
 flush 80
 
 msgwnd_eri
 *e32_596
 d [lv 0*"46"*"eri_00130"]`{qt}Then, the adults who wanted to clear away their humiliation from being beaten by me planned a clumsy farce.{qt}`[\]
-
-
+textoff2
+csp_slot s0_21
+csp_slot s0_22
+csp_slot s0_29
 flush 8
 
-csp_slot s0_3
 csp_slot s0_8
 csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_space_2b"
-
 flush 22
 
 lss s0_8,"enj","a11_defo1"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
-
 flush 22
 
 msgwnd_non
 *e32_597
-d `For example...`[@]`Mom and I suddenly {qt}disappearing{qt}.`[@]`The next morning, Dad and Onii-chan would ask Erika about it, and Kyrie would jump out as a prank,`[@]`in order to startle and tease her.`[\]
-
+d `For example...`[@]` Mom and I suddenly {qt}disappearing{qt}.`[@]` The next morning, Dad and Onii-chan would ask Erika about it, and Kyrie would jump out as a prank,`[@]` in order to startle and tease her.`[\]
 
 lss s0_10,"eri","a11_defo2"
 spt_mem "a2","xpos",s0_10,550
@@ -7222,7 +6639,6 @@ msgwnd_eri
 *e32_598
 d [lv 0*"46"*"eri_00140"]`{qt}If you look at all the past Fragments, the Ushiromiya family is quite good at 'acting'... or they enjoy it at the very least.{qt}`[\]
 
-
 lss s0_8,"enj","a11_fuman1"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -7230,45 +6646,31 @@ flush 80
 msgwnd_enj
 *e32_599
 d [lv 0*"11"*"enj_01820"]`{qt}She was surprised by their 'acting'.`[@][lv 0*"11"*"enj_01830"]` Or even better, the servants would continue to play dead and then they'd 'act out' the serial murder case, you know?{qt}`[\]
+textoff2
 
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"chess2"
-
 flush 22
 
 msgwnd_non
 *e32_600
 d `This crazy story had undeniably appeared in one of the past game records.`[\]
 
-
 *e32_601
-d `Whether it was a reasonable motive or not,`[@]`even if it was presently one-sided, there was nothing to block Ange's logic.`[\]
-
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+d `Whether it was a reasonable motive or not,`[@]` even if it was presently one-sided, there was nothing to block Ange's logic.`[\]
+textoff2
 
 lbg "c:backgrounds",s0_3,"different_space_2b"
-
 flush 22
 
 lss s0_9,"enj","a11_majime1"
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 msgwnd_enj
 *e32_602
 d [lv 0*"11"*"enj_01840"]`{qt}However, it was decided that all three of us must agree on our answer.`[@][lv 0*"11"*"enj_01850"]` So, I'm going to hit you with the one-sided truth that me and Erika came to.{qt}`[\]
-
 
 lss s0_10,"eri","a11_akuwarai6"
 spt_mem "a2","xpos",s0_10,550
@@ -7278,15 +6680,13 @@ msgwnd_eri
 *e32_603
 d [lv 0*"46"*"eri_00150"]`{qt}Uuhiihiihiihii!!`[@][lv 0*"46"*"eri_00160"]` Just by imagining that lovely face distorting already has me reaching a climax.....!!{qt}`[\]
 
-
-lss s0_8,"pie","b11_12"
-spt_mem "a2","xpos",s0_8,-549
+lss s0_18,"pie","b11_12"
+spt_mem "a2","xpos",s0_18,-549
 flush 80
 
 msgwnd_pie
 *e32_604
 d [lv 0*"65"*"pie_02340"]`{qt}Uuuuhiihiihihihihihi!!!`[@][lv 0*"65"*"pie_02350"]` I see, yes,`[@][lv 0*"65"*"pie_02360"]` we are somewhat similar in personality, piece{p:0:♪}`[@][lv 0*"65"*"pie_02370"]` Two similar pieces on the board are really annoying, piece.{qt}`[\]
-
 
 lss s0_10,"eri","a11_warai3"
 spt_mem "a2","xpos",s0_10,550
@@ -7296,15 +6696,13 @@ msgwnd_eri
 *e32_605
 d [lv 0*"46"*"eri_00170"]`{qt}Oh,`[@][lv 0*"46"*"eri_00180"]` I see that we only resemble each other in atmosphere.`[@][lv 0*"46"*"eri_00190"]` Are you uncomfortable with such a difference in our mental capacities?{qt}`[\]
 
-
-lss s0_8,"pie","a11_13"
-spt_mem "a2","xpos",s0_8,-549
+lss s0_18,"pie","a11_13"
+spt_mem "a2","xpos",s0_18,-549
 flush 80
 
 msgwnd_pie
 *e32_606
 d [lv 0*"65"*"pie_02380"]`{qt}Ufufufufufufu......hiihihihipiipipipi!!!{qt}`[\]
-
 
 lss s0_10,"eri","a11_akuwarai2"
 spt_mem "a2","xpos",s0_10,550
@@ -7313,125 +6711,94 @@ flush 80
 msgwnd_eri
 *e32_607
 d [lv 0*"46"*"eri_00200"]`{qt}Uuheeheeheehe......!!!{qt}`[\]
-
+textoff2
 
 seplay 11,57,100
-
+lbg "c:colour",s0_9,"white"
 flush 1
 
+csp_slot s0_18
+csp_slot s0_9
 lss s0_8,"pie","b11_19"
 spt_mem "a2","xpos",s0_8,-549
-flush 80
 
 lss s0_10,"eri","a11_akuwarai6"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_non
 *e32_608
-d [lv 0*"98"*"merged_saku57"]`{qt}Piece!!{qt}{n}{qt}<Good>!!!{qt}`[\]
+d [lv 0*"98"*"merged_saku57"]`{e:150:{qt}Piece!!{qt}{n}{qt}<Good>!!!{qt}}`[\]
+textoff2
 
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
-lbg "c:backgrounds",s0_3,"different_space_2b"
-
 flush 22
 
 lss s0_10,"enj","a11_fuman1"
 spt_mem "a2","xpos",s0_10,550
-flush 80
-
 flush 22
 
 msgwnd_enj
 *e32_609
 d2 [lv 0*"11"*"enj_01860"]`{qt}Blue declaration!`[@][#][*][lv 0*"11"*"enj_01870"]` {p:2:The culprit is Furudo Erika!`[@][#][*][lv 0*"11"*"enj_01880"]` This sequence of events was all to trick Erika, or was a farce to mock her!`[@][#][*][lv 0*"11"*"enj_01890"]` Everybody suddenly acting like we didn't exist was all arranged beforehand!}{qt}`[\]
-
 wait_on_d 0
-
+seplay 11,57,100
+seplay 12,2,100
+lbg "c:colour",s0_4,"white"
+flush 1
+csp_slot s0_4
+flush 22
 d_continue
 wait_on_d 1
-
+seplay 13,2,100
 d_continue
 wait_on_d 2
-
+seplay 14,2,100
 d_continue
 wait_on_d -1
-
-seplay 11,57,100
-
-seplay 11,2,100
-
-flush 1
-
-flush 22
-
-seplay 11,2,100
-
-seplay 11,2,100
 
 msgwnd_non
 *e32_610
-d2 `That will explain what you just said with red truth!`[#][*]`{qt}{p:1:For several of the victims, I was originally going to allow them to live.`[@][#][*]`However, because of their circumstances, they cannot stay on this game board.`[@][#][*]`Therefore, I removed them}{qt}.`[\]
-
+d2 `That will explain the red truth from a moment ago!`[#][*]` {p:1:{qt}For several of the victims, I was originally going to allow them to live.`[@][#][*]` However, because of their circumstances, they cannot stay on this game board.`[@][#][*]` Therefore, I removed them{qt}}.`[\]
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d 1
-
+seplay 11,59,100
 d_continue
 wait_on_d 2
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
+textoff2
 
-seplay 11,59,100
-
-seplay 11,59,100
-
-seplay 11,59,100
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_space_2b"
-
+color_mod2 s0_3,#ffffff
 lss s0_9,"eri","a11_akuwarai4"
+color_mod2 s0_9,#ffffff
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 22
 
 *e32_611
 d `What this refers to, clearly, is Erika's {qt}perfect autopsy!{qt}`[\]
 
-
 *e32_612
 d `For this woman who calls herself an intellectual rapist, somebody who is an intellectual inferior challenging her with a mystery is akin to blasphemy!`[\]
 
-
 *e32_613
 d `She would fly into a rage, and by way of that perfect autopsy, would change the fate of this silly play...!!`[\]
-
+textoff2
 
 seplay 11,2,100
-
+lbg "c:colour",s0_30,"white"
 flush 1
+;BACKUP
 
-csp_slot s0_3
-csp_slot s0_8
+csp_slot s0_30
 csp_slot s0_9
-csp_slot s0_10
-
 lbg "c:backgrounds",s0_3,"different_space_2b"
-
 lss s0_8,"eri","a11_akuwarai5"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
@@ -7439,10 +6806,10 @@ flush 80
 msgwnd_eri
 *e32_614
 d [lv 0*"46"*"eri_00220"]`{qt}That's check!{qt}`[\]
-
+textoff2
 
 seplay 11,2,100
-
+lbg "c:colour",s0_10,"white"
 flush 1
 
 lss s0_10,"enj","a11_majime1"
@@ -7453,55 +6820,38 @@ msgwnd_enj
 *e32_615
 d [lv 0*"11"*"enj_01900"]`{qt}And mate!!`[@][lv 0*"11"*"enj_01910"]` Everything can be explained by the motive of Erika having her pride as an intellectual rapist hurt!{qt}`[\]
 
-
 lss s0_8,"eri","a11_akuwarai4"
 spt_mem "a2","xpos",s0_8,-549
 flush 80
 
 msgwnd_eri
 *e32_616
-d2 [lv 0*"46"*"eri_00230"]`{qt}For your red truth of `[#][*]`'{p:1:for those I truly wanted to kill, I had no regards for their hearts and showed them no mercy or pity as I removed them from the gameboard}', you presented a grave sin of trying to fool the great detective with a farce!{qt}`[\]
-
+d2 [lv 0*"46"*"eri_00230"]`{qt}For your red truth of `[#][*]`{p:1:'for those I truly wanted to kill, I had no regards for their hearts and showed them no mercy or pity as I removed them from the gameboard'}, you presented a grave sin of trying to fool the great detective with a farce!{qt}`[\]
 wait_on_d 0
-
+seplay 11,59,100
 d_continue
 wait_on_d -1
 
-seplay 11,59,100
-
 *e32_617
 d [lv 0*"46"*"eri_00240"]`You tried it on a great detective!`[@][lv 0*"46"*"eri_00250"]` According to the book, that's the same as blasphemy towards god!`[@][lv 0*"46"*"eri_00260"]` This a well-deserved divine punishment for blasphemy against me!`[@][lv 0*"46"*"eri_00270"]` How do you like that!?{qt}`[\]
-
+textoff2
 
 seplay 11,57,100
-
-csp_slot s0_3
 csp_slot s0_8
-csp_slot s0_9
 csp_slot s0_10
-
 lbg "c:colour",s0_3,"white"
-
 flush 1
 
 csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
-
 lss s0_9,"enj","a11_majime1"
+spt_mem "a2","ypos",s0_9,1300
+spt_mem "a2","scalex",s0_9,260
+spt_mem "a2","scaley",s0_9,260
 spt_mem "a2","xpos",s0_9,0
-flush 80
-
 flush 1
-
-csp_slot s0_3
-csp_slot s0_8
-csp_slot s0_9
-csp_slot s0_10
+wait 400
 
 lbg "c:saku",s0_3,"new_evcg06_1"
-
 flush 22
 
 msgwnd_enj

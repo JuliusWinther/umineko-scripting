@@ -760,7 +760,7 @@ if %cfg_current_page != 3 goto *skip_config_page_3 ;Sound
 	if %BtnRes != 212 jumpf
 		isdown %cfg_mouse_click 
 		if %cfg_mouse_click = 0 if %cfg_lower_music_on_d = 0 mov %cfg_lower_music_on_d,1 : gosub *settings_lower_music_on_d : jumpf
-		if %cfg_mouse_click = 0 if %cfg_lower_music_on_d = 1 mov %cfg_lower_music_on_d,0 : gosub *settings_lower_music_on_d : jumpf
+		if %cfg_mouse_click = 0 if %cfg_lower_music_on_d = 1 mov %cfg_lower_music_on_d,0 : gosub *settings_lower_music_on_d : vol_bgm %bgm_vol : jumpf
 	~
 	;END
 
@@ -910,8 +910,8 @@ if %cfg_current_page != 5 goto *skip_config_page_5 ;Graphics
 	;BOOK MODE
 	if %BtnRes != 211 jumpf
 		isdown %cfg_mouse_click 
-		if %cfg_mouse_click = 0 if %cfg_book_mode = 0 mov %cfg_book_mode,1 : gosub *settings_book_mode : jumpf
-		if %cfg_mouse_click = 0 if %cfg_book_mode = 1 mov %cfg_book_mode,0 : gosub *settings_book_mode : jumpf
+		if %cfg_mouse_click = 0 if %cfg_book_mode = 0 mov %cfg_book_mode,1 : gosub *set_name_window_non : gosub *settings_book_mode : debug_str $log_ch_prev : jumpf
+		if %cfg_mouse_click = 0 if %cfg_book_mode = 1 mov %cfg_book_mode,0 : gosub *set_name_window : gosub *settings_book_mode : debug_str $log_ch_prev : jumpf
 	~
 	;END
 

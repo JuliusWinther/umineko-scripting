@@ -1,0 +1,804 @@
+;***********************************************************
+; Jumo to scenario mode
+;***********************************************************
+*scenario_jump_q
+
+;Use confirmation scenario jump mode
+
+csp_rst
+;lsp 703,":c;graphics\colour\black.png",0,0,100
+lsp 703,":c;graphics\menu\jump\OpenBookA.png",0,0
+
+;Advance when the magic can be used.
+*scenario_jump_q2
+mov %x,670
+mov %y,480
+
+border_pad_push 5
+
+lsp 501,use_magic1,0,0 ;%y : add %y,55
+lsp 503,use_magic2,0,0
+lsp 504,use_magic3,0,0
+
+align_message_c 501,503,504
+
+border_pad_pop
+
+*scenario_jump_q3
+btndef ""
+
+spbtn 503,503
+spbtn 504,504
+
+btnwait %btnRes
+
+if %BtnRes = -1 mov %title_skip,1 : goto *b_title
+if %BtnRes = -10 mov %title_skip,1 : goto *b_title
+if %btnRes = 503 btndef "" : goto *scenario_jump_name
+if %btnRes = 504 btndef "" : goto *scenario_start
+goto *scenario_jump_q3
+
+
+;--------------------------------------------
+
+*scenario_start    ;Start from the beginning of the scenario
+	;Scenario start confirmation
+	if %scenario_Number = 1 gosub *jump_sysdata_set1 : goto *umi1_op ;Scenario 1 Obtain basic data
+	if %scenario_Number = 2 gosub *jump_sysdata_set1 : goto *umi2_op ;Scenario 2 Obtain basic data
+	if %scenario_Number = 3 gosub *jump_sysdata_set1 : goto *umi3_op ;Scenario 3 Obtain basic data
+	if %scenario_Number = 4 gosub *jump_sysdata_set1 : goto *umi4_op ;Scenario 4 Obtain basic data
+	if %scenario_Number = 5 gosub *jump_sysdata_set1 : goto *umi5_op ;Scenario 5 Obtain basic data
+	if %scenario_Number = 6 gosub *jump_sysdata_set1 : goto *umi6_op ;Scenario 6 Obtain basic data
+	if %scenario_Number = 7 gosub *jump_sysdata_set1 : goto *umi7_op ;Scenario 7 Obtain basic data
+	if %scenario_Number = 8 gosub *jump_sysdata_set1 : goto *umi8_op ;Scenario 8 Obtain basic data
+
+;--------------------------------------------
+
+*scenario_jump_name
+
+border_pad_push 5
+
+_csp 501
+_csp 502
+_csp 503
+_csp 504
+
+;Acquired scenario_Number from the title menu
+mov %Free1,561
+mov $%Free1,date_scenario_op_chapter :inc %Free1 
+mov $%Free1,date_scenario_1_chapter :inc %Free1 
+mov $%Free1,date_scenario_2_chapter :inc %Free1 
+mov $%Free1,date_scenario_3_chapter :inc %Free1 
+mov $%Free1,date_scenario_4_chapter :inc %Free1 
+mov $%Free1,date_scenario_5_chapter :inc %Free1 
+mov $%Free1,date_scenario_6_chapter :inc %Free1 
+mov $%Free1,date_scenario_7_chapter :inc %Free1 
+mov $%Free1,date_scenario_8_chapter :inc %Free1 
+mov $%Free1,date_scenario_9_chapter :inc %Free1 
+mov $%Free1,date_scenario_10_chapter :inc %Free1 
+mov $%Free1,date_scenario_11_chapter :inc %Free1 
+mov $%Free1,date_scenario_12_chapter :inc %Free1 
+mov $%Free1,date_scenario_13_chapter :inc %Free1 
+mov $%Free1,date_scenario_14_chapter :inc %Free1 
+mov $%Free1,date_scenario_15_chapter :inc %Free1 
+mov $%Free1,date_scenario_16_chapter :inc %Free1 
+mov $%Free1,date_scenario_17_chapter :inc %Free1
+mov $%Free1,date_scenario_18_chapter :inc %Free1
+mov $%Free1,date_scenario_19_chapter :inc %Free1
+mov $%Free1,date_scenario_20_chapter :inc %Free1
+mov $%Free1,date_scenario_21_chapter :inc %Free1
+mov $%Free1,date_scenario_22_chapter :inc %Free1
+mov $%Free1,date_scenario_23_chapter :inc %Free1
+mov $%Free1,date_scenario_24_chapter :inc %Free1
+mov $%Free1,date_scenario_25_chapter :inc %Free1
+
+notif %scenario_Number = 1 jumpf
+	;Ep1
+	
+	lsp 500,":s;#FFFFFF`{p:15:"+date_scenario_episode+" 1}",1430,19
+	mov %Free5,flag_scenario_1_op
+	
+	mov %Free1,501
+	mov $%Free1,scenario_1_op :inc %Free1 ;*umi1_op
+	mov $%Free1,scenario_1_1 :inc %Free1 ;*umi1_1
+	mov $%Free1,scenario_1_2 :inc %Free1 ;*umi1_2
+	mov $%Free1,scenario_1_3 :inc %Free1 ;*umi1_3
+	mov $%Free1,scenario_1_4 :inc %Free1 ;*umi1_4
+	mov $%Free1,scenario_1_5 :inc %Free1 ;*umi1_5
+	mov $%Free1,scenario_1_6 :inc %Free1 ;*umi1_6
+	mov $%Free1,scenario_1_7 :inc %Free1 ;*umi1_7
+	mov $%Free1,scenario_1_8 :inc %Free1 ;*umi1_8
+	mov $%Free1,scenario_1_9 :inc %Free1 ;*umi1_9
+	mov $%Free1,scenario_1_10 :inc %Free1 ;*umi1_10
+	mov $%Free1,scenario_1_11 :inc %Free1 ;*umi1_11
+	mov $%Free1,scenario_1_12 :inc %Free1 ;*umi1_12
+	mov $%Free1,scenario_1_13 :inc %Free1 ;*umi1_13
+	mov $%Free1,scenario_1_14 :inc %Free1 ;*umi1_14
+	mov $%Free1,scenario_1_15 :inc %Free1 ;*umi1_15
+	mov $%Free1,scenario_1_16 :inc %Free1 ;*umi1_16
+	mov $%Free1,scenario_1_17 :inc %Free1 ;*umi1_17
+
+	mov %Free1,531
+	mov $%Free1,date_scenario_1_op :inc %Free1 ;*umi1_op
+	mov $%Free1,date_scenario_1_1 :inc %Free1 ;*umi1_1
+	mov $%Free1,date_scenario_1_2 :inc %Free1 ;*umi1_2
+	mov $%Free1,date_scenario_1_3 :inc %Free1 ;*umi1_3
+	mov $%Free1,date_scenario_1_4 :inc %Free1 ;*umi1_4
+	mov $%Free1,date_scenario_1_5 :inc %Free1 ;*umi1_5
+	mov $%Free1,date_scenario_1_6 :inc %Free1 ;*umi1_6
+	mov $%Free1,date_scenario_1_7 :inc %Free1 ;*umi1_7
+	mov $%Free1,date_scenario_1_8 :inc %Free1 ;*umi1_8
+	mov $%Free1,date_scenario_1_9 :inc %Free1 ;*umi1_9
+	mov $%Free1,date_scenario_1_10 :inc %Free1 ;*umi1_10
+	mov $%Free1,date_scenario_1_11 :inc %Free1 ;*umi1_11
+	mov $%Free1,date_scenario_1_12 :inc %Free1 ;*umi1_12
+	mov $%Free1,date_scenario_1_13 :inc %Free1 ;*umi1_13
+	mov $%Free1,date_scenario_1_14 :inc %Free1 ;*umi1_14
+	mov $%Free1,date_scenario_1_15 :inc %Free1 ;*umi1_15
+	mov $%Free1,date_scenario_1_16 :inc %Free1 ;*umi1_16
+	mov $%Free1,date_scenario_1_17 :inc %Free1 ;*umi1_17
+
+	mov %Free1,591
+	mov $%Free1,clock_scenario_1_op :inc %Free1 ;*umi1_op
+	mov $%Free1,clock_scenario_1_1 :inc %Free1 ;*umi1_1
+	mov $%Free1,clock_scenario_1_2 :inc %Free1 ;*umi1_2
+	mov $%Free1,clock_scenario_1_3 :inc %Free1 ;*umi1_3
+	mov $%Free1,clock_scenario_1_4 :inc %Free1 ;*umi1_4
+	mov $%Free1,clock_scenario_1_5 :inc %Free1 ;*umi1_5
+	mov $%Free1,clock_scenario_1_6 :inc %Free1 ;*umi1_6
+	mov $%Free1,clock_scenario_1_7 :inc %Free1 ;*umi1_7
+	mov $%Free1,clock_scenario_1_8 :inc %Free1 ;*umi1_8
+	mov $%Free1,clock_scenario_1_9 :inc %Free1 ;*umi1_9
+	mov $%Free1,clock_scenario_1_10 :inc %Free1 ;*umi1_10
+	mov $%Free1,clock_scenario_1_11 :inc %Free1 ;*umi1_11
+	mov $%Free1,clock_scenario_1_12 :inc %Free1 ;*umi1_12
+	mov $%Free1,clock_scenario_1_13 :inc %Free1 ;*umi1_13
+	mov $%Free1,clock_scenario_1_14 :inc %Free1 ;*umi1_14
+	mov $%Free1,clock_scenario_1_15 :inc %Free1 ;*umi1_15
+	mov $%Free1,clock_scenario_1_16 :inc %Free1 ;*umi1_16
+	mov $%Free1,clock_scenario_1_17 :inc %Free1 ;*umi1_17
+
+	;Gets the number of labels in the scenario
+	mov %Free2,18
+~
+
+notif %scenario_Number = 2 jumpf
+	;Ep2
+	
+	lsp 500,":s;#FFFFFF`{p:15:"+date_scenario_episode+" 2}",1430,19
+	mov %Free5,flag_scenario_2_op
+	
+	mov %Free1,501
+
+	mov $%Free1,scenario_2_op :inc %Free1 ;*umi2_op
+	mov $%Free1,scenario_2_1 :inc %Free1 ;*umi2_1
+	mov $%Free1,scenario_2_2 :inc %Free1 ;*umi2_2
+	mov $%Free1,scenario_2_3 :inc %Free1 ;*umi2_3
+	mov $%Free1,scenario_2_4 :inc %Free1 ;*umi2_4
+	mov $%Free1,scenario_2_5 :inc %Free1 ;*umi2_5
+	mov $%Free1,scenario_2_6 :inc %Free1 ;*umi2_6
+	mov $%Free1,scenario_2_7 :inc %Free1 ;*umi2_7
+	mov $%Free1,scenario_2_8 :inc %Free1 ;*umi2_8
+	mov $%Free1,scenario_2_9 :inc %Free1 ;*umi2_9
+	mov $%Free1,scenario_2_10 :inc %Free1 ;*umi2_10
+	mov $%Free1,scenario_2_11 :inc %Free1 ;*umi2_11
+	mov $%Free1,scenario_2_12 :inc %Free1 ;*umi2_12
+	mov $%Free1,scenario_2_13 :inc %Free1 ;*umi2_13
+	mov $%Free1,scenario_2_14 :inc %Free1 ;*umi2_14
+	mov $%Free1,scenario_2_15 :inc %Free1 ;*umi2_15
+	mov $%Free1,scenario_2_16 :inc %Free1 ;*umi2_16
+	mov $%Free1,scenario_2_17 :inc %Free1 ;*umi2_17
+	mov $%Free1,scenario_2_18 :inc %Free1 ;*umi2_18
+
+	mov %Free1,531
+	mov $%Free1,date_scenario_2_op :inc %Free1 ;*umi2_op
+	mov $%Free1,date_scenario_2_1 :inc %Free1 ;*umi2_1
+	mov $%Free1,date_scenario_2_2 :inc %Free1 ;*umi2_2
+	mov $%Free1,date_scenario_2_3 :inc %Free1 ;*umi2_3
+	mov $%Free1,date_scenario_2_4 :inc %Free1 ;*umi2_4
+	mov $%Free1,date_scenario_2_5 :inc %Free1 ;*umi2_5
+	mov $%Free1,date_scenario_2_6 :inc %Free1 ;*umi2_6
+	mov $%Free1,date_scenario_2_7 :inc %Free1 ;*umi2_7
+	mov $%Free1,date_scenario_2_8 :inc %Free1 ;*umi2_8
+	mov $%Free1,date_scenario_2_9 :inc %Free1 ;*umi2_9
+	mov $%Free1,date_scenario_2_10 :inc %Free1 ;*umi2_10
+	mov $%Free1,date_scenario_2_11 :inc %Free1 ;*umi2_11
+	mov $%Free1,date_scenario_2_12 :inc %Free1 ;*umi2_12
+	mov $%Free1,date_scenario_2_13 :inc %Free1 ;*umi2_13
+	mov $%Free1,date_scenario_2_14 :inc %Free1 ;*umi2_14
+	mov $%Free1,date_scenario_2_15 :inc %Free1 ;*umi2_15
+	mov $%Free1,date_scenario_2_16 :inc %Free1 ;*umi2_16
+	mov $%Free1,date_scenario_2_17 :inc %Free1 ;*umi2_17
+	mov $%Free1,date_scenario_2_18 :inc %Free1 ;*umi2_18
+
+	mov %Free1,591
+	mov $%Free1,clock_scenario_2_op :inc %Free1 ;*umi2_op
+	mov $%Free1,clock_scenario_2_1 :inc %Free1 ;*umi2_1
+	mov $%Free1,clock_scenario_2_2 :inc %Free1 ;*umi2_2
+	mov $%Free1,clock_scenario_2_3 :inc %Free1 ;*umi2_3
+	mov $%Free1,clock_scenario_2_4 :inc %Free1 ;*umi2_4
+	mov $%Free1,clock_scenario_2_5 :inc %Free1 ;*umi2_5
+	mov $%Free1,clock_scenario_2_6 :inc %Free1 ;*umi2_6
+	mov $%Free1,clock_scenario_2_7 :inc %Free1 ;*umi2_7
+	mov $%Free1,clock_scenario_2_8 :inc %Free1 ;*umi2_8
+	mov $%Free1,clock_scenario_2_9 :inc %Free1 ;*umi2_9
+	mov $%Free1,clock_scenario_2_10 :inc %Free1 ;*umi2_10
+	mov $%Free1,clock_scenario_2_11 :inc %Free1 ;*umi2_11
+	mov $%Free1,clock_scenario_2_12 :inc %Free1 ;*umi2_12
+	mov $%Free1,clock_scenario_2_13 :inc %Free1 ;*umi2_13
+	mov $%Free1,clock_scenario_2_14 :inc %Free1 ;*umi2_14
+	mov $%Free1,clock_scenario_2_15 :inc %Free1 ;*umi2_15
+	mov $%Free1,clock_scenario_2_16 :inc %Free1 ;*umi2_16
+	mov $%Free1,clock_scenario_2_17 :inc %Free1 ;*umi2_17
+	mov $%Free1,clock_scenario_2_18 :inc %Free1 ;*umi2_18
+
+
+	;Gets the number of labels in the scenario
+	mov %Free2,19
+~
+
+notif %scenario_Number = 3 jumpf
+	;Ep3
+	
+	lsp 500,":s;#FFFFFF`{p:15:"+date_scenario_episode+" 3}",1430,19
+	mov %Free5,flag_scenario_3_op
+	
+	mov %Free1,501
+
+	mov $%Free1,scenario_3_op :inc %Free1 ;*umi3_op
+	mov $%Free1,scenario_3_1 :inc %Free1 ;*umi3_1
+	mov $%Free1,scenario_3_2 :inc %Free1 ;*umi3_2
+	mov $%Free1,scenario_3_3 :inc %Free1 ;*umi3_3
+	mov $%Free1,scenario_3_4 :inc %Free1 ;*umi3_4
+	mov $%Free1,scenario_3_5 :inc %Free1 ;*umi3_5
+	mov $%Free1,scenario_3_6 :inc %Free1 ;*umi3_6
+	mov $%Free1,scenario_3_7 :inc %Free1 ;*umi3_7
+	mov $%Free1,scenario_3_8 :inc %Free1 ;*umi3_8
+	mov $%Free1,scenario_3_9 :inc %Free1 ;*umi3_9
+	mov $%Free1,scenario_3_10 :inc %Free1 ;*umi3_10
+	mov $%Free1,scenario_3_11 :inc %Free1 ;*umi3_11
+	mov $%Free1,scenario_3_12 :inc %Free1 ;*umi3_12
+	mov $%Free1,scenario_3_13 :inc %Free1 ;*umi3_13
+	mov $%Free1,scenario_3_14 :inc %Free1 ;*umi3_14
+	mov $%Free1,scenario_3_15 :inc %Free1 ;*umi3_15
+	mov $%Free1,scenario_3_16 :inc %Free1 ;*umi3_16
+	mov $%Free1,scenario_3_17 :inc %Free1 ;*umi3_17
+	mov $%Free1,scenario_3_18 :inc %Free1 ;*umi3_18
+
+	mov %Free1,531
+	mov $%Free1,date_scenario_3_op :inc %Free1 ;*umi3_op
+	mov $%Free1,date_scenario_3_1 :inc %Free1 ;*umi3_1
+	mov $%Free1,date_scenario_3_2 :inc %Free1 ;*umi3_2
+	mov $%Free1,date_scenario_3_3 :inc %Free1 ;*umi3_3
+	mov $%Free1,date_scenario_3_4 :inc %Free1 ;*umi3_4
+	mov $%Free1,date_scenario_3_5 :inc %Free1 ;*umi3_5
+	mov $%Free1,date_scenario_3_6 :inc %Free1 ;*umi3_6
+	mov $%Free1,date_scenario_3_7 :inc %Free1 ;*umi3_7
+	mov $%Free1,date_scenario_3_8 :inc %Free1 ;*umi3_8
+	mov $%Free1,date_scenario_3_9 :inc %Free1 ;*umi3_9
+	mov $%Free1,date_scenario_3_10 :inc %Free1 ;*umi3_10
+	mov $%Free1,date_scenario_3_11 :inc %Free1 ;*umi3_11
+	mov $%Free1,date_scenario_3_12 :inc %Free1 ;*umi3_12
+	mov $%Free1,date_scenario_3_13 :inc %Free1 ;*umi3_13
+	mov $%Free1,date_scenario_3_14 :inc %Free1 ;*umi3_14
+	mov $%Free1,date_scenario_3_15 :inc %Free1 ;*umi3_15
+	mov $%Free1,date_scenario_3_16 :inc %Free1 ;*umi3_16
+	mov $%Free1,date_scenario_3_17 :inc %Free1 ;*umi3_17
+	mov $%Free1,date_scenario_3_18 :inc %Free1 ;*umi3_18
+
+	mov %Free1,591
+	mov $%Free1,clock_scenario_3_op :inc %Free1 ;*umi3_op
+	mov $%Free1,clock_scenario_3_1 :inc %Free1 ;*umi3_1
+	mov $%Free1,clock_scenario_3_2 :inc %Free1 ;*umi3_2
+	mov $%Free1,clock_scenario_3_3 :inc %Free1 ;*umi3_3
+	mov $%Free1,clock_scenario_3_4 :inc %Free1 ;*umi3_4
+	mov $%Free1,clock_scenario_3_5 :inc %Free1 ;*umi3_5
+	mov $%Free1,clock_scenario_3_6 :inc %Free1 ;*umi3_6
+	mov $%Free1,clock_scenario_3_7 :inc %Free1 ;*umi3_7
+	mov $%Free1,clock_scenario_3_8 :inc %Free1 ;*umi3_8
+	mov $%Free1,clock_scenario_3_9 :inc %Free1 ;*umi3_9
+	mov $%Free1,clock_scenario_3_10 :inc %Free1 ;*umi3_10
+	mov $%Free1,clock_scenario_3_11 :inc %Free1 ;*umi3_11
+	mov $%Free1,clock_scenario_3_12 :inc %Free1 ;*umi3_12
+	mov $%Free1,clock_scenario_3_13 :inc %Free1 ;*umi3_13
+	mov $%Free1,clock_scenario_3_14 :inc %Free1 ;*umi3_14
+	mov $%Free1,clock_scenario_3_15 :inc %Free1 ;*umi3_15
+	mov $%Free1,clock_scenario_3_16 :inc %Free1 ;*umi3_16
+	mov $%Free1,clock_scenario_3_17 :inc %Free1 ;*umi3_17
+	mov $%Free1,clock_scenario_3_18 :inc %Free1 ;*umi3_18
+
+	;Gets the number of labels in the scenario
+	mov %Free2,19
+~
+
+;Ep4
+notif %scenario_Number = 4 jumpf
+
+	lsp 500,":s;#FFFFFF`{p:15:"+date_scenario_episode+" 4}",1430,19
+	mov %Free5,flag_scenario_4_op
+
+	mov %Free1,501
+
+	mov $%Free1,scenario_4_op 	: inc %Free1 ;*umi4_op
+	mov $%Free1,scenario_4_1	: inc %Free1 ;*umi4_1
+	mov $%Free1,scenario_4_2	: inc %Free1 ;*umi4_2
+	mov $%Free1,scenario_4_3	: inc %Free1 ;*umi4_3
+	mov $%Free1,scenario_4_4	: inc %Free1 ;*umi4_4
+	mov $%Free1,scenario_4_5	: inc %Free1 ;*umi4_5
+	mov $%Free1,scenario_4_6	: inc %Free1 ;*umi4_6
+	mov $%Free1,scenario_4_7	: inc %Free1 ;*umi4_7
+	mov $%Free1,scenario_4_8	: inc %Free1 ;*umi4_8
+	mov $%Free1,scenario_4_9	: inc %Free1 ;*umi4_9
+	mov $%Free1,scenario_4_10	: inc %Free1 ;*umi4_10
+	mov $%Free1,scenario_4_11	: inc %Free1 ;*umi4_11
+	mov $%Free1,scenario_4_12	: inc %Free1 ;*umi4_12
+	mov $%Free1,scenario_4_13	: inc %Free1 ;*umi4_13
+	mov $%Free1,scenario_4_14	: inc %Free1 ;*umi4_14
+	mov $%Free1,scenario_4_15	: inc %Free1 ;*umi4_15
+	mov $%Free1,scenario_4_16	: inc %Free1 ;*umi4_16
+	mov $%Free1,scenario_4_17	: inc %Free1 ;*umi4_17
+	mov $%Free1,scenario_4_18	: inc %Free1 ;*umi4_18
+	mov $%Free1,scenario_4_19	: inc %Free1 ;*umi4_19
+
+	mov %Free1,531
+	mov $%Free1,date_scenario_4_op 	: inc %Free1 ;*umi4_op
+	mov $%Free1,date_scenario_4_1	: inc %Free1 ;*umi4_1
+	mov $%Free1,date_scenario_4_2	: inc %Free1 ;*umi4_2
+	mov $%Free1,date_scenario_4_3	: inc %Free1 ;*umi4_3
+	mov $%Free1,date_scenario_4_4	: inc %Free1 ;*umi4_4
+	mov $%Free1,date_scenario_4_5	: inc %Free1 ;*umi4_5
+	mov $%Free1,date_scenario_4_6	: inc %Free1 ;*umi4_6
+	mov $%Free1,date_scenario_4_7	: inc %Free1 ;*umi4_7
+	mov $%Free1,date_scenario_4_8	: inc %Free1 ;*umi4_8
+	mov $%Free1,date_scenario_4_9	: inc %Free1 ;*umi4_9
+	mov $%Free1,date_scenario_4_10	: inc %Free1 ;*umi4_10
+	mov $%Free1,date_scenario_4_11	: inc %Free1 ;*umi4_11
+	mov $%Free1,date_scenario_4_12	: inc %Free1 ;*umi4_12
+	mov $%Free1,date_scenario_4_13	: inc %Free1 ;*umi4_13
+	mov $%Free1,date_scenario_4_14	: inc %Free1 ;*umi4_14
+	mov $%Free1,date_scenario_4_15	: inc %Free1 ;*umi4_15
+	mov $%Free1,date_scenario_4_16	: inc %Free1 ;*umi4_16
+	mov $%Free1,date_scenario_4_17	: inc %Free1 ;*umi4_17
+	mov $%Free1,date_scenario_4_18	: inc %Free1 ;*umi4_18
+	mov $%Free1,date_scenario_4_19	: inc %Free1 ;*umi4_19
+
+	mov %Free1,591
+	mov $%Free1,clock_scenario_4_op 	: inc %Free1 ;*umi4_op
+	mov $%Free1,clock_scenario_4_1	: inc %Free1 ;*umi4_1
+	mov $%Free1,clock_scenario_4_2	: inc %Free1 ;*umi4_2
+	mov $%Free1,clock_scenario_4_3	: inc %Free1 ;*umi4_3
+	mov $%Free1,clock_scenario_4_4	: inc %Free1 ;*umi4_4
+	mov $%Free1,clock_scenario_4_5	: inc %Free1 ;*umi4_5
+	mov $%Free1,clock_scenario_4_6	: inc %Free1 ;*umi4_6
+	mov $%Free1,clock_scenario_4_7	: inc %Free1 ;*umi4_7
+	mov $%Free1,clock_scenario_4_8	: inc %Free1 ;*umi4_8
+	mov $%Free1,clock_scenario_4_9	: inc %Free1 ;*umi4_9
+	mov $%Free1,clock_scenario_4_10	: inc %Free1 ;*umi4_10
+	mov $%Free1,clock_scenario_4_11	: inc %Free1 ;*umi4_11
+	mov $%Free1,clock_scenario_4_12	: inc %Free1 ;*umi4_12
+	mov $%Free1,clock_scenario_4_13	: inc %Free1 ;*umi4_13
+	mov $%Free1,clock_scenario_4_14	: inc %Free1 ;*umi4_14
+	mov $%Free1,clock_scenario_4_15	: inc %Free1 ;*umi4_15
+	mov $%Free1,clock_scenario_4_16	: inc %Free1 ;*umi4_16
+	mov $%Free1,clock_scenario_4_17	: inc %Free1 ;*umi4_17
+	mov $%Free1,clock_scenario_4_18	: inc %Free1 ;*umi4_18
+	mov $%Free1,clock_scenario_4_19	: inc %Free1 ;*umi4_19
+
+	;Gets the number of labels in the scenario
+	mov %Free2,20
+~
+
+notif %scenario_Number = 5 jumpf
+	;Ep5
+	
+	lsp 500,":s;#FFFFFF`{p:15:"+date_scenario_episode+" 5}",1430,19
+	mov %Free5,flag_scenario_5_op
+	
+	mov %Free1,501
+
+	mov $%Free1,scenario_5_op :inc %Free1 ;*umi5_op
+	mov $%Free1,scenario_5_1 :inc %Free1 ;*umi5_1
+	mov $%Free1,scenario_5_2 :inc %Free1 ;*umi5_2
+	mov $%Free1,scenario_5_3 :inc %Free1 ;*umi5_3
+	mov $%Free1,scenario_5_4 :inc %Free1 ;*umi5_4
+	mov $%Free1,scenario_5_5 :inc %Free1 ;*umi5_5
+	mov $%Free1,scenario_5_6 :inc %Free1 ;*umi5_6
+	mov $%Free1,scenario_5_7 :inc %Free1 ;*umi5_7
+	mov $%Free1,scenario_5_8 :inc %Free1 ;*umi5_8
+	mov $%Free1,scenario_5_9 :inc %Free1 ;*umi5_9
+	mov $%Free1,scenario_5_10 :inc %Free1 ;*umi5_10
+	mov $%Free1,scenario_5_11 :inc %Free1 ;*umi5_11
+	mov $%Free1,scenario_5_12 :inc %Free1 ;*umi5_12
+	mov $%Free1,scenario_5_13 :inc %Free1 ;*umi5_13
+	mov $%Free1,scenario_5_14 :inc %Free1 ;*umi5_14
+	mov $%Free1,scenario_5_15 :inc %Free1 ;*umi5_15
+
+	mov %Free1,531
+	mov $%Free1,date_scenario_5_op :inc %Free1 ;*umi5_op
+	mov $%Free1,date_scenario_5_1 :inc %Free1 ;*umi5_1
+	mov $%Free1,date_scenario_5_2 :inc %Free1 ;*umi5_2
+	mov $%Free1,date_scenario_5_3 :inc %Free1 ;*umi5_3
+	mov $%Free1,date_scenario_5_4 :inc %Free1 ;*umi5_4
+	mov $%Free1,date_scenario_5_5 :inc %Free1 ;*umi5_5
+	mov $%Free1,date_scenario_5_6 :inc %Free1 ;*umi5_6
+	mov $%Free1,date_scenario_5_7 :inc %Free1 ;*umi5_7
+	mov $%Free1,date_scenario_5_8 :inc %Free1 ;*umi5_8
+	mov $%Free1,date_scenario_5_9 :inc %Free1 ;*umi5_9
+	mov $%Free1,date_scenario_5_10 :inc %Free1 ;*umi5_10
+	mov $%Free1,date_scenario_5_11 :inc %Free1 ;*umi5_11
+	mov $%Free1,date_scenario_5_12 :inc %Free1 ;*umi5_12
+	mov $%Free1,date_scenario_5_13 :inc %Free1 ;*umi5_13
+	mov $%Free1,date_scenario_5_14 :inc %Free1 ;*umi5_14
+	mov $%Free1,date_scenario_5_15 :inc %Free1 ;*umi5_15
+
+	mov %Free1,591
+	mov $%Free1,clock_scenario_5_op :inc %Free1 ;*umi5_op
+	mov $%Free1,clock_scenario_5_1 :inc %Free1 ;*umi5_1
+	mov $%Free1,clock_scenario_5_2 :inc %Free1 ;*umi5_2
+	mov $%Free1,clock_scenario_5_3 :inc %Free1 ;*umi5_3
+	mov $%Free1,clock_scenario_5_4 :inc %Free1 ;*umi5_4
+	mov $%Free1,clock_scenario_5_5 :inc %Free1 ;*umi5_5
+	mov $%Free1,clock_scenario_5_6 :inc %Free1 ;*umi5_6
+	mov $%Free1,clock_scenario_5_7 :inc %Free1 ;*umi5_7
+	mov $%Free1,clock_scenario_5_8 :inc %Free1 ;*umi5_8
+	mov $%Free1,clock_scenario_5_9 :inc %Free1 ;*umi5_9
+	mov $%Free1,clock_scenario_5_10 :inc %Free1 ;*umi5_10
+	mov $%Free1,clock_scenario_5_11 :inc %Free1 ;*umi5_11
+	mov $%Free1,clock_scenario_5_12 :inc %Free1 ;*umi5_12
+	mov $%Free1,clock_scenario_5_13 :inc %Free1 ;*umi5_13
+	mov $%Free1,clock_scenario_5_14 :inc %Free1 ;*umi5_14
+	mov $%Free1,clock_scenario_5_15 :inc %Free1 ;*umi5_15
+
+
+	;Gets the number of labels in the scenario
+	mov %Free2,16
+~
+
+notif %scenario_Number = 6 jumpf
+	;Ep6
+	
+	lsp 500,":s;#FFFFFF`{p:15:"+date_scenario_episode+" 6}",1430,19
+	mov %Free5,flag_scenario_6_op
+	
+	mov %Free1,501
+
+	mov $%Free1,scenario_6_op :inc %Free1 ;*umi6_op
+	mov $%Free1,scenario_6_1 :inc %Free1 ;*umi6_1
+	mov $%Free1,scenario_6_2 :inc %Free1 ;*umi6_2
+	mov $%Free1,scenario_6_3 :inc %Free1 ;*umi6_3
+	mov $%Free1,scenario_6_4 :inc %Free1 ;*umi6_4
+	mov $%Free1,scenario_6_5 :inc %Free1 ;*umi6_5
+	mov $%Free1,scenario_6_6 :inc %Free1 ;*umi6_6
+	mov $%Free1,scenario_6_7 :inc %Free1 ;*umi6_7
+	mov $%Free1,scenario_6_8 :inc %Free1 ;*umi6_8
+	mov $%Free1,scenario_6_9 :inc %Free1 ;*umi6_9
+	mov $%Free1,scenario_6_10 :inc %Free1 ;*umi6_10
+	mov $%Free1,scenario_6_11 :inc %Free1 ;*umi6_11
+	mov $%Free1,scenario_6_12 :inc %Free1 ;*umi6_12
+	mov $%Free1,scenario_6_13 :inc %Free1 ;*umi6_13
+	mov $%Free1,scenario_6_14 :inc %Free1 ;*umi6_14
+	mov $%Free1,scenario_6_15 :inc %Free1 ;*umi6_15
+	mov $%Free1,scenario_6_16 :inc %Free1 ;*umi6_16
+	mov $%Free1,scenario_6_17 :inc %Free1 ;*umi6_17
+	mov $%Free1,scenario_6_18 :inc %Free1 ;*umi6_18
+
+	mov %Free1,531
+	mov $%Free1,date_scenario_6_op :inc %Free1 ;*umi6_op
+	mov $%Free1,date_scenario_6_1 :inc %Free1 ;*umi6_1
+	mov $%Free1,date_scenario_6_2 :inc %Free1 ;*umi6_2
+	mov $%Free1,date_scenario_6_3 :inc %Free1 ;*umi6_3
+	mov $%Free1,date_scenario_6_4 :inc %Free1 ;*umi6_4
+	mov $%Free1,date_scenario_6_5 :inc %Free1 ;*umi6_5
+	mov $%Free1,date_scenario_6_6 :inc %Free1 ;*umi6_6
+	mov $%Free1,date_scenario_6_7 :inc %Free1 ;*umi6_7
+	mov $%Free1,date_scenario_6_8 :inc %Free1 ;*umi6_8
+	mov $%Free1,date_scenario_6_9 :inc %Free1 ;*umi6_9
+	mov $%Free1,date_scenario_6_10 :inc %Free1 ;*umi6_10
+	mov $%Free1,date_scenario_6_11 :inc %Free1 ;*umi6_11
+	mov $%Free1,date_scenario_6_12 :inc %Free1 ;*umi6_12
+	mov $%Free1,date_scenario_6_13 :inc %Free1 ;*umi6_13
+	mov $%Free1,date_scenario_6_14 :inc %Free1 ;*umi6_14
+	mov $%Free1,date_scenario_6_15 :inc %Free1 ;*umi6_15
+	mov $%Free1,date_scenario_6_16 :inc %Free1 ;*umi6_16
+	mov $%Free1,date_scenario_6_17 :inc %Free1 ;*umi6_17
+	mov $%Free1,date_scenario_6_18 :inc %Free1 ;*umi6_18
+
+	mov %Free1,591
+	mov $%Free1,clock_scenario_6_op :inc %Free1 ;*umi6_op
+	mov $%Free1,clock_scenario_6_1 :inc %Free1 ;*umi6_1
+	mov $%Free1,clock_scenario_6_2 :inc %Free1 ;*umi6_2
+	mov $%Free1,clock_scenario_6_3 :inc %Free1 ;*umi6_3
+	mov $%Free1,clock_scenario_6_4 :inc %Free1 ;*umi6_4
+	mov $%Free1,clock_scenario_6_5 :inc %Free1 ;*umi6_5
+	mov $%Free1,clock_scenario_6_6 :inc %Free1 ;*umi6_6
+	mov $%Free1,clock_scenario_6_7 :inc %Free1 ;*umi6_7
+	mov $%Free1,clock_scenario_6_8 :inc %Free1 ;*umi6_8
+	mov $%Free1,clock_scenario_6_9 :inc %Free1 ;*umi6_9
+	mov $%Free1,clock_scenario_6_10 :inc %Free1 ;*umi6_10
+	mov $%Free1,clock_scenario_6_11 :inc %Free1 ;*umi6_11
+	mov $%Free1,clock_scenario_6_12 :inc %Free1 ;*umi6_12
+	mov $%Free1,clock_scenario_6_13 :inc %Free1 ;*umi6_13
+	mov $%Free1,clock_scenario_6_14 :inc %Free1 ;*umi6_14
+	mov $%Free1,clock_scenario_6_15 :inc %Free1 ;*umi6_15
+	mov $%Free1,clock_scenario_6_16 :inc %Free1 ;*umi6_16
+	mov $%Free1,clock_scenario_6_17 :inc %Free1 ;*umi6_17
+	mov $%Free1,clock_scenario_6_18 :inc %Free1 ;*umi6_18
+
+
+	;Gets the number of labels in the scenario
+	mov %Free2,19
+~
+
+notif %scenario_Number = 7 jumpf
+	;Ep7
+	
+	lsp 500,":s;#FFFFFF`{p:15:"+date_scenario_episode+" 7}",1430,19
+	mov %Free5,flag_scenario_7_op
+	
+	mov %Free1,501
+
+	mov $%Free1,scenario_7_op :inc %Free1 ;*umi7_op
+	mov $%Free1,scenario_7_1 :inc %Free1 ;*umi7_1
+	mov $%Free1,scenario_7_2 :inc %Free1 ;*umi7_2
+	mov $%Free1,scenario_7_3 :inc %Free1 ;*umi7_3
+	mov $%Free1,scenario_7_4 :inc %Free1 ;*umi7_4
+	mov $%Free1,scenario_7_5 :inc %Free1 ;*umi7_5
+	mov $%Free1,scenario_7_6 :inc %Free1 ;*umi7_6
+	mov $%Free1,scenario_7_7 :inc %Free1 ;*umi7_7
+	mov $%Free1,scenario_7_8 :inc %Free1 ;*umi7_8
+	mov $%Free1,scenario_7_9 :inc %Free1 ;*umi7_9
+	mov $%Free1,scenario_7_10 :inc %Free1 ;*umi7_10
+	mov $%Free1,scenario_7_11 :inc %Free1 ;*umi7_11
+	mov $%Free1,scenario_7_12 :inc %Free1 ;*umi7_12
+	mov $%Free1,scenario_7_13 :inc %Free1 ;*umi7_13
+	mov $%Free1,scenario_7_14 :inc %Free1 ;*umi7_14
+	mov $%Free1,scenario_7_15 :inc %Free1 ;*umi7_15
+	mov $%Free1,scenario_7_16 :inc %Free1 ;*umi7_16
+	mov $%Free1,scenario_7_17 :inc %Free1 ;*umi7_17
+	mov $%Free1,scenario_7_18 :inc %Free1 ;*umi7_18
+
+	mov %Free1,531
+	mov $%Free1,date_scenario_7_op :inc %Free1 ;*umi7_op
+	mov $%Free1,date_scenario_7_1 :inc %Free1 ;*umi7_1
+	mov $%Free1,date_scenario_7_2 :inc %Free1 ;*umi7_2
+	mov $%Free1,date_scenario_7_3 :inc %Free1 ;*umi7_3
+	mov $%Free1,date_scenario_7_4 :inc %Free1 ;*umi7_4
+	mov $%Free1,date_scenario_7_5 :inc %Free1 ;*umi7_5
+	mov $%Free1,date_scenario_7_6 :inc %Free1 ;*umi7_6
+	mov $%Free1,date_scenario_7_7 :inc %Free1 ;*umi7_7
+	mov $%Free1,date_scenario_7_8 :inc %Free1 ;*umi7_8
+	mov $%Free1,date_scenario_7_9 :inc %Free1 ;*umi7_9
+	mov $%Free1,date_scenario_7_10 :inc %Free1 ;*umi7_10
+	mov $%Free1,date_scenario_7_11 :inc %Free1 ;*umi7_11
+	mov $%Free1,date_scenario_7_12 :inc %Free1 ;*umi7_12
+	mov $%Free1,date_scenario_7_13 :inc %Free1 ;*umi7_13
+	mov $%Free1,date_scenario_7_14 :inc %Free1 ;*umi7_14
+	mov $%Free1,date_scenario_7_15 :inc %Free1 ;*umi7_15
+	mov $%Free1,date_scenario_7_16 :inc %Free1 ;*umi7_16
+	mov $%Free1,date_scenario_7_17 :inc %Free1 ;*umi7_17
+	mov $%Free1,date_scenario_7_18 :inc %Free1 ;*umi7_18
+
+	mov %Free1,591
+	mov $%Free1,clock_scenario_7_op :inc %Free1 ;*umi7_op
+	mov $%Free1,clock_scenario_7_1 :inc %Free1 ;*umi7_1
+	mov $%Free1,clock_scenario_7_2 :inc %Free1 ;*umi7_2
+	mov $%Free1,clock_scenario_7_3 :inc %Free1 ;*umi7_3
+	mov $%Free1,clock_scenario_7_4 :inc %Free1 ;*umi7_4
+	mov $%Free1,clock_scenario_7_5 :inc %Free1 ;*umi7_5
+	mov $%Free1,clock_scenario_7_6 :inc %Free1 ;*umi7_6
+	mov $%Free1,clock_scenario_7_7 :inc %Free1 ;*umi7_7
+	mov $%Free1,clock_scenario_7_8 :inc %Free1 ;*umi7_8
+	mov $%Free1,clock_scenario_7_9 :inc %Free1 ;*umi7_9
+	mov $%Free1,clock_scenario_7_10 :inc %Free1 ;*umi7_10
+	mov $%Free1,clock_scenario_7_11 :inc %Free1 ;*umi7_11
+	mov $%Free1,clock_scenario_7_12 :inc %Free1 ;*umi7_12
+	mov $%Free1,clock_scenario_7_13 :inc %Free1 ;*umi7_13
+	mov $%Free1,clock_scenario_7_14 :inc %Free1 ;*umi7_14
+	mov $%Free1,clock_scenario_7_15 :inc %Free1 ;*umi7_15
+	mov $%Free1,clock_scenario_7_16 :inc %Free1 ;*umi7_16
+	mov $%Free1,clock_scenario_7_17 :inc %Free1 ;*umi7_17
+	mov $%Free1,clock_scenario_7_18 :inc %Free1 ;*umi7_18
+
+
+	;Gets the number of labels in the scenario
+	mov %Free2,19
+~
+
+notif %scenario_Number = 8 jumpf
+	;Ep8
+	
+	lsp 500,":s;#FFFFFF`{p:15:"+date_scenario_episode+" 8}",1430,19
+	mov %Free5,flag_scenario_8_op
+	
+	mov %Free1,501
+
+	mov $%Free1,scenario_8_op :inc %Free1 ;*umi8_op
+	mov $%Free1,scenario_8_1 :inc %Free1 ;*umi8_1
+	mov $%Free1,scenario_8_2 :inc %Free1 ;*umi8_2
+	mov $%Free1,scenario_8_3 :inc %Free1 ;*umi8_3
+	mov $%Free1,scenario_8_4 :inc %Free1 ;*umi8_4
+	mov $%Free1,scenario_8_5 :inc %Free1 ;*umi8_5
+	mov $%Free1,scenario_8_6 :inc %Free1 ;*umi8_6
+	mov $%Free1,scenario_8_7 :inc %Free1 ;*umi8_7
+	mov $%Free1,scenario_8_8 :inc %Free1 ;*umi8_8
+	mov $%Free1,scenario_8_9 :inc %Free1 ;*umi8_9
+	mov $%Free1,scenario_8_10 :inc %Free1 ;*umi8_10
+	mov $%Free1,scenario_8_11 :inc %Free1 ;*umi8_11
+	mov $%Free1,scenario_8_12 :inc %Free1 ;*umi8_12
+	mov $%Free1,scenario_8_13 :inc %Free1 ;*umi8_13
+	mov $%Free1,scenario_8_14 :inc %Free1 ;*umi8_14
+	mov $%Free1,scenario_8_15 :inc %Free1 ;*umi8_15
+	mov $%Free1,scenario_8_16 :inc %Free1 ;*umi8_16
+
+	mov %Free1,531
+	mov $%Free1,date_scenario_8_op :inc %Free1 ;*umi8_op
+	mov $%Free1,date_scenario_8_1 :inc %Free1 ;*umi8_1
+	mov $%Free1,date_scenario_8_2 :inc %Free1 ;*umi8_2
+	mov $%Free1,date_scenario_8_3 :inc %Free1 ;*umi8_3
+	mov $%Free1,date_scenario_8_4 :inc %Free1 ;*umi8_4
+	mov $%Free1,date_scenario_8_5 :inc %Free1 ;*umi8_5
+	mov $%Free1,date_scenario_8_6 :inc %Free1 ;*umi8_6
+	mov $%Free1,date_scenario_8_7 :inc %Free1 ;*umi8_7
+	mov $%Free1,date_scenario_8_8 :inc %Free1 ;*umi8_8
+	mov $%Free1,date_scenario_8_9 :inc %Free1 ;*umi8_9
+	mov $%Free1,date_scenario_8_10 :inc %Free1 ;*umi8_10
+	mov $%Free1,date_scenario_8_11 :inc %Free1 ;*umi8_11
+	mov $%Free1,date_scenario_8_12 :inc %Free1 ;*umi8_12
+	mov $%Free1,date_scenario_8_13 :inc %Free1 ;*umi8_13
+	mov $%Free1,date_scenario_8_14 :inc %Free1 ;*umi8_14
+	mov $%Free1,date_scenario_8_15 :inc %Free1 ;*umi8_15
+	mov $%Free1,date_scenario_8_16 :inc %Free1 ;*umi8_16
+
+	mov %Free1,591
+	mov $%Free1,clock_scenario_8_op :inc %Free1 ;*umi8_op
+	mov $%Free1,clock_scenario_8_1 :inc %Free1 ;*umi8_1
+	mov $%Free1,clock_scenario_8_2 :inc %Free1 ;*umi8_2
+	mov $%Free1,clock_scenario_8_3 :inc %Free1 ;*umi8_3
+	mov $%Free1,clock_scenario_8_4 :inc %Free1 ;*umi8_4
+	mov $%Free1,clock_scenario_8_5 :inc %Free1 ;*umi8_5
+	mov $%Free1,clock_scenario_8_6 :inc %Free1 ;*umi8_6
+	mov $%Free1,clock_scenario_8_7 :inc %Free1 ;*umi8_7
+	mov $%Free1,clock_scenario_8_8 :inc %Free1 ;*umi8_8
+	mov $%Free1,clock_scenario_8_9 :inc %Free1 ;*umi8_9
+	mov $%Free1,clock_scenario_8_10 :inc %Free1 ;*umi8_10
+	mov $%Free1,clock_scenario_8_11 :inc %Free1 ;*umi8_11
+	mov $%Free1,clock_scenario_8_12 :inc %Free1 ;*umi8_12
+	mov $%Free1,clock_scenario_8_13 :inc %Free1 ;*umi8_13
+	mov $%Free1,clock_scenario_8_14 :inc %Free1 ;*umi8_14
+	mov $%Free1,clock_scenario_8_15 :inc %Free1 ;*umi8_15
+	mov $%Free1,clock_scenario_8_16 :inc %Free1 ;*umi8_16
+
+	;Gets the number of labels in the scenario
+	mov %Free2,17
+~
+
+border_pad_pop
+
+*scenario_jump
+mov %Free1,501
+
+;Base XY axis value
+;mov %x,70
+;mov %y,70
+mov %x,1273
+mov %y,87
+
+exbtn_d "C531-580R602,0,0R603,0,0"
+;lsp2 500,black,1345,450,35,40,0
+
+;if %scenario_Number = 1 lbsp2 610,chapter_screen_all_ep1,664,476,175,175,0 ;chapter screen
+if %scenario_Number = 1 lbsp2 610,chapter_screen_all_ep1,246+299,278+168,100,100 ;chapter screen
+
+if %scenario_Number = 2 lbsp2 610,chapter_screen_all_ep2,664,476,175,175,0 ;chapter screen
+if %scenario_Number = 3 lbsp2 610,chapter_screen_all_ep3,664,476,175,175,0 ;chapter screen
+if %scenario_Number = 4 lbsp2 610,chapter_screen_all_ep4,664,476,175,175,0 ;chapter screen
+;chiru
+if %scenario_Number = 5 lbsp2 610,chapter_screen_all_ep5,664,476,175,175,0 ;chapter screen
+if %scenario_Number = 6 lbsp2 610,chapter_screen_all_ep6,664,476,175,175,0 ;chapter screen
+if %scenario_Number = 7 lbsp2 610,chapter_screen_all_ep7,664,476,175,175,0 ;chapter screen
+if %scenario_Number = 8 lbsp2 610,chapter_screen_all_ep8,664,476,175,175,0 ;chapter screen
+
+;aspt2 blur,610,10
+;lsp2 609,":a;graphics\menu\jump\border.png",664,476 ;portrait border -30 надо будет сделать в x для всех
+lsp 609,":a;graphics\menu\jump\borderA.png",0,0 ;portrait border -30 надо будет сделать в x для всех
+lsp 608,":a;graphics\menu\jump\border2.png",175,646 ;portrait for text left
+lsp 607,":a;graphics\menu\jump\border2.png",535,646 ;portrait for text right
+
+display_clock3 545,690,30,6*60,8*60,0,0
+
+;lsp 500,rmenu_btn_please_select_text,%x,100
+
+;Do we display all the jumps regardless of actual completeness?
+mov %Free6,0
+if %scenario_Number = 1 && %UMINEKOEND > 10 mov %Free6,1
+if %scenario_Number = 2 && %UMINEKOEND > 20 mov %Free6,1
+if %scenario_Number = 3 && %UMINEKOEND > 30 mov %Free6,1
+if %scenario_Number = 4 && %UMINEKOEND > 41 mov %Free6,1
+;chiru
+if %scenario_Number = 5 && %UMINEKOEND > 50 mov %Free6,1
+if %scenario_Number = 6 && %UMINEKOEND > 60 mov %Free6,1
+if %scenario_Number = 7 && %UMINEKOEND > 70 mov %Free6,1
+if %scenario_Number = 8 && %UMINEKOEND > 81 mov %Free6,1
+
+
+;Button placement
+
+;for %Free3 = 1 to %Free2
+;creates stack overflow when we try to exit the for loop
+
+mov %Free3,0
+*scenario_btn_iter
+	inc %Free3
+	if %Free3 > %Free2 goto *scenario_btn_done
+
+	border_pad_push 5
+
+	;_csp %Free1
+	lsp %Free1,":s;#D7D7D7#FFFFFF`{p:15:{w:620:}{fit}"+$%Free1+"}",%x,%y ;chapter
+	add %Free1,30
+	if $%Free1 != "" lsph %Free1,":s;#FFFFFF`{a:c:{w:300:{fit}{p:14:"+$%Free1+"}}}",860-200,646+12 ;text right time
+	if $%Free1 == "" lsph %Free1,":s;#FFFFFF`{a:c:{w:300:{fit}{p:16:—————————}}}",860-200,646+12-9
+
+	add %Free1,30
+	lsph %Free1,":s;#FFFFFF`{a:c:{w:300:{fit}{p:14:"+$%Free1+"}}}",168,646+12 ;text left chapter
+
+	border_pad_pop
+
+	mov %Free7,%Free1+30
+
+	;Button
+	itoa $Free1,%Free1-30
+	itoa $Free4,%Free1
+	sub %Free1,60
+	exbtn %Free1,%Free3,"P"+$Free1+"P"+$Free4+$%Free7 ;+"P604"
+
+	;X values increase
+	add %y,44
+	inc %Free1
+
+	if %Free6 == 1 goto *scenario_btn_iter
+	inc %Free5
+	if $%Free5 != "●" goto *scenario_btn_done
+goto *scenario_btn_iter
+
+*scenario_btn_done
+
+;Back button
+lsp rmenu_btn_Exit,rmenu_btn_Exit_text,%x,990
+spbtn rmenu_btn_Exit,rmenu_btn_Exit
+
+;Make black darker
+;amsp 703,0,0,140
+
+print 1
+
+*scenario_jump_btnwait
+;Wait for clicks
+
+    ;transbtn
+	btnwait %btnRes
+	
+	if %btnRes = rmenu_btn_Exit btndef "" : csp2 -1 : mov %title_skip,1 : goto *b_title
+	if %btnRes = -1 			btndef "" : csp2 -1 : mov %title_skip,1 : goto *b_title
+	if %btnRes = -10 			btndef "" : csp2 -1 : mov %title_skip,1 : goto *b_title
+	if %scenario_Number = 1  goto *scenario_jump_data1
+	if %scenario_Number = 2  goto *scenario_jump_data2
+	if %scenario_Number = 3  goto *scenario_jump_data3
+	if %scenario_Number = 4  goto *scenario_jump_data4
+	;chiru
+	if %scenario_Number = 5  goto *scenario_jump_data5
+	if %scenario_Number = 6  goto *scenario_jump_data6
+	if %scenario_Number = 7  goto *scenario_jump_data7
+	if %scenario_Number = 8  goto *scenario_jump_data8
+
+goto *scenario_jump_btnwait
+
+*perform_magic_jump
+	btndef ""
+	bg black,0
+	csp2 -1
+	csp_rst
+	print 22
+	wait2 100
+	E_A
+return

@@ -139,8 +139,10 @@ if %BtnRes != 313 goto *skip_bgm_cursor
 		getmousepos %cfg_temp_var,%cfg_mouse_y
 		mov %cfg_mouse_y,%cfg_mouse_y-26
 		getspsize 320,%cfg_temp_var,%temp_var3,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
-		mov %cfg_temp_var,(%cfg_mouse_y-255)*(%temp_var3-1080-0)/(785-255)+0
+		;mov %cfg_mouse_y,%cfg_mouse_y-(((%h_scrolled*530)/%temp_var3)+26)
+		mov %cfg_temp_var,(%cfg_mouse_y-255)*(%temp_var3-1080-0)/(785-255)+((%cfg_mouse_y-255)) ;functions but is not universal, only here
 			aspt scroll_y,320,%cfg_temp_var
+			;mov %h_scrolled,%h_scrolled+%cfg_temp_var
 		mov %for_index3,0 ;Infinite Cycle
 	next
 *skip_bgm_cursor

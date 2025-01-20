@@ -51,7 +51,7 @@
 			getmousepos %cfg_temp_var,%cfg_mouse_y
 			mov %cfg_mouse_y,%cfg_mouse_y-26
 			getspsize 320,%cfg_temp_var,%temp_var3,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
-			mov %cfg_temp_var,(%cfg_mouse_y-255)*(%temp_var3-1080-0)/(785-255)+0
+			mov %cfg_temp_var,(%cfg_mouse_y-255)*(%temp_var3-1080-0)/(785-255)+((%cfg_mouse_y-255)/2) ;This is offset
 				aspt scroll_y,320,%cfg_temp_var
 			mov %for_index3,0 ;Infinite Cycle
 		next
@@ -117,7 +117,7 @@ goto *save_exit
 			getmousepos %cfg_temp_var,%cfg_mouse_y
 			mov %cfg_mouse_y,%cfg_mouse_y-26
 			getspsize 320,%cfg_temp_var,%temp_var3,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
-			mov %cfg_temp_var,(%cfg_mouse_y-255)*(%temp_var3-1080-0)/(785-255)+0
+			mov %cfg_temp_var,(%cfg_mouse_y-255)*(%temp_var3-1080-0)/(785-255)+((%cfg_mouse_y-255)/2) ;This is offset
 				aspt scroll_y,320,%cfg_temp_var
 			mov %for_index3,0 ;Infinite Cycle
 		next
@@ -247,7 +247,7 @@ goto *save_exit
 
 	;debug_var %last_save
 
-	if %first_save_opening = 0 aspt scroll_y,320,%cur_scroll_pos;%last_save*(173+5)-(((173+5)*2)/2)-37,400
+	if %first_save_opening = 0 aspt scroll_y,320,%cur_scroll_pos : print 22;%last_save*(173+5)-(((173+5)*2)/2)-37,400
 	if %first_save_opening = 1 aspt scroll_y,320,%last_save*(173+5)-(((173+5)*2)/2)-37 : mov %cur_scroll_pos,%last_save*(173+5)-(((173+5)*2)/2)-37 : mov %first_save_opening,0
 
 return
@@ -555,7 +555,9 @@ return
 	savescreenshot2 $Free1
 
 	;Update Image Tree
-	lsph2 30+%save_index,$Free1,0,0,91,91
+	lsph2 30+%save_index,":c/1,0,3;"+$Free1,0,0,91,91
+	itoa $Free3,30+%save_index
+	tree_set 2,%last_save,"img",$Free3
 
 	time %Hour,%Minute
 	date %Year,%Month,%Day
@@ -593,13 +595,13 @@ return
 	tree_set 2,%last_save,"bg","316"
 	if %save_index == 20 tree_set 2,%last_save,"bg","317"
 
+	getscrollpos 320,%cur_scroll_pos
+
 	;Save game
 	_csp 320
-	_csp Save
+	;_csp Save
 	savegame %save_index
 	seplay 9,1030,100
-
-	getscrollpos 320,%cur_scroll_pos
 
 	goto *savemode1
 
@@ -623,10 +625,10 @@ return
 		seplay 9,1022,100
 		lsp 2,ware,0,0
 		print 1
-		delay 1000
+		delay 500
 		lsp 2,":c;graphics\colour\black.png",0,0
 		print 22
-		delay 2000
+		delay 1000
 	~
 
 	gosub *save_load_cleanup
@@ -637,7 +639,7 @@ return
 		E_A
 		seplay 9,17,100
 		bg black,10
-		delay 3000
+		delay 2000
 	~
 
 	mov %load_for_title,0

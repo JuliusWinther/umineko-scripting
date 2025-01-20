@@ -975,6 +975,7 @@ numalias saveload_caption,70
 numalias TextCC1SpNum,0
 numalias TextCC2SpNum,1
 numalias TextCC3SpNum,745 ;skip
+numalias TextCC3SpNumDenied,746 ;skip blocked
 numalias TextCC4SpNum,747 ;automode
 ;Masks
 numalias msk1,699
@@ -1622,6 +1623,8 @@ numalias outfit_selector,10635
 numalias save_index,10636
 numalias first_save_opening,10638
 
+numalias h_scrolled,10639
+
 
 numalias outfits,11500 : dim ?outfits[70][6][6] ;a lot of slots
 
@@ -1766,7 +1769,7 @@ textgosub *text_cw
 skipgosub *skip_cw
 loadgosub *load_system
 event_callback *script_state
-;ctrl_callback *ctrl_state
+ctrl_callback *ctrl_state
 
 usewheel
 useescspc
@@ -1942,6 +1945,7 @@ mov %char_hider,0
 mov %char_reloading_numaliases,0
 mov %r_display_cha_universal,0
 mov %cur_scroll_pos,0
+mov %h_scrolled,0
 ;Char Menu ;TODO Some char menu open in different pages, fix ;W_CUSTOM
 mov %char_moving_side,1
 mov $r_cha_back,blank ;Pre-initialize family tree to transparent

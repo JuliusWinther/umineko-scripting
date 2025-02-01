@@ -15012,8 +15012,8 @@ if %title_skip = 1 goto *b_title_skip_100
 	vsp t_warning_lsp,1
 
 	;lsp 900,$tmp10,0,0
-	;bg $tmp10,6 ;TITLE VIDEO TITLE TEST
-	w_anim 400,"test.mp4",0,0 ;This is the way to go, must add effect 6 in some way
+	bg $tmp10,6 ;TITLE VIDEO TITLE TEST
+	;w_anim 400,"test.mp4",0,0 ;This is the way to go, must add effect 6 in some way
 
 	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
 	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
@@ -15082,8 +15082,8 @@ if %title_skip = 1 goto *b_title_skip_100
 	*b_title_no_load
 
 	;lsp 900,$tmp10,0,0
-	;bg $tmp10,1 ;TITLE VIDEO TITLE TEST
-	w_anim 400,"test.mp4",0,0 ;This is the way to go, must add effect 1 in some way
+	bg $tmp10,1 ;TITLE VIDEO TITLE TEST
+	;w_anim 400,"test.mp4",0,0 ;This is the way to go, must add effect 1 in some way
 
 	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
 	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
@@ -23832,6 +23832,12 @@ if $aspt_prop == "scroll_x" aspt2 scroll_x,%aspt_slot,%aspt_val1,%aspt_val2,%asp
 if $aspt_prop == "flip" aspt2 flip,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3 : mov $?slot_cache[%aspt_slot-750][26],"aspt2|flip|"+$string_temp4+"\"+$string_temp5+"\"+$string_temp6 : jumpf 
 ~
 
+;debug_var %aspt_slot-750
+;debug_str $?slot_cache[%aspt_slot-750][0]
+;debug_str $?slot_cache[%aspt_slot-750][1]
+;debug_str $?slot_cache[%aspt_slot-750][2]
+;debug_str $?slot_cache[%aspt_slot-750][3]
+
 *spt_mem_done
 
 return
@@ -28836,7 +28842,7 @@ return
 	; _flags will call varset sskip for ep8. We must not sskip beyond the choice vector size of the chapter start label.
 	accept_choice_vector_size %log_src_cvs
 
-	debug_str "Log: " + $log_ch_prev
+	;debug_str "Log: " + $log_ch_prev
 
 	mov $log_ch_prev,$log_ch_current+"_flags"
 	gosub $log_ch_prev ;does the print
@@ -30641,7 +30647,7 @@ return
 return
 
 *set_dynamic_window_base
-if %cfg_book_mode = 1 mov %cur_wndmode,on : enable_gradients 0 : set_window_simple 384,300 ;Book Mode ;W_CUSTOM
+if %cfg_book_mode = 1 enable_gradients 0 : set_window_simple 384,300 ;Book Mode ;W_CUSTOM
 if %cfg_book_mode = 1 lsph TextCC2SpNum,":a/3,160,2;graphics\system\wnd\cursor2.png",0,0 : return;Book Mode ;W_CUSTOM
 if %cfg_book_mode = 0 mov %cur_wndmode,off : enable_gradients 1 : lsph TextCC2SpNum,":a/10,80,2;graphics\system\wnd\cursor1.png",0,0;Book Mode ;W_CUSTOM
 	if %msgwnd_type = 0 setwindowd msgwnd0 : jumpf
@@ -31796,61 +31802,76 @@ return
 		;Strats BGs reload
 		;Checks if it is a type of background, is so after reloading it it jumps forward skipping the sprite reload
 		if $?slot_cache[%for_index1][0] == "" jumpf
-		if $string_temp1 == "backgrounds" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "colour" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "clock" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "efe" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cache" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "backgrounds" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "colour" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "clock" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "efe" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cache" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
 
-		if $string_temp1 == "quiz" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "quiz" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
 
 		;Localization
-		if $string_temp1 == "locale_shared" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "locale_lan" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "alibi" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cas" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "comment" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "dai" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "mondai" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "murderer" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "story" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "text" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "local_saku" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "locale_shared" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "locale_lan" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "alibi" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cas" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "comment" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "dai" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "mondai" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "murderer" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "story" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "text" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "local_saku" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
 	
 		;CGs
-		if $string_temp1 == "cg" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/bea" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/ber" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/but" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/cg_box" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/dla" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/enj" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/eri" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/ev2" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/eva" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/fea" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/gap" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/geo" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/jes" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/kan" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/kir" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/lam" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/nat" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/ron" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/ros" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/rud" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/s" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/sak" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/sha" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/wal" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "cg/wil" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "cg" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/bea" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/ber" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/but" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/cg_box" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/dla" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/enj" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/eri" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/ev2" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/eva" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/fea" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/gap" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/geo" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/jes" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/kan" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/kir" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/lam" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/nat" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/ron" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/ros" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/rud" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/s" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/sak" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/sha" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/wal" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "cg/wil" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
 
 		;Saku
-		if $string_temp1 == "saku" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "tsu1" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "tsu2" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "tsu3" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
-		if $string_temp1 == "tsu7" lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : jumpf
+		if $string_temp1 == "saku" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "tsu1" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "tsu2" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "tsu3" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+		if $string_temp1 == "tsu7" mov %reloading_status,1 : lbg $paste_method+":"+$string_temp1,%for_index1+750,$string_temp2 : goto *apply_edits_to_bgs
+
+		goto *skip_apply_edits_to_bgs
+		*apply_edits_to_bgs
+		for %for_index2=1 to 26
+			if $?slot_cache[%for_index1][%for_index2] != "" split $?slot_cache[%for_index1][%for_index2],"|",$string_temp1,$string_temp2,$string_temp3 : split $string_temp3,"\",%aspt_val1,%aspt_val2,%aspt_val3
+				;1-Pos Command / 2-Pos Property / 3-Property Value
+				;debug_str $?slot_cache[%for_index1][%for_index2]
+			if $string_temp1 == "aspt2" spt_mem "a2",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
+			if $string_temp1 == "aspt" spt_mem "a",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
+			if $string_temp1 == "spt2" spt_mem "r2",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
+			if $string_temp1 == "spt" spt_mem "r",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
+		next
+		mov %reloading_status,0
+		jumpf
+		*skip_apply_edits_to_bgs
 
 		;Ends BGs reload
 
@@ -31863,6 +31884,7 @@ return
 		for %for_index2=1 to 26
 			if $?slot_cache[%for_index1][%for_index2] != "" split $?slot_cache[%for_index1][%for_index2],"|",$string_temp1,$string_temp2,$string_temp3 : split $string_temp3,"\",%aspt_val1,%aspt_val2,%aspt_val3
 				;1-Pos Command / 2-Pos Property / 3-Property Value
+				;debug_str $?slot_cache[%for_index1][%for_index2]
 			if $string_temp1 == "aspt2" spt_mem "a2",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
 			if $string_temp1 == "aspt" spt_mem "a",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
 			if $string_temp1 == "spt2" spt_mem "r2",$string_temp2,%for_index1+750,%aspt_val1,%aspt_val2,%aspt_val3
@@ -31871,7 +31893,6 @@ return
 		mov %reloading_status,0
 
 		~
-
 
 	next
 

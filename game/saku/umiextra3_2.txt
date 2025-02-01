@@ -10689,15 +10689,8 @@ flush 22
 wait 500
 csp_slot s0_9
 lss s0_10,"nat","b11_b11"
-spt_mem "a2","xpos",s0_10,0
-spt_mem "a2","breakup",s0_10,1000
-spt_mem "a2","alpha",s0_10,0
-spt_mem "a2","breakupdir",s0_10,3
-flush 1
 seplay 11,52,90
-spt_mem "a2","breakup",s0_10,0,2000
-spt_mem "a2","alpha",s0_10,255
-sptwait2 breakup,s0_10
+flush 99,2000,"breakup.dll"
 
 csp_slot s0_10
 lss s0_9,"nat","b21_n04"

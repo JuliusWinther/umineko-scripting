@@ -28941,10 +28941,19 @@ if %r_display == 3 jumpf
 border_pad_push 7
 
 ;Design
-lsp 310,logview_caption,20,0
-lsp 311,":a;graphics\system\btns\black_buttons.png",0,0
-lsp 398,":c;graphics\colour\black.png",0,0,100
-lsp 399,":c;graphics\menu\logview\mes_bg.png",0,0
+;lsp 310,logview_caption,20,0
+;lsp 311,":a;graphics\system\btns\black_buttons.png",0,0
+;lsp 398,":c;graphics\colour\black.png",0,0,100
+;lsp 399,":c;graphics\menu\logview\mes_bg.png",0,0
+
+	write_special_text 310,"config_title",0,15," " + title_config_txt + " {n}"
+
+	;Config BG
+	lsp 399,mbox_wnd,0,0
+	;lsp2 config_main_lsp2,config_main,3840,540,100,100,0 ;Needs to be placed at the virtual center
+
+	;Gray center window
+	lsp 398,cfg_menu_wnd,0,45
 
 lsp 307,log_prev,0,0
 lsp 308,log_next,0,0

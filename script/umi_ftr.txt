@@ -14798,7 +14798,7 @@ if %CHIRU_MODE != 0 jumpf
 	lsph t_btn_start_lsp,title_btn_1,1325,424
 	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_start_txt
 	lsph t_btn_web_lsp,title_btn_2,1325,488
-	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_web_txt
+	write_special_text gen_txt_12,"title_btn_txt",1325,488,to_extra_btn_txt
 
 	;First Start
 	if %UMINEKOEND = 0 lsph t_config_lsp,title_btn_3,1325,552 : write_special_text gen_txt_17,"title_btn_txt",1325,552,title_config_txt
@@ -14892,7 +14892,7 @@ if %CHIRU_MODE != 1 jumpf
 	lsph t_btn_start_lsp,title_btn_1,1325,424
 	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_start_txt
 	lsph t_btn_web_lsp,title_btn_2,1325,488
-	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_web_txt
+	write_special_text gen_txt_12,"title_btn_txt",1325,488,to_extra_btn_txt
 
 	;First Start Chiru
 	if %UMINEKOEND <= 50 lsph t_config_lsp,title_btn_3,1325,552 : write_special_text gen_txt_17,"title_btn_txt",1325,552,title_config_txt
@@ -14977,11 +14977,12 @@ if %CHIRU_MODE != 2 jumpf
 	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_sub_extra_stories
 	lsph t_btn_tea_lsp,title_btn_2,1325,488 
 	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_sub_extra_funny
-
-	lsph t_config_lsp,title_btn_3,1325,552 : write_special_text gen_txt_17,"title_btn_txt",1325,552,title_config_txt
-	lsph t_cg_lsp,title_btn_4,1325,616 : write_special_text gen_txt_18,"title_btn_txt",1325,616,title_cg_txt
-	lsph t_btn_music_lsp,title_btn_5,1325,680 : write_special_text gen_txt_19,"title_btn_txt",1325,680,title_bgm_txt
-	lsph t_btn_exit_lsp,title_btn_6,1325,744 : write_special_text gen_txt_20,"title_btn_txt",1325,744,title_exit_txt
+ 
+	lsph t_btn_web_lsp,title_btn_3,1325,552 : write_special_text gen_txt_13,"title_btn_txt",1325,552,to_normal_btn_txt
+	lsph t_config_lsp,title_btn_4,1325,616 : write_special_text gen_txt_17,"title_btn_txt",1325,616,title_config_txt
+	lsph t_cg_lsp,title_btn_5,1325,680 : write_special_text gen_txt_18,"title_btn_txt",1325,680,title_cg_txt
+	lsph t_btn_music_lsp,title_btn_6,1325,744 : write_special_text gen_txt_29,"title_btn_txt",1325,744,title_bgm_txt
+	lsph t_btn_exit_lsp,title_btn_7,1325,808 : write_special_text gen_txt_20,"title_btn_txt",1325,808,title_exit_txt	
 
 	lsph t_trophy_lsp,t_trophy,-45,-45	
 ~
@@ -15169,7 +15170,9 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 	btnwait2 %BtnRes
 
 	if %BtnRes = t_btn_start_lsp cell t_btn_start_lsp,1 : print 1 : btndef "" : goto *start_sub_menu
-	if %BtnRes = t_btn_web_lsp seplay 9,1001,100 : menu_window : shell "http://07th-expansion.net"
+	;if %BtnRes = t_btn_web_lsp seplay 9,1001,100 : menu_window : shell "http://07th-expansion.net"
+	if %BtnRes = t_btn_web_lsp if %CHIRU_MODE != 2 seplay 9,1001,100 : goto *switch_game_to_extra
+	if %BtnRes = t_btn_web_lsp if %CHIRU_MODE == 2 seplay 9,1001,100 : goto *switch_game_to_normal
 	if %BtnRes = t_btn_tea_lsp cell t_btn_tea_lsp,1 : print 1 : btndef "" : goto *tea_sub_menu
 	if %BtnRes = t_btn_ura_tea_lsp cell t_btn_ura_tea_lsp,1 : print 1 : btndef "" : goto *ura_tea_sub_menu
 	if %BtnRes = t_btn_tips_lsp cell t_btn_tips_lsp,1 : print 1 : btndef "" : goto *tips_sub_menu
@@ -15213,6 +15216,24 @@ if %CHIRU_MODE = 1 gosub *verify_chiru
 	;definereset ;Total reset of the script, restarting from *define (used in order to read the new status of %CHIRU variables)
 	goto *b_title ;Necessary to prevent following code execution (show opening), this is an alternative to definereset
 	;goto *quick_reload ;same as *b_title but with black screen (probabily also more trustable)
+;End Custom
+
+*switch_game_to_extra
+	csp_rst 
+
+	mov %saved_last_menu,%CHIRU_MODE
+
+	mov %CHIRU_MODE,2
+
+	goto *b_title 
+
+*switch_game_to_normal
+	csp_rst 
+
+	mov %CHIRU_MODE,%saved_last_menu
+
+	goto *b_title 
+
 ;End Custom
 
 *show_opening
@@ -16549,7 +16570,7 @@ return
 		lsp t_btn_ep4_unlock_lsp,t_btn_ep_unlock,1430+72,668
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg,1562,728
-		write_special_text gen_txt_5,"ep",1581,728+3,to_extra_btn_txt
+		write_special_text gen_txt_5,"ep",1581,728+3,ep1_to4_btn_txt
 
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
@@ -16842,7 +16863,7 @@ return
 		lsp t_btn_ep4_unlock_lsp,t_btn_ep_unlock,1430+72,668
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg,1562,728
-		write_special_text gen_txt_5,"ep",1581,728+3,to_extra_btn_txt
+		write_special_text gen_txt_5,"ep",1581,728+3,ep1_to4_btn_txt
 
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
@@ -17074,7 +17095,7 @@ return
 		lsp t_btn_ep4_unlock_lsp,t_btn_ep_unlock,1430+72,668
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg,1562,728
-		write_special_text gen_txt_5,"ep",1581,728+3,to_extra_btn_txt
+		write_special_text gen_txt_5,"ep",1581,728+3,ep1_to4_btn_txt
 
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt
@@ -17229,7 +17250,7 @@ return
 		write_special_text gen_txt_4,"ep_w_n",1562+19,668,ep_txt,ep8_n_txt,""
 
 		lsp t_btn_ep5_8_lsp,ep_btn_bg,1562,728
-		write_special_text gen_txt_5,"ep",1581,728+3,to_extra_btn_txt
+		write_special_text gen_txt_5,"ep",1581,728+3,ep1_to4_btn_txt
 
 		lsp t_btn_load_lsp,ep_btn_bg,1562,788	
 		write_special_text gen_txt_6,"ep",1562+19,788+3,load_btn_txt

@@ -17564,7 +17564,7 @@ if %CHIRU_MODE != 2 jumpf
 
 		vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
 		vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
-		vsp t_btn_tea_ura_lsp,0 : vsp_special gen_txt_13,0
+		vsp t_btn_tea_ura_lsp,0 : vsp_special gen_txt_14,0
 		;vsp t_btn_tea_lsp,0
 		;vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
 		;vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
@@ -17638,7 +17638,7 @@ if %CHIRU_MODE != 2 jumpf
 		*start_sub_menu_btn_extra_extra_loop
 		btndef ""
 
-		exbtn_d "P154,1C107-113C122-125C133-137C139-149C161C163C165" ;o: -60
+		exbtn_d "P154,1C107-113C122-125C133-137C139-149C151C161C163C165" ;o: -60
 
 		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
 		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
@@ -17870,16 +17870,19 @@ if %CHIRU_MODE != 2 jumpf
 
 		;Text Generator
 		lsp t_btn_ep1_lsp,ep_btn_bg,1562,488
-		write_special_text gen_txt_1,"ep_btn_desc",1562+19,488,r_click_extra3_1+"{n}"
+		write_special_text gen_txt_1,"ep_w_n",1562+19,488,r_click_extra3_1+"{n}"
 		lsp t_btn_ep2_lsp,ep_btn_bg,1562,548
-		write_special_text gen_txt_2,"ep_btn_desc",1562+19,548,r_click_extra3_2+"{n}"
+		write_special_text gen_txt_2,"ep_w_n",1562+19,548,r_click_extra3_2+"{n}"
+
+		lsp t_btn_load_lsp,ep_btn_bg,1562,788
+		write_special_text gen_txt_24,"ep",1581,788+3,load_btn_txt
 	
 		print 85
 
 		*start_sub_menu_btn_extra_final_loop
 		btndef ""
 
-		exbtn_d "P154,1C107-113C122-125C133-137C139-149C161C163C165" ;o: -60
+		exbtn_d "P154,1C107-113C122-125C133-137C139-149C154C161C163C165" ;o: -60
 
 		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
 		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
@@ -17896,6 +17899,7 @@ if %CHIRU_MODE != 2 jumpf
 		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
 		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
 		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 :goto *b_title_moment
+
 		goto *start_sub_menu_btn_extra_final_loop
 	*start_sub_menu_btn_extra_final_loop_end
 

@@ -52,6 +52,7 @@ if ?vdl_choices[6] = 0 lsp s0_24,extra_story_btn,375,770 : write_special_text ge
 
 flush 22
 textoff2
+
 goto *vdl_loop
 
 
@@ -224,9 +225,10 @@ if %choice_extra = s0_15 mov ?vdl_choices[15],1 : goto *vdl_fur
 
 goto *vdl_loop
 *vdl_loop_end
-for %for_index1 = 0 to 15
-mov ?vdl_choices[%for_index1],0
+for %for_index1 = 0 to 16
+    mov ?vdl_choices[%for_index1],0
 next
+mov %choice_extra,0
 return
 
 ;END SELECTION MENU
@@ -248,7 +250,11 @@ return
 
 ;STORY
 *umiextra2_7
-
+;Var Reset
+for %for_index1 = 0 to 16
+    mov ?vdl_choices[%for_index1],0
+next
+mov %choice_extra,0
 
 mov $name_chapter_r_click,r_click_extra2_7
 mov $name_chapter_r_click_l2,r_click_extra2_7_l2

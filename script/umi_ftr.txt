@@ -17564,7 +17564,7 @@ if %CHIRU_MODE != 2 jumpf
 
 		vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
 		vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
-		vsp t_btn_tea_ura_lsp,0 : vsp_special gen_txt_14,0
+		vsp t_btn_ura_tea_lsp,0 : vsp_special gen_txt_14,0
 		;vsp t_btn_tea_lsp,0
 		;vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
 		;vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
@@ -17834,10 +17834,10 @@ if %CHIRU_MODE != 2 jumpf
 
 		vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
 		vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
-		vsp t_btn_tea_lsp,0 : vsp_special gen_txt_13,0
+		vsp t_btn_tea_lsp,0 : vsp_special gen_txt_13,0 
 		;vsp t_btn_tea_ura_lsp,0
-		;vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
-		;vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
+		;vsp t_btn_tips_lsp,0 
+		;vsp t_chars_lsp,0
 		vsp t_config_lsp,0 : vsp_special gen_txt_17,0
 		vsp t_cg_lsp,0 : vsp_special gen_txt_18,0
 		vsp t_btn_music_lsp,0 : vsp_special gen_txt_19,0
@@ -17851,12 +17851,10 @@ if %CHIRU_MODE != 2 jumpf
 		wait 100
 
 		resettimer
-		msp t_btn_ura_tea_lsp,0,-32,-100 : msp gen_txt_14,0,-32,-100 : msp gen_txt_14+1,0,-32,-100 : print 1 : waittimer 50
-		msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_14,0,-32,0 : msp gen_txt_14+1,0,-32,0 : print 1 : waittimer 100
-		msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_14,0,-32,0 : msp gen_txt_14+1,0,-32,0 : print 1 : waittimer 150
-		msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_14,0,-32,0 : msp gen_txt_14+1,0,-32,0 : print 1 : waittimer 200
-		msp t_btn_ura_tea_lsp,0,-32,50	 : msp gen_txt_14,0,-32,50 : msp gen_txt_14+1,0,-32,50 : print 1 : waittimer 250
-		msp t_btn_ura_tea_lsp,0,-32,50	 : msp gen_txt_14,0,-32,50 : msp gen_txt_14+1,0,-32,50 :print 1	
+		msp t_btn_ura_tea_lsp,0,-32,-100 : msp gen_txt_14,0,-32,-100 : msp gen_txt_14+1,0,-32,-100 	: print 1 : waittimer 50
+		msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_14,0,-32,0 : msp gen_txt_14+1,0,-32,0 	: print 1 : waittimer 100
+		msp t_btn_ura_tea_lsp,0,-32,0	 : msp gen_txt_14,0,-32,0 : msp gen_txt_14+1,0,-32,0 	: print 1 : waittimer 150
+		msp t_btn_ura_tea_lsp,0,-32,100	 : msp gen_txt_14,0,-32,100 : msp gen_txt_14+1,0,-32,100 	: print 1	
 		seplay 9,1001,100
 
 		;See ;Sprite numbers in the title screen / for sprite numbers
@@ -18312,6 +18310,9 @@ if %extra_scenario_Number = 28 gosub *jump_sysdata_set1 : goto *umiextra2_8
 if %extra_scenario_Number = 29 gosub *jump_sysdata_set1 : goto *umiextra2_9
 if %extra_scenario_Number = 210 gosub *jump_sysdata_set1 : goto *umiextra2_10
 if %extra_scenario_Number = 211 gosub *jump_sysdata_set1 : goto *umiextra2_11
+
+if %extra_scenario_Number = 31 gosub *jump_sysdata_set1 : goto *umiextra3_11
+if %extra_scenario_Number = 32 gosub *jump_sysdata_set1 : goto *umiextra3_2
 
 
 return

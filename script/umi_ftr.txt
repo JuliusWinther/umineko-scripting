@@ -14976,13 +14976,15 @@ if %CHIRU_MODE != 2 jumpf
 	lsph t_btn_start_lsp,title_btn_1,1325,424 
 	write_special_text gen_txt_11,"title_btn_txt",1325,424,title_sub_extra_stories
 	lsph t_btn_tea_lsp,title_btn_2,1325,488 
-	write_special_text gen_txt_12,"title_btn_txt",1325,488,title_sub_extra_funny
+	write_special_text gen_txt_13,"title_btn_txt",1325,488,title_sub_extra_funny
+	lsph t_btn_ura_tea_lsp,title_btn_3,1325,488 
+	write_special_text gen_txt_14,"title_btn_txt",1325,488,title_sub_extra_final
  
-	lsph t_btn_web_lsp,title_btn_3,1325,552 : write_special_text gen_txt_13,"title_btn_txt",1325,552,to_normal_btn_txt
-	lsph t_config_lsp,title_btn_4,1325,616 : write_special_text gen_txt_17,"title_btn_txt",1325,616,title_config_txt
-	lsph t_cg_lsp,title_btn_5,1325,680 : write_special_text gen_txt_18,"title_btn_txt",1325,680,title_cg_txt
-	lsph t_btn_music_lsp,title_btn_6,1325,744 : write_special_text gen_txt_19,"title_btn_txt",1325,744,title_bgm_txt
-	lsph t_btn_exit_lsp,title_btn_7,1325,808 : write_special_text gen_txt_20,"title_btn_txt",1325,808,title_exit_txt	
+	lsph t_btn_web_lsp,title_btn_4,1325,552 : write_special_text gen_txt_12,"title_btn_txt",1325,552,to_normal_btn_txt
+	lsph t_config_lsp,title_btn_5,1325,616 : write_special_text gen_txt_17,"title_btn_txt",1325,616,title_config_txt
+	lsph t_cg_lsp,title_btn_6,1325,680 : write_special_text gen_txt_18,"title_btn_txt",1325,680,title_cg_txt
+	lsph t_btn_music_lsp,title_btn_7,1325,744 : write_special_text gen_txt_19,"title_btn_txt",1325,744,title_bgm_txt
+	lsph t_btn_exit_lsp,title_btn_8,1325,808 : write_special_text gen_txt_20,"title_btn_txt",1325,808,title_exit_txt	
 
 	lsph t_trophy_lsp,t_trophy,-45,-45	
 ~
@@ -17559,16 +17561,15 @@ if %CHIRU_MODE != 2 jumpf
 		btndef ""
 
 		vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
-		vsp t_btn_web_lsp,0 : vsp_special gen_txt_13,0
+		vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
+		vsp t_btn_tea_ura_lsp,0 : vsp_special gen_txt_14,0
 		;vsp t_btn_tea_lsp,0
-		vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
-		vsp t_btn_exit_lsp,0 : vsp_special gen_txt_15,0
-		vsp t_btn_music_lsp,0 : vsp_special gen_txt_16,0
-		vsp t_btn_ura_tea_lsp,0 : vsp_special gen_txt_17,0
-		vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
-		vsp t_cg_lsp,0 : vsp_special gen_txt_19,0
-		vsp t_config_lsp,0 : vsp_special gen_txt_20,0
-		vsp t_trophy_lsp,0
+		;vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
+		;vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
+		vsp t_config_lsp,0 : vsp_special gen_txt_17,0
+		vsp t_cg_lsp,0 : vsp_special gen_txt_18,0
+		vsp t_btn_music_lsp,0 : vsp_special gen_txt_19,0
+		vsp t_btn_exit_lsp,0 : vsp_special gen_txt_20,0
 
 		seplay 1,51,100
 		print 1
@@ -17821,6 +17822,79 @@ goto *ura_tea_sub_menu_btn_100_loop
 		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
 		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
 goto *ura_tea_sub_menu_btn_100_loop_chiru
+;Saku menu - sub menu (Tsubasa) StoryRelated button loop - W_CUSTOM
+if %CHIRU_MODE != 2 jumpf
+	*start_sub_menu_extra_final
+	if %UMINEKOEND_EXTRA != 99 goto *start_sub_menu_btn_extra_final_loop_end ;TODO DEBUG fix extra stories unlocking
+	
+		btndef ""
+
+		vsp t_btn_start_lsp,0 : vsp_special gen_txt_11,0
+		vsp t_btn_web_lsp,0 : vsp_special gen_txt_12,0
+		vsp t_btn_tea_lsp,0 : vsp_special gen_txt_13,0
+		;vsp t_btn_tea_ura_lsp,0
+		;vsp t_btn_tips_lsp,0 : vsp_special gen_txt_14,0
+		;vsp t_chars_lsp,0 : vsp_special gen_txt_18,0
+		vsp t_config_lsp,0 : vsp_special gen_txt_17,0
+		vsp t_cg_lsp,0 : vsp_special gen_txt_18,0
+		vsp t_btn_music_lsp,0 : vsp_special gen_txt_19,0
+		vsp t_btn_exit_lsp,0 : vsp_special gen_txt_20,0
+
+		vsp t_trophy_lsp,0
+
+		seplay 1,51,100
+		print 1
+
+		wait 100
+
+		resettimer
+		msp t_btn_ura_tea_lsp,0,-16,-100 : msp gen_txt_14,0,-16,-100 : msp gen_txt_14+1,0,-16,-100 : print 1 : waittimer 50
+		msp t_btn_ura_tea_lsp,0,-16,0	 : msp gen_txt_14,0,-16,0 : msp gen_txt_14+1,0,-16,0 : print 1 : waittimer 100
+		msp t_btn_ura_tea_lsp,0,-16,0	 : msp gen_txt_14,0,-16,0 : msp gen_txt_14+1,0,-16,0 : print 1 : waittimer 150
+		msp t_btn_ura_tea_lsp,0,-16,100	 : msp gen_txt_14,0,-16,100 : msp gen_txt_14+1,0,-16,100 :print 1
+		seplay 9,1001,100
+
+		;See ;Sprite numbers in the title screen / for sprite numbers
+
+		;TODO saku button description texts
+		;Saku menu - button descriptions - W_CUSTOM
+		write_special_text t_txt_ep1_lsp,"ep_btn_desc",100+42,470+22,extra_3_1_btn_desc_t,extra_3_1_btn_desc_s,""
+		write_special_text t_txt_ep2_lsp,"ep_btn_desc",100+42,470+22,extra_3_2_btn_desc_t,extra_3_2_btn_desc_s,""
+		;End Custom
+
+		;Text Generator
+		lsp t_btn_ep1_lsp,ep_btn_bg,1269,488
+		write_special_text gen_txt_1,"ep_extra",1269,488+3,r_click_extra3_1+"{n}"
+		lsp t_btn_ep2_lsp,ep_btn_bg,1562,488
+		write_special_text gen_txt_2,"ep_extra",1562,488+3,r_click_extra3_2+"{n}"
+	
+		print 85
+
+		*start_sub_menu_btn_extra_final_loop
+		btndef ""
+
+		exbtn_d "P154,1C107-113C122-125C133-137C139-149C161C163C165" ;o: -60
+
+		exbtn t_btn_ep1_lsp,t_btn_ep1_lsp,"P165P125"
+		exbtn t_btn_ep2_lsp,t_btn_ep2_lsp,"P165P124"
+
+		exbtn t_btn_load_lsp,t_btn_load_lsp,"P165P148"
+
+		btnwait2 %BtnRes
+
+		if %BtnRes = t_btn_ep1_lsp mov %extra_scenario_Number,31 : goto *umiextra_start
+		if %BtnRes = t_btn_ep2_lsp mov %extra_scenario_Number,32 : goto *umiextra_start
+		
+		if %BtnRes = t_btn_load_lsp btndef "" : _csp t_warning_lsp : seplay 9,1001,100 : mov %load_for_title,1 : gosub *loadmode : mov %title_skip,1 : goto *b_title
+		
+		if %BtnRes = 0 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -1 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 : goto *b_title_moment
+		if %BtnRes = -10 btndef "" : seplay 9,1001,100 : mov %r_for_title,1 :goto *b_title_moment
+		goto *start_sub_menu_btn_extra_final_loop
+	*start_sub_menu_btn_extra_final_loop_end
+
+~ ;IF %CHIRUMODE != 2
+;------------------------------
 
 ;------------------------------
 ;Sub-menu after pressing the Tips

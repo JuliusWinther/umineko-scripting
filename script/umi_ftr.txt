@@ -4841,6 +4841,8 @@ goto *r_cha_display_end
 	
 *r_cha_display_end
 
+aspt alpha,gen_txt_14,255,300 ;CharSelectorFix
+
 ;W_CUSTOM - ;Outfits
 	if %scenario_Number <= 3 if %r_side != 0 jumpf
 	if %scenario_Number > 3 if %r_display_side != 0 jumpf
@@ -15017,6 +15019,7 @@ if %title_skip = 1 goto *b_title_skip_100
 	;lsp 900,$tmp10,0,0
 	bg $tmp10,6 ;TITLE VIDEO TITLE TEST
 	;w_anim 400,"test.mp4",0,0 ;This is the way to go, must add effect 6 in some way
+	;meplay 1,5,100
 
 	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
 	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
@@ -15088,6 +15091,7 @@ if %title_skip = 1 goto *b_title_skip_100
 	;lsp 900,$tmp10,0,0
 	bg $tmp10,1 ;TITLE VIDEO TITLE TEST
 	;w_anim 400,"test.mp4",0,0 ;This is the way to go, must add effect 1 in some way
+	;meplay 1,5,100
 
 	;if $flag_scenario_1_1 == "●" rain_load s0_11 : rain_load s0_7 : rain_params s0_11,400,800,0 : rain_params s0_7,400,500,0 ;W_TEMP
 	;if $flag_scenario_1_2 == "●" csp_slot s0_11 : csp_slot s0_7 ;W_TEMP
@@ -19215,7 +19219,6 @@ return
 	text_fade 133
 	mov %flg_number_t,0
 	mov %flg_number_o,0
-
 return
 
 *umi1_op_flags
@@ -23321,7 +23324,7 @@ return
 	if %ep_id == 7 mov $ep_id,scenario_ura_7: jumpf
 	if %ep_id == 8 mov $ep_id,scenario_ura_8: jumpf
 	~
-	if %no_log_gen == 1 setlog 1,$ep_id
+	if %no_log_gen == 1 setlog 1,"{color:bf8a34:{a:c:"+$ep_id+"}}"
 	if %no_log_gen != 0 jumpf
 		mark_read
 		if %ep_id == 1 && %UMINEKOEND_FLG == 12 mov %UMINEKOEND_FLG,0
@@ -23364,7 +23367,7 @@ return
 	if %ep_id == 7 mov $ep_id,scenario_tea_7 : jumpf
 	if %ep_id == 8 mov $ep_id,scenario_tea_8 : jumpf
 	~
-	if %no_log_gen == 1 setlog 1,$ep_id
+	if %no_log_gen == 1 setlog 1,"{color:bf8a34:{a:c:"+$ep_id+"}}"
 	if %no_log_gen != 0 jumpf
 		mark_read
 		if %ep_id == 1 && %UMINEKOEND_FLG == 11 mov %UMINEKOEND_FLG,0
@@ -23411,7 +23414,7 @@ return
 	if %ep_id == 32 mov $ep_id,extra_scenario_3_2 : jumpf
 
 	~
-	if %no_log_gen == 1 setlog 1,$ep_id
+	if %no_log_gen == 1 setlog 1,"{color:bf8a34:{a:c:"+$ep_id+"}}"
 	if %no_log_gen != 0 jumpf
 		mark_read
 		;TODO skipping read content
@@ -23434,7 +23437,7 @@ return
 	if %ep_id == 8 mov $ep_id,scenario_episode_8 : jumpf
 	
 	~
-	if %no_log_gen == 1 setlog 1,$ep_id
+	if %no_log_gen == 1 setlog 1,"{color:bf8a34:{a:c:"+$ep_id+"}}"
 	if %no_log_gen != 0 jumpf
 		mark_read
 		if %ep_id == 2 && %UMINEKOEND_FLG == 20 mov %UMINEKOEND_FLG,0
@@ -23459,8 +23462,8 @@ return
 		spt alpha,746,0,7000 : aspt alpha,746,0,100
 		border_pad_pop
 	~
-	if %no_log_gen == 1 && $chapter_time != "" setlog 1,$chapter_time+"{n}"+$chapter_title
-	if %no_log_gen == 1 && $chapter_time == "" setlog 1,$chapter_title
+	if %no_log_gen == 1 && $chapter_time != "" setlog 1,"{color:bf8a34:{a:c:"+$chapter_time+"{n}"+$chapter_title+"}}"
+	if %no_log_gen == 1 && $chapter_time == "" setlog 1,"{color:bf8a34:{a:c:"+$chapter_title+"}}"
 	if %no_log_gen == 0 mark_read
 return
 
@@ -23810,7 +23813,6 @@ return
 
 *spt_mem
 getparam $spt_mem_type,$aspt_prop,%aspt_slot,%aspt_val1,%aspt_val2,%aspt_val3
-
 ;The subset of each slot_cache contains all position and aspect modifications
 ;REMEMBER- the first element contains the sprite/background path, it mustn't be overwritten
 ;numalias slot_cache,101 : dim ?slot_cache[248][27]
@@ -28090,7 +28092,7 @@ return
 	ignore_cmd "click","break_glass3","break_glass4","show_coin_counter_real","show_coin_counter2_real","show_coin_counter3_real","cake","quiz","quiz2","all_presents_discarded","murder_story"
 	ignore_inl_cmd "wait","delay","text_fade_t","gstg","text_speed_t"
 	;Saku logs - ignore custom commands - W_CUSTOM
-	ignore_cmd "spt_mem", "lsl", "bg_d", "textoff2", "texton_bgonly"
+	ignore_cmd "spt_mem", "lsl", "bg_d", "textoff2", "texton_bgonly", "texton2", "w_anim"
 	;End Custom
 return 
 
@@ -28202,6 +28204,10 @@ return
 	;Saku logs - W_CUSTOM ;ATTENTION must be in reverse order
 	if %CHIRU_MODE != 2 jumpf
 
+		past_label %TextCC12Flag,"*umiextra3_2"
+		if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra3_2","*umiextra3_2_end" : goto *log_none
+		past_label %TextCC12Flag,"*umiextra3_1"
+		if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra3_1","*umiextra3_1_end" : goto *log_none
 	
 		past_label %TextCC12Flag,"*umiextra2_11"
 		if %TextCC12Flag == 1 sskip $TextCC12Flag,"*umiextra2_11","*umiextra2_11_end" : goto *log_none
@@ -28478,6 +28484,14 @@ return
 
 ;SAKU
 if %CHIRU_MODE != 2 goto *skip_log_current_chap_saku
+if %extra_scenario_Number != 32 jumpf
+past_log $log_ch_current,320,"*umiextra3_2"
+if $log_ch_current != "" gosub *log_near_chap : return
+~
+if %extra_scenario_Number != 31 jumpf
+past_log $log_ch_current,320,"*umiextra3_1"
+if $log_ch_current != "" gosub *log_near_chap : return
+~
 if %extra_scenario_Number != 211 jumpf
 past_log $log_ch_current,320,"*umiextra2_11"
 if $log_ch_current != "" gosub *log_near_chap : return
@@ -28623,6 +28637,8 @@ return
 if $log_ch_current == "" : mov $log_ch_prev,"" : mov $log_ch_next,"" : return
 
 ;SAKU
+if $log_ch_current == "*umiextra3_2" : mov $log_ch_prev,"" : mov $log_ch_next,"" : return
+if $log_ch_current == "*umiextra3_1" : mov $log_ch_prev,"" : mov $log_ch_next,"" : return
 if $log_ch_current == "*umiextra2_11" : mov $log_ch_prev,"" : mov $log_ch_next,"" : return
 if $log_ch_current == "*umiextra2_10" : mov $log_ch_prev,"" : mov $log_ch_next,"" : return
 if $log_ch_current == "*umiextra2_9" : mov $log_ch_prev,"" : mov $log_ch_next,"" : return
@@ -28894,6 +28910,8 @@ return
 
 	;Saku logs - log_ch_current - W_CUSTOM ;AT must be in reversed order
 	if %CHIRU_MODE != 2 jumpf
+		if %extra_scenario_Number == 32 past_label2 $log_ch_current,$log_ch_next,"*umiextra3_2"
+		if %extra_scenario_Number == 31 past_label2 $log_ch_current,$log_ch_next,"*umiextra3_1"
 		if %extra_scenario_Number == 211 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_11"
 		if %extra_scenario_Number == 210 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_10"
 		if %extra_scenario_Number == 29 past_label2 $log_ch_current,$log_ch_next,"*umiextra2_9"
@@ -28940,7 +28958,6 @@ return
 	blur 0
 	agpt quakexamp,0,0,0,1
 	agpt quakeyamp,0,0,0,1
-
 	;W_CUSTOM ;Sprite Cache - needed to reset current slots when jumping in log
 	gosub *empty_slot_cache
 
@@ -28950,13 +28967,14 @@ return
 	;debug_str "Log: " + $log_ch_prev
 
 	mov $log_ch_prev,$log_ch_current+"_flags"
+
 	gosub $log_ch_prev ;does the print
 
 	if %skip_flg_bak == on skip_on
 	ignore_cmd "click","pam","rumble","skip_on","skip_off","waits","wait","wait2","waitvoice","ak","lv","waittimer","saveoff","trophy_open","texec3","seplay","textoff","async_cache_img","async_cache_snd","show_characters"
 	ignore_inl_cmd "wait","delay","text_fade_t","ak","text_speed_t","lv","vv"
 	;Saku - W_CUSTOM
-	ignore_cmd "textoff2", "texton_bgonly"
+	ignore_cmd "textoff2", "texton2", "texton_bgonly"
 	;End Custom
 
 	E_A
@@ -28968,10 +28986,14 @@ return
 
 	; Before we sskip, we want to update the current choice vector lookup index position used by accept_choice and set it to the src_CVS.
 	accept_choice_next_index %log_src_cvs
+
 	accept_choice_vector_size %log_dst_cvs
+
 	; Delete any log and choice vector entries after the dst choicepoint.
 	clearlog 1,%log_dst_cvs
+
 	mov %log_is_generated_to_cvs,%log_dst_cvs
+
 	; And now sskip, last param allows us not to load images until late.
 	sskip $log_ch_prev,$log_ch_current,$log_ch_next,%sskip_turbo
 	;destination variable, source, destination label, sskip
@@ -29055,20 +29077,24 @@ border_pad_push 7
 
 	;Config BG
 	;lsp 310,":a;graphics\menu\logview\bottom.png",0,0
-	lsp 311,":a;graphics\menu\logview\test.png",0,0
+	lsp 311,log_overlay,0,0
 	lsp 399,menu_bg,0,
 	;lsp2 config_main_lsp2,config_main,3840,540,100,100,0 ;Needs to be placed at the virtual center
 
 	;Gray center window
 	;lsp 398,mbox_wnd,0,0
 
-lsp 307,log_prev,0,0
-lsp 308,log_next,0,0
+lsp 307,left_arrow,1280,990
+;gosub *log_current_chap
+split $log_ch_current,"_",$log_chapter_name,$log_chapter_name
+if $log_chapter_name == "op" mov $log_chapter_name,"0"
+lsp 310,":s;#FFFFFF`{p:11:{a:c:{w:300:Chapter "+$log_chapter_name+"{n}}}}",1300,990   ;bf8a34
+lsp 308,right_arrow,1580,990
 lsp 309,set_exit,0,0
 
-align_buttons_r 309,308,307
+align_buttons_r 309
 
-lsp 306,set_ctrl,65,990 ;65
+lsp 306,info_btn,75,985 ;65
 
 ;Control
 lsp 312,dragbar,1832,242
@@ -29086,8 +29112,8 @@ scrollable_cfg textmarginwidth,320,85
 scrollable_cfg textmargintop,320,10
 scrollable_cfg scrollbar,320,313,255,785
 scrollable_cfg tightfit,320,2 ;top only
-scrollable_cfg hovertext,320,#FFFFFF,1
-scrollable_cfg normaltext,320,#999999,0
+scrollable_cfg hovertext,320,#FFFFFF,0 ;1 - removed gradient ;Log Text Options
+scrollable_cfg normaltext,320,#c2c2c2 ;#999999
 ;stopwatch "scrollable render start"
 scrollable_display 320
 ;stopwatch "scrollable render end"
@@ -29105,13 +29131,19 @@ chvol 8,%sfx_vol*%me_current_vol_6*30/10000
 chvol 9,%sfx_vol*%me_current_vol_7*30/10000
 E_SA
 
-if %did_loghint = 0 gosub *log_hint
+;if %did_loghint = 0 gosub *log_hint ;Original Edited - Removed auto log hint (istructions) - ;W_CUSTOM
 
 print 1
 
 ;stopwatch "text_cw_lookback show end"
 
 *log_button_loop
+
+	if %temp_var4 != 1 gosub *log_current_chap
+	mov %temp_var4,0
+	split $log_ch_current,"_",$log_chapter_name,$log_chapter_name
+	if $log_chapter_name == "op" mov $log_chapter_name,"0"
+	lsp 310,":s;#FFFFFF`{p:11:{a:c:{w:300:Chapter "+$log_chapter_name+"{n}}}}",1300,990
 
 	btndef ""
 
@@ -29144,14 +29176,15 @@ print 1
 	if %cfg_mouse_click = 0 if %BtnRes =  -13 				scrollable_scroll 320,10	: goto *log_button_loop	;Page down with scroll
 	if %cfg_mouse_click = 0 if %BtnRes =  backlogupbtn		scrollable_scroll 320,-1	: goto *log_button_loop	;Button up pressed
 	if %cfg_mouse_click = 0 if %BtnRes =  backlogdownbtn	scrollable_scroll 320,1		: goto *log_button_loop	;Button down pressed
-	if %cfg_mouse_click = 0 if %BtnRes =    2 				gosub *log_chapter_prev		: goto *log_button_loop ;?
-	if %cfg_mouse_click = 0 if %BtnRes =    3 				gosub *log_chapter_next		: goto *log_button_loop ;?
+	if %cfg_mouse_click = 0 if %BtnRes =    2 				gosub *log_chapter_prev		: mov %temp_var4,1 goto *log_button_loop ;?
+	if %cfg_mouse_click = 0 if %BtnRes =    3 				gosub *log_chapter_next		: mov %temp_var4,1 goto *log_button_loop ;?
 	if %cfg_mouse_click = 0 if %BtnRes =    4 				gosub *log_hint				: goto *log_button_loop ;?
 	if %cfg_mouse_click = 0 if %BtnRes =  -80  				lv_play 320,%dlg_vol		: goto *log_button_loop ;?
 	if %cfg_mouse_click = 0 if %BtnRes =  -11  				lv_play 320,%dlg_vol		: goto *log_button_loop ;?
 	if %cfg_mouse_click = 0 if %BtnRes =    0  				goto *log_button_loop		;Original Edited - do not play bu do nothing
 	if %cfg_mouse_click = 0 if %BtnRes =  -70 				goto *log_jump_request		;?
 	if %cfg_mouse_click = 0 if %BtnRes =  -51 				goto *log_jump_request		;?
+
 
 	;Original Edited - LOG SCROLLBAR SCROLLING ;SCROLL - W_CUSTOM
 	;height: 570 - usable circa 529 - init pos of cursor: 255
@@ -29198,10 +29231,10 @@ return
 	align_message_l 2
 	seplay 9,1062,100
 	print 23
-	wait 7000
+	waits 5000
 	_csp 2
 	_csp 4
-	if %did_loghint = 0 mov %did_loghint,1
+	;if %did_loghint = 0 mov %did_loghint,1 ;Original Edited - Removed auto log hint (istructions) - ;W_CUSTOM
 	scrollable_cfg mousectrl,320,1	
 return
 
@@ -31899,7 +31932,7 @@ return
 ;*************************
 *reload_slots
 	for %for_index1=0 to 247
-
+	
 		mov %reloading_status,0
 
 		;Subset position 0 contains sprite/bg path
@@ -32284,7 +32317,6 @@ reset
 	mov %sskip_turbo,1
 	operate_config u_read,$sskip_turbo,"sskip_turbo"
 		if $sskip_turbo == "false" mov %sskip_turbo,0 : jumpf
-		;if $sskip_turbo == "true" mov %sskip_turbo,1 : jumpf
 	~
 
 return
@@ -34357,7 +34389,7 @@ return
 *rmenu_display_new
 	;textoff
 	;btndef ""
-	
+
 	;Display black when changing side
 	;W_CUSTOM - Original Edited - Commented
 	;if %r_side_change = 3 lsp 2,":c;graphics\colour\black.png",0,0 : print 1

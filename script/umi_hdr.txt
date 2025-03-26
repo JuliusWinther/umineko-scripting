@@ -1629,6 +1629,11 @@ numalias h_scrolled,10639
 numalias choice_extra,10640
 numalias saved_last_menu,10641
 
+numalias spriteset_changed,10642
+numalias log_chapter_name,10643
+
+numalias current_movie,10644
+
 numalias outfits,11500 : dim ?outfits[70][6][6] ;a lot of slots
 
 ;Sprite cache - Array that stores sprites data for reload - W_CUSTOM
@@ -1773,7 +1778,7 @@ textgosub *text_cw
 skipgosub *skip_cw
 loadgosub *load_system
 event_callback *script_state
-ctrl_callback *ctrl_state
+;ctrl_callback *ctrl_state
 
 usewheel
 useescspc
@@ -1950,6 +1955,7 @@ mov %char_reloading_numaliases,0
 mov %r_display_cha_universal,0
 mov %cur_scroll_pos,0
 mov %h_scrolled,0
+mov %spriteset_changed,0
 ;Char Menu ;TODO Some char menu open in different pages, fix ;W_CUSTOM
 mov %char_moving_side,1
 mov $r_cha_back,blank ;Pre-initialize family tree to transparent

@@ -1207,7 +1207,8 @@ return
 	lsp 203,left_arrow,1317,187+60+%cfg_height
 	lsp 204,right_arrow,1624,187+60+%cfg_height
 	;config_write_str "sprite_folder_name",$sprite_folder_name
-	gosub *reload_slots
+	mov %spriteset_changed,1
+	;gosub *reload_slots
 return
 
 *settings_textbox
@@ -1229,7 +1230,8 @@ return
 	lsp 207,left_arrow,1317,187+60+(%cfg_temp2*2)+%cfg_height
 	lsp 208,right_arrow,1624,187+60+(%cfg_temp2*2)+%cfg_height
 	;config_write_str "bg_folder_name",$bg_folder_name
-	gosub *reload_slots
+	mov %spriteset_changed,1
+	;gosub *reload_slots
 return
 
 *settings_book_mode
@@ -1935,6 +1937,8 @@ goto *settings_exit_confirm_loop
 return
 
 *settings_end
+	if %spriteset_changed == 1 gosub *reload_slots : mov %spriteset_changed,0
+	mov %spriteset_changed,0
 	for %tmp = 100 to config_main_lsp2 : _csp %tmp : _csp2 %tmp next
 	_csp 451
 	csp_text gen_txt_1 : csp_text gen_txt_2 : csp_text gen_txt_3 : csp_text gen_txt_4 : csp_text gen_txt_5 : csp_text gen_txt_6

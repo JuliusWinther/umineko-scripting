@@ -1,0 +1,98 @@
+*cg_gui 
+;602;603
+
+	lsp 601,set_exit,0,0
+	align_buttons_r 601
+
+	lsp 305,mbox_obscure,0,0 : aspt alpha,305,0
+
+	lsp 602,left_arrow,190,35;440,35
+	lsp 603,right_arrow,1690,35;1440,35
+
+	write_special_text 309,"config_title",0,15," " + title_cg_txt + " {n}"
+
+	;lsp 311,move_down,1827,839
+	;lsp 312,move_up,1827,210
+	lsp 313,h_dragbar_cursor,680,936
+	lsp 314,h_dragbar,667,936
+
+	lsp 329,":c;graphics\menu\save\save_load_menu_bg.png",0,0
+	lsp 330,menu_bg,0,0
+return
+
+*cg_mode_ps3
+	;E_A   		;Stop the currently playing song
+ 	
+	csp_rst
+	bg black,10,500
+
+	;gosub *trophy_update_cg
+	;gosub *load_saved_cgs
+ 
+ 	mov %mcurrent_page,1
+
+	if %UMINEKOEND_CG_FLG = 1 mov %UMINEKOEND_CG_FLG,0
+
+*cg_loop ;Лобби т.е. главное меню Picture Box
+
+ 	btndef ""
+
+ 	csp_rst
+
+	gosub *cg_gui ;Берем кнопки
+
+*cg_loop2
+	btndef ""
+
+	;spbtn 311,5 ;Up
+	;spbtn 312,6 ;Down
+	;spbtn 304,4 ;Exit Button
+	spbtn 601,4
+	spbtn 313,313 ;Scrollbar cursor
+
+	getpage
+	getcursor
+
+	btndown 1
+
+	btnwait2 %BtnRes
+
+	isdown %cfg_mouse_click
+
+	if %cfg_mouse_click = 0 if %BtnRe = -1 seplay 9,1005,100 : goto *cg_end		;Exit by right-clicking
+	if %cfg_mouse_click = 0 if %BtnRes = 4 seplay 9,1005,100 : goto *save_exit	;Exit by clicking the exit button	
+	if %cfg_mouse_click = 0 if %BtnRes = -10 seplay 9,1005,100 : goto *cg_end 	;Exit by ESC
+	if %BtnRes = -81 goto *cg_end 
+
+	if %BtnRes=1 seplay 9,1005,100 : goto *cg_end
+
+	if %cfg_mouse_click = 0 if %BtnRes=0  goto *cg_loop2 
+
+	if %cfg_mouse_click = 0 if %BtnRes = -12 scrollable_scroll 320,-10 : goto *cg_loop2  ;Page up with scroll
+	if %cfg_mouse_click = 0 if %BtnRes = -13 scrollable_scroll 320,10  : goto *cg_loop2  ;Page down with scroll
+	if %cfg_mouse_click = 0 if %BtnRes = 5 	 scrollable_scroll 320,1   : goto *cg_loop2	 ;Button up pressed
+	if %cfg_mouse_click = 0 if %BtnRes = 6	 scrollable_scroll 320,-1  : goto *cg_loop2	 ;Button down pressed
+
+
+	;height: 570 - usable circa 529 - init pos of czursor: 255
+	if %BtnRes != 313 goto *skip_picture_cursor
+		for %for_index3=0 to 2
+
+			isdown %cfg_mouse_click ;Checks if mouse is still pressed
+			if %cfg_mouse_click = 0 mov %for_index3,0 : spbtn 313,313 : break ;Else ends the cycle - redeclating the button updates its position
+			getmousepos %cfg_mouse_y,%cfg_temp_var
+			mov %cfg_mouse_y,%cfg_mouse_y-26
+			getspsize 320,%cfg_temp_var,%temp_var3,%cfg_temp_var ;Testvar here contains the virtual length of the whole log
+			mov %cfg_temp_var,(%cfg_mouse_y-680)*(%temp_var3-1920-0)/(785-680)+((%cfg_mouse_y-680)/2) ;This is offset
+				aspt scroll_y,320,%cfg_temp_var
+			mov %for_index3,0 ;Infinite Cycle
+		next
+	*skip_picture_cursor
+	;End Custom
+
+
+goto *cg_loop2
+
+*cg_end 
+	csp_rst
+return

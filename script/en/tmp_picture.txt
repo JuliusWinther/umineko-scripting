@@ -1,23 +1,28 @@
 *cg_gui 
 ;602;603
+	mov %current_movie,1
 
 	lsp 601,set_exit,0,0
 	align_buttons_r 601
 
-	lsp 305,mbox_obscure,0,0 : aspt alpha,305,0
+	;lsp 313,left_arrow,1590,710;440,35
+	lsp2 312,moviebox_1,1495,630
+	lsp 311,right_arrow,1570,600;1440,35
 
-	lsp 602,left_arrow,190,35;440,35
-	lsp 603,right_arrow,1690,35;1440,35
+	;write_special_text 309,"config_title",0,15," " + "Movie Box" + " {n}"
 
-	write_special_text 309,"config_title",0,15," " + title_cg_txt + " {n}"
+	;lsp 311,move_down,1827,839
+	;lsp 312,move_up,1827,210
+	;lsp 313,h_dragbar_cursor,680,936
+	;lsp 314,h_dragbar,667,936
 
-	lsp 311,move_down,1827,839
-	lsp 312,move_up,1827,210
-	lsp 313,dragbar_cursor,1832,255
-	lsp 314,dragbar,1832,242
+	lsp 328,moviebox_overlay,0,0
 
-	lsp 329,":c;graphics\menu\save\save_load_menu_bg.png",0,0
-	lsp 330,menu_bg,0,0
+	lsp 330,moviebox_bg,0,0
+
+;the tv must be on yet another level
+
+	lsp 329,":c;graphics\menu\movie\1_op.jpg",400,120
 return
 
 *cg_mode_ps3
@@ -33,25 +38,51 @@ return
 
 	if %UMINEKOEND_CG_FLG = 1 mov %UMINEKOEND_CG_FLG,0
 
-*cg_loop ;Лобби т.е. главное меню Picture Box
-
  	btndef ""
 
  	csp_rst
 
 	gosub *cg_gui ;Берем кнопки
 
-*cg_loop2
+*cg_loop
+	btndef ""
+
+	spbtn 329,329
+	spbtn 311,311
+	spbtn 601,4
+
+	getpage
+	getcursor
+
+	btndown 1
 
 	btnwait2 %BtnRes
 
-	if %BtnRes=-1 seplay 9,1005,100 : goto *cg_end ;Правая кнопка мыши
-	if %BtnRes=-10 seplay 9,1005,100 : goto *cg_end ;Exit by ESC
-	if %BtnRes=0  goto *cg_loop2 ;Левая кнопка мыши
+	isdown %cfg_mouse_click
+
+	if %cfg_mouse_click = 0 if %BtnRe = -1 seplay 9,1005,100 : goto *cg_end		;Exit by right-clicking
+	if %cfg_mouse_click = 0 if %BtnRes = 4 seplay 9,1005,100 : goto *save_exit	;Exit by clicking the exit button	
+	if %cfg_mouse_click = 0 if %BtnRes = -10 seplay 9,1005,100 : goto *cg_end 	;Exit by ESC
+	if %BtnRes = -81 goto *cg_end 
 
 	if %BtnRes=1 seplay 9,1005,100 : goto *cg_end
 
-goto *cg_loop2
+	if %cfg_mouse_click = 0 if %BtnRes=0  goto *cg_loop 
+
+	if %cfg_mouse_click = 0 if %BtnRes = 329 pam 100,"op",1
+
+	if %cfg_mouse_click = 0 if %BtnRes = 311 add %current_movie,1
+	if %current_movie >= 9 mov %current_movie,1
+	if %current_movie = 1 lsp2 312,moviebox_1,1495,630 : lsp 329,":c;graphics\menu\movie\1_op.jpg",400,120
+	if %current_movie = 2 lsp2 312,moviebox_2,1495,630 : lsp 329,":c;graphics\menu\movie\2_op.jpg",400,120
+	if %current_movie = 3 lsp2 312,moviebox_3,1495,630 : lsp 329,":c;graphics\menu\movie\3_op.jpg",400,120
+	if %current_movie = 4 lsp2 312,moviebox_4,1495,630 : lsp 329,":c;graphics\menu\movie\4_op.jpg",400,120
+	if %current_movie = 5 lsp2 312,moviebox_5,1495,630 : lsp 329,":c;graphics\menu\movie\5_op.jpg",400,120
+	if %current_movie = 6 lsp2 312,moviebox_6,1495,630 : lsp 329,":c;graphics\menu\movie\6_op.jpg",400,120
+	if %current_movie = 7 lsp2 312,moviebox_7,1495,630 : lsp 329,":c;graphics\menu\movie\7_op.jpg",400,120
+	if %current_movie = 8 lsp2 312,moviebox_8,1495,630 : lsp 329,":c;graphics\menu\movie\8_op.jpg",400,120
+
+goto *cg_loop
 
 *cg_end 
 	csp_rst
